@@ -1,0 +1,10 @@
+table {
+    text-align: center; 
+    border-collapse: separate;
+    border-spacing: 15px 3px;
+    border: 2px solid black; /* no border around the table itself */
+}
+td {
+    border: 2px solid purple; /* borders around the cells */
+    padding: 10px 5px 3px 5px;
+}
