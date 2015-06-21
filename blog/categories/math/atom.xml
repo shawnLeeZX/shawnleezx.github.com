@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Math | SHAWN LEE]]></title>
+  <link href="http://shawnLeeZX.github.io/blog/categories/math/atom.xml" rel="self"/>
+  <link href="http://shawnLeeZX.github.io/"/>
+  <updated>2015-06-21T11:48:38+08:00</updated>
+  <id>http://shawnLeeZX.github.io/</id>
+  <author>
+    <name><![CDATA[Shawn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Connection between PCA and Fourier Transform]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/06/05/connection-between-pca/"/>
+    <updated>2015-06-05T21:10:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/06/05/connection-between-pca</id>
+    <content type="html"><![CDATA[<!-- more -->
+
+<p>When we are running PCA on images, the first principle component we get is
+normally looks like the DC term, which is the first Fourier bases of
+images. After some analysis, I found that this makes a lot of sense.</p>
+
+<p>We could unify PCA and Fourier Transform from filter bank or linear operator
+point of view. Actually those two point of views are just different way to say
+the same thing in signal processing and mathematics.</p>
+
+<p>From filter bank point of view, the process of getting the PCA coefficients and
+Fourier coefficients could be regarded as passing the original signal to a
+Linear Time Invariant system. Each Fourier basis or eigenvector is a
+filter. All of them make up the filter bank.</p>
+
+<p>From linear operator point of view, such process could be taken as an operator
+to project the point in one space to another space.</p>
+
+<p>It turns out that Fourier basis $e^{i\omega t}$ and eigenvector $v$ of covariance
+matrix are both eigenvector(this eigenvector is not specific to the eigenvector
+computed from covariance matrix of the data) of the LTI system.</p>
+
+<p>The Fourier basis eigenvectors could be taken as the eigenvector of covariance
+of all possible images that could be formed by spatial complex exponential
+signal. So it is fixed. As for the data driven eigenvector $v$, it is only the
+eigenvector of that amount of data. They are both orthogonal with other
+eigenvectors within their sets. If data driven eigenvector get normalized, it
+has unit norm as well.</p>
+
+<p>This could explain why the first principal components of covariance looks a lot
+similar do the first Fourier basis. Because DC term of images affect all
+pixels, naming all dimensions. So its variance is the largest, which makes it
+similar with first fourier basis. I think similar argument could be made to
+other principal components and Fourier bases as well. But they may be less
+obvious then the first one.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A Concept Explanation on Composition of Matrice Representing Linear Transform]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/05/22/a-concept-explanation-on-composition-of-matrice-representing-linear-transform/"/>
+    <updated>2015-05-22T22:18:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/05/22/a-concept-explanation-on-composition-of-matrice-representing-linear-transform</id>
+    <content type="html"><![CDATA[<!-- more -->
+
+<p>It is a bit hard to internalize the fact that the composition of finite
+dimensional linear transformation is the multiplication of the matrices
+representing them. I figured out a concept explanation.</p>
+
+<p>Denoting the first transformation matrix as $A$ and the second as $B$,
+$\vec{a_{i}}$ as the row of $A$ and $\vec{b_{j}}$ as the row of $B$, the to
+be transformed vector as $x$, basically, each $\vec{a}_{i}$ determines how
+each coordinate $x_{i}$ of $\vec{x}$ will contribute to the result
+coordinates.</p>
+
+<p>Then if you do another linear transform on $\vec{Ax}$, each $\vec{b}_{j}$ determines how
+each coordinate of $\vec{Ax}$ will contribute to the final vector. Since the transform is
+linear, we could first consider how $\vec{a_{i}}$ contributes to the final
+vector, its final result with $x$ is just a multiple of $x_{i}$. Each
+component of $\vec{a_{i}}$ actually could be taken as a to be transformed
+vector of $B$. Each row of $AB$ could be viewed in the following way.</p>
+
+<p>$\vec{a_{i}}$ is the new coordinate of standard basis $\vec{e_{i}}$ after
+applying $A$. Starting from there, the second new coordinates of those first
+new coordinates are obtained by applying $B$. So if we apply $AB$ on standard
+basis $\vec{e_{i}}$, the result is going to be the second new
+coordinates. Actually, such coordinates are:</p>
+
+<script type="math/tex; mode=display">
+\sum\vec{b_{j}}(\vec{a_{i}})_{j}
+</script>
+
+<p>which is just $\vec{(AB)_{i}}$.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[What A Mathematical Object Random Variable Really Is]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/05/14/what-mathematical-object-random-really-is/"/>
+    <updated>2015-05-14T11:14:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/05/14/what-mathematical-object-random-really-is</id>
+    <content type="html"><![CDATA[<p>An example will be noted here to illustrate what a random variable really is.</p>
+
+<p>Sadly, things will be clearer with graph but for now I do not have a solution
+to make good illustration really quickly enough — normally I write a post in
+about half an hour.</p>
+
+<!-- more -->
+
+<p>The problem setting is that if we toss a coin twice, there are four possible
+outcomes that we could get — $(hh, ht, th, tt)$, where $h$ stands for head
+while $t$ stands for tail. If we denote the results as tuples, we could
+represent the experiment results as $((1, 1), (1, 0), (0, 1), (0, 0))$. If we
+take each element of the tuple with two elements as dimension of a vector
+space, each tuple could be regarded as an element in a vector space. we could
+represent our experiment result in a 2D plane.</p>
+
+<p>Consider that a random variable $X$ which is used to denote the number of heads
+in this experiment. Its value would be 0, 1 or 2.</p>
+
+<p>Now we make the statement that random variable a mapping, which maps the
+original event space $\Omega$(the four tuples here) to a subset$T’$(a set of
+${0, 1, 2}$ here) of a set $T$(the positive integer set $N^{+}$). Let’s see
+what this actually means.</p>
+
+<p>In the first level, the understanding could be pretty straight forward. $X$
+in some sense agglomerate the event space in the most preliminary level – the
+atomic exclusive level to a coarser level — the number of heads. So $(1, 0)$
+and $(0, 1)$ all collapse to the point ${1}$ in the set $T$. Correspondingly,
+the probability measure assigned on each event is changed. Mathematically,
+given a set $A$ in $T$, its probability now is </p>
+
+<script type="math/tex; mode=display">
+P^{X}(A) = P(\{\omega: X(\omega) \in A \}) = P(X^{-1}(A)) = P(X \in A)
+</script>
+
+<p>However, there is a way to think in the framework of functional analysis. Each
+mapping, precisely, function, in a vector space(Hilbert space could be a
+properer setting) could be regarded as projecting points in the vector space to
+the basis determined by the adjoint operator of this function.</p>
+
+<p>In previous example, a two dimensional space is reduced into one dimensional
+space, whose basis is the adjoint operator of the function $X$. And the
+probability measure of a point in this new one dimensional space is the sum of
+all points in the two dimensional points that will be projected at that
+point. Now, let’s see what those statements mean.</p>
+
+<p>If we draw a line crossing origin with slope one, all points with the same
+number of heads will be projected at the same point in this line. The point
+with two heads, which is $(1, 1)$, will be projected at point $(1, 1)$. The
+points with one head, which is $(1, 0) and (0, 1)$, will be projected at
+$(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2})$. Finally, the point with no head
+will be projected at $(0, 0)$. Now we drop the second dimension, each point in
+this line will semantically mean the number of heads, where the random variable
+will vary. Their probability measure will be summed while points are being
+projecting.</p>
+
+<p>The counting of heads is also represented by the function $(x + y)$(the value
+in each dimension of previous two dimensional space actually means the number
+of heads, so their sum will the number of heads), which is the adjoint operator
+of basis $(1, 1)$. This form is the representation of the basis of our new
+space in our old two dimensional space.</p>
+
+<p>One last note. When we are reducing dimensionality, we are also discarding the
+information of how many number of tail we get.</p>
+
+<p>In conclusion, what random variable really is?</p>
+
+<p>Random variable first maps original event space onto another event space, then
+defines a new probability distribution on the new space according its relation
+to the old event space. The intuitive meaning of the random variable is how it
+deals with original event space, which is counting the number of heads
+here. But essentially, it defines a distribution or in other words, probability
+measure at each point(the number of heads), in the new space.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Connection between Fourier Components in Real and Complex Form]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/04/11/connection-between-fourier-components-in-normal-and-complex-form/"/>
+    <updated>2015-04-11T10:59:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/04/11/connection-between-fourier-components-in-normal-and-complex-form</id>
+    <content type="html"><![CDATA[<p>This post notes down my current understanding of the intuition behind using
+complex exponentials to represent function, stressing on the connection between
+the complex form and the normally all real form.</p>
+
+<!-- more -->
+
+<h2 id="brief-note-on-complex-number">Brief Note on Complex Number</h2>
+
+<p>One of the most useful properties of complex number is its ability to unify
+algebraic and geometrical operations. More about this could be found on
+<a href="http://betterexplained.com/articles/a-visual-intuitive-guide-to-imaginary-numbers/">Better Explained</a>
+which is a good elementary explanation of imaginary number.</p>
+
+<p>It was not until seriously studying Fourier Transformation that I figured out
+the nature of Complex Number.</p>
+
+<p>Number system is human’s way to model nature. Integer number models
+counting. Negative number models things like debt. Zero models null. Fraction
+number models division and fraction. Those consist of rational number. But to
+really model length, which occurs naturally in Pythagoran theorem, irrational
+number has to be introduced. Rational number and irrational number together
+make up real number system, where limit of points – may be compared with
+limit of length is regarded as a conceptual number, to make the system
+complete(complete is a mathematical terminology).</p>
+
+<p>But all those models are for scalar. Nature is not one dimensional. It is
+rules of vector that engine this world. This is where complex comes
+from. </p>
+
+<p>The most elegant equation in the history is Euler Equation:</p>
+
+<script type="math/tex; mode=display">
+e^{ix} = cos(x) + i sin(x)
+</script>
+
+<p><img class="center" src="http://upload.wikimedia.org/wikipedia/commons/7/71/Euler%27s_formula.svg" title="Euler Equation Illustration" ></p>
+
+<p>It is saying that every complex exponential is a 2D vector, where $(x, y) =
+(cos\phi, sin\phi)$. Instead of just modeling scalar, we model 2D vector using
+complex number. So by manipulating algebra of complex, we are doing geometrical
+operations. And the meaning of imaginary $i$ is rotating the vector 90 degree
+anti-clockwise. That’s the reason why it connects algebra and geometry.</p>
+
+<p>This will be clearer after Fourier related stuff is introduced in the following
+sections.</p>
+
+<p>I am still wondering if we could unify more dimensions into number instead of
+just two?</p>
+
+<h2 id="fourier-series">Fourier Series</h2>
+
+<p>Fourier Series is about this statement:</p>
+
+<blockquote>
+  <p>Every periodic function could be represented using arbitrary number of
+ocsillating functions, namely cosines and sines or complex exponentials.</p>
+</blockquote>
+
+<p>As noted in the beginning, this post is about intuition behind the relationship
+between cosines sines and complex exponentials.</p>
+
+<p>First we see fourier series in its real form decomposition.</p>
+
+<script type="math/tex; mode=display">
+f(t) = \sum\limits_{n = -\infty}^{\infty} c_{n}cos(nw_{0}t + \phi)
+</script>
+
+<p>We could also write it in form of $sin(t)$ given that it is just a shifted
+version of $cos(t)$. But we will see that using $cos(t)$ makes sense in a
+moment.</p>
+
+<p>NOW, every $cos(nw_{0}t + \phi)$ is the real part of $e^{i(nw_{0}t + \phi)}$.
+Remember that the algebra operations between complex exponentials are
+equivalent to vector operations. So instead seeing combination of different
+Fourier components as superposition of constantly changing(with regard to $t$)
+scalar addition, we see it as vector addition in a 2D dimensional complex
+plane. See illustration
+<a href="http://betterexplained.com/articles/an-interactive-guide-to-the-fourier-transform/">here</a>,
+in about half the article.</p>
+
+<p>Though they vibrate in circle, which indicates the way the interact with each
+other, we only see its effect – cosine(real) part. So each time we measure or
+in other word, sample, we get the real part, which is the final function we
+want.</p>
+
+<p>By converting back and forth between the real form and complex form, you will
+find terms related to frequency $s$ is $cos(st + \phi)$ and
+$\frac{1}{2}e^{ist}e^{i\phi} + \frac{1}{2}e^{-ist}e^{-i\phi}$. The negative
+frequency part is used to “drag” back or cancel out the imaginary or the part
+that is orthogonal to real part. Or in other word, we only want the real part.</p>
+
+<p>Intuitively, it means to make the decomposition conforming with observation, we
+use conjugation to drag the vector back to real line. Now it makes sense that
+we choose $cos(nw_{0}t + \phi)$ to decompose instead of $sin(nw_{0}t +
+\tau)$. Cosine is related to the x-axis by definition which is real line.</p>
+
+<p>We could stop here. The connection between the real form and the complex form
+is pretty clear now. But there is more, in a finer level.</p>
+
+<p>Given that each components of the decomposition is orthogonal, now we need only
+to consider one of its term $cos(nw_{0}t + \phi)$.</p>
+
+<p>From now on for notation simplicity we denote $nw_{0}$ as $s$. Each component
+could also be decomposed into two components, remembering that we see each
+component as two dimension vector. The phase $\phi$ determines the vector
+initially. We can see this clearer by expanding($1/2$ is dropped for
+convenience):</p>
+
+<script type="math/tex; mode=display">
+e^{ist}e^{i\phi} + e^{-ist}e^{-i\phi} = e^{ist}(cos(\phi) + i sin(\phi)) +
+e^{-ist}(cos(\phi) - i sin(\phi))
+</script>
+
+<p>THIS actually means in a finer level, the innate vector property is also
+modeled – every component consists of two basic components, sine and cosine
+and $\phi$ decides how they combine with each other initially, which determines
+how they interact with each other forever.</p>
+
+<p>The decomposition into sine and cosine also makes a lot of sense. cos is
+orthogonal to sine and together they can represent any trigonometric function.</p>
+
+<h2 id="note-on-other-derivation">Note On Other Derivation</h2>
+
+<p>There is another way to get real form of fourier series to complex
+form. Actually it is the first time I realize the connection between them,
+though fourier was learned way earlier(TERRIBLE COLLEGE EDUCATION!!!).</p>
+
+<p>Fourier decomposition is written the following way:</p>
+
+<script type="math/tex; mode=display">
+f(t) = \sum\limits_{n = -\infty}^{\infty} c_{n}sin(nw_{0}t + \phi)
+</script>
+
+<p>By some derivation, we have:</p>
+
+<script type="math/tex; mode=display">
+f(t) = \sum\limits_{n = -\infty}^{\infty} a_{n} cos(nw_{0}t) + b_{n}sin(nw_{0}t)
+</script>
+
+<p>The phase is merge into coefficients $a_{n}$ and $b_{n}$.</p>
+
+<p>Given $sin(t) = \frac{1}{2i}(e^{it} - e^{-it})$ and $cos(t) = \frac{1}{2}(e^{it} + e^{-it})$,
+substitute above equations in, we also get the complex form.</p>
+
+<p>This approach is harder to understand because it gets the atomic level wrong –
+it should be $e^{it}$ not $cos(t) + i sin(t)$. But it does have benefits.</p>
+
+<p>Each function $f$ could be decompose into a combination of even and odd part
+by:</p>
+
+<script type="math/tex; mode=display">
+f = \frac{1}{2}(f(t) + f(-t)) + \frac{1}{2}(f(t) - f(-t))
+</script>
+
+<p>The formed is the even part and the latter is the odd part. Let $f(t) = e^{it}$
+we can see that $i sin(t)$ the odd part of $e^{it}$ and $cos(t)$ the even part.</p>
+
+<p>It makes clear that when the function is even, we get zero value in coefficients
+of $sin(t)$ while when the function is odd, we get zero value in coefficients
+of $cos(t)$: if a function has a odd component $sin(t)$, it never is going to
+be even.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A Preliminary Summary On What CNN Is Doing Mathematically]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/04/07/a-preliminary-summary-on-what-cnn-is-doing-mathematically/"/>
+    <updated>2015-04-07T19:05:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/04/07/a-preliminary-summary-on-what-cnn-is-doing-mathematically</id>
+    <content type="html"><![CDATA[<p>There is too much to stuff all those notes into one weekly summary, so I decide
+to decouple it into this post. It is about a description of the process what
+Convolutional Neural Network(CNN) is doing mathematically.</p>
+
+<!-- more -->
+
+<p>Last week I have written an informal one. The informality was resulted from an
+unclear understanding of space, mapping and the way CNN works. Things get much
+clearer now.</p>
+
+<p>The task CNN is trying to achieve is the same with all the other machine
+learning algorithms – finding a mapping that will transform the preliminary
+input to one kind of output that makes the task easier to solve or directly
+solve the task. The formed one is called feature learning and the latter is
+called classification or anything else that is the target.</p>
+
+<p>The problem is how exactly such mapping is found? Or more specifically, why CNN
+is more powerful than other algorithms?</p>
+
+<h2 id="how-mapping-is-found-mathematically">How Mapping Is Found Mathematically</h2>
+
+<p>First we address the first problem, though those two are actually the same.</p>
+
+<p>Instead of trying to find a mapping to our problem directly, which are methods
+called shallow model today, CNN tries to find a sequence of mappings to
+decouple information from its most primitive form. If we rephrase the word
+mapping to operation, it may sound more like plain English. Then judging from
+the information extracted, it answers whatever relevant questions we are
+interested, such as classification of images of different animals.</p>
+
+<p>More mathematically, CNN tries to find the mapping by finding a representation
+of the mapping on relevant bases which are found by compositing preliminary
+bases. Then in the space represented by the relevant bases, divide the new
+space using previous shallow model.</p>
+
+<p>The latter part has not been investigated fully yet. I guess support vector
+machine may be the key to this problem.</p>
+
+<p>Further zooming in the process, in each layer, every kernel of CNN will
+convolute with the input. In the first layer, the input is the raw signal. In
+the following layer, the input is the output of last layer. A kernel here is a
+basis. Convoluting with input is actually taking inner product with input.</p>
+
+<p>In the first layer, by computing the inner product of a basis function with a
+signal, we get a value. This value is one way to look at the signal, or the
+information extracted which may be comprehended by human, like the existence of
+a certain of kind edge. By taking inner product of all bases, we get the
+signal’s representation in form of coordinates of the set of bases.</p>
+
+<p>From now on, the task is to find combinations of the first layer’s bases that
+are more informative. By using more layers, we hope to find relevant
+combinations in exponential number of possible ones.</p>
+
+<p>The most preliminary bases actually have mathematical terminology: in the
+continuous case, it is called Schauder basis; in the discrete case, it is
+called Hamel basis. In this case, the coordinates of the signal is the same
+with its ground truth value.</p>
+
+<p>Feature mappings from previous layer to current layer are the key to find a
+more complex bases. It brings the search in the space of preliminary bases to a
+more advanced space of more advanced bases. A best example is an input in form
+of a three channel image will have three feature mappings, one corresponding to
+one color. If we just concatenate three pixels of different color, we have no
+idea it corresponds to different frequencies of light. But if we take it from
+three channels, we are using the high-level information of colors. Another
+example is provided in the next section.</p>
+
+<p>Now the process up to the first part of the process is done. The second part
+will not be described given that I have not understood it fully yet.</p>
+
+<p>The followings are some notes on properties of such process:</p>
+
+<ol>
+  <li>The key of depth is reusing information hierarchically and preventing
+exploration on meaningless part of function space. This is the main reason
+why deep model works and will be elaborated with an example in the next
+section.</li>
+  <li>Coordinates are coordinates. There is only one ground truth of
+nature. Coordinates are the way we see the ground truth. Different spaces
+are actually different with different levels of abstraction. Different
+levels of abstraction are achieved using different sets of bases.</li>
+  <li>Taking inner product is the process to map point in one space to another
+space. This is also the intuition behind Riesz Theorem that any linear
+functional could be represented using inner product.</li>
+  <li>The intuition of taking inner product is also computing correlation between
+the basis and the signal. The more they are similar, the bigger the
+coordinate(in CNN terminology system, the bigger the response). </li>
+  <li>Bases are connected with hidden factors referred by Bengio.</li>
+  <li>Spatial information is kept by the intuition of cascading local receptive
+fields.</li>
+</ol>
+
+<hr />
+
+<h2 id="analytically-why-more-depth-is-more-powerful">Analytically Why More Depth Is More Powerful</h2>
+
+<p>Imagine a square whose components are two horizontal edges and two vertical
+edges. To detect such shape, we could imagine a three layer convolutional
+neural network. In the first layer of filters, we have two kernels – one
+for horizontal edges and one for vertical edges. Write them in matrix form,
+they are like this:</p>
+
+<p>Horizontal Edge Kernel</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{bmatrix}
+0 & 0 & 0 \\
+1 & 1 & 1 \\
+0 & 0 & 0
+\end{bmatrix}
+ %]]&gt;</script>
+
+<p>and Vertical Edge Kernel</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{bmatrix}
+0 & 1 & 0 \\
+0 & 1 & 0 \\
+0 & 1 & 0
+\end{bmatrix}
+ %]]&gt;</script>
+
+<p>The square we are going to detect is like this:</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{bmatrix}
+1   & 1 & 1 & 1 &  1 \\
+1   & 0 & 0 & 0 &  1 \\
+1   & 0 & 0 & 0 &  1 \\
+1   & 0 & 0 & 0 &  1 \\
+1   & 1 & 1 & 1 &  1 
+\end{bmatrix}
+ %]]&gt;</script>
+
+<p>As we moving the two kernels, we get response similar like this:</p>
+
+<p>feature map for horizontal edge detection kernel:</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{bmatrix}
+x & 1 & x \\
+0 & 0 & 0 \\
+x & 1 & x
+\end{bmatrix}
+ %]]&gt;</script>
+
+<p>and feature map for vertical edge detection kernel:</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{bmatrix}
+x & 0 & x \\
+1 & 0 & 1 \\
+x & 0 & x
+\end{bmatrix}
+ %]]&gt;</script>
+
+<p>$x$ is the response of angle, which may not be black and white. And since they
+are not very influential to our discussion, it is denoted $x$.</p>
+
+<p>In the next convolution layer, the input are two feature maps, then the kernel
+for detecting square will be like:</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{bmatrix}
+x & 1 & x \\
+0 & 0 & 0 \\
+x & 1 & x
+\end{bmatrix}
+and
+\begin{bmatrix}
+ x & 0 & x \\
+ 1 & 0 & 1 \\
+ x & 0 & x
+\end{bmatrix}
+ %]]&gt;</script>
+
+<p>The final inner product will be normalized to one. In this case, we are only
+using four kernels.</p>
+
+<p>If we switch to one layer CNN, The kernel for detecting square will be like:</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{bmatrix}
+x   & 1 & 1 & 1 & x \\
+1   & 0 & 0 & 0 & 1 \\
+1   & 0 & 0 & 0 & 1 \\
+1   & 0 & 0 & 0 & 1 \\
+x   & 1 & 1 & 1 & x
+\end{bmatrix}
+ %]]&gt;</script>
+
+<p>The zero and one is expanded because each edges consist of more than one
+pixels. Three here is used for illustration.</p>
+
+<p>It seems that we can detect shape only using one kernel. But wait… we are not
+only trying to detect only square. We should also try to detect circle,
+rectangles etc… So we will have more than more kernels. In this case, the
+space of possible number of kernels will exponentially explode given the
+possible changes we may swap the zero and one in the pixels of kernels.</p>
+
+<p>But in previous three layer cases, the space of possible changes are shrunk
+dramatically. The key here is explained in previous section, we are reusing the
+information that only consecutive edges are sensible combination of pixels and
+the number of possibilities of changing locations of edges is much smaller than
+changing values of pixels.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

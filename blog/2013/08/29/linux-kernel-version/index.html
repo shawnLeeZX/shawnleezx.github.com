@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Linux Kernel Version - SHAWN LEE</title>
+  <meta name="author" content="Shawn">
+
+  
+  <meta name="description" content="Linux Kernel Versions
+Linux kernels come in two flavors: stable and development. Stable kernels are production-level releases suitable for widespread &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2013/08/29/linux-kernel-version">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="SHAWN LEE" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <script src="/javascripts/audio.min.js"></script>
+  <script>
+   audiojs.events.ready(function() {
+     var as = audiojs.createAll();
+   });
+  </script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<!-- Add snarl icon here. -->
+<link href="/favicon.png" rel="icon">
+
+<!-- For drop menu. -->
+<script src="/javascripts/libs/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+<script src="/javascripts/menu.min.js" type="text/javascript"></script>
+
+<!-- For table. -->
+<link rel="stylesheet" type="text/css" href="/stylesheets/table.css">
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+    <img src="/favicon.png" alt="Shawn">
+    <h1><a href="/">SHAWN LEE</a></h1>
+    
+    <h2>What ones really can own at last are their stories. Just try to live a good one.</h2>
+    
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:shawnLeeZX.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">知 Home</a></li>
+  <li><a href="/academic">心 Academic</a>
+      <!-- <ul> -->
+          <!-- <li><a href="/academic/academic-biography.html">Academic Biography</li> -->
+          <!-- <li><a href="/academic/transcript.html">Selected Transcript</li> -->
+          <!-- <li><a href="/academic/english-proficiency.html">English Proficiency</li> -->
+          <!-- <li><a href="/academic/research.html">Research</li> -->
+      <!-- </ul> -->
+  </li>
+  <li><a href="/blog">行 Blog</a></li>
+  <li><a href="/blog/archives">合一 Archives</a>
+      <ul>
+          <li><a href="/blog/categories/cs">CS</a></li>
+          <li><a href="/blog/categories/research">Research</a></li>
+          <li><a href="/blog/categories/math">Math</a></li>
+          <li><a href="/blog/categories/life">Life</a></li>
+          <li><a href="/blog/categories/other">Other</a></li>
+      </ul>
+  </li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Linux Kernel Version</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-29T12:17:00+08:00" pubdate data-updated="true">Aug 29<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Linux Kernel Versions
+Linux kernels come in two flavors: stable and development. Stable kernels are production-level releases suitable for widespread deployment. New stable kernel versions are released typically only to provide bug fixes or new drivers. Development kernels, on the other 
+hand, undergo rapid change where (almost) anything goes. As developers experiment with new solutions, the kernel code base changes in often drastic ways.
+<!-- more --></p>
+
+<p>Linux kernels distinguish between stable and development kernels with a simple naming scheme. Three or four numbers, delineated with a dot, represent Linux kernel versions.The first value is the major release, the second is the minor release, and the third is the revision.An optional fourth value is the stable version.The minor release also determines whether the kernel is a stable or development kernel; an even number is stable, whereas an odd number is development. For example, the kernel version 2.6.30.1 designates a stable kernel.This kernel has a major version of two, a minor version of six, a revision of 30, and a stable version of one.The first two values describe the “ker-nel series”—in this case, the 2.6 kernel series.</p>
+
+<p>Development kernels have a series of phases. Initially, the kernel developers work on new features and chaos ensues. Over time, the kernel matures and eventually a feature freeze is declared. At that point, Linus will not accept new features. Work on existing features, however, can continue. After Linus considers the kernel nearly stabilized, a code freeze is put into effect. When that occurs, only bug fixes are accepted. Shortly thereafter (hopefully), Linus releases the first version of a new stable series. For example, the development series 1.3 stabilized into 2.0 and 2.5 stabilized into 2.6. </p>
+
+<p>Within a given series, Linus releases new kernels regularly, with each version earning a new revision. For example, the first version of the 2.6 kernel series was 2.6.0.The next was 2.6.1.These revisions contain bug fixes, new drivers, and new features, but the difference between two revisions—say, 2.6.3 and 2.6.4—is minor.
+This is how development progressed until 2004, when at the invite-only Kernel Developers Summit, the assembled kernel developers decided to prolong the 2.6 kernel series and postpone the introduction of a 2.7 development series.The rationale was that the 2.6 kernel was well received, stable, and sufficiently mature such that new destabilizing features were unneeded. This course has proven wise, as the ensuing years have shown 2.6 is a mature and capable beast. As of this writing, a 2.7 development series is not on the table and seems unlikely. Instead, the development cycle of each 2.6 revision has grown longer, each release incorporating a mini-development series. Andrew Morton, Linus’s second-in-command, has repurposed his 2.6-mm tree—once a testing ground for memory management-related changes—into a general-purpose test bed. Destabilizing changes thus flow into 2.6-mm and, when mature, into one of the 2.6 mini-development series.Thus, over the last few years, each 2.6 release—for example, 2.6.29—has taken sev -eral months, boasting significant changes over its predecessor.This “development series in 
+miniature” has proven rather successful, maintaining high levels of stability while still intro -ducing new features and appears unlikely to change in the near future. Indeed, the consen -sus among kernel developers is that this new release process will continue indefinitely.</p>
+
+<p>To compensate for the reduced frequency of releases, the kernel developers have introduced the aforementioned stable release .This release (the 8 in 2.6.32.8) contains crucial bug fixes, often back-ported from the under-development kernel (in this example, 2.6.33). In 
+this manner, the previous release continues to receive attention focused on stabilization.</p>
+
+<p>Source: Chapter One, Linux Kernel Development 3rd</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Shawn</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-29T12:17:00+08:00" pubdate data-updated="true">Aug 29<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/cs/'>CS</a>, <a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/note/'>Note</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/08/29/difference-between-unix-and-linux/" title="Previous Post: Difference Between Unix and Linux">&laquo; Difference Between Unix and Linux</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/09/13/wu-kong-chuan-zhai-ji/" title="Next Post: 悟空传摘记">悟空传摘记 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/06/06/this-too-shall-pass/">THIS TOO SHALL PASS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/06/05/connection-between-pca/">Connection Between PCA and Fourier Transform</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/05/22/a-concept-explanation-on-composition-of-matrice-representing-linear-transform/">A Concept Explanation on Composition of Matrice Representing Linear Transform</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/05/14/what-mathematical-object-random-really-is/">What a Mathematical Object Random Variable Really Is</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/05/07/progress-buffer-for-big-picture-building/">Progress Buffer for Big Picture Building</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Tag Cloud</h1>
+    <span id="tag-cloud"><embed type='application/x-shockwave-flash' src='/javascripts/tagcloud.swf'width='100%' height='250' bgcolor='#f2f2f2' id='tagcloudflash' name='tagcloudflash' quality='high' allowscriptaccess='always'flashvars="tcolor=0x333333&amp;tcolor2=0x333333&amp;hicolor=0x000000&amp;tspeed=100&amp;distr=true&amp;mode=tags&amp;tagcloud=%3Ctags%3E%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fabroad%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EAbroad%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fanalysis%27+style%3D%27font-size%3A+11.411764705882353%25%27%3EAnalysis%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fandroid%27+style%3D%27font-size%3A+11.411764705882353%25%27%3EAndroid%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fansible%27+style%3D%27font-size%3A+11.411764705882353%25%27%3EAnsible%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fant%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EAnt%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fassembly%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EAssembly%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fbibtex%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EBibtex%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fc%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EC%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcnn%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ECNN%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcs%27+style%3D%27font-size%3A+34.94117647058823%25%27%3ECS%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcscope%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ECscope%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fctags%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ECtags%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fculture%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ECulture%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcv%27+style%3D%27font-size%3A+11.411764705882353%25%27%3ECV%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fdesign%27+style%3D%27font-size%3A+12.823529411764707%25%27%3EDesign%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fdjvu%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EDjvu%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Feclim%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EEclim%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Feconomics%27+style%3D%27font-size%3A+10.941176470588236%25%27%3EEconomics%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Femacs%27+style%3D%27font-size%3A+11.411764705882353%25%27%3EEmacs%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fencoding%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EEncoding%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fexcerpt%27+style%3D%27font-size%3A+11.882352941176471%25%27%3EExcerpt%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Ffourier%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EFourier%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fhadoop%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EHadoop%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fhistory%27+style%3D%27font-size%3A+10.941176470588236%25%27%3EHistory%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Finformation%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EInformation%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fjava%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EJava%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flatex%27+style%3D%27font-size%3A+11.882352941176471%25%27%3ELaTeX%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flibconfig%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ELibconfig%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flife%27+style%3D%27font-size%3A+22.705882352941174%25%27%3ELife%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flinux%27+style%3D%27font-size%3A+16.588235294117645%25%27%3ELinux%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flwip%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ELwip%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fmarkdown%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EMarkdown%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fmath%27+style%3D%27font-size%3A+18.470588235294116%25%27%3EMath%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fmatrix%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EMatrix%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fml%27+style%3D%27font-size%3A+12.352941176470589%25%27%3EML%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fnetwork%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ENetwork%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fnote%27+style%3D%27font-size%3A+50.0%25%27%3ENote%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Foctave%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EOctave%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Foctopress%27+style%3D%27font-size%3A+10.941176470588236%25%27%3EOctopress%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fother%27+style%3D%27font-size%3A+13.294117647058822%25%27%3EOther%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fpdf%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EPdf%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fperf%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EPerf%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fpgm%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EPGM%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fphd%27+style%3D%27font-size%3A+12.352941176470589%25%27%3EPhD%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fpresentation%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EPresentation%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fprobability%27+style%3D%27font-size%3A+11.411764705882353%25%27%3EProbability%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fproof%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EProof%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Freading%27+style%3D%27font-size%3A+15.176470588235293%25%27%3EReading%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fregex%27+style%3D%27font-size%3A+10.941176470588236%25%27%3ERegex%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Frepost%27+style%3D%27font-size%3A+23.176470588235293%25%27%3ERepost%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fresearch%27+style%3D%27font-size%3A+24.588235294117645%25%27%3EResearch%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fsignal-processing%27+style%3D%27font-size%3A+10.941176470588236%25%27%3ESignal_Processing%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fstatistics%27+style%3D%27font-size%3A+11.411764705882353%25%27%3EStatistics%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Ftopology%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ETopology%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fvim%27+style%3D%27font-size%3A+13.764705882352942%25%27%3EVim%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fwavelet%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EWavelet%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fxml%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EXml%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fyaml%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EYaml%3C%2Fa%3E+%3C%2Ftags%3E"></span>
+</section>
+
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/abroad/'>Abroad (1)</a></li><li><a href='/blog/categories/analysis/'>Analysis (3)</a></li><li><a href='/blog/categories/android/'>Android (3)</a></li><li><a href='/blog/categories/ansible/'>Ansible (3)</a></li><li><a href='/blog/categories/ant/'>Ant (1)</a></li><li><a href='/blog/categories/assembly/'>Assembly (1)</a></li><li><a href='/blog/categories/bibtex/'>Bibtex (1)</a></li><li><a href='/blog/categories/c/'>C (1)</a></li><li><a href='/blog/categories/cnn/'>CNN (1)</a></li><li><a href='/blog/categories/cs/'>CS (53)</a></li><li><a href='/blog/categories/cscope/'>Cscope (1)</a></li><li><a href='/blog/categories/ctags/'>Ctags (1)</a></li><li><a href='/blog/categories/culture/'>Culture (1)</a></li><li><a href='/blog/categories/cv/'>CV (3)</a></li><li><a href='/blog/categories/design/'>Design (6)</a></li><li><a href='/blog/categories/djvu/'>Djvu (1)</a></li><li><a href='/blog/categories/eclim/'>Eclim (1)</a></li><li><a href='/blog/categories/economics/'>Economics (2)</a></li><li><a href='/blog/categories/emacs/'>Emacs (3)</a></li><li><a href='/blog/categories/encoding/'>Encoding (1)</a></li><li><a href='/blog/categories/excerpt/'>Excerpt (4)</a></li><li><a href='/blog/categories/fourier/'>Fourier (1)</a></li><li><a href='/blog/categories/hadoop/'>Hadoop (1)</a></li><li><a href='/blog/categories/history/'>History (2)</a></li><li><a href='/blog/categories/information/'>Information (1)</a></li><li><a href='/blog/categories/java/'>Java (1)</a></li><li><a href='/blog/categories/latex/'>LaTeX (4)</a></li><li><a href='/blog/categories/libconfig/'>Libconfig (1)</a></li><li><a href='/blog/categories/life/'>Life (27)</a></li><li><a href='/blog/categories/linux/'>Linux (14)</a></li><li><a href='/blog/categories/lwip/'>Lwip (1)</a></li><li><a href='/blog/categories/markdown/'>Markdown (1)</a></li><li><a href='/blog/categories/math/'>Math (18)</a></li><li><a href='/blog/categories/matrix/'>Matrix (1)</a></li><li><a href='/blog/categories/ml/'>ML (5)</a></li><li><a href='/blog/categories/network/'>Network (1)</a></li><li><a href='/blog/categories/note/'>Note (85)</a></li><li><a href='/blog/categories/octave/'>Octave (1)</a></li><li><a href='/blog/categories/octopress/'>Octopress (2)</a></li><li><a href='/blog/categories/other/'>Other (7)</a></li><li><a href='/blog/categories/pdf/'>Pdf (1)</a></li><li><a href='/blog/categories/perf/'>Perf (1)</a></li><li><a href='/blog/categories/pgm/'>PGM (1)</a></li><li><a href='/blog/categories/phd/'>PhD (5)</a></li><li><a href='/blog/categories/presentation/'>Presentation (1)</a></li><li><a href='/blog/categories/probability/'>Probability (3)</a></li><li><a href='/blog/categories/proof/'>Proof (1)</a></li><li><a href='/blog/categories/reading/'>Reading (11)</a></li><li><a href='/blog/categories/regex/'>Regex (2)</a></li><li><a href='/blog/categories/repost/'>Repost (28)</a></li><li><a href='/blog/categories/research/'>Research (31)</a></li><li><a href='/blog/categories/signal-processing/'>Signal_Processing (2)</a></li><li><a href='/blog/categories/statistics/'>Statistics (3)</a></li><li><a href='/blog/categories/topology/'>Topology (1)</a></li><li><a href='/blog/categories/vim/'>Vim (8)</a></li><li><a href='/blog/categories/wavelet/'>Wavelet (1)</a></li><li><a href='/blog/categories/xml/'>Xml (1)</a></li><li><a href='/blog/categories/yaml/'>Yaml (1)</a></li></ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Shawn -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2013/08/29/linux-kernel-version/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2013/08/29/linux-kernel-version/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

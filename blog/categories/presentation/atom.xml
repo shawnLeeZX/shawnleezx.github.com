@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Presentation | SHAWN LEE]]></title>
+  <link href="http://shawnLeeZX.github.io/blog/categories/presentation/atom.xml" rel="self"/>
+  <link href="http://shawnLeeZX.github.io/"/>
+  <updated>2015-06-21T11:48:38+08:00</updated>
+  <id>http://shawnLeeZX.github.io/</id>
+  <author>
+    <name><![CDATA[Shawn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to do presentation]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2013/12/09/how-to-do-presentation/"/>
+    <updated>2013-12-09T21:33:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2013/12/09/how-to-do-presentation</id>
+    <content type="html"><![CDATA[<p>Just got some illuminating advice about doing presentation. They come from the
+teaching team of ME310 course of Stanford University. Share it here.</p>
+
+<p>Will provide more after as I learn more.</p>
+
+<ol>
+  <li>
+    <p>Virtually all photos are ambiguous on first sight by persons not previously
+ involved with your project.  THEREFORE, all photos are made more informative
+ when annotated with accents, labels, call-outs, whatever.  This also applies to sketches and CAD images.</p>
+  </li>
+  <li>
+    <p>Avoid complex (multi-part) images.  Focus on one-message per slide.  This often translates to one
+graphic, table, diagram, or photo per slide.  If it is worth showing, it is worth making it
+intelligible with a minimum of time and attention by the audience. </p>
+  </li>
+  <li>
+    <p>SHOW ME, don’t tell me.  Use images rather than words.  Follow the ancient dictum to show, not tell.</p>
+  </li>
+  <li>
+    <p>Walk the audience through the flow of the diagram, image, visualization if the image is a relatively 
+complex (more than 3 elements).</p>
+  </li>
+  <li>
+    <p>Prioritize, what are the 1-3 most important things you want the audience to remember. 
+Craft your narrative  around these KEY points.</p>
+  </li>
+  <li>
+    <p>Simplify/Clarify, make each slide as clear, unambiguous and memorable as possible.
+Delete uninformative graphics, backgrounds, and logos.  Make everything READABLE
+from anywhere in the audience given the presentation technology (that you have tested).</p>
+  </li>
+</ol>
+]]></content>
+  </entry>
+  
+</feed>

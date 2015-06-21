@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Matrix | SHAWN LEE]]></title>
+  <link href="http://shawnLeeZX.github.io/blog/categories/matrix/atom.xml" rel="self"/>
+  <link href="http://shawnLeeZX.github.io/"/>
+  <updated>2015-06-21T11:48:38+08:00</updated>
+  <id>http://shawnLeeZX.github.io/</id>
+  <author>
+    <name><![CDATA[Shawn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[A Concept Explanation on Composition of Matrice Representing Linear Transform]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/05/22/a-concept-explanation-on-composition-of-matrice-representing-linear-transform/"/>
+    <updated>2015-05-22T22:18:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/05/22/a-concept-explanation-on-composition-of-matrice-representing-linear-transform</id>
+    <content type="html"><![CDATA[<!-- more -->
+
+<p>It is a bit hard to internalize the fact that the composition of finite
+dimensional linear transformation is the multiplication of the matrices
+representing them. I figured out a concept explanation.</p>
+
+<p>Denoting the first transformation matrix as $A$ and the second as $B$,
+$\vec{a_{i}}$ as the row of $A$ and $\vec{b_{j}}$ as the row of $B$, the to
+be transformed vector as $x$, basically, each $\vec{a}_{i}$ determines how
+each coordinate $x_{i}$ of $\vec{x}$ will contribute to the result
+coordinates.</p>
+
+<p>Then if you do another linear transform on $\vec{Ax}$, each $\vec{b}_{j}$ determines how
+each coordinate of $\vec{Ax}$ will contribute to the final vector. Since the transform is
+linear, we could first consider how $\vec{a_{i}}$ contributes to the final
+vector, its final result with $x$ is just a multiple of $x_{i}$. Each
+component of $\vec{a_{i}}$ actually could be taken as a to be transformed
+vector of $B$. Each row of $AB$ could be viewed in the following way.</p>
+
+<p>$\vec{a_{i}}$ is the new coordinate of standard basis $\vec{e_{i}}$ after
+applying $A$. Starting from there, the second new coordinates of those first
+new coordinates are obtained by applying $B$. So if we apply $AB$ on standard
+basis $\vec{e_{i}}$, the result is going to be the second new
+coordinates. Actually, such coordinates are:</p>
+
+<script type="math/tex; mode=display">
+\sum\vec{b_{j}}(\vec{a_{i}})_{j}
+</script>
+
+<p>which is just $\vec{(AB)_{i}}$.</p>
+]]></content>
+  </entry>
+  
+</feed>

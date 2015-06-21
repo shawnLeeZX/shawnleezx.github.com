@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>关于开源搜索引擎的比较 - SHAWN LEE</title>
+  <meta name="author" content="Shawn">
+
+  
+  <meta name="description" content="说明 这是Vik
+Singh在2009年7月6日撰写的一篇对比各个开源搜索引擎的文章，我在上一门教授搜索引擎的课程，课程要求对已存在的各开源搜索引擎进行调研，在调研之中发现了这篇文章，将其作为调研总结，故此翻译此文。 动机 本月下旬，我们将要在SIGIR上进行半天关于开放搜索的的教程。 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2013/09/17/guan-yu-kai-yuan-sou-suo-yin-qing-de-bi-jiao">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="SHAWN LEE" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <script src="/javascripts/audio.min.js"></script>
+  <script>
+   audiojs.events.ready(function() {
+     var as = audiojs.createAll();
+   });
+  </script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<!-- Add snarl icon here. -->
+<link href="/favicon.png" rel="icon">
+
+<!-- For drop menu. -->
+<script src="/javascripts/libs/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+<script src="/javascripts/menu.min.js" type="text/javascript"></script>
+
+<!-- For table. -->
+<link rel="stylesheet" type="text/css" href="/stylesheets/table.css">
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+    <img src="/favicon.png" alt="Shawn">
+    <h1><a href="/">SHAWN LEE</a></h1>
+    
+    <h2>What ones really can own at last are their stories. Just try to live a good one.</h2>
+    
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:shawnLeeZX.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">知 Home</a></li>
+  <li><a href="/academic">心 Academic</a>
+      <!-- <ul> -->
+          <!-- <li><a href="/academic/academic-biography.html">Academic Biography</li> -->
+          <!-- <li><a href="/academic/transcript.html">Selected Transcript</li> -->
+          <!-- <li><a href="/academic/english-proficiency.html">English Proficiency</li> -->
+          <!-- <li><a href="/academic/research.html">Research</li> -->
+      <!-- </ul> -->
+  </li>
+  <li><a href="/blog">行 Blog</a></li>
+  <li><a href="/blog/archives">合一 Archives</a>
+      <ul>
+          <li><a href="/blog/categories/cs">CS</a></li>
+          <li><a href="/blog/categories/research">Research</a></li>
+          <li><a href="/blog/categories/math">Math</a></li>
+          <li><a href="/blog/categories/life">Life</a></li>
+          <li><a href="/blog/categories/other">Other</a></li>
+      </ul>
+  </li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">关于开源搜索引擎的比较</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-17T22:13:00+08:00" pubdate data-updated="true">Sep 17<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2 id="section">说明</h2>
+
+<p>这是Vik
+Singh在2009年7月6日撰写的一篇对比各个开源搜索引擎的文章，我在上一门教授搜索引擎的课程，课程要求对已存在的各开源搜索引擎进行调研，在调研之中发现了这篇文章，将其作为调研总结，故此翻译此文。</p>
+
+<!-- more -->
+
+<h2 id="section-1">动机</h2>
+
+<p>本月下旬，我们将要在SIGIR上进行半天关于开放搜索的的教程。其关注于如何使用开源软件和云端服务快速搭建高级搜索服务的原型。开放搜索不仅仅是使用开源技术栈搭建一个像谷歌一样的搜索工具条，而更多的是鼓励社区来利用和扩展搜索技术来提高软件的质量。</p>
+
+<p>我们把我们的演讲分成了两个部分：</p>
+
+<ul>
+  <li>
+    <p>服务：开放搜索Web API（Yahoo!BOSS, Twitter, Bing, and Google AJAX
+Search)，包括能够从这些服务中获益的有趣的混合样例，排名模型和学术搜索。</p>
+  </li>
+  <li>
+    <p>软件：如何使用流行的开源软件包对你自己数据进行垂直索引的建立。</p>
+  </li>
+</ul>
+
+<p>在研究软件这一部分时，我非常惊讶地发现了能够获得的开源垂直搜索解决方案的数量：</p>
+
+<blockquote>
+  <p>Lucene (Nutch, Solr, Hounder), Sphinx, zettair, Terrier, Galago,
+Minnion, MG4J, Wumpus, RDBMS (mysql, sqlite), Indri, Xapian, grep …</p>
+</blockquote>
+
+<p>但是令我更加惊讶的是这些解决方案之间对比的缺乏。这些平台中的许多仅宣传了他们的性能benchmark，但他们却相互孤立，使用不同的数据集，而且似乎更加关注于速度而不是相关性。</p>
+
+<p>我能够找到的最好的关于这些开源搜索引擎性能和质量的对比是Middleton+Baezaâ’07，但是这篇论文已经十分老旧，而且没有公开其源码和数据集。</p>
+
+<p>因此，我进行了一些有趣，随意的实验（如果你想要运行代码样例——该实验不是为了SIGIR而进行——请阅读文末结尾段的免责申明），来测试一些流行的垂直索引解决方案。下图是我选择测试的平台和相关的测试特征。</p>
+
+<p><span class="caption-wrapper center"><img class="caption" src="/resources/open_search/opensearch_compare.jpg" width="" height="" title="我选择研究的垂直搜索解决方案的高层次特征；支持评级(supportrating)和工作规模(scale)我是根据从网站中获得的数据和和人们的谈话中获得；我测试的是各个方案这个星期最终的稳定发行版。" /><span class="caption-text">我选择研究的垂直搜索解决方案的高层次特征；支持评级(supportrating)和工作规模(scale)我是根据从网站中获得的数据和和人们的谈话中获得；我测试的是各个方案这个星期最终的稳定发行版。</span></span></p>
+
+<p>在进行测试设计的过程中，我决定不对引擎的参数进行任何的调制——我真正想要测试的是这些平台的”Out
+of the
+Box”性能，从而能够模拟普通开发者的情形。而且，如果你想要优化，你会在不同平台上和数据集上不停地调，不停地调，不停地调参数。。。对一个仅仅准备利用一个周末时间进行的benchmark来说（参见结论段的免责申明），这就是永远。</p>
+
+<p>同时，我尽量使用各个平台上所期待的库函数和二进制指令来进行每个实验。</p>
+
+<h2 id="twitter">在Twitter上的实验</h2>
+
+<p>对于第一个实验，我想要看看这些平台在索引Twitter数据时的性能。Twitter正在变得主流，同时其实时性和简洁性和传统的网络内容非常不同（这些搜索平台一般来说被调制得对传统内容更加适合），所以对Twitter数据的实验应该会更加有趣。</p>
+
+<p>因此我使用爬虫从Twitter上爬下了一个样本数据集。大概一天一夜之后，我大概下载了约1M的tweets（～10/秒）。</p>
+
+<p>在进行索引建立之前，我对所获得的Twitter数据进行了简单的分析：</p>
+
+<ul>
+  <li>
+    <p>Tweets数量：968,937</p>
+  </li>
+  <li>
+    <p>可索引的文本大小（用户，姓名，文本短讯）：92M</p>
+  </li>
+  <li>
+    <p>平均Tweet大小：12单词</p>
+  </li>
+  <li>
+    <p>基于单词过滤器的简单Tweets分类如下。</p>
+  </li>
+</ul>
+
+<p><span class="caption-wrapper center"><img class="caption" src="/resources/open_search/twitter_1m_stats.jpg" width="" height="" title="" /><span class="caption-text"></span></span>
+这个统计数据非常有趣——尤其是请教问题的Tweets占了很高的百分比。Twitter（或者其他应用）能够更好地服务这项需求吗？</p>
+
+<h2 id="section-2">索引建立性能对比</h2>
+
+<p>下图是各个所选择的垂直搜索解决方案对Twitter数据进行索引的性能表格：</p>
+
+<p><span class="caption-wrapper center"><img class="caption" src="/resources/open_search/open_search_tweets_perf.jpg" width="" height="" title="Lucene是唯一一个产生比输入数据大小小的解决方案。Shaves如果在优化模式下运行则会节省5M的开销，但是会增加10s的索引时间。Sphinx和zettair拥有最快的索引建立时间。有趣的是，当我在big-and-fast模式下运行zettair时（其占用了300+M的RAM），反而会速度降低3s（也许因为tweet数据的本质造成的）。Xapian比sqlite慢5倍（sqlite会存储下原始数据），而且产生体积最大的索引。Xapian使用的默认index\_text模式会存储位置信息，使得索引大小达到529M——你必须使用index\_text\_without\_positions来使得索引文件的大小能够被接受。我根据样例和文档检查了Xapian的代码来尝试发现我是否操作错误，但是我没有找到任何不一致的地方。I also included a column about development issues I encountered（未读懂）.Zettair是目前为止最易用（简单的命令行）但是需要将输入数据转换为特定的格式。Sqlite在文本方面我遇到了些问题（需要将FTS3开启之后重新编译）；对Sphinx同样，因为其所要求额严格的输入限制。Sphinx也需要一个配置文件，其花费了一番功夫才找到完整的样例。Lucene, zettair, 和Xapian在接收文本方面是最为宽容的。" /><span class="caption-text">Lucene是唯一一个产生比输入数据大小小的解决方案。Shaves如果在优化模式下运行则会节省5M的开销，但是会增加10s的索引时间。Sphinx和zettair拥有最快的索引建立时间。有趣的是，当我在big-and-fast模式下运行zettair时（其占用了300+M的RAM），反而会速度降低3s（也许因为tweet数据的本质造成的）。Xapian比sqlite慢5倍（sqlite会存储下原始数据），而且产生体积最大的索引。Xapian使用的默认index_text模式会存储位置信息，使得索引大小达到529M——你必须使用index_text_without_positions来使得索引文件的大小能够被接受。我根据样例和文档检查了Xapian的代码来尝试发现我是否操作错误，但是我没有找到任何不一致的地方。I also included a column about development issues I encountered（未读懂）.Zettair是目前为止最易用（简单的命令行）但是需要将输入数据转换为特定的格式。Sqlite在文本方面我遇到了些问题（需要将FTS3开启之后重新编译）；对Sphinx同样，因为其所要求额严格的输入限制。Sphinx也需要一个配置文件，其花费了一番功夫才找到完整的样例。Lucene, zettair, 和Xapian在接收文本方面是最为宽容的。</span></span></p>
+
+<h2 id="section-3">相关性测量：医疗数据</h2>
+
+<p>尽管对于短文本的索引建立性能测试有些意思，但却不能够测量搜索的性能和相关性。</p>
+
+<p>为了测量相关性，我们需要能够给出对搜索结果进行相关性判断的判断数据。我所能够找到的能够公开下载（几乎所有的都要求通过CD邮寄）的最好的数据集是TREC-9
+Filtering
+track，其提供了196,403个医疗期刊的引用——共约300MB平均每个记录含有125个tokens的可索引文本（题目，作者，摘要，关键词）。更重要的是，该数据集提供了类查询形式（&lt;任务，
+文档， 2|1|0 rating&gt;）的判断数据。一个任务的例子是“37 yr old man with
+sickle cell disease.”
+为了将其转化为一个搜索benchmark，我将这些任务看成OR’ed查询。为了测量其结果的相关性，我计算了这63条查询的前十条查询结果的平均DCG。</p>
+
+<p><span class="caption-wrapper center"><img class="caption" src="/resources/open_search/opensearch_ohsumed.jpg" width="" height="" title="在这个更大的（3倍大于先前使用的Twitter的数据集）的数据集上，我们可以看到zettair索引性能的提升（也符合其为大型公司设计的目的）；zettair的搜索应该会更加快一些因为其命令行工具在搜索时输出了许多无用的统计数据。对sphinx中的multi-searching，我写了一个Java客户端（希望其能够用来和Lucene进行对比），其通过socket连接sphinx搜索服务端（这是在样例中的API模式）。sphinx最快地返回了搜索结果–3倍快于Lucene。其索引建立性能和zettair不相上下。Lucene获得了最高的相关性和最小的索引大小。索引时间也许能够通过调整其融合参数被进一步提高，但是在这次实验中，我避免进行数据调制。Xapian拥有和Lucene大致相同搜索性能但是索引代价显著增加（时间和空间均花费大于3x），sqlite搜索结果的相关性最差因为其既不根据相关性排序，也似乎不提供ORDER BY函数来这样做。" /><span class="caption-text">在这个更大的（3倍大于先前使用的Twitter的数据集）的数据集上，我们可以看到zettair索引性能的提升（也符合其为大型公司设计的目的）；zettair的搜索应该会更加快一些因为其命令行工具在搜索时输出了许多无用的统计数据。对sphinx中的multi-searching，我写了一个Java客户端（希望其能够用来和Lucene进行对比），其通过socket连接sphinx搜索服务端（这是在样例中的API模式）。sphinx最快地返回了搜索结果–3倍快于Lucene。其索引建立性能和zettair不相上下。Lucene获得了最高的相关性和最小的索引大小。索引时间也许能够通过调整其融合参数被进一步提高，但是在这次实验中，我避免进行数据调制。Xapian拥有和Lucene大致相同搜索性能但是索引代价显著增加（时间和空间均花费大于3x），sqlite搜索结果的相关性最差因为其既不根据相关性排序，也似乎不提供ORDER BY函数来这样做。</span></span></p>
+
+<h2 id="section-4">结论和下载</h2>
+
+<p>基于这些初步的结果和我从网络和领域中的人们（之后会有关于这方面更多的强调）得到零散的信息，对大多数垂直搜索索引应用，我可能会推荐Lucene（其是一个IR库——如果你想要像snippet,
+爬虫，servlets这样的搜索挂饰，可以使用像Solr/Nutch这样的wrapper平台），尤其是你需要的是能够拿来就用并且存在有力的社区支持的东西。</p>
+
+<p>需要提醒的是这些实验都十分初步（仅仅有一个周末的时间预算），且能够被进一步提高——在更大更好的数据集上进行测试，微调代码实现和建立社区支持（我是第一个表达这些结果远非完美的人，所以我开源了我的代码）。一个让每一个人都接受的benchmark不是一件容易的事，考虑到不同的数据集，平台APIs和调试参数（至少数据库还支持SQL！）这仅仅是个开始，我此视为一个进化中的计划，其需要社区支持来走上正轨。</p>
+
+<p>从这里拿走任何有价值的结果，然后测试你自己的benchmark吧。</p>
+
+<p>为了吸引进一步在搜索领域的发展和benchmark的开发，我将代码开源在这里：</p>
+
+<p>http://github.com/zooie/opensearch/tree/master</p>
+
+<p>随意发布更多新的有趣的结果。</p>
+
+<p>译者注：原始文章地址在这里，译文中省略了许多相关资源的链接，可以在原文中找到。http://zooie.wordpress.com/2009/07/06/a-comparison-of-open-source-search-engines-and-indexing-twitter/</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Shawn</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-17T22:13:00+08:00" pubdate data-updated="true">Sep 17<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/cs/'>CS</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/09/13/wu-kong-chuan-zhai-ji/" title="Previous Post: 悟空传摘记">&laquo; 悟空传摘记</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/09/17/dui-tcpzhuang-tai-ji-de-li-jie/" title="Next Post: 对TCP状态机的理解">对TCP状态机的理解 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/06/06/this-too-shall-pass/">THIS TOO SHALL PASS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/06/05/connection-between-pca/">Connection Between PCA and Fourier Transform</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/05/22/a-concept-explanation-on-composition-of-matrice-representing-linear-transform/">A Concept Explanation on Composition of Matrice Representing Linear Transform</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/05/14/what-mathematical-object-random-really-is/">What a Mathematical Object Random Variable Really Is</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/05/07/progress-buffer-for-big-picture-building/">Progress Buffer for Big Picture Building</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Tag Cloud</h1>
+    <span id="tag-cloud"><embed type='application/x-shockwave-flash' src='/javascripts/tagcloud.swf'width='100%' height='250' bgcolor='#f2f2f2' id='tagcloudflash' name='tagcloudflash' quality='high' allowscriptaccess='always'flashvars="tcolor=0x333333&amp;tcolor2=0x333333&amp;hicolor=0x000000&amp;tspeed=100&amp;distr=true&amp;mode=tags&amp;tagcloud=%3Ctags%3E%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fabroad%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EAbroad%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fanalysis%27+style%3D%27font-size%3A+11.411764705882353%25%27%3EAnalysis%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fandroid%27+style%3D%27font-size%3A+11.411764705882353%25%27%3EAndroid%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fansible%27+style%3D%27font-size%3A+11.411764705882353%25%27%3EAnsible%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fant%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EAnt%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fassembly%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EAssembly%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fbibtex%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EBibtex%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fc%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EC%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcnn%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ECNN%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcs%27+style%3D%27font-size%3A+34.94117647058823%25%27%3ECS%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcscope%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ECscope%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fctags%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ECtags%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fculture%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ECulture%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcv%27+style%3D%27font-size%3A+11.411764705882353%25%27%3ECV%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fdesign%27+style%3D%27font-size%3A+12.823529411764707%25%27%3EDesign%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fdjvu%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EDjvu%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Feclim%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EEclim%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Feconomics%27+style%3D%27font-size%3A+10.941176470588236%25%27%3EEconomics%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Femacs%27+style%3D%27font-size%3A+11.411764705882353%25%27%3EEmacs%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fencoding%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EEncoding%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fexcerpt%27+style%3D%27font-size%3A+11.882352941176471%25%27%3EExcerpt%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Ffourier%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EFourier%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fhadoop%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EHadoop%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fhistory%27+style%3D%27font-size%3A+10.941176470588236%25%27%3EHistory%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Finformation%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EInformation%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fjava%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EJava%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flatex%27+style%3D%27font-size%3A+11.882352941176471%25%27%3ELaTeX%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flibconfig%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ELibconfig%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flife%27+style%3D%27font-size%3A+22.705882352941174%25%27%3ELife%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flinux%27+style%3D%27font-size%3A+16.588235294117645%25%27%3ELinux%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flwip%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ELwip%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fmarkdown%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EMarkdown%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fmath%27+style%3D%27font-size%3A+18.470588235294116%25%27%3EMath%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fmatrix%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EMatrix%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fml%27+style%3D%27font-size%3A+12.352941176470589%25%27%3EML%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fnetwork%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ENetwork%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fnote%27+style%3D%27font-size%3A+50.0%25%27%3ENote%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Foctave%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EOctave%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Foctopress%27+style%3D%27font-size%3A+10.941176470588236%25%27%3EOctopress%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fother%27+style%3D%27font-size%3A+13.294117647058822%25%27%3EOther%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fpdf%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EPdf%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fperf%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EPerf%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fpgm%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EPGM%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fphd%27+style%3D%27font-size%3A+12.352941176470589%25%27%3EPhD%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fpresentation%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EPresentation%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fprobability%27+style%3D%27font-size%3A+11.411764705882353%25%27%3EProbability%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fproof%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EProof%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Freading%27+style%3D%27font-size%3A+15.176470588235293%25%27%3EReading%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fregex%27+style%3D%27font-size%3A+10.941176470588236%25%27%3ERegex%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Frepost%27+style%3D%27font-size%3A+23.176470588235293%25%27%3ERepost%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fresearch%27+style%3D%27font-size%3A+24.588235294117645%25%27%3EResearch%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fsignal-processing%27+style%3D%27font-size%3A+10.941176470588236%25%27%3ESignal_Processing%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fstatistics%27+style%3D%27font-size%3A+11.411764705882353%25%27%3EStatistics%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Ftopology%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ETopology%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fvim%27+style%3D%27font-size%3A+13.764705882352942%25%27%3EVim%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fwavelet%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EWavelet%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fxml%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EXml%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fyaml%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EYaml%3C%2Fa%3E+%3C%2Ftags%3E"></span>
+</section>
+
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/abroad/'>Abroad (1)</a></li><li><a href='/blog/categories/analysis/'>Analysis (3)</a></li><li><a href='/blog/categories/android/'>Android (3)</a></li><li><a href='/blog/categories/ansible/'>Ansible (3)</a></li><li><a href='/blog/categories/ant/'>Ant (1)</a></li><li><a href='/blog/categories/assembly/'>Assembly (1)</a></li><li><a href='/blog/categories/bibtex/'>Bibtex (1)</a></li><li><a href='/blog/categories/c/'>C (1)</a></li><li><a href='/blog/categories/cnn/'>CNN (1)</a></li><li><a href='/blog/categories/cs/'>CS (53)</a></li><li><a href='/blog/categories/cscope/'>Cscope (1)</a></li><li><a href='/blog/categories/ctags/'>Ctags (1)</a></li><li><a href='/blog/categories/culture/'>Culture (1)</a></li><li><a href='/blog/categories/cv/'>CV (3)</a></li><li><a href='/blog/categories/design/'>Design (6)</a></li><li><a href='/blog/categories/djvu/'>Djvu (1)</a></li><li><a href='/blog/categories/eclim/'>Eclim (1)</a></li><li><a href='/blog/categories/economics/'>Economics (2)</a></li><li><a href='/blog/categories/emacs/'>Emacs (3)</a></li><li><a href='/blog/categories/encoding/'>Encoding (1)</a></li><li><a href='/blog/categories/excerpt/'>Excerpt (4)</a></li><li><a href='/blog/categories/fourier/'>Fourier (1)</a></li><li><a href='/blog/categories/hadoop/'>Hadoop (1)</a></li><li><a href='/blog/categories/history/'>History (2)</a></li><li><a href='/blog/categories/information/'>Information (1)</a></li><li><a href='/blog/categories/java/'>Java (1)</a></li><li><a href='/blog/categories/latex/'>LaTeX (4)</a></li><li><a href='/blog/categories/libconfig/'>Libconfig (1)</a></li><li><a href='/blog/categories/life/'>Life (27)</a></li><li><a href='/blog/categories/linux/'>Linux (14)</a></li><li><a href='/blog/categories/lwip/'>Lwip (1)</a></li><li><a href='/blog/categories/markdown/'>Markdown (1)</a></li><li><a href='/blog/categories/math/'>Math (18)</a></li><li><a href='/blog/categories/matrix/'>Matrix (1)</a></li><li><a href='/blog/categories/ml/'>ML (5)</a></li><li><a href='/blog/categories/network/'>Network (1)</a></li><li><a href='/blog/categories/note/'>Note (85)</a></li><li><a href='/blog/categories/octave/'>Octave (1)</a></li><li><a href='/blog/categories/octopress/'>Octopress (2)</a></li><li><a href='/blog/categories/other/'>Other (7)</a></li><li><a href='/blog/categories/pdf/'>Pdf (1)</a></li><li><a href='/blog/categories/perf/'>Perf (1)</a></li><li><a href='/blog/categories/pgm/'>PGM (1)</a></li><li><a href='/blog/categories/phd/'>PhD (5)</a></li><li><a href='/blog/categories/presentation/'>Presentation (1)</a></li><li><a href='/blog/categories/probability/'>Probability (3)</a></li><li><a href='/blog/categories/proof/'>Proof (1)</a></li><li><a href='/blog/categories/reading/'>Reading (11)</a></li><li><a href='/blog/categories/regex/'>Regex (2)</a></li><li><a href='/blog/categories/repost/'>Repost (28)</a></li><li><a href='/blog/categories/research/'>Research (31)</a></li><li><a href='/blog/categories/signal-processing/'>Signal_Processing (2)</a></li><li><a href='/blog/categories/statistics/'>Statistics (3)</a></li><li><a href='/blog/categories/topology/'>Topology (1)</a></li><li><a href='/blog/categories/vim/'>Vim (8)</a></li><li><a href='/blog/categories/wavelet/'>Wavelet (1)</a></li><li><a href='/blog/categories/xml/'>Xml (1)</a></li><li><a href='/blog/categories/yaml/'>Yaml (1)</a></li></ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Shawn -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2013/09/17/guan-yu-kai-yuan-sou-suo-yin-qing-de-bi-jiao/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2013/09/17/guan-yu-kai-yuan-sou-suo-yin-qing-de-bi-jiao/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

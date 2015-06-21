@@ -1,0 +1,685 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Ansible Variables Explained - SHAWN LEE</title>
+  <meta name="author" content="Shawn">
+
+  
+  <meta name="description" content="The variables mechanism provided by ansible is great, however, not well
+documented. It takes me hours to understand different types of variables of &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2014/04/08/ansible-variables-explained">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="SHAWN LEE" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <script src="/javascripts/audio.min.js"></script>
+  <script>
+   audiojs.events.ready(function() {
+     var as = audiojs.createAll();
+   });
+  </script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<!-- Add snarl icon here. -->
+<link href="/favicon.png" rel="icon">
+
+<!-- For drop menu. -->
+<script src="/javascripts/libs/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+<script src="/javascripts/menu.min.js" type="text/javascript"></script>
+
+<!-- For table. -->
+<link rel="stylesheet" type="text/css" href="/stylesheets/table.css">
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+    <img src="/favicon.png" alt="Shawn">
+    <h1><a href="/">SHAWN LEE</a></h1>
+    
+    <h2>What ones really can own at last are their stories. Just try to live a good one.</h2>
+    
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:shawnLeeZX.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">知 Home</a></li>
+  <li><a href="/academic">心 Academic</a>
+      <!-- <ul> -->
+          <!-- <li><a href="/academic/academic-biography.html">Academic Biography</li> -->
+          <!-- <li><a href="/academic/transcript.html">Selected Transcript</li> -->
+          <!-- <li><a href="/academic/english-proficiency.html">English Proficiency</li> -->
+          <!-- <li><a href="/academic/research.html">Research</li> -->
+      <!-- </ul> -->
+  </li>
+  <li><a href="/blog">行 Blog</a></li>
+  <li><a href="/blog/archives">合一 Archives</a>
+      <ul>
+          <li><a href="/blog/categories/cs">CS</a></li>
+          <li><a href="/blog/categories/research">Research</a></li>
+          <li><a href="/blog/categories/math">Math</a></li>
+          <li><a href="/blog/categories/life">Life</a></li>
+          <li><a href="/blog/categories/other">Other</a></li>
+      </ul>
+  </li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Ansible Variables Explained</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-08T20:10:00+08:00" pubdate data-updated="true">Apr 8<span>th</span>, 2014</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>The variables mechanism provided by ansible is great, however, not well
+documented. It takes me hours to understand different types of variables of
+ansible.</p>
+
+<p>I will describe it in a logical sequence when writing or using ansible
+playbook. I assume the root folder of your ansible playbooks is under
+<code>/etc/ansible/</code>.</p>
+
+<p><em>NOTE: the examples are taken from ansible documentation.</em></p>
+
+<!-- more -->
+
+<p>I will skip describing why we need variables … You should be knowledgable
+about why…</p>
+
+<h2 id="host-variables">Host Variables</h2>
+
+<p>First, there will be host specifical need, you can define those variables in
+two ways. </p>
+
+<h3 id="ad-hoc-way">Ad hoc Way</h3>
+
+<p>The first is to define them in the inventory files, like the following:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="o">[</span>atlanta<span class="o">]</span>
+</span><span class="line">host1 <span class="nv">http_port</span><span class="o">=</span>80 <span class="nv">maxRequestsPerChild</span><span class="o">=</span>808
+</span><span class="line">host2 <span class="nv">http_port</span><span class="o">=</span>303 <span class="nv">maxRequestsPerChild</span><span class="o">=</span>909
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="ansible-best-practice">Ansible Best Practice</h3>
+
+<p>To better maintain your playbooks, it would be better you define your host
+specifical variables seperated from inventory file. Ansible provides mechanism
+to let you define variables in <code>host_vars</code> folder. For example:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">---
+</span><span class="line"><span class="c"># file: /etc/ansible/host_vars/xyz.boston.example.com</span>
+</span><span class="line">ntp_server: override.example.com
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="group-variables">Group Variables</h2>
+
+<p>Second, beyond host specifical variables, there is group variables. Similarly,
+there is also two ways to define group variables.</p>
+
+<h3 id="ad-hoc-way-1">Ad hoc Way</h3>
+
+<p>The first is to define them in the inventory files, like the following:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="o">[</span>atlanta<span class="o">]</span>
+</span><span class="line">host1
+</span><span class="line">host2
+</span><span class="line">
+</span><span class="line"><span class="o">[</span>atlanta:vars<span class="o">]</span>
+</span><span class="line"><span class="nv">ntp_server</span><span class="o">=</span>ntp.atlanta.example.com
+</span><span class="line"><span class="nv">proxy</span><span class="o">=</span>proxy.atlanta.example.com
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>In the above example, lines under the <code>[altanta:vars]</code> define variables of
+group <code>atlanta</code>.</p>
+
+<h3 id="best-practice">Best Practice</h3>
+
+<p>Similarly, for ansible best practice, you should define group specifical files
+in <code>host_vars</code> file. For example, you can define variables for group <code>raleigh</code>
+in file <code>/etc/ansible/group_vars/raleigh</code>, using the following lines:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="yaml"><span class="line"><span class="nn">---</span>
+</span><span class="line"><span class="l-Scalar-Plain">ntp_server</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">acme.example.org</span>
+</span><span class="line"><span class="l-Scalar-Plain">database_server</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">storage.example.org</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="some-built-in-variables-provided-by-ansible">Some Built-in Variables Provided by Ansible</h2>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">ansible_ssh_host
+</span><span class="line">  The name of the host to connect to, <span class="k">if </span>different from the <span class="nb">alias </span>you wish to give to it.
+</span><span class="line">ansible_ssh_port
+</span><span class="line">  The ssh port number, <span class="k">if </span>not 22
+</span><span class="line">ansible_ssh_user
+</span><span class="line">  The default ssh user name to use.
+</span><span class="line">ansible_ssh_pass
+</span><span class="line">  The ssh password to use <span class="o">(</span>this is insecure, we strongly recommend using --ask-pass or SSH keys<span class="o">)</span>
+</span><span class="line">ansible_sudo_pass
+</span><span class="line">  The sudo password to use <span class="o">(</span>this is insecure, we strongly recommend using --ask-sudo-pass<span class="o">)</span>
+</span><span class="line">ansible_connection
+</span><span class="line">  Connection <span class="nb">type </span>of the host. Candidates are <span class="nb">local</span>, ssh or paramiko.  The default is paramiko before Ansible 1.2, and <span class="s1">&#39;smart&#39;</span> afterwards which detects whether usage of <span class="s1">&#39;ssh&#39;</span> would be feasible based on whether ControlPersist is supported.
+</span><span class="line">ansible_ssh_private_key_file
+</span><span class="line">  Private key file used by ssh.  Useful <span class="k">if </span>using multiple keys and you don<span class="s1">&#39;t want to use SSH agent.</span>
+</span><span class="line"><span class="s1">ansible_python_interpreter</span>
+</span><span class="line"><span class="s1">  The target host python path. This is useful for systems with more</span>
+</span><span class="line"><span class="s1">  than one Python or not located at &quot;/usr/bin/python&quot; such as \*BSD, or where /usr/bin/python</span>
+</span><span class="line"><span class="s1">  is not a 2.X series Python.  We do not use the &quot;/usr/bin/env&quot; mechanism as that requires the remote user&#39;</span>s
+</span><span class="line">  path to be <span class="nb">set </span>right and also assumes the <span class="s2">&quot;python&quot;</span> executable is named python, where the executable might
+</span><span class="line">  be named something like <span class="s2">&quot;python26&quot;</span>.
+</span><span class="line">ansible<span class="se">\_\*\_</span>interpreter
+</span><span class="line">  Works <span class="k">for </span>anything such as ruby or perl and works just like ansible_python_interpreter.
+</span><span class="line">  This replaces shebang of modules which will run on that host.
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="facts">Facts</h2>
+
+<p>There is another type of variables called fact, which is built-in and used to
+store information discovered while probing remote hosts. More details can be
+found <a href="http://docs.ansible.com/playbooks_variables.html#id25">here</a>.</p>
+
+<h2 id="playbook-variables">Playbook Variables</h2>
+
+<p>Variables defined in <code>host_vars</code> and <code>group_vars</code> are actually attributes of
+hosts and groups. There is also need to define variables in playbook, which
+normally is used for operation. Again, there are also two ways to define
+ansible playbook specifical variables.</p>
+
+<p>From now on, examples are taken from
+<a href="https://github.com/phred/ansible-examples/blob/master/pedantically_commented_playbook.yml">pedantically_commented_playbook</a>.</p>
+
+<h3 id="ad-hoc-way-2">Ad hoc Way</h3>
+
+<p>The first is to define using <code>var</code> attribute. For example:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+<span class="line-number">51</span>
+<span class="line-number">52</span>
+<span class="line-number">53</span>
+<span class="line-number">54</span>
+</pre></td><td class="code"><pre><code class="yaml"><span class="line"><span class="c1">###########</span>
+</span><span class="line"><span class="c1"># Playbook attribute: vars</span>
+</span><span class="line"><span class="c1"># Default: none</span>
+</span><span class="line"><span class="c1"># Required: no</span>
+</span><span class="line"><span class="c1"># Description:</span>
+</span><span class="line"><span class="c1">#  Set configuration variables passed to templates &amp; included playbooks</span>
+</span><span class="line"><span class="c1">#  and handlers.  See below for examples.</span>
+</span><span class="line"><span class="l-Scalar-Plain">vars</span><span class="p-Indicator">:</span>
+</span><span class="line"><span class="l-Scalar-Plain">color</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">brown</span>
+</span><span class="line">
+</span><span class="line"><span class="l-Scalar-Plain">web</span><span class="p-Indicator">:</span>
+</span><span class="line">  <span class="l-Scalar-Plain">memcache</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">192.168.1.2</span>
+</span><span class="line">  <span class="l-Scalar-Plain">httpd</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">apache</span>
+</span><span class="line"><span class="c1"># Tree-like structures work as expected, but be careful to surround</span>
+</span><span class="line"><span class="c1">#  the variable name with ${} when using.</span>
+</span><span class="line"><span class="c1">#</span>
+</span><span class="line"><span class="c1"># For this example, ${web.memcache} and ${web.apache} are both usable</span>
+</span><span class="line"><span class="c1">#  variables.</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">########</span>
+</span><span class="line"><span class="c1"># The following works in Ansible 0.5 and later, and will set $config_path</span>
+</span><span class="line"><span class="c1"># &quot;/etc/ntpd.conf&quot; as expected.</span>
+</span><span class="line"><span class="c1">#</span>
+</span><span class="line"><span class="c1"># In older versions, $config_path will be set to the string &quot;/etc/$config&quot;</span>
+</span><span class="line"><span class="c1">#</span>
+</span><span class="line"><span class="l-Scalar-Plain">config</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ntpd.conf</span>
+</span><span class="line"><span class="l-Scalar-Plain">config_path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/etc/$config</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">########</span>
+</span><span class="line"><span class="c1"># Variables can be set conditionally. This is actually a tiny snippet</span>
+</span><span class="line"><span class="c1"># of Python that will get filled in and evaluated during playbook execution.</span>
+</span><span class="line"><span class="c1"># This expressioun should always evaluate to True or False.</span>
+</span><span class="line"><span class="c1">#</span>
+</span><span class="line"><span class="c1"># In this playbook, this will always evaluate to False, because &#39;color&#39;</span>
+</span><span class="line"><span class="c1">#  is set to &#39;brown&#39; above.</span>
+</span><span class="line"><span class="c1">#</span>
+</span><span class="line"><span class="c1"># When ansible interprets the following, it will first expand $color to</span>
+</span><span class="line"><span class="c1"># &#39;brown&#39; and then evaluate &#39;brown&#39; == &#39;blue&#39; as a Python expression.</span>
+</span><span class="line"><span class="l-Scalar-Plain">is_color_blue</span><span class="p-Indicator">:</span> <span class="s">&quot;&#39;$color&#39;</span><span class="nv"> </span><span class="s">==</span><span class="nv"> </span><span class="s">&#39;blue&#39;&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">#####</span>
+</span><span class="line"><span class="c1"># Builtin Variables</span>
+</span><span class="line"><span class="c1">#</span>
+</span><span class="line"><span class="c1"># Everything that the &#39;setup&#39; module provides can be used in the</span>
+</span><span class="line"><span class="c1"># vars section.  Ansible native, Facter, and Ohai facts can all be</span>
+</span><span class="line"><span class="c1"># used.</span>
+</span><span class="line"><span class="c1">#</span>
+</span><span class="line"><span class="c1"># Run the setup module to see what else you can use:</span>
+</span><span class="line"><span class="c1"># ansible -m setup -i /path/to/hosts.ini host1</span>
+</span><span class="line"><span class="l-Scalar-Plain">main_vhost</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">${ansible_fqdn}</span>
+</span><span class="line"><span class="l-Scalar-Plain">public_ip</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">${ansible_eth0.ipv4.address}</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># vars_files is better suited for distro-specific settings, however...</span>
+</span><span class="line"><span class="l-Scalar-Plain">is_ubuntu</span><span class="p-Indicator">:</span> <span class="s">&quot;&#39;${ansible_distribution}&#39;</span><span class="nv"> </span><span class="s">==</span><span class="nv"> </span><span class="s">&#39;ubuntu&#39;&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="best-practice-1">Best Practice</h3>
+
+<p>Second, you can use <code>vars_file</code> to organize your variables. This is extremely
+useful when you are in need to provide different variables when concerning
+dynamically determined information. For example:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+</pre></td><td class="code"><pre><code class="yaml"><span class="line"><span class="c1">##########</span>
+</span><span class="line"><span class="c1"># Playbook attribute: vars_files</span>
+</span><span class="line"><span class="c1"># Required: no</span>
+</span><span class="line"><span class="c1"># Description:</span>
+</span><span class="line"><span class="c1">#   Specifies a list of YAML files to load variables from.</span>
+</span><span class="line"><span class="c1">#</span>
+</span><span class="line"><span class="c1">#   Always evaluated after the &#39;vars&#39; section, no matter which section</span>
+</span><span class="line"><span class="c1">#   occurs first in the playbook.  Examples are below.</span>
+</span><span class="line"><span class="c1">#</span>
+</span><span class="line"><span class="c1">#   Example YAML for a file to be included by vars_files:</span>
+</span><span class="line"><span class="c1">#   ---</span>
+</span><span class="line"><span class="c1">#   monitored_by: phobos.mars.nasa.gov</span>
+</span><span class="line"><span class="c1">#   fish_sticks: &quot;good with custard&quot;</span>
+</span><span class="line"><span class="c1">#   # (END OF DOCUMENT)</span>
+</span><span class="line"><span class="c1">#</span>
+</span><span class="line"><span class="c1">#   A &#39;vars&#39; YAML file represents a list of variables. Don&#39;t use playbook</span>
+</span><span class="line"><span class="c1">#   YAML for a &#39;vars&#39; file.</span>
+</span><span class="line"><span class="c1">#</span>
+</span><span class="line"><span class="c1">#   Remove the indentation &amp; comments of course, the &#39;---&#39; should be at</span>
+</span><span class="line"><span class="c1">#   the left margin in the variables file.</span>
+</span><span class="line"><span class="c1">#</span>
+</span><span class="line"><span class="l-Scalar-Plain">vars_files</span><span class="p-Indicator">:</span>
+</span><span class="line"><span class="c1"># Include a file from this absolute path</span>
+</span><span class="line"><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">/srv/ansible/vars/vars_file.yml</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># Include a file from a path relative to this playbook</span>
+</span><span class="line"><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">vars/vars_file.yml</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># By the way, variables set in &#39;vars&#39; are available here.</span>
+</span><span class="line"><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">vars/$hostname.yml</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># It&#39;s also possible to pass an array of files, in which case</span>
+</span><span class="line"><span class="c1"># Ansible will loop over the array and include the first file that</span>
+</span><span class="line"><span class="c1"># exists.  If none exist, ansible-playbook will halt with an error.</span>
+</span><span class="line"><span class="c1">#</span>
+</span><span class="line"><span class="c1"># An excellent way to handle platform-specific differences.</span>
+</span><span class="line"><span class="p-Indicator">-</span> <span class="p-Indicator">[</span> <span class="nv">vars/$platform.yml</span><span class="p-Indicator">,</span> <span class="nv">vars/default.yml</span> <span class="p-Indicator">]</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># Files in vars_files process in order, so later files can</span>
+</span><span class="line"><span class="c1"># provide more specific configuration:</span>
+</span><span class="line"><span class="p-Indicator">-</span> <span class="p-Indicator">[</span> <span class="nv">vars/$host.yml</span> <span class="p-Indicator">]</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># Hey, but if you&#39;re doing host-specific variable files, you might</span>
+</span><span class="line"><span class="c1"># consider setting the variable for a group in your hosts.ini and</span>
+</span><span class="line"><span class="c1"># adding your host to that group. Just a thought.</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="passing-variables-on-the-command-line">Passing Variables On The Command Line</h2>
+
+<p>You are absolutely in need to switch from test machine to real deployment,
+which means you need to change the host rather frequently. This is the case
+where command line variables are useful.</p>
+
+<p>For example, you need to change host name each time. To test, you use:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">ansible-playbook playbook.yml --extra-vars <span class="s2">&quot;hosts=local_machine&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>As for real deployment, you can use:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">ansible-playbook playbook.yml --extra-vars <span class="s2">&quot;hosts=servers&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Shawn</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-08T20:10:00+08:00" pubdate data-updated="true">Apr 8<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ansible/'>Ansible</a>, <a class='category' href='/blog/categories/cs/'>CS</a>, <a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/note/'>Note</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/03/20/simulate-hadoop-mapreduce-using-linux-command-line/" title="Previous Post: Simulate Hadoop(MapReduce) Using Linux Command Line">&laquo; Simulate Hadoop(MapReduce) Using Linux Command Line</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/04/09/comparison-betwwn-yaml/" title="Next Post: Comparison Betwwn Yaml Libconfig & Xml">Comparison Betwwn Yaml Libconfig & Xml &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/06/06/this-too-shall-pass/">THIS TOO SHALL PASS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/06/05/connection-between-pca/">Connection Between PCA and Fourier Transform</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/05/22/a-concept-explanation-on-composition-of-matrice-representing-linear-transform/">A Concept Explanation on Composition of Matrice Representing Linear Transform</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/05/14/what-mathematical-object-random-really-is/">What a Mathematical Object Random Variable Really Is</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/05/07/progress-buffer-for-big-picture-building/">Progress Buffer for Big Picture Building</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Tag Cloud</h1>
+    <span id="tag-cloud"><embed type='application/x-shockwave-flash' src='/javascripts/tagcloud.swf'width='100%' height='250' bgcolor='#f2f2f2' id='tagcloudflash' name='tagcloudflash' quality='high' allowscriptaccess='always'flashvars="tcolor=0x333333&amp;tcolor2=0x333333&amp;hicolor=0x000000&amp;tspeed=100&amp;distr=true&amp;mode=tags&amp;tagcloud=%3Ctags%3E%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fabroad%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EAbroad%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fanalysis%27+style%3D%27font-size%3A+11.411764705882353%25%27%3EAnalysis%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fandroid%27+style%3D%27font-size%3A+11.411764705882353%25%27%3EAndroid%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fansible%27+style%3D%27font-size%3A+11.411764705882353%25%27%3EAnsible%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fant%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EAnt%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fassembly%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EAssembly%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fbibtex%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EBibtex%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fc%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EC%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcnn%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ECNN%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcs%27+style%3D%27font-size%3A+34.94117647058823%25%27%3ECS%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcscope%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ECscope%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fctags%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ECtags%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fculture%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ECulture%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcv%27+style%3D%27font-size%3A+11.411764705882353%25%27%3ECV%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fdesign%27+style%3D%27font-size%3A+12.823529411764707%25%27%3EDesign%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fdjvu%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EDjvu%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Feclim%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EEclim%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Feconomics%27+style%3D%27font-size%3A+10.941176470588236%25%27%3EEconomics%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Femacs%27+style%3D%27font-size%3A+11.411764705882353%25%27%3EEmacs%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fencoding%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EEncoding%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fexcerpt%27+style%3D%27font-size%3A+11.882352941176471%25%27%3EExcerpt%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Ffourier%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EFourier%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fhadoop%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EHadoop%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fhistory%27+style%3D%27font-size%3A+10.941176470588236%25%27%3EHistory%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Finformation%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EInformation%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fjava%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EJava%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flatex%27+style%3D%27font-size%3A+11.882352941176471%25%27%3ELaTeX%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flibconfig%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ELibconfig%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flife%27+style%3D%27font-size%3A+22.705882352941174%25%27%3ELife%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flinux%27+style%3D%27font-size%3A+16.588235294117645%25%27%3ELinux%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flwip%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ELwip%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fmarkdown%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EMarkdown%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fmath%27+style%3D%27font-size%3A+18.470588235294116%25%27%3EMath%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fmatrix%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EMatrix%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fml%27+style%3D%27font-size%3A+12.352941176470589%25%27%3EML%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fnetwork%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ENetwork%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fnote%27+style%3D%27font-size%3A+50.0%25%27%3ENote%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Foctave%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EOctave%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Foctopress%27+style%3D%27font-size%3A+10.941176470588236%25%27%3EOctopress%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fother%27+style%3D%27font-size%3A+13.294117647058822%25%27%3EOther%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fpdf%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EPdf%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fperf%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EPerf%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fpgm%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EPGM%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fphd%27+style%3D%27font-size%3A+12.352941176470589%25%27%3EPhD%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fpresentation%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EPresentation%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fprobability%27+style%3D%27font-size%3A+11.411764705882353%25%27%3EProbability%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fproof%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EProof%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Freading%27+style%3D%27font-size%3A+15.176470588235293%25%27%3EReading%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fregex%27+style%3D%27font-size%3A+10.941176470588236%25%27%3ERegex%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Frepost%27+style%3D%27font-size%3A+23.176470588235293%25%27%3ERepost%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fresearch%27+style%3D%27font-size%3A+24.588235294117645%25%27%3EResearch%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fsignal-processing%27+style%3D%27font-size%3A+10.941176470588236%25%27%3ESignal_Processing%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fstatistics%27+style%3D%27font-size%3A+11.411764705882353%25%27%3EStatistics%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Ftopology%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ETopology%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fvim%27+style%3D%27font-size%3A+13.764705882352942%25%27%3EVim%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fwavelet%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EWavelet%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fxml%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EXml%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fyaml%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EYaml%3C%2Fa%3E+%3C%2Ftags%3E"></span>
+</section>
+
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/abroad/'>Abroad (1)</a></li><li><a href='/blog/categories/analysis/'>Analysis (3)</a></li><li><a href='/blog/categories/android/'>Android (3)</a></li><li><a href='/blog/categories/ansible/'>Ansible (3)</a></li><li><a href='/blog/categories/ant/'>Ant (1)</a></li><li><a href='/blog/categories/assembly/'>Assembly (1)</a></li><li><a href='/blog/categories/bibtex/'>Bibtex (1)</a></li><li><a href='/blog/categories/c/'>C (1)</a></li><li><a href='/blog/categories/cnn/'>CNN (1)</a></li><li><a href='/blog/categories/cs/'>CS (53)</a></li><li><a href='/blog/categories/cscope/'>Cscope (1)</a></li><li><a href='/blog/categories/ctags/'>Ctags (1)</a></li><li><a href='/blog/categories/culture/'>Culture (1)</a></li><li><a href='/blog/categories/cv/'>CV (3)</a></li><li><a href='/blog/categories/design/'>Design (6)</a></li><li><a href='/blog/categories/djvu/'>Djvu (1)</a></li><li><a href='/blog/categories/eclim/'>Eclim (1)</a></li><li><a href='/blog/categories/economics/'>Economics (2)</a></li><li><a href='/blog/categories/emacs/'>Emacs (3)</a></li><li><a href='/blog/categories/encoding/'>Encoding (1)</a></li><li><a href='/blog/categories/excerpt/'>Excerpt (4)</a></li><li><a href='/blog/categories/fourier/'>Fourier (1)</a></li><li><a href='/blog/categories/hadoop/'>Hadoop (1)</a></li><li><a href='/blog/categories/history/'>History (2)</a></li><li><a href='/blog/categories/information/'>Information (1)</a></li><li><a href='/blog/categories/java/'>Java (1)</a></li><li><a href='/blog/categories/latex/'>LaTeX (4)</a></li><li><a href='/blog/categories/libconfig/'>Libconfig (1)</a></li><li><a href='/blog/categories/life/'>Life (27)</a></li><li><a href='/blog/categories/linux/'>Linux (14)</a></li><li><a href='/blog/categories/lwip/'>Lwip (1)</a></li><li><a href='/blog/categories/markdown/'>Markdown (1)</a></li><li><a href='/blog/categories/math/'>Math (18)</a></li><li><a href='/blog/categories/matrix/'>Matrix (1)</a></li><li><a href='/blog/categories/ml/'>ML (5)</a></li><li><a href='/blog/categories/network/'>Network (1)</a></li><li><a href='/blog/categories/note/'>Note (85)</a></li><li><a href='/blog/categories/octave/'>Octave (1)</a></li><li><a href='/blog/categories/octopress/'>Octopress (2)</a></li><li><a href='/blog/categories/other/'>Other (7)</a></li><li><a href='/blog/categories/pdf/'>Pdf (1)</a></li><li><a href='/blog/categories/perf/'>Perf (1)</a></li><li><a href='/blog/categories/pgm/'>PGM (1)</a></li><li><a href='/blog/categories/phd/'>PhD (5)</a></li><li><a href='/blog/categories/presentation/'>Presentation (1)</a></li><li><a href='/blog/categories/probability/'>Probability (3)</a></li><li><a href='/blog/categories/proof/'>Proof (1)</a></li><li><a href='/blog/categories/reading/'>Reading (11)</a></li><li><a href='/blog/categories/regex/'>Regex (2)</a></li><li><a href='/blog/categories/repost/'>Repost (28)</a></li><li><a href='/blog/categories/research/'>Research (31)</a></li><li><a href='/blog/categories/signal-processing/'>Signal_Processing (2)</a></li><li><a href='/blog/categories/statistics/'>Statistics (3)</a></li><li><a href='/blog/categories/topology/'>Topology (1)</a></li><li><a href='/blog/categories/vim/'>Vim (8)</a></li><li><a href='/blog/categories/wavelet/'>Wavelet (1)</a></li><li><a href='/blog/categories/xml/'>Xml (1)</a></li><li><a href='/blog/categories/yaml/'>Yaml (1)</a></li></ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Shawn -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2014/04/08/ansible-variables-explained/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2014/04/08/ansible-variables-explained/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

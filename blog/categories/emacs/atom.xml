@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Emacs | SHAWN LEE]]></title>
+  <link href="http://shawnLeeZX.github.io/blog/categories/emacs/atom.xml" rel="self"/>
+  <link href="http://shawnLeeZX.github.io/"/>
+  <updated>2015-06-21T11:48:38+08:00</updated>
+  <id>http://shawnLeeZX.github.io/</id>
+  <author>
+    <name><![CDATA[Shawn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Open File Using External App in Emacs]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/12/08/open-file-using-external-app-in-emacs/"/>
+    <updated>2014-12-08T14:29:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/12/08/open-file-using-external-app-in-emacs</id>
+    <content type="html"><![CDATA[<p>It would be of great convenience to be able to open files in
+<code>dired-mode</code> in Emacs using external apps. Here is how to achieve it.</p>
+
+<!-- more -->
+
+<p>```cl
+;;; Add command to open file using system programs.
+;; ===================================================================
+(defun open-in-external-app (&amp;optional file)
+  “Open the current file or dired marked files in external app. The app
+is chosen from your OS’s preference.”
+  (interactive)</p>
+
+<p>(let ( confirm
+         (file-list
+          (cond
+           ((string-equal major-mode “dired-mode”) (dired-get-marked-files))
+           ((not file) (list (buffer-file-name)))
+           (file (list file))
+           )
+          )
+         )</p>
+
+<pre><code>(setq confirm (if (&lt;= (length file-list) 5)
+               t
+             (y-or-n-p "Open more than 5 files? ")
+             )
+      )
+
+(when confirm
+  (cond
+   ((string-equal system-type "windows-nt")
+    (mapc
+     (lambda (file-path)
+       (w32-shell-execute "open"
+                          (replace-regexp-in-string "/" "\\" file-path t t)
+                          )
+       )
+     file-list)
+    )
+   ((string-equal system-type "darwin")
+    (mapc
+     (lambda (file-path)
+       (shell-command (format "open \"%s\"" file-path))
+       )
+     file-list)
+    )
+   ((string-equal system-type "gnu/linux")
+    (mapc
+     (lambda (file-path)
+       (let ((process-connection-type nil))
+         (start-process "" nil "xdg-open" file-path)
+         )
+       )
+     file-list)
+    )
+   )
+  )
+)   ) ```
+</code></pre>
+
+<p>I learned this from
+<a href="http://ergoemacs.org/emacs/emacs_dired_open_file_in_ext_apps.html">here</a>. However,
+the code here is more readable and conformed to the programming
+convention of Elisp.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Writing Markdown With Auto-complete and Math Equation in Emacs]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/09/24/writing-markdown-with-autocomplete-and-math-equation-in-emacs/"/>
+    <updated>2014-09-24T16:52:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/09/24/writing-markdown-with-autocomplete-and-math-equation-in-emacs</id>
+    <content type="html"><![CDATA[<p>This post talks about writing markdown under Emacs. Besides the normal,
+it mainly talks about how to use auto-complete, <code>ispell-complete-word</code>
+after enabling <code>flyspell-mode</code>, and integrate <code>LaTeX-mode</code> with
+<code>markdown-mode</code> to ease the writing of math equations.</p>
+
+<!-- more -->
+
+<p>I guess nobody who is using Emacs won’t blogging.  People has spent a
+lot of time implementing a major mode for markdown in emacs, as for as
+I can see on its
+<a href="http://jblevins.org/projects/markdown-mode/">homepage</a>.</p>
+
+<p>Installation of <code>markdown-mode</code> is omitted.</p>
+
+<p>However, auto-complete malfunctions from time to time where tab in the
+major mode auto-complete works with does something. In my case, each
+time I press tab in markdown mode, the cursor goes back to the start
+of the line and it is really annoying. This time I spent time to fix
+this once and for all.</p>
+
+<p>The mechanism that how tab works in Emacs is a bit complex. I will not
+describe it here since it would be too long and I have not figure it
+out completely yet. By analyzing the Emacs configuration forked from
+Purcell, I found an utility function written by him(I have refactored
+his code a lot so do not expect to find exact matches in exact places).</p>
+
+<p><code>cl
+;; Turn off indentation binded with tab.
+;; ===============
+;; Function to indent the current line.  This function will be called
+;; with no arguments.  If it is called somewhere where
+;; auto-indentation cannot be done (e.g. inside a string), the
+;; function should simply return `noindent'.  Setting this function is
+;; all you need to make TAB indent appropriately.  Don't rebind TAB
+;; unless you really need to.
+;;
+;; The function defined here use anomynous function to return the
+;; 'noindent to disable the indentation functionality of tab.
+(defun sanityinc/never-indent ()
+  (set (make-local-variable 'indent-line-function) (lambda () 'noindent)))
+</code></p>
+
+<p>The indentation function of tab is determined by the function
+<code>indent-line-function</code> on the fly. By returning <code>'noindent</code>, we tell
+Emacs does not indent when tab being pressed. See the following:</p>
+
+<p><code>cl
+;; Fix tab for autocompletion.
+(add-hook 'markdown-mode-hook 'sanityinc/never-indent)
+</code></p>
+
+<h3 id="use-ispells-word-completion-instead-of-flyspells">Use ispell’s word completion instead of flyspell’s</h3>
+<p>I use flyspell to check the spelling of my markdown files on the fly,
+however, when using flyspell, the word correction mapping <code>C-M-i</code> of
+<code>ispell</code> minor mode is overshadowed by with the
+<code>flyspell-correct-word</code> command. In my preference, it is less powerful
+than the original command <code>ispell-complete-word</code>, thus I want it
+back.</p>
+
+<p>To fix this, a bit of hacking should be used, since the minor mode
+keymap(Google for what keymap means in Emacs) is the inner most keymap
+used by Emacs, which means it will be applied first. The way to
+override minor mode keymap is to add overriding function to the hook
+of this minor mode.</p>
+
+<p>One more problem is that there is not way that we could query the
+keymap’s name of the current minor mode. This is where the hacking
+coming out. We guess its name. Fortunately, flyspell mode’s keymap name
+follows the convention of kepmap naming – it is just called
+flyspell-mode-map. See the following:</p>
+
+<p><code>cl
+(add-hook 'flyspell-mode-hook
+          (lambda ()
+            "Use ispell to corrent the word instead of flyspell's."
+            (define-key flyspell-mode-map (kbd "C-M-i") 'ispell-complete-word)
+          )
+)
+</code></p>
+
+<p>Now, we have ispell’s binding back.</p>
+
+<h3 id="tips-about-writing-math">Tips about writing math</h3>
+
+<p>I currently use manual switch between <code>LaTeX-mode</code>(from <code>auxtex</code>
+package) and <code>markdown-mode</code> to input math symbol. Did not figure out
+how to combine those two modes yet. I would be grateful if you let me
+know.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Learning Emacs in 3 Days]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/08/18/learning-emacs-in-3-days/"/>
+    <updated>2014-08-18T01:04:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/08/18/learning-emacs-in-3-days</id>
+    <content type="html"><![CDATA[<p>I am learning and setting up emacs environment in the last three
+days. Though various blogs, tutorials and manuals have already talking
+about this topic, I did not find one direct path that I can follow to
+fulfill my need, which is to learn emacs from zero knowledge, well
+organize and set up a satisfactory development IDE.  This blog notes
+down what I have done.</p>
+
+<!-- more -->
+
+<h2 id="why-learning-emacs">Why Learning Emacs</h2>
+
+<p>I am an experienced vimer. Why bother learning another complicated
+editor?</p>
+
+<p>Three days ago, I have no idea about the comparison between vim and
+emacs, since vim fulfills all my programming tasks – I have
+satisfactory configuration in vim for C/C++, Java, Python, LaTeX,
+Markdown, XML, HTML, Octave, Ant, Arduino. You can find my
+configuration <a href="https://github.com/shawnLeeZX/.vim">here</a>.</p>
+
+<p>Three days ago, for me, emacs is just an editor that is comparable
+with vim, but they cannot win over each other. People stick with emacs
+will not get their hand dirdy on vim and vice versa.</p>
+
+<p>There must be something that makes me to spend the next three days
+learning emacs.</p>
+
+<p>The story started with a trip on the train. That time, I was reading a
+book called <em>Hacker and Painter</em>. If you have not read the book, I
+strongly recommend it to you. Although this may not be the most
+shinning point in the boo, the author succeeded a startup and beat
+their competitor largely by using lisp as their programming language
+. Before then, I knew lisp is a programming language for AI, a area
+where I dedicated myself to work on. But I cannot find any books or
+applications use lisp or talk about lisp. It makes me think lisp is
+outdated. Afterall, it was proposed by McCarthy tens of years
+ago. Such evidence strongly supported the point the author made in the
+book that lisp is a language worth learning.</p>
+
+<p>It remains me of an
+<a href="http://www.catb.org/esr/faqs/hacker-howto.html">article</a> about HOW-DO
+become a hacker read long time ago. The author writes:</p>
+
+<blockquote>
+  <p>LISP is worth learning for a different reason — the profound
+enlightenment experience you will have when you finally get it. That
+experience will make you a better programmer for the rest of your
+days, even if you never actually use LISP itself a lot.</p>
+</blockquote>
+
+<p>This <a href="http://www.defmacro.org/ramblings/lisp.html">article</a> gives a
+nice explanation on lisp.</p>
+
+<p>Therefore, to find the enlightment mentioned by all the hackers, why
+from c, python to ruby, their syntax are more and more similar to lisp and
+figure out why lisp is created by McCarthy to be the AI language, I
+decided to learn lisp. Since emacs lisp is the only place I knew now
+uses lisp a lot, I decided to learn emacs.</p>
+
+<p>That’s enough about the motivation.</p>
+
+<h2 id="comparison-between-vim-and-emacs">Comparison Between Vim and Emacs</h2>
+<p>I would’t bother to read such section in other article when I was
+using vim exclusively, but I should put some insight into the
+advantages and disadvantages the two most powerful editors in the
+world.</p>
+
+<p>A simple answer is vim is quicker than any other editor in the world,
+including emacs, while more powerful than any other editor in the
+world, excluding emacs.</p>
+
+<p>If you push typing speed to the extreme speed, vim, a multi-modal
+editor is definitely quicker than emacs. But the coming of
+<a href="https://gitorious.org/evil/pages/Home">evil</a>, a plugin to simulate
+vim behavior in emacs solves this problem. Actually I am using
+evil-mode under emacs. So this evidence does not support the argument.</p>
+
+<p>The real problem is that emacs loads really slow. I have 25M
+configuration file for vim, which it only takes less than one second
+to load while emacs will normally takes 3-10 seconds now, no to take
+into account that I am just starting using emacs and I will add more
+extensions now and then recently. Such a long loading time makes emacs
+not suitable for small task. For example, I won’t edit config files
+under emacs – I won’t even take 3 seconds to edit the file and close
+the file using vim.</p>
+
+<p>However, any serious programming task is not a small task. This is
+where emacs stands out, since modern computer are more and more
+advanced, which makes the huge volume of emacs not matter.</p>
+
+<p>For non-trivial task, emacs surpasses vim. Emacs has better
+autocomplete, syntax highlighting. Emacs is more robust. I will skip
+the detail for now.</p>
+
+<h2 id="learning-emacs-from-zero-in-3-days">Learning Emacs From Zero in 3 Days</h2>
+
+<p>I will not pretend smart. I can make emacs work well in three days is
+because I spent most of the three days learning and configuring emacs
+and I know what I am looking for since I have similar functionalities
+in vim. Learning emacs and vim is about learning how compiler find c
+header files, auto pairing of parenthesis and more are done. It is
+about learning how the underlying is working. That’s where the time
+is spent.</p>
+
+<p>The following are step-by-step instructions about how to learn emacs
+with zero knowledge about emacs. Let’s get started.</p>
+
+<h3 id="learning-emacs-basics">Learning Emacs Basics</h3>
+
+<ul>
+  <li>Install emacs.</li>
+  <li>Open emacs.</li>
+  <li>Learning emacs basics.
+    <ul>
+      <li>Press <code>&lt;C-h&gt;t</code> to invoke the learning-by-doing tutorial. This
+tutorial teaches you basics about emacs.</li>
+    </ul>
+  </li>
+  <li>Learning how to use the help system.
+    <ul>
+      <li>Press <code>&lt;C-h&gt;r</code> to open emacs manual in info mode.</li>
+      <li>Press <code>d</code> to go to the root of info help system.</li>
+      <li>Find a menu item called <code>Info</code>, which is nearly at the bottom of the
+manual.</li>
+      <li>Learning how to use info system in the manual.</li>
+      <li>Now you are capable to basic command of emacs and info.</li>
+      <li>Press <code>&lt;C-h&gt;&lt;C-h&gt;</code> and check some variables, functions and command
+you do not know what they are for to practice using the help
+system of emacs.</li>
+    </ul>
+  </li>
+  <li>Learning how to customize emacs.
+    <ul>
+      <li>Go to the root of the info manual again.</li>
+      <li>Find a section called <code>Emacs Lisp Intro</code>.</li>
+      <li>Enter it.</li>
+      <li>Find a section called <code>Emacs Initialization</code>. It will tell you the
+basics about customizing emacs.</li>
+    </ul>
+  </li>
+  <li>Now you have finished learning basics of emacs and are capable of
+building your customized emacs. There are two manual at the root of
+the info manual, <code>Emacs Lisp Intro</code> and <code>Elisp</code>. We have used the
+former. The latter is emacs lisp manual. Remember to refer to it to
+learn about lisp when you are customizing your emacs.</li>
+</ul>
+
+<h3 id="start-with-professionals-emacsd">Start With Professional’s Emacs.d</h3>
+
+<p>To get started, you’d better begin by mimicking others. I started by
+forking purcell’s <a href="https://github.com/purcell/emacs.d">emacs.d</a>. There are
+others as well, such as
+<a href="http://eschulte.github.io/emacs24-starter-kit/">Emacs24 Starter Kit</a>. You
+are free to choose yours. But one thing is worth pointing out is that
+purcell’s emacs.d really gives powerful starting.</p>
+
+<p>If you are also a vimmer before, I could also fork my
+<a href="https://github.com/shawnLeeZX/emacs.d">emacs.d</a>.</p>
+
+<p>To keep up-to-date with the original repo, you could add it as a remote repo and
+pull from it from time to time.</p>
+
+<p><code>bash
+git remote add firstguy git://github.com/firstguy/repo.git
+</code></p>
+
+<p>Read its sources to figure out how the extensions are organized and
+know how to add your own customization. In the following I will
+describe the changes I made up to now.</p>
+
+<h4 id="package-management">Package Management</h4>
+<p>Emacs has better package management mechanism for extensions than
+vim. I use <code>package.el</code>. See this <a href="http://batsov.com/articles/2012/02/19/package-management-in-emacs-the-good-the-bad-and-the-ugly/">blog</a>.</p>
+
+<h4 id="copy-paste">Copy Paste</h4>
+<p>I use emacs in a termial, and by default inter-program copy and paste
+does not work.</p>
+
+<p>This
+<a href="http://shreevatsa.wordpress.com/2006/10/22/emacs-copypaste-and-x/">blog</a>
+talks about how copy and paste works in emacs, or more generally under linux.</p>
+
+<p>To enable inter-program copy and paste, see this <a href="http://hugoheden.wordpress.com/2009/03/08/copypaste-with-emacs-in-terminal/">blog</a>.</p>
+
+<h4 id="swap-ctrl-and-caps-lock">Swap Ctrl and Caps Lock</h4>
+<p>Make <code>&lt;Caps Lock&gt;</code> a <code>&lt;Ctrl&gt;</code> key to speed up typing. See <a href="http://www.emacswiki.org/emacs/MovingTheCtrlKey">here</a>.</p>
+
+<h4 id="manage-extra-with-git">Manage Extra with git</h4>
+<p>Occasionally, you cannot find extensions you want in the package
+management system. To manage the extensions you download, use git. And
+to keep those extensions in their git repo will ease the process of
+updating. To make this work, some knowledge of git submodule will be
+helpful. See this <a href="http://longair.net/blog/2010/06/02/git-submodules-explained/">post</a>.</p>
+
+<h4 id="beginning-by-setting-up-development-environment-for-cc">Beginning By Setting Up Development Environment for C/C++</h4>
+
+<p>Below is three video on Youtude.</p>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=HTUE03LnaXA">Emacs as a C/C++ Editor/IDE (Part I): auto-complete, yasnippet, and autoplete</a></li>
+  <li><a href="https://www.youtube.com/watch?v=r_HW0EB67eY">Emacs as a C/C++ Editor/IDE (Part 2): iedit, flymake-google-cpplint, google-c-style</a></li>
+  <li><a href="https://www.youtube.com/watch?v=Ib914gNr0ys">Emacs as a C/C++ Editor/IDE (Part 3): Installing CEDET mode for true intellisense</a></li>
+</ul>
+
+<h4 id="evil">Evil</h4>
+
+<p>If you are also a vimmer try <a href="http://www.emacswiki.org/emacs/Evil">evil</a>.</p>
+
+<p>If you want to speed up your development, also try it!</p>
+
+<p>If you are using emacs under screen or tmux, change the timeout to
+make evil works smoothly.</p>
+
+<p>For tmux, change <code>.tmux.conf</code>:</p>
+
+<p><code>bash
+tmux set -sg escape-time 0
+</code>
+For screen, change <code>.screenrc</code></p>
+
+<p><code>bash
+maptimeout 5
+</code></p>
+
+<h4 id="misc">Misc</h4>
+
+<ul>
+  <li>Generate tags for emacs using <code>-e</code> option using ctags.</li>
+  <li>Shell in emacs. See this <a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/">post</a>.</li>
+  <li>I recommend a product called
+<a href="https://www.teambition.com/">teambition</a> to replace the org-mode to
+GET THINGS DONE. Its has a web interface and app on smartphone.</li>
+  <li>Lastly, you can find my <code>emacs.d</code> <a href="https://github.com/shawnLeeZX/emacs.d">here</a>.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

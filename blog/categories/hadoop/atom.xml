@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Hadoop | SHAWN LEE]]></title>
+  <link href="http://shawnLeeZX.github.io/blog/categories/hadoop/atom.xml" rel="self"/>
+  <link href="http://shawnLeeZX.github.io/"/>
+  <updated>2015-06-21T11:48:38+08:00</updated>
+  <id>http://shawnLeeZX.github.io/</id>
+  <author>
+    <name><![CDATA[Shawn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Simulate Hadoop(MapReduce) Using Linux Command Line]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/03/20/simulate-hadoop-mapreduce-using-linux-command-line/"/>
+    <updated>2014-03-20T12:25:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/03/20/simulate-hadoop-mapreduce-using-linux-command-line</id>
+    <content type="html"><![CDATA[<p>There are a number of blogs writing about this topic. Why another one?</p>
+
+<p>The problem comes from the <code>sort</code> part of the pipeline(if you have no idea what
+I am talking about, you will later). Most of the blogs and comments purely
+using the standalone <code>sort</code> command, which is not the way hadoop doing sorting.
+To sort the right way, sort should be used this way: <code>sort -k 1,1 -t $'\t'</code>.
+Explanation will be provided later.</p>
+
+<!-- more -->
+
+<p>You should understand what the following command does to keep reading:</p>
+
+<p><code>bash
+cat DATA.txt | python mapper.py | sort | python reducer.py &gt; RESULT.txt
+</code></p>
+
+<p>In the <code>sort</code> part of this command, without any options and arguments, <code>sort</code>
+use non-blank to blank transition as the separator to divide each line in the
+file into columns, not the tab character, and it will compare the entire line
+by default. This will result in erroneous behavior when the dataset becomes
+large.</p>
+
+<p>To make <code>sort</code> action precisely as hadoop’s sort function. <code>sort -k 1,1 -t $'\t'</code> should be used.
+<code>-t $'\t'</code> lets <code>sort</code> use tab character as separator to
+divide columns. But tab character cannot be directly typed as <code>\t</code>. <code>$'\t'</code> is a
+bash variable that will expand into tab character when evaluated. 
+<code>-k 1,1</code> lets <code>sort</code> sorts the line by the content from first column to first
+column, which is the key in hadoop sorting process.</p>
+
+<p>Finally, a note about the algorithm <code>sort</code> command uses. It uses merge sort.
+You can see a large number of tmporary files are created in <code>/tmp</code> file while
+sorting large amount of data.</p>
+]]></content>
+  </entry>
+  
+</feed>

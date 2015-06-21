@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Encoding | SHAWN LEE]]></title>
+  <link href="http://shawnLeeZX.github.io/blog/categories/encoding/atom.xml" rel="self"/>
+  <link href="http://shawnLeeZX.github.io/"/>
+  <updated>2015-06-21T11:48:38+08:00</updated>
+  <id>http://shawnLeeZX.github.io/</id>
+  <author>
+    <name><![CDATA[Shawn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[About Unicode and Character Sets, and them in Programming Language and Vim]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/03/13/advanced-search-and-replace-in-vim/"/>
+    <updated>2014-03-13T11:22:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/03/13/advanced-search-and-replace-in-vim</id>
+    <content type="html"><![CDATA[<p>Normally, programmers(at least for novice like me) just do not need to care
+about encoding. Or in another word, it is abstracted from normal programmer –
+your IDE, your editor, your web browser automatically takes care of encoding
+for you. Even I haved coded a simple program to convert utf-16 to utf-8 some
+time ago, I still did not clearly understand how string is handled by the
+program languages I used.</p>
+
+<p>Recently, I have to deal with input containing unicode. Thus I made up this
+empty spot for myself. I am not a knowledge producer now. I collect them.</p>
+
+<!-- more -->
+
+<h2 id="understand-how-string-is-handled-by-computer">Understand how string is handled by computer</h2>
+
+<p>There is great [post](Positively Must Know About Unicode and Character Sets (No Excuses!) about unicode and charset.
+After reading this post, you will understand how string is handled by computer.</p>
+
+<h2 id="understand-programming-language-handles-unicode">Understand programming language handles unicode</h2>
+<p>This section is just a short summary about how c and python handle unicode
+string. For a complete description, please refer to their manual and books.</p>
+
+<p>C is a low-level high-level language. There is no such thing like unicode for
+c – c does not understand encoding. It takes string as an array of bytes. One
+unicode code point is just stored as multiple consecutive bytes.</p>
+
+<p>Different version of python handles unicode the different way – this is a
+major different between python 2.X and python 3.X. Python 2.X uses an object
+called <code>unicode</code> to handle unicode, while <code>str</code> handles ascii and byte array –
+meaning it is the same as c, while python 3.X’s <code>str</code> handles unicode by
+default. More details please refer Chapter 37 of <em>Learning Python 5th</em>.</p>
+
+<p>I have not checked Java and C++ for the time being.</p>
+
+<h2 id="use-vim-to-search-for-symbol-other-than-normal-word">Use Vim to Search for Symbol Other than Normal Word</h2>
+<p>Before you begin programming, it would be better you have a sense about what
+symbols you are going to deal with, meaning first deal with it manually.</p>
+
+<p>I used vim to search for tough symbols, like control code(with ascii code below
+0x1f and 0x7f), and unicode(with code between 0xff and 0xffffffff).</p>
+
+<p>A complete table about control code and how most editor will display them can
+be found <a href="http://en.wikipedia.org/wiki/ASCII">here</a>.</p>
+
+<p>To find hexa value of the non-printable character under cursor in vim, using
+<code>ga</code>.</p>
+
+<p>To editor file binarily, use <code>bvi</code>, which is a separate program.</p>
+
+<h3 id="searching-for-control-sequence">Searching for Control Sequence</h3>
+<p>When searching for control sequence, using <code>x</code> is ok, which will be illustrated
+using example:</p>
+
+<p><code>bash
+/[\x00-\x1f]
+</code></p>
+
+<p>This command will search for any control code with code <code>00</code> to <code>1f</code>.</p>
+
+<p>If you want to search for unicode, using:</p>
+
+<p><code>bash
+/[\uff-\ufff]
+</code></p>
+
+<p>This will search for word with code <code>ff</code> to <code>fff</code> using current encoding
+method of vim(use <code>help encoding</code> to see more about encoding of vim).</p>
+
+<p><code>bash
+/[\Uff-\Ufffffff]
+</code></p>
+
+<p>Previous command can only search for code ranges from <code>ff</code> to <code>ffff</code>. To search
+beyond that, you should use <code>\U</code>.</p>
+
+<p>One more thing should be noted is that when you are searching outside <code>[]</code> use
+<code>\%x</code> instead of <code>\x</code>. For example:</p>
+
+<p><code>bash
+:%s/\%x00//gc
+</code></p>
+
+<p>This will remove all null char in your document.</p>
+]]></content>
+  </entry>
+  
+</feed>

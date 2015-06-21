@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Probability | SHAWN LEE]]></title>
+  <link href="http://shawnLeeZX.github.io/blog/categories/probability/atom.xml" rel="self"/>
+  <link href="http://shawnLeeZX.github.io/"/>
+  <updated>2015-06-21T11:48:38+08:00</updated>
+  <id>http://shawnLeeZX.github.io/</id>
+  <author>
+    <name><![CDATA[Shawn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[What A Mathematical Object Random Variable Really Is]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/05/14/what-mathematical-object-random-really-is/"/>
+    <updated>2015-05-14T11:14:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/05/14/what-mathematical-object-random-really-is</id>
+    <content type="html"><![CDATA[<p>An example will be noted here to illustrate what a random variable really is.</p>
+
+<p>Sadly, things will be clearer with graph but for now I do not have a solution
+to make good illustration really quickly enough — normally I write a post in
+about half an hour.</p>
+
+<!-- more -->
+
+<p>The problem setting is that if we toss a coin twice, there are four possible
+outcomes that we could get — $(hh, ht, th, tt)$, where $h$ stands for head
+while $t$ stands for tail. If we denote the results as tuples, we could
+represent the experiment results as $((1, 1), (1, 0), (0, 1), (0, 0))$. If we
+take each element of the tuple with two elements as dimension of a vector
+space, each tuple could be regarded as an element in a vector space. we could
+represent our experiment result in a 2D plane.</p>
+
+<p>Consider that a random variable $X$ which is used to denote the number of heads
+in this experiment. Its value would be 0, 1 or 2.</p>
+
+<p>Now we make the statement that random variable a mapping, which maps the
+original event space $\Omega$(the four tuples here) to a subset$T’$(a set of
+${0, 1, 2}$ here) of a set $T$(the positive integer set $N^{+}$). Let’s see
+what this actually means.</p>
+
+<p>In the first level, the understanding could be pretty straight forward. $X$
+in some sense agglomerate the event space in the most preliminary level – the
+atomic exclusive level to a coarser level — the number of heads. So $(1, 0)$
+and $(0, 1)$ all collapse to the point ${1}$ in the set $T$. Correspondingly,
+the probability measure assigned on each event is changed. Mathematically,
+given a set $A$ in $T$, its probability now is </p>
+
+<script type="math/tex; mode=display">
+P^{X}(A) = P(\{\omega: X(\omega) \in A \}) = P(X^{-1}(A)) = P(X \in A)
+</script>
+
+<p>However, there is a way to think in the framework of functional analysis. Each
+mapping, precisely, function, in a vector space(Hilbert space could be a
+properer setting) could be regarded as projecting points in the vector space to
+the basis determined by the adjoint operator of this function.</p>
+
+<p>In previous example, a two dimensional space is reduced into one dimensional
+space, whose basis is the adjoint operator of the function $X$. And the
+probability measure of a point in this new one dimensional space is the sum of
+all points in the two dimensional points that will be projected at that
+point. Now, let’s see what those statements mean.</p>
+
+<p>If we draw a line crossing origin with slope one, all points with the same
+number of heads will be projected at the same point in this line. The point
+with two heads, which is $(1, 1)$, will be projected at point $(1, 1)$. The
+points with one head, which is $(1, 0) and (0, 1)$, will be projected at
+$(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2})$. Finally, the point with no head
+will be projected at $(0, 0)$. Now we drop the second dimension, each point in
+this line will semantically mean the number of heads, where the random variable
+will vary. Their probability measure will be summed while points are being
+projecting.</p>
+
+<p>The counting of heads is also represented by the function $(x + y)$(the value
+in each dimension of previous two dimensional space actually means the number
+of heads, so their sum will the number of heads), which is the adjoint operator
+of basis $(1, 1)$. This form is the representation of the basis of our new
+space in our old two dimensional space.</p>
+
+<p>One last note. When we are reducing dimensionality, we are also discarding the
+information of how many number of tail we get.</p>
+
+<p>In conclusion, what random variable really is?</p>
+
+<p>Random variable first maps original event space onto another event space, then
+defines a new probability distribution on the new space according its relation
+to the old event space. The intuitive meaning of the random variable is how it
+deals with original event space, which is counting the number of heads
+here. But essentially, it defines a distribution or in other words, probability
+measure at each point(the number of heads), in the new space.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Intuitive Background of Probability Theory]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2013/12/25/intuitive-background-of-probability-theory/"/>
+    <updated>2013-12-25T11:31:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2013/12/25/intuitive-background-of-probability-theory</id>
+    <content type="html"><![CDATA[<p>See section 2 and 3 in this <a href="/docs/probability_theory.pdf">pdf</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Evolvement of Probability Theory]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2013/12/13/evolvement-of-probability-theory/"/>
+    <updated>2013-12-13T09:52:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2013/12/13/evolvement-of-probability-theory</id>
+    <content type="html"><![CDATA[<p>This is the text at the very beginning of the book <em>Probability Theory</em> writen
+by Loeve. Mathematics could be pure, but every part of science comes from
+reality. Do not be confused by its abstractness and generality.</p>
+
+<p>The text begins.</p>
+
+<!-- more -->
+
+<p>Probability theory is concerned with the mathematical analysis of the intuitive
+notion of “chance” or “randomness”, which, like all notions, is born of
+experience. The quantitative idea of randomness first took form at the gaming
+tables, and probability theory began, wich Pascal and Fermat(1654), as a theory
+of games of chance. Since then, the notion of chance has found its way into
+almost all branches of knowledge. In particular, the discovery that physical
+“observables”, even those which describe the behavior of elementary particles,
+were to be considered as subject to laws of change made an inverstigation of
+the notion of chance basic to the whole problem of rational interpretation of
+nature.</p>
+
+<p>A theory becomes mathematical when it sets up a mathematical model of the
+phenomena with which it is concerned, that is, when, to describe the phenomena,
+it uses a collection of well-defined symbols and operations on the symbols. As
+the number of phenomena, together with their known properties, increases, the
+mathematical model evolves from early crude notions upon which our intuition
+was built in the direction of higher generality and abstractness.</p>
+
+<p>In this manner, the inner consistency of the model of random phenomena became
+doubtful, and this forced a rebuilding of the whole structure in the second
+quarter of this century, starting with a formulation in terms of axioms and
+definitions. Thus there appeared a branch of pure mathematics – probability
+theory – concerned with the construction and inverstigation per se of the
+mathematical model of randomness.</p>
+]]></content>
+  </entry>
+  
+</feed>

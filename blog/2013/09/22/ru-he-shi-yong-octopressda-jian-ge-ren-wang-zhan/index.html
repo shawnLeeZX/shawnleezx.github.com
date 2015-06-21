@@ -1,0 +1,743 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>如何使用octopress搭建个人网站 - SHAWN LEE</title>
+  <meta name="author" content="Shawn">
+
+  
+  <meta name="description" content="随笔 人有的时候会由于时间和事情的压力变得很单向度，总是倾向于完成最紧急的事
+情。于是很长的日子，很多的时间都是在一个和另一个危机之间相互转换。在很
+忙很忙的时候，这也没错。只是很多时候并没有达到那个程度。 从前经常有想要写东西的时候，无论是技术笔记还是关于一些东西的感文，由于
+时间来不及， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2013/09/22/ru-he-shi-yong-octopressda-jian-ge-ren-wang-zhan">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="SHAWN LEE" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <script src="/javascripts/audio.min.js"></script>
+  <script>
+   audiojs.events.ready(function() {
+     var as = audiojs.createAll();
+   });
+  </script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<!-- Add snarl icon here. -->
+<link href="/favicon.png" rel="icon">
+
+<!-- For drop menu. -->
+<script src="/javascripts/libs/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+<script src="/javascripts/menu.min.js" type="text/javascript"></script>
+
+<!-- For table. -->
+<link rel="stylesheet" type="text/css" href="/stylesheets/table.css">
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+    <img src="/favicon.png" alt="Shawn">
+    <h1><a href="/">SHAWN LEE</a></h1>
+    
+    <h2>What ones really can own at last are their stories. Just try to live a good one.</h2>
+    
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:shawnLeeZX.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">知 Home</a></li>
+  <li><a href="/academic">心 Academic</a>
+      <!-- <ul> -->
+          <!-- <li><a href="/academic/academic-biography.html">Academic Biography</li> -->
+          <!-- <li><a href="/academic/transcript.html">Selected Transcript</li> -->
+          <!-- <li><a href="/academic/english-proficiency.html">English Proficiency</li> -->
+          <!-- <li><a href="/academic/research.html">Research</li> -->
+      <!-- </ul> -->
+  </li>
+  <li><a href="/blog">行 Blog</a></li>
+  <li><a href="/blog/archives">合一 Archives</a>
+      <ul>
+          <li><a href="/blog/categories/cs">CS</a></li>
+          <li><a href="/blog/categories/research">Research</a></li>
+          <li><a href="/blog/categories/math">Math</a></li>
+          <li><a href="/blog/categories/life">Life</a></li>
+          <li><a href="/blog/categories/other">Other</a></li>
+      </ul>
+  </li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">如何使用octopress搭建个人网站</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-22T15:21:00+08:00" pubdate data-updated="true">Sep 22<span>nd</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h1 id="section">随笔</h1>
+
+<p>人有的时候会由于时间和事情的压力变得很单向度，总是倾向于完成最紧急的事
+情。于是很长的日子，很多的时间都是在一个和另一个危机之间相互转换。在很
+忙很忙的时候，这也没错。只是很多时候并没有达到那个程度。</p>
+
+<p>从前经常有想要写东西的时候，无论是技术笔记还是关于一些东西的感文，由于
+时间来不及，一放就永远放下了。前一段时间很忙，主要的事情刚刚第一阶段告
+一段落，又有向另一件紧急的事情rush的冲动。</p>
+
+<p>想起从前看过的一篇文章和一本书。</p>
+
+<!-- more -->
+
+<p>文章是一位台湾教授写的，刚才搜了搜，找不到原文了。文章里大概有这么一句
+话：真正困难、考验一个人能力而且对一个人在很长的时间线度上有重大影响的
+往往是短期内看不见成果的事情。</p>
+
+<p>书是《Seven Habits of Highly Effective People》。书里把所有的事情分成四
+个象限——非紧急非重要、紧急非重要、紧急重要以及非紧急重要，而最后一个象
+限，才是这本书的重点。非紧急重要也和《一万小时天才理论》里的一万小时也
+有共同之处。</p>
+
+<p>常常低头拉车，不时抬头看路。不要太匆匆忙忙，把每周末抽半天出来写要写的
+东西吧，如果有的话。</p>
+
+<h1 id="section-1">搭个人网站的动机</h1>
+<p>前一段时间借着为了申请研究生建立个人网站的机会，搭起了这个网站。每个人的成
+功都有不一样的原因，而每个人的失败多少都有相同的错误。为什么有许多人要
+搭个人网站呢？在搭这个网站的过程中浏览学习了很多人的个人网站，也发现了
+很多和我很像的人。</p>
+
+<p>好了，闲聊结束，入正题。</p>
+
+<h1 id="octopress">为什么选择octopress</h1>
+<p>在确定octopress之前，我在一些平台中做过尝试，最初是人人，然后是新浪博客、
+wordpress和豆瓣。这里我尝试做一下总结。不过，这些时间的尝试，与其说是对
+平台的尝试，更多的可能还是对内容的尝试——自己在这个过程中学习了许多人的
+博客和文章，学习如何写东西，以及察觉现有内容的不足和缺陷。</p>
+
+<p>前面提到地方基本是商用的SNS，每一个平台都有自己的ecosystem。</p>
+
+<p>人人在中国其实只是大学生的平台，其主要的积极作用基本在于在大学的初级阶
+段，即大一大二时侯用于提前接触、认识新同学；在社团活动时进行活动宣传；
+提供很方便的联系人的方式。在此之外，人人的积极作用便寥寥可数了。从本质
+上来讲，其是面向社交的大学生消遣平台。因此，在上边一段时间之后，我就离
+开度假了。</p>
+
+<p>新浪博客以及wordpress相对人人来说，是真实社会的SNS，而且存在相对应的
+ecosystem。对于仅使用文字内容的博主来说，这些平台基本够用了——其中新浪博
+客对应的是国内，wordpress在国内被墙掉。但是我不满意的地方是，对于新浪博
+客存在脚印，对于这两者，对于代码等的支持比较差，一些偏技术的内容写上去
+可读性很差。</p>
+
+<p>对于豆瓣，是最符合我胃口的SNS的了。豆瓣是国内唯一家以内容为导向的SNS，
+秉承的是以物交友的理念。其中的书籍、电影推荐，以及豆瓣FM都能够推荐很多
+很相关的内容。如果你想要看很精辟的你喜欢的电影、书籍的评论，你可以去豆
+瓣；如果你不知道听什么歌，那么可以去豆瓣FM尝试找建立一下自己的红心FM。
+但觉得豆瓣不好的两点是：小组内容的广告化有些严重，变成了类似于百度贴吧
+的存在，垃圾信息过多；新人在豆瓣上启动起来难度很大（现在我也只是新人），
+对于没有很多时间的人来说，比较难建立自己的友邻圈。但这两点不是我选择我
+用octopress的原因。同样，豆瓣也是以文字为主题的内容，对于代码等支持很差。</p>
+
+<p>所以我一直在寻找一个自己可控制程度高的服务，最终找到了octopress。</p>
+
+<p>下面列些octopress的好处：</p>
+
+<ul>
+  <li>所有想贴想写的内容都有很好的支持，比如代码、图片、视频、引文、数学公
+式等等，排版精美。</li>
+  <li>完全的可自我定制化。从本质上来说，octopress是自己写的网站，自由拥有网
+站html的控制权。因此自己可以控制内容的导向，网站的布局，从而不必被其
+他SNS的提供商对用户的定位所限制。</li>
+  <li>最后这是对于对网站前端有兴趣的同学的一个很好的学习机会和小项目。</li>
+</ul>
+
+<p>但octopress的缺点则是ecosystem比较薄弱，但这样也会更加内容导向吧。如果
+你也是一个认为，生命是一篇需要记录故事，那么octopress也会适合你。</p>
+
+<h1 id="octopress-1">使用octopress搭建一个功能完全的个人网站</h1>
+
+<h2 id="section-2">引言</h2>
+<p>关于如何搭建使用octopress的文章在网路上很多，我也是一点点搜索网上的文章
+慢慢搭建起来这个网站的。但是使得我写这篇文章的动机是我觉得现在网路上存
+在的文章多是一些octopress的使用片段笔记，不成系统。因此这篇文章的目的主
+要是系统地介绍octopress并且使用它来搭建一个满足基本所有个人网站功能的个
+人网站，同时也作为自己日后查找的笔记。同样，由于这不是一个step by step
+的教程，一些内容的教程其实是一个链接，而有的链接是没有中文网站的。如果
+有障碍，学习英文吧，<a href="/hobbies/books/title_needed.pdf">这里面</a>我写过一篇学习英文的文章。</p>
+
+<h2 id="octopress-2">安装以及部署octopress</h2>
+<p>关于这一部分内容最好的教程就是官网的了，见<a href="http://octopress.org/docs/setup/">这里</a>。官网中的要求也是使用octopress的前提要求，我也就不重述了。</p>
+
+<p>如果英语阅读存在困难的话，我在建立个人网站的过程中路过的无数的如何建立octopress的翻译，谷歌一下就好了。</p>
+
+<h2 id="octopress-3">octopress的原理简单介绍</h2>
+<p>注：在阅读接下来的文章之前，请保证自己已经能够使用octopress来写博客，下面是对octopress的更进一步使用。</p>
+
+<p>octopress的作用，或者说其中的Jekyll的作用就是避免让用户用html, css, javascript来写网站，而提供更方便的markdown, sass等。然而定制网站却仍然需要了解相关的一些知识。</p>
+
+<h3 id="section-3">服务器工作方式介绍</h3>
+<p>简单来讲，服务器即是接受用户给出的URL请求，然后返回对应的页面。</p>
+
+<p>如果URL给出的是到一个文件夹的形式如：<code>http://octopress.org/docs/blogging/code/</code>。那么，服务器会在该目录下查找index.html文件，然后返回该页面。</p>
+
+<p>如果URL给出的是到一个文件的形式如：<code>www.example.com/hello.txt</code>。那么，服务器返回该文件，对应在浏览器这里如果是html后缀的就将其解析显示在浏览器上，如果不是，则是一般意义上的下载。</p>
+
+<h3 id="octopress-4">octopress的工作原理</h3>
+
+<p>了解服务器的工作原理之后，就可以介绍octopress的工作原理了。</p>
+
+<p>首先，描述一下octopress的文件组织。</p>
+
+<p>对于我们简单用户有意义的在根目录就是下边这些文件。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">_config.yml <span class="c"># octopress的配置文件，可以配置博客标题、副标题以及很多设置。</span>
+</span><span class="line">_deploy <span class="c"># 每次运行rake deploy时，被推送到host的文件，也就是组成最终网站的文件，就在这里</span>
+</span><span class="line">plugins <span class="c"># 用于存放octopress的插件，比如plugins/code_block.rb就是插入这里代码的ruby插件</span>
+</span><span class="line">public <span class="c"># 每次rake generate之后生成的文件的存放处，运行rake preview查看的文件就是这里。</span>
+</span><span class="line">sass <span class="c"># 需要进行进一步编译的从而得到网站最终的css文件的样式预编译文件</span>
+</span><span class="line"><span class="nb">source</span> <span class="c"># 这里是主要的工作区，你的网站就是对这个文件夹下的文件进行编译得到</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><code>source</code>文件夹的文件结构如下：</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">about
+</span><span class="line">assets
+</span><span class="line">atom.xml
+</span><span class="line">blog
+</span><span class="line">favicon.png
+</span><span class="line">images
+</span><span class="line">_includes
+</span><span class="line">index.markdown
+</span><span class="line">javascripts
+</span><span class="line">_layouts
+</span><span class="line">_posts
+</span><span class="line">robots.txt
+</span><span class="line">stylesheets
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>我们的工作区基本在<code>source</code>文件夹下，octopress的工作就是根据<code>sass</code>和<code>source/stylesheets</code>定义的样式，<code>source/_layout</code>定义的排版以及<code>source/_includes</code>和<code>source/_includes/custom</code>定义的各个部分（head, header, footer等）的内容，将所有有yml文件头的markdown文件转化为html文件，然后将剩余的文件原分不动拷贝，来生成最终被服务器使用的在public（用于预览）和_deploy（用于部署）文件夹中的纯静态网站——仅由html, css, javascript组成。</p>
+
+<p>yml文件头即是文件开头部分的如下内容</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">---
+</span><span class="line">layout: post
+</span><span class="line">title:
+</span><span class="line">date: 2013-09-22 15:21
+</span><span class="line">comments:
+</span><span class="line">categories:
+</span><span class="line">---
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="section-4">如何添加页面</h2>
+
+<p>在原理的指导下，进行octopress的定制就清晰得多了，一般情况下，人们都需要一个<code>About</code>的页面。方法就是在网站更目录下添加一个名为<code>about</code>的文件夹，然后在文件夹里建立<code>index.markdown文</code>件。</p>
+
+<p>这样，在浏览器的URL栏里，输入<code>YOUR_HOMEPAGE_ADDR/about</code>就能够进入对应的<code>about</code>页面了（当然是编译之后）。</p>
+
+<h2 id="sourceincludescustom">如何使用source/_includes/custom文件夹——更改导航栏</h2>
+
+<p>然而，如果要在导航栏上提供可以点击的项目，则要使用octopress提供的接口了。</p>
+
+<p>想在原理一节中所讲的，octopress会根据<code>source/_includes/custom</code>中的内容来生成最终在public的文件。对导航栏的修改即在里面。文件夹里的文件目录如下：</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">after_footer.html
+</span><span class="line">asides              <span class="c">#侧边栏的定制</span>
+</span><span class="line">category_feed.xml
+</span><span class="line">footer.html
+</span><span class="line">header.html
+</span><span class="line">head.html
+</span><span class="line">navigation.html
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>这里以添加导航栏为例，阐述<code>custom</code>文件夹的功能。</p>
+
+<p>octopress就像拼拼图一样，将<code>custom</code>文件夹中的文件拼起来，<code>navigation.html</code>即会被拼到最终页面的导航部分。因此，在<code>navigation.html</code>中多添加一个表项就可以多添加一个导航项目。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;main-navigation&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">   <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/blog&quot;</span><span class="nt">&gt;</span>Blog<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+</span><span class="line">   <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/blog/archives&quot;</span><span class="nt">&gt;</span>Archives<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+</span><span class="line">+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/about&quot;</span><span class="nt">&gt;</span>About<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+</span><span class="line"><span class="nt">&lt;/ul&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>custom文件夹中的其他文件也以类似的方式工作。比如，想要在网站标题旁边添加图片的话，则要修改<code>header.html</code>文件，在其中用html代码插入图片。</p>
+
+<h2 id="section-5">主题定制</h2>
+
+<p>octopress装好之后，做的第一件事应该是修改主题了。虽然自带的主题也很nice，但是无数人都撞衫也很感觉不好了。</p>
+
+<p>现在网上提供了很多octopress的主题。尽管没有仔细调查，但是这些主题应该都是octopress
+1.0时代的东西了，octopress 2.0提供了一个简单的接口来让用户自定义主题。</p>
+
+<p>但是本节的主题改变并不能整个改变网站的布局，比如删去侧边栏。要完成这些功能还是要从octopress的源码里进行更改。</p>
+
+<p>对于网站的主题的简单改变在于<code>sass</code>文件夹中（文件夹的组织见原理一节），其文件组织如下：</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">base
+</span><span class="line">_base.scss
+</span><span class="line">custom
+</span><span class="line">partials
+</span><span class="line">_partials.scss
+</span><span class="line">plugins
+</span><span class="line">screen.scss
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>对于主题的改变都在<code>sass/custom</code>文件夹中，<code>custom</code>的文件夹组织如下：</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">_colors.scss
+</span><span class="line">_fonts.scss
+</span><span class="line">_layout.scss
+</span><span class="line">_menu.scss
+</span><span class="line">_styles.scss
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>下面用两个例子来简单说明，第一个修改网站header背景的配色，第二个修改网站的宽度。通过这两个例子，触类旁通，也就可以自己定制主题了。</p>
+
+<h3 id="colorsscss">在_colors.scss中修改配色</h3>
+
+<p>下面代码片段中，<code>$header-bg</code>对应的是即是header背景的配色，其后的值即是RGB颜色值。尝试下面两个值来看一看颜色的变化。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="sass"><span class="line"><span class="c1">// Here you can easily change your sites&#39;s color scheme.</span>
+</span><span class="line"><span class="c1">// To give it a try, uncomment some of the lines below rebuild your blog, and see how it works.</span>
+</span><span class="line"><span class="c1">// If you need a handy color picker try http://hslpicker.com</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// $header-bg: #dad4e3;</span>
+</span><span class="line"><span class="na">$header-bg</span><span class="o">:</span> <span class="mh">#ffffff</span><span class="err">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><code>$header-bg</code>仅是其中的一个选项，完整的选项的在<code>base/_theme.scss</code>中，尝试一下这些选项吧。你也可以直接修改<code>base/_theme.scss</code>中的配色，但是在<code>custom</code>文件夹中修改更为清晰明了易控制。</p>
+
+<h3 id="layoutscss">在_layout.scss中修改网站宽度</h3>
+
+<p>如下代码片段，中文注释处即是改变，同样，在<code>base/_layout.scss</code>中可以找到完整的可以修改的布局选项。</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td><td class="code"><pre><code class="sass"><span class="line"><span class="c1">// Here you can easily change your sites&#39;s layout.</span>
+</span><span class="line"><span class="c1">// To give it a try, uncomment some of the lines below, make changes, rebuild your blog, and see how it works.</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// $main-bg: #ffffff !default;</span>
+</span><span class="line"><span class="c1">// $page-bg: #ffffff !default;</span>
+</span><span class="line"><span class="na">$main-bg</span><span class="o">:</span> <span class="mh">#ffffff</span><span class="err">;</span>
+</span><span class="line"><span class="na">$page-bg</span><span class="o">:</span> <span class="mh">#ffffff</span><span class="err">;</span>
+</span><span class="line">
+</span><span class="line"><span class="na">$header-font-size</span><span class="o">:</span> <span class="mi">1</span><span class="kt">em</span><span class="err">;</span>
+</span><span class="line"><span class="na">$header-padding-top</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.5</span><span class="kt">em</span><span class="err">;</span>
+</span><span class="line"><span class="na">$header-padding-bottom</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.5</span><span class="kt">em</span><span class="err">;</span>
+</span><span class="line">
+</span><span class="line"><span class="na">$max-width</span><span class="o">:</span> <span class="mi">90</span><span class="kt">%</span><span class="err">;</span> <span class="c1">// Liquid布局，使得网站适应各种屏幕大小</span>
+</span><span class="line"><span class="na">$indented-lists</span><span class="o">:</span> <span class="n-Pseudo">true</span><span class="err">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="octopress-5">更改布局，让octopress更像个人网站而不是完全的博客</h2>
+
+<p>octopress支持不同的页面种类有不同的页面布局。</p>
+
+<p>比如，写博文的页面布局是post，而about页面是page布局。</p>
+
+<p>但是默认的页面布局不一定满足需求，下面说明如何修改页面布局以及添加页面布局种类。</p>
+
+<h3 id="section-6">更改布局</h3>
+
+<p>第一步可以被定制的是每个页面对应的布局。</p>
+
+<p>在<code>source/_layout</code>下存放着不同页面的布局文件。如下：</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">category_index.html
+</span><span class="line">default.html
+</span><span class="line">page.html <span class="c"># 比如该文件即是page页面的布局</span>
+</span><span class="line">post.html
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>在一般情况下，page页面一般不需要日期在上边，因此我把日期去掉，方法就是注释掉一些代码。但是octopress会把贴在codeblock中的代码片段进行处理，变成纯html，我暂时没有找到不让octopress忽略codeblock中tag的方法，因此这里贴不了代码了。</p>
+
+<h3 id="section-7">添加更多的布局种类</h3>
+<p>对于我来说，我需要不只一个page类型，从而对不同种类的page使用不同的侧边栏。因此，如何多一些页面种类？</p>
+
+<p>在每个文件的yml的header上有一个域用来选择使用的页面类型，如下</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line">---
+</span><span class="line">layout: post
+</span><span class="line">title:
+</span><span class="line">date: 2013-09-22 15:21
+</span><span class="line">comments:
+</span><span class="line">categories:
+</span><span class="line">---
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>在<code>layout</code>一域中，选择自己新建的页面种类就可以了。比如使用这样的yml头部：</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line">---
+</span><span class="line">layout: new_type_post
+</span><span class="line">title:
+</span><span class="line">date: 2013-09-22 15:21
+</span><span class="line">comments:
+</span><span class="line">categories:
+</span><span class="line">---
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>但为了让octopress找到相对应的布局，需要在<code>sourse/_layout</code>下添加对应的布局，这里即添加<code>new_type_post.html</code>。内容以原来的布局，如<code>page.html</code>为模板修改即可。</p>
+
+<h2 id="section-8">搭建个人网站的更多细节</h2>
+<p>到这里，基本这个个人网站就能够基本运作了，但是为了让其功能更完全，还有一些细节可以调整，这也是octopress强于其他博客平台的原因。</p>
+
+<h3 id="section-9">加入多媒体</h3>
+
+<h4 id="section-10">图片</h4>
+<p>octopress提供了插入图片的插件，使用插件的方法在<a href="http://octopress.org/docs/plugins/image-tag/">这里</a>。</p>
+
+<p>但是对于一些稍微学术一点的图片，我们需要在图片下加入大量的说明，这样简单的图片插入就不够用了，在<a href="http://blog.zerosharp.com/image-captions-for-octopress/">这里</a>可以找到如何达到下述效果的方法。
+<span class="caption-wrapper"><img class="caption" src="http://farm4.staticflickr.com/3666/9816457056_356c90c654_o_d.jpg" width="" height="" title="这里是说明，大量的说明，大量的说明，大量的说明，大量的说明" /><span class="caption-text">这里是说明，大量的说明，大量的说明，大量的说明，大量的说明</span></span></p>
+
+<p>对于想要展示很多图片的童鞋，也有fancy box和gallery可以使用，由于我暂时还没有这个需求，因此就不写了。</p>
+
+<h4 id="section-11">音频</h4>
+<p>如果想要在网站上添加分享音频的功能，则需要额外安装插件，在<a href="http://blog.micronarrativ.org/blog/2012/09/06/wordpress-til-octopress-audio/">这里</a>可以找到方法。</p>
+
+<h4 id="section-12">视频</h4>
+<p>在<a href="http://octopress.org/docs/plugins/video-tag/">这里</a>可以找到如何在octopress中插入视频。</p>
+
+<h3 id="section-13">让导航栏能够拥有更多细节</h3>
+<p>对于octopress来说，导航栏的项目变多之后排版会变得很乱，因此如果想在导航栏上加入更多的内容，那么每个导航栏项目下添加一个下拉菜单则可以解决问题。在<a href="https://github.com/octothemes/menu-plugin">这里</a>可以找到方法。效果预览即是本网站的下拉菜单效果。</p>
+
+<h3 id="section-14">一些杂项</h3>
+
+<h4 id="section-15">改变网站的小图标</h4>
+<p>替换<code>source/favicon.png</code>文件</p>
+
+<h4 id="section-16">文摘</h4>
+<p>在写博文时，可以使用<code>&lt;!-- more --&gt;</code>注释来分割一部分文章作为文摘。只有文章在注释之前的第一部分会在博文目录的预览中出现。</p>
+
+<h4 id="octopress-6">一些octopress使用技巧的文章</h4>
+<p><a href="http://techtinkering.com/2011/08/17/improving-related-posts-on-jekyll/">Improving the related_posts feature of jekyll</a></p>
+
+<p><a href="http://www.narga.net/improve-octopress-advanced-tweaks-tips/">Improve Octopress with Advanced Tweaks &amp; Tips</a></p>
+
+<p><a href="http://octopressthemes.com/blog/2012/10/18/how-to-add-an-email-subscription-plugin-on-octopress/">How to Add an Email Subscription Plugin on Octopress</a></p>
+
+<p><a href="http://octopress.org/docs/plugins/codeblock/">如何添加代码</a></p>
+
+<p><a href="http://codemacro.com/2012/07/26/post-footer-plugin-for-octopress/">为octopress每篇文章添加一个文章信息</a></p>
+
+<p><a href="http://fancyapps.com/fancybox/">fancyBox: fancyBox is a tool that offers a nice and elegant way to add zooming functionality for images, html content and multi-media on your webpages.</a></p>
+
+<h4 id="markdown">一个markdown的教程</h4>
+<p><a href="http://www.markdowntutorial.com/">http://www.markdowntutorial.com/</a></p>
+
+<h4 id="markdown-1">如何在markdown中使用表格</h4>
+<p>markdown的编译器能够识别出html的代码，因此，使用html的表格代码就能够实现表格的功能。</p>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Shawn</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-22T15:21:00+08:00" pubdate data-updated="true">Sep 22<span>nd</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/abroad/'>Abroad</a>, <a class='category' href='/blog/categories/cs/'>CS</a>, <a class='category' href='/blog/categories/octopress/'>Octopress</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/09/17/dui-tcpzhuang-tai-ji-de-li-jie/" title="Previous Post: 对TCP状态机的理解">&laquo; 对TCP状态机的理解</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/09/24/cscopes-understanding-of-definition/" title="Next Post: Cscope's Understanding of Definition">Cscope's Understanding of Definition &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/06/06/this-too-shall-pass/">THIS TOO SHALL PASS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/06/05/connection-between-pca/">Connection Between PCA and Fourier Transform</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/05/22/a-concept-explanation-on-composition-of-matrice-representing-linear-transform/">A Concept Explanation on Composition of Matrice Representing Linear Transform</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/05/14/what-mathematical-object-random-really-is/">What a Mathematical Object Random Variable Really Is</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/05/07/progress-buffer-for-big-picture-building/">Progress Buffer for Big Picture Building</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Tag Cloud</h1>
+    <span id="tag-cloud"><embed type='application/x-shockwave-flash' src='/javascripts/tagcloud.swf'width='100%' height='250' bgcolor='#f2f2f2' id='tagcloudflash' name='tagcloudflash' quality='high' allowscriptaccess='always'flashvars="tcolor=0x333333&amp;tcolor2=0x333333&amp;hicolor=0x000000&amp;tspeed=100&amp;distr=true&amp;mode=tags&amp;tagcloud=%3Ctags%3E%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fabroad%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EAbroad%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fanalysis%27+style%3D%27font-size%3A+11.411764705882353%25%27%3EAnalysis%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fandroid%27+style%3D%27font-size%3A+11.411764705882353%25%27%3EAndroid%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fansible%27+style%3D%27font-size%3A+11.411764705882353%25%27%3EAnsible%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fant%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EAnt%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fassembly%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EAssembly%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fbibtex%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EBibtex%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fc%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EC%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcnn%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ECNN%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcs%27+style%3D%27font-size%3A+34.94117647058823%25%27%3ECS%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcscope%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ECscope%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fctags%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ECtags%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fculture%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ECulture%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcv%27+style%3D%27font-size%3A+11.411764705882353%25%27%3ECV%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fdesign%27+style%3D%27font-size%3A+12.823529411764707%25%27%3EDesign%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fdjvu%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EDjvu%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Feclim%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EEclim%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Feconomics%27+style%3D%27font-size%3A+10.941176470588236%25%27%3EEconomics%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Femacs%27+style%3D%27font-size%3A+11.411764705882353%25%27%3EEmacs%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fencoding%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EEncoding%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fexcerpt%27+style%3D%27font-size%3A+11.882352941176471%25%27%3EExcerpt%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Ffourier%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EFourier%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fhadoop%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EHadoop%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fhistory%27+style%3D%27font-size%3A+10.941176470588236%25%27%3EHistory%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Finformation%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EInformation%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fjava%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EJava%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flatex%27+style%3D%27font-size%3A+11.882352941176471%25%27%3ELaTeX%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flibconfig%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ELibconfig%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flife%27+style%3D%27font-size%3A+22.705882352941174%25%27%3ELife%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flinux%27+style%3D%27font-size%3A+16.588235294117645%25%27%3ELinux%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flwip%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ELwip%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fmarkdown%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EMarkdown%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fmath%27+style%3D%27font-size%3A+18.470588235294116%25%27%3EMath%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fmatrix%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EMatrix%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fml%27+style%3D%27font-size%3A+12.352941176470589%25%27%3EML%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fnetwork%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ENetwork%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fnote%27+style%3D%27font-size%3A+50.0%25%27%3ENote%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Foctave%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EOctave%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Foctopress%27+style%3D%27font-size%3A+10.941176470588236%25%27%3EOctopress%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fother%27+style%3D%27font-size%3A+13.294117647058822%25%27%3EOther%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fpdf%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EPdf%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fperf%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EPerf%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fpgm%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EPGM%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fphd%27+style%3D%27font-size%3A+12.352941176470589%25%27%3EPhD%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fpresentation%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EPresentation%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fprobability%27+style%3D%27font-size%3A+11.411764705882353%25%27%3EProbability%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fproof%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EProof%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Freading%27+style%3D%27font-size%3A+15.176470588235293%25%27%3EReading%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fregex%27+style%3D%27font-size%3A+10.941176470588236%25%27%3ERegex%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Frepost%27+style%3D%27font-size%3A+23.176470588235293%25%27%3ERepost%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fresearch%27+style%3D%27font-size%3A+24.588235294117645%25%27%3EResearch%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fsignal-processing%27+style%3D%27font-size%3A+10.941176470588236%25%27%3ESignal_Processing%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fstatistics%27+style%3D%27font-size%3A+11.411764705882353%25%27%3EStatistics%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Ftopology%27+style%3D%27font-size%3A+10.470588235294118%25%27%3ETopology%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fvim%27+style%3D%27font-size%3A+13.764705882352942%25%27%3EVim%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fwavelet%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EWavelet%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fxml%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EXml%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fyaml%27+style%3D%27font-size%3A+10.470588235294118%25%27%3EYaml%3C%2Fa%3E+%3C%2Ftags%3E"></span>
+</section>
+
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/abroad/'>Abroad (1)</a></li><li><a href='/blog/categories/analysis/'>Analysis (3)</a></li><li><a href='/blog/categories/android/'>Android (3)</a></li><li><a href='/blog/categories/ansible/'>Ansible (3)</a></li><li><a href='/blog/categories/ant/'>Ant (1)</a></li><li><a href='/blog/categories/assembly/'>Assembly (1)</a></li><li><a href='/blog/categories/bibtex/'>Bibtex (1)</a></li><li><a href='/blog/categories/c/'>C (1)</a></li><li><a href='/blog/categories/cnn/'>CNN (1)</a></li><li><a href='/blog/categories/cs/'>CS (53)</a></li><li><a href='/blog/categories/cscope/'>Cscope (1)</a></li><li><a href='/blog/categories/ctags/'>Ctags (1)</a></li><li><a href='/blog/categories/culture/'>Culture (1)</a></li><li><a href='/blog/categories/cv/'>CV (3)</a></li><li><a href='/blog/categories/design/'>Design (6)</a></li><li><a href='/blog/categories/djvu/'>Djvu (1)</a></li><li><a href='/blog/categories/eclim/'>Eclim (1)</a></li><li><a href='/blog/categories/economics/'>Economics (2)</a></li><li><a href='/blog/categories/emacs/'>Emacs (3)</a></li><li><a href='/blog/categories/encoding/'>Encoding (1)</a></li><li><a href='/blog/categories/excerpt/'>Excerpt (4)</a></li><li><a href='/blog/categories/fourier/'>Fourier (1)</a></li><li><a href='/blog/categories/hadoop/'>Hadoop (1)</a></li><li><a href='/blog/categories/history/'>History (2)</a></li><li><a href='/blog/categories/information/'>Information (1)</a></li><li><a href='/blog/categories/java/'>Java (1)</a></li><li><a href='/blog/categories/latex/'>LaTeX (4)</a></li><li><a href='/blog/categories/libconfig/'>Libconfig (1)</a></li><li><a href='/blog/categories/life/'>Life (27)</a></li><li><a href='/blog/categories/linux/'>Linux (14)</a></li><li><a href='/blog/categories/lwip/'>Lwip (1)</a></li><li><a href='/blog/categories/markdown/'>Markdown (1)</a></li><li><a href='/blog/categories/math/'>Math (18)</a></li><li><a href='/blog/categories/matrix/'>Matrix (1)</a></li><li><a href='/blog/categories/ml/'>ML (5)</a></li><li><a href='/blog/categories/network/'>Network (1)</a></li><li><a href='/blog/categories/note/'>Note (85)</a></li><li><a href='/blog/categories/octave/'>Octave (1)</a></li><li><a href='/blog/categories/octopress/'>Octopress (2)</a></li><li><a href='/blog/categories/other/'>Other (7)</a></li><li><a href='/blog/categories/pdf/'>Pdf (1)</a></li><li><a href='/blog/categories/perf/'>Perf (1)</a></li><li><a href='/blog/categories/pgm/'>PGM (1)</a></li><li><a href='/blog/categories/phd/'>PhD (5)</a></li><li><a href='/blog/categories/presentation/'>Presentation (1)</a></li><li><a href='/blog/categories/probability/'>Probability (3)</a></li><li><a href='/blog/categories/proof/'>Proof (1)</a></li><li><a href='/blog/categories/reading/'>Reading (11)</a></li><li><a href='/blog/categories/regex/'>Regex (2)</a></li><li><a href='/blog/categories/repost/'>Repost (28)</a></li><li><a href='/blog/categories/research/'>Research (31)</a></li><li><a href='/blog/categories/signal-processing/'>Signal_Processing (2)</a></li><li><a href='/blog/categories/statistics/'>Statistics (3)</a></li><li><a href='/blog/categories/topology/'>Topology (1)</a></li><li><a href='/blog/categories/vim/'>Vim (8)</a></li><li><a href='/blog/categories/wavelet/'>Wavelet (1)</a></li><li><a href='/blog/categories/xml/'>Xml (1)</a></li><li><a href='/blog/categories/yaml/'>Yaml (1)</a></li></ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Shawn -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2013/09/22/ru-he-shi-yong-octopressda-jian-ge-ren-wang-zhan/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2013/09/22/ru-he-shi-yong-octopressda-jian-ge-ren-wang-zhan/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

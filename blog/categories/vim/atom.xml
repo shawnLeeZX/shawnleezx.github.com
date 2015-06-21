@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Vim | SHAWN LEE]]></title>
+  <link href="http://shawnLeeZX.github.io/blog/categories/vim/atom.xml" rel="self"/>
+  <link href="http://shawnLeeZX.github.io/"/>
+  <updated>2015-06-21T11:48:38+08:00</updated>
+  <id>http://shawnLeeZX.github.io/</id>
+  <author>
+    <name><![CDATA[Shawn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Pattern of :grep and :vimgrep in Vim Explained]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/03/15/pattern-of-grep-and-vimgrep-in-vim-explained/"/>
+    <updated>2014-03-15T22:23:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/03/15/pattern-of-grep-and-vimgrep-in-vim-explained</id>
+    <content type="html"><![CDATA[<p>It has been a long time that I was confused with the different regex pattern
+used by <code>:vimgrep</code> and <code>:grep</code> in Vim, especially for the double start <code>**</code>. Today
+I read the help documentation of vim and write down their difference here.</p>
+
+<p>Vim has two ways to do  the regex search, internally and externally. The former
+uses the <code>:vimgrep</code> command while the latter uses the <code>:grep</code> command.
+<code>:vimgrep</code> will read files into memory before doing regex search, thus it is
+slower than <code>:grep</code>, which uses the external grep program, specified using
+<code>grepprg</code> parameter.</p>
+
+<!-- more -->
+
+<p>Therefore, the regex of <code>:grep</code> is the same with normal grep command you are
+using in bash while the regex of <code>:vimgrep</code> uses the vim regex pattern. The
+most obvious difference for me is the double star wildcard usage.</p>
+
+<p>Vim regex pattern supports <strong>starstar-wildcard</strong>. For example:</p>
+
+<p><code>bash
+Example: &gt;
+	:n **/*.txt
+Finds files:
+	ttt.txt
+	subdir/ttt.txt
+	a/b/c/d/ttt.txt
+When non-wildcard characters are used these are only matched in the first
+directory.  Example: &gt;
+	:n /usr/inc**/*.h
+Finds files:
+	/usr/include/types.h
+	/usr/include/sys/types.h
+	/usr/inc_old/types.h
+</code></p>
+
+<p><code>:grep</code> will only take <code>**</code> as one <code>*</code> and ignore the next <code>*</code>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[About Unicode and Character Sets, and them in Programming Language and Vim]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/03/13/advanced-search-and-replace-in-vim/"/>
+    <updated>2014-03-13T11:22:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/03/13/advanced-search-and-replace-in-vim</id>
+    <content type="html"><![CDATA[<p>Normally, programmers(at least for novice like me) just do not need to care
+about encoding. Or in another word, it is abstracted from normal programmer –
+your IDE, your editor, your web browser automatically takes care of encoding
+for you. Even I haved coded a simple program to convert utf-16 to utf-8 some
+time ago, I still did not clearly understand how string is handled by the
+program languages I used.</p>
+
+<p>Recently, I have to deal with input containing unicode. Thus I made up this
+empty spot for myself. I am not a knowledge producer now. I collect them.</p>
+
+<!-- more -->
+
+<h2 id="understand-how-string-is-handled-by-computer">Understand how string is handled by computer</h2>
+
+<p>There is great [post](Positively Must Know About Unicode and Character Sets (No Excuses!) about unicode and charset.
+After reading this post, you will understand how string is handled by computer.</p>
+
+<h2 id="understand-programming-language-handles-unicode">Understand programming language handles unicode</h2>
+<p>This section is just a short summary about how c and python handle unicode
+string. For a complete description, please refer to their manual and books.</p>
+
+<p>C is a low-level high-level language. There is no such thing like unicode for
+c – c does not understand encoding. It takes string as an array of bytes. One
+unicode code point is just stored as multiple consecutive bytes.</p>
+
+<p>Different version of python handles unicode the different way – this is a
+major different between python 2.X and python 3.X. Python 2.X uses an object
+called <code>unicode</code> to handle unicode, while <code>str</code> handles ascii and byte array –
+meaning it is the same as c, while python 3.X’s <code>str</code> handles unicode by
+default. More details please refer Chapter 37 of <em>Learning Python 5th</em>.</p>
+
+<p>I have not checked Java and C++ for the time being.</p>
+
+<h2 id="use-vim-to-search-for-symbol-other-than-normal-word">Use Vim to Search for Symbol Other than Normal Word</h2>
+<p>Before you begin programming, it would be better you have a sense about what
+symbols you are going to deal with, meaning first deal with it manually.</p>
+
+<p>I used vim to search for tough symbols, like control code(with ascii code below
+0x1f and 0x7f), and unicode(with code between 0xff and 0xffffffff).</p>
+
+<p>A complete table about control code and how most editor will display them can
+be found <a href="http://en.wikipedia.org/wiki/ASCII">here</a>.</p>
+
+<p>To find hexa value of the non-printable character under cursor in vim, using
+<code>ga</code>.</p>
+
+<p>To editor file binarily, use <code>bvi</code>, which is a separate program.</p>
+
+<h3 id="searching-for-control-sequence">Searching for Control Sequence</h3>
+<p>When searching for control sequence, using <code>x</code> is ok, which will be illustrated
+using example:</p>
+
+<p><code>bash
+/[\x00-\x1f]
+</code></p>
+
+<p>This command will search for any control code with code <code>00</code> to <code>1f</code>.</p>
+
+<p>If you want to search for unicode, using:</p>
+
+<p><code>bash
+/[\uff-\ufff]
+</code></p>
+
+<p>This will search for word with code <code>ff</code> to <code>fff</code> using current encoding
+method of vim(use <code>help encoding</code> to see more about encoding of vim).</p>
+
+<p><code>bash
+/[\Uff-\Ufffffff]
+</code></p>
+
+<p>Previous command can only search for code ranges from <code>ff</code> to <code>ffff</code>. To search
+beyond that, you should use <code>\U</code>.</p>
+
+<p>One more thing should be noted is that when you are searching outside <code>[]</code> use
+<code>\%x</code> instead of <code>\x</code>. For example:</p>
+
+<p><code>bash
+:%s/\%x00//gc
+</code></p>
+
+<p>This will remove all null char in your document.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Make vim style tmux]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/02/08/make-vim-style-tmux/"/>
+    <updated>2014-02-08T21:10:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/02/08/make-vim-style-tmux</id>
+    <content type="html"><![CDATA[<p>tmux is a terminal multiplexer: it enables a number of terminals to be created,
+accessed, and controlled from a single screen.</p>
+
+<p>One thing vimers feel the most uncomfortable is to move using arrow keys, no
+matter what kinds of application they are in.</p>
+
+<p>Recently I have to use pure terminal on linux server, thus, I took some time to
+get the vim style key binding for tmux.</p>
+
+<!-- more -->
+
+<p>The first thing is not about vim. <code>C-b</code> is just a combination of two keys that
+are too far away. It would be better to change it to <code>C-a</code>, like the following:</p>
+
+<p><code>bash
+# Set the prefix to ^A.
+set-option -g prefix C-a
+unbind-key C-b
+bind-key C-a send-prefix
+</code></p>
+
+<p>The following is easy, in <code>/usr/share/doc/tmux/examples</code>, there are several
+examples key binding files provided for users just like me. <code>vim-keys.conf</code> is
+the key binding conf file for vimers.</p>
+
+<p>Copy that to <code>~/.tmux.conf</code>. If this file is not there, create one.</p>
+
+<p>Then, you are done. Enjoy vimming.</p>
+
+<p><strong>Note</strong>: The file ~/.tmux.conf is loaded when the tmux server is first
+started. So if there are existing tmux sessions, starting a new session with
+tmux does not result in reloading the conf file.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Using Arduino with Vim under Linux]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2013/12/30/using-arduino-with-vim-under-linux/"/>
+    <updated>2013-12-30T22:05:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2013/12/30/using-arduino-with-vim-under-linux</id>
+    <content type="html"><![CDATA[<p>I spent half the night getting the workflow of using arduino with Vim &amp; CLI
+under linux done. Here summarize what I did.</p>
+
+<p>An advice is to get arduino work using its IDE to make sure everything goes
+well before trying to do it with CLI.</p>
+
+<p>There are three steps involved:</p>
+
+<ol>
+  <li>Get the official package of arduino from its official website.</li>
+  <li>Get vim syntax file for arduino.</li>
+  <li>Get Makefile for arduino and set up parameters according to your boards.</li>
+</ol>
+
+<p>Then, you are done.</p>
+
+<!-- more -->
+
+<h2 id="arduino-package-installation">Arduino Package Installation</h2>
+
+<p>Install arduino from its official <a href="http://playground.arduino.cc/Learning/Linux">site</a> for linux.</p>
+
+<p>This is where most arduino users stop. The IDE is good for beginner, or non
+serious programmers for non serious projects. If you are going to build
+something serious, you need to know not just about the IDE given.</p>
+
+<p>I guess more comments should be left to this nice <a href="http://pragprog.com/magazines/2011-04/advanced-arduino-hacking">post</a>.</p>
+
+<p>One thing should be pointed out is previous post just posted for explanation of
+the reasons, not for solution. The solution provided by that post is outdated.</p>
+
+<h2 id="get-vim-syntax-file">Get Vim Syntax file</h2>
+<p>Before any work concerning hardware is done, I think it is better to have your
+code viewed with syntax highlighting.</p>
+
+<p><a href="Arduino Package Installation">Here</a> is syntax highlight for vim.</p>
+
+<p>What’s more, here is a <a href="https://github.com/sudar/vim-arduino-snippets">snippets</a> for Vim, which uses snipmate plugin.</p>
+
+<h2 id="play-with-arduino-under-cli">Play with Arduino under CLI</h2>
+
+<p>Now, <a href="https://github.com/sudar/Arduino-Makefile/">here</a> is the up-to-date solution for CLI-style arduino.</p>
+
+<p>The usage is clearly stated by the author, so I will not bother repeating.</p>
+
+<p>One thing should be noted is that when uploading to arduino under linux, root
+privilege must be used to access to the serial port.</p>
+
+<p>## </p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Reload a Buffer in Vim]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2013/11/14/reload-a-buffer-in-vim/"/>
+    <updated>2013-11-14T09:35:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2013/11/14/reload-a-buffer-in-vim</id>
+    <content type="html"><![CDATA[<p>Recently, I have to edit java files under both Vim and Eclipse. Eclipse has an
+automatical feature to reload the file buffer if the file on the file sytem has
+been changed. But Vim does not do that.</p>
+
+<p>type the following command to reload the buffer.</p>
+
+<p><code>bash
+:e[dit]
+</code></p>
+
+<p>if you have made modification to the buffer, add an exclamation.</p>
+
+<p><code>bash
+:e[dit]!
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>

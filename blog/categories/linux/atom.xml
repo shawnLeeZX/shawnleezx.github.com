@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Linux | SHAWN LEE]]></title>
+  <link href="http://shawnLeeZX.github.io/blog/categories/linux/atom.xml" rel="self"/>
+  <link href="http://shawnLeeZX.github.io/"/>
+  <updated>2015-06-21T11:48:38+08:00</updated>
+  <id>http://shawnLeeZX.github.io/</id>
+  <author>
+    <name><![CDATA[Shawn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Learning Emacs in 3 Days]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/08/18/learning-emacs-in-3-days/"/>
+    <updated>2014-08-18T01:04:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/08/18/learning-emacs-in-3-days</id>
+    <content type="html"><![CDATA[<p>I am learning and setting up emacs environment in the last three
+days. Though various blogs, tutorials and manuals have already talking
+about this topic, I did not find one direct path that I can follow to
+fulfill my need, which is to learn emacs from zero knowledge, well
+organize and set up a satisfactory development IDE.  This blog notes
+down what I have done.</p>
+
+<!-- more -->
+
+<h2 id="why-learning-emacs">Why Learning Emacs</h2>
+
+<p>I am an experienced vimer. Why bother learning another complicated
+editor?</p>
+
+<p>Three days ago, I have no idea about the comparison between vim and
+emacs, since vim fulfills all my programming tasks – I have
+satisfactory configuration in vim for C/C++, Java, Python, LaTeX,
+Markdown, XML, HTML, Octave, Ant, Arduino. You can find my
+configuration <a href="https://github.com/shawnLeeZX/.vim">here</a>.</p>
+
+<p>Three days ago, for me, emacs is just an editor that is comparable
+with vim, but they cannot win over each other. People stick with emacs
+will not get their hand dirdy on vim and vice versa.</p>
+
+<p>There must be something that makes me to spend the next three days
+learning emacs.</p>
+
+<p>The story started with a trip on the train. That time, I was reading a
+book called <em>Hacker and Painter</em>. If you have not read the book, I
+strongly recommend it to you. Although this may not be the most
+shinning point in the boo, the author succeeded a startup and beat
+their competitor largely by using lisp as their programming language
+. Before then, I knew lisp is a programming language for AI, a area
+where I dedicated myself to work on. But I cannot find any books or
+applications use lisp or talk about lisp. It makes me think lisp is
+outdated. Afterall, it was proposed by McCarthy tens of years
+ago. Such evidence strongly supported the point the author made in the
+book that lisp is a language worth learning.</p>
+
+<p>It remains me of an
+<a href="http://www.catb.org/esr/faqs/hacker-howto.html">article</a> about HOW-DO
+become a hacker read long time ago. The author writes:</p>
+
+<blockquote>
+  <p>LISP is worth learning for a different reason — the profound
+enlightenment experience you will have when you finally get it. That
+experience will make you a better programmer for the rest of your
+days, even if you never actually use LISP itself a lot.</p>
+</blockquote>
+
+<p>This <a href="http://www.defmacro.org/ramblings/lisp.html">article</a> gives a
+nice explanation on lisp.</p>
+
+<p>Therefore, to find the enlightment mentioned by all the hackers, why
+from c, python to ruby, their syntax are more and more similar to lisp and
+figure out why lisp is created by McCarthy to be the AI language, I
+decided to learn lisp. Since emacs lisp is the only place I knew now
+uses lisp a lot, I decided to learn emacs.</p>
+
+<p>That’s enough about the motivation.</p>
+
+<h2 id="comparison-between-vim-and-emacs">Comparison Between Vim and Emacs</h2>
+<p>I would’t bother to read such section in other article when I was
+using vim exclusively, but I should put some insight into the
+advantages and disadvantages the two most powerful editors in the
+world.</p>
+
+<p>A simple answer is vim is quicker than any other editor in the world,
+including emacs, while more powerful than any other editor in the
+world, excluding emacs.</p>
+
+<p>If you push typing speed to the extreme speed, vim, a multi-modal
+editor is definitely quicker than emacs. But the coming of
+<a href="https://gitorious.org/evil/pages/Home">evil</a>, a plugin to simulate
+vim behavior in emacs solves this problem. Actually I am using
+evil-mode under emacs. So this evidence does not support the argument.</p>
+
+<p>The real problem is that emacs loads really slow. I have 25M
+configuration file for vim, which it only takes less than one second
+to load while emacs will normally takes 3-10 seconds now, no to take
+into account that I am just starting using emacs and I will add more
+extensions now and then recently. Such a long loading time makes emacs
+not suitable for small task. For example, I won’t edit config files
+under emacs – I won’t even take 3 seconds to edit the file and close
+the file using vim.</p>
+
+<p>However, any serious programming task is not a small task. This is
+where emacs stands out, since modern computer are more and more
+advanced, which makes the huge volume of emacs not matter.</p>
+
+<p>For non-trivial task, emacs surpasses vim. Emacs has better
+autocomplete, syntax highlighting. Emacs is more robust. I will skip
+the detail for now.</p>
+
+<h2 id="learning-emacs-from-zero-in-3-days">Learning Emacs From Zero in 3 Days</h2>
+
+<p>I will not pretend smart. I can make emacs work well in three days is
+because I spent most of the three days learning and configuring emacs
+and I know what I am looking for since I have similar functionalities
+in vim. Learning emacs and vim is about learning how compiler find c
+header files, auto pairing of parenthesis and more are done. It is
+about learning how the underlying is working. That’s where the time
+is spent.</p>
+
+<p>The following are step-by-step instructions about how to learn emacs
+with zero knowledge about emacs. Let’s get started.</p>
+
+<h3 id="learning-emacs-basics">Learning Emacs Basics</h3>
+
+<ul>
+  <li>Install emacs.</li>
+  <li>Open emacs.</li>
+  <li>Learning emacs basics.
+    <ul>
+      <li>Press <code>&lt;C-h&gt;t</code> to invoke the learning-by-doing tutorial. This
+tutorial teaches you basics about emacs.</li>
+    </ul>
+  </li>
+  <li>Learning how to use the help system.
+    <ul>
+      <li>Press <code>&lt;C-h&gt;r</code> to open emacs manual in info mode.</li>
+      <li>Press <code>d</code> to go to the root of info help system.</li>
+      <li>Find a menu item called <code>Info</code>, which is nearly at the bottom of the
+manual.</li>
+      <li>Learning how to use info system in the manual.</li>
+      <li>Now you are capable to basic command of emacs and info.</li>
+      <li>Press <code>&lt;C-h&gt;&lt;C-h&gt;</code> and check some variables, functions and command
+you do not know what they are for to practice using the help
+system of emacs.</li>
+    </ul>
+  </li>
+  <li>Learning how to customize emacs.
+    <ul>
+      <li>Go to the root of the info manual again.</li>
+      <li>Find a section called <code>Emacs Lisp Intro</code>.</li>
+      <li>Enter it.</li>
+      <li>Find a section called <code>Emacs Initialization</code>. It will tell you the
+basics about customizing emacs.</li>
+    </ul>
+  </li>
+  <li>Now you have finished learning basics of emacs and are capable of
+building your customized emacs. There are two manual at the root of
+the info manual, <code>Emacs Lisp Intro</code> and <code>Elisp</code>. We have used the
+former. The latter is emacs lisp manual. Remember to refer to it to
+learn about lisp when you are customizing your emacs.</li>
+</ul>
+
+<h3 id="start-with-professionals-emacsd">Start With Professional’s Emacs.d</h3>
+
+<p>To get started, you’d better begin by mimicking others. I started by
+forking purcell’s <a href="https://github.com/purcell/emacs.d">emacs.d</a>. There are
+others as well, such as
+<a href="http://eschulte.github.io/emacs24-starter-kit/">Emacs24 Starter Kit</a>. You
+are free to choose yours. But one thing is worth pointing out is that
+purcell’s emacs.d really gives powerful starting.</p>
+
+<p>If you are also a vimmer before, I could also fork my
+<a href="https://github.com/shawnLeeZX/emacs.d">emacs.d</a>.</p>
+
+<p>To keep up-to-date with the original repo, you could add it as a remote repo and
+pull from it from time to time.</p>
+
+<p><code>bash
+git remote add firstguy git://github.com/firstguy/repo.git
+</code></p>
+
+<p>Read its sources to figure out how the extensions are organized and
+know how to add your own customization. In the following I will
+describe the changes I made up to now.</p>
+
+<h4 id="package-management">Package Management</h4>
+<p>Emacs has better package management mechanism for extensions than
+vim. I use <code>package.el</code>. See this <a href="http://batsov.com/articles/2012/02/19/package-management-in-emacs-the-good-the-bad-and-the-ugly/">blog</a>.</p>
+
+<h4 id="copy-paste">Copy Paste</h4>
+<p>I use emacs in a termial, and by default inter-program copy and paste
+does not work.</p>
+
+<p>This
+<a href="http://shreevatsa.wordpress.com/2006/10/22/emacs-copypaste-and-x/">blog</a>
+talks about how copy and paste works in emacs, or more generally under linux.</p>
+
+<p>To enable inter-program copy and paste, see this <a href="http://hugoheden.wordpress.com/2009/03/08/copypaste-with-emacs-in-terminal/">blog</a>.</p>
+
+<h4 id="swap-ctrl-and-caps-lock">Swap Ctrl and Caps Lock</h4>
+<p>Make <code>&lt;Caps Lock&gt;</code> a <code>&lt;Ctrl&gt;</code> key to speed up typing. See <a href="http://www.emacswiki.org/emacs/MovingTheCtrlKey">here</a>.</p>
+
+<h4 id="manage-extra-with-git">Manage Extra with git</h4>
+<p>Occasionally, you cannot find extensions you want in the package
+management system. To manage the extensions you download, use git. And
+to keep those extensions in their git repo will ease the process of
+updating. To make this work, some knowledge of git submodule will be
+helpful. See this <a href="http://longair.net/blog/2010/06/02/git-submodules-explained/">post</a>.</p>
+
+<h4 id="beginning-by-setting-up-development-environment-for-cc">Beginning By Setting Up Development Environment for C/C++</h4>
+
+<p>Below is three video on Youtude.</p>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=HTUE03LnaXA">Emacs as a C/C++ Editor/IDE (Part I): auto-complete, yasnippet, and autoplete</a></li>
+  <li><a href="https://www.youtube.com/watch?v=r_HW0EB67eY">Emacs as a C/C++ Editor/IDE (Part 2): iedit, flymake-google-cpplint, google-c-style</a></li>
+  <li><a href="https://www.youtube.com/watch?v=Ib914gNr0ys">Emacs as a C/C++ Editor/IDE (Part 3): Installing CEDET mode for true intellisense</a></li>
+</ul>
+
+<h4 id="evil">Evil</h4>
+
+<p>If you are also a vimmer try <a href="http://www.emacswiki.org/emacs/Evil">evil</a>.</p>
+
+<p>If you want to speed up your development, also try it!</p>
+
+<p>If you are using emacs under screen or tmux, change the timeout to
+make evil works smoothly.</p>
+
+<p>For tmux, change <code>.tmux.conf</code>:</p>
+
+<p><code>bash
+tmux set -sg escape-time 0
+</code>
+For screen, change <code>.screenrc</code></p>
+
+<p><code>bash
+maptimeout 5
+</code></p>
+
+<h4 id="misc">Misc</h4>
+
+<ul>
+  <li>Generate tags for emacs using <code>-e</code> option using ctags.</li>
+  <li>Shell in emacs. See this <a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/">post</a>.</li>
+  <li>I recommend a product called
+<a href="https://www.teambition.com/">teambition</a> to replace the org-mode to
+GET THINGS DONE. Its has a web interface and app on smartphone.</li>
+  <li>Lastly, you can find my <code>emacs.d</code> <a href="https://github.com/shawnLeeZX/emacs.d">here</a>.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ansible Variables Explained]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/04/08/ansible-variables-explained/"/>
+    <updated>2014-04-08T20:10:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/04/08/ansible-variables-explained</id>
+    <content type="html"><![CDATA[<p>The variables mechanism provided by ansible is great, however, not well
+documented. It takes me hours to understand different types of variables of
+ansible.</p>
+
+<p>I will describe it in a logical sequence when writing or using ansible
+playbook. I assume the root folder of your ansible playbooks is under
+<code>/etc/ansible/</code>.</p>
+
+<p><em>NOTE: the examples are taken from ansible documentation.</em></p>
+
+<!-- more -->
+
+<p>I will skip describing why we need variables … You should be knowledgable
+about why…</p>
+
+<h2 id="host-variables">Host Variables</h2>
+
+<p>First, there will be host specifical need, you can define those variables in
+two ways. </p>
+
+<h3 id="ad-hoc-way">Ad hoc Way</h3>
+
+<p>The first is to define them in the inventory files, like the following:</p>
+
+<p><code>bash
+[atlanta]
+host1 http_port=80 maxRequestsPerChild=808
+host2 http_port=303 maxRequestsPerChild=909
+</code></p>
+
+<h3 id="ansible-best-practice">Ansible Best Practice</h3>
+
+<p>To better maintain your playbooks, it would be better you define your host
+specifical variables seperated from inventory file. Ansible provides mechanism
+to let you define variables in <code>host_vars</code> folder. For example:</p>
+
+<h2 id="bash">```bash</h2>
+<p># file: /etc/ansible/host_vars/xyz.boston.example.com
+ntp_server: override.example.com
+```</p>
+
+<h2 id="group-variables">Group Variables</h2>
+
+<p>Second, beyond host specifical variables, there is group variables. Similarly,
+there is also two ways to define group variables.</p>
+
+<h3 id="ad-hoc-way-1">Ad hoc Way</h3>
+
+<p>The first is to define them in the inventory files, like the following:</p>
+
+<p>```bash
+[atlanta]
+host1
+host2</p>
+
+<p>[atlanta:vars]
+ntp_server=ntp.atlanta.example.com
+proxy=proxy.atlanta.example.com
+```
+In the above example, lines under the <code>[altanta:vars]</code> define variables of
+group <code>atlanta</code>.</p>
+
+<h3 id="best-practice">Best Practice</h3>
+
+<p>Similarly, for ansible best practice, you should define group specifical files
+in <code>host_vars</code> file. For example, you can define variables for group <code>raleigh</code>
+in file <code>/etc/ansible/group_vars/raleigh</code>, using the following lines:</p>
+
+<h2 id="yaml">```yaml</h2>
+<p>ntp_server: acme.example.org
+database_server: storage.example.org
+```</p>
+
+<h2 id="some-built-in-variables-provided-by-ansible">Some Built-in Variables Provided by Ansible</h2>
+
+<p><code>bash
+ansible_ssh_host
+  The name of the host to connect to, if different from the alias you wish to give to it.
+ansible_ssh_port
+  The ssh port number, if not 22
+ansible_ssh_user
+  The default ssh user name to use.
+ansible_ssh_pass
+  The ssh password to use (this is insecure, we strongly recommend using --ask-pass or SSH keys)
+ansible_sudo_pass
+  The sudo password to use (this is insecure, we strongly recommend using --ask-sudo-pass)
+ansible_connection
+  Connection type of the host. Candidates are local, ssh or paramiko.  The default is paramiko before Ansible 1.2, and 'smart' afterwards which detects whether usage of 'ssh' would be feasible based on whether ControlPersist is supported.
+ansible_ssh_private_key_file
+  Private key file used by ssh.  Useful if using multiple keys and you don't want to use SSH agent.
+ansible_python_interpreter
+  The target host python path. This is useful for systems with more
+  than one Python or not located at "/usr/bin/python" such as \*BSD, or where /usr/bin/python
+  is not a 2.X series Python.  We do not use the "/usr/bin/env" mechanism as that requires the remote user's
+  path to be set right and also assumes the "python" executable is named python, where the executable might
+  be named something like "python26".
+ansible\_\*\_interpreter
+  Works for anything such as ruby or perl and works just like ansible_python_interpreter.
+  This replaces shebang of modules which will run on that host.
+</code></p>
+
+<h2 id="facts">Facts</h2>
+
+<p>There is another type of variables called fact, which is built-in and used to
+store information discovered while probing remote hosts. More details can be
+found <a href="http://docs.ansible.com/playbooks_variables.html#id25">here</a>.</p>
+
+<h2 id="playbook-variables">Playbook Variables</h2>
+
+<p>Variables defined in <code>host_vars</code> and <code>group_vars</code> are actually attributes of
+hosts and groups. There is also need to define variables in playbook, which
+normally is used for operation. Again, there are also two ways to define
+ansible playbook specifical variables.</p>
+
+<p>From now on, examples are taken from
+<a href="https://github.com/phred/ansible-examples/blob/master/pedantically_commented_playbook.yml">pedantically_commented_playbook</a>.</p>
+
+<h3 id="ad-hoc-way-2">Ad hoc Way</h3>
+
+<p>The first is to define using <code>var</code> attribute. For example:</p>
+
+<p>```yaml
+###########
+# Playbook attribute: vars
+# Default: none
+# Required: no
+# Description:
+#  Set configuration variables passed to templates &amp; included playbooks
+#  and handlers.  See below for examples.
+vars:
+color: brown</p>
+
+<p>web:
+  memcache: 192.168.1.2
+  httpd: apache
+# Tree-like structures work as expected, but be careful to surround
+#  the variable name with ${} when using.
+#
+# For this example, ${web.memcache} and ${web.apache} are both usable
+#  variables.</p>
+
+<h6 id="section">#</h6>
+<p># The following works in Ansible 0.5 and later, and will set $config_path
+# “/etc/ntpd.conf” as expected.
+#
+# In older versions, $config_path will be set to the string “/etc/$config”
+#
+config: ntpd.conf
+config_path: /etc/$config</p>
+
+<h6 id="section-1">#</h6>
+<p># Variables can be set conditionally. This is actually a tiny snippet
+# of Python that will get filled in and evaluated during playbook execution.
+# This expressioun should always evaluate to True or False.
+#
+# In this playbook, this will always evaluate to False, because ‘color’
+#  is set to ‘brown’ above.
+#
+# When ansible interprets the following, it will first expand $color to
+# ‘brown’ and then evaluate ‘brown’ == ‘blue’ as a Python expression.
+is_color_blue: “‘$color’ == ‘blue’”</p>
+
+<h4 id="section-2">#</h4>
+<p># Builtin Variables
+#
+# Everything that the ‘setup’ module provides can be used in the
+# vars section.  Ansible native, Facter, and Ohai facts can all be
+# used.
+#
+# Run the setup module to see what else you can use:
+# ansible -m setup -i /path/to/hosts.ini host1
+main_vhost: ${ansible_fqdn}
+public_ip:  ${ansible_eth0.ipv4.address}</p>
+
+<h1 id="varsfiles-is-better-suited-for-distro-specific-settings-however">vars_files is better suited for distro-specific settings, however…</h1>
+<p>is_ubuntu: “’${ansible_distribution}’ == ‘ubuntu’”
+```</p>
+
+<h3 id="best-practice-1">Best Practice</h3>
+
+<p>Second, you can use <code>vars_file</code> to organize your variables. This is extremely
+useful when you are in need to provide different variables when concerning
+dynamically determined information. For example:</p>
+
+<p>```yaml
+##########
+# Playbook attribute: vars_files
+# Required: no
+# Description:
+#   Specifies a list of YAML files to load variables from.
+#
+#   Always evaluated after the ‘vars’ section, no matter which section
+#   occurs first in the playbook.  Examples are below.
+#
+#   Example YAML for a file to be included by vars_files:
+#   —
+#   monitored_by: phobos.mars.nasa.gov
+#   fish_sticks: “good with custard”
+#   # (END OF DOCUMENT)
+#
+#   A ‘vars’ YAML file represents a list of variables. Don’t use playbook
+#   YAML for a ‘vars’ file.
+#
+#   Remove the indentation &amp; comments of course, the ‘—’ should be at
+#   the left margin in the variables file.
+#
+vars_files:
+# Include a file from this absolute path
+- /srv/ansible/vars/vars_file.yml</p>
+
+<h1 id="include-a-file-from-a-path-relative-to-this-playbook">Include a file from a path relative to this playbook</h1>
+<ul>
+  <li>vars/vars_file.yml</li>
+</ul>
+
+<h1 id="by-the-way-variables-set-in-vars-are-available-here">By the way, variables set in ‘vars’ are available here.</h1>
+<ul>
+  <li>vars/$hostname.yml</li>
+</ul>
+
+<h1 id="its-also-possible-to-pass-an-array-of-files-in-which-case">It’s also possible to pass an array of files, in which case</h1>
+<p># Ansible will loop over the array and include the first file that
+# exists.  If none exist, ansible-playbook will halt with an error.
+#
+# An excellent way to handle platform-specific differences.
+- [ vars/$platform.yml, vars/default.yml ]</p>
+
+<h1 id="files-in-varsfiles-process-in-order-so-later-files-can">Files in vars_files process in order, so later files can</h1>
+<p># provide more specific configuration:
+- [ vars/$host.yml ]</p>
+
+<h1 id="hey-but-if-youre-doing-host-specific-variable-files-you-might">Hey, but if you’re doing host-specific variable files, you might</h1>
+<p># consider setting the variable for a group in your hosts.ini and
+# adding your host to that group. Just a thought.
+```</p>
+
+<h2 id="passing-variables-on-the-command-line">Passing Variables On The Command Line</h2>
+
+<p>You are absolutely in need to switch from test machine to real deployment,
+which means you need to change the host rather frequently. This is the case
+where command line variables are useful.</p>
+
+<p>For example, you need to change host name each time. To test, you use:</p>
+
+<p><code>bash
+ansible-playbook playbook.yml --extra-vars "hosts=local_machine"
+</code></p>
+
+<p>As for real deployment, you can use:</p>
+
+<p><code>bash
+ansible-playbook playbook.yml --extra-vars "hosts=servers"
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Only Generate Ctags Files for the Header Files Included]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/02/27/only-generate-ctags-files-for-the-header-files-included/"/>
+    <updated>2014-02-27T16:35:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/02/27/only-generate-ctags-files-for-the-header-files-included</id>
+    <content type="html"><![CDATA[<p>Inspired by this post, <a href="http://www.topbug.net/blog/2012/03/17/generate-ctags-files-for-c-slash-c-plus-plus-source-files-and-all-of-their-included-header-files/">Generate Ctags Files for C/C++ Source Files and All of Their Included Header Files</a>
+, I write the following line in Makefile for only generating Ctags files for
+the files I use, not for all the files under <code>/usr/include</code>, throught which,
+not only space will be save, but more importantly, I get a clearer completion
+list when I use the completion function of vim.</p>
+
+<p><code>make
+CXX = g++
+tags:
+	$(CXX) -M $(INCFLAGS) $(SOURCES) | sed -e 's/[\\ ]/\n/g' |\
+						sed -e '/^$$/d' -e '/\.o:[ \t]*$$/d' |\
+			ctags -L - --c++-kinds=+p --fields=+iaS --extra=+q
+	cscope -bRq
+</code></p>
+
+<p>To understand this snippet, you need to be able to write decent Makefile and
+know how to use sed. Here is a short explanation.</p>
+
+<p>Tags is a target I want to build(remember to add it to .PHONY). <code>g++ -M</code> will
+generate all header files included. After generated, they are piped to sed to
+be further processed in order to be eable to used by ctags. <code>-L</code> flag of ctags
+tells ctags to get the files need to generate tags from a list and the list is
+from stdin by adding <code>-</code>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Two Important Environment Variables When Compiling and Running Program]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/02/26/two-important-environment-variables-when-compiling-and-running-program/"/>
+    <updated>2014-02-26T13:53:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/02/26/two-important-environment-variables-when-compiling-and-running-program</id>
+    <content type="html"><![CDATA[<p>This post notes down two environment variables, <code>LD_FLAGS</code> and
+<code>LD_LIBRARY_PATH</code>  which is essential to compile and run program under linux. I
+think there must be some Bible talking about this systematically, however,
+linux newbies just cannot find the them easily. So, it may be better to note it
+down.</p>
+
+<!-- more -->
+
+<h2 id="ldflags">LD_FLAGS</h2>
+
+<p>This variable is used by compiler to search for shared libraries when compiling
+program. See the <a href="/blog/2014/02/20/from-linux-user-to-administrator/#compilevim">post</a> on compiling
+vim for an example.</p>
+
+<h2 id="ldlibrarypath">LD_LIBRARY_PATH</h2>
+
+<p>This variable is used by dynamic shared lib loader to load the shared lib on
+the fly when you are running binary executable files. For example, to make
+shared in <code>./lib</code> of current folder searchable when running SOME_PROGRAM, the
+command is like this:</p>
+
+<p><code>bash
+env LD_LIBRARY_PATH="$LD_LIBRARY_PATH:./lib" ./SOME_PROGRAM
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Avoid Sharing Violation When using Foxit Reader under Wine]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/02/23/how-to-avoid-sharing-violation-when-using-foxit-reader-under-wine/"/>
+    <updated>2014-02-23T16:55:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/02/23/how-to-avoid-sharing-violation-when-using-foxit-reader-under-wine</id>
+    <content type="html"><![CDATA[<p>This post notes down a trick when using foxit reader under linux – just as the
+title says, through which you can take notes on the pdf files under linux.
+Actually the trick is so trivial that I even bothered writing it down the first
+time I discovered it, years ago. However, it took me almost one hour to detect
+why foxit reader keeping warning me the Sharing Violation thing this time.</p>
+
+<p>So, I decide to write it down.</p>
+
+<!-- more -->
+
+<p>Normally, people will open files in this way under CLI:</p>
+
+<p><code>bash
+wine PATH_TO_FOXIT/foxit.exe NAME_OF_BOOK.pdf
+</code></p>
+
+<p>But through this way, two program will hold write right of the pdf file –
+<code>wine</code> and <code>foxit.exe</code>. This is why foxit reminds you sharing violation when you
+attempt to save the changed pdf file.</p>
+
+<p>You can check what program is using the pdf file using this command:</p>
+
+<p><code>bash
+lsof | grep NAME_OF_BOOK.pdf
+</code></p>
+
+<p>To solve this problem, open the pdf file in this way:</p>
+
+<p>First open the foxit reader alone without opening any file:</p>
+
+<p><code>bash
+wine PATH_TO_FOXIT/foxit.exe
+</code></p>
+
+<p>Second, use the graphical interface of foxit to open the file you want to open.</p>
+
+<p>Third, obviously, you are done.</p>
+
+<p>Happy reading~</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Analysis | SHAWN LEE]]></title>
+  <link href="http://shawnLeeZX.github.io/blog/categories/analysis/atom.xml" rel="self"/>
+  <link href="http://shawnLeeZX.github.io/"/>
+  <updated>2015-06-21T11:48:38+08:00</updated>
+  <id>http://shawnLeeZX.github.io/</id>
+  <author>
+    <name><![CDATA[Shawn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How Do We Create Meaningful Many Dimensional Space?]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/03/28/how-do-we-create-meaningful-many-dimensional-space/"/>
+    <updated>2015-03-28T20:58:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/03/28/how-do-we-create-meaningful-many-dimensional-space</id>
+    <content type="html"><![CDATA[<p>This post should be the third notes on understanding fundamentals of Analysis,
+or in a more broad sense, understanding fundamental of Mathematics, though some
+other randoms post are written previously.
+The <a href="/blog/2013/12/24/axiomization-of-natural-number/">first</a>
+ is about the axiomization of Natural Number. It gives the exact definition of
+natural number, whose concept is taken for granted for most people. The
+<a href="/blog/2014/09/30/why-and-how-we-construct-real-number-system/">second</a>
+is about the construction of Real Number System. It offers a complete field
+which all the remaining Mathematics is built on.</p>
+
+<p>The above two posts are both in essential, one dimensional. They are the
+infrastructure of univariate function, univariate calculus and other univariate
+Math subjects. After building the one dimensional infrastructure, the next step
+is to step in the world of more than one – two dimensional, three dimensional,
+finite dimensional, and the infinite dimensional, which all will be called many
+dimensional space in this post.</p>
+
+<p>So this is about how do we create meaningful many dimensional space that
+suitable for the real world problem. In such space, we could deal with, two
+dimensional plane, three dimensional space, ultimately countably infinite
+dimensional space and uncountably infinite dimensional space, furthermore, the
+one of the most important subjects in modern analysis – function space.</p>
+
+<!-- more -->
+
+<h2 id="the-leap-to-abstract-mathematics">The Leap to Abstract Mathematics</h2>
+
+<p>Such transition is a great leap in the development of Mathematics. It makes
+Mathematics become more and more abstract. The inevitability is showed in the
+following. As having been numbered before, there are at least four extremely
+common many dimensional space we must deal with: two dimensional, three
+dimensional, which we are familiar with; countably infinite dimensional space,
+for instance, countable sequences, which is quite common; uncountably infinite
+dimensional space, for instance the space of all continuous function defined on
+$R$, which some may not be very familiar. Actually, there is a lot more than
+that since at least we would have a number of spaces such as 7D and 8D etc.. So
+mathematicians cannot deal with those spaces be copying the way they deal with
+$R$. They have to find a way to see those thing in common. In the popular word
+of programmers, they need to abstract them. Ha ha, programming is great, right?</p>
+
+<p>Consequently, here comes Abstract Algebra, General Topology and ultimately,
+Functional Analysis. Let get to know what these three terms are about(but it is
+highly probable that you have no idea what I am talking about given learning
+Math is far from learning concepts): Abstract Algebra is about abstracting common
+operations that is used in $R$, which is called using the terminology algebraic structure. For
+instance, a ring is an algebraic structure with operations generalizing the
+arithmetic operations of addition and multiplication. So such operation will
+not only be able to be applied to number, but to polynomials, matrices and
+etc..[1] More word may be find in this rather old post on
+<a href="/blog/2013/12/24/basis-of-algebra-structure/">Basic of Algebra Structure</a>;
+General Topology is about the mathematical study of shapes and topological
+spaces. It is an area of mathematics concerned with the properties of space
+that are preserved under continuous deformations including stretching and
+bending, but not tearing or gluing[2]. The sets with the same properties are
+called open set. Abstract Algebra abstracts operations of $R$. General Topology
+abstracts objects or points of $R$. With objects and operations on those
+objects, we could analyze them, where comes Functional Analysis(Though
+Functional Analysis is just about analyze functions, all machinery developed
+above is to try to deal with function space. So the problem and technique in
+Functional Analysis could all be applied to other many dimensional space).</p>
+
+<h2 id="hilbert-space">Hilbert Space</h2>
+
+<p>Once we have abstract stuff, things could become very weird given that we could
+tweak the stuff anyway we want. But the key is to remember why we initiate the
+search for an abstract solution for solving real world problem. So the light to
+guide the abstract construction is to let things meet natural intuitions. This
+is the point I learned hardest while teaching myself functional analysis, which
+is the thread that guides me to bridge the gap between those highly abstract
+concepts to the details in the real world problems I aim to solve.</p>
+
+<p>Hilbert Space is the solution to the question posed at the beginning – finding
+a meaningful many dimensional space. From now on, why Hilbert Space fits with
+natural intuition will be elaborated. But keep in mind that though
+understanding intuition playing a very important role in learning Mathematics,
+it is never sufficient, a large amount of information is skipped at the time
+Abstract Algebra and General Topology is introduced above. It is the process to
+learning them, to do exercise that gives me such intuition.</p>
+
+<p>A natural step following one number, denoted $\xi$, is to list a tuple
+$(\xi_{1}, \xi_{2})$. $\xi_{1}$ could be the size of one department and
+$\xi_{2}$ could be the price of the department. We take it in tuple maybe
+because to want to investigate something that is related to those two
+both. Then naturally, we would like to extend it to $(\xi_{1} \ldots
+\xi_{n})$, then $(\xi_{1} \ldots \xi_{n}), n = 1 \ldots \infty$,
+which is called countably infinite, then $(\xi_{1} \ldots \xi_{n})$, where we
+regard $\xi_{i}$ is as dense(note the dense does not mean its usual meaning in
+topology) as point in $R$(this sentence is actually mathematically wrong given
+the incountablity of the set, but it makes the point through more easily),
+which is called uncountably finite. Each instance of previous examples is a
+point in its space. For instance, $(\xi_{1} \ldots \xi_{n}), n = 1 \ldots
+\infty$ is a point in the space of all possible value of $\xi_{i}$. The point
+is actually called vector and the space is noted as Vector Space defined on
+Field $R$ or $C$ if it is complex.</p>
+
+<p>Again, the natural question to ask is how much similarity with $R$ we could
+keep while generalizing? This is the process we construct the meaningful many
+dimensional space. The answer is that we want to get completeness, compactness,
+connectivity, which are contents of topology and metric space, “absolute value”
+of point, which is the content of Normed Vector Space, “length” of “lines”
+which is the content of Real Analysis and others. Given the limitation of time,
+none of them will be covered here. The point of this post is to try to note
+down the hardest to understood properties kept after generalization –
+geometric intuition on 2D or 3D space.</p>
+
+<p>What is the geometric intuition I am talking about?</p>
+
+<p>In Normed Vector Space, we could assign any norm we want, for instance, $L^{p}$
+norm. But it seems  2-norm, also Euclidean norm that is the most natural norm
+for we human. But why it is the most natural one? How do we define natural?</p>
+
+<p>The following are some direct answer:</p>
+
+<p><span class='caption-wrapper left'><img class='caption' src='https://cloud.githubusercontent.com/assets/2428233/6881526/a9f838a8-d59d-11e4-8b39-52e744eff47e.png' width='' height='' title='Geometric Proof of Pythagoras Theorem'><span class='caption-text'>Geometric Proof of Pythagoras Theorem</span></span></p>
+
+<ol>
+  <li>As we rotate one vector, its length will not change in 2-norm, but not other
+norms.</li>
+  <li>It makes Pythagoras Theorem held. So when we drop the coordinate system, and
+see vectors in pure geometric way, its length will still be the same.</li>
+</ol>
+
+<p>But those all special phenomenon of one underlying truth – 2-norm could be
+derived from inner product(Besides completeness, it is inner product that plays
+the most important role in the definition of Hilbert Space), and inner product
+gives angle a sensible definition.</p>
+
+<p>Before we elaborate the point, let us think a minute about what exactly angle
+is? This is again one blind spot that we take for granted, at least me.</p>
+
+<p>Try searching on its wikipedia page. Actually we cannot define angle like we
+define natural number using Peano Axiom. We are told it is some thing that is
+between two straight line or defined it through trigonometric function, which
+is essentially ratio, in high school. Underlying those definition, we are
+actually define it through its behavior. This makes sense, since ultimately,
+angles do not exist on their own and are the relation between lines.</p>
+
+<p>But we could model such relationship using one entity – inner product. Angle
+could be defined as:</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\theta = arccos\frac{<x, y>}{||x||||y||}
+ %]]&gt;</script>
+
+<p>Through this way, angle is connected with value(coordinates) of lines(vectors)
+naturally. As angle is kept, our intuition is actually kept. More specifically
+the intuition of rotation, orthogonality and projection are all kept. Those are
+what we call natural.</p>
+
+<p>To make sense of it, it is recommended to prove polarization identity using
+property of inner product and law of cosine using elementary geometry
+method(polarization identity and law of cosine are the same theorem in different
+names in different contexts).</p>
+
+<h2 id="reference">Reference</h2>
+<ol>
+  <li>http://en.wikipedia.org/wiki/Ring_(mathematics)</li>
+  <li>http://en.wikipedia.org/wiki/Topology</li>
+</ol>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Understand Compact in Mathematical Analysis]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/10/06/how-to-understand-compact-in-mathematics-analysis/"/>
+    <updated>2014-10-06T22:20:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/10/06/how-to-understand-compact-in-mathematics-analysis</id>
+    <content type="html"><![CDATA[<h2 id="preface">Preface</h2>
+
+<p>My journey of teaching myself mathematics begins with learning the
+number theory, understanding why matrix is invented. Thus up to now,
+most of the effort was spent on matrix algebra and matrix calculus.</p>
+
+<p>Recently, I am trying to understand wavelet theory. The main
+motivation behind it is to find a set of basis to approximate
+functions, which seems to involve a lot of analysis. Therefore, I
+beginning to teach myself analysis like a math major student from
+scratch.</p>
+
+<p>This post is about another concept called <strong>compact</strong>. You can find
+previous post about real number system <a href="/blog/2014/09/30/why-and-how-we-construct-real-number-system/">here</a>.</p>
+
+<!-- more -->
+
+<h2 id="definitions">Definitions</h2>
+
+<p><strong>Definition</strong> A subset $K$ of metric space $X$ is said to be
+  <em>compact</em> if every open cover of $K$ contains a finite subcover.</p>
+
+<p>As a number of other mathematical definition, they have reused the
+structure built before, which means they have a lot of information
+beneath the surface. So let’s define what is</p>
+
+<ol>
+  <li>metric space, this one is assumed to be known.</li>
+  <li>open cover</li>
+  <li>finite</li>
+  <li>subcover</li>
+</ol>
+
+<h2 id="open-cover">open cover</h2>
+<p><strong>Definition</strong> By an <em>open cover</em> of a set $E$ in a metric space $X$
+  we mean a collection <script type="math/tex">\{G_{\alpha}\}</script> of open subsets of $X$ such
+  that <script type="math/tex">E \subset \cup_{\alpha}G_{\alpha}</script>.</p>
+
+<p><em>The concept of open is assumed to be known.</em></p>
+
+<p>It is a rather mathematical definition, however, as having been
+emphasized over and over, there is always a simple intuition behind
+one abstract idea. The intuition of open cover is to use open, which
+means we do not make arbitrary judgement about the boundary of the
+ball ball to cover the area that is taken up by the $E$. The idea of
+compact is to accumulate those no judgemental balls to acquire some
+global properties about the set. As we will see later.</p>
+
+<h3 id="subcover">subcover</h3>
+
+<p>A subcover is one element of <script type="math/tex">G_{\alpha}</script>. The intuition is that one
+subcover is just one open ball.</p>
+
+<h2 id="finite">finite</h2>
+
+<p>Though the concept of finite and infinite predates college, it seems
+that I do not pay enough attention to them till now. But note that
+even without mentioning this concept, the meaning of finite in the
+definition of compact is still straightforward.</p>
+
+<p><strong>Definition</strong> For any positive integer n, let $J_{n}$ be the set
+  whose elements are the integers $1, 2, \ldots, n$; let $J$ be the
+  set consisting of all positive integers. For any set $A$, we say:</p>
+
+<ol>
+  <li>$A$ is finite if $A ~ J_{n}$ for some $n$ (the empty set is also
+considered to be finite).</li>
+  <li>$A$ is infinite if $A$ is not finite.</li>
+  <li>$A$ is countable if $A ~ J$.</li>
+  <li>$A$ is uncountable if $A$ is neither finite nor countable.</li>
+  <li>$A$ is at most countable if $A$ is finite or countable.</li>
+</ol>
+
+<p>The above definition uses the notion of equivalence.</p>
+
+<h3 id="equivalence">Equivalence</h3>
+
+<p><strong>Definition</strong> If there exists a $1-1$ mapping of $A$ onto $B$, we say
+  that $A$ and $B$ can be put in $1-1$ <em>correspondence</em>, or that $A$
+  and $B$ have the same <em>cardinal number</em>, or briefly, that $A$ and
+  $B$ are equivalent, and we write $A \sim B$.</p>
+
+<h2 id="compact-explained">compact explained</h2>
+
+<p>Now, let’s try to understand the idea of compact. First we see one set
+that is not compact. Then we try to see the reason why compact is put
+forward. The main intuition is, I think, which is not cited from
+anywhere else, so it may be wrong, that the introduce of compact
+bridges the gap between the set’s global properties and local
+properties, infinite properties and finite properties.</p>
+
+<h3 id="example">Example</h3>
+
+<p>The open interval $I = (0, 1)$ is not compact.</p>
+
+<p>To see why, let <script type="math/tex">G_{n} = (\frac{1}{n}, 2), n = 1, 2, 3 \ldots</script>. Each
+<script type="math/tex">G_{n}</script> is an open cover of $I$ and as $n \rightarrow \infty$,
+<script type="math/tex">G_{n}</script> could cover $I$. However, if we only take finite number of
+subcover of <script type="math/tex">G_{n}</script>, we cannot cover $I$.</p>
+
+<p>However, if we let $I$ to be a closed interval, say $I = [0, 1]$, it
+is compact. A general theorem about this is described as every
+k-cell(try Google what k-cell is if you have no idea what it is) is
+compact. Proof here will be omitted(Proof can be found on Theorem 2.40
+of Ref 1). The intuition behind the proof is that if an open cover $G$
+could be found, then if any finite subcovers of $G$ cannot cover the
+k-cell, you can always add more but finite number of subcovers to
+cover all of $G$.</p>
+
+<p>So why only a difference of open and closed makes such a difference?</p>
+
+<p>In my view, the key difference is the limit point. If we do not makes
+arbitrary statement about the limit point, which is the boundary in
+this case, abnormal phenomenon could happen when approaching the limit
+point. As in this case, when point, denoted $x$, is approaching zero,
+if some function $f$ defined on the interval and $f$ has $x$ in the
+denominator, $f$ may be boundless.</p>
+
+<p>Thus, compact models the process that a point is approaching its limit
+step by step(open ball by open ball) without making arbitrary
+statement about the boundary. Consequently, compact has a number of
+connection with continuity and convergence.</p>
+
+<p>In the following, we would see more examples that compact is in action
+to have a feeling about its effect.</p>
+
+<p>Before that, let us introduce an important theorem that connect
+finite with infinite.</p>
+
+<p><strong>Theorem</strong> If <script type="math/tex">\{K_\alpha\}</script> is a collection of compact subsets of
+  a metric space $X$ such that intersection of every finite
+  subcollection of<script type="math/tex">\{K_\alpha\}</script> is nonempty, then $$\cap
+  K_{\alpha}$$ is nonempty. </p>
+
+<p><strong>Proof</strong> Fix a member <script type="math/tex">K_{1}</script> of <script type="math/tex">\{K_{\alpha}\}</script> and put
+  <script type="math/tex">G_{\alpha} = K^{c}_{\alpha}</script>. Assume that no point of <script type="math/tex">K_{1}</script>
+  belongs to every <script type="math/tex">K_{\alpha}</script>. Then the sets <script type="math/tex">G_{\alpha}</script> form an
+  open cover of <script type="math/tex">K_{1}</script>; and since <script type="math/tex">K_{1}</script> is compact, there are
+  finitely many indices <script type="math/tex">\alpha_{1}, \ldots, \alpha_{n}</script> such that
+  <script type="math/tex">K_{1} \subset G_{\alpha_{1}} \cup \ldots \cup G_{\alpha_{n}}</script>.
+  But this means that <script type="math/tex">K_{1} \cap K_{\alpha_{1}} \cap \ldots \cap K_{\alpha_{n}}</script> is empty, in contradiction to our hypothesis.</p>
+
+<p><strong>Corollary</strong> If <script type="math/tex">\{K_{n}\}</script> is a sequence of nonempty compact sets
+  such that <script type="math/tex">K_{n} \supset K_{n + 1}, (n = 1, 2, 3, \ldots)</script>, then
+  <script type="math/tex">\cap^{\infty}_{1} K_{n}</script> is not empty.</p>
+
+<p>This corollary actually bridges finite and infinite together.</p>
+
+<p>Now, let’s see the theorem in action.</p>
+
+<p><strong>Theorem</strong> Let $P$ be a nonempty perfect set in $R^{k}$. Then $P$ is
+  uncountable.</p>
+
+<p><strong>Proof</strong> Since $P$ has limits points, $P$ must be infinite. Suppose
+  $P$ is countable, we denote the points of $P$ by <script type="math/tex">x_{1}, x_{2}, x_{3}, \ldots</script> By analysis the interval between those points, we
+  could find the contradiction we want.</p>
+
+<p>Let <script type="math/tex">V_{1}</script> be the neighborhood of <script type="math/tex">x_{1}</script>. If <script type="math/tex">V_{1}</script>
+  consists of all $y \in R^{k}$ such that <script type="math/tex">% &lt;![CDATA[
+|y - x_{1}| < r %]]&gt;</script>, then the
+  closure <script type="math/tex">\bar{V}_{1}</script> of <script type="math/tex">V_{1}</script> is the set of all $y \in R^{k}$
+  such that <script type="math/tex">|y - x_{1}| \leq r</script>.</p>
+
+<p>Suppose <script type="math/tex">V_{n}</script> has been constructed, so that <script type="math/tex">V_{n} \cap P</script> is
+  not empty. Since every point of $P$ is a limit point of $P$, there
+  is a neighborhood <script type="math/tex">V_{n+1}</script> such that 1. <script type="math/tex">\bar{V}_{n+1} \subset V_{n}</script>, 2. <script type="math/tex">x_{n} \notin V_{n+1}</script>, 3. <script type="math/tex">V_{n+1} \cap P</script> is not
+  empty. The induction goes on.</p>
+
+<p>Put <script type="math/tex">K_{n} = \bar{V}_{n} \cap P</script>. Since <script type="math/tex">\bar{V}_{n}</script> is closed
+  and bounded, <script type="math/tex">\bar{V}_{n}</script> is compact(Theorem 2.41 Ref 1). Since
+  <script type="math/tex">x_{n} \notin K_{n+1}</script>, not point of $P$ is in <script type="math/tex">\cap^{infty}_{1} K_{n}</script>. Since <script type="math/tex">K_{n} \subset P</script>, this implies that
+  <script type="math/tex">\cap^{infty}_{1} K_{n}</script> is empty. But each <script type="math/tex">K_{n}</script> is nonempty,
+  by 3, and <script type="math/tex">K_{n} \supset K_{n+1}</script> by 1, this contradicts the
+  corollary above.</p>
+
+<p>Proof is complete.</p>
+
+<p>In this proof, the global property of the $P$ is proved by reducing
+the contradiction into infinite intersection of small sets of
+$P$. This shows some feelings about the bridge mentioned above.</p>
+
+<h2 id="one-more-example">One More Example</h2>
+
+<p><strong>Theorem</strong> Compact subsets of metric spaces are closed.</p>
+
+<p><strong>Proof</strong> The proof also starts from the intuition that if the subset
+  is open, we cannot approach the boundary of the subset, since they
+  are not part of the set, in a finite step.</p>
+
+<p>Before we prove the theorem, a common misunderstanding of the compact
+should be pointed out. It is also straightforward to think that if one
+set $G$ is compact, it could be covered by a finite subcover,
+therefore, any subsets of $G$ could also be covered by such
+subcover. Consequently, any subsets of $G$ is also compact.</p>
+
+<p>The misunderstanding under this reasoning is that compact is defined
+by all open covers, which means it has to rule out all possible open
+covers. Note that the open covers of $G$ cannot cover all open covers
+of its subsets. For example, a open cover could cover one subset
+$G_i$ of $G$, which indeed is an open cover of $G_i$, but this open
+cover is not one of $G$.</p>
+
+<p>Now, the proof is begun(Ref 2).</p>
+
+<p>We want to prove if $A \subseteq X$ is not closed, then $A$ is not
+compact. We tackle the problem from the boundary. Since $A$ is not
+closed, there is one point $p \in (cl, A) but \notin A$. For $n \in
+N^{+}$, let</p>
+
+<script type="math/tex; mode=display">
+U_n = \{x \in X: d(x, p) > \frac{1}{n}\}
+</script>
+
+<p>$U_n$ is a open cover of $A$, however, no finite subsets of $U_n$
+would cover $A$.</p>
+
+<h2 id="one-more-example-1">One More Example…</h2>
+
+<p><strong>Theorem</strong> Closed subsets of compact sets are compact.</p>
+
+<p><strong>Proof</strong> Ref 1. The intuition behind this proof is that for each
+  finite open cover of $K$, there exists a finite subcover that could
+  cover $F$, which means $F$ is compact.</p>
+
+<p>Suppose $F \subset K \subset X$, $F$ is closed (relative to $X$), and
+$K$ is compact. Let ${V_{\alpha}}$ be an open cover of $F$. If we
+add one more open set $F^{c}$, then ${V_{\alpha}} \cup F^{c}$
+becomes the open cover of $K$. Since $K$ is compact, there exists
+finite subcovers that would cover $K$. By excluding $F^{c}$, those
+subcovers are also a finite cover of $F$, which means $F$ is compact.</p>
+
+<h2 id="one-more-examples">One More Examples</h2>
+
+<p><strong>Theorem</strong> Let (S, d) be a metric space. If <script type="math/tex">\{K_{\alpha}\}_{\alpha \in A}</script>
+is a collection of compact sets such that the intersection of every
+finite subcollection of <script type="math/tex">\{K_{\alpha}\}_{\alpha \in A}</script> is nonempty,
+then <script type="math/tex">\cap_{\alpha \in A}K_{\alpha}</script> is nonempty.</p>
+
+<p><strong>Proof</strong> Consider $K$, for any set in the collection <script type="math/tex">\{K_{\alpha}\}</script>
+, we claim that there exists a $p \in K$ such that
+<script type="math/tex">p \in K_{\alpha}, \forall \alpha \in A</script>. 
+If not, we could prove contradiction.</p>
+
+<p>Suppose not, $\forall p \in K$, there exists $\alpha$ that
+<script type="math/tex">p \notin K_{\alpha}</script>. <script type="math/tex">\{K_{\alpha}^C\}</script> consists of an open cover of
+$K$(since each <script type="math/tex">K_{\alpha}</script> is closed, thus their complement is
+open). We know that $K$ is compact, there exists a finite sub covers
+of <script type="math/tex">K_{\alpha}</script> covers $K$</p>
+
+<script type="math/tex; mode=display">
+\{K_{\alpha_{i}}^{C}\}_{i=1,\ldots,n}
+</script>
+
+<p>But this implies that</p>
+
+<script type="math/tex; mode=display">
+K \subseteq K_{\alpha_{1}}^C \cup K_{\alpha_{2}}^C \cup \ldots \cup K_{\alpha_{n}}^C
+</script>
+
+<p>Then 
+<script type="math/tex"> K \cap u_{\alpha_{1}}^C \cap K_{\alpha_{2}}^C \cap \ldots \cap K_{\alpha_{n}}^C = \emptyset </script>
+.(If <script type="math/tex">x \in K_{\alpha_{j}}^C</script>, for some $j = 1,\ldots,n$. Then <script type="math/tex">x \notin K_{\alpha_{j}}^C</script>.
+It follows that <script type="math/tex">x \notin K \cap u_{\alpha_{1}}^C \cap K_{\alpha_{2}}^C \cap \ldots \cap K_{\alpha_{n}}^C</script> and
+<script type="math/tex">K \cap u_{\alpha_{1}}^C \cap K_{\alpha_{2}}^C \cap \ldots \cap K_{\alpha_{n}}^C = \emptyset </script>)
+Since finite <script type="math/tex">K_{\alpha_{j}}^C, j=1,\ldots, n</script> will contain $K$, thus
+containing <script type="math/tex">\{K_{\alpha}\}</script>. But for every finite subcollection of
+<script type="math/tex">K_{\alpha}</script> their intersection should not be empty. This causes
+contradiction.</p>
+
+<p>Then there exists some $p$ such that <script type="math/tex">p \in \cap_{\alpha \in A}</script>, and
+<script type="math/tex">\cap_{\alpha \in A} \neq \emptyset</script>.</p>
+
+<p><em>Proof is finished. Ref 3</em></p>
+
+<p>To see why compact is necessary, see this example below.</p>
+
+<p>Let <script type="math/tex">I_n = (0, 1/n)</script>, each intersection between $I_m$ and $I_n$ is
+not empty, however, as $n \rightarrow \infty$, the intersection is
+empty.</p>
+
+<p>This example shows that compact is mainly aims at the limit property
+of set.</p>
+
+<p>The intuition underlies this also related to the intuition put forward
+at the first place. If we can guarantee one point in the set in the
+finite case, we could also guarantee it in the infinite case. It
+bridges the gap between finite and infinite.</p>
+
+<h2 id="more-examples">More Examples</h2>
+
+<p>To see more example and theorems, you can continue to read</p>
+
+<ol>
+  <li>Theorem 7.13 of Ref 1.</li>
+  <li>Theorem 3.11 of Ref 1.</li>
+</ol>
+
+<h2 id="reference">Reference</h2>
+
+<ol>
+  <li>Walter Rudin Principles of Mathematical Analysis, Third Edition</li>
+  <li><a href="http://math.stackexchange.com/questions/597828/compact-sets-of-metric-spaces-are-closed">math.stackchange</a></li>
+  <li>Some pdf <a href="/docs/about_compact.pdf">here</a>. Obtained from <a href="/docs/about_compact.pdf">here</a></li>
+</ol>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Why and How We Construct Real Number System]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/09/30/why-and-how-we-construct-real-number-system/"/>
+    <updated>2014-09-30T01:00:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/09/30/why-and-how-we-construct-real-number-system</id>
+    <content type="html"><![CDATA[<h2 id="preface">Preface</h2>
+
+<p>My journey of teaching myself mathematics begins with learning the
+number theory, understanding why matrix is invented. Thus up to now,
+most of the effort was spent on matrix algebra and matrix calculus.</p>
+
+<p>Recently, I am trying to understand wavelet theory. The main
+motivation behind it is to find a set of basis to approximate
+functions, which seems to involve a lot of analysis. Therefore, I
+beginning to teach myself analysis like a math major student from
+scratch.</p>
+
+<p>The first hard concept I met is the construction of real number
+system. I skipped this concept the first time I am learning
+analysis. In retrospect, I mainly focused on the concept of peano
+axiom to construct natural number system then because matrix algebra
+mainly deals with integer. However, the main objective of wavelet
+theory is to find a set of basis that can approximate functions,
+regardless of continuous and discrete. There is no escape this time.</p>
+
+<p>The articles about peano axiom is on another PDF file, which I haven’t
+sorted it out on the blog. Some time in the future.</p>
+
+<p>I guess this will be the beginning of a series of post about
+analysis. The first one here is about construction of real number
+system. Let us begin.</p>
+
+<h2 id="some-words">Some Words</h2>
+
+<p>The purpose of this post is to explain the intuition behind to
+construct the real number system, so it will not be mathematically
+sound and incremental. You should be familiar with the following
+concept:</p>
+
+<ol>
+  <li>(ordered)field</li>
+  <li>ordered set</li>
+  <li>some knowledge about set and set operation</li>
+  <li>Cauchy sequence</li>
+  <li>Archimedean property</li>
+</ol>
+
+<h2 id="motivation-sketch">Motivation Sketch</h2>
+
+<p>The following are key points that motivate mathematicians to construct
+a new number theory that is called real number system.</p>
+
+<ol>
+  <li>There are numbers that rational number cannot incorporate. In other
+word, there is gaps in rational number line.</li>
+  <li>It may be surprising that for some $E \subset Q$, you cannot find
+the extreme point of $E$ in $Q$.  This point is somehow a rephrase
+of the previous point – there are gaps and least upper bound may
+residue in the gap.</li>
+</ol>
+
+<p>Therefore, to make the number line to be without gaps, in our daily
+word, continuous, the real number system is constructed.</p>
+
+<!-- more -->
+
+<h2 id="folk-story">Folk Story</h2>
+
+<p>For most practical purposes in our daily life, the Field of Rational
+can be said to be more than adequate as a number system. After all,
+when we take a measurement with our ruler, we can read at best to the
+markings on the ruler and those markings are simply fractions of the
+length of the ruler. Even when we use an electronic calculator and
+obtained a result whose figures covered the whole screen, we simply
+round off to our desired accuracy with not much complaint. Now, when
+we round off something, we are simply getting a result that can be
+expressed as a fraction. So what exactly is wrong with the Field of
+Rational?</p>
+
+<p>Most people’s idealization of the real numbers is that they are
+markings on an imaginary number line. This number line is a sort of
+conceptual ruler that mathematicians can use to measure their abstract
+objects exactly. This means that the number line will always give us
+the exact value, and not just any approximated value, of any quantity
+we are measuring. Of course, some sort of standardization of the
+division mark should be used so that everybody’s absolute value agree
+but that is beside the point. Now, if the Field of Rational gives us
+such an ideal number system, then we should be able to cover the whole
+of the number line with rational numbers.  If this cannot be achieved,
+then there will be at least one point on the number line that have no
+markings, and what value are we going to assign an object whose length
+happen to hit that mark?</p>
+
+<h2 id="inadequacy-of-q">Inadequacy of $Q$</h2>
+
+<h3 id="gap-in-q">Gap in $Q$</h3>
+
+<p><strong>Theorem</strong>: There exists no rational $r$ such that $r^{2} = 2$.</p>
+
+<p>Suppose that such $r$ does exist. We may assume that $r &gt; 0$,
+otherwise we take $-r$.</p>
+
+<p>Any rational number could be expressed in the form of $\frac{n}{m}$,
+great command divisor of $m, n$ will be one, thus $n$ and $m$ will not
+be both even.</p>
+
+<p>so we have</p>
+
+<script type="math/tex; mode=display">
+  \frac{n^{2}}{m^{2}} = 2
+  n^{2} = 2m^{2}
+</script>
+
+<p>In the equation above, $n^{2}$ will be even, thus $n$ will be
+even. Consequently, $m$ will be even, which contradict with the
+prerequisite that $n, m$ will not be both even.</p>
+
+<p>Therefore, $r$ will not belong to $Q$.</p>
+
+<h2 id="no-extremum-point-in-some-set-in-q">No extremum point in some set in $Q$</h2>
+
+<p>To see this, we also consider the example of square root of 2.</p>
+
+<p>For every $p$ in $A$ we can find a rational $q$ in $A$ such that $p &lt;
+q$ and for every $p$ in $B$ we can find a rational $q$ in $B$ such
+that $q &lt; p$.</p>
+
+<p>To do this, we associate with each rational $p &gt; 0$ the number</p>
+
+<script type="math/tex; mode=display">
+  q = p - \frac{p^{2} - 2}{p + 2} = \frac{2p + 2}{p + 2}
+</script>
+
+<p>Then</p>
+
+<script type="math/tex; mode=display">
+  q^{2} - 2 = \frac{2(p^{2} - 2)}{(p + 2)^{2}}
+</script>
+
+<p>If $p$ is in $A$ then $p^{2} - 2 &lt; 0$, we have $q &gt; p$ and $q \in
+A$. The case when $p$ is in $B$ is visa vice.</p>
+
+<p>From this example, we find that we cannot find the maximum of one set
+in $Q$, which contradict with our intuition that the number line is
+continuous. To make the number line continuous, the real number system
+is constructed.</p>
+
+<h2 id="least-upper-bound-property">least-upper-bound property</h2>
+
+<p>Before we construct the real number system, we first define some
+relevant definition.</p>
+
+<p><strong>Definition</strong> Suppose $S$ is an ordered set, and $E \subset S$. If
+  there exists a $\beta \in S$ such that $x \leq \beta$ for every $x
+  \in E$, we say that $E$ is bounded above, and call $\beta$ an <em>upper
+  bound</em> of $E$.</p>
+
+<p>Lower bound is defined in the same way.</p>
+
+<p><strong>Definition</strong> Suppose $S$ is an ordered set, $E \subset S$, and $E$
+  is bounded above. Suppose there exists an $\alpha \in S$ with the
+  following properties:</p>
+
+<ol>
+  <li>$\alpha$ is an upper bound of $E$.</li>
+  <li>If $\gamma &lt; \alpha$ then $\gamma$ is not an upper bound of $E$.</li>
+</ol>
+
+<p>Then $\alpha$ is called the <em>least upper bound</em> of $E$ or supremum of
+$E$, and we write</p>
+
+<script type="math/tex; mode=display">
+  \alpha = sup E
+</script>
+
+<p>The <em>greatest lower bound</em> or <em>infimum</em>, of a set $E$ which is bounded
+below is defined in the same manner, denoted as $\alpha = inf E$.</p>
+
+<p><strong>Definition</strong> An ordered set $S$ is said to have the
+  <em>least-upper-bound property</em> if the following is true:</p>
+
+<p>If $E \subset S$, $E$ is not empty, and $E$ is bounded above, then
+$sup E$ exists in $S$.</p>
+
+<h2 id="real-number-system">Real Number System</h2>
+
+<p><strong>Theorem</strong> There exists an ordered field $R$ which has the
+  least-upper-bound property.</p>
+
+<p>The members of $R$ is are called <em>real numbers</em>.</p>
+
+<p>Now we stop for a moment and to reiterate the understanding one should
+possess when reaching this point. The gaps in rational number line
+motivate mathematicians to construct real number system $R$, and the
+most essential traits which makes $R$ different from $Q$ is that $R$
+has least-upper-bound property, which means it has its extreme in its
+own.</p>
+
+<p>So, how could we construct such a system, called real number
+system by us, that fulfills least-upper-bound property?</p>
+
+<p>The intuition of two approaches will sketched. The first one is
+Cantor’s approach and the second one is Dedekind’s approach. Cantor’s
+approach is described first since it is easier for me to understanding
+when learning.</p>
+
+<h3 id="cantors-approach">Cantor’s Approach</h3>
+
+<p><strong>Definition</strong> Let $\Gamma$ denote the set of all Cauchy sequences in
+  $Q$. We say <script type="math/tex">(r_{n}), (s_{n}) \in \Gamma </script> are equivalent and we
+  write <script type="math/tex">(r_{n}) ~ (s_{n})</script> if given any rational $\epsilon &gt; 0$,
+  $\exists k \in N$ such that <script type="math/tex">% &lt;![CDATA[
+|r_{n} - s_{n}| < \epsilon, \forall n \geq k %]]&gt;</script>.</p>
+
+<p>We denote the equivalent class $[r_{k}]$.</p>
+
+<p>Thus real number is defined by pushing rational number to their
+limit. Each equivalent class in the sequence described above is a real
+number. All of them is denoted as $R$.</p>
+
+<p>If $R$ is going to be an ordered field, it must have its
+properties. It could be proved that it indeed does. Here those proof
+will be skipped because they are rather tedious and only one proof
+will be showed, which is the problem real number system is created to
+solve.</p>
+
+<p><strong>Theorem</strong> The least upper bound property holds in $R$.</p>
+
+<p>The main intuition behind this proof is that we can always find a
+Cauchy sequence that is arbitrary close to the real number point we
+want. It use a power of two as the sequence, if we takes a power of
+ten, it is similar with our decimal point system.</p>
+
+<p>Let $A$ be a nonempty subset of $R$ that is bounded above by, say,
+$m$. Then by the Archimedean property, we can find $M \in Z$ with $m
+\leq M$. Let $a$ be in $A$ and let $n$ be an integer with $n &lt; a$. For
+$p \in N$ set <script type="math/tex">S_{p} = \{k2^{-p} | k \in Z\ and\ n \leq k2^{-p} \leq M\} \cup \{m\}</script>.
+ Note that <script type="math/tex">S_{p} \neq \emptyset</script> and is finite. Now let
+<script type="math/tex">a_{p} = min \{x | x \in S_{p}\ and\ x\ is\ an\ upper\ bound\ for\ A\}</script>.</p>
+
+<p>Note that if $p &lt; q$, then</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+  a_{p} - 2^{-p} < a_{q} \leq a_{p}
+ %]]&gt;</script>
+
+<p>The intuition behind this is that as $p$ becomes larger, the granuity
+of $k2^{-p}$ becomes finer.</p>
+
+<p>Since, for example, <script type="math/tex">a_{p} - 2^{-p}</script> is not an upper bound for $A$,
+while <script type="math/tex">a_{q}</script> is an upper bound. But this implies that</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+  |a_{p} - a_{q}| \leq 2^{-p} for\ all\ p < q
+ %]]&gt;</script>
+
+<p>from which it follows that <script type="math/tex">{a_{k}}_{k \in N}</script> is a Cauchy
+sequence. Let $L = [a_{k}]$</p>
+
+<p>We claim that $L$ is a least upper bound for $A$. Suppose $x \in A$
+and $x &gt; L$. Choose $p$ such that $2^{-p} &lt; (x - L)$(using the
+Archimedean property). Since <script type="math/tex">% &lt;![CDATA[
+a_{p} - 2^{-p} < a_{q} %]]&gt;</script> for $p &lt; q$ and
+<script type="math/tex">{a_{p}}_{p \in N}</script> is a decreasing Cauchy sequence, it follows that
+<script type="math/tex">a_{p} - 2^{-p} \leq L</script>, we obtain <script type="math/tex">% &lt;![CDATA[
+a_{p} < x %]]&gt;</script>, which is a
+contradiction. Therefore, $L$ is an upper bound for $A$.</p>
+
+<p>Suppose that $H$ is an upper bound for $A$ and that $H &lt; L$. Choose
+$p$ such that $2^{-p} &lt; L - H$. Take $x \in A$ such that <script type="math/tex">% &lt;![CDATA[
+a_{p} - 2^{-p} < x %]]&gt;</script>.
+ Then <script type="math/tex">% &lt;![CDATA[
+a_{p} - 2^{-p} < x %]]&gt;</script>. Then <script type="math/tex">% &lt;![CDATA[
+a_{p} - 2^{-p} < H %]]&gt;</script>.
+ Adding, we get <script type="math/tex">% &lt;![CDATA[
+a_{p} < L %]]&gt;</script>. But, as noted above, $L \leq a{p}$ for
+all $p \in N$, so this is a contradiction.</p>
+
+<h3 id="dedekind-cut">Dedekind Cut</h3>
+
+<p>Since Dedekind’s approach is at least as complex as Cantor’s approach,
+only the intuition behind the construction is presented below:</p>
+
+<p>Dedekind viewed each point, $x$, on the number line as a cut that
+split the rational into 2 sets.</p>
+
+<h2 id="reference">Reference</h2>
+
+<ol>
+  <li>Construction of The Real Number System <a href="/docs/CONSTRUCTION_OF_THE_REAL_NUMBER_SYSTEM.pdf">pdf</a></li>
+  <li>Chapter 1, Fundamental of Mathematical Analysis <a href="/docs/construction_of_real_number_and_complex_number.pdf">pdf</a></li>
+  <li>Principles of Mathematical Analysis, 3rd Edition</li>
+</ol>
+]]></content>
+  </entry>
+  
+</feed>

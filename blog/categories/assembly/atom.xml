@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Assembly | SHAWN LEE]]></title>
+  <link href="http://shawnLeeZX.github.io/blog/categories/assembly/atom.xml" rel="self"/>
+  <link href="http://shawnLeeZX.github.io/"/>
+  <updated>2015-06-21T11:48:38+08:00</updated>
+  <id>http://shawnLeeZX.github.io/</id>
+  <author>
+    <name><![CDATA[Shawn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Main difference between Intel and AT&amp;T syntax assembly language]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2013/12/11/main-difference-between-intel-and-at-and-t-syntax-assembly-language/"/>
+    <updated>2013-12-11T19:38:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2013/12/11/main-difference-between-intel-and-at-and-t-syntax-assembly-language</id>
+    <content type="html"><![CDATA[<ul>
+  <li>AT&amp;T immediate operands use a $ to denote them, whereas Intel
+immediate operands are undelimited. Thus, when referencing the
+decimal value 4 in AT&amp;T syntax, you would use dollar 4, and in Intel
+syntax you would just use 4.</li>
+  <li>AT&amp;T prefaces register names with a %, while Intel does not. Thus,
+referencing the EAX register in AT&amp;T syntax, you would use %eax.</li>
+  <li>AT&amp;T syntax uses the opposite order for source and destination
+operands. To move the decimal value 4 to the EAX register, AT&amp;T
+syntax would be movl $4, %eax, whereas for Intel it would be mov
+eax, 4.</li>
+  <li>AT&amp;T syntax uses a separate character at the end of mnemonics to
+reference the data size used in the operation, whereas in Intel
+syntax the size is declared as a separate operand. The AT&amp;T
+instruction movl $test, %eax is equivalent to mov eax, dword ptr
+test in Intel syntax.</li>
+  <li>Long calls and jumps use a different syntax to define the segment
+and offset values. AT&amp;T syn- tax uses ljmp $section, $offset,
+whereas Intel syntax uses jmp section:offset.</li>
+</ul>
+
+<p>from: Professional Assembly Language, Richard Blum</p>
+]]></content>
+  </entry>
+  
+</feed>

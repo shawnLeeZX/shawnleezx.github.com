@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ML | SHAWN LEE]]></title>
+  <link href="http://shawnLeeZX.github.io/blog/categories/ml/atom.xml" rel="self"/>
+  <link href="http://shawnLeeZX.github.io/"/>
+  <updated>2015-06-21T11:48:38+08:00</updated>
+  <id>http://shawnLeeZX.github.io/</id>
+  <author>
+    <name><![CDATA[Shawn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[[Repost] Timeline: The Advance of the Data Civilization]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/02/15/repost-timeline-the-advance-of-the-data-civilization/"/>
+    <updated>2014-02-15T21:24:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/02/15/repost-timeline-the-advance-of-the-data-civilization</id>
+    <content type="html"><![CDATA[<p>This is a repost read from <a href="http://www.popsci.com/technology/article/2011-10/timeline-advance-data-civilization">here</a>. If any copyright is offended, please contact
+me immediately and I will remove this post.</p>
+
+<p>In 2009, English scientist Stephen Wolfram started a website–an “answer”
+engine–to redefine how information is gathered on its greatest-ever conduit.
+In this timeline, he catalogs “how our civilization has systematized knowledge,
+and gradually made it amenable to automation. This is about data and how it
+came to be the way it is in our world.”</p>
+
+<!-- more -->
+
+<h2 id="bc-to-2500-bc">20,000 B.C. to 2,500 B.C.</h2>
+
+<p><strong>20,000 B.C.</strong>: The invention of arithmetic provides a way to abstractly compute
+numbers of objects. </p>
+
+<p><strong>15,000 B.C.</strong>: The Lascaux cave paintings record some of the first known
+narrative constructions. </p>
+
+<p><strong>3,800 B.C.</strong>: The Babylonian census begins the practice of systematically
+counting and recording people. </p>
+
+<p><strong>3,500 B.C.</strong>: Written language emerges , providing a systematic way to record
+and transmit knowledge. </p>
+
+<p><strong>2,500 B.C.</strong>: The first known calendar system is established in Mesopotamia,
+creating a 360-day year.</p>
+
+<h2 id="bc-to-400-bc">1,770 B.C. to 400 B.C.</h2>
+
+<p><strong>1,170 B.C.</strong>: Hammurabi writes down 282 laws prescribing civil behavior in
+the kingdom of Babylon. </p>
+
+<p><strong>1,250 B.C.</strong>: The library at Thebes in ancient Greece gathers the world’s
+knowledge and makes it available in one place. </p>
+
+<p><strong>1,150 B.C.</strong>: The Turin papyrus is the first known topographic map. </p>
+
+<p><strong>560 B.C.</strong>: Lydia, in modern-day Turkey, introduces gold and silver coins to
+represent monetary value. </p>
+
+<p><strong>500 B.C.</strong>: Babylonians invent mathematical calculation as a way to track the
+movement of planets. </p>
+
+<p><strong>400 B.C.</strong>: Hippocrates identifies causes of human diseases. Panini creates a
+grammar for Sanskrit, forming the basis for systematic linguistics.</p>
+
+<h2 id="bc-to-45-bc">387 B.C. to 45 B.C.</h2>
+
+<p><strong>387 B.C.</strong>: Plato founds his Academy, which continues to operate in Athens
+for nine centuries. </p>
+
+<p><strong>300 B.C.</strong>: Euclid writes his Elements, systematically presenting theorems of geometry and arithmetic. </p>
+
+<p><strong>100 B.C.</strong>: A gear-based device, the Antikythera mechanism, is created to
+compute calendrical computation. It survives today. </p>
+
+<p><strong>45 B.C.</strong>: Julius Caesar institutes the Julian calendar, establishing the lengths
+of the 12 months.</p>
+
+<h2 id="ad-to-1361-ad">105 A.D. to 1361 A.D.</h2>
+
+<p><strong>105 A.D.</strong>: Ts’ai invents paper in China. </p>
+
+<p><strong>125</strong>: Philo of Byblos compiles the earliest known thesaurus. </p>
+
+<p><strong>150</strong>: Ptolemy’s Almagest introduces epicycles to describe the detailed
+motion of planets. </p>
+
+<p><strong>200</strong>: Galen organizes anatomy and physiology, defining many terms and
+concepts used today. </p>
+
+<p><strong>1028</strong>: Italian Benedictine monk Guido d’Arezzo invents musical stave
+notation. </p>
+
+<p><strong>1361</strong>: French philosopher Nicole Oresme introduces the notion of drawing
+graphs of values.</p>
+
+<h2 id="to-1591">1408 to 1591</h2>
+
+<p><strong>1408</strong>: The Yongle dadian, assembled by more than 2,000 scholars, fills more than 11,000 volumes with the collected knowledge of Chinese civilization. </p>
+
+<p><strong>1453</strong>: Moveable type makes it economical to print many kinds of documents. </p>
+
+<p><strong>1538</strong>: Parishes in England begin keeping weekly records of all christenings,
+marriages and burials. </p>
+
+<p><strong>1561</strong>: French mathematician Franciscus Vieta begins writing mathematical
+formulas with letters as variables, using vowels for unknowns and consonants
+for parameters.</p>
+
+<h2 id="to-1654">1604 to 1654</h2>
+
+<p><strong>1604</strong>: British teacher Robert Cawdry publishes a dictionary with definitions
+for 2,543 terms. </p>
+
+<p><strong>1614</strong>: Scottish mathematician John Napier publishes the first tables of
+logarithms. </p>
+
+<p><strong>1623</strong>: German astronomer Wilhelm Schickard creates a gear-based, six-digit
+mechanical calculator.</p>
+
+<p><strong>1627</strong>: German astronomer Johannes Kepler’s Rudolphine Tables list the
+positions of 1,005 stars and procedures for locating the planets. </p>
+
+<p><strong>1654</strong>: Physician William Petty, traveling with Oliver Cromwell’s army,
+systematically surveys and assigns value to land in Ireland.</p>
+
+<h2 id="to-1688">1659 to 1688</h2>
+
+<p><strong>1659</strong>: The Central England Temperature record begins, and continues today.</p>
+
+<p><strong>1662</strong>: English statistician John Graunt and others start to systematically
+summarize demographic and economic data using statistical ideas based on
+mathematics. </p>
+
+<p><strong>1686</strong>: English astronomer Edmond Halley creates a map showing prevailing
+winds at different locations.</p>
+
+<p><strong>1687</strong>: Isaac Newton introduces the idea that systems in nature can be
+described by math. </p>
+
+<p><strong>1688</strong>: Joseph de la Vega’s book Confusion of Confusions describes
+fluctuations in Dutch stock-market prices.</p>
+
+<h2 id="to-1830">1750 to 1830</h2>
+
+<p><strong>1750</strong>: Swedish botanist Carl Linnaeus introduces binomial designations and
+classifies living organisms. </p>
+
+<p><strong>1755</strong>: Japanese merchant Munehisa Homma invents an early candlestick chart
+for prices in the Japanese rice market. </p>
+
+<p><strong>1795</strong>: France becomes the first nation to officially adopt the metric system
+of measurement. </p>
+
+<p><strong>1801</strong>: French inventor Joseph-Marie Jacquard creates a loom that weaves
+patterns specified by punched cards. </p>
+
+<p><strong>1830</strong>: English mathematician Charles Babbage constructs a mechanical
+computer to automate the creation of mathematical knowledge.</p>
+
+<h2 id="to-1861">1836 to 1861</h2>
+
+<p><strong>1836</strong>: The General Register Office is founded. Births and deaths begin to be
+systematically recorded by the British government. </p>
+
+<p><strong>1839</strong>: French artist and physicist Louis Daguerre uses a copper plate and
+silver to capture photographs. </p>
+
+<p><strong>1839</strong>: English cartographer and printer George Bradshaw publishes the first
+train timetables. </p>
+
+<p><strong>1844</strong>: American inventor Samuel Morse sends the first public telegraph
+message. </p>
+
+<p><strong>1850</strong>: German entrepreneur Paul Julius Reuter uses pigeons to transmit stock
+prices from Aachen, Germany, to Brussels, Belgium. </p>
+
+<p><strong>1861</strong>: British naval officer and meteorologist Robert FItzRoy uses a network
+of telegraph stations and systematic charts to forecast British weather.</p>
+
+<h2 id="to-1876">1867 to 1876</h2>
+
+<p><strong>1867</strong>: Edward Calahan of the American Telegraph Company invents a system to
+transmit price changes from the floor of the New York Stock Exchange. </p>
+
+<p><strong>1869</strong>: Russian chemist Dmitry Mendeleev designs the periodic table of
+chemical elements. </p>
+
+<p><strong>1872</strong>: Scottish physicist Lord Kelvin creates an analog computer for
+predicting ocean tides.</p>
+
+<p><strong>1876</strong>: American librarian Melvil Dewey debuts the Dewey Decimal system for
+classifying the world’s knowledge and specifying how to organize books in
+libraries.</p>
+
+<h2 id="to-1935">1877 to 1935</h2>
+
+<p><strong>1877</strong>: Thomas Edison invents the phonograph.</p>
+
+<p><strong>1878</strong>: By an act of Congress, the collection of morbidity data on cholera,
+smallpox and yellow fever begins. </p>
+
+<p><strong>1895</strong>: Belgian lawyers Paul Otlet and Henri La Fontaine begin to collect
+index cards of information to answer factual questions by mail. By 1934, they
+had amassed 15.6 million cards. </p>
+
+<p><strong>1935</strong>: George Gallup founds the American Institute of Public Opinion and
+begins the first rigorous collection of opinion polls.</p>
+
+<h2 id="to-1953">1936 to 1953</h2>
+
+<p><strong>1936</strong>: English mathematician Alan Turing proposes the stored computer
+program. </p>
+
+<p><strong>1936</strong>: The U.S. federal government issues the first Social Security numbers. </p>
+
+<p><strong>1940s</strong>: Electronic computers allow computations of all kinds to be automated
+with increasing efficiency. </p>
+
+<p><strong>1945</strong>: American engineer Vannevar Bush speculates on the idea of a “Memex”
+device that would provide computerized access to the world’s knowledge–a
+precursor to hyperlinks. </p>
+
+<p><strong>1953</strong>: James Watson and Francis Crick determine the physical structure of
+DNA.</p>
+
+<h2 id="to-1982">1957 to 1982</h2>
+
+<p><strong>1957</strong>: Fortran, COBOL and other early computer languages define the concept
+of a precise formal representation for tasks to be performed by computers. </p>
+
+<p><strong>1960</strong>: The concept of links between documents–hypertext–begins to be
+discussed as a paradigm for organizing textual material and knowledge. </p>
+
+<p><strong>1960</strong>: The first full-text searching of documents by a computer is
+demonstrated. </p>
+
+<p><strong>1963</strong>: Zip (Zone Improvement Plan) codes are introduced by the U.S. Post
+Office. </p>
+
+<p><strong>1973</strong>: Lexis provides full-text records of U.S. court opinions in Ohio and
+New York in an electronic data-delivery system. </p>
+
+<p><strong>1982</strong>: Physicist Walter Goad founds GenBank, an open-access database of
+genome sequences. </p>
+
+<h2 id="to-1998">1989 to 1998</h2>
+
+<p><strong>1989</strong>: English computer scientists Tim Berners-Lee creates the World Wide
+Web. </p>
+
+<p><strong>1991</strong>: The Virtual Library, the first systematic catalog of the Web, is
+created. </p>
+
+<p><strong>1994</strong>: Jerry Yang and David Filo create a hierarchical directory of the Web:
+Yahoo. </p>
+
+<p><strong>1996</strong>: Brewster Kahle founds the Internet Archive to begin systematically
+capturing and preserving Web pages. </p>
+
+<p><strong>1998</strong>: Google launches. The text-based searching era begins. </p>
+
+<p><strong>1998</strong>: The Sloan Digital Sky Survey systematically maps every visible object
+in the astronomical universe.</p>
+
+<h2 id="to-2009">2001 to 2009</h2>
+
+<p><strong>2001</strong>: Volunteer contributors assemble 20,000 pages of encyclopedic material
+in all areas of human knowledge for Wikipedia. </p>
+
+<p><strong>2003</strong>: The Human Genome Project, a complete catalog of all the genes
+concealed in human DNA, is completed.</p>
+
+<p><strong>2004</strong>: Using GPS, a crowdsourced street-level map of the world is created
+for the OpenStreetMap project. </p>
+
+<p><strong>2004</strong>: Facebook begins to catalog social relations among people on a large
+scale. </p>
+
+<p><strong>2009</strong>: Wolfram Alpha is launched. It computes answers to language queries
+based on a collection of algorithms and curated data</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[k means within point scatter deviation]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2013/12/29/k-means-within-point-scatter-deviation/"/>
+    <updated>2013-12-29T19:15:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2013/12/29/k-means-within-point-scatter-deviation</id>
+    <content type="html"><![CDATA[<p>The overall within-point dissimilarity can be replaced with the summation of
+dissimilarity between each point in the cluster and the cluster mean. Here is a
+detailed proof. See this
+<a href="/docs/k_means_within_point_scatter_deviation.pdf">pdf</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Achieve Equal Influence on Attributes]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2013/12/29/achieve-equal-influence-on-attributes/"/>
+    <updated>2013-12-29T11:54:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2013/12/29/achieve-equal-influence-on-attributes</id>
+    <content type="html"><![CDATA[<p>Elements of Statistical Learning, Chapter 14 Note.</p>
+
+<p>See this <a href="/docs/object_similarity.pdf">pdf</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Probabilistic Graphical Model Reading Note -- Chapter One]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2013/12/21/probabilistic-graphical-model-reading-note-chapter-one/"/>
+    <updated>2013-12-21T11:58:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2013/12/21/probabilistic-graphical-model-reading-note-chapter-one</id>
+    <content type="html"><![CDATA[<p>This is the reading notes taken while I am reading the book <em>Probabilistic
+Graphical Model</em>. The start point of reading this book is I have a sense of
+how the methods in supervised learning, such as least square, logistic
+regression, svm, neural network, in unsupervised learning, such as clustering,
+and neural network again. However, I do not know much about the role
+probabilistic graphical model plays in the ML field.</p>
+
+<p>So I try to get that solved by reading this book.</p>
+
+<!-- more -->
+
+<h2 id="introduction">Introduction</h2>
+
+<h3 id="the-declarative-representation-approach">The Declarative Representation Approach</h3>
+
+<p>One can always write a special-purpose computer program for every domain one
+encounters and every type of questiion that one may wish to answer, however,
+when the context of the question changes, the program’s capability will degrade
+significantly.</p>
+
+<p>The book takes an approach based on declarative representation. The key
+property of a declarative representation is the separation of knowledge and
+reasoning. The representation has its own clear semantics, separate from the
+algorithms that one can apply to it. Thus, we can develop a general suite of
+algorithms that apply any model within a broad class, whether in the domina of
+medical diagonosis or speech recognition. Conversely, we can improve our model
+for a specific application domain without having to modify our reasoning
+algorithms constantly.</p>
+
+<h3 id="the-inevitable-uncertainty-of-the-world">The inevitable Uncertainty of the World</h3>
+
+<p>Uncertainty arises because of limitations in our ability to oberserve the
+world, limitations in our ability to model it, and possibly even because of
+innate nodeterminism.</p>
+
+<h3 id="math-foundation-calculus-of-probability-theory">Math Foundation: Calculus of Probability Theory</h3>
+
+<p>The calculus of probability theory provides us with a formal framework for
+considering multiple possible outcomes and their likelihood. It defines a set
+of mutually exclusive and exhaustive possibilities, and associates each of them
+with a probability – a number between 0 and 1, so that it sums to one.</p>
+
+<h3 id="approximation-is-inevitable">Approximation is inevitable</h3>
+
+<p>Just the title.</p>
+
+<h2 id="structured-probability-models">Structured Probability Models.</h2>
+
+<p>A violent joint probability distribution is too violent and also ignores the
+inner connection between different Random Viables. The author put forward a
+graph representation to capture the inner connections between Random Viables.</p>
+
+<p>Graphical representation can be viewed in two perspectives(but they are, in a
+deep sense, equivalent):</p>
+
+<ol>
+  <li>the graph as a representation of a set of independencies.</li>
+  <li>the graph as a skeleton for factorizing a distribution.</li>
+</ol>
+
+<p>To make the Graphicla Model relevant to real world, there components are
+important:</p>
+
+<ol>
+  <li>The representation captures one kind of real-world distribution – variables
+tend to interact directly only with very few others, and make it can be
+written down tractably.</li>
+  <li>It can be effectively inferenced.</li>
+  <li>It can be effectively constructed, in both sense of taking in the knowledge
+of human experts and automatic learning.</li>
+</ol>
+
+<p>This is summary given by the author:</p>
+
+<blockquote>
+  <p>These three components – representation, inference, and learning – are
+critical components in constructing an intelligence system. We need a
+declarative representation that is a reasonable encoding of our world model. We
+need to be able to use this representation effectively to answer a broad range
+of questions that are of interest. And we need to be able to acquire this
+distribution, combining expert knowledge and accumulated data. Probabilistic
+graphical models are one of a small handful of frameworks that support all
+three capabilities for a broad range of problems.</p>
+</blockquote>
+
+<h2 id="historical-note">Historical Note</h2>
+
+<p>This section definitely worth reading. Here I just takes some notes on why
+probability graphical model was rejected at first and rose again.</p>
+
+<p>Despite the success of PGM, the approach fell into disfavor in the AI
+community, owing to combination of several factors. One was the belief,
+prevalent at the time, that artificial intelligence should be based on similar
+methods to human intelligence, combined with a trong impression that people do
+not manipulate numbers when reasoning. A second issue was the belief that the
+strong independence assumjptions made in the existing expert systmes were
+fundamental to the approach. Thus, the lack of a flexible scalable mechanism to
+represent interactions between variables in a distirbution was a key factor in
+the rejection of the probabilistic framework.</p>
+
+<p>The rejection of probabilistic methods was accompanies by the invention of a
+range of alternative formatlisms for reasoning under uncertainty, and the
+construction of expert systems based on these formalisms(notably Prospector by
+Duda, Gaschnig, and Hart 1979 and Mycin by Buchanan and Shortliffe 1984). Most
+of these formalisms used the production rule framework, where each rule is
+augemented with some number(s) defining a measure of “confidence” in its
+validity. These frameworks largely lacked formal semantics, and many exhibited
+significant problems in key reasoning patterns. Other frameworks for handling
+uncertainty proposed at the time included fuzzy logic, possibility theory, and
+Dempster-Shafer belief functions. For a discusstion of some of these
+alternative frameworks see Shafer and Pearl(1990); Horvita at al.(1988);
+Halpern(2003).</p>
+
+<p>The widespread acceptance of probabilistic methods began in the late 1980s,
+driven forward by two major factors. The first was a series of seminal
+theoretical developments. The most influential among these was the development
+of the Bayesian network framework by Judea Peal and his colleagues in a series
+of paper that culminated in Pearl’s highly influential textbook <em>Probabilistic
+Reasoning in Intellligent Systems</em>. In parallel, the key paper by S.L.
+Lauritzen and D.J. Spiegelhaltcr 1988 set forth the foundations for efficient
+resoning using probabilistic graphical models. The second major factor was the
+construction of large-scale highly successfull expert systems based on this
+framework that avoided the unrealistically strong assumptions made by early
+probabilistic expert systems.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Proof of close form solution of least square method]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2013/12/12/proof-of-close-form-solution-of-least-square-method/"/>
+    <updated>2013-12-12T10:12:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2013/12/12/proof-of-close-form-solution-of-least-square-method</id>
+    <content type="html"><![CDATA[<p>Based on the theorems from <a href="/docs/theorems_about_trace.pdf">this</a>, the close form
+solution of least square method is proved
+<a href="/docs/solve_optimal_para_of_least_square_using_matrix_calculus.pdf">here</a>.</p>
+
+<p><strong>Note</strong>: The notation used is defined <a href="/docs/theorems_about_trace.pdf">here</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

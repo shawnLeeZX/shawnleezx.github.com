@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Statistics | SHAWN LEE]]></title>
+  <link href="http://shawnLeeZX.github.io/blog/categories/statistics/atom.xml" rel="self"/>
+  <link href="http://shawnLeeZX.github.io/"/>
+  <updated>2015-06-21T11:48:38+08:00</updated>
+  <id>http://shawnLeeZX.github.io/</id>
+  <author>
+    <name><![CDATA[Shawn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[What A Mathematical Object Random Variable Really Is]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/05/14/what-mathematical-object-random-really-is/"/>
+    <updated>2015-05-14T11:14:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/05/14/what-mathematical-object-random-really-is</id>
+    <content type="html"><![CDATA[<p>An example will be noted here to illustrate what a random variable really is.</p>
+
+<p>Sadly, things will be clearer with graph but for now I do not have a solution
+to make good illustration really quickly enough — normally I write a post in
+about half an hour.</p>
+
+<!-- more -->
+
+<p>The problem setting is that if we toss a coin twice, there are four possible
+outcomes that we could get — $(hh, ht, th, tt)$, where $h$ stands for head
+while $t$ stands for tail. If we denote the results as tuples, we could
+represent the experiment results as $((1, 1), (1, 0), (0, 1), (0, 0))$. If we
+take each element of the tuple with two elements as dimension of a vector
+space, each tuple could be regarded as an element in a vector space. we could
+represent our experiment result in a 2D plane.</p>
+
+<p>Consider that a random variable $X$ which is used to denote the number of heads
+in this experiment. Its value would be 0, 1 or 2.</p>
+
+<p>Now we make the statement that random variable a mapping, which maps the
+original event space $\Omega$(the four tuples here) to a subset$T’$(a set of
+${0, 1, 2}$ here) of a set $T$(the positive integer set $N^{+}$). Let’s see
+what this actually means.</p>
+
+<p>In the first level, the understanding could be pretty straight forward. $X$
+in some sense agglomerate the event space in the most preliminary level – the
+atomic exclusive level to a coarser level — the number of heads. So $(1, 0)$
+and $(0, 1)$ all collapse to the point ${1}$ in the set $T$. Correspondingly,
+the probability measure assigned on each event is changed. Mathematically,
+given a set $A$ in $T$, its probability now is </p>
+
+<script type="math/tex; mode=display">
+P^{X}(A) = P(\{\omega: X(\omega) \in A \}) = P(X^{-1}(A)) = P(X \in A)
+</script>
+
+<p>However, there is a way to think in the framework of functional analysis. Each
+mapping, precisely, function, in a vector space(Hilbert space could be a
+properer setting) could be regarded as projecting points in the vector space to
+the basis determined by the adjoint operator of this function.</p>
+
+<p>In previous example, a two dimensional space is reduced into one dimensional
+space, whose basis is the adjoint operator of the function $X$. And the
+probability measure of a point in this new one dimensional space is the sum of
+all points in the two dimensional points that will be projected at that
+point. Now, let’s see what those statements mean.</p>
+
+<p>If we draw a line crossing origin with slope one, all points with the same
+number of heads will be projected at the same point in this line. The point
+with two heads, which is $(1, 1)$, will be projected at point $(1, 1)$. The
+points with one head, which is $(1, 0) and (0, 1)$, will be projected at
+$(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2})$. Finally, the point with no head
+will be projected at $(0, 0)$. Now we drop the second dimension, each point in
+this line will semantically mean the number of heads, where the random variable
+will vary. Their probability measure will be summed while points are being
+projecting.</p>
+
+<p>The counting of heads is also represented by the function $(x + y)$(the value
+in each dimension of previous two dimensional space actually means the number
+of heads, so their sum will the number of heads), which is the adjoint operator
+of basis $(1, 1)$. This form is the representation of the basis of our new
+space in our old two dimensional space.</p>
+
+<p>One last note. When we are reducing dimensionality, we are also discarding the
+information of how many number of tail we get.</p>
+
+<p>In conclusion, what random variable really is?</p>
+
+<p>Random variable first maps original event space onto another event space, then
+defines a new probability distribution on the new space according its relation
+to the old event space. The intuitive meaning of the random variable is how it
+deals with original event space, which is counting the number of heads
+here. But essentially, it defines a distribution or in other words, probability
+measure at each point(the number of heads), in the new space.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Progress Buffer for Big Picture Building]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/05/07/progress-buffer-for-big-picture-building/"/>
+    <updated>2015-05-07T08:37:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/05/07/progress-buffer-for-big-picture-building</id>
+    <content type="html"><![CDATA[<p>I think I will fully devote to a project from now on. To be able to back on the
+work to build an overall big picture of perception problem of artificial
+intelligence in the future, I try to summarize the progress here.</p>
+
+<!-- more -->
+
+<h2 id="wavelet">Wavelet</h2>
+
+<h3 id="transition-from-fourier-to-wavelet">Transition from Fourier to Wavelet</h3>
+
+<p>The learning of one dimensional Fourier transform part of Fourier transform is
+finished. The key of transition from Fourier analysis to wavelet analysis in
+transient signal analysis is learned, which will be described in the following:</p>
+
+<p>Fourier transform is actually a scan over all frequency spectrum on the
+signal. For a time-limited signal, or mathematically non-periodic signal, the
+value of the signal outside the time-limited interval is zero not because it is
+indeed zero in nature but we do not care about its value. So if we use all
+spectrum of Fourier transform to get its new representation in frequency
+domain, the coefficients whose period are far longer than the time span or far
+shorter than the time span will be highly inaccurate — only when the integral
+or inner product is taken a integer multiplication of period length, the
+coefficients we get is accurate. So in windowed Fourier transform, the
+frequency whose period is far longer than the window is synthesized using
+different time notes of the signal while the one whose period is far shorter
+than the window is synthesized by different high frequency in the same time
+note.</p>
+
+<p>Discrete Fourier transform is an approximate of continuous Fourier transform,
+which is directly called Fourier transform in previous paragraph. The
+approximate is made actual taking the time span of the time-limited signal as
+such signal’s period. Similar approximation is also made in the frequency
+domain. So we get a periodic frequency span. This is why we have to ensure the
+sampling rate is high enough to guarantee that after the periodization of
+frequency part, different periods do not overlap with each other.</p>
+
+<p>So to overcome this problem is the key reason to introduce wavelet analysis,
+whose bases’ time span are dynamically determined to suit the corresponding
+frequency they want to decouple, or in another word, to detect.</p>
+
+<h3 id="goals-next-step">Goals Next Step</h3>
+
+<p>How exactly this idea is implemented thirty years ago should be further
+investigated <strong>on the purpose of this research goal</strong>:</p>
+
+<blockquote>
+  <p>How could Fourier and wavelet analysis bridges the gap between the physical
+entity and things that may have semantic meaning?</p>
+</blockquote>
+
+<p>What the sensors of human beings are receiving are actually just physical
+signals — the different strength of illumination of light, different
+amplitude and frequency of air vibration. The problem solved by scientists in
+18th and 19th are most linear problem that deals with the nature instead of how
+human deals with nature. The light and air pressure vibration are both
+superposition of various basic building blocks of nature’s atom —
+electromagnet wave and mechanical vibration wave. Frequency, amplitude and
+phase of them are the first layer nature of them. For human beings, the learned
+nature of them is actually detecting patterns. The gap between those two would
+be very important to understand the perception problem of human race.</p>
+
+<p>To address this gap, wavelet analysis and its high dimensional form could be a
+promising direction. To know exactly where this direction could lead, the
+following questions and guess should be addressed:</p>
+
+<ol>
+  <li>Wavelet that does not use complex exponential directly may be understood as
+a layer that stacked on the complex exponential, which is the frequency
+nature of the signal – the atom of signal. This may be the reason why
+theorem proving of wavelet I have encountered now all depends on Fourier
+transform.</li>
+  <li>How different kinds of wavelets are designed? One key here is that we want
+the optimal time and frequency localization for one particular wavelet
+basis. But there must be more in this. Some work have mentioned the
+vanishing moment of wavelet. Those design may bring to some very deep
+physics facts that is very illuminating.</li>
+  <li>One dimensional analysis is actually the special case of higher dimensional
+analysis. Everything is a vector in the real world. After getting
+familiarity with one dimensional theory, the leap from one dimensional to
+higher dimensional could lead to the direct intuition to the real world and
+the solving of problem that involving the basic properties of higher
+dimensional space, such as 2D and 3D rotation, scaling of signals.</li>
+</ol>
+
+<h3 id="execution-plan">Execution Plan</h3>
+
+<p>Fortunately, the survey about which books to read has just been made.</p>
+
+<ul>
+  <li><em>Insight Into Wavelets, from Theory to Practice</em> is relatively detailed
+enough and contains pertinent amount of practice. It seems to cover relevant
+Math, such as function space, nested space, enough intuition and historical
+development, the design of wavelet and enough examples. This book may be the
+main thread to follow when I back to learn it again.</li>
+  <li><em>Ten lectures on wavelets</em> is another candidate main thread to follow. Its
+level of detail and conversation style will be further checked when I back to
+learn it again.</li>
+  <li><em>A Friendly Guide to Wavelets</em> should be used in complement with the first
+book. This book is too contingent with examples and proof detail, but its
+explanation on intuition is good.</li>
+  <li><em>A First Course in Wavelets with Fourier Analysis</em> has not been investigated
+much. Its try to deal with Fourier and wavelet at the time could make it
+miserable, but referring to it from time to time may be helpful to see their
+connection after having learned Fourier and wavelet enough.</li>
+  <li><em>The World According to Wavelets The Story of a Mathematical Technique in the
+Making</em> is all about history and intuition. The second half that deals with
+math has not been read yet. After having learned wavelet, this small book
+could be helpful on wavelet’s connection with other discipline and historical
+development.</li>
+  <li><em>A wavelet tour of signal processing</em> is a reference book. It deals with the
+big perspective on the transition from wavelet method to dictionary
+learning. This is the book to read after I have learned wavelet well.</li>
+  <li><em>Conceptual Wavelets in Digital Signal Processing</em>, <em>A primer on wavelets and
+their scientific applications</em>, <em>Ripples In Mathematics</em> and <em>The Illustrated
+Wavelet Transform Handbook</em> are more about mechanics of wavelet. Those
+mechanics could be helpful after the overall picture of wavelet is gotten.</li>
+  <li><em>Wavelets and Subband Coding</em>, <em>Multirate Systems And Filter Banks</em> and
+<em>Wavelets and Filter Banks</em> are about more the discrete version of
+*wavelet. Those will be helpful when I am working on implementation.</li>
+</ul>
+
+<h2 id="bayesian-statistics">Bayesian Statistics</h2>
+
+<h3 id="motivation">Motivation</h3>
+
+<p>There has been twenty years of work on computer vision and machine learning
+using Bayesian methods. The initial taking off initialized by Hinton also
+origins from statistical method — Deep Belief Net. There are several reasons
+to understand Bayesian related methods:</p>
+
+<ol>
+  <li>To acquire the ability to understand previous important work and work on
+deep learning involving Bayesian methods.</li>
+  <li>Statistics is important for biologically inspired work. Neurons in brain
+never get activated alone. It is their statistics pattern that matters.</li>
+  <li>It is another way to think about problem. If we view the branch of applied
+mathematics as modeling the world from a low level, relatively deterministic
+perspective, probability viewed it from a high level, semantic way. It is
+important to have probability to deal with high level part of deep learning
+system.</li>
+</ol>
+
+<h3 id="goal-next-step">Goal Next Step</h3>
+
+<p>The first step goal is to understand the fundamental intuition behind
+probability and statistics, just like understanding the construction of number
+system while studying functional analysis, then how exactly Bayesian methods
+depart from traditional frequentism. Computational perspective of Bayesian
+method such as sampling could wait.</p>
+
+<h3 id="execution-plan-1">Execution Plan</h3>
+
+<p>The main plan to follow is the thread on Bayesian statistics on
+Metaacademy. Books are also important for reference and systemtization of
+learning.</p>
+
+<h4 id="basic-probability-and-statistics">Basic Probability and Statistics</h4>
+<ul>
+  <li><em>An Introduction To Probability Theory And Its Applications</em> is the classic
+book on probability. It gets the intuition and motivation right. If knowledge
+which needs deeper learning arises, this is the book to consult.</li>
+  <li><em>Probability Jim Pitman</em> is an undergraduate textbook on probability.</li>
+  <li><em>Statistical Inference</em> is the book to read after having a good understanding
+of probability.</li>
+  <li><em>Mathematical Statistics and Data Analysis</em> is a good reference for
+statistics. It is relatively simpler than <em>Statistical Inference</em>, which it a
+good fallback candidate if I have a hard time understanding the book.</li>
+  <li><em>Bayesian Data Analysis</em> After the basic foundation of probability and
+statistics is laid. This is the book to read to know Bayesian methods.</li>
+</ul>
+
+<h4 id="multivariate-statistics">Multivariate statistics</h4>
+<ul>
+  <li><em>Modern Multivariate Statistical Techniques</em> and <em>An Introduction to
+Multivariate Statistical Analysis</em> is the book to consult when jumping into
+real world data.</li>
+</ul>
+
+<h4 id="modern-probability-theory">Modern Probability Theory</h4>
+<ul>
+  <li><em>Probability and Random Processes Grimmett</em> tries to cover stuffs that needs
+measure theory in using language that without measure theory. It could be a
+bridge to the gap of modern probability and classic probability.</li>
+  <li><em>Probability Essentials</em> describes the thread of modern probability tersely.</li>
+  <li><em>Probability, Theory and Examples</em> is like Mallat’s wavelet tour. It is a
+book to read after you have relative good understanding of modern probability
+theory. It could offer you a bigger picture.</li>
+  <li><em>Foundation of Modern Probability</em> is the most advanced book which may only
+be needed by PhD in probability.</li>
+</ul>
+
+<h4 id="real-analysis">Real Analysis</h4>
+<ul>
+  <li><em>Principles of Mathematical Analysis</em> is the book to consult in undergraduate
+level.</li>
+  <li><em>James Munkres Topology</em> is the book to consult about topology.</li>
+  <li><em>Folland. Real Analysis Modern Techniques and their Application</em> is the book
+to learn real analysis seriously.</li>
+</ul>
+
+<h2 id="link-between-communities">Link Between Communities</h2>
+
+<p>A major breakthrough could be made is that the work on sparse and redundant
+dictionary learning in signal processing community, traditional Bayesian
+statistics machine learning community, neuroscience community and the community
+working on experimental deep learning could be linked together.</p>
+
+<p>What CNN tries to learn is basically a sparse and redundant dictionary that is
+used to capture semantic patterns of sensed signal. Signal processing community
+could offer theoretical guidance. Neurosciece could offer biological
+experimental facts and deep learning community could offer simulation
+experiments facts and lastly, Bayesian statistics community could offer ways to
+deal with the high level relationship between atom in the dictionary.</p>
+
+<h2 id="ending">Ending</h2>
+
+<p>I think this is all of it. Hope I will be back soon.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Understanding Recall in Pattern Recognition and Information Retrival]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2013/10/15/understanding-recall/"/>
+    <updated>2013-10-15T09:51:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2013/10/15/understanding-recall</id>
+    <content type="html"><![CDATA[<p>Since the first time I knew the word <em>recall</em>, which is a criterion to evaluate
+the classification result of supervised learning algorithm at that time, I never
+actually understood why the word <em>recall</em> is called recall…</p>
+
+<p>And today I understood its meaning and share it here.
+<!-- more --></p>
+
+<p>Formally, recall is defined in Wikipedia as the following:</p>
+
+<p>In pattern recognition and information retrieval, precision (also called
+positive predictive value) is the fraction of retrieved instances that are
+relevant, while recall (also known as sensitivity) is the fraction of relevant
+instances that are retrieved.</p>
+
+<p>To understood it, we may consider what recall means in daily life. When a number
+of cars are malfunctioning, the car company must recall this batch of cars. Let
+us assume the company produced 100 cars, which were all malfunctioning. But
+customer only found 95 of them were malfunctioning. So the recall is 0.95.</p>
+
+<p>That’s what is happening in Information Retrival! You get 100 relevant instance,
+but on one test, whatever it is search query or classification result, you get
+95 of them. That means you recall 0.95 of them.</p>
+
+<p>I guess I won’t forget what it means.</p>
+]]></content>
+  </entry>
+  
+</feed>

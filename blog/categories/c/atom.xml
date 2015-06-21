@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: C | SHAWN LEE]]></title>
+  <link href="http://shawnLeeZX.github.io/blog/categories/c/atom.xml" rel="self"/>
+  <link href="http://shawnLeeZX.github.io/"/>
+  <updated>2015-06-21T11:48:38+08:00</updated>
+  <id>http://shawnLeeZX.github.io/</id>
+  <author>
+    <name><![CDATA[Shawn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rare Usage of C Programming Language.]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2013/09/24/rare-usage-of-c-programming-language/"/>
+    <updated>2013-09-24T11:22:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2013/09/24/rare-usage-of-c-programming-language</id>
+    <content type="html"><![CDATA[<h2 id="this-page-collects-the-usage-i-regards-rare-of-c-programming-language">This page collects the usage I regards rare of c programming language.</h2>
+
+<!-- more -->
+
+<h2 id="typedef-function">Typedef function</h2>
+
+<p><code>typedef void (*function_pointer)(int a);</code> creates a function type named
+function pointer with return type of void and takes one int argument.</p>
+
+<p>The following is my running sample. It prints one on the screen.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span> <span class="n">id</span><span class="o">=</span><span class="s">&quot;include-stdioh&quot;</span><span class="o">&gt;</span><span class="n">include</span> <span class="o">&lt;</span><span class="n">stdio</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;&lt;/</span><span class="n">stdio</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">typedef</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">function_pointer</span><span class="p">)(</span><span class="kt">int</span> <span class="n">a</span><span class="p">);</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kt">void</span> <span class="n">print_number</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">d</span><span class="err">\</span><span class="n">n</span><span class="err">”</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kt">void</span> <span class="n">test</span><span class="p">(</span><span class="n">function_pointer</span> <span class="n">f_p</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">f_p</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kt">int</span> <span class="n">main</span> <span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="k">const</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">test</span><span class="p">(</span><span class="n">print_number</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2 id="constant-pointer-and-pointer-to-constant">Constant Pointer and Pointer to Constant</h2>
+
+<p>The syntax difference of a pointer to constant and a constant pointer always
+confuses me. This time, I want to solve it once and for all.</p>
+
+<h3 id="constant-pointer">Constant Pointer</h3>
+<p>A constant pointer means the address the pointer is pointed to is fixed. It’s
+syntax is:
+<code>c
+&lt;type of pointer&gt;* const &lt;name of pointer&gt;
+</code></p>
+
+<p>Take constant pointer to <code>int</code> as an example, it’s syntax is like this:</p>
+
+<p><code>c
+int a = 1;
+int* const ptr = &amp;a;
+</code></p>
+
+<p>Note that the pointer must be initialized at the time it is defined, just as
+the above example. Furtheremore, if you attempt to change its value,
+compilation error will occur:</p>
+
+<p>```c
+int a = 1;
+int* const ptr = &amp;a;</p>
+
+<p>int b = 2;
+ptr = &amp;b;
+```</p>
+
+<p>In this case compilation error will occur.</p>
+
+<h3 id="pointer-to-constant">Pointer to Constant</h3>
+<p>A pointer to a const’s syntax is:</p>
+
+<p><code>c
+const &lt;type of pointer&gt;* &lt;name of pointer&gt;
+</code></p>
+
+<p>Again, take the case of <code>int</code> as an example:</p>
+
+<p><code>c
+const int a = 1;
+const int* ptr;
+ptr = &amp;a;
+</code></p>
+
+<p>This will work. And semantically weird, this also will work:
+<code>c
+int a = 1;
+const int* ptr;
+ptr = &amp;a;
+</code></p>
+
+<p>To understand the situation, I code another two snippets:
+<code>c
+int a = 1;
+const int* ptr;
+ptr = &amp;a;
+*ptr += 1;
+printf("%d", *ptr);
+</code></p>
+
+<p><code>c
+int a = 1;
+const int* ptr;
+ptr = &amp;a;
+a += 1;
+printf("%d", *ptr);
+</code></p>
+
+<p>The first causes compilation error while the the second print the value of a to
+be 2.</p>
+
+<p>In conclusion, I guess the semantics of <code>const int* ptr</code> is enforced on <code>ptr</code>
+but not the <code>int a</code>. The content of the address <code>ptr</code> can still be changed by
+other references.</p>
+
+<h3 id="mnemonic">Mnemonic</h3>
+<p>Understanding the syntax is one thing, but memorizing them is another. Here is
+how I remember the syntax.</p>
+
+<p>The constant qualifier is enforced on the object that immediately follows it.</p>
+
+<p>For the constant pointer, the immediate follower is the <code>ptr</code>, thus the content
+of ptr, meaning the address cannot be changed.</p>
+
+<p>For the pointer to constant, the immediate follower is <code>&lt;type of pointer&gt;</code>,
+thus enforce a constancy on the type, meaning it is a constant.</p>
+
+<p>Hope that make through.</p>
+]]></content>
+  </entry>
+  
+</feed>

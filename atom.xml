@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[The Past & The Future]]></title>
+  <title><![CDATA[SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-06-19T19:49:35+08:00</updated>
+  <updated>2015-06-21T11:48:38+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,5 +12,2934 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[THIS TOO SHALL PASS]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/06/06/this-too-shall-pass/"/>
+    <updated>2015-06-06T09:43:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/06/06/this-too-shall-pass</id>
+    <content type="html"><![CDATA[<p>A Thought Provoking Story</p>
+
+<p>This Too Shall Pass – Understand This Deeply</p>
+
+<!-- more -->
+
+<p>Once A King Called Upon All Of His Wise Men And Asked Them, ” Is There A Mantra
+Or Suggestion Which Works In Every Situation, In Every Circumstances, In Every
+Place And In Every Time. In Every Joy, Every Sorrow, Every Defeat And Every
+Victory? One Answer For All Questions? Something Which Can Help Me When None Of
+You Is Available To Advise Me? Tell Me Is There Any Mantra?”</p>
+
+<p>All The Wise Men Were Puzzled By The King’s Question. They Thought And
+Thought. After A Lengthy Discussion, An Old Man Suggested Something Which
+Appealed To All Of Them. They Went To The King And Gave Him Something Written
+On Paper, With A Condition That The King Was Not To See It Out Of Curiosity.</p>
+
+<p>Only In Extreme Danger, When The King Finds Himself Alone And There Seems To Be
+No Way, Only Then He Can See It. The King Put The Papers Under His Diamond
+Ring.</p>
+
+<p>Some Time Later, The Neighbors Attacked The Kingdom. King And His Army Fought
+Bravely But Lost The Battle. The King Had To Flee On His Horse. The Enemies
+Were Following Him. Getting Closer And Closer. Suddenly The King Found Himself
+Standing At The End Of The Road - That Road Was Not Going Anywhere. Underneath
+There Was A Rocky Valley Thousand Feet Deep. If He Jumped Into It, He Would Be
+Finished…And He Could Not Return Because It Was A Small Road…The Sound Of
+Enemy’s Horses Was Approaching Fast. The King Became Restless. There Seemed To
+Be No Way.</p>
+
+<p>Then Suddenly He Saw The Diamond In His Ring Shining In The Sun, And He
+Remembered The Message Hidden In The Ring. He Opened The Diamond And Read The
+Message. The Message Was – “ THIS TOO SHALL PASS ”</p>
+
+<p>The King Read It . Again Read It. Suddenly Something Struck Him- Yes ! This Too
+Will Pass. Only A Few Days Ago, I Was Enjoying My Kingdom. I Was The Mightiest
+Of All The Kings. Yet Today, The Kingdom And All My Pleasures Have Gone. I Am
+Here Trying To Escape From Enemies. Like Those Days Of Luxuries Have Gone, This
+Day Of Danger Too Will Pass. A Calm Came On His Face. He Kept Standing
+There. The Place Where He Was Standing Was Full Of Natural Beauty. He Had Never
+Known That Such A Beautiful Place Was Also A Part Of His Kingdom.</p>
+
+<p>The Revelation Of The Message Had A Great Effect On Him. He Relaxed And Forgot
+About Those Following Him. After A Few Minutes He Realized That The Noise Of
+The Horses And The Enemy Coming Was Receding. They Moved Into Some Other Part
+Of The Mountains And Were Nowhere Near Him.</p>
+
+<p>The King Was Very Brave. He Reorganized His Army And Fought Again. He Defeated
+The Enemy And Regained His Empire. When He Returned To His Empire After
+Victory, He Was Received With Much Fanfare. The Whole Capital Was Rejoicing In
+The Victory.</p>
+
+<p>Everyone Was In A Festive Mood. Flowers Were Being Showered On King From Every
+House, From Every Corner. People Were Dancing And Singing. For A Moment King
+Said To Himself, “ I Am One Of The Bravest And Greatest King. It Is Not Easy To
+Defeat Me. With All The Reception And Celebration He Saw An Ego Emerging In
+Him. ”</p>
+
+<p>Suddenly The Diamond Of His Ring Flashed In The Sunlight And Reminded Him Of
+The Message. He Open It And Read It Again: “ THIS TOO SHALL PASS ”.</p>
+
+<p>He Became Silent. His Face Went Through A Total Change - From The Egoist He
+Moved To A State Of Utter Humbleness. If This Too Is Going To Pass, It Is Not
+Yours. The Defeat Was Not Yours, The Victory Is Not Yours. You Are Just A
+Watcher. Everything Passes By. We Are Witnesses Of All This. We Are The
+Perceivers. Life Comes And Goes. Happiness Comes And Goes. Sorrow Comes And
+Goes.</p>
+
+<p>Now As You Have Read This Story, Just Sit Silently And Evaluate Your Own
+Life. This Too Will Pass. Think Of The Moments Of Joy And Victory In Your
+Life. Think Of The Moment Of Sorrow And Defeat. Are They Permanent ? They All
+Come And Pass Away.</p>
+
+<p>Life Just Passes Away. There Is Nothing Permanent In This World. Every Thing
+Changes Except The Law Of Change. Think Over It From Your Own Perspective. You
+Have Seen All The Changes. You Have Survived All Setbacks, All Defeats And All
+Sorrows. All Have Passed Away. The Problems In The Present, They Too Will Pass
+Away. Because Nothing Remains Forever. Joy And Sorrow Are The Two Faces Of The
+Same Coin. They Both Will Pass Away.</p>
+
+<p>You Are Just A Witness Of Change. Experience It, Understand It, And Enjoy The
+Present Moment - This Too Shall Pass</p>
+
+<p>from:
+<a href="http://www.citehr.com/346028-too-shall-pass-thought-provoking-story.html">This Too Shall Pass</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Connection between PCA and Fourier Transform]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/06/05/connection-between-pca/"/>
+    <updated>2015-06-05T21:10:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/06/05/connection-between-pca</id>
+    <content type="html"><![CDATA[<!-- more -->
+
+<p>When we are running PCA on images, the first principle component we get is
+normally looks like the DC term, which is the first Fourier bases of
+images. After some analysis, I found that this makes a lot of sense.</p>
+
+<p>We could unify PCA and Fourier Transform from filter bank or linear operator
+point of view. Actually those two point of views are just different way to say
+the same thing in signal processing and mathematics.</p>
+
+<p>From filter bank point of view, the process of getting the PCA coefficients and
+Fourier coefficients could be regarded as passing the original signal to a
+Linear Time Invariant system. Each Fourier basis or eigenvector is a
+filter. All of them make up the filter bank.</p>
+
+<p>From linear operator point of view, such process could be taken as an operator
+to project the point in one space to another space.</p>
+
+<p>It turns out that Fourier basis $e^{i\omega t}$ and eigenvector $v$ of covariance
+matrix are both eigenvector(this eigenvector is not specific to the eigenvector
+computed from covariance matrix of the data) of the LTI system.</p>
+
+<p>The Fourier basis eigenvectors could be taken as the eigenvector of covariance
+of all possible images that could be formed by spatial complex exponential
+signal. So it is fixed. As for the data driven eigenvector $v$, it is only the
+eigenvector of that amount of data. They are both orthogonal with other
+eigenvectors within their sets. If data driven eigenvector get normalized, it
+has unit norm as well.</p>
+
+<p>This could explain why the first principal components of covariance looks a lot
+similar do the first Fourier basis. Because DC term of images affect all
+pixels, naming all dimensions. So its variance is the largest, which makes it
+similar with first fourier basis. I think similar argument could be made to
+other principal components and Fourier bases as well. But they may be less
+obvious then the first one.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A Concept Explanation on Composition of Matrice Representing Linear Transform]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/05/22/a-concept-explanation-on-composition-of-matrice-representing-linear-transform/"/>
+    <updated>2015-05-22T22:18:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/05/22/a-concept-explanation-on-composition-of-matrice-representing-linear-transform</id>
+    <content type="html"><![CDATA[<!-- more -->
+
+<p>It is a bit hard to internalize the fact that the composition of finite
+dimensional linear transformation is the multiplication of the matrices
+representing them. I figured out a concept explanation.</p>
+
+<p>Denoting the first transformation matrix as $A$ and the second as $B$,
+$\vec{a_{i}}$ as the row of $A$ and $\vec{b_{j}}$ as the row of $B$, the to
+be transformed vector as $x$, basically, each $\vec{a}_{i}$ determines how
+each coordinate $x_{i}$ of $\vec{x}$ will contribute to the result
+coordinates.</p>
+
+<p>Then if you do another linear transform on $\vec{Ax}$, each $\vec{b}_{j}$ determines how
+each coordinate of $\vec{Ax}$ will contribute to the final vector. Since the transform is
+linear, we could first consider how $\vec{a_{i}}$ contributes to the final
+vector, its final result with $x$ is just a multiple of $x_{i}$. Each
+component of $\vec{a_{i}}$ actually could be taken as a to be transformed
+vector of $B$. Each row of $AB$ could be viewed in the following way.</p>
+
+<p>$\vec{a_{i}}$ is the new coordinate of standard basis $\vec{e_{i}}$ after
+applying $A$. Starting from there, the second new coordinates of those first
+new coordinates are obtained by applying $B$. So if we apply $AB$ on standard
+basis $\vec{e_{i}}$, the result is going to be the second new
+coordinates. Actually, such coordinates are:</p>
+
+<script type="math/tex; mode=display">
+\sum\vec{b_{j}}(\vec{a_{i}})_{j}
+</script>
+
+<p>which is just $\vec{(AB)_{i}}$.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[What A Mathematical Object Random Variable Really Is]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/05/14/what-mathematical-object-random-really-is/"/>
+    <updated>2015-05-14T11:14:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/05/14/what-mathematical-object-random-really-is</id>
+    <content type="html"><![CDATA[<p>An example will be noted here to illustrate what a random variable really is.</p>
+
+<p>Sadly, things will be clearer with graph but for now I do not have a solution
+to make good illustration really quickly enough — normally I write a post in
+about half an hour.</p>
+
+<!-- more -->
+
+<p>The problem setting is that if we toss a coin twice, there are four possible
+outcomes that we could get — $(hh, ht, th, tt)$, where $h$ stands for head
+while $t$ stands for tail. If we denote the results as tuples, we could
+represent the experiment results as $((1, 1), (1, 0), (0, 1), (0, 0))$. If we
+take each element of the tuple with two elements as dimension of a vector
+space, each tuple could be regarded as an element in a vector space. we could
+represent our experiment result in a 2D plane.</p>
+
+<p>Consider that a random variable $X$ which is used to denote the number of heads
+in this experiment. Its value would be 0, 1 or 2.</p>
+
+<p>Now we make the statement that random variable a mapping, which maps the
+original event space $\Omega$(the four tuples here) to a subset$T’$(a set of
+${0, 1, 2}$ here) of a set $T$(the positive integer set $N^{+}$). Let’s see
+what this actually means.</p>
+
+<p>In the first level, the understanding could be pretty straight forward. $X$
+in some sense agglomerate the event space in the most preliminary level – the
+atomic exclusive level to a coarser level — the number of heads. So $(1, 0)$
+and $(0, 1)$ all collapse to the point ${1}$ in the set $T$. Correspondingly,
+the probability measure assigned on each event is changed. Mathematically,
+given a set $A$ in $T$, its probability now is </p>
+
+<script type="math/tex; mode=display">
+P^{X}(A) = P(\{\omega: X(\omega) \in A \}) = P(X^{-1}(A)) = P(X \in A)
+</script>
+
+<p>However, there is a way to think in the framework of functional analysis. Each
+mapping, precisely, function, in a vector space(Hilbert space could be a
+properer setting) could be regarded as projecting points in the vector space to
+the basis determined by the adjoint operator of this function.</p>
+
+<p>In previous example, a two dimensional space is reduced into one dimensional
+space, whose basis is the adjoint operator of the function $X$. And the
+probability measure of a point in this new one dimensional space is the sum of
+all points in the two dimensional points that will be projected at that
+point. Now, let’s see what those statements mean.</p>
+
+<p>If we draw a line crossing origin with slope one, all points with the same
+number of heads will be projected at the same point in this line. The point
+with two heads, which is $(1, 1)$, will be projected at point $(1, 1)$. The
+points with one head, which is $(1, 0) and (0, 1)$, will be projected at
+$(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2})$. Finally, the point with no head
+will be projected at $(0, 0)$. Now we drop the second dimension, each point in
+this line will semantically mean the number of heads, where the random variable
+will vary. Their probability measure will be summed while points are being
+projecting.</p>
+
+<p>The counting of heads is also represented by the function $(x + y)$(the value
+in each dimension of previous two dimensional space actually means the number
+of heads, so their sum will the number of heads), which is the adjoint operator
+of basis $(1, 1)$. This form is the representation of the basis of our new
+space in our old two dimensional space.</p>
+
+<p>One last note. When we are reducing dimensionality, we are also discarding the
+information of how many number of tail we get.</p>
+
+<p>In conclusion, what random variable really is?</p>
+
+<p>Random variable first maps original event space onto another event space, then
+defines a new probability distribution on the new space according its relation
+to the old event space. The intuitive meaning of the random variable is how it
+deals with original event space, which is counting the number of heads
+here. But essentially, it defines a distribution or in other words, probability
+measure at each point(the number of heads), in the new space.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Progress Buffer for Big Picture Building]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/05/07/progress-buffer-for-big-picture-building/"/>
+    <updated>2015-05-07T08:37:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/05/07/progress-buffer-for-big-picture-building</id>
+    <content type="html"><![CDATA[<p>I think I will fully devote to a project from now on. To be able to back on the
+work to build an overall big picture of perception problem of artificial
+intelligence in the future, I try to summarize the progress here.</p>
+
+<!-- more -->
+
+<h2 id="wavelet">Wavelet</h2>
+
+<h3 id="transition-from-fourier-to-wavelet">Transition from Fourier to Wavelet</h3>
+
+<p>The learning of one dimensional Fourier transform part of Fourier transform is
+finished. The key of transition from Fourier analysis to wavelet analysis in
+transient signal analysis is learned, which will be described in the following:</p>
+
+<p>Fourier transform is actually a scan over all frequency spectrum on the
+signal. For a time-limited signal, or mathematically non-periodic signal, the
+value of the signal outside the time-limited interval is zero not because it is
+indeed zero in nature but we do not care about its value. So if we use all
+spectrum of Fourier transform to get its new representation in frequency
+domain, the coefficients whose period are far longer than the time span or far
+shorter than the time span will be highly inaccurate — only when the integral
+or inner product is taken a integer multiplication of period length, the
+coefficients we get is accurate. So in windowed Fourier transform, the
+frequency whose period is far longer than the window is synthesized using
+different time notes of the signal while the one whose period is far shorter
+than the window is synthesized by different high frequency in the same time
+note.</p>
+
+<p>Discrete Fourier transform is an approximate of continuous Fourier transform,
+which is directly called Fourier transform in previous paragraph. The
+approximate is made actual taking the time span of the time-limited signal as
+such signal’s period. Similar approximation is also made in the frequency
+domain. So we get a periodic frequency span. This is why we have to ensure the
+sampling rate is high enough to guarantee that after the periodization of
+frequency part, different periods do not overlap with each other.</p>
+
+<p>So to overcome this problem is the key reason to introduce wavelet analysis,
+whose bases’ time span are dynamically determined to suit the corresponding
+frequency they want to decouple, or in another word, to detect.</p>
+
+<h3 id="goals-next-step">Goals Next Step</h3>
+
+<p>How exactly this idea is implemented thirty years ago should be further
+investigated <strong>on the purpose of this research goal</strong>:</p>
+
+<blockquote>
+  <p>How could Fourier and wavelet analysis bridges the gap between the physical
+entity and things that may have semantic meaning?</p>
+</blockquote>
+
+<p>What the sensors of human beings are receiving are actually just physical
+signals — the different strength of illumination of light, different
+amplitude and frequency of air vibration. The problem solved by scientists in
+18th and 19th are most linear problem that deals with the nature instead of how
+human deals with nature. The light and air pressure vibration are both
+superposition of various basic building blocks of nature’s atom —
+electromagnet wave and mechanical vibration wave. Frequency, amplitude and
+phase of them are the first layer nature of them. For human beings, the learned
+nature of them is actually detecting patterns. The gap between those two would
+be very important to understand the perception problem of human race.</p>
+
+<p>To address this gap, wavelet analysis and its high dimensional form could be a
+promising direction. To know exactly where this direction could lead, the
+following questions and guess should be addressed:</p>
+
+<ol>
+  <li>Wavelet that does not use complex exponential directly may be understood as
+a layer that stacked on the complex exponential, which is the frequency
+nature of the signal – the atom of signal. This may be the reason why
+theorem proving of wavelet I have encountered now all depends on Fourier
+transform.</li>
+  <li>How different kinds of wavelets are designed? One key here is that we want
+the optimal time and frequency localization for one particular wavelet
+basis. But there must be more in this. Some work have mentioned the
+vanishing moment of wavelet. Those design may bring to some very deep
+physics facts that is very illuminating.</li>
+  <li>One dimensional analysis is actually the special case of higher dimensional
+analysis. Everything is a vector in the real world. After getting
+familiarity with one dimensional theory, the leap from one dimensional to
+higher dimensional could lead to the direct intuition to the real world and
+the solving of problem that involving the basic properties of higher
+dimensional space, such as 2D and 3D rotation, scaling of signals.</li>
+</ol>
+
+<h3 id="execution-plan">Execution Plan</h3>
+
+<p>Fortunately, the survey about which books to read has just been made.</p>
+
+<ul>
+  <li><em>Insight Into Wavelets, from Theory to Practice</em> is relatively detailed
+enough and contains pertinent amount of practice. It seems to cover relevant
+Math, such as function space, nested space, enough intuition and historical
+development, the design of wavelet and enough examples. This book may be the
+main thread to follow when I back to learn it again.</li>
+  <li><em>Ten lectures on wavelets</em> is another candidate main thread to follow. Its
+level of detail and conversation style will be further checked when I back to
+learn it again.</li>
+  <li><em>A Friendly Guide to Wavelets</em> should be used in complement with the first
+book. This book is too contingent with examples and proof detail, but its
+explanation on intuition is good.</li>
+  <li><em>A First Course in Wavelets with Fourier Analysis</em> has not been investigated
+much. Its try to deal with Fourier and wavelet at the time could make it
+miserable, but referring to it from time to time may be helpful to see their
+connection after having learned Fourier and wavelet enough.</li>
+  <li><em>The World According to Wavelets The Story of a Mathematical Technique in the
+Making</em> is all about history and intuition. The second half that deals with
+math has not been read yet. After having learned wavelet, this small book
+could be helpful on wavelet’s connection with other discipline and historical
+development.</li>
+  <li><em>A wavelet tour of signal processing</em> is a reference book. It deals with the
+big perspective on the transition from wavelet method to dictionary
+learning. This is the book to read after I have learned wavelet well.</li>
+  <li><em>Conceptual Wavelets in Digital Signal Processing</em>, <em>A primer on wavelets and
+their scientific applications</em>, <em>Ripples In Mathematics</em> and <em>The Illustrated
+Wavelet Transform Handbook</em> are more about mechanics of wavelet. Those
+mechanics could be helpful after the overall picture of wavelet is gotten.</li>
+  <li><em>Wavelets and Subband Coding</em>, <em>Multirate Systems And Filter Banks</em> and
+<em>Wavelets and Filter Banks</em> are about more the discrete version of
+*wavelet. Those will be helpful when I am working on implementation.</li>
+</ul>
+
+<h2 id="bayesian-statistics">Bayesian Statistics</h2>
+
+<h3 id="motivation">Motivation</h3>
+
+<p>There has been twenty years of work on computer vision and machine learning
+using Bayesian methods. The initial taking off initialized by Hinton also
+origins from statistical method — Deep Belief Net. There are several reasons
+to understand Bayesian related methods:</p>
+
+<ol>
+  <li>To acquire the ability to understand previous important work and work on
+deep learning involving Bayesian methods.</li>
+  <li>Statistics is important for biologically inspired work. Neurons in brain
+never get activated alone. It is their statistics pattern that matters.</li>
+  <li>It is another way to think about problem. If we view the branch of applied
+mathematics as modeling the world from a low level, relatively deterministic
+perspective, probability viewed it from a high level, semantic way. It is
+important to have probability to deal with high level part of deep learning
+system.</li>
+</ol>
+
+<h3 id="goal-next-step">Goal Next Step</h3>
+
+<p>The first step goal is to understand the fundamental intuition behind
+probability and statistics, just like understanding the construction of number
+system while studying functional analysis, then how exactly Bayesian methods
+depart from traditional frequentism. Computational perspective of Bayesian
+method such as sampling could wait.</p>
+
+<h3 id="execution-plan-1">Execution Plan</h3>
+
+<p>The main plan to follow is the thread on Bayesian statistics on
+Metaacademy. Books are also important for reference and systemtization of
+learning.</p>
+
+<h4 id="basic-probability-and-statistics">Basic Probability and Statistics</h4>
+<ul>
+  <li><em>An Introduction To Probability Theory And Its Applications</em> is the classic
+book on probability. It gets the intuition and motivation right. If knowledge
+which needs deeper learning arises, this is the book to consult.</li>
+  <li><em>Probability Jim Pitman</em> is an undergraduate textbook on probability.</li>
+  <li><em>Statistical Inference</em> is the book to read after having a good understanding
+of probability.</li>
+  <li><em>Mathematical Statistics and Data Analysis</em> is a good reference for
+statistics. It is relatively simpler than <em>Statistical Inference</em>, which it a
+good fallback candidate if I have a hard time understanding the book.</li>
+  <li><em>Bayesian Data Analysis</em> After the basic foundation of probability and
+statistics is laid. This is the book to read to know Bayesian methods.</li>
+</ul>
+
+<h4 id="multivariate-statistics">Multivariate statistics</h4>
+<ul>
+  <li><em>Modern Multivariate Statistical Techniques</em> and <em>An Introduction to
+Multivariate Statistical Analysis</em> is the book to consult when jumping into
+real world data.</li>
+</ul>
+
+<h4 id="modern-probability-theory">Modern Probability Theory</h4>
+<ul>
+  <li><em>Probability and Random Processes Grimmett</em> tries to cover stuffs that needs
+measure theory in using language that without measure theory. It could be a
+bridge to the gap of modern probability and classic probability.</li>
+  <li><em>Probability Essentials</em> describes the thread of modern probability tersely.</li>
+  <li><em>Probability, Theory and Examples</em> is like Mallat’s wavelet tour. It is a
+book to read after you have relative good understanding of modern probability
+theory. It could offer you a bigger picture.</li>
+  <li><em>Foundation of Modern Probability</em> is the most advanced book which may only
+be needed by PhD in probability.</li>
+</ul>
+
+<h4 id="real-analysis">Real Analysis</h4>
+<ul>
+  <li><em>Principles of Mathematical Analysis</em> is the book to consult in undergraduate
+level.</li>
+  <li><em>James Munkres Topology</em> is the book to consult about topology.</li>
+  <li><em>Folland. Real Analysis Modern Techniques and their Application</em> is the book
+to learn real analysis seriously.</li>
+</ul>
+
+<h2 id="link-between-communities">Link Between Communities</h2>
+
+<p>A major breakthrough could be made is that the work on sparse and redundant
+dictionary learning in signal processing community, traditional Bayesian
+statistics machine learning community, neuroscience community and the community
+working on experimental deep learning could be linked together.</p>
+
+<p>What CNN tries to learn is basically a sparse and redundant dictionary that is
+used to capture semantic patterns of sensed signal. Signal processing community
+could offer theoretical guidance. Neurosciece could offer biological
+experimental facts and deep learning community could offer simulation
+experiments facts and lastly, Bayesian statistics community could offer ways to
+deal with the high level relationship between atom in the dictionary.</p>
+
+<h2 id="ending">Ending</h2>
+
+<p>I think this is all of it. Hope I will be back soon.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Excerpt of A Global History]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/05/01/excerpt-of-a-global-history/"/>
+    <updated>2015-05-01T17:20:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/05/01/excerpt-of-a-global-history</id>
+    <content type="html"><![CDATA[<p>Excerpt of <em>A Global History, From Prehistory to 21st Century</em>.</p>
+
+<h2 id="some-points-pops-out-of-mind-when-finalizing-this-excerpt">Some points pops out of mind when finalizing this excerpt</h2>
+
+<ol>
+  <li>Selective pressure is the key to evolution of civilization.</li>
+  <li>Technology and economics are root cause of politics and relationship between
+people. Political system is devised to deal with current technological and
+economical status of society. If it is designed against them, its
+development will be stagnant.</li>
+  <li>The truly new thing rises from ash of past glory – great advance comes from
+a fresh start.</li>
+  <li>Culture and traditional is wisdom of ancestor to ensure their survival and
+prosperity in their society. In this fast changing society, we must change
+to master change.</li>
+  <li>Humans are raised to be evil or good, not born to.</li>
+</ol>
+
+<!-- more -->
+
+<h2 id="excerpt">Excerpt</h2>
+
+<ol>
+  <li>
+    <p>Each age writes its own history. Not because the earlier history is
+wrong, but because each age faces new problems, ask new questions,
+and seeks new answers. This precept is self-evident today when the
+tempo of change is increasing exponentially, creating a
+correspondingly urgent need for new history posing new questions
+and offering new answers. – Page xxv</p>
+  </li>
+  <li>
+    <p>“For the first time in the course of history,” concludes physicist
+Werner Heisenberg, “man on earth faces only himself; he finds no
+longer any other partner or foe.” The great irony of our era is
+that this primacy is a root cause of our current global malaise and
+apprehension. Having eliminated all possible rivals, we humans on
+longer confront any foes. We confront only ourselves.<br />
+This new confrontation with our inner self rather than with the
+outside world is a formidable undertaking. It requires not merely
+the acquisition of more knowledge and technology, an enterprise in
+which we have proven unequaled. It requires also the crowning of
+that knowledge with an ethical compass to provide it with direction
+and purpose. In the seventeenth century, when the scientific
+revolution was emerging, the English philosopher Francis Bacon
+noted its potentiality and warned against its perils. He
+enthusiastically endorsed the pursuit of “knowledge and skill”
+through science, but he added that the pursuit should be conducted
+with “humility and charity,” and not “for the please of mind, or
+for contention, or for superiority to others, or for profit or
+fame, or power, or any of these inferior things; but for the
+benefit and use of life.”<br />
+– Page xxvii</p>
+  </li>
+  <li>
+    <p>Responsibility lies with the institutions of society, not in the
+virtues of the individual.<br />
+– Page xxvii, Oceanographer Jacques Cousteau</p>
+  </li>
+  <li>
+    <p>Anthropology holds up a great mirror to man and lets him look at
+himself in his infinite variety. – Clyde Kluckhohn, Page 3</p>
+  </li>
+  <li>
+    <p>In short, our problem as a species is to balance our ever-expanding
+knowledge with wisdom in how we use that knowledge. We shall see in
+the following chapters that learning how to balance knowledge and
+wisdom is becoming so urgent that , as Einstein has warned us, our
+future as a species depends on the outcome. – Page 6</p>
+  </li>
+  <li>
+    <p>The important lesson that history teaches us is that such wars are
+not inevitable. They have occurred not because of human nature but
+because of human societies. And human societies have been made by
+human beings and can be remade by human beings. This is the gist of
+the following conclusion by anthropologist Ashley Montagu
+concerning human nature: “Certainly we born with genetically based
+capacities for many kinds of behavior, but the manner in which
+these capacities become abilities depends upon the training they
+receive, upon learning … Our true inheritance lies in our ability
+  to make and shape ourselves, not the creatures but the creators of
+destiny.” – Page 39</p>
+  </li>
+  <li>
+    <p>I have seen the metal-worker at his task at the mouth of his
+furnace, with fingers like a crocodile’s. He stank worse than
+fish-spawn…. The stonemason finds his work in every kind of hard
+stone. When he has finished his labors his arms are worn out, and
+he sleeps all doubled up until sunrise, His knees and spine are
+broken…. The barber shaves from morning till night; he never sits
+down except to meals. He hurries from house to house looking for
+business. He wears out his arms to fill his stomach, like bees
+eating their own honey…. The farmer wars the same clothes for all
+times. His voice is as raucous as a crow’s. His fingers are always
+busy, his arms are dried up by the wind. He takes his rest – when
+he does get any rest – in the mud. If he’s in good health he
+shares good health with the beasts if he is ill his bed is the bare
+earth in the middle if his beasts….<br />
+Apply your heart to learning. In truth there is nothing that can
+compare with it. I f you have profited by a single day at school
+it is a gain for eternity. – Page 49</p>
+  </li>
+  <li>
+    <p>Although the origins of writing are to be found in the new
+circumstances arising from the production of economic surplus, it
+has other far-reaching and fateful effects. It stimulated
+intellectual development because factual data could now be
+collected, recorded, and passed along to successive
+generations. Equally significant, writing helped to define and
+consolidate individual cultures. It gave permanent written form to
+religious traditions, which thereby became sacred books; to social
+customs, which became law codes; and to oral myths and stories,
+which became classics. Thus writing became the chief means for the
+cultural integration of the civilizations of mankind. – Page 53</p>
+  </li>
+  <li>
+    <p>At the core f Buddhism are four great truths: (1) Life is sorrow;
+(2) the cause of sorrow is desire; (3) escape is possible only by
+stopping desire; and (4) the cessation of desire can only be
+achieved by the “eight-fold” path which is comprised of right
+belief, right ambition, right speech, right conduct, right living ,
+right effort , right thoughts, and right pleasures. The objective
+of all this effort is Nirvana, literally meaning “emptiness,” the
+“blowing out of the flame.” – Page 84</p>
+  </li>
+  <li>
+    <p>Our form of government does not enter into rivalry with the
+institutions of others. We do not copy our neighbors, but are an
+example to them. It is true that we are called a democracy, for
+the administration is in the hands of the many and not the
+few. But while the law secures equal justice to all alike in their
+private disputes, the claim of excellence is also recognized, and
+when a citizen is in any way distinguished, he is preferred to the
+public service, not as a matter of privilege, but as the reward of
+merit. Neither is poverty a bar, but a man may benefits his
+country whatever be the obscurity of his condition. There is no
+exclusiveness in our public life, and in our private intercourse
+we are not suspicious of one another, nor angry with our neighbor
+if he does what he likes…. We are lovers of the beautiful, yet
+simple in our tastes, and we cultivate the mind without loss of
+manliness. Wealth we employ, not for talk and ostentation, but
+when there is a real use for it. To avow poverty with us is no
+disgrace; the true disgrace is in doing nothing to avoid it. n
+Athenian citizen does not neglect the state because he takes care
+of his own household; and even those of us who are engaged in
+business have a very fair idea of politics. We alone regard a man
+who takes no interest in public affairs, not as a harmless, but as
+a useless character; and if few of us are originator, we are all
+sound judges of policy. The great impediment to action is , in our
+opinion, not discussion, but the want of that knowledge which is
+gained by discussion preparatory to action. For we have a peculiar
+power of thinking before we at and of acting too….<br />
+To sum up: I say that Athens is the school of Hellas….<br />
+I have paid the required tribute, in obedience to the law, making
+use of such fitting words as I had. The tribute of deeds has been
+paid in part; for the dead have been honorably interred, and it
+remains only that their children should be maintained at the
+public charge until they are grown up: this is the solid prize
+with which, as with garland, Athens crowns her sons living and
+dead, after a struggle like theirs. – Pericles’s funeral oration
+Page 93</p>
+  </li>
+  <li>
+    <p>The most successful of the new religious was Christianity. It
+offered the doctrine of one God, the Father Omnipotent, in place
+of the polytheism of the Greco-Roman gods and the monotheism of
+the oriental cult. It brought the solace of a Redeemer, Jesus, who
+was not an ambiguous figure in a mythological labyrinth but who
+miraculously lived an earthly life, even though he was the Son of
+God. “I bring you tidings of great joy which shall be to all
+people.” Christianity also guaranteed salvation to the believer,
+but instead of a starry eternity, it restored him to life through
+a personal resurrection foreshadowed by the Resurrection of Christ
+himself. Perhaps most important of all, Christianity provided
+fellowship when times were disjointed and common people felt
+uprooted and forsaken. All Christians were brothers, and their
+meetings were often called agape, meaning “love” in Greek. They
+assisted one another, and by their devotion and self-denial they
+set an aspiring and contagious example. Thus at a time when the
+laws and philosophy of the old order were becoming irrelevant and
+inviable, Christianity offered relevance and hope for the meek and
+the humble. – Page 112-113</p>
+  </li>
+  <li>
+    <p>Today we have that knowledge, and therefore we have the potential
+to free ourselves from millennia-old scourges. It is tragic that
+the potential has not yet been realized, but the fact remains that
+it does exist. And it exists because of the advances made possible
+in the past by the different civilizations of the human
+race. Therefore, to answer the question, has civilization been a
+curse or a blessing? – in the past it has been both. What it will
+be in the future depends on whether the knowledge accumulated from
+past civilizations is used for destructive or constructive
+purposes. – Page 161</p>
+  </li>
+  <li>
+    <p>The millennium between the sixth century, when the Sui dynasty
+restored imperial unity, and the sixteenth, when the Westerners
+began their intrusion by sea, was for China an era of unparalleled
+political, social, and cultural stability. But this stability
+paradoxically proved to be a curse as well as a blessing. It was a
+blessing because Chinese society during this millennium provided
+more material advantages and more psychological security for more
+people than any other society in the world. But the stability was
+also a curse because China was so successful and comfortable that
+it remained relatively unchanged, though not completely static. At
+the same time, however, as we shall see in the following chapter,
+the West was being transformed by its technological achievements,
+its economic vitality, and its social and political pluralism. All
+this engendered a dynamism that culminated in the West’s
+domination of the entire globe. The end result, then, was the
+disruption of the beautifully balanced but conservative Chinese
+society by the irresistible expansionism of the West. – Page 211</p>
+  </li>
+  <li>
+    <p>The renaissance of Confucian thought took place mostly during the
+time of troubles following the collapse of the T’ang dynasty, when
+the needs of the age clearly called for something more than the
+mere memorization of Confucian classics. Accordingly, a number of
+scholars undertook a searching reappraisal of the problems of
+humankind and of the universe.<br />
+A leader in this undertaking was Chu Hsi(1129-1200), who in his
+youth had studies both Buddhism and Taoism. Satisfied with
+neither, he turned to the Confucian classics, and with his
+remarkable talent for synthesis he worked out an interpretation
+that combined elements of Buddhism and Taoism with Confucianism
+and that was more satisfying and relevant for his time. His
+approach – essentially that of the empirical rationalist –
+taught that the universe is governed by natural law, which should
+be understood and respected. He also believed in the goodness of
+people and in their ability to become more perfect. He compared
+the individual to a mirror covered with dust, which if cleaned
+will be as bright as ever. Evil, therefore, was the result of
+neglect and of defective education, and hence could be corrected.<br />
+Chu Hsi’s influence in the Confucian world was comparable to that
+of Thomas Aquinas in Western Christendom. – Page 219 - 220</p>
+  </li>
+  <li>
+    <p>“We should note the force, effort, and consequences of inventions
+which are nowhere more conspicuous than in those three which were
+unknown to the ancients, namely, printing, gunpowder, and the
+compass. For these three have changed the appearance and state of
+the whole world.” This statement by the British
+philosopher-scientist Francis Bacon (1561-1626) is especially
+significant because all three of the inventions that he so wisely
+selected originated from China. Yet they had little effect on that
+country in comparison with their explosive repercussions in the
+West. Chinese civilization was too deeply rooted and Chinese
+imperial organization too all-embracing to allow such inventions
+to disrupt traditional institutions and practices. Thus printing
+was used to disseminate old ideas rather than new; gunpowder
+reinforced the position of the emperor  rather than of emerging
+national monarchs; and the compass, despite the remarkable
+expeditions of Cheng Ho, was not used for  world trade and
+exploration and empire building as in the West.<br />
+The root of this fateful difference is to be found in the unique
+characteristics of the new Western civilization – pluralistic,
+adaptable, and free of the shackles of tradition that bound all
+the other Eurasian civilizations. The new civilization brought
+about historic change not only for the West but also, as Bacon
+foresaw, for the entire globe as it came under the influence of
+the revolutionary new society. – Page 228</p>
+  </li>
+  <li>
+    <p>The history of mankind proves that advances of culture depend upon
+the opportunities presented to a social group to learn from the
+experience of their neighbors. The discoveries of the group spread
+to others and, the more varied the contacts, the greater the
+opportunities to learn. The tribes of simplest culture are on the
+whole those that have been isolated for very long periods and
+hence could not profit from the cultural achievements of their
+neighbors.<br />
+In other words, the key to different levels of human development
+has been accessibility. Those with the most opportunity to
+interact with other people have been the most likely to forge
+ahead. Indeed, they were driven to do so, for there was selective
+pressure as well as opportunity. Accessibility involved the
+constant threat of assimilation or elimination if opportunity was
+not grasped. By contrast, those who were isolated received neither
+stimulus nor threat, were free from selective pressure and thus
+could remain relatively unchanged through the millennia without
+jeopardizing their existence.<br />
+If this hypothesis is applied on a global scale, the remote Australian
+aborigines should have been the most culturally retarded of all major
+groups; next, the American Indians in the New World; then the Negroes of
+sub-Saharan Africa; and finally – the least retarded, or the most
+advanced – the various peoples of Eurasia, who were in constant and
+generally increasing contact with each other. This, of course, is precisely
+the gradation of culture levels found by the European discoverers
+after 1500. The Australian aborigines were still at the Paleolithic
+food-gathering stage; the American Indians varied from the Paleolithic
+tribes of California to the impressive civilizations of Mexico, Central
+America, and Peru; the African Negroes presented comparable diversity,
+though their overall level of development was higher; and finally, at quite
+another level, there were the highly advanced and sophisticated
+civilizations found Eurasia – the Moslem in the Middle East, the Hindu in
+south Asia, and the Confucian in east Asia.
+ – Page 280</p>
+  </li>
+  <li>
+    <p>At its height, the Ottoman Empire was indeed a great imperial
+structure. Its heartland was Turkish Asia Minor, but the majority of the
+population consisted of Moslem Arabs to the south and Balkan Christians to
+the west. The empire sprawled over three continents and comprised some 50
+million people, compared to the 5 million of contemporary English. Little
+wonder that Christians of the time looked on the ever-expanding Ottoman
+Empire with awe and described it as “a daily increasing flame, catching
+hold of whatsoever comes next, still to proceed further.”<br />
+Page 289</p>
+  </li>
+  <li>
+    <p>General knowledge is, from these causes, little if at all cultivated; every
+man is supposed to know his own business or profession, with which it is
+esteemed foolish and improper for any other person to interfere. The man of
+general science, a character so frequent and so useful in Christian Europe,
+is unknown; and nay one, but a mere artificer, who should concern himself
+with the founding of cannon, the building of ships, or the like, would be
+esteemed little better than a madman. The natural consequence of these
+narrow views is, that the professors of any art of science are themselves
+profoundly ignorant, and that the greatest absurdities are mixed with all
+their speculations.<br />
+— Description of Ottoman Empire in Decline Page 294</p>
+  </li>
+  <li>
+    <p>Economists define modernization as the process by which humans
+have increased their control over their physical environment as a
+means to increasing per capita output. Sociologists and
+anthropologists point out other features of modernization,
+including the awakening and activation of the masses, more
+interest in the present, and the future than in the past, a
+tendency to view human affairs as understandable rather than as
+manipulated by super natural forces, and, until recent years, a
+faith in the beneficence of science and technology.<br />
+From the viewpoint of world history the significance of this
+modernization process is that it led inexorably to European
+domination of the globe. The reason is that modernization
+provided the Europeans not only with superior economic and
+military power but also with superior sociopolitical cohesion and
+dynamism. – Page 306</p>
+  </li>
+  <li>
+    <p>These cities were dominated by the great merchant families who controlled
+politics s well as trade and crafts. These families were the patrons of
+Renaissance artists and writers. Their needs, interests, and tastes colored
+the Renaissance cultural revival even though the patrons also included
+ducal families such as Sforza of Milan, as well as popes such as Nicholas
+V, Pius II, Julius II, and Leo X. This explains the secularism and humanism
+of Renaissance – its concern with this world rather than the hereafter and
+its focus on pagan classics rather than Christian theology.<br />
+At the center of most Renaissance and literature was the person – the
+new Renaissance person who was the molder of his or her own destiny rather
+than the plaything of supernatural forces. People did not need to be
+preoccupied with supernatural forces; rather, the purpose of life was to
+develop ones’ innate potentialities. — Page 306 - 307</p>
+  </li>
+  <li>
+    <p>The secularism and individualism of the Renaissance were reflected in its
+scholarship and education. The so-called father of Renaissance litera,
+Francesco Petraca, or Petrarch(1304 - 1374), stressed the value of the
+classics as a means for self-improvement and a guide to social action. —
+Page 307</p>
+  </li>
+  <li>
+    <p>In conclusion, what is the significance of the Renaissance in the
+perspective of world history? It is apparent that new emphasis on persons
+and on what they could accomplish obviously was more conducive to overseas
+expansion than the preceding medieval outlook. On the other hand, this
+point can easily be exaggerated and needs serious modification. The fact is
+that Renaissance Europe was not science-oriented. The leading figures
+tended to be more aesthetic and philosophical than objective and
+skeptical. They retained in various degrees certain medieval patterns of
+thought. They persisted in admiring and believing the incredible and the
+fantastic. They continued to seek the philosopher’s stone that would
+convert other metals into gold. They still believed in astrology and
+confused it with astronomy. – Page 309</p>
+  </li>
+  <li>
+    <p>Europe’s economy was changed not only by the growing use of money but also
+by the minting of standardized coins that were acceptable everywhere and by
+the development of banks and of credit instruments. Florence led the way in
+1252 with gold forin, and other cities and states soon followed. Simple
+bills of exchange also apprears in Italy as early as the twelfth
+century. Gradually, mighty banking families appeared, first in Italy and
+later in northern Europe.<br />
+What was happening to Europe, then, was a historic shift to a fundamentally
+different type of economic system, the type know today as
+capitalism. Capitalism has been defined as “… [a] system in which the
+desire for profits is the driving motive and in which large accumulations of
+capital are employed to make profits by various elaborate and often indirect
+methods.”</p>
+  </li>
+  <li>
+    <p>Equally significant for students of history is the fact that many laypersons
+still cherish the vision of assorted Europeans, Asians, or Africans landing
+on the shores of the pre-Columbian New World, bearing aloft the torch of
+civilization. The fact is that humans today, as in earliest Paleolithic
+times, are mesmerized by the cult of the mysterious. They cling to romantic
+and simplistic explanations, even when they do not square with known
+facts. Our food-gathering ancestors depended on their totems and shamans or
+medicine men. Modern humans have similar faith in UFOs, numerology, tarot
+cards, intelligent plants, and astrology. Readers of this text will
+appreciate the significance of the following report by George Abell ,
+professor of astronomy at the University of California, Los Angeles:<br />
+    I have polled the general university students taking my survey astronomy
+    courses and find that about a thrid have an interest and belief in
+    astrology. From discussion with my colleagues in other parts of the
+    country I gather that about the same ratio holds everywhere and that it
+    probably well represents the fraction of Americans who believe in
+    astrology. It is estimated that there are more than 5,000 astrologers
+    making a living in the subject in the United States. More than 1,200
+    daily newspapers carry astrology columns.<br />
+Professor Abell’s report was made in 1975. Polls since that date indicate
+that faith in astrology is steadily increasing. Between 1980 and 1985 the
+proportion of American teenagers who believe in astrology has grown from 40
+to 55 percent. This resurgence of astrology today is especially noteworthy
+in view of the fact that it largely disappeared when modern astronomy began
+in the sixteen century.<br />
+Similarly a 1996 <em>Newsweek</em> poll disclosed that 58 percent of Americans
+believe UFOs (Unidentified Foreign Objects) are real, and 29 percent think
+we’ve made contact with aliens, while another 48 percent believe there is a
+government plot to cover it all up. More specifically, some stargazers claims
+to have seen Elvis eating fried chicken on Uranus. Nor are Americans unique
+in this respect. In France , nearly 50,000 taxpayers in 1995 declared
+income from their work as stargazers, header, mediums, and similar
+occupations. By contrast, France has 36,000 Roman Catholic priests and
+6,000 psychiatrists.</p>
+  </li>
+  <li>
+    <p>On my way to Peking I had to cross the whole of Siberia, Manchuria, and North
+China,. No one an fail to be impressed by the journey through Siberia,
+especially the first time. The dimensions of Russia are staggering. You
+travel a day, you travel a week, you travel ten days, and you are still in
+Russia. Except for the Ural Mountains and a stretch near Lake Baikal, the
+country is absolutely flat.<br />
+After you leave European Russia the population become very scarce, you pass
+hours and hours without seeing any village or habitation. Near the stations
+there are a few houses. Usually, when the express train arrives at the
+station, the entire local population comes to stare at the
+travelers. Especially in the evenings, when the train is brilliantly
+illuminated by electricity and the elegant figures of some inhabitants of
+Shanghai of other Far Eastern ports are visible inside, the travelers must
+appear to the local residents like men from another planet. What envy and
+dissatisfaction the exotic creatures in furs must provoke in the hearts of
+those doomed to spent their entire life in some miserable station!<br />
+I imagine a young girl who has nor yet lost the capacity to dream waiting on
+the station platform. She hears the express approaching the sees it all
+illuminated. The train stops for five minutes. The passengers,looking like
+people from a fairy land., jump on the platform; they laugh and joke. There
+i a whistle, the train with its passengers disappears, and darkness,
+emptiness, and dullness reign again.<br />
+It is unjust that some should move from place to place in luxury, while
+others must remain in some forsaken place in misery. Small wonder that this
+should cause irritation and discontent. I am convinced that the Siberian
+express played an important part in the awakening of the population of
+Siberia and thereby hasten the coming of the revolution. The sight of
+unlimited space and the absence of life- begins to affect you, the passengers
+prefer to pass their time in the diner, drinking endless glasses of tea and
+playing cards….</p>
+  </li>
+  <li>
+    <p>Although the Chinese, the Indians, and the Turks were unimpressed by
+European culture during this period, the European, by contract, were very
+much impressed by what they saw in Constantinople , in Delhi, and in
+Peking. They became familiar first with the Ottoman Empire, and their
+reaction was one of respect, admiration, and apprehension. As late as 1634,
+after decline of the empire had set in, a thoughtful English traveler
+concluded that the Turks were “the only modern people great in action” and
+that “he who would behold these times in their greatest glory, could not
+find a better scene than Turkey” During the seventeenth century the Ottoman
+Empire lost prestige among Europeans. But at the same time European
+intellectuals were becoming fascinated with numerous far-off Cathay. They
+were entranced as they learned of China’s history, art, philosophy and
+government. China came to be held up as a model civilization because of its
+Confucian system of morals; its examination system for government service;
+its respect for learning rather than for military prowess; and its exquisite
+handicraft, including porcelain, silk, and lacquer work. Voltaire(1694 -
+1778), for example, adorned the wail of his library with a portrait of
+Confucius, and the German philosopher Leibniz(1646 - 1716) extolled the
+Chinese emperor K’ang-hsi as “the monarchy .. who almost god-like mortal,
+ruling all by a nod of his head, who, however, is educated to virtue and
+wisdom … thereby earning the right to rule.”  </p>
+  </li>
+  <li>
+    <p>The century and a half between 1763 and 1914 stands out in the course of
+world history as the period of European domination over a large part of the
+globe. In 1763 Europe was still far from being the master of the world. It
+had only coastal footholds in Africa and in Asia. But by 1914 the European
+power had annexed the whole of Africa, and they had effectively established
+their control over Asia: either directly, as in India and Southeast Asia,
+or indirectly, as in the Chinese and Ottoman empires. The unprecedented
+expansion of Europe was made possible by the continuation and acceleration
+of the modernization process. This process was set in motion earlier by the
+Renaissance, Reformation, technological development, capitalist
+enterprise, state building and overseas expansion. These triggered a chain
+reaction in the form of the three great revolutions – scientific,
+industrial, and political – which gave Europe irresistible dynamism and
+power.<br />
+Two features of these revolutions might be noted at this point. One is that
+they were well under way before 1763. The English Civil War, a major phase
+of the political revolution, occurred in the 1640s, The scientific
+revolution took place primarily during the century and a half between the
+publication of Copernicus’ <em>Derevolutionibus orbium coelestium</em>(1543) and
+of Newton’s <em>Principia</em>(1687). Likewise, the roots of the industrial
+revolution were planed in the sixteenth and seventeenth centuries, when
+the countries of northwestern Europe ‘‘were seething with such genuinely
+capitalistic phenomena as systematic mechanical invention, company
+formation, and speculation in the shares of financial and trading
+concerns.’’ But the worldwide, impact of none of these revolutions was fully
+felt until the nineteenth century. That is why we are considering them here
+rather than earlier in this text.<br />
+The other point to note about the three great revolutions is that they did
+not run in parallel or independent lines. Scientific, industrial and
+technological events were inderdependent and reacted continuously upon each
+other. Nuewton’s discover of the laws governing the movements of heavenly
+bodies and Darwin’s theories of biological evolutoin boath had profound
+effects on political ideas. Likewise, we cold not conceive of modern
+nationalism withough technological innvoations such as printing and the
+telegraph. Conversely, politics affeced science, as in the case of the
+French Revolutoin, which provided a powerful stimulus to scientific
+advancemnt. Politics also affected economics, as was made claer by the
+English manufacturer John Wilkinson, who stated bluntly, &#8220;manufacture and
+commerce will awlwasy fourish most where Church and King interfere least’’</p>
+  </li>
+  <li>
+    <p>Everyone agrees that this increase in the size of the economic cake has been
+a great advantage. But there is much dispute over the question of how the
+cake has been sliced. Colonial peoples feel that in the past they have had
+less than their due share. The total amount that they have received obviously
+has increased; otherwise their rising populations could not have been
+supported. For example, a British economist has shown that in 1949 European
+companies engaged in mining in mineral-rich northern Rhodesia(Zimbabwe) sold
+their output for a total of f36.7 million. Of this, they spent only f12.5
+million in northern Rhodesia, which meant that two-thirds of the money was
+transferred abroad. Moreover, of the f12.5 million spent in northern
+Rhodesia, f4.1 million was paid to European living and working there. Only
+f2 million out of the f36.7 million went to the Africans working in the
+mines. And yet these workers were receiving an average of f41 a year
+compared to an average income of f27 a year per adult African male in the
+colony.<br />
+Under these circumstances it is understandable that colonial peoples are not
+very impressed by increased productivity or by the wages paid by foreign
+companies. They are more impressed by the wretched level at which they
+subsist, especially in comparison with Western levels. They also resent
+being cast in the role of hewers of wood and drawers of water, even in
+regions where there are human and material resources for industrial
+development. – Page 426</p>
+  </li>
+  <li>
+    <p>Europe’s domination of the world in the nineteenth century was based not only
+on its industrial and scientific revolutions but also on its political
+revolution. The essence of the political revolution was the end of the
+concept of a divinely ordained division of people into rulers and
+ruled. Government was no longer regarded as something above the people and
+the people as something below the government. Instead, the political
+revolution for the first time history, at least on a scale larger than the
+city-state, called for the identification of government with people. The
+masses were awakened and activized so that they not only participated in
+government but also considered it their inherent right to do so. – Page 428</p>
+  </li>
+  <li>
+    <p>Much influenced by the law of gravitation that Newton had demonstrated, the
+philosopher believed in the existence of natural laws that regulated, on only
+the physical universe, but also human society. Acting on this assumption,
+they proceeded to apply reason to all fields in order to discover the natural
+laws that operated in each. They subjected everything – all persons, all
+institutions, all traditions – to the test of reason. What would be a
+rigorous ordeal for any society in any period was particularly unsettling
+for France’s ancient regime, past its prime and creaking in many joints. Thus
+the philosopher subjected the old regime in France, and throughout Europe,
+to a barrage of devastating criticism. More important, they evolved a set of
+revolutionary principles by which  they proposed to effect a wholesale
+reorganization of society. Of particular interest to us are their specific
+proposals in three area – economics, religion , and government.<br />
+Their key slogan in economics was laissez-fiare – let the people do what
+they will, let nature takes its course. The opposition of government
+intervention was a reaction to the rigid regulation of economic life
+generally known as mercantilism. In the early period of state building,
+mercantilism had been accepted as necessary for national security. But by
+the eighteenth century it seems superfluous and damaging. The classic
+account laissez-fiare was made by the Scotsman Adam Smith in his famous
+work <em>An inquiry into the Nature and Causes of the Walth of
+Nations</em>(1776). He argued that individuals are motivated by self-interest as
+far as their economic activities are concerned, that the national welfare is
+simply the sum of the individual interests operating in a nation, and that
+each man knows his own interest better than does any statesman.<br />
+In religion the key slogan was Ecrasez l’infame – “crush the infamous
+thing,” or stamp out religious fanaticism and intolerance. The philosophers
+rejected the traditional belief that God controls the universe and
+arbitrarily determines the fate of humanity. Instead, they sought a natural
+religion that followed the dictates of reason. The outcome was a variety of
+radical departures from religious orthodoxy. Some became outright atheists,
+denying the existence of God and denouncing religion as a tool of priests
+and politicians. Others became agnostics, who neither affirmed nor denied
+the existence of God. The majority were deist, willing to go along with
+proposition that God existed and had created the universe but insisting
+that, after the act of creation, God allowed the universe to function
+according to certain natural laws and refrained from intervention. Thus the
+deists were able to have their cake and eat it too. They could accept God
+and the teaching of Christianity and at the same time reject supernatural
+features such as the virgin birth, the resurrection, the divinity of Christ,
+and the divine inspiration of the Bible. The important point to note is that
+all these new dogmas =- atheism, agnosticism, deism –reflected the
+unprecedented growth of skepticism regarding “revealed” or “supernatural”
+religion. For the first time since the triumph of Christianity in Europe, a
+definite break had occurred with the Christians tradition.
+In government, also, the philosophers had a key phrase – “the social
+contract.” The contract theory of government was not new. The English
+political theorist Jon Locke ahd formulated it in his <em>Essay on Civil
+Government</em> (1690), in which he defined government as a political contract
+between rulers and ruled. But the French philosopher Jean-Jacques Rousseau
+transformed it into a social rather than a political contract. For him it
+involved an agreement among the people themselves. In his major political
+work, <em>The Social Contract</em>(1762), Rousseau viewed government as imply a
+“commission,” by which he justified revolution as a restoration to the
+sovereign people of its rightful power. – Page 433</p>
+  </li>
+  <li>
+    <p>The declaration set forth certain fundamental mental principles concerning
+liberty, property, and security – “Men are born, and always continue, free
+and equal, in respect of their right … The Nation is essentially the
+source of all sovereignty .. law is an expression of the will of the
+community .. liberty consists in the power of doing whatever does not injure
+another …” – Page 443</p>
+  </li>
+  <li>
+    <p>Liberal doctrines were first clearly formulated and implemented during the
+English Revolution. At that time, these doctrines were primarily those of
+religious toleration and of security of perosn and of property against the
+arbitrariness of the crown. Specifically, carrying out these doctrines
+involved parliamentary control of government, the existence of independent
+political parties, and the recognition of the need for, and the rights of,
+opposition parties. – Page 448</p>
+  </li>
+  <li>
+    <p>Karl Max(1818 - 1883), the father of modern socialism, differed
+fundamentally from the Utopian Socialists in almost every respect. he was as
+materialistic in his outlook as they were idealistic. He spent most of his
+life studying the historical evolution and the precise functioning of the
+existing capitalist society, whereas Utopians prepared blueprints of
+modern communities. Marx was convinced from his study of history that
+capitalism would be overthrown by class struggle and would be overthrown by
+class struggle and would be replaced by a new type of socialist society. He
+reached this conclusion because he believed that the wages paid to workers
+were insufficient for them to buy what they produced. This inadequate
+purchasing power eventually must lead to the closing of factories,
+unemployment, a further decline of purchasing power, and, at length, a
+full-scale depression. Furthermore, Marx believed that these depressions
+would become increasingly frequent and severe until finally the unemployed
+proletariat would be driven in desperation to revolution. In this way
+capitalism would be replaced by socialism, as feudalism earlier had been by
+capitalism. And the new socialistic society would be depression-proof
+because, with government ownership of the means of production, there could
+be no private employers, no profits, and the hence no lack of purchasing
+power. – Page 450</p>
+  </li>
+  <li>
+    <p>Why the yawning and expanding chasm between the utopia expected by some
+scientists an d the actually existing dystopia? The answer is to be found
+in our cultures. All cultures of all peoples consist of control mechanisms
+designed to regulate the behavior of society members. The cultures evolved
+gradually during the historical evolution of the societies and therefore
+represented their survival wisdom. The values comprising the various
+cultures were calculated to enhance community cohesion and
+survival. Consequently the values commonly incorporated in cultures favored
+maximum fertility for species perpetuation, maximum productivity for
+economic sustenance, and maximum military strength for physical survival.<br />
+Through the millennia, cultures became the essential underpinnings of their
+respective societies. Only through their cultures did individuals know what
+they could do and how to do it. Therefore any threat to cultural values
+became as serious as any threat to together basic necessities such as food
+and water. Hence the extreme reluctance to tolerate any substantive
+alternation or modification of traditional values. Hence also the historic
+persistence of cultural rigidity, even in periods such as the present, when
+rapid technological innovations necessitate correspondingly rapid social
+innovations. But technological change customarily has been accepted and
+welcomed because it normally raises living standards, while cultural change
+has been feared and resisted because it threatens traditional and
+comfortable values and practices.<br />
+This dichotomy has prevailed throughout history, resulting in the social
+stagnation amid the technological storms of our own making. The
+disconnection has been responsible for much of the chronic violence and
+bloodshed that have stained human history. It persists to the present, when
+the disconnection is impacting directly and ominously on many phases of our
+lives, as manifested incessantly o television screens and in newspaper
+headlines.  — Page 657</p>
+  </li>
+</ol>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[爱因斯坦1921年在获得诺贝尔物理奖时的演讲--我的信仰]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/05/01/ai-yin-si-tan-1921nian-zai-huo-de-nuo-bei-er-wu-li-jiang-shi-de-yan-jiang/"/>
+    <updated>2015-05-01T12:13:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/05/01/ai-yin-si-tan-1921nian-zai-huo-de-nuo-bei-er-wu-li-jiang-shi-de-yan-jiang</id>
+    <content type="html"><![CDATA[<p>爱因斯坦1921年获诺奖时的演讲，其对死亡、理想、意义、社会关系、阶级、宗教、自由、民主、个人和群体、对科学的追求均与我现在的观点共鸣。</p>
+
+<p>未找到原文原稿。</p>
+
+<!-- more -->
+
+<p>我们这些人总有一死的。人的命运是多么奇特呀！我们每个人在这个世界上都只作一个短暂
+的逗留；目的何在，却无所知，尽管有时自以为对此若有所感。但是，不必深思，只要从日
+常生活就可以明白：人是为别人而生存的——首先是为那样一些人，他们的喜悦和健康关系着
+我们自己的全部幸福；然后是为许多我们所不认识的人，他们的命运通过同情的纽带同我们
+密切结合在一起。</p>
+
+<p>我每天上百次地提醒自己：我的精神生活和物质生活都依靠别人（包括活着的人和死去的人）
+的劳动，我必须尽力以同样的分量来报偿我所领受了的和至今还在领受的东西。我强烈地向
+往着简朴的生活，我认为阶级的区分是不合理的，它最后所凭借的是以暴力为根据。我也相
+信，简单淳朴的生活，无论在身体上还是在精神上，对每个人都是有益的。</p>
+
+<p>我完全不相信人类会有那种在哲学意义上的自由。每一个人的行为，不仅受着外界的强迫，
+而且还要适应内心的必然。叔本华（Schopenhauer）说，“人能够做他想做的，但不能要他
+所想要的。”这句话从我青年时代起，就对我是一个非常真实的启示；在自己和别人生活面
+临困难的时候，它总是使我得到安慰，并且永远是宽容的源泉。这种体会可以宽大为怀地减
+轻那种容易使人气馁的责任感，也可以防止我们过于严肃地对待自己和别人；它还导致一种
+特别给幽默以应有地位的人生观。</p>
+
+<p>要追究一个人自己或一切生物生存的意义或目的，从客观的观点看来，我总觉得是愚蠢可笑
+的。可是每个人都有一定的理想，这种理想决定着他的努力和判断的方向。就在这个意义上，
+我从来不把安逸和快乐看作是生活目的本身——这种伦理基础，我叫他猪栏的理想。照亮我的
+道路，并且不断地给我新的勇气去愉快地正视生活的理想，是善、美和真。要是没有志同道
+合者之间的亲切感情，要不是全神贯注于客观世界——那个在科学与艺术工作领域永远达不到
+的对象，那么在我看来，生活就会是空虚的。人们所努力追求的庸俗的目标——财产、虚荣、
+奢侈的生活——我总觉得都是可鄙的。</p>
+
+<p>我对社会正义和社会责任的强烈感觉，同我显然的对别人和社会直接接触的冷漠，两者总是
+形成古怪的对照。我实在是一个“孤独的旅客”，我未曾全心全意地属于我的国家、我的家庭、
+我的朋友，甚至我最接近的亲人；在所有这些关系面前，我总是感觉到有一定距离并且需要
+保持孤独——而这种感受正与年俱增。人们会清楚地发觉，同别人的相互了解和协调一致是有
+限度的，但这不足惋惜。这样的人无疑有点失去他的天真无邪和无忧无虑的心境；但另一方
+面，他却能够在很大程度上不为别人的意见、习惯和判断所左右，并且能够不受诱惑要去把
+他的内心平衡建立在这样一些不可靠的基础之上。</p>
+
+<p>我的政治理想是民主主义。让每一个人都作为个人而受到尊重，而不让任何人成为崇拜的偶
+像。我自己受到了人们过分的赞扬和尊敬，这不是由于我自己的过错，也不是由于我自己的
+功劳，而实在是一种命运的嘲弄。其原因大概在于人们有一种愿望，想理解我以自己的微薄
+绵力通过不断的斗争所获得的少数几个观念，而这种愿望有很多人却未能实现。我完全明白，
+一个组织要实现它的目的，就必须有一个人去思考，去指挥，并且全面担负起责任来。但是
+被领导的人不应该受到强迫，他们必须有可能来选择自己的领袖。</p>
+
+<p>在我看来，强迫的专制制度很快就会腐化堕落。因为暴力所招引来的总是一些品德低劣的人，
+而且我相信，天才的暴君总是由无赖来继承，这是一条千古不易的规律。就是这个缘故，我
+总是强烈地反对今天我们在意大利和俄国所见到的那种制度。象欧洲今天所存在的情况，使
+得民主形式受到了怀疑，这不能归咎于民主原则本身，而是由于政府的不稳定和选举中与个
+人无关的特征。我相信美国在这方面已经找到了正确的道路。他们选出一个任期足够长的总
+统，他有充分的权力来真正履行他的职责。另一方面在德国的政治制度中，我所重视的是，
+它为救济患病或贫困的人作出了比较广泛的规定。在人类生活的壮丽行列中，我觉得真正可
+贵的，不是政治上的国家，而是有创造性的、有感情的个人，是人格；只有个人才能创造出
+高尚的和卓越的东西，而群众本身在思想上总是迟钝的，在感觉上也是迟钝的。</p>
+
+<p>讲到这里，我想起了群众生活中最坏的一种表现，那就是使我所厌恶的军事制度。一个人能
+够洋洋得意地随着军乐队在四列纵队里行进，单凭这一点就足以使我对他轻视。他所以长了
+一个大脑，只是出于误会；单单一根脊髓就可以满足他的全部需要了。文明国家的这种罪恶
+渊薮应当尽快加以消灭。由命令而产生的勇敢行为，毫无意义的暴行，以及在爱国主义名义
+下一切可恶的胡闹，所有这些都使我深恶痛绝！在我看来，战争是多么卑鄙、下流！我宁愿
+被千刀万刮，也不愿参与这种可憎的勾当。尽管如此，我对人类的评价还是十分高的，我相
+信，要是人民的健康感情没有被那些通过学校和报纸而起作用的商业利益和政治利益加以有
+计划的破坏，那么战争这个妖魔早就该绝迹了。</p>
+
+<p>我们所能有的最美好的经验是神秘的经验。它是坚守在真正艺术和真正科学发源地上的基本
+感情。谁要是体验不到它，谁要是不再有好奇心也不再有惊讶的感觉，他就无异于行尸走肉，
+他的眼睛是迷糊不清的。就是这种神秘的经验——虽然掺杂着恐怖——产生了宗教。 我们认识
+到某种为我们所不能洞察的东西存在，感觉到那种只能以其最原始的形式为我们所感受到的
+最深奥的理性和最灿烂的美——正是这种认识和这种情感构成了真正的宗教感情；在这个意义
+上，而且也只是在这个意义上，我才是一个具有深挚宗教感情的人。</p>
+
+<p>我无法想象一个会对自己的创造物加以赏罚的上帝，也无法想象它会有象在我们自己身上所
+体验到的那样一种意志。我不能也不愿去想象一个人在肉体死亡以后还会继续活着；让那些
+脆弱的灵魂，由于恐惧或者由于可笑的唯我论，去拿这种思想当宝贝吧！我自己只求满足于
+生命永恒的奥秘，满足于觉察现存世界的神奇结构，窥见它的一鳞半爪，并且以诚挚的努力
+去领悟在自然界中显示出来的那个理性的一部分，即使只是其极小的一部分，我也就心满意
+足了。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Connection between Fourier Components in Real and Complex Form]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/04/11/connection-between-fourier-components-in-normal-and-complex-form/"/>
+    <updated>2015-04-11T10:59:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/04/11/connection-between-fourier-components-in-normal-and-complex-form</id>
+    <content type="html"><![CDATA[<p>This post notes down my current understanding of the intuition behind using
+complex exponentials to represent function, stressing on the connection between
+the complex form and the normally all real form.</p>
+
+<!-- more -->
+
+<h2 id="brief-note-on-complex-number">Brief Note on Complex Number</h2>
+
+<p>One of the most useful properties of complex number is its ability to unify
+algebraic and geometrical operations. More about this could be found on
+<a href="http://betterexplained.com/articles/a-visual-intuitive-guide-to-imaginary-numbers/">Better Explained</a>
+which is a good elementary explanation of imaginary number.</p>
+
+<p>It was not until seriously studying Fourier Transformation that I figured out
+the nature of Complex Number.</p>
+
+<p>Number system is human’s way to model nature. Integer number models
+counting. Negative number models things like debt. Zero models null. Fraction
+number models division and fraction. Those consist of rational number. But to
+really model length, which occurs naturally in Pythagoran theorem, irrational
+number has to be introduced. Rational number and irrational number together
+make up real number system, where limit of points – may be compared with
+limit of length is regarded as a conceptual number, to make the system
+complete(complete is a mathematical terminology).</p>
+
+<p>But all those models are for scalar. Nature is not one dimensional. It is
+rules of vector that engine this world. This is where complex comes
+from. </p>
+
+<p>The most elegant equation in the history is Euler Equation:</p>
+
+<script type="math/tex; mode=display">
+e^{ix} = cos(x) + i sin(x)
+</script>
+
+<p><img class="center" src="http://upload.wikimedia.org/wikipedia/commons/7/71/Euler%27s_formula.svg" title="Euler Equation Illustration" /></p>
+
+<p>It is saying that every complex exponential is a 2D vector, where $(x, y) =
+(cos\phi, sin\phi)$. Instead of just modeling scalar, we model 2D vector using
+complex number. So by manipulating algebra of complex, we are doing geometrical
+operations. And the meaning of imaginary $i$ is rotating the vector 90 degree
+anti-clockwise. That’s the reason why it connects algebra and geometry.</p>
+
+<p>This will be clearer after Fourier related stuff is introduced in the following
+sections.</p>
+
+<p>I am still wondering if we could unify more dimensions into number instead of
+just two?</p>
+
+<h2 id="fourier-series">Fourier Series</h2>
+
+<p>Fourier Series is about this statement:</p>
+
+<blockquote>
+  <p>Every periodic function could be represented using arbitrary number of
+ocsillating functions, namely cosines and sines or complex exponentials.</p>
+</blockquote>
+
+<p>As noted in the beginning, this post is about intuition behind the relationship
+between cosines sines and complex exponentials.</p>
+
+<p>First we see fourier series in its real form decomposition.</p>
+
+<script type="math/tex; mode=display">
+f(t) = \sum\limits_{n = -\infty}^{\infty} c_{n}cos(nw_{0}t + \phi)
+</script>
+
+<p>We could also write it in form of $sin(t)$ given that it is just a shifted
+version of $cos(t)$. But we will see that using $cos(t)$ makes sense in a
+moment.</p>
+
+<p>NOW, every $cos(nw_{0}t + \phi)$ is the real part of $e^{i(nw_{0}t + \phi)}$.
+Remember that the algebra operations between complex exponentials are
+equivalent to vector operations. So instead seeing combination of different
+Fourier components as superposition of constantly changing(with regard to $t$)
+scalar addition, we see it as vector addition in a 2D dimensional complex
+plane. See illustration
+<a href="http://betterexplained.com/articles/an-interactive-guide-to-the-fourier-transform/">here</a>,
+in about half the article.</p>
+
+<p>Though they vibrate in circle, which indicates the way the interact with each
+other, we only see its effect – cosine(real) part. So each time we measure or
+in other word, sample, we get the real part, which is the final function we
+want.</p>
+
+<p>By converting back and forth between the real form and complex form, you will
+find terms related to frequency $s$ is $cos(st + \phi)$ and
+$\frac{1}{2}e^{ist}e^{i\phi} + \frac{1}{2}e^{-ist}e^{-i\phi}$. The negative
+frequency part is used to “drag” back or cancel out the imaginary or the part
+that is orthogonal to real part. Or in other word, we only want the real part.</p>
+
+<p>Intuitively, it means to make the decomposition conforming with observation, we
+use conjugation to drag the vector back to real line. Now it makes sense that
+we choose $cos(nw_{0}t + \phi)$ to decompose instead of $sin(nw_{0}t +
+\tau)$. Cosine is related to the x-axis by definition which is real line.</p>
+
+<p>We could stop here. The connection between the real form and the complex form
+is pretty clear now. But there is more, in a finer level.</p>
+
+<p>Given that each components of the decomposition is orthogonal, now we need only
+to consider one of its term $cos(nw_{0}t + \phi)$.</p>
+
+<p>From now on for notation simplicity we denote $nw_{0}$ as $s$. Each component
+could also be decomposed into two components, remembering that we see each
+component as two dimension vector. The phase $\phi$ determines the vector
+initially. We can see this clearer by expanding($1/2$ is dropped for
+convenience):</p>
+
+<script type="math/tex; mode=display">
+e^{ist}e^{i\phi} + e^{-ist}e^{-i\phi} = e^{ist}(cos(\phi) + i sin(\phi)) +
+e^{-ist}(cos(\phi) - i sin(\phi))
+</script>
+
+<p>THIS actually means in a finer level, the innate vector property is also
+modeled – every component consists of two basic components, sine and cosine
+and $\phi$ decides how they combine with each other initially, which determines
+how they interact with each other forever.</p>
+
+<p>The decomposition into sine and cosine also makes a lot of sense. cos is
+orthogonal to sine and together they can represent any trigonometric function.</p>
+
+<h2 id="note-on-other-derivation">Note On Other Derivation</h2>
+
+<p>There is another way to get real form of fourier series to complex
+form. Actually it is the first time I realize the connection between them,
+though fourier was learned way earlier(TERRIBLE COLLEGE EDUCATION!!!).</p>
+
+<p>Fourier decomposition is written the following way:</p>
+
+<script type="math/tex; mode=display">
+f(t) = \sum\limits_{n = -\infty}^{\infty} c_{n}sin(nw_{0}t + \phi)
+</script>
+
+<p>By some derivation, we have:</p>
+
+<script type="math/tex; mode=display">
+f(t) = \sum\limits_{n = -\infty}^{\infty} a_{n} cos(nw_{0}t) + b_{n}sin(nw_{0}t)
+</script>
+
+<p>The phase is merge into coefficients $a_{n}$ and $b_{n}$.</p>
+
+<p>Given $sin(t) = \frac{1}{2i}(e^{it} - e^{-it})$ and $cos(t) = \frac{1}{2}(e^{it} + e^{-it})$,
+substitute above equations in, we also get the complex form.</p>
+
+<p>This approach is harder to understand because it gets the atomic level wrong –
+it should be $e^{it}$ not $cos(t) + i sin(t)$. But it does have benefits.</p>
+
+<p>Each function $f$ could be decompose into a combination of even and odd part
+by:</p>
+
+<script type="math/tex; mode=display">
+f = \frac{1}{2}(f(t) + f(-t)) + \frac{1}{2}(f(t) - f(-t))
+</script>
+
+<p>The formed is the even part and the latter is the odd part. Let $f(t) = e^{it}$
+we can see that $i sin(t)$ the odd part of $e^{it}$ and $cos(t)$ the even part.</p>
+
+<p>It makes clear that when the function is even, we get zero value in coefficients
+of $sin(t)$ while when the function is odd, we get zero value in coefficients
+of $cos(t)$: if a function has a odd component $sin(t)$, it never is going to
+be even.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A Preliminary Summary On What CNN Is Doing Mathematically]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/04/07/a-preliminary-summary-on-what-cnn-is-doing-mathematically/"/>
+    <updated>2015-04-07T19:05:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/04/07/a-preliminary-summary-on-what-cnn-is-doing-mathematically</id>
+    <content type="html"><![CDATA[<p>There is too much to stuff all those notes into one weekly summary, so I decide
+to decouple it into this post. It is about a description of the process what
+Convolutional Neural Network(CNN) is doing mathematically.</p>
+
+<!-- more -->
+
+<p>Last week I have written an informal one. The informality was resulted from an
+unclear understanding of space, mapping and the way CNN works. Things get much
+clearer now.</p>
+
+<p>The task CNN is trying to achieve is the same with all the other machine
+learning algorithms – finding a mapping that will transform the preliminary
+input to one kind of output that makes the task easier to solve or directly
+solve the task. The formed one is called feature learning and the latter is
+called classification or anything else that is the target.</p>
+
+<p>The problem is how exactly such mapping is found? Or more specifically, why CNN
+is more powerful than other algorithms?</p>
+
+<h2 id="how-mapping-is-found-mathematically">How Mapping Is Found Mathematically</h2>
+
+<p>First we address the first problem, though those two are actually the same.</p>
+
+<p>Instead of trying to find a mapping to our problem directly, which are methods
+called shallow model today, CNN tries to find a sequence of mappings to
+decouple information from its most primitive form. If we rephrase the word
+mapping to operation, it may sound more like plain English. Then judging from
+the information extracted, it answers whatever relevant questions we are
+interested, such as classification of images of different animals.</p>
+
+<p>More mathematically, CNN tries to find the mapping by finding a representation
+of the mapping on relevant bases which are found by compositing preliminary
+bases. Then in the space represented by the relevant bases, divide the new
+space using previous shallow model.</p>
+
+<p>The latter part has not been investigated fully yet. I guess support vector
+machine may be the key to this problem.</p>
+
+<p>Further zooming in the process, in each layer, every kernel of CNN will
+convolute with the input. In the first layer, the input is the raw signal. In
+the following layer, the input is the output of last layer. A kernel here is a
+basis. Convoluting with input is actually taking inner product with input.</p>
+
+<p>In the first layer, by computing the inner product of a basis function with a
+signal, we get a value. This value is one way to look at the signal, or the
+information extracted which may be comprehended by human, like the existence of
+a certain of kind edge. By taking inner product of all bases, we get the
+signal’s representation in form of coordinates of the set of bases.</p>
+
+<p>From now on, the task is to find combinations of the first layer’s bases that
+are more informative. By using more layers, we hope to find relevant
+combinations in exponential number of possible ones.</p>
+
+<p>The most preliminary bases actually have mathematical terminology: in the
+continuous case, it is called Schauder basis; in the discrete case, it is
+called Hamel basis. In this case, the coordinates of the signal is the same
+with its ground truth value.</p>
+
+<p>Feature mappings from previous layer to current layer are the key to find a
+more complex bases. It brings the search in the space of preliminary bases to a
+more advanced space of more advanced bases. A best example is an input in form
+of a three channel image will have three feature mappings, one corresponding to
+one color. If we just concatenate three pixels of different color, we have no
+idea it corresponds to different frequencies of light. But if we take it from
+three channels, we are using the high-level information of colors. Another
+example is provided in the next section.</p>
+
+<p>Now the process up to the first part of the process is done. The second part
+will not be described given that I have not understood it fully yet.</p>
+
+<p>The followings are some notes on properties of such process:</p>
+
+<ol>
+  <li>The key of depth is reusing information hierarchically and preventing
+exploration on meaningless part of function space. This is the main reason
+why deep model works and will be elaborated with an example in the next
+section.</li>
+  <li>Coordinates are coordinates. There is only one ground truth of
+nature. Coordinates are the way we see the ground truth. Different spaces
+are actually different with different levels of abstraction. Different
+levels of abstraction are achieved using different sets of bases.</li>
+  <li>Taking inner product is the process to map point in one space to another
+space. This is also the intuition behind Riesz Theorem that any linear
+functional could be represented using inner product.</li>
+  <li>The intuition of taking inner product is also computing correlation between
+the basis and the signal. The more they are similar, the bigger the
+coordinate(in CNN terminology system, the bigger the response). </li>
+  <li>Bases are connected with hidden factors referred by Bengio.</li>
+  <li>Spatial information is kept by the intuition of cascading local receptive
+fields.</li>
+</ol>
+
+<hr />
+
+<h2 id="analytically-why-more-depth-is-more-powerful">Analytically Why More Depth Is More Powerful</h2>
+
+<p>Imagine a square whose components are two horizontal edges and two vertical
+edges. To detect such shape, we could imagine a three layer convolutional
+neural network. In the first layer of filters, we have two kernels – one
+for horizontal edges and one for vertical edges. Write them in matrix form,
+they are like this:</p>
+
+<p>Horizontal Edge Kernel</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{bmatrix}
+0 & 0 & 0 \\
+1 & 1 & 1 \\
+0 & 0 & 0
+\end{bmatrix}
+ %]]&gt;</script>
+
+<p>and Vertical Edge Kernel</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{bmatrix}
+0 & 1 & 0 \\
+0 & 1 & 0 \\
+0 & 1 & 0
+\end{bmatrix}
+ %]]&gt;</script>
+
+<p>The square we are going to detect is like this:</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{bmatrix}
+1   & 1 & 1 & 1 &  1 \\
+1   & 0 & 0 & 0 &  1 \\
+1   & 0 & 0 & 0 &  1 \\
+1   & 0 & 0 & 0 &  1 \\
+1   & 1 & 1 & 1 &  1 
+\end{bmatrix}
+ %]]&gt;</script>
+
+<p>As we moving the two kernels, we get response similar like this:</p>
+
+<p>feature map for horizontal edge detection kernel:</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{bmatrix}
+x & 1 & x \\
+0 & 0 & 0 \\
+x & 1 & x
+\end{bmatrix}
+ %]]&gt;</script>
+
+<p>and feature map for vertical edge detection kernel:</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{bmatrix}
+x & 0 & x \\
+1 & 0 & 1 \\
+x & 0 & x
+\end{bmatrix}
+ %]]&gt;</script>
+
+<p>$x$ is the response of angle, which may not be black and white. And since they
+are not very influential to our discussion, it is denoted $x$.</p>
+
+<p>In the next convolution layer, the input are two feature maps, then the kernel
+for detecting square will be like:</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{bmatrix}
+x & 1 & x \\
+0 & 0 & 0 \\
+x & 1 & x
+\end{bmatrix}
+and
+\begin{bmatrix}
+ x & 0 & x \\
+ 1 & 0 & 1 \\
+ x & 0 & x
+\end{bmatrix}
+ %]]&gt;</script>
+
+<p>The final inner product will be normalized to one. In this case, we are only
+using four kernels.</p>
+
+<p>If we switch to one layer CNN, The kernel for detecting square will be like:</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{bmatrix}
+x   & 1 & 1 & 1 & x \\
+1   & 0 & 0 & 0 & 1 \\
+1   & 0 & 0 & 0 & 1 \\
+1   & 0 & 0 & 0 & 1 \\
+x   & 1 & 1 & 1 & x
+\end{bmatrix}
+ %]]&gt;</script>
+
+<p>The zero and one is expanded because each edges consist of more than one
+pixels. Three here is used for illustration.</p>
+
+<p>It seems that we can detect shape only using one kernel. But wait… we are not
+only trying to detect only square. We should also try to detect circle,
+rectangles etc… So we will have more than more kernels. In this case, the
+space of possible number of kernels will exponentially explode given the
+possible changes we may swap the zero and one in the pixels of kernels.</p>
+
+<p>But in previous three layer cases, the space of possible changes are shrunk
+dramatically. The key here is explained in previous section, we are reusing the
+information that only consecutive edges are sensible combination of pixels and
+the number of possibilities of changing locations of edges is much smaller than
+changing values of pixels.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How Do We Create Meaningful Many Dimensional Space?]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/03/28/how-do-we-create-meaningful-many-dimensional-space/"/>
+    <updated>2015-03-28T20:58:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/03/28/how-do-we-create-meaningful-many-dimensional-space</id>
+    <content type="html"><![CDATA[<p>This post should be the third notes on understanding fundamentals of Analysis,
+or in a more broad sense, understanding fundamental of Mathematics, though some
+other randoms post are written previously.
+The <a href="http://shawnLeeZX.github.io/blog/2013/12/24/axiomization-of-natural-number/">first</a>
+ is about the axiomization of Natural Number. It gives the exact definition of
+natural number, whose concept is taken for granted for most people. The
+<a href="http://shawnLeeZX.github.io/blog/2014/09/30/why-and-how-we-construct-real-number-system/">second</a>
+is about the construction of Real Number System. It offers a complete field
+which all the remaining Mathematics is built on.</p>
+
+<p>The above two posts are both in essential, one dimensional. They are the
+infrastructure of univariate function, univariate calculus and other univariate
+Math subjects. After building the one dimensional infrastructure, the next step
+is to step in the world of more than one – two dimensional, three dimensional,
+finite dimensional, and the infinite dimensional, which all will be called many
+dimensional space in this post.</p>
+
+<p>So this is about how do we create meaningful many dimensional space that
+suitable for the real world problem. In such space, we could deal with, two
+dimensional plane, three dimensional space, ultimately countably infinite
+dimensional space and uncountably infinite dimensional space, furthermore, the
+one of the most important subjects in modern analysis – function space.</p>
+
+<!-- more -->
+
+<h2 id="the-leap-to-abstract-mathematics">The Leap to Abstract Mathematics</h2>
+
+<p>Such transition is a great leap in the development of Mathematics. It makes
+Mathematics become more and more abstract. The inevitability is showed in the
+following. As having been numbered before, there are at least four extremely
+common many dimensional space we must deal with: two dimensional, three
+dimensional, which we are familiar with; countably infinite dimensional space,
+for instance, countable sequences, which is quite common; uncountably infinite
+dimensional space, for instance the space of all continuous function defined on
+$R$, which some may not be very familiar. Actually, there is a lot more than
+that since at least we would have a number of spaces such as 7D and 8D etc.. So
+mathematicians cannot deal with those spaces be copying the way they deal with
+$R$. They have to find a way to see those thing in common. In the popular word
+of programmers, they need to abstract them. Ha ha, programming is great, right?</p>
+
+<p>Consequently, here comes Abstract Algebra, General Topology and ultimately,
+Functional Analysis. Let get to know what these three terms are about(but it is
+highly probable that you have no idea what I am talking about given learning
+Math is far from learning concepts): Abstract Algebra is about abstracting common
+operations that is used in $R$, which is called using the terminology algebraic structure. For
+instance, a ring is an algebraic structure with operations generalizing the
+arithmetic operations of addition and multiplication. So such operation will
+not only be able to be applied to number, but to polynomials, matrices and
+etc..[1] More word may be find in this rather old post on
+<a href="http://shawnLeeZX.github.io/blog/2013/12/24/basis-of-algebra-structure/">Basic of Algebra Structure</a>;
+General Topology is about the mathematical study of shapes and topological
+spaces. It is an area of mathematics concerned with the properties of space
+that are preserved under continuous deformations including stretching and
+bending, but not tearing or gluing[2]. The sets with the same properties are
+called open set. Abstract Algebra abstracts operations of $R$. General Topology
+abstracts objects or points of $R$. With objects and operations on those
+objects, we could analyze them, where comes Functional Analysis(Though
+Functional Analysis is just about analyze functions, all machinery developed
+above is to try to deal with function space. So the problem and technique in
+Functional Analysis could all be applied to other many dimensional space).</p>
+
+<h2 id="hilbert-space">Hilbert Space</h2>
+
+<p>Once we have abstract stuff, things could become very weird given that we could
+tweak the stuff anyway we want. But the key is to remember why we initiate the
+search for an abstract solution for solving real world problem. So the light to
+guide the abstract construction is to let things meet natural intuitions. This
+is the point I learned hardest while teaching myself functional analysis, which
+is the thread that guides me to bridge the gap between those highly abstract
+concepts to the details in the real world problems I aim to solve.</p>
+
+<p>Hilbert Space is the solution to the question posed at the beginning – finding
+a meaningful many dimensional space. From now on, why Hilbert Space fits with
+natural intuition will be elaborated. But keep in mind that though
+understanding intuition playing a very important role in learning Mathematics,
+it is never sufficient, a large amount of information is skipped at the time
+Abstract Algebra and General Topology is introduced above. It is the process to
+learning them, to do exercise that gives me such intuition.</p>
+
+<p>A natural step following one number, denoted $\xi$, is to list a tuple
+$(\xi_{1}, \xi_{2})$. $\xi_{1}$ could be the size of one department and
+$\xi_{2}$ could be the price of the department. We take it in tuple maybe
+because to want to investigate something that is related to those two
+both. Then naturally, we would like to extend it to $(\xi_{1} \ldots
+\xi_{n})$, then $(\xi_{1} \ldots \xi_{n}), n = 1 \ldots \infty$,
+which is called countably infinite, then $(\xi_{1} \ldots \xi_{n})$, where we
+regard $\xi_{i}$ is as dense(note the dense does not mean its usual meaning in
+topology) as point in $R$(this sentence is actually mathematically wrong given
+the incountablity of the set, but it makes the point through more easily),
+which is called uncountably finite. Each instance of previous examples is a
+point in its space. For instance, $(\xi_{1} \ldots \xi_{n}), n = 1 \ldots
+\infty$ is a point in the space of all possible value of $\xi_{i}$. The point
+is actually called vector and the space is noted as Vector Space defined on
+Field $R$ or $C$ if it is complex.</p>
+
+<p>Again, the natural question to ask is how much similarity with $R$ we could
+keep while generalizing? This is the process we construct the meaningful many
+dimensional space. The answer is that we want to get completeness, compactness,
+connectivity, which are contents of topology and metric space, “absolute value”
+of point, which is the content of Normed Vector Space, “length” of “lines”
+which is the content of Real Analysis and others. Given the limitation of time,
+none of them will be covered here. The point of this post is to try to note
+down the hardest to understood properties kept after generalization –
+geometric intuition on 2D or 3D space.</p>
+
+<p>What is the geometric intuition I am talking about?</p>
+
+<p>In Normed Vector Space, we could assign any norm we want, for instance, $L^{p}$
+norm. But it seems  2-norm, also Euclidean norm that is the most natural norm
+for we human. But why it is the most natural one? How do we define natural?</p>
+
+<p>The following are some direct answer:</p>
+
+<p><span class="caption-wrapper left"><img class="caption" src="https://cloud.githubusercontent.com/assets/2428233/6881526/a9f838a8-d59d-11e4-8b39-52e744eff47e.png" width="" height="" title="Geometric Proof of Pythagoras Theorem" /><span class="caption-text">Geometric Proof of Pythagoras Theorem</span></span></p>
+
+<ol>
+  <li>As we rotate one vector, its length will not change in 2-norm, but not other
+norms.</li>
+  <li>It makes Pythagoras Theorem held. So when we drop the coordinate system, and
+see vectors in pure geometric way, its length will still be the same.</li>
+</ol>
+
+<p>But those all special phenomenon of one underlying truth – 2-norm could be
+derived from inner product(Besides completeness, it is inner product that plays
+the most important role in the definition of Hilbert Space), and inner product
+gives angle a sensible definition.</p>
+
+<p>Before we elaborate the point, let us think a minute about what exactly angle
+is? This is again one blind spot that we take for granted, at least me.</p>
+
+<p>Try searching on its wikipedia page. Actually we cannot define angle like we
+define natural number using Peano Axiom. We are told it is some thing that is
+between two straight line or defined it through trigonometric function, which
+is essentially ratio, in high school. Underlying those definition, we are
+actually define it through its behavior. This makes sense, since ultimately,
+angles do not exist on their own and are the relation between lines.</p>
+
+<p>But we could model such relationship using one entity – inner product. Angle
+could be defined as:</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\theta = arccos\frac{<x, y>}{||x||||y||}
+ %]]&gt;</script>
+
+<p>Through this way, angle is connected with value(coordinates) of lines(vectors)
+naturally. As angle is kept, our intuition is actually kept. More specifically
+the intuition of rotation, orthogonality and projection are all kept. Those are
+what we call natural.</p>
+
+<p>To make sense of it, it is recommended to prove polarization identity using
+property of inner product and law of cosine using elementary geometry
+method(polarization identity and law of cosine are the same theorem in different
+names in different contexts).</p>
+
+<h2 id="reference">Reference</h2>
+<ol>
+  <li>http://en.wikipedia.org/wiki/Ring_(mathematics)</li>
+  <li>http://en.wikipedia.org/wiki/Topology</li>
+</ol>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Convert Djvu File to PDF with Text Kept]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/03/27/how-to-convert-djvu-file-to-pdf-with-text-kept/"/>
+    <updated>2015-03-27T20:47:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/03/27/how-to-convert-djvu-file-to-pdf-with-text-kept</id>
+    <content type="html"><![CDATA[<p>Finally, I have come up with a solution to convert Djvu format e-book to Pdf
+format. This post is going to note down exactly HOW.</p>
+
+<p>First, some background about why I am doing this.</p>
+
+<p>In the ancient time, well-know scholars are proud of their collection of books
+in their personal library, which is the physical incarnation of their knowledge
+and journey of learning. Although still a majority of people prefers the old
+way of reading paper books, the way to keep one’s collection of books is going
+to change to the electronic format way eventually. There are three significant
+benefits of doing this:</p>
+
+<ol>
+  <li>You are able to bring with you all your books anywhere without any extra
+effort.</li>
+  <li>E-books are searchable, which speed up your reading a lot.</li>
+  <li>You can open multiple copies of your book at the same time so the cross
+reference is much more easier than reading paper version.</li>
+</ol>
+
+<p>But one major drawback of the past years where I almost read e-books
+exclusively is that at the time when I can only find djvu format of certain
+files, I have no way to highlight text on the e-book, especially for Math
+books, a lot of which are in djvu format.</p>
+
+<p>After meeting with one file that I must take note, I decide to figure out a
+solution. So here it is.</p>
+
+<!-- more -->
+
+<p>Basically, the mechanism works like this. We extract image and text from the
+original djvu files separately. Then we create the wanted pdf with them.</p>
+
+<p>The solution is a combination of several open source tools:</p>
+
+<ol>
+  <li><a href="http://jwilk.net/software/ocrodjvu">djvu2hocr</a>. It is a wrapper for OCR
+systems, that allows you to perform OCR on DjVu files. Optical character
+recognition (OCR) is the mechanical or electronic conversion of images of
+typewritten or printed text into machine-encoded text.</li>
+  <li><a href="http://djvu.sourceforge.net/">ddjvu</a>. We use it to decode image from djvu
+file. It is part of the open source project DjVuLibre that offers program to
+manipulate djvu files. But one of the most pity is that no program it offers
+could add highlight and annotations to djvu in a GUI way. I think this is
+one of the major reasons djvu cannot catch on besides some other big
+reasons.</li>
+  <li><a href="https://rubygems.org/gems/pdfbeads">pdfbeads</a>. PDFBeads is a small utility
+written in Ruby which takes scanned page images and converts them into a
+single PDF file.</li>
+  <li><a href="http://www.ghostscript.com/">gs</a> PostScript and PDF language interpreter
+and previewer. If you are using a modern UNIX environment, it is highly
+possible you would have it installed by default. We need this when deal with
+djvu books, since pdfbeads creates very large intermediate files which makes
+converting large books infeasible. So we need to create pdf pages one by one
+and use gs to merge them.</li>
+</ol>
+
+<h2 id="installation">INSTALLATION</h2>
+
+<p>Only installation on Ubuntu is going to be described.</p>
+
+<h3 id="ocrodjvu">ocrodjvu</h3>
+
+<p><code>djvu2hocr</code> and <code>ddjvu</code> are from <code>ocrodjvu</code>.</p>
+
+<p>ocrodjvu is in the official repository, so just type in:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">sudo apt-get install ocrodjvu
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="pdfbeads">pdfbeads</h3>
+
+<p><code>pdfbeads</code> is written in ruby. The package manager <code>gem</code> of ruby will handle
+dependency in ruby but there are some addition library header needed to be
+installed depending on your operating system. As for me, <code>libleptonica-dev</code> is
+needed. Type in:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">sudo apt-get install libleptonica-dev
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<blockquote>
+  <p><a href="http://www.leptonica.com/">Leptonica</a> is a pedagogically-oriented open
+source site containing software that is broadly useful for image processing
+and image analysis applications.</p>
+</blockquote>
+
+<p>If you have not done a lot image manipulation, it is highly probable that you
+also need to install <code>libmagickwand-dev</code>:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">sudo apt-get install libmagickwand-dev
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>It mainly installs development package for ImageMagick. From its websites,
+it is a:</p>
+
+<blockquote>
+  <p><a href="http://www.leptonica.com/">ImageMagick</a>® is a software suite to create,
+edit, compose, or convert bitmap images. It can read and write images in a
+variety of formats (over 200) including PNG, JPEG, JPEG-2000, GIF, TIFF, DPX,
+EXR, WebP, Postscript, PDF, and SVG. Use ImageMagick to resize, flip, mirror,
+rotate, distort, shear and transform images, adjust image colors, apply
+various special effects, or draw text, lines, polygons, ellipses and Bézier
+curves.</p>
+</blockquote>
+
+<p>And to ensure we are getting a reasonable size of pdf finally, we need to
+use <a href="http://jbig2.com/">JBIG2</a> compression instead of TIFF G4 when creating
+pdf. JBIG2 is an International Telecommunication Union format that represents a
+revolutionary breakthrough in captured document technology. Using JBIG2
+encoding, a scanned image can be compressed up to 10x smaller than with TIFF
+G4.</p>
+
+<p>This time we need to compile it from
+<a href="https://github.com/agl/jbig2enc">source</a>. Standard pipe is good:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">./autogen.sh
+</span><span class="line">./configure
+</span><span class="line">make
+</span><span class="line">make install <span class="o">(</span>or sudo make install<span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I have done a simple test on how much more compress JBIG2 could offer. Using
+TIFF G4, one random chosen page of my djvu file will be 77K, while it is 21K
+using JBIG2. Considering that the final output size of my pdf file is 49M, it
+would beyond 100M if I used TIFF G4, which is too big for a pdf book.</p>
+
+<p>With all prerequisite ready, we could install pdfbeads now:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">sudo gem install pdfbeads
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="gs">gs</h3>
+
+<p><code>gs</code> should be available already on Ubuntu.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>Basic usage for small file could be found on
+<a href="http://askubuntu.com/questions/46233/converting-djvu-to-pdf">Converting DJVU to PDF</a>,
+where I learned how to convert djvu file.</p>
+
+<p>But if you want to convert something that is a book, converting it directly
+using the method in the above link is going to crash your PC, at least freeze
+it until you kill the process because pdfbeads is creating very huge
+intermediate files. It exceeded 10G before I killed it in my case.</p>
+
+<p>So to deal with the case, I write a script to process djvu file page by page
+and merge all the pdf pages in the end. The script could be found on
+<a href="https://github.com/shawnLeeZX/daily_tools/blob/master/djvu_2_pdf.sh">here</a>.</p>
+
+<h2 id="remark-on-other-solution">Remark on Other Solution</h2>
+
+<p>Before I dived in all those complicated tools, I tried to some easier
+solutions, including online converter and <code>gscan2pdf</code>. They both does not
+work. <code>gscan2pdf</code> is capable of converting djvu to pdf with text. But it may
+have trouble handling hundreds of pages ones given the error report I got.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Excerpt How to Win Friends and Influence People]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/01/25/excerpt-how-to-win-friends-and-influence-people/"/>
+    <updated>2015-01-25T10:14:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/01/25/excerpt-how-to-win-friends-and-influence-people</id>
+    <content type="html"><![CDATA[<!-- more -->
+
+<h2 id="miscellaneous">Miscellaneous</h2>
+
+<ol>
+  <li>
+    <p>In the heyday of his activity, John D. Rockefeller said that “the
+ability to deal with people is as purchasable as a commodity as
+sugar or coffee.” “And I will pay more for that ability,” said John
+D., “than for any other under the sun.”</p>
+  </li>
+  <li>
+    <p>“Education,” said Dr. John G. Hibben, former president of Princeton
+University, “is the ability to meet life’s situations.”</p>
+  </li>
+  <li>
+    <p>A great man shows his greatness by the way he treats little men. – Carlyle</p>
+  </li>
+  <li>
+    <p>Every man I meet is my superior in some way, in that, I learn of him. –
+  Emerson</p>
+  </li>
+</ol>
+
+<h2 id="the-value-of-a-smile-at-christmas">The Value of A Smile at Christmas</h2>
+
+<ul>
+  <li>It costs nothing, but creates much.</li>
+  <li>It enriches those who receive, without impoverishing those who give.</li>
+  <li>It happens in a flash and the memory of it sometimes lasts forever.</li>
+  <li>None are so rich they can get along without it, and none so poor but are
+richer for its benefits.</li>
+  <li>It creates happiness in the home, fosters good will in a business, and is the
+countersign of friends.</li>
+  <li>It is rest to the weary, daylight to the discouraged, sunshine to the sad, and
+Nature’s best antidote fee trouble.</li>
+  <li>Yet it cannot be bought, begged, borrowed, or stolen, for it is something that
+is no earthly good to anybody till it is given away.</li>
+  <li>And if in the last-minute rush of Christmas buying some of our salespeople
+should be too tired to give you a smile, may we ask you to leave one of yours?</li>
+  <li>For nobody needs a smile so much as those who have none left to give.</li>
+</ul>
+
+<h2 id="never-say-you-are-wrong">Never say you are wrong</h2>
+
+<ul>
+  <li>Men must be taught as if you taught them not. And things unknown proposed as
+things forgot. – Alexander Pope</li>
+  <li>You cannot teach a man anything; you can only help him to find it within
+himself. – Galileo</li>
+  <li>Be wiser than other people if you can; but do not tell them so. – Lord
+Chesterfield</li>
+  <li>I have found it of enormous value when I can permit myself to understand the
+other people. The way in which I have worded this statement may seem strange
+to you. Is it necessary to permit oneself to understand another? I think it
+is. Our first reaction to most of the statements (which we hear from other
+people) is an evaluation or judgment, rather than an understanding of it.</li>
+</ul>
+
+<h2 id="admit-your-mistakes">Admit your mistakes</h2>
+
+<ul>
+  <li>Any fool can try to defend his or her mistakes - and most fools do - but it
+raises one above the herd and gives one a feeling of nobility and exultation
+to admit one’s mistakes.</li>
+</ul>
+
+<h2 id="let-the-other-person-feel-that-idea-is-his-or-hers">Let the other person feel that idea is his or hers</h2>
+
+<ul>
+  <li>In every work of genius, we recognize our own rejected thoughts, they came
+back to us with a certain alienated majesty. —— Ralph Waldo Emerson</li>
+  <li>The reason why rivers and seas receive the homage of a hundred mountain
+streams is that they keep below them. Thus they are able to reign over all the
+mountain streams. So the sage, wishing to be above men, put himself below
+them; wishing t be before them, he put himself behind them. Thus, though his
+place be above men, they do not feel his weight; though his place be before
+them, they do not count it an injury. – Lao-tse</li>
+</ul>
+
+<h2 id="try-honestly-to-see-things-from-other-persons-point-of-view">Try honestly to see things from other person’s point of view</h2>
+
+<ul>
+  <li>I would rather walk the sidewalk in front of a person’ office for two hours
+before an interview than step into that office without a perfectly clear idea
+of what I was going to say and what that person - from my knowledge of his or
+her interests and motives - was likely to answer. – Dean Donham of the
+Harvard business school.</li>
+</ul>
+
+<h2 id="be-hearty-in-your-approbation-and-lavish-in-your-praise">Be “hearty in your approbation and lavish in your praise”</h2>
+
+<p>The principles taught in this book will work only when they come from the
+heart. I am not advocating a bag of tricks. I am talking about a new way of
+life.</p>
+
+<p>Talking about changing people. If you and I will inspire the people with whom we
+come in contact to a realization of the hidden treasures they possess, we can do
+far more than changing people. We can literally transform them.</p>
+
+<p>Exaggeration? Then listen to these sage words from William James, one of the
+most distinguished psychiatrists and philosopher America has ever produced:</p>
+
+<pre><code>Compared with what we ought to be, we are only half awake. We are making use
+of only a small part of our physical and mental resources. Stating the thing
+broadly, the human individual thus lives far within his limits. He possesses
+powers of various sorts which he habitually fails to use.
+</code></pre>
+
+<h2 id="effective-leader">Effective Leader</h2>
+
+<ol>
+  <li>Be sincere. Do not promise anything that you cannot deliver. Forget about the
+benefits to yourself and concentrate on the benefits to the other person.</li>
+  <li>Know exactly what it is you want the other person to do.</li>
+  <li>Be empathetic. Ask yourself what is it the other person really wants.</li>
+  <li>Consider the benefits that person will receive from doing what you suggest.</li>
+  <li>Match those benefits to the other person’s wants.</li>
+  <li>When you make your request, put it in a form that covey to the other person
+the idea that he personally will benefit.</li>
+</ol>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[中国的科研环境小窥]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/12/29/zhong-guo-de-ke-yan-huan-jing-xiao-kui/"/>
+    <updated>2014-12-29T11:44:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/12/29/zhong-guo-de-ke-yan-huan-jing-xiao-kui</id>
+    <content type="html"><![CDATA[<!-- more -->
+
+<p>以下描述的未必是普遍现象，但一定不是个别现象。每个研究员对上毕恭毕敬，
+对下妄自尊大，虽然用词可能比较过度，但基本是这两种情况下分别上下波动。
+多数时间只和与自己地位相近的人在一起。多数人仅仅视科研为谋生的手段，多
+数情况下也是唯一的维护自己地位和自尊的依仗。所以他们会不加分析地对非自
+己领域的技能表示拒绝和表现出轻视——我不会是因为它不值得我去花时间。人类
+的原罪被展现地淋漓尽致。</p>
+
+<p>除去中国自古以来尊卑有别的文化传统，中国的强大竞争压力也是造成这种现象
+的重要原因。因为资源的有限，两个能力和背景相差很多的人，较强的一方基本
+不能从弱势的一方得到什么好处，比较容易得到的就是感到重要这种满足感，俗
+话说就是能够听马屁。于是这种关系就自然而然被加固。</p>
+
+<p>这种研究环境应当是中国出不了什么有影响力的的科学家的重要原因。当然，这
+里面还有各种各种的同样和更加重要的原因。作为一个研究人员，一个基本的素
+质就是质疑，如果连上司的话都不敢质疑，唯唯诺诺的话，还有什么能力去质疑
+前人权威的理论？</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[动漫语录摘记]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/12/17/dong-man-yu-lu-zhai-ji/"/>
+    <updated>2014-12-17T10:15:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/12/17/dong-man-yu-lu-zhai-ji</id>
+    <content type="html"><![CDATA[<ul>
+  <li>如谷之歌，扎根土里与风共存，与种子越冬，与鸟儿歌颂。——《天空之城》</li>
+  <li>只要有你在，我就会努力。——《侧耳倾听》</li>
+  <li>世界这么大，而找到真正喜欢可以落脚的地方，又实在是难。——《魔女宅急便》</li>
+  <li>你已经是我心脏的一部分了。因为借走的是糖，还回的是心。——《借东西的小
+人阿莉埃蒂》</li>
+  <li>我们的生命太短，来不及见证那些遥远到令人恍惚的词语，比如天长地久，海
+角天涯，碧落黄泉，沧海桑田。 所以，要活下去。——《幽灵公主》</li>
+  <li>只要活着，就有希望。——《风之谷》</li>
+  <li>信仰到底是什么呢，就是纵身一跃，就是我们跟神之间一个永远的约定，是舍
+弃旧的去开始新的生活；信仰就是从今以后，再也不要放开你的手。——《悬崖
+上的金鱼姬》</li>
+  <li>生命可以随心所欲，但不能随波逐流。—— 《猫的报恩》</li>
+  <li>从一个城市到另一个城市，只有靠自己努力。学会长大，学会承受，学会哭过
+之后，还可以微笑地拥抱爸爸妈妈。—— 《魔女宅急便》</li>
+  <li>容易伤害别人和自己的，总是对距离的边缘模糊不清的人。——《千与千寻》</li>
+  <li>人生就是一列开往坟墓的列车，路途上会有很多站，很难有人可以至始至终陪
+着走完，当陪你的人要下车时，即使不舍，也该心存感激，然后挥手道别。——
+《千与千寻》</li>
+  <li>什么时候我们开始无法像孩子一样肆意地大呼小叫了？心里的小情绪堆积得像
+山一样高， 　　直到溢出来。与其如此，不如永远像孩子一样。—— 《龙猫》</li>
+  <li>他喜欢她，无关爱情；她幸福了，所以，他也幸福了。——关于《千与千寻》中
+的无脸男</li>
+  <li>一个人的时候，怎么过？就算再难以承受，其实到最后我们总能走得过来。——
+《魔女宅急便》</li>
+  <li>爱是需要付出代价，爱是需要担当，爱是需要努力争取，爱是需要你为了对方
+而放弃一些事情，并改变自己。——《悬崖上的金鱼姬》</li>
+  <li>你应该要学着做你自己，面对真实的自我，只要做到这一点你就什么都不用惧
+怕。——《猫的报恩》</li>
+  <li>爱不是一句话，只是一个动作。——《千与千寻》</li>
+  <li>阴天，晴天，雨天，你最喜欢那种天气？——《岁月的童话》</li>
+  <li>因为你，我愿意成为一个更好的人，不想成为你的包袱，因此发奋努力，只是
+为了想要证明我足以与你相配。——《侧耳倾听》</li>
+  <li>成长是一笔交易，我们都是用朴素的童真与未经人事的洁白去交换长大的勇气、
+成熟的情感、广阔的视野……或其他认为值得的东西。——《魔女宅急便》</li>
+  <li>回忆是一种很奇妙的东西，它生活在过去，存在于现在，却能影响未来。——
+《岁月的童话》</li>
+  <li>恋爱应该是双方扶持对方共同完成自己的目标，而不是虚幻的思想、肤浅的物
+质、和纸醉金迷的生活。——《侧耳倾听》</li>
+  <li>因为爱你，只要你一个肯定，我就足够勇敢。——《哈尔的移动城堡》</li>
+  <li>永远也不要忘记能够笑的坚强。———《千年女优》</li>
+</ul>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A Dig Into Definition of Continuity]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/12/16/a-dig-into-definition-of-continuity/"/>
+    <updated>2014-12-16T15:04:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/12/16/a-dig-into-definition-of-continuity</id>
+    <content type="html"><![CDATA[<p>This post is about explaining intuitions behind the definition of
+continuity, in calculus context and topological context, with a focus
+on why it is not defined in the other way around. A number of counter
+examples are provided.</p>
+
+<p>Note that between calculus context and topological context, there is
+still one intermediate step which is metric space context. But it is
+basically not different too much in the calculus context so I omit it.</p>
+
+<!-- more -->
+
+<h2 id="puzzle-in-calculus-context">Puzzle in Calculus Context</h2>
+
+<p>In Calculus continuity is defined in the following way:</p>
+
+<p>Given a function $f(x)$, we call $f$ is continuous at point $c$, if
+for any $\epsilon &gt; 0$, there exists a $\delta &gt; 0$, for $|x - c|
+&lt; \delta$ the value of $f(x)$ satisfies</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+|f(x) - f(c)| < \epsilon
+ %]]&gt;</script>
+
+<p>The intuition continuity want to capture is if there is a small change
+in the input(the independent variable), there should be a
+corresponding small change in the output(the dependent variable).</p>
+
+<p>It is the small change in $x$ that causes small change in $y$, where
+$y$ denotes $f(x)$, but why the definition of continuity is <em>for any
+$\epsilon$</em>, which is the change of $y$, <em>there is a $\delta$</em>, which
+is the change of $x$? Why not define it as the following way.</p>
+
+<p>Given a function $f(x)$, we call $f$ is continuous at point $c$, if
+for any $\delta &gt; 0$, there exists a $\epsilon &gt; 0$, for $|x - c|
+&lt; \delta$ the value of $f(x)$ satisfies</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+|f(x) - f(c)| < \epsilon
+ %]]&gt;</script>
+
+<p>I puzzled on this for a long time but now it feels obvious that the
+latter definition is wrong. Before counter example is put forward, I
+will explain why the former definition is right.</p>
+
+<p>The point is that it is $y$ that we want to constrain. So for whatever
+change $y$ is made as long as it is in the neighborhood of $\epsilon$,
+$x$ within the neighborhood of $\delta$ will capture it all. In more
+plain English, the change is all caused by those $x$.</p>
+
+<p>Now time for a counter example.</p>
+
+<p>Consider $f(x) = \frac{1}{x}$ defined for $x &gt; 0$. Then $lim_{x
+\rightarrow 0.5} f(x) = 2$ in the usual sense. Yet in this case, with
+$\delta = \frac{1}{2}$, there is no $\epsilon &gt; 0$ such that $0 &lt; |
+x - 0.5| &lt; \delta$ implies $|f(x) - 2| &lt; \epsilon$.</p>
+
+<p>This example comes from
+<a href="http://math.stackexchange.com/questions/993866/switching-the-definition-of-epsilon-delta-limit">here</a>.</p>
+
+<h2 id="puzzle-in-topology-context">Puzzle in Topology Context</h2>
+
+<p>If we generalize continuity to topological space. Then it is defined
+as following.</p>
+
+<p>Mapping of a topological space $(X, T_X)$ into a topological space
+$(Y, T_Y)$ is continuous if and only if the inverse image $f^{−1}(W)$
+of every open set $W \in T_Y$ is open, i.e. $f^{−1}(W) \in T_X$.</p>
+
+<p>Again why it is not defined in the reverse way:</p>
+
+<p>Mapping of a topological space $(X, T_X)$ into a topological space
+$(Y, T_Y)$ is continuous if and only if the image $f(W)$ of every open
+set $W \in T_X$ is open, i.e. $f(W) \in T_Y$.</p>
+
+<p>The second definition is called <em>Open mapping</em>, which means map an open
+set to an open set.</p>
+
+<p>Similar with the intuition explained in previous section, the
+definition of open mapping dose not imply constraint on the image
+mapped. <a href="http://mathforum.org/library/drmath/view/62395.html">Here</a> is
+an educational example. It constructs a mapping which is open but not
+continuous, from $R$ with usual topology to $[0 1]$ with usual
+topology. One intuition behind is that even if the image mapped is
+open set, no constraint is imposed so it could be too large compared
+with the pre-image of it.</p>
+
+<p>If we drop $R$ all together, and only think of open set in the
+topological sense. We could think open set as a thing with
+semidecidable properties. Below is an explanation from
+<a href="http://math.stackexchange.com/questions/932942/why-are-continuous-functions-the-right-morphisms-between-topological-spaces">here</a>. I
+copy it here for integrity.</p>
+
+<blockquote>
+  <p>General topology is actually a kind of logic. I don’t know who this
+insight is due to, but see Vickers’ Topology via Logic for much more
+on this theme. In particular, the open subsets of a topological
+space should be thought of as axiomatizing semidecidable properties:
+properties that you can confirm but not necessarily disconfirm,
+given limited tools (e.g. finite time and precision).</p>
+
+  <p>For example, you can confirm whether two things are less than 5
+inches apart by measuring the distance between them to finite
+precision and seeing if it’s less than 5, so an open ball of radius
+5 in a metric space describes a semidecidable property, but you
+can’t confirm whether two things are less than or equal to 5 inches
+apart by measuring the distance between them to finite precision
+because if you get 4.99±0.2 inches you don’t know whether that’s
+over or under 5.</p>
+
+  <p>Semidecidability can be used to justify all of the topological space
+axioms, which is a nice exercise. For example, arbitrary unions of
+open sets are open because given a method of confirming whether
+you’re in each of those open sets, you get a method of confirming
+whether you’re in any of them by running all of the methods
+simultaneously and waiting for one to finish. But you only get
+finite intersections when you try to do the same thing for waiting
+for all of the methods to finish because method n might take n
+seconds finish.</p>
+
+  <p>Continuous functions then axiomatize “computable functions”: for f
+to be continuous means that it should be possible to compute f(x)
+“to arbitrary precision” by computing x “to arbitrary precision,”
+where going off of the example of metric spaces “to arbitrary
+precision” means “to within an arbitrary open set,” since it’s
+semidecidable whether f(x) is contained within an open set. In other
+words, to locate f(x) within some open set U, it suffices to locate
+x within some open set V. After a moment’s thought you’ll see that
+this is precisely the condition that f−1(U)=V.</p>
+
+  <p>(I particularly like this justification of topological spaces and
+continuity because, unlike the justification coming from thinking
+about metric spaces, it continues to apply to spaces that aren’t
+Hausdorff, and in fact it tells you what it means for a space to not
+be Hausdorff. One equivalent definition of being Hausdorff is that
+the diagonal {(x,x)∈X×X} is closed in X×X. This is equivalent to
+“x≠y” being semidecidable, so a space fails to be Hausdorff
+precisely when “x≠y” fails to be semidecidable.)</p>
+</blockquote>
+
+<p>I would like to read <em>Topology Via Logic</em> some day.</p>
+
+<p>Based on the granularity of your topology space, for instance if $T_X$
+is equipped with discrete topology, then any mapping is continuous,
+you have different level of continuous. You can tweak your topological
+space $T_X$ to make your function continuous.</p>
+
+<p>Now for one counter example that continuous mapping that is not open
+mapping.</p>
+
+<p>$f(x) = 1$ for $x \in R$, the mapping is continuous but not open.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Open File Using External App in Emacs]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/12/08/open-file-using-external-app-in-emacs/"/>
+    <updated>2014-12-08T14:29:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/12/08/open-file-using-external-app-in-emacs</id>
+    <content type="html"><![CDATA[<p>It would be of great convenience to be able to open files in
+<code>dired-mode</code> in Emacs using external apps. Here is how to achieve it.</p>
+
+<!-- more -->
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+<span class="line-number">51</span>
+<span class="line-number">52</span>
+<span class="line-number">53</span>
+<span class="line-number">54</span>
+</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="c1">;;; Add command to open file using system programs.</span>
+</span><span class="line"><span class="c1">;; ===================================================================</span>
+</span><span class="line"><span class="p">(</span><span class="nb">defun</span> <span class="nv">open-in-external-app</span> <span class="p">(</span><span class="k">&amp;optional</span> <span class="nv">file</span><span class="p">)</span>
+</span><span class="line">  <span class="s">&quot;Open the current file or dired marked files in external app. The app</span>
+</span><span class="line"><span class="s">is chosen from your OS&#39;s preference.&quot;</span>
+</span><span class="line">  <span class="p">(</span><span class="nv">interactive</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line">  <span class="p">(</span><span class="k">let</span> <span class="p">(</span> <span class="nv">confirm</span>
+</span><span class="line">         <span class="p">(</span><span class="nv">file-list</span>
+</span><span class="line">          <span class="p">(</span><span class="nb">cond</span>
+</span><span class="line">           <span class="p">((</span><span class="nb">string-equal</span> <span class="nv">major-mode</span> <span class="s">&quot;dired-mode&quot;</span><span class="p">)</span> <span class="p">(</span><span class="nv">dired-get-marked-files</span><span class="p">))</span>
+</span><span class="line">           <span class="p">((</span><span class="nb">not</span> <span class="nv">file</span><span class="p">)</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nv">buffer-file-name</span><span class="p">)))</span>
+</span><span class="line">           <span class="p">(</span><span class="nv">file</span> <span class="p">(</span><span class="nb">list</span> <span class="nv">file</span><span class="p">))</span>
+</span><span class="line">           <span class="p">)</span>
+</span><span class="line">          <span class="p">)</span>
+</span><span class="line">         <span class="p">)</span>
+</span><span class="line">
+</span><span class="line">    <span class="p">(</span><span class="k">setq</span> <span class="nv">confirm</span> <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&lt;=</span> <span class="p">(</span><span class="nb">length</span> <span class="nv">file-list</span><span class="p">)</span> <span class="mi">5</span><span class="p">)</span>
+</span><span class="line">                   <span class="no">t</span>
+</span><span class="line">                 <span class="p">(</span><span class="nb">y-or-n-p</span> <span class="s">&quot;Open more than 5 files? &quot;</span><span class="p">)</span>
+</span><span class="line">                 <span class="p">)</span>
+</span><span class="line">          <span class="p">)</span>
+</span><span class="line">
+</span><span class="line">    <span class="p">(</span><span class="nb">when</span> <span class="nv">confirm</span>
+</span><span class="line">      <span class="p">(</span><span class="nb">cond</span>
+</span><span class="line">       <span class="p">((</span><span class="nb">string-equal</span> <span class="nv">system-type</span> <span class="s">&quot;windows-nt&quot;</span><span class="p">)</span>
+</span><span class="line">        <span class="p">(</span><span class="nb">mapc</span>
+</span><span class="line">         <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">file-path</span><span class="p">)</span>
+</span><span class="line">           <span class="p">(</span><span class="nv">w32-shell-execute</span> <span class="s">&quot;open&quot;</span>
+</span><span class="line">                              <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">&quot;/&quot;</span> <span class="s">&quot;\\&quot;</span> <span class="nv">file-path</span> <span class="no">t</span> <span class="no">t</span><span class="p">)</span>
+</span><span class="line">                              <span class="p">)</span>
+</span><span class="line">           <span class="p">)</span>
+</span><span class="line">         <span class="nv">file-list</span><span class="p">)</span>
+</span><span class="line">        <span class="p">)</span>
+</span><span class="line">       <span class="p">((</span><span class="nb">string-equal</span> <span class="nv">system-type</span> <span class="s">&quot;darwin&quot;</span><span class="p">)</span>
+</span><span class="line">        <span class="p">(</span><span class="nb">mapc</span>
+</span><span class="line">         <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">file-path</span><span class="p">)</span>
+</span><span class="line">           <span class="p">(</span><span class="nv">shell-command</span> <span class="p">(</span><span class="nb">format</span> <span class="s">&quot;open \&quot;%s\&quot;&quot;</span> <span class="nv">file-path</span><span class="p">))</span>
+</span><span class="line">           <span class="p">)</span>
+</span><span class="line">         <span class="nv">file-list</span><span class="p">)</span>
+</span><span class="line">        <span class="p">)</span>
+</span><span class="line">       <span class="p">((</span><span class="nb">string-equal</span> <span class="nv">system-type</span> <span class="s">&quot;gnu/linux&quot;</span><span class="p">)</span>
+</span><span class="line">        <span class="p">(</span><span class="nb">mapc</span>
+</span><span class="line">         <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">file-path</span><span class="p">)</span>
+</span><span class="line">           <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">process-connection-type</span> <span class="no">nil</span><span class="p">))</span>
+</span><span class="line">             <span class="p">(</span><span class="nv">start-process</span> <span class="s">&quot;&quot;</span> <span class="no">nil</span> <span class="s">&quot;xdg-open&quot;</span> <span class="nv">file-path</span><span class="p">)</span>
+</span><span class="line">             <span class="p">)</span>
+</span><span class="line">           <span class="p">)</span>
+</span><span class="line">         <span class="nv">file-list</span><span class="p">)</span>
+</span><span class="line">        <span class="p">)</span>
+</span><span class="line">       <span class="p">)</span>
+</span><span class="line">      <span class="p">)</span>
+</span><span class="line">    <span class="p">)</span>
+</span><span class="line">  <span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I learned this from
+<a href="http://ergoemacs.org/emacs/emacs_dired_open_file_in_ext_apps.html">here</a>. However,
+the code here is more readable and conformed to the programming
+convention of Elisp.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Vision Using Wavelet -- Three]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/12/02/vision-using-wavelet-three/"/>
+    <updated>2014-12-02T17:16:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/12/02/vision-using-wavelet-three</id>
+    <content type="html"><![CDATA[<h2 id="wavelet-in-image">Wavelet in Image</h2>
+
+<p>The next question is how could we mathematically model the process?
+How could we mathematically define “semantic”?</p>
+
+<p>In an explicit sense, “semantic” is taught. We see an axe as axe is
+because all people speaking English call it axe. It would be 斧头 in
+Chinese. Semantic expressed is nothing but common agreement. Semantic
+not expressed is what the object looks like, what the it could do and
+so on so forth. This is the highest level of knowledge. Decomposing it
+further, an axe may made up of one head and one body. The body may
+just be a stick while the head may be just a special shape iron. So
+one semantic is composed of more sub semantics. Down to this level,
+all are still learned. How could we keep analyzing?</p>
+
+<p>We may start with things that are simple and remember the ultimate
+task is to extract semantic information from raw image.</p>
+
+<p>Again, we return back audio signal, or one dimensional signal –
+neither of them are perfectly accurate. We consider problem in
+seismology. Different type of rock layers reflect to the detecting
+signal in different frequency pattern in the short range of time the
+signal encountering the layer. So to find rock layers that contain
+oil, the task is to find patterns in the reflected signals. Such
+patter represents semantic meaning that “I am the oil layer you are
+looking for.” Such semantic is learned. Maybe different encountering
+directions will create different signals, but they all should convey
+the same semantic. In this case, semantic is gradually lowed down to
+physical properties,meaning there are some deformation in the
+signal. The different direction here is analogue with seeing one
+object in different faces. In our vision, we do not learn different
+faces of object, but by recognizing similarity in their physical
+shape. To sum up, the task is to find some small patterns in a bunch
+of noisy signals reflected back by the rock layer, and such signals
+should be of some invariant properties. If we could find the invariant
+right, based on such invariance, we can learn patterns that we can give
+meaning to them.</p>
+
+<p>Now, let’s return back to the image problem. Images are made up of
+pixels. Pixels makes surfaces and edges. Surfaces and edges make
+objects. So the first step is how to identify surfaces and edges in
+the image. This bridges the gap between audio signal and digital
+image! High frequency patters in audio signal is very representative
+like the discovering oil example above. Analogue of high frequency
+signal in image is edges, which represents rapid change in the gray
+level of image. Consequently, low frequency signal is analogue with
+surface. To identify surfaces and edges, we identify high and low
+frequency components of the image. This is what wavelet does.</p>
+
+<p>I will do more experiments to see what this leads.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Vision Using Wavelet -- Two]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/12/02/vision-using-wavelet-two/"/>
+    <updated>2014-12-02T16:45:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/12/02/vision-using-wavelet-two</id>
+    <content type="html"><![CDATA[<h2 id="what-does-vision-system-do-in-an-abstract-sense">What does vision system do in an abstract sense?</h2>
+
+<p>Now we have analyzed what information we could utilize and what are
+their physical meaning of digital image. Let us return back to the
+vision problem. How could we imitate human vision? This is the
+ultimate purpose of computer vision. OK, maybe not ultimate, since we
+could surpass human being but we are way far from there.</p>
+
+<p>The first step to solve a problem, which is imitating human vision in
+this case is to ask the right preliminary question. What question
+should we ask? Since we are trying to imitate human vision, what
+specific features or functions what we are trying imitate? I guess the
+question is, a lot. But among them, the most fundamental one should be
+how do human distinguishes different objects, which is the basis how
+human accumulates knowledge of the world. In computer vision’s
+terminology, how does human do objects recognition?</p>
+
+<p>The whole process may be simplified as human are extracting semantic
+information from the image forming on human’s retina. Though such
+process seems simple for humans, it is a rather complex procedure that
+takes thousands of talents on the problem for tens of years without
+really understanding it. Now we have a high level description of the
+task – extracting semantic information from raw digital image. So
+how could we define “semantic”?</p>
+
+<p>When we say an axe, it is actually made up of infinite amount of
+sources that reflects light. In the digital image, it consists of a
+region of different gray scale. So when we see the points that make
+the axe, our vision system extract the axe from the background and
+tells us there is an object called axe there. Such process is called
+extracting semantic information from raw image.</p>
+
+<p>This should be our vision system is constantly processing as long as
+we are opening our eyes.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Vision Using Wavelet Note -- One]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/12/02/vision-using-wavelet-one/"/>
+    <updated>2014-12-02T15:57:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/12/02/vision-using-wavelet-one</id>
+    <content type="html"><![CDATA[<p>Last week, all intuition of scattering transformation begins to make
+sense. To make this easier to refer to in the future, I decide to
+decouple relevant contents into a separate series of blogs.</p>
+
+<p>This post aims to understand what information we have gathered and
+could be utilized and what are their physical meaning when we are
+dealing with digital image.</p>
+
+<!-- more -->
+
+<p>Let’s first start things simple. The first thing computer vision
+technique needs to perform well should be static input, which should
+be digital images. But what is the nature of digital image?</p>
+
+<p>The nature of audio data is the vibration wave in the air, which is
+transmitted by the changing air pressure. Taking into account how to
+gather the data, it is OK to replace “transmitted” with “generated”,
+since we could regard intermediate transmission point as the source if
+we have no idea what is the true origin of the wave.  Every wave
+consists of three main elements, amplitude, phase and frequency.  If
+it is only for musical purpose, its phase is not important, since
+human are only sensitive to the frequency and amplitude of the music
+listened to. But if it is language, the phase matters. The
+superposition between different waves create peaks in the mixed waves
+which represents words. As an evidence, if you play a music from end
+to start, it is still an enjoyable music, but for a speech, it will
+not be recognizable. And such superposition of different phases of
+wave may not be very relevant to the frequency. The hypothesis is
+based on the fact that we can understand people who say hello both in
+the low tone or high pitch tone. It is the time dynamics in the waves
+that are in close frequency that makes such superposition on phases.</p>
+
+<p>What is the nature of image? The light that formulates an image are
+electromagnet waves. But human does not interpret the waves
+directly. The waves or maybe photons hit on the retina of human eye,
+and it is the strength in different wavelength(color) and their
+superposition of phases and amplitude that tells the human
+information. Naturally, we may ask what kind of information is being
+gathered by the advanced vision system of human?</p>
+
+<p>First let us rule out the information that is not useful. Since we are
+considering static input, one pixel in the digital image is the
+accumulation of light in certain amount of time. Thus the phases of
+different waves will be averaged out and make only their amplitude
+matter. In another word, the time dynamics is not utilized in static
+images. If it is video, it may be a different story. But I do no
+consider such case for the time being. Therefore, we rule out the
+phase information of different waves in the electromagnet waves
+creating the digital image.</p>
+
+<p>As for the wave lengths and amplitude, different wave length means
+different colors for human beings. This could be analogous with human
+being interprets high frequency vibration in the air as high pitch
+tone and low frequency as low pitch tone. Another interesting analogue
+may be made is that just as for music humans are only sensitive to the
+frequency and amplitude, humans only take into account the information
+of amplitude and frequency. Amplitude corresponds to the gray scale of
+the image while frequency corresponds to the color. The information
+color conveys are enormous. It is through color that we know trees
+with the green leaves are different species from the one with red
+leaves. However, it should be a higher level of information we human
+are taking advantage of. Imagine that we put an green axe on a table
+whose color in light green. It is the different of intensity of light
+that makes us distinguish the axe from the table, which means the
+amplitude of light we perceive. So to do task like object recognition,
+amplitude is enough for extracting the information that is essential
+we needed in the first stage. Color is only used for further enhancing
+the ability of the method. To sum up, gray scale image is enough.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Understanding Convolution]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/11/08/understanding-convolution/"/>
+    <updated>2014-11-08T09:46:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/11/08/understanding-convolution</id>
+    <content type="html"><![CDATA[<p>One dimension convolution(I am not sure I have understand two
+dimension yet) may be a very natural idea when you are from Electrical
+Engineering(EE) background – I found out this recently by reading
+books about signals and system, especially for the one written by
+Oppenheim(thought as I was talking with PhD from EE background, some
+of them does not understand convolution.). But as a computer science
+major background with no prior exposure to EE, it does not seem to be
+that natural.</p>
+
+<p>This post aims to introduce convolution from scratch.</p>
+
+<p>Convolution roots from signal processing, mainly in Linear Time
+Invariant(LTI) System. Convolution will be introduced in this
+setting. Then the intuition will be explained, both in its physical
+interpretation and computation procedure. Just note here that, as its
+widely usage on various forms of application, it is generalized by
+mathematicians, who make it a mathematical operation like correlation,
+which loses its original physical Interpretation(this is where the
+most confusion comes around the first time I encounter such a
+concept).</p>
+
+<!-- more -->
+
+<h2 id="linear-time-invariant-system">Linear Time Invariant System</h2>
+
+<p>Let’s start with LTI system.</p>
+
+<h3 id="definition">Definition</h3>
+
+<p>A time-invariant (TIV) system is a system whose output does not depend
+explicitly on time.</p>
+
+<p>If the input signal $x(t)$ produces an output $y(t)$ then any time
+shifted input, $x(t + \delta)$, results in a time-shifted output
+$y(t + \delta)$</p>
+
+<h3 id="example">Example</h3>
+
+<p>To demonstrate how to determine if a system is time-invariant then
+consider the two systems:</p>
+
+<p>System A: $y(t) = t x(t)$</p>
+
+<p>System B: $y(t) = 10 x(t)$</p>
+
+<p>Since system A explicitly depends on t outside of $x(t)$ and $y(t)$,
+it is not time-invariant.  System B, however, does not depend
+explicitly on t so it is time-invariant.</p>
+
+<h3 id="intuition">Intuition</h3>
+
+<p>The intuition behind is the system is stable as the time passes. For
+instance, if we take an example from thermology, the temperature of
+the system is constant which makes a number of other properties stable.</p>
+
+<p>The explanation above is nothing different from what you could look up
+in wikipedia. With my experience of teaching myself mathematics, you
+never see a concept naturally, meaning you internalize it by reading
+its definition, until knowing why it is brought out by reading its
+history and trying to solve the old problem by yourself.</p>
+
+<p>For LTI system, I point out two points here:</p>
+
+<ol>
+  <li>Initial rest linear differential equation, which is abundant in
+circuit theory, is LTI system, which makes LTI widely applicable.</li>
+  <li>It seems that the only mathematics humanity is capable of is linear
+stuff. So it is through linear decomposition and recombination that
+make problem manageable, at least in the preliminary development
+state of one subject. So understanding LTI system should be the
+first step before trying to understanding other nonlinear complex
+system.</li>
+</ol>
+
+<h3 id="reference">Reference</h3>
+<p>Timer-invariant System, Wikipedia,
+<a href="http://en.wikipedia.org/wiki/Time-invariant_system">link</a></p>
+
+<h2 id="origin-of-convolution-in-linear-time-invariant-system">Origin of Convolution in Linear Time Invariant System</h2>
+
+<h3 id="prologue">Prologue</h3>
+
+<p>Since this post is going to explain convolution, let us how the
+assumption of LTI system could lead to convolution.</p>
+
+<p>Generally, this could lead to the effort to find a basis in Hilbert
+Space to represent signals(I am still learning about this, and not
+going to talk about it). Now, we decompose signals using
+impulse(terminology in discrete time) and delta function(terminology
+in continuous time) – they actually form a set of basis.</p>
+
+<p>For the sake of brevity, I will stay with discrete case. For
+continuous case they are almost the same as long as your replace the
+summation symbol with integration symbol.</p>
+
+<p>And… I am not going to define unit impulse, since there is some
+complication in its mathematical definition. It is easy to get its
+intuition, if not rigorous mathematical definition by Googling.</p>
+
+<h3 id="convolution-in-lti-system">Convolution in LTI system</h3>
+<p>So how could we decompose signals using unit impulse?</p>
+
+<p>In fact, if the response of the LTI system to the unit sample sequence
+$\delta(n)$ is denoted as $h(n)$, that is,</p>
+
+<script type="math/tex; mode=display">
+h(n) \equiv \Gamma [\delta(n)]
+</script>
+
+<p>then by the time-invariance property, the response of the system to the
+delayed unit sample sequence $\delta(n - k)$ is</p>
+
+<script type="math/tex; mode=display">
+h(n - k) = \Gamma[\delta(n - k)]
+</script>
+
+<p>Thus, if we decompose the input signal $x(n)$ into a series of signals
+$x(k), k = 1,2 …$, with each $x(k) = x(n)\delta(n - k)$, then the output of any input signal $x(n)$ could be
+computed in the following way:</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{align*}
+y(n) &=& \Gamma[\sum\limits^{\infty}_{k=-\infty}x(k)\delta(n - k)]\\
+     &=& \sum\limits^{\infty}_{k=-\infty}x(k)\Gamma[\delta(n - k)]\\
+     &=& \sum\limits^{\infty}_{k=-\infty}x(k)h(n - k)
+\end{align*}
+ %]]&gt;</script>
+
+<p>This is what originally convolution is all about.</p>
+
+<h3 id="physical-interpretation">Physical Interpretation</h3>
+<p>What is actually happening?</p>
+
+<p>Before proceeding to the following content, it would be better find
+some convolution examples to try it out by oneself(which is actually
+required, since this is how math is learned – you remember the
+understanding acquired when you are actually computing), which will
+make the understanding better and solider. The example I recommend is
+in reference 1.</p>
+
+<p>The main intuition in the time series scenario will be explained.</p>
+
+<p>For a system, the state in previous state will always interfere with
+current state. Just think of the system in real world will give this
+statement a lot of sense. In real world, the state of one system will
+always be continuous. The input signal $x(t)$ will always interfere
+with signal $x(t - \epsilon)$. So if we decompose signals in to
+impulse like previous section, the signal in previous impulse will
+interfere with current impulse.</p>
+
+<p>Take the example in reference 1 as an example. In the original
+example, the response of unit impulse is $h(n) = (1, 2, 1, -1)$,
+corresponding to $n = (-1, 0, 1, 2)$. We interpret the $n$ here as
+discrete time point. The negative coordinate of $n$ here actually
+means how the unit impulse interfere with previous signals. As for
+input signal $x(n) = (1, 2, 3, 1)$ corresponding to $n = (0, 1, 2,
+3)$, we regard it as discrete impulse in those discrete time
+points. To compute response $y(0)$, which we interpret it as the
+response in time point 0, we have the following equations, which is
+convolution:</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{align*}
+y(0) &=& \sum\limits^{\infty}_{k=-\infty}x(k)h(0 - k)\\
+     &=& \sum\limits^{3}_{k=0}x(k)h(0 - k)
+\end{align*}
+ %]]&gt;</script>
+
+<p>When $k = 1$, we can see how the impulse in time point 1 interfere
+with the one in time point 0. Work this example by yourself to see
+more about it.</p>
+
+<p><em>NOTE</em>: The inspiration of this example comes from a similar example
+in reference 2.</p>
+
+<h3 id="convolution-in-its-computation-procedure">Convolution in its computation procedure</h3>
+<p>Let us step further to the computation procedure of convolution,
+which is the where the most confusion lies while I was learning.</p>
+
+<p>It is said that the procedure comes as following:</p>
+
+<ol>
+  <li><strong>Folding</strong>. Fold h(k) about $k = 0$ to obtain $h(-k)$.</li>
+  <li><strong>Shifting</strong>. Shift $h(-k)$ by $n_{0}$ to the right(left) if $n_{0}$
+is positive(negative), to obtain $h(n_{0} - k)$.</li>
+  <li><strong>Multiplication</strong>. Multiply $x(k)$ by $h(n_{0} - k)$ to obtain the
+product sequence $v_{n_{0}} \equiv x(k)h(n_{0} - k)$.</li>
+  <li><strong>Summation</strong>. Sum all the values of the product sequence $v_{n_{0}}$
+to obtain the value of the output at tie $n = n_{0}$.</li>
+</ol>
+
+<p>Note that this procedure results in the response of the system at a
+single time instant, say $n = n_{0}$. In general, we are interested in
+evaluating the response of the system over all time instants $-\infty
+\leq n \leq \infty$. Consequently, steps 2 through 4 in the summary must
+be repeated, for all possible time shifts $-\infty \leq n \leq \infty$.</p>
+
+<p>As you may confuse as I the first time you see this computation
+procedure. In this procedure, you actually do not use the physical
+Interpretation, but use only its formula.</p>
+
+<p>Why are we doing folding? Why shifting? Why …?</p>
+
+<p>How I try to understand the procedure will be elaborated. In one word,
+it is rather intuitive way for computation than reflecting its
+physical meaning. To see this, let us return back to its original
+invention introduced in previous section.</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{align*}
+y(n) &=& \sum\limits^{\infty}_{k=-\infty}x(k)h(n - k)\\
+\end{align*}
+ %]]&gt;</script>
+
+<p>Take some terms out, for instance, $x[n-0]h[0]$ and $x[n-1]h[1]$, try
+to visualize in a graph of sequence with $x[n]$ in the above and
+$h[n]$ below. For the signal $x[n]$ in this instant, it should be
+multiplied by $h[n]$. For the signal that is one step earlier, its delay
+should be propogate to now with the strength $h[1]$. This procedure
+keeps going until you finish the computation for $y[n]$.</p>
+
+<p>So convolution in mathematics is just cross multiplication. Thinking
+of correlation between two sequences may ring a bell.</p>
+
+<p>But how could this link to the computation procedure mentioned above?</p>
+
+<p>To find out, do the actual computation of this cross
+multiplication. It is a little not that intuitive to compute.</p>
+
+<p>Now, return back to computation procedure. Try to visualize the
+procedure in graph. There are famous graphical illustrations. Try
+find an example if you do not know what I about talking about by
+Googling or going for the reference I list. I not writing a textbook
+so I am not going to extract it and post is here…</p>
+
+<p>Assuming you have known the graphical illustration of the computation
+procedure, ask yourself the question if you do not care about the
+physical interpretation underlying, IS IT INTUITIVE TO COMPUTE?</p>
+
+<p>The answer for me is yes.</p>
+
+<p>This is all the computation procedure all about – finding a way to
+intuitively do the computation.</p>
+
+<h3 id="reference-1">Reference</h3>
+<ol>
+  <li>Chapter 2.3, mainly Page 74 - 75, Digital signal processing  principles, algorithms, and applications,</li>
+  <li>Chapter 2.4 Linear Systems and Signals, 2nd Edition - B.P. Lathi</li>
+  <li>Correlation and Convolution Class Notes for CMSC 426, Fall 2005 David Jacobs</li>
+  <li>Signals and Systems 2nd Edition, by Oppendiem </li>
+</ol>
+
+<h2 id="convolution-in-its-mathematical-sense">Convolution in its mathematical sense</h2>
+<p>As a final note, convolution is generalized as a mathematical
+operation just as correlation outside LTI system. It would be more
+helpful to think it as a mathematical transformation than always try
+to figure out its physical interpretation. Thinking of eigenvalue may
+ring a bell.</p>
+]]></content>
+  </entry>
   
 </feed>

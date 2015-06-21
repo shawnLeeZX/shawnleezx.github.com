@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Xml | SHAWN LEE]]></title>
+  <link href="http://shawnLeeZX.github.io/blog/categories/xml/atom.xml" rel="self"/>
+  <link href="http://shawnLeeZX.github.io/"/>
+  <updated>2015-06-21T11:48:38+08:00</updated>
+  <id>http://shawnLeeZX.github.io/</id>
+  <author>
+    <name><![CDATA[Shawn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Comparison Betwwn Yaml Libconfig & Xml]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/04/09/comparison-betwwn-yaml/"/>
+    <updated>2014-04-09T22:27:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/04/09/comparison-betwwn-yaml</id>
+    <content type="html"><![CDATA[<p>Recently, I have gotten in touch with several different techniques for program
+configuration file. Here I note down some of their characteristics, which may
+explain why they are created in concurrence with each other.</p>
+
+<p>They are Xml, <a href="http://en.wikipedia.org/wiki/YAML">Yaml</a> and <a href="http://www.hyperrealm.com/libconfig/">libconfig</a>.</p>
+
+<!-- more -->
+
+<h2 id="xml1">Xml[1]</h2>
+
+<p>There are two main uses for XML: One is a way to represent low-level data, for
+example configuration files. The second is a way to add metadata to
+documents; for example, you may want to stress a particular sentence in a
+report by putting it in italics or bold.</p>
+
+<p>The first usage for XML is meant as a replacement for the more traditional ways
+this has been done before, usually by means of lists of name/value pairs as is
+seen in Windows’ INI or Java’s Property files. The second application of XML is
+similar to how HTML files work. The document text is con- tained in an overall
+container, the &lt;body&gt; element, with individual phrases surrounded by <i> or <b>
+tags. For both of these scenarios there has been a multiplicity of techniques
+devised over the years. The problem with these disparate approaches has been
+more apparent than ever, since the increased use of the Internet and extensive
+existence of distributed applications, particularly those that rely on
+components designed and managed by different parties. That problem is one of
+intercommunication. It’s certainly possible to design a distributed system that
+has two components, one outputting data using a Windows INI file and the other
+which turns it into a Java Properties format. Unfortunately, it means a lot of
+development on both sides, which shouldn’t really be necessary and detracts
+resources from the main objective, developing new functionality that delivers
+business value.</b></i></p>
+
+<p>XML was conceived as a solution to this kind of problem; it is meant to make
+passing data between different components much easier and relieve the need to
+continually worry about different formats of input and output, freeing up
+developers to concentrate on the more important aspects of coding such as the
+business logic. XML is also seen as a solution to the question of whether files
+should be easily readable by software or by humans; XML’s aim is to be both.
+You’ll be examining the distinc- tion between data-oriented and
+document-centric XML later in the book, but for now let’s look a bit more
+deeply into what the choices were before XML when there was need to store or
+communi- cate data in an electronic format.</p>
+
+<h2 id="yaml">Yaml</h2>
+<p>YAML is a recursive acronym for “YAML Ain’t Markup Language”. Early in its
+development, YAML was said to mean “Yet Another Markup Language”, but it was
+then reinterpreted (backronyming the original acronym) to distinguish its
+purpose as data-oriented, rather than document markup.[2]</p>
+
+<p>Yaml is designed for data serialization, which builds command data structures
+into the language.</p>
+
+<h2 id="libconfig3">libconfig[3]</h2>
+
+<p>There are several open-source configuration file libraries available as of this
+writing. This library was written because each of those libraries falls short
+in one or more ways. The main features of libconfig that set it apart from the
+other libraries are:</p>
+
+<ul>
+  <li>A fully reentrant parser. Independent configurations can be parsed in
+concurrent threads at the same time.</li>
+  <li>Both C and C++ bindings, as well as hooks to allow for the creation of
+wrappers in other languages.</li>
+  <li>A simple, structured configuration file format that is more readable and
+compact than XML and more flexible than the obsolete but prevalent Windows
+“INI” file format.</li>
+  <li>A low-footprint implementation (just 37K for the C library and 76K for the
+C++ library) that is suitable for memory-constrained systems.</li>
+  <li>Proper documentation.</li>
+</ul>
+
+<h2 id="references">References</h2>
+<ul>
+  <li>[1] Beginning Xml 5th Edition</li>
+  <li>[2] http://en.wikipedia.org/wiki/YAML</li>
+  <li>[3] http://www.hyperrealm.com/libconfig/libconfig_manual.html</li>
+</ul>
+]]></content>
+  </entry>
+  
+</feed>
