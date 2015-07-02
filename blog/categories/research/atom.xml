@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Research | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/research/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-06-21T12:02:33+08:00</updated>
+  <updated>2015-07-02T15:02:39+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -460,32 +460,6 @@ changing values of pixels.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[中国的科研环境小窥]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2014/12/29/zhong-guo-de-ke-yan-huan-jing-xiao-kui/"/>
-    <updated>2014-12-29T11:44:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2014/12/29/zhong-guo-de-ke-yan-huan-jing-xiao-kui</id>
-    <content type="html"><![CDATA[<!-- more -->
-
-<p>以下描述的未必是普遍现象，但一定不是个别现象。每个研究员对上毕恭毕敬，
-对下妄自尊大，虽然用词可能比较过度，但基本是这两种情况下分别上下波动。
-多数时间只和与自己地位相近的人在一起。多数人仅仅视科研为谋生的手段，多
-数情况下也是唯一的维护自己地位和自尊的依仗。所以他们会不加分析地对非自
-己领域的技能表示拒绝和表现出轻视——我不会是因为它不值得我去花时间。人类
-的原罪被展现地淋漓尽致。</p>
-
-<p>除去中国自古以来尊卑有别的文化传统，中国的强大竞争压力也是造成这种现象
-的重要原因。因为资源的有限，两个能力和背景相差很多的人，较强的一方基本
-不能从弱势的一方得到什么好处，比较容易得到的就是感到重要这种满足感，俗
-话说就是能够听马屁。于是这种关系就自然而然被加固。</p>
-
-<p>这种研究环境应当是中国出不了什么有影响力的的科学家的重要原因。当然，这
-里面还有各种各种的同样和更加重要的原因。作为一个研究人员，一个基本的素
-质就是质疑，如果连上司的话都不敢质疑，唯唯诺诺的话，还有什么能力去质疑
-前人权威的理论？</p>
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[Vision Using Wavelet -- Three]]></title>
     <link href="http://shawnLeeZX.github.io/blog/2014/12/02/vision-using-wavelet-three/"/>
     <updated>2014-12-02T17:16:00+08:00</updated>
@@ -582,6 +556,82 @@ extracting semantic information from raw image.</p>
 
 <p>This should be our vision system is constantly processing as long as
 we are opening our eyes.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Vision Using Wavelet Note -- One]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/12/02/vision-using-wavelet-one/"/>
+    <updated>2014-12-02T15:57:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/12/02/vision-using-wavelet-one</id>
+    <content type="html"><![CDATA[<p>Last week, all intuition of scattering transformation begins to make
+sense. To make this easier to refer to in the future, I decide to
+decouple relevant contents into a separate series of blogs.</p>
+
+<p>This post aims to understand what information we have gathered and
+could be utilized and what are their physical meaning when we are
+dealing with digital image.</p>
+
+<!-- more -->
+
+<p>Let’s first start things simple. The first thing computer vision
+technique needs to perform well should be static input, which should
+be digital images. But what is the nature of digital image?</p>
+
+<p>The nature of audio data is the vibration wave in the air, which is
+transmitted by the changing air pressure. Taking into account how to
+gather the data, it is OK to replace “transmitted” with “generated”,
+since we could regard intermediate transmission point as the source if
+we have no idea what is the true origin of the wave.  Every wave
+consists of three main elements, amplitude, phase and frequency.  If
+it is only for musical purpose, its phase is not important, since
+human are only sensitive to the frequency and amplitude of the music
+listened to. But if it is language, the phase matters. The
+superposition between different waves create peaks in the mixed waves
+which represents words. As an evidence, if you play a music from end
+to start, it is still an enjoyable music, but for a speech, it will
+not be recognizable. And such superposition of different phases of
+wave may not be very relevant to the frequency. The hypothesis is
+based on the fact that we can understand people who say hello both in
+the low tone or high pitch tone. It is the time dynamics in the waves
+that are in close frequency that makes such superposition on phases.</p>
+
+<p>What is the nature of image? The light that formulates an image are
+electromagnet waves. But human does not interpret the waves
+directly. The waves or maybe photons hit on the retina of human eye,
+and it is the strength in different wavelength(color) and their
+superposition of phases and amplitude that tells the human
+information. Naturally, we may ask what kind of information is being
+gathered by the advanced vision system of human?</p>
+
+<p>First let us rule out the information that is not useful. Since we are
+considering static input, one pixel in the digital image is the
+accumulation of light in certain amount of time. Thus the phases of
+different waves will be averaged out and make only their amplitude
+matter. In another word, the time dynamics is not utilized in static
+images. If it is video, it may be a different story. But I do no
+consider such case for the time being. Therefore, we rule out the
+phase information of different waves in the electromagnet waves
+creating the digital image.</p>
+
+<p>As for the wave lengths and amplitude, different wave length means
+different colors for human beings. This could be analogous with human
+being interprets high frequency vibration in the air as high pitch
+tone and low frequency as low pitch tone. Another interesting analogue
+may be made is that just as for music humans are only sensitive to the
+frequency and amplitude, humans only take into account the information
+of amplitude and frequency. Amplitude corresponds to the gray scale of
+the image while frequency corresponds to the color. The information
+color conveys are enormous. It is through color that we know trees
+with the green leaves are different species from the one with red
+leaves. However, it should be a higher level of information we human
+are taking advantage of. Imagine that we put an green axe on a table
+whose color in light green. It is the different of intensity of light
+that makes us distinguish the axe from the table, which means the
+amplitude of light we perceive. So to do task like object recognition,
+amplitude is enough for extracting the information that is essential
+we needed in the first stage. Color is only used for further enhancing
+the ability of the method. To sum up, gray scale image is enough.</p>
 ]]></content>
   </entry>
   
