@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-07-02T15:16:14+08:00</updated>
+  <updated>2015-07-02T17:29:00+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,42 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Zoom In and Out Gnome Using Mouse]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/07/02/zoom-in-and-out-gnome-using-mouse/"/>
+    <updated>2015-07-02T17:18:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/07/02/zoom-in-and-out-gnome-using-mouse</id>
+    <content type="html"><![CDATA[<p>Just tried to find a solution to zoom in and out in the GNOME desktop, so that
+things could be seen better in case they are too small during presentation.</p>
+
+<!-- more -->
+
+<p>The solution a program called <code>mousewheelzoom</code>, whose source is held at github:
+<a href="https://github.com/tobiasquinn/gnome-shell-mousewheel-zoom">gnome-shell-mousewheel-zoom</a>.</p>
+
+<p>The installation instructions could be found there.</p>
+
+<hr />
+
+<p>Besides the solution that works, two solutions that did not work are also going
+to noted below.</p>
+
+<h3 id="compiz-setting">Compiz Setting</h3>
+
+<p>At first I tried to changing setting in Compizconfig Settingsmanager, as
+suggested in the
+<a href="http://askubuntu.com/questions/82398/how-to-zoom-inzoom-out">link</a>. It turns
+out that compiz is used by Unity, not GNOME. Since I have changed the desktop
+environment, it does not obviously.</p>
+
+<h3 id="gnome-native-solution">GNOME Native solution</h3>
+
+<p>Then GNOME also offers such function directly in their <em>Universal Access</em>,
+under <em>Seeing</em> tab, in category Zoom — just type Universal Access in the
+Dock. However, it does not work either.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Learning Emacs in 3 Days]]></title>
@@ -564,7 +600,7 @@ down.</p>
 <h2 id="ldflags">LD_FLAGS</h2>
 
 <p>This variable is used by compiler to search for shared libraries when compiling
-program. See the <a href="/blog/2014/02/20/from-linux-user-to-administrator/#compilevim">post</a> on compiling
+program. See the <a href="{{ root_url }}/blog/2014/02/20/from-linux-user-to-administrator/#compilevim">post</a> on compiling
 vim for an example.</p>
 
 <h2 id="ldlibrarypath">LD_LIBRARY_PATH</h2>
@@ -577,53 +613,6 @@ command is like this:</p>
 <p><code>bash
 env LD_LIBRARY_PATH="$LD_LIBRARY_PATH:./lib" ./SOME_PROGRAM
 </code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Avoid Sharing Violation When using Foxit Reader under Wine]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2014/02/23/how-to-avoid-sharing-violation-when-using-foxit-reader-under-wine/"/>
-    <updated>2014-02-23T16:55:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2014/02/23/how-to-avoid-sharing-violation-when-using-foxit-reader-under-wine</id>
-    <content type="html"><![CDATA[<p>This post notes down a trick when using foxit reader under linux – just as the
-title says, through which you can take notes on the pdf files under linux.
-Actually the trick is so trivial that I even bothered writing it down the first
-time I discovered it, years ago. However, it took me almost one hour to detect
-why foxit reader keeping warning me the Sharing Violation thing this time.</p>
-
-<p>So, I decide to write it down.</p>
-
-<!-- more -->
-
-<p>Normally, people will open files in this way under CLI:</p>
-
-<p><code>bash
-wine PATH_TO_FOXIT/foxit.exe NAME_OF_BOOK.pdf
-</code></p>
-
-<p>But through this way, two program will hold write right of the pdf file –
-<code>wine</code> and <code>foxit.exe</code>. This is why foxit reminds you sharing violation when you
-attempt to save the changed pdf file.</p>
-
-<p>You can check what program is using the pdf file using this command:</p>
-
-<p><code>bash
-lsof | grep NAME_OF_BOOK.pdf
-</code></p>
-
-<p>To solve this problem, open the pdf file in this way:</p>
-
-<p>First open the foxit reader alone without opening any file:</p>
-
-<p><code>bash
-wine PATH_TO_FOXIT/foxit.exe
-</code></p>
-
-<p>Second, use the graphical interface of foxit to open the file you want to open.</p>
-
-<p>Third, obviously, you are done.</p>
-
-<p>Happy reading~</p>
 ]]></content>
   </entry>
   

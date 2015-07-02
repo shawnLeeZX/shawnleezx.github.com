@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Gnome | SHAWN LEE]]></title>
+  <link href="http://shawnLeeZX.github.io/blog/categories/gnome/atom.xml" rel="self"/>
+  <link href="http://shawnLeeZX.github.io/"/>
+  <updated>2015-07-02T17:29:00+08:00</updated>
+  <id>http://shawnLeeZX.github.io/</id>
+  <author>
+    <name><![CDATA[Shawn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Zoom In and Out Gnome Using Mouse]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/07/02/zoom-in-and-out-gnome-using-mouse/"/>
+    <updated>2015-07-02T17:18:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/07/02/zoom-in-and-out-gnome-using-mouse</id>
+    <content type="html"><![CDATA[<p>Just tried to find a solution to zoom in and out in the GNOME desktop, so that
+things could be seen better in case they are too small during presentation.</p>
+
+<!-- more -->
+
+<p>The solution a program called <code>mousewheelzoom</code>, whose source is held at github:
+<a href="https://github.com/tobiasquinn/gnome-shell-mousewheel-zoom">gnome-shell-mousewheel-zoom</a>.</p>
+
+<p>The installation instructions could be found there.</p>
+
+<hr />
+
+<p>Besides the solution that works, two solutions that did not work are also going
+to noted below.</p>
+
+<h3 id="compiz-setting">Compiz Setting</h3>
+
+<p>At first I tried to changing setting in Compizconfig Settingsmanager, as
+suggested in the
+<a href="http://askubuntu.com/questions/82398/how-to-zoom-inzoom-out">link</a>. It turns
+out that compiz is used by Unity, not GNOME. Since I have changed the desktop
+environment, it does not obviously.</p>
+
+<h3 id="gnome-native-solution">GNOME Native solution</h3>
+
+<p>Then GNOME also offers such function directly in their <em>Universal Access</em>,
+under <em>Seeing</em> tab, in category Zoom — just type Universal Access in the
+Dock. However, it does not work either.</p>
+]]></content>
+  </entry>
+  
+</feed>

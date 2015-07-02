@@ -4,7 +4,7 @@
   <title><![CDATA[Category: CS | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/cs/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-07-02T15:16:14+08:00</updated>
+  <updated>2015-07-02T17:29:00+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,42 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Zoom In and Out Gnome Using Mouse]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/07/02/zoom-in-and-out-gnome-using-mouse/"/>
+    <updated>2015-07-02T17:18:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/07/02/zoom-in-and-out-gnome-using-mouse</id>
+    <content type="html"><![CDATA[<p>Just tried to find a solution to zoom in and out in the GNOME desktop, so that
+things could be seen better in case they are too small during presentation.</p>
+
+<!-- more -->
+
+<p>The solution a program called <code>mousewheelzoom</code>, whose source is held at github:
+<a href="https://github.com/tobiasquinn/gnome-shell-mousewheel-zoom">gnome-shell-mousewheel-zoom</a>.</p>
+
+<p>The installation instructions could be found there.</p>
+
+<hr />
+
+<p>Besides the solution that works, two solutions that did not work are also going
+to noted below.</p>
+
+<h3 id="compiz-setting">Compiz Setting</h3>
+
+<p>At first I tried to changing setting in Compizconfig Settingsmanager, as
+suggested in the
+<a href="http://askubuntu.com/questions/82398/how-to-zoom-inzoom-out">link</a>. It turns
+out that compiz is used by Unity, not GNOME. Since I have changed the desktop
+environment, it does not obviously.</p>
+
+<h3 id="gnome-native-solution">GNOME Native solution</h3>
+
+<p>Then GNOME also offers such function directly in their <em>Universal Access</em>,
+under <em>Seeing</em> tab, in category Zoom — just type Universal Access in the
+Dock. However, it does not work either.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Convert Djvu File to PDF with Text Kept]]></title>
@@ -591,54 +627,6 @@ GET THINGS DONE. Its has a web interface and app on smartphone.</li>
   <li>Lastly, you can find my <code>emacs.d</code> <a href="https://github.com/shawnLeeZX/emacs.d">here</a>.</li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Writing Math Equations on Octopress 2.0]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2014/07/07/writing-math-equations-on-octopress-2-dot-0/"/>
-    <updated>2014-07-07T16:14:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2014/07/07/writing-math-equations-on-octopress-2-dot-0</id>
-    <content type="html"><![CDATA[<p>I am trying to be a researcher in Artificial Intelligence, with current focus on
-Machine Learning. Thus I wrote a number of math. However, at the first time I
-set up octopress, I did not find anything that could help me set up relevant
-engine to render math on octopress. Now I have found it! There are a great
-amount of notes needed organizing and sorting…</p>
-
-<!-- more -->
-
-<p>I followed the instruction <a href="http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/">here</a>
-to set up MathJax for octopress. Why would I write another one tutorial?</p>
-
-<p>Basical steps are almost the same. However, I guess the author are still using
-octopress 1.0 that time. On octopress 2.0, it provides additional place to let
-user customize octopress without messing with the code of octopress. For
-octopress, the step in original post to add script of MathJax, a.k.a, adding the
-following snippet in <code>source/_layouts/default.html</code> could to changed to
-<code>source/_includes/custom/head.html</code>.</p>
-
-<p><code>html
-&lt;!-- mathjax config similar to math.stackexchange --&gt;
-&lt;script type="text/x-mathjax-config"&gt;
-MathJax.Hub.Config({
-  jax: ["input/TeX", "output/HTML-CSS"],
-  tex2jax: {
-    inlineMath: [ ['$', '$'] ],
-    displayMath: [ ['$$', '$$']],
-    processEscapes: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-  },
-  messageStyle: "none",
-  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
-});
-&lt;/script&gt;
-&lt;script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"&gt;&lt;/script
-</code></p>
-
-<p>In octopress 2.0, most of cutomization the user want to make can be made just by
-changing files under <code>source/_includes/custom/</code>.</p>
-
-<p>Other steps could stay unchanged.</p>
 ]]></content>
   </entry>
   
