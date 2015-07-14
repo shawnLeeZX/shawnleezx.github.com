@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Pdf | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/pdf/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-07-02T17:29:00+08:00</updated>
+  <updated>2015-07-14T10:50:34+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,56 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Add Text to Scanned Pdf Without Text]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/07/14/how-to-add-text-to-scanned-pdf-without-text/"/>
+    <updated>2015-07-14T10:43:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/07/14/how-to-add-text-to-scanned-pdf-without-text</id>
+    <content type="html"><![CDATA[<p>I am reading some paper that is decades ago so no pdf file with text could
+found, so I looked up to some solution. Here it is.</p>
+
+<!-- more -->
+
+<p><a href="https://github.com/gkovacs/pdfocr">Pdfocr</a> is a ruby script that integrates
+open source tools to add text layer to pdf files.</p>
+
+<p>To be able to use it, there are some dependence needed, just as shell scripts.</p>
+
+<p><code>bash
+sudo apt-get install pdftk
+sudo apt-get install tesseract-ocr tesseract-ocr-eng exactimage
+</code></p>
+
+<p>You can infer what those programs are used for based what the author
+<a href="http://ubuntuforums.org/showthread.php?t=1456756">said</a> below.</p>
+
+<blockquote>
+  <p>pdfocr was written by me (Geza Kovacs). It is simply a script which automates
+the following process:</p>
+
+  <ol>
+    <li>Splitting the PDF file into separate pages using pdftk</li>
+    <li>Extracting out the image data using pdfimages</li>
+    <li>Doing OCR (optical character recognition) using cuneiform</li>
+    <li>Embedding the detected text back into the PDF file using hocr2pdf</li>
+    <li>Merging together the files using pdftk.</li>
+  </ol>
+</blockquote>
+
+<p>Lastly, clone the ruby code.</p>
+
+<p><code>bash
+git clone https://github.com/gkovacs/pdfocr
+</code></p>
+
+<p>Then enjoy.</p>
+
+<p><code>bash
+pdfocr.rb -i foo.pdf -o out.pdf
+</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Convert Djvu File to PDF with Text Kept]]></title>
