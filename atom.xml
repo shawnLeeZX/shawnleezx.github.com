@@ -4,7 +4,7 @@
   <title><![CDATA[SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-08-01T14:17:13+08:00</updated>
+  <updated>2015-08-01T15:03:41+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,77 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[On Frameworks of Deep Learning]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/08/01/on-frameworks-of-deep-learning/"/>
+    <updated>2015-08-01T14:30:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/08/01/on-frameworks-of-deep-learning</id>
+    <content type="html"><![CDATA[<p>I have spent the last two days trying to figure out what do use as a solid base
+for further experiments on deep learning. I decided to settle down to Keras for
+the time being. But given that it may not be the optimal choice, I want to note
+down what I have tried so that it would be easier to pick up in the future.</p>
+
+<!-- more -->
+
+<p>At first, our lab members are using Caffe, which I have spent some effort
+learning it. However, as I got to know more in this field, combining with my
+background in Computer Science, Caffe is not really the best platform to do
+experiments, at least not for the people who want to understand and experiment
+on all the details of various neural network elements and added another layer
+of unnecessary engineering burden to the experiments.</p>
+
+<p>Starting from the motivation to actually code NN from scratch, a language as
+low level as C++ is not the right choice. Maybe at the time that I am really
+equipped and really need large scale experiments, I will get back to Caffe.</p>
+
+<p>Then I came to try Torch. At first I held high expectation given that:</p>
+
+<ol>
+  <li>The easy binding between Lua and C.</li>
+  <li>The API of torch is rather clean and most of the non-computational intensive
+are actually written in Lua, which would save a ton of time.</li>
+  <li>The <code>image</code> package of Torch is great given the experience to do
+visualization under Python.</li>
+  <li>Lua is not a barrier to me, given that I learn a new language rather fast.</li>
+</ol>
+
+<p>Then I spent some time to learn the code organization of Torch. Basically,
+Torch is a combination of <a href="http://luajit.org/">LuaJIT</a> with Lua packages and C
+Libraries. It uses CMake to compile the project. So far so good.</p>
+
+<p>But the real problem comes when I tried to find out a reasonable environment to
+write Lua code. SURPRISINGLY, both Emacs and Vim does not have a work
+environment for Lua. Emacs does not even have a usage syntax highlighting
+for Lua. As for Vim, it does have a usage syntax highlighting, but it stops at
+that. All other packages:</p>
+
+<ul>
+  <li><a href="http://www.vim.org/scripts/script.php?script_id=3169">luainspect.vim</a>:
+Semantic highlighting for Lua in Vim</li>
+  <li><a href="http://www.vim.org/scripts/script.php?script_id=4950">Lua Support 2</a> : Lua
+IDE. Insert codesnippets, run, compile, and check the code and look up help.</li>
+  <li><a href="http://www.vim.org/scripts/script.php?script_id=3625">lua.vim</a> : Lua file
+type plug-in for the Vim text editor</li>
+  <li><a href="http://www.vim.org/scripts/script.php?script_id=3331">lua_omni</a> : omni
+completion for Lua plus few extras</li>
+</ul>
+
+<p>are buggy in some extent and I really do not have time to fix them.</p>
+
+<p>Then I tried to find some IDE recommended by the Torch documentation. There are
+Eclipse with LDT, zbs-torch and some others, which all sucks. Maybe I have been
+using Emacs and Vim for too long…</p>
+
+<p>After about one day’s struggling with all different IDEs, I decided to try new
+frameworks based on Theano, even they are all in their infancy.</p>
+
+<p><a href="https://blocks.readthedocs.org/en/latest/">Pylearn2</a> and
+<a href="https://blocks.readthedocs.org/en/latest/">Blocks &amp; Fuel</a> feels a bit
+convoluted in design. Opendeep, Lasagne, Keras look alike. Given Keras offers
+to enforce constraints on parameters, I decided to try Keras first.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Small Emacs auto-complete-mode Trick]]></title>
@@ -2572,133 +2643,6 @@ space $T_X$ to make your function continuous.</p>
 mapping.</p>
 
 <p>$f(x) = 1$ for $x \in R$, the mapping is continuous but not open.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Open File Using External App in Emacs]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2014/12/08/open-file-using-external-app-in-emacs/"/>
-    <updated>2014-12-08T14:29:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2014/12/08/open-file-using-external-app-in-emacs</id>
-    <content type="html"><![CDATA[<p>It would be of great convenience to be able to open files in
-<code>dired-mode</code> in Emacs using external apps. Here is how to achieve it.</p>
-
-<!-- more -->
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-<span class="line-number">43</span>
-<span class="line-number">44</span>
-<span class="line-number">45</span>
-<span class="line-number">46</span>
-<span class="line-number">47</span>
-<span class="line-number">48</span>
-<span class="line-number">49</span>
-<span class="line-number">50</span>
-<span class="line-number">51</span>
-<span class="line-number">52</span>
-<span class="line-number">53</span>
-<span class="line-number">54</span>
-</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="c1">;;; Add command to open file using system programs.</span>
-</span><span class="line"><span class="c1">;; ===================================================================</span>
-</span><span class="line"><span class="p">(</span><span class="nb">defun</span> <span class="nv">open-in-external-app</span> <span class="p">(</span><span class="k">&amp;optional</span> <span class="nv">file</span><span class="p">)</span>
-</span><span class="line">  <span class="s">&quot;Open the current file or dired marked files in external app. The app</span>
-</span><span class="line"><span class="s">is chosen from your OS&#39;s preference.&quot;</span>
-</span><span class="line">  <span class="p">(</span><span class="nv">interactive</span><span class="p">)</span>
-</span><span class="line">
-</span><span class="line">  <span class="p">(</span><span class="k">let</span> <span class="p">(</span> <span class="nv">confirm</span>
-</span><span class="line">         <span class="p">(</span><span class="nv">file-list</span>
-</span><span class="line">          <span class="p">(</span><span class="nb">cond</span>
-</span><span class="line">           <span class="p">((</span><span class="nb">string-equal</span> <span class="nv">major-mode</span> <span class="s">&quot;dired-mode&quot;</span><span class="p">)</span> <span class="p">(</span><span class="nv">dired-get-marked-files</span><span class="p">))</span>
-</span><span class="line">           <span class="p">((</span><span class="nb">not</span> <span class="nv">file</span><span class="p">)</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nv">buffer-file-name</span><span class="p">)))</span>
-</span><span class="line">           <span class="p">(</span><span class="nv">file</span> <span class="p">(</span><span class="nb">list</span> <span class="nv">file</span><span class="p">))</span>
-</span><span class="line">           <span class="p">)</span>
-</span><span class="line">          <span class="p">)</span>
-</span><span class="line">         <span class="p">)</span>
-</span><span class="line">
-</span><span class="line">    <span class="p">(</span><span class="k">setq</span> <span class="nv">confirm</span> <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&lt;=</span> <span class="p">(</span><span class="nb">length</span> <span class="nv">file-list</span><span class="p">)</span> <span class="mi">5</span><span class="p">)</span>
-</span><span class="line">                   <span class="no">t</span>
-</span><span class="line">                 <span class="p">(</span><span class="nb">y-or-n-p</span> <span class="s">&quot;Open more than 5 files? &quot;</span><span class="p">)</span>
-</span><span class="line">                 <span class="p">)</span>
-</span><span class="line">          <span class="p">)</span>
-</span><span class="line">
-</span><span class="line">    <span class="p">(</span><span class="nb">when</span> <span class="nv">confirm</span>
-</span><span class="line">      <span class="p">(</span><span class="nb">cond</span>
-</span><span class="line">       <span class="p">((</span><span class="nb">string-equal</span> <span class="nv">system-type</span> <span class="s">&quot;windows-nt&quot;</span><span class="p">)</span>
-</span><span class="line">        <span class="p">(</span><span class="nb">mapc</span>
-</span><span class="line">         <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">file-path</span><span class="p">)</span>
-</span><span class="line">           <span class="p">(</span><span class="nv">w32-shell-execute</span> <span class="s">&quot;open&quot;</span>
-</span><span class="line">                              <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">&quot;/&quot;</span> <span class="s">&quot;\\&quot;</span> <span class="nv">file-path</span> <span class="no">t</span> <span class="no">t</span><span class="p">)</span>
-</span><span class="line">                              <span class="p">)</span>
-</span><span class="line">           <span class="p">)</span>
-</span><span class="line">         <span class="nv">file-list</span><span class="p">)</span>
-</span><span class="line">        <span class="p">)</span>
-</span><span class="line">       <span class="p">((</span><span class="nb">string-equal</span> <span class="nv">system-type</span> <span class="s">&quot;darwin&quot;</span><span class="p">)</span>
-</span><span class="line">        <span class="p">(</span><span class="nb">mapc</span>
-</span><span class="line">         <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">file-path</span><span class="p">)</span>
-</span><span class="line">           <span class="p">(</span><span class="nv">shell-command</span> <span class="p">(</span><span class="nb">format</span> <span class="s">&quot;open \&quot;%s\&quot;&quot;</span> <span class="nv">file-path</span><span class="p">))</span>
-</span><span class="line">           <span class="p">)</span>
-</span><span class="line">         <span class="nv">file-list</span><span class="p">)</span>
-</span><span class="line">        <span class="p">)</span>
-</span><span class="line">       <span class="p">((</span><span class="nb">string-equal</span> <span class="nv">system-type</span> <span class="s">&quot;gnu/linux&quot;</span><span class="p">)</span>
-</span><span class="line">        <span class="p">(</span><span class="nb">mapc</span>
-</span><span class="line">         <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">file-path</span><span class="p">)</span>
-</span><span class="line">           <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">process-connection-type</span> <span class="no">nil</span><span class="p">))</span>
-</span><span class="line">             <span class="p">(</span><span class="nv">start-process</span> <span class="s">&quot;&quot;</span> <span class="no">nil</span> <span class="s">&quot;xdg-open&quot;</span> <span class="nv">file-path</span><span class="p">)</span>
-</span><span class="line">             <span class="p">)</span>
-</span><span class="line">           <span class="p">)</span>
-</span><span class="line">         <span class="nv">file-list</span><span class="p">)</span>
-</span><span class="line">        <span class="p">)</span>
-</span><span class="line">       <span class="p">)</span>
-</span><span class="line">      <span class="p">)</span>
-</span><span class="line">    <span class="p">)</span>
-</span><span class="line">  <span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>I learned this from
-<a href="http://ergoemacs.org/emacs/emacs_dired_open_file_in_ext_apps.html">here</a>. However,
-the code here is more readable and conformed to the programming
-convention of Elisp.</p>
 ]]></content>
   </entry>
   

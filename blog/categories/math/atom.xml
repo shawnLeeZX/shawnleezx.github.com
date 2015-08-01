@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-08-01T14:17:25+08:00</updated>
+  <updated>2015-08-01T15:03:41+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -215,7 +215,7 @@ from. </p>
 e^{ix} = cos(x) + i sin(x)
 </script>
 
-<p>{% img center http://upload.wikimedia.org/wikipedia/commons/7/71/Euler%27s_formula.svg Euler Equation Illustration %}</p>
+<p><img class="center" src="http://upload.wikimedia.org/wikipedia/commons/7/71/Euler%27s_formula.svg" title="Euler Equation Illustration" ></p>
 
 <p>It is saying that every complex exponential is a 2D vector, where $(x, y) =
 (cos\phi, sin\phi)$. Instead of just modeling scalar, we model 2D vector using

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-08-01T14:17:25+08:00</updated>
+  <updated>2015-08-01T15:03:41+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -600,7 +600,7 @@ down.</p>
 <h2 id="ldflags">LD_FLAGS</h2>
 
 <p>This variable is used by compiler to search for shared libraries when compiling
-program. See the <a href="{{ root_url }}/blog/2014/02/20/from-linux-user-to-administrator/#compilevim">post</a> on compiling
+program. See the <a href="/blog/2014/02/20/from-linux-user-to-administrator/#compilevim">post</a> on compiling
 vim for an example.</p>
 
 <h2 id="ldlibrarypath">LD_LIBRARY_PATH</h2>

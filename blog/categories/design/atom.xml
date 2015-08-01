@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Design | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/design/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-08-01T14:17:25+08:00</updated>
+  <updated>2015-08-01T15:03:41+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -80,7 +80,7 @@ map, draw a 2X2 matrix based on them, fill what the market already have, what
 are expected to have and what are imagined to have but cannot. Then you find
 the missing point of the market.</p>
 
-<p>{% img center /images/white_spots.png ‘White Spots Illustration’ ‘White Spots Illustration’ %}</p>
+<p><img class="center" src="/images/white_spots.png" title="‘White Spots Illustration’ ‘White Spots Illustration’" ></p>
 
 <p>The process gives a hint to begin.</p>
 
@@ -94,7 +94,7 @@ the fastest way.</p>
 <p>To try it on real scenario, on real people, you get the realization of your
 concept and feedback about your idea.</p>
 
-<p>{% img center /images/paper_mockup.png ‘Paper Mockup Illustration’ ‘Paper Mockup Illustration’ %}</p>
+<p><img class="center" src="/images/paper_mockup.png" title="‘Paper Mockup Illustration’ ‘Paper Mockup Illustration’" ></p>
 
 <p>Some nice questions prompt thoughts:</p>
 
@@ -129,7 +129,7 @@ However, it happens that the greatest ideas are among the ones that are
 discarded. So find one of them and do a prototype could give your a valuable
 lesson.</p>
 
-<p>{% img center /images/dark_horse.png ‘Dark Horse Illustration’ ‘Dark Horse Illustration’ %}</p>
+<p><img class="center" src="/images/dark_horse.png" title="‘Dark Horse Illustration’ ‘Dark Horse Illustration’" ></p>
 
 <h2 id="change-path">Change Path</h2>
 
@@ -141,7 +141,7 @@ identify the milestones in the process of achieving your idea.</p>
 going to do on Monday? Who am I going to call?</p>
 </blockquote>
 
-<p>{% img center /images/change_path.png ‘Change Path Illustration’ ‘Change Path Illustration’ %}</p>
+<p><img class="center" src="/images/change_path.png" title="‘Change Path Illustration’ ‘Change Path Illustration’" ></p>
 
 <h2 id="stop">Stop</h2>
 
@@ -172,7 +172,7 @@ opportunities lie on in the future.</p>
 age versus population distribution. This is a rough mathematical model to
 estimate the current state and how will the state shift in the future.</p>
 
-<p>{% img center /images/generational_arc.png “Generational Arcs Illustration” “Generational Arcs Illustration” %}</p>
+<p><img class="center" src="/images/generational_arc.png" title="“Generational Arcs Illustration” “Generational Arcs Illustration”" ></p>
 
 <p>From the modeling result, we may get a sense of the amount of our target peole
 and how it would change in the future.</p>
@@ -184,7 +184,7 @@ characteritics and the change may happen in the future of one group of people in
 the target population – there may be more than one persona to represent
 different groups in the Generational Arcs.</p>
 
-<p>{% img center /images/future_user.png “Future User Illustration” “Future User Illustration” %}</p>
+<p><img class="center" src="/images/future_user.png" title="“Future User Illustration” “Future User Illustration”" ></p>
 
 <p>From the characteritics found, we could have a more concrete person, in other
 word, persona, to work on.</p>
@@ -194,7 +194,7 @@ word, persona, to work on.</p>
 <p>And future telling focus not on the characteritics but on the scenario. In what
 scenario would the user in now and in the future?</p>
 
-<p>{% img center /images/future_telling.png “Future Telling Illustration” “Future Telling Illustration” %}</p>
+<p><img class="center" src="/images/future_telling.png" title="“Future Telling Illustration” “Future Telling Illustration”" ></p>
 
 <p>This is like the procedural programming. You first go the program in your mind
 once before getting it coded. But the Future Telling should be more physical –
@@ -231,7 +231,7 @@ difference from listing a list of factors. However, it is the graph
 structure that matters. So it would be helpful to make sure the map is
 big enough for taking notes for the team members.</p>
 
-<p>{% img center /images/context_map.png “Context Map Illustration” “Context Map Illustration” %}</p>
+<p><img class="center" src="/images/context_map.png" title="“Context Map Illustration” “Context Map Illustration”" ></p>
 
 <h3 id="progression-curves--janus-cones">Progression Curves &amp; Janus Cones</h3>
 
@@ -244,13 +244,13 @@ perspective involving time.</p>
 already put in the problem, the pattern of events happened, and how these events
 have led to its current state.</p>
 
-<p>{% img center /images/progression_curves.png “Progression Curves Illustration” “Progression Curves Illustration” %}</p>
+<p><img class="center" src="/images/progression_curves.png" title="“Progression Curves Illustration” “Progression Curves Illustration”" ></p>
 
 <p>But, Janus Cones also emphasizes on events. The book says, Janus Cones is to
 discern a possible pattern of relationships among many related(and even
 unrelated) events. Progression Curves also talks about events.</p>
 
-<p>{% img center /images/janus_cones.png “Janus Cones Illustration” “Janus Cones Illustration” %}</p>
+<p><img class="center" src="/images/janus_cones.png" title="“Janus Cones Illustration” “Janus Cones Illustration”" ></p>
 
 <p>From the words talking about Progression Curves, “you can draw a progression curve
 for each demision of your context map”, I think Janus Cones is the combination
