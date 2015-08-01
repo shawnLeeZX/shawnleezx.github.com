@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Linux Kernel Version - SHAWN LEE</title>
+  <title>Small Emacs auto-complete-mode Trick - SHAWN LEE</title>
   <meta name="author" content="Shawn">
 
   
-  <meta name="description" content="Linux Kernel Versions
-Linux kernels come in two flavors: stable and development. Stable kernels are production-level releases suitable for widespread &hellip;">
+  <meta name="description" content="Just knew another small trick. Note it down in case I forgot it. 1
+(eval-after-load &quot;auto-complete&quot; &#39;(add-to-list &#39;ac-modes &#39; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@ Linux kernels come in two flavors: stable and development. Stable kernels are pr
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2013/08/29/linux-kernel-version">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2015/08/01/small-emacs-auto-complete-mode-trick">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="SHAWN LEE" type="application/atom+xml">
@@ -131,7 +131,7 @@ MathJax.Hub.Config({
   
   <header>
     
-      <h1 class="entry-title">Linux Kernel Version</h1>
+      <h1 class="entry-title">Small Emacs Auto-complete-mode Trick</h1>
     
     
       <p class="meta">
@@ -147,7 +147,7 @@ MathJax.Hub.Config({
   
 
 
-<time datetime="2013-08-29T12:17:00+08:00" pubdate data-updated="true">Aug 29<span>th</span>, 2013</time>
+<time datetime="2015-08-01T14:15:00+08:00" pubdate data-updated="true">Aug 1<span>st</span>, 2015</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -156,23 +156,11 @@ MathJax.Hub.Config({
   </header>
 
 
-<div class="entry-content"><p>Linux Kernel Versions
-Linux kernels come in two flavors: stable and development. Stable kernels are production-level releases suitable for widespread deployment. New stable kernel versions are released typically only to provide bug fixes or new drivers. Development kernels, on the other 
-hand, undergo rapid change where (almost) anything goes. As developers experiment with new solutions, the kernel code base changes in often drastic ways.
-<!-- more --></p>
+<div class="entry-content"><p>Just knew another small trick. Note it down in case I forgot it.</p>
 
-<p>Linux kernels distinguish between stable and development kernels with a simple naming scheme. Three or four numbers, delineated with a dot, represent Linux kernel versions.The first value is the major release, the second is the minor release, and the third is the revision.An optional fourth value is the stable version.The minor release also determines whether the kernel is a stable or development kernel; an even number is stable, whereas an odd number is development. For example, the kernel version 2.6.30.1 designates a stable kernel.This kernel has a major version of two, a minor version of six, a revision of 30, and a stable version of one.The first two values describe the “ker-nel series”—in this case, the 2.6 kernel series.</p>
-
-<p>Development kernels have a series of phases. Initially, the kernel developers work on new features and chaos ensues. Over time, the kernel matures and eventually a feature freeze is declared. At that point, Linus will not accept new features. Work on existing features, however, can continue. After Linus considers the kernel nearly stabilized, a code freeze is put into effect. When that occurs, only bug fixes are accepted. Shortly thereafter (hopefully), Linus releases the first version of a new stable series. For example, the development series 1.3 stabilized into 2.0 and 2.5 stabilized into 2.6. </p>
-
-<p>Within a given series, Linus releases new kernels regularly, with each version earning a new revision. For example, the first version of the 2.6 kernel series was 2.6.0.The next was 2.6.1.These revisions contain bug fixes, new drivers, and new features, but the difference between two revisions—say, 2.6.3 and 2.6.4—is minor.
-This is how development progressed until 2004, when at the invite-only Kernel Developers Summit, the assembled kernel developers decided to prolong the 2.6 kernel series and postpone the introduction of a 2.7 development series.The rationale was that the 2.6 kernel was well received, stable, and sufficiently mature such that new destabilizing features were unneeded. This course has proven wise, as the ensuing years have shown 2.6 is a mature and capable beast. As of this writing, a 2.7 development series is not on the table and seems unlikely. Instead, the development cycle of each 2.6 revision has grown longer, each release incorporating a mini-development series. Andrew Morton, Linus’s second-in-command, has repurposed his 2.6-mm tree—once a testing ground for memory management-related changes—into a general-purpose test bed. Destabilizing changes thus flow into 2.6-mm and, when mature, into one of the 2.6 mini-development series.Thus, over the last few years, each 2.6 release—for example, 2.6.29—has taken sev -eral months, boasting significant changes over its predecessor.This “development series in 
-miniature” has proven rather successful, maintaining high levels of stability while still intro -ducing new features and appears unlikely to change in the near future. Indeed, the consen -sus among kernel developers is that this new release process will continue indefinitely.</p>
-
-<p>To compensate for the reduced frequency of releases, the kernel developers have introduced the aforementioned stable release .This release (the 8 in 2.6.32.8) contains crucial bug fixes, often back-ported from the under-development kernel (in this example, 2.6.33). In 
-this manner, the previous release continues to receive attention focused on stabilization.</p>
-
-<p>Source: Chapter One, Linux Kernel Development 3rd</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="p">(</span><span class="nv">eval-after-load</span> <span class="s">&quot;auto-complete&quot;</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;ac-modes</span> <span class="ss">&#39;lua-mode</span><span class="p">))</span><span class="o">.</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 </div>
 
 
@@ -195,12 +183,12 @@ this manner, the previous release continues to receive attention focused on stab
   
 
 
-<time datetime="2013-08-29T12:17:00+08:00" pubdate data-updated="true">Aug 29<span>th</span>, 2013</time>
+<time datetime="2015-08-01T14:15:00+08:00" pubdate data-updated="true">Aug 1<span>st</span>, 2015</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/cs/'>CS</a>, <a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/note/'>Note</a>
+    <a class='category' href='/blog/categories/emacs/'>Emacs</a>
   
 </span>
 
@@ -216,10 +204,8 @@ this manner, the previous release continues to receive attention focused on stab
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/08/29/difference-between-unix-and-linux/" title="Previous Post: Difference Between Unix and Linux">&laquo; Difference Between Unix and Linux</a>
+        <a class="basic-alignment left" href="/blog/2015/07/29/zan-shi-de-ren-sheng-zhong-ji-yi-yi/" title="Previous Post: 暂时的人生终极意义">&laquo; 暂时的人生终极意义</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/09/13/wu-kong-chuan-zhai-ji/" title="Next Post: 悟空传摘记">悟空传摘记 &raquo;</a>
       
     </p>
   </footer>
@@ -295,8 +281,8 @@ this manner, the previous release continues to receive attention focused on stab
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2013/08/29/linux-kernel-version/';
-        var disqus_url = 'http://shawnLeeZX.github.io/blog/2013/08/29/linux-kernel-version/';
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2015/08/01/small-emacs-auto-complete-mode-trick/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2015/08/01/small-emacs-auto-complete-mode-trick/';
         var disqus_script = 'embed.js';
       
     (function () {

@@ -4,7 +4,7 @@
   <title><![CDATA[SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-07-29T12:17:38+08:00</updated>
+  <updated>2015-08-01T14:17:13+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Small Emacs auto-complete-mode Trick]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/08/01/small-emacs-auto-complete-mode-trick/"/>
+    <updated>2015-08-01T14:15:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/08/01/small-emacs-auto-complete-mode-trick</id>
+    <content type="html"><![CDATA[<p>Just knew another small trick. Note it down in case I forgot it.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="p">(</span><span class="nv">eval-after-load</span> <span class="s">&quot;auto-complete&quot;</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;ac-modes</span> <span class="ss">&#39;lua-mode</span><span class="p">))</span><span class="o">.</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[暂时的人生终极意义]]></title>
@@ -2686,64 +2699,6 @@ mapping.</p>
 <a href="http://ergoemacs.org/emacs/emacs_dired_open_file_in_ext_apps.html">here</a>. However,
 the code here is more readable and conformed to the programming
 convention of Elisp.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Vision Using Wavelet -- Three]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2014/12/02/vision-using-wavelet-three/"/>
-    <updated>2014-12-02T17:16:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2014/12/02/vision-using-wavelet-three</id>
-    <content type="html"><![CDATA[<h2 id="wavelet-in-image">Wavelet in Image</h2>
-
-<p>The next question is how could we mathematically model the process?
-How could we mathematically define “semantic”?</p>
-
-<p>In an explicit sense, “semantic” is taught. We see an axe as axe is
-because all people speaking English call it axe. It would be 斧头 in
-Chinese. Semantic expressed is nothing but common agreement. Semantic
-not expressed is what the object looks like, what the it could do and
-so on so forth. This is the highest level of knowledge. Decomposing it
-further, an axe may made up of one head and one body. The body may
-just be a stick while the head may be just a special shape iron. So
-one semantic is composed of more sub semantics. Down to this level,
-all are still learned. How could we keep analyzing?</p>
-
-<p>We may start with things that are simple and remember the ultimate
-task is to extract semantic information from raw image.</p>
-
-<p>Again, we return back audio signal, or one dimensional signal –
-neither of them are perfectly accurate. We consider problem in
-seismology. Different type of rock layers reflect to the detecting
-signal in different frequency pattern in the short range of time the
-signal encountering the layer. So to find rock layers that contain
-oil, the task is to find patterns in the reflected signals. Such
-patter represents semantic meaning that “I am the oil layer you are
-looking for.” Such semantic is learned. Maybe different encountering
-directions will create different signals, but they all should convey
-the same semantic. In this case, semantic is gradually lowed down to
-physical properties,meaning there are some deformation in the
-signal. The different direction here is analogue with seeing one
-object in different faces. In our vision, we do not learn different
-faces of object, but by recognizing similarity in their physical
-shape. To sum up, the task is to find some small patterns in a bunch
-of noisy signals reflected back by the rock layer, and such signals
-should be of some invariant properties. If we could find the invariant
-right, based on such invariance, we can learn patterns that we can give
-meaning to them.</p>
-
-<p>Now, let’s return back to the image problem. Images are made up of
-pixels. Pixels makes surfaces and edges. Surfaces and edges make
-objects. So the first step is how to identify surfaces and edges in
-the image. This bridges the gap between audio signal and digital
-image! High frequency patters in audio signal is very representative
-like the discovering oil example above. Analogue of high frequency
-signal in image is edges, which represents rapid change in the gray
-level of image. Consequently, low frequency signal is analogue with
-surface. To identify surfaces and edges, we identify high and low
-frequency components of the image. This is what wavelet does.</p>
-
-<p>I will do more experiments to see what this leads.</p>
 ]]></content>
   </entry>
   

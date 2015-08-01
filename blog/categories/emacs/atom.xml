@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Emacs | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/emacs/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-07-29T12:17:50+08:00</updated>
+  <updated>2015-08-01T14:17:13+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Small Emacs auto-complete-mode Trick]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/08/01/small-emacs-auto-complete-mode-trick/"/>
+    <updated>2015-08-01T14:15:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/08/01/small-emacs-auto-complete-mode-trick</id>
+    <content type="html"><![CDATA[<p>Just knew another small trick. Note it down in case I forgot it.</p>
+
+<p><code>cl
+(eval-after-load "auto-complete" '(add-to-list 'ac-modes 'lua-mode)).
+</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Open File Using External App in Emacs]]></title>
