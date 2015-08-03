@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Python | SHAWN LEE]]></title>
+  <link href="http://shawnLeeZX.github.io/blog/categories/python/atom.xml" rel="self"/>
+  <link href="http://shawnLeeZX.github.io/"/>
+  <updated>2015-08-03T16:34:53+08:00</updated>
+  <id>http://shawnLeeZX.github.io/</id>
+  <author>
+    <name><![CDATA[Shawn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Some Notes on IPython Startup Script]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/08/03/some-notes-on-ipython-startup-script/"/>
+    <updated>2015-08-03T16:22:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/08/03/some-notes-on-ipython-startup-script</id>
+    <content type="html"><![CDATA[<p>This post is going to note down how to let ipython automatically reload a
+module after changing the module and how to run magic function from python
+start-up scripts.</p>
+
+<!-- more -->
+
+<p>ipython will not reload any modules if you have changed some module under given
+that ipython want to keep the interactive session so all your data during the
+session is going to be kept. To overcome this situation while you are writing
+some module or library code, the <code>autoload</code> magic function could be used.</p>
+
+<p>```python
+%load_ext autoreload</p>
+
+<p>%autoreload 2
+```</p>
+
+<p>```bash
+%autoreload
+Reload all modules (except those excluded by %aimport) automatically now.</p>
+
+<p>%autoreload 0
+Disable automatic reloading.</p>
+
+<p>%autoreload 1
+Reload all modules imported with %aimport every time before executing the Python code typed.</p>
+
+<p>%autoreload 2
+Reload all modules (except those excluded by %aimport) every time before executing the Python code typed.</p>
+
+<p>%aimport
+List modules which are to be automatically imported or not to be imported.</p>
+
+<p>%aimport foo
+Import module ‘foo’ and mark it to be autoreloaded for %autoreload 1</p>
+
+<p>%aimport -foo
+Mark module ‘foo’ to not be autoreloaded.
+```</p>
+
+<p>For more details, refer to ipython’s
+<a href="http://ipython.org/ipython-doc/dev/config/extensions/autoreload.html">documentation</a>.</p>
+
+<p>To avoid typing those magic function again and again, they could be put in the
+ipython startup script(Name it with <code>.py</code> suffix under
+<code>.ipython/profile_default/startup</code>. All python scripts under that folder will
+be loaded according to lexical order), which looks like the following:</p>
+
+<p>```python
+from IPython import get_ipython
+ipython = get_ipython()</p>
+
+<p>ipython.magic(“pylab”)
+ipython.magic(“load_ext autoreload”)
+ipython.magic(“autoreload 2”)
+```</p>
+]]></content>
+  </entry>
+  
+</feed>
