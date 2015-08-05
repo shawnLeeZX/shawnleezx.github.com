@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Note | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/note/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-08-03T16:35:04+08:00</updated>
+  <updated>2015-08-05T10:45:43+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,60 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[On IDEs of Python in Emacs]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/08/05/on-ides-of-python-in-emacs/"/>
+    <updated>2015-08-05T10:30:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/08/05/on-ides-of-python-in-emacs</id>
+    <content type="html"><![CDATA[<p>I was finally annoyed enough to find a replacement of <code>auto-complete</code> in
+Emacs. Reasons will be noted down later. In this note, three common extensions
+for writing Python under Emacs will be compared and noted, which are:</p>
+
+<ol>
+  <li><a href="https://github.com/tkf/emacs-jedi">jedi</a></li>
+  <li><a href="https://github.com/jorgenschaefer/elpy">elpy</a></li>
+  <li><a href="https://github.com/proofit404/anaconda-mode">anaconda</a></li>
+</ol>
+
+<!-- more -->
+
+<p>I always used emacs-jedi since I made the shift from Vim to Emacs.</p>
+
+<p>The functionality provided by emacs-jedi is actually quite good. The only function
+that lacks is the one to refactor. So it is not the fault of emacs-jedi that makes me
+want to change extensions. However, the detail will be left to the comparison
+between <code>company-mode</code> and <code>auto-complete</code>.</p>
+
+<p>Though emacs-jedi is not bad, it is also not that good compared with elpy, in my
+opinion.</p>
+
+<p>You could get good code completion, etc, basically everything roughly equal in
+those three extensions. There are some details about elpy that makes me prefer
+to elpy.</p>
+
+<p>At the time that I set up emacs-jedi, basically I copied some the author’s hacking
+code to let emacs-jedi recognize my current python files, or project
+automatically. It works, but it does not feel elegant.</p>
+
+<p>I could get by with that if it is not due to the reason of <code>auto-complete</code>.</p>
+
+<p>With elpy, you could use command <code>elpy-set-project-root</code> to tell elpy that you
+need current project to be taken into account, which does not feel
+automatically but it is more user friendly and elegant.</p>
+
+<p>What’s more, elpy takes into account the <code>PYTHON_PATH</code> environment variable
+into account automatically. I guess emacs-jedi does this as well.</p>
+
+<p>As for anaconda, actually I found it prior to elpy and also gave it a
+try. However, it failed when I tried to get code completion on-the-fly in my
+current project and no documentation seems to hint me how to deal with that.</p>
+
+<p>Lastly, the refactoring function provided by elpy seems exciting so that I
+won’t need to use <code>search-and-replace</code> or <code>multi-occur</code> stuff. But I did not
+try it yet. Look forward to.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Some Notes on IPython Startup Script]]></title>
@@ -203,44 +257,6 @@ pixels, naming all dimensions. So its variance is the largest, which makes it
 similar with first fourier basis. I think similar argument could be made to
 other principal components and Fourier bases as well. But they may be less
 obvious then the first one.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[A Concept Explanation on Composition of Matrice Representing Linear Transform]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/05/22/a-concept-explanation-on-composition-of-matrice-representing-linear-transform/"/>
-    <updated>2015-05-22T22:18:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/05/22/a-concept-explanation-on-composition-of-matrice-representing-linear-transform</id>
-    <content type="html"><![CDATA[<!-- more -->
-
-<p>It is a bit hard to internalize the fact that the composition of finite
-dimensional linear transformation is the multiplication of the matrices
-representing them. I figured out a concept explanation.</p>
-
-<p>Denoting the first transformation matrix as $A$ and the second as $B$,
-$\vec{a_{i}}$ as the row of $A$ and $\vec{b_{j}}$ as the row of $B$, the to
-be transformed vector as $x$, basically, each $\vec{a}_{i}$ determines how
-each coordinate $x_{i}$ of $\vec{x}$ will contribute to the result
-coordinates.</p>
-
-<p>Then if you do another linear transform on $\vec{Ax}$, each $\vec{b}_{j}$ determines how
-each coordinate of $\vec{Ax}$ will contribute to the final vector. Since the transform is
-linear, we could first consider how $\vec{a_{i}}$ contributes to the final
-vector, its final result with $x$ is just a multiple of $x_{i}$. Each
-component of $\vec{a_{i}}$ actually could be taken as a to be transformed
-vector of $B$. Each row of $AB$ could be viewed in the following way.</p>
-
-<p>$\vec{a_{i}}$ is the new coordinate of standard basis $\vec{e_{i}}$ after
-applying $A$. Starting from there, the second new coordinates of those first
-new coordinates are obtained by applying $B$. So if we apply $AB$ on standard
-basis $\vec{e_{i}}$, the result is going to be the second new
-coordinates. Actually, such coordinates are:</p>
-
-<script type="math/tex; mode=display">
-\sum\vec{b_{j}}(\vec{a_{i}})_{j}
-</script>
-
-<p>which is just $\vec{(AB)_{i}}$.</p>
 ]]></content>
   </entry>
   

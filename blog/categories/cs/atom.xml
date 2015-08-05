@@ -4,7 +4,7 @@
   <title><![CDATA[Category: CS | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/cs/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-08-03T16:35:04+08:00</updated>
+  <updated>2015-08-05T10:45:43+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,60 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[On IDEs of Python in Emacs]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/08/05/on-ides-of-python-in-emacs/"/>
+    <updated>2015-08-05T10:30:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/08/05/on-ides-of-python-in-emacs</id>
+    <content type="html"><![CDATA[<p>I was finally annoyed enough to find a replacement of <code>auto-complete</code> in
+Emacs. Reasons will be noted down later. In this note, three common extensions
+for writing Python under Emacs will be compared and noted, which are:</p>
+
+<ol>
+  <li><a href="https://github.com/tkf/emacs-jedi">jedi</a></li>
+  <li><a href="https://github.com/jorgenschaefer/elpy">elpy</a></li>
+  <li><a href="https://github.com/proofit404/anaconda-mode">anaconda</a></li>
+</ol>
+
+<!-- more -->
+
+<p>I always used emacs-jedi since I made the shift from Vim to Emacs.</p>
+
+<p>The functionality provided by emacs-jedi is actually quite good. The only function
+that lacks is the one to refactor. So it is not the fault of emacs-jedi that makes me
+want to change extensions. However, the detail will be left to the comparison
+between <code>company-mode</code> and <code>auto-complete</code>.</p>
+
+<p>Though emacs-jedi is not bad, it is also not that good compared with elpy, in my
+opinion.</p>
+
+<p>You could get good code completion, etc, basically everything roughly equal in
+those three extensions. There are some details about elpy that makes me prefer
+to elpy.</p>
+
+<p>At the time that I set up emacs-jedi, basically I copied some the author’s hacking
+code to let emacs-jedi recognize my current python files, or project
+automatically. It works, but it does not feel elegant.</p>
+
+<p>I could get by with that if it is not due to the reason of <code>auto-complete</code>.</p>
+
+<p>With elpy, you could use command <code>elpy-set-project-root</code> to tell elpy that you
+need current project to be taken into account, which does not feel
+automatically but it is more user friendly and elegant.</p>
+
+<p>What’s more, elpy takes into account the <code>PYTHON_PATH</code> environment variable
+into account automatically. I guess emacs-jedi does this as well.</p>
+
+<p>As for anaconda, actually I found it prior to elpy and also gave it a
+try. However, it failed when I tried to get code completion on-the-fly in my
+current project and no documentation seems to hint me how to deal with that.</p>
+
+<p>Lastly, the refactoring function provided by elpy seems exciting so that I
+won’t need to use <code>search-and-replace</code> or <code>multi-occur</code> stuff. But I did not
+try it yet. Look forward to.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Some Notes on IPython Startup Script]]></title>
@@ -329,79 +383,6 @@ and merge all the pdf pages in the end. The script could be found on
 solutions, including online converter and <code>gscan2pdf</code>. They both does not
 work. <code>gscan2pdf</code> is capable of converting djvu to pdf with text. But it may
 have trouble handling hundreds of pages ones given the error report I got.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Open File Using External App in Emacs]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2014/12/08/open-file-using-external-app-in-emacs/"/>
-    <updated>2014-12-08T14:29:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2014/12/08/open-file-using-external-app-in-emacs</id>
-    <content type="html"><![CDATA[<p>It would be of great convenience to be able to open files in
-<code>dired-mode</code> in Emacs using external apps. Here is how to achieve it.</p>
-
-<!-- more -->
-
-<p>```cl
-;;; Add command to open file using system programs.
-;; ===================================================================
-(defun open-in-external-app (&amp;optional file)
-  “Open the current file or dired marked files in external app. The app
-is chosen from your OS’s preference.”
-  (interactive)</p>
-
-<p>(let ( confirm
-         (file-list
-          (cond
-           ((string-equal major-mode “dired-mode”) (dired-get-marked-files))
-           ((not file) (list (buffer-file-name)))
-           (file (list file))
-           )
-          )
-         )</p>
-
-<pre><code>(setq confirm (if (&lt;= (length file-list) 5)
-               t
-             (y-or-n-p "Open more than 5 files? ")
-             )
-      )
-
-(when confirm
-  (cond
-   ((string-equal system-type "windows-nt")
-    (mapc
-     (lambda (file-path)
-       (w32-shell-execute "open"
-                          (replace-regexp-in-string "/" "\\" file-path t t)
-                          )
-       )
-     file-list)
-    )
-   ((string-equal system-type "darwin")
-    (mapc
-     (lambda (file-path)
-       (shell-command (format "open \"%s\"" file-path))
-       )
-     file-list)
-    )
-   ((string-equal system-type "gnu/linux")
-    (mapc
-     (lambda (file-path)
-       (let ((process-connection-type nil))
-         (start-process "" nil "xdg-open" file-path)
-         )
-       )
-     file-list)
-    )
-   )
-  )
-)   ) ```
-</code></pre>
-
-<p>I learned this from
-<a href="http://ergoemacs.org/emacs/emacs_dired_open_file_in_ext_apps.html">here</a>. However,
-the code here is more readable and conformed to the programming
-convention of Elisp.</p>
 ]]></content>
   </entry>
   

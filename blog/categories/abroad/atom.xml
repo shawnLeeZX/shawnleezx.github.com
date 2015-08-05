@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Abroad | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/abroad/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-08-03T16:34:53+08:00</updated>
+  <updated>2015-08-05T10:45:43+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -106,7 +106,7 @@ ecosystem。对于仅使用文字内容的博主来说，这些平台基本够�
 要是系统地介绍octopress并且使用它来搭建一个满足基本所有个人网站功能的个
 人网站，同时也作为自己日后查找的笔记。同样，由于这不是一个step by step
 的教程，一些内容的教程其实是一个链接，而有的链接是没有中文网站的。如果
-有障碍，学习英文吧，<a href="/hobbies/books/title_needed.pdf">这里面</a>我写过一篇学习英文的文章。</p>
+有障碍，学习英文吧，<a href="{{ root_url }}/hobbies/books/title_needed.pdf">这里面</a>我写过一篇学习英文的文章。</p>
 
 <h2 id="octopress-2">安装以及部署octopress</h2>
 <p>关于这一部分内容最好的教程就是官网的了，见<a href="http://octopress.org/docs/setup/">这里</a>。官网中的要求也是使用octopress的前提要求，我也就不重述了。</p>
@@ -133,88 +133,50 @@ ecosystem。对于仅使用文字内容的博主来说，这些平台基本够�
 
 <p>对于我们简单用户有意义的在根目录就是下边这些文件。</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;_config.yml <span class="c"># octopress的配置文件，可以配置博客标题、副标题以及很多设置。</span>
-</span><span class='line'>_deploy <span class="c"># 每次运行rake deploy时，被推送到host的文件，也就是组成最终网站的文件，就在这里</span>
-</span><span class='line'>plugins <span class="c"># 用于存放octopress的插件，比如plugins/code_block.rb就是插入这里代码的ruby插件</span>
-</span><span class='line'>public <span class="c"># 每次rake generate之后生成的文件的存放处，运行rake preview查看的文件就是这里。</span>
-</span><span class='line'>sass <span class="c"># 需要进行进一步编译的从而得到网站最终的css文件的样式预编译文件</span>
-</span><span class='line'><span class="nb">source</span> <span class="c"># 这里是主要的工作区，你的网站就是对这个文件夹下的文件进行编译得到&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:bash %}</p>
+
+<p>_config.yml # octopress的配置文件，可以配置博客标题、副标题以及很多设置。
+_deploy # 每次运行rake deploy时，被推送到host的文件，也就是组成最终网站的文件，就在这里
+plugins # 用于存放octopress的插件，比如plugins/code_block.rb就是插入这里代码的ruby插件
+public # 每次rake generate之后生成的文件的存放处，运行rake preview查看的文件就是这里。
+sass # 需要进行进一步编译的从而得到网站最终的css文件的样式预编译文件
+source # 这里是主要的工作区，你的网站就是对这个文件夹下的文件进行编译得到</p>
+
+<p>{% endcodeblock %}</p>
 
 <p><code>source</code>文件夹的文件结构如下：</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;about
-</span><span class='line'>assets
-</span><span class='line'>atom.xml
-</span><span class='line'>blog
-</span><span class='line'>favicon.png
-</span><span class='line'>images
-</span><span class='line'>_includes
-</span><span class='line'>index.markdown
-</span><span class='line'>javascripts
-</span><span class='line'>_layouts
-</span><span class='line'>_posts
-</span><span class='line'>robots.txt
-</span><span class='line'>stylesheets&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:bash %}</p>
+
+<p>about
+assets
+atom.xml
+blog
+favicon.png
+images
+_includes
+index.markdown
+javascripts
+_layouts
+_posts
+robots.txt
+stylesheets</p>
+
+<p>{% endcodeblock %}</p>
 
 <p>我们的工作区基本在<code>source</code>文件夹下，octopress的工作就是根据<code>sass</code>和<code>source/stylesheets</code>定义的样式，<code>source/_layout</code>定义的排版以及<code>source/_includes</code>和<code>source/_includes/custom</code>定义的各个部分（head, header, footer等）的内容，将所有有yml文件头的markdown文件转化为html文件，然后将剩余的文件原分不动拷贝，来生成最终被服务器使用的在public（用于预览）和_deploy（用于部署）文件夹中的纯静态网站——仅由html, css, javascript组成。</p>
 
 <p>yml文件头即是文件开头部分的如下内容
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;hr /&gt;
-</span><span class='line'>&lt;p&gt;layout: post
-</span><span class='line'>title:
-</span><span class='line'>date: 2013-09-22 15:21
-</span><span class='line'>comments:
-</span><span class='line'>categories:
-</span><span class='line'>—
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+{% codeblock lang:bash %}</p>
+
+<hr />
+<p>layout: post
+title: 
+date: 2013-09-22 15:21
+comments: 
+categories: 
+—
+{% endcodeblock %}</p>
 
 <h2 id="section-4">如何添加页面</h2>
 
@@ -228,53 +190,31 @@ ecosystem。对于仅使用文字内容的博主来说，这些平台基本够�
 
 <p>想在原理一节中所讲的，octopress会根据<code>source/_includes/custom</code>中的内容来生成最终在public的文件。对导航栏的修改即在里面。文件夹里的文件目录如下：</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;after_footer.html
-</span><span class='line'>asides              <span class="c">#侧边栏的定制</span>
-</span><span class='line'>category_feed.xml
-</span><span class='line'>footer.html
-</span><span class='line'>header.html
-</span><span class='line'>head.html
-</span><span class='line'>navigation.html&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:bash %}</p>
+
+<p>after_footer.html
+asides              #侧边栏的定制
+category_feed.xml
+footer.html
+header.html
+head.html
+navigation.html</p>
+
+<p>{% endcodeblock %}</p>
 
 <p>这里以添加导航栏为例，阐述<code>custom</code>文件夹的功能。</p>
 
 <p>octopress就像拼拼图一样，将<code>custom</code>文件夹中的文件拼起来，<code>navigation.html</code>即会被拼到最终页面的导航部分。因此，在<code>navigation.html</code>中多添加一个表项就可以多添加一个导航项目。</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;main-navigation&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>   <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/blog&quot;</span><span class="nt">&gt;</span>Blog<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-</span><span class='line'>   <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/blog/archives&quot;</span><span class="nt">&gt;</span>Archives<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-</span><span class='line'>+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/about&quot;</span><span class="nt">&gt;</span>About<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:html %}</p>
+
+<ul class="main-navigation">
+   <li><a href="{{ root_url }}/blog">Blog</a></li>
+   <li><a href="{{ root_url }}/blog/archives">Archives</a></li>
++  <li><a href="{{ root_url }}/about">About</a></li>
+</ul>
+
+<p>{% endcodeblock %}</p>
 
 <p>custom文件夹中的其他文件也以类似的方式工作。比如，想要在网站标题旁边添加图片的话，则要修改<code>header.html</code>文件，在其中用html代码插入图片。</p>
 
@@ -289,120 +229,68 @@ ecosystem。对于仅使用文字内容的博主来说，这些平台基本够�
 
 <p>对于网站的主题的简单改变在于<code>sass</code>文件夹中（文件夹的组织见原理一节），其文件组织如下：</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;base
-</span><span class='line'>_base.scss
-</span><span class='line'>custom
-</span><span class='line'>partials
-</span><span class='line'>_partials.scss
-</span><span class='line'>plugins
-</span><span class='line'>screen.scss&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:bash %}</p>
+
+<p>base
+_base.scss
+custom
+partials
+_partials.scss
+plugins
+screen.scss</p>
+
+<p>{% endcodeblock %}</p>
 
 <p>对于主题的改变都在<code>sass/custom</code>文件夹中，<code>custom</code>的文件夹组织如下：</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;_colors.scss
-</span><span class='line'>_fonts.scss
-</span><span class='line'>_layout.scss
-</span><span class='line'>_menu.scss
-</span><span class='line'>_styles.scss&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:bash %}</p>
+
+<p>_colors.scss
+_fonts.scss
+_layout.scss
+_menu.scss
+_styles.scss</p>
+
+<p>{% endcodeblock %}</p>
 
 <p>下面用两个例子来简单说明，第一个修改网站header背景的配色，第二个修改网站的宽度。通过这两个例子，触类旁通，也就可以自己定制主题了。</p>
 
 <h3 id="colorsscss">在_colors.scss中修改配色</h3>
 
 <p>下面代码片段中，<code>$header-bg</code>对应的是即是header背景的配色，其后的值即是RGB颜色值。尝试下面两个值来看一看颜色的变化。
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='sass'><span class='line'><span class="o">&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;//</span> <span class="nt">Here</span> <span class="nt">you</span> <span class="nt">can</span> <span class="nt">easily</span> <span class="nt">change</span> <span class="nt">your</span> <span class="nt">sites</span><span class="err">’</span><span class="nt">s</span> <span class="nt">color</span> <span class="nt">scheme</span><span class="nc">.</span>
-</span><span class='line'><span class="c1">// To give it a try, uncomment some of the lines below rebuild your blog, and see how it works.</span>
-</span><span class='line'><span class="c1">// If you need a handy color picker try http://hslpicker.com&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="na">&lt;p&gt;//</span><span class="err"> </span><span class="na">$header-bg</span><span class="o">:</span> <span class="mh">#dad4e3</span><span class="err">;</span>
-</span><span class='line'><span class="na">$header-bg</span><span class="o">:</span> <span class="mh">#ffffff</span><span class="err">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+{% codeblock lang:sass %}</p>
+
+<p>// Here you can easily change your sites’s color scheme.
+// To give it a try, uncomment some of the lines below rebuild your blog, and see how it works.
+// If you need a handy color picker try http://hslpicker.com</p>
+
+<p>// $header-bg: #dad4e3;
+$header-bg: #ffffff;</p>
+
+<p>{% endcodeblock %}
 <code>$header-bg</code>仅是其中的一个选项，完整的选项的在<code>base/_theme.scss</code>中，尝试一下这些选项吧。你也可以直接修改<code>base/_theme.scss</code>中的配色，但是在<code>custom</code>文件夹中修改更为清晰明了易控制。</p>
 
 <h3 id="layoutscss">在_layout.scss中修改网站宽度</h3>
 
 <p>如下代码片段，中文注释处即是改变，同样，在<code>base/_layout.scss</code>中可以找到完整的可以修改的布局选项。
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='sass'><span class='line'><span class="o">&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;//</span> <span class="nt">Here</span> <span class="nt">you</span> <span class="nt">can</span> <span class="nt">easily</span> <span class="nt">change</span> <span class="nt">your</span> <span class="nt">sites</span><span class="err">’</span><span class="nt">s</span> <span class="nt">layout</span><span class="nc">.</span>
-</span><span class='line'><span class="c1">// To give it a try, uncomment some of the lines below, make changes, rebuild your blog, and see how it works.&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="na">&lt;p&gt;//</span><span class="err"> </span><span class="na">$main-bg</span><span class="o">:</span> <span class="mh">#ffffff</span> <span class="nv">!default</span><span class="err">;</span>
-</span><span class='line'><span class="c1">// $page-bg: #ffffff !default;</span>
-</span><span class='line'><span class="na">$main-bg</span><span class="o">:</span> <span class="mh">#ffffff</span><span class="err">;</span>
-</span><span class='line'><span class="na">$page-bg</span><span class="o">:</span> <span class="mh">#ffffff</span><span class="err">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="na">&lt;p&gt;$header-font-size</span><span class="o">:</span> <span class="mi">1</span><span class="kt">em</span><span class="err">;</span>
-</span><span class='line'><span class="na">$header-padding-top</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.5</span><span class="kt">em</span><span class="err">;</span>
-</span><span class='line'><span class="na">$header-padding-bottom</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.5</span><span class="kt">em</span><span class="err">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="na">&lt;p&gt;$max-width</span><span class="o">:</span> <span class="mi">90</span><span class="kt">%</span><span class="err">;</span> <span class="c1">// Liquid布局，使得网站适应各种屏幕大小</span>
-</span><span class='line'><span class="na">$indented-lists</span><span class="o">:</span> <span class="n-Pseudo">true</span><span class="err">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+{% codeblock lang:sass %}</p>
+
+<p>// Here you can easily change your sites’s layout.
+// To give it a try, uncomment some of the lines below, make changes, rebuild your blog, and see how it works.</p>
+
+<p>// $main-bg: #ffffff !default;
+// $page-bg: #ffffff !default;
+$main-bg: #ffffff;
+$page-bg: #ffffff;</p>
+
+<p>$header-font-size: 1em;
+$header-padding-top: 1.5em;
+$header-padding-bottom: 1.5em;</p>
+
+<p>$max-width: 90%; // Liquid布局，使得网站适应各种屏幕大小
+$indented-lists: true;</p>
+
+<p>{% endcodeblock %}</p>
 
 <h2 id="octopress-5">更改布局，让octopress更像个人网站而不是完全的博客</h2>
 
@@ -418,23 +306,14 @@ ecosystem。对于仅使用文字内容的博主来说，这些平台基本够�
 
 <p>在<code>source/_layout</code>下存放着不同页面的布局文件。如下：</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;category_index.html
-</span><span class='line'>default.html
-</span><span class='line'>page.html <span class="c"># 比如该文件即是page页面的布局</span>
-</span><span class='line'>post.html&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:bash %}</p>
+
+<p>category_index.html
+default.html
+page.html # 比如该文件即是page页面的布局
+post.html</p>
+
+<p>{% endcodeblock %}</p>
 
 <p>在一般情况下，page页面一般不需要日期在上边，因此我把日期去掉，方法就是注释掉一些代码。但是octopress会把贴在codeblock中的代码片段进行处理，变成纯html，我暂时没有找到不让octopress忽略codeblock中tag的方法，因此这里贴不了代码了。</p>
 
@@ -442,55 +321,31 @@ ecosystem。对于仅使用文字内容的博主来说，这些平台基本够�
 <p>对于我来说，我需要不只一个page类型，从而对不同种类的page使用不同的侧边栏。因此，如何多一些页面种类？</p>
 
 <p>在每个文件的yml的header上有一个域用来选择使用的页面类型，如下
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>layout: post
-</span><span class='line'>title:
-</span><span class='line'>date: 2013-09-22 15:21
-</span><span class='line'>comments:
-</span><span class='line'>categories:
-</span><span class='line'>—<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+{% codeblock lang:html %}</p>
+
+<hr />
+<p>layout: post
+title: 
+date: 2013-09-22 15:21
+comments: 
+categories: 
+—</p>
+
+<p>{% endcodeblock %}</p>
 
 <p>在<code>layout</code>一域中，选择自己新建的页面种类就可以了。比如使用这样的yml头部：</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>layout: new_type_post
-</span><span class='line'>title:
-</span><span class='line'>date: 2013-09-22 15:21
-</span><span class='line'>comments:
-</span><span class='line'>categories:
-</span><span class='line'>—<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:html %}</p>
+
+<hr />
+<p>layout: new_type_post
+title: 
+date: 2013-09-22 15:21
+comments: 
+categories: 
+—</p>
+
+<p>{% endcodeblock %}</p>
 
 <p>但为了让octopress找到相对应的布局，需要在<code>sourse/_layout</code>下添加对应的布局，这里即添加<code>new_type_post.html</code>。内容以原来的布局，如<code>page.html</code>为模板修改即可。</p>
 
@@ -503,7 +358,7 @@ ecosystem。对于仅使用文字内容的博主来说，这些平台基本够�
 <p>octopress提供了插入图片的插件，使用插件的方法在<a href="http://octopress.org/docs/plugins/image-tag/">这里</a>。</p>
 
 <p>但是对于一些稍微学术一点的图片，我们需要在图片下加入大量的说明，这样简单的图片插入就不够用了，在<a href="http://blog.zerosharp.com/image-captions-for-octopress/">这里</a>可以找到如何达到下述效果的方法。
-<span class='caption-wrapper'><img class='caption' src='http://farm4.staticflickr.com/3666/9816457056_356c90c654_o_d.jpg' width='' height='' title='这里是说明，大量的说明，大量的说明，大量的说明，大量的说明'><span class='caption-text'>这里是说明，大量的说明，大量的说明，大量的说明，大量的说明</span></span></p>
+{% imgcap http://farm4.staticflickr.com/3666/9816457056_356c90c654_o_d.jpg 这里是说明，大量的说明，大量的说明，大量的说明，大量的说明 %}</p>
 
 <p>对于想要展示很多图片的童鞋，也有fancy box和gallery可以使用，由于我暂时还没有这个需求，因此就不写了。</p>
 
