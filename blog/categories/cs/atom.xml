@@ -4,7 +4,7 @@
   <title><![CDATA[Category: CS | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/cs/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-08-05T10:45:43+08:00</updated>
+  <updated>2015-08-11T11:37:43+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,310 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[On Code Completion & Navigation for C/C++ in Emacs]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/08/11/on-code-completion-for-c-slash-c-plus-plus/"/>
+    <updated>2015-08-11T09:21:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/08/11/on-code-completion-for-c-slash-c-plus-plus</id>
+    <content type="html"><![CDATA[<p>Due to the same reason that I decided to add <code>company</code> to provide faster and
+more accurate completion functionality, I switched from
+<a href="http://cedet.sourceforge.net/">CEDET</a> to
+<a href="https://github.com/Sarcasm/irony-mode">irony</a> +
+<a href="https://github.com/leoliu/ggtags">ggtags</a>.</p>
+
+<p>Here is the note TODO</p>
+
+<!-- more -->
+
+<h2 id="irony">Irony</h2>
+
+<h3 id="installation">Installation</h3>
+
+<p>To setup <code>irony</code>, in the <a href="https://github.com/Sarcasm/irony-mode">README</a> of
+<code>irony</code>’s git repo, the installation process provided by the author is pretty
+workable. The only thing may need to be noted is that what packages you need to
+install if you are not going to compile <code>libclang</code> from source.</p>
+
+<p>In Ubuntu, you need those two packages: <code>libclang-dev</code> and <code>clang</code>. By
+mentioning only <code>libclang</code>, it gives me the feeling that I do not need an
+executable of <code>clang</code>, however, there is some errors occurs without
+<code>clang</code>. But due to the trial and error when making <code>irony-mode</code> to work, I am
+not sure it is really caused by lacking of <code>clang</code>.</p>
+
+<h3 id="make-it-work">Make It Work</h3>
+
+<p>You need to let <code>clang</code> know where to find you source file for it to parse
+it. To achieve this, <code>irony</code> provides a concept called
+<a href="https://github.com/Sarcasm/irony-mode#compilation-database">compilation database</a>. Refer
+to it to know how to make <code>irony</code> work. The following is some remarks.</p>
+
+<p>Basically, the most important compilation flags are the include folder path for
+header files. Since <code>irony</code> does not aim to provide code navigation function,
+all information it needs are in header files.</p>
+
+<p>One problem that bugs me a lot when I was setting up <code>irony</code> is that <code>clang</code> in
+<code>irony</code> and <code>gcc</code> handles <code>-I</code> flag differently. The path must immediately
+follows the <code>-I</code>, with no spaces. If there are spaces, <code>irony</code> could not find
+the corresponding paths.</p>
+
+<h3 id="limitations">Limitations</h3>
+
+<p>During my testing with <code>irony</code>, I found that it could not handle definition
+with template, which is used a lot in C++ numerical library. The limitation
+also makes sense since that declarations are generated dynamically during
+compilation for template definition, so maybe you could not get relevant
+information just by parsing the template definition.</p>
+
+<h2 id="ggtags">ggtags</h2>
+
+<p><a href="http://www.gnu.org/software/global/">gtags</a> is better
+<a href="http://ctags.sourceforge.net/">ctags</a> in various ways. See the
+<a href="https://github.com/leoliu/ggtags">table</a> provided by
+<a href="https://github.com/leoliu/ggtags">ggtags</a>’s developers.</p>
+
+<h3 id="setup-system-tags">Setup System Tags</h3>
+
+<p>I copy this section from this
+<a href="http://tuhdo.github.io/c-ide.html#sec-7-2">tutorial</a> in case I may forget it.</p>
+
+<p><code>GNU Global</code> has an environment variable named <code>GTAGSLIBPATH</code>. This variable holds
+<code>GTAGS</code> database of external libraries that your project depends on but not
+inside your project. For example, your project may rely on system headers such
+as <code>stdio.h</code>, <code>stdlib.h</code>… but these headers are internal to your project. However,
+remember that you can only jump to tag definitions of external dependencies,
+and nothing else (such as files or references). But, again, once you are inside
+the external library, you can start jumping around sicne it becomes your
+current project.</p>
+
+<p>To make <code>GNU Global</code> sees your system headers, follow these steps:</p>
+
+<p>Export this environment variable in your shell init file, such as <code>.bashrc</code> or
+<code>.zshrc</code>:</p>
+
+<p><code>bash
+export GTAGSLIBPATH=$HOME/.gtags/
+</code></p>
+
+<p>Execute these commands in your terminal:</p>
+
+<p>```bash
+# Create a directory for holding database, since
+# you cannot create a database in your system paths
+mkdir ~/.gtags</p>
+
+<h1 id="create-symbolic-links-to-your-external-libraries">Create symbolic links to your external libraries</h1>
+<p>ln -s /usr/include usr-include
+ln -s /usr/local/include/ usr-local-include</p>
+
+<h1 id="generate-gnu-global-database">Generate GNU Global database</h1>
+<p>gtags -c
+```</p>
+
+<p>The <code>-c</code> option tells <code>GNU Global</code> to generate tag database in compact format. It
+is necessary because if your project contains C++ headers like <code>Boost</code>, without
+<code>-c</code> your <code>GTAGS</code> database can be more than 1 GB. Same goes for <code>ctags</code>. The <code>GNU
+Global</code> devs explained that it is because the <code>GTAGS</code> database includes the image
+of tagged line, and the <code>Boost</code> headers have a lot of very long lines.</p>
+
+<p>After all the above steps, restart with a shell loaded with that variable. To
+verify Emacs gets the variable, <code>M-x getenv</code> and enter <code>GTAGSLIBPATH</code> and see
+if your predefined value is available. Executing <code>ggtags-find-tag-dwim</code> or
+<code>helm-gtags-dwim</code> jumps to the definition of a system tag like a normal tag.</p>
+
+<p>The disadvantage of using <code>GNU Global</code> is that currently it cannot include
+files without extension. In the C++ system include directory like
+<code>/usr/include/c++/4.8/</code>, it contains files without extension such as
+<code>iostream</code>, <code>string</code>, <code>set</code>, <code>map</code>…. so you can write <code>#include</code> directives
+without having to append <code>.h</code> at the end. <code>GNU Global</code> devs are considering to
+add support for this use case.</p>
+
+<h2 id="some-remarks">Some Remarks</h2>
+
+<ul>
+  <li>Even if you do not enable <code>semantic</code> in <code>CEDET</code>, <code>ECB</code> the Emacs Code Browser
+extension still works. I think it just invoke <code>semantic</code> by itself and only
+parse current buffer, which is rather cheap operation.</li>
+  <li>If you want to know more about CEDET, here is
+<a href="http://alexott.net/en/writings/emacs-devenv/EmacsCedet.html">a nice introductory post</a>
+explaining it.</li>
+  <li>Though <code>CEDET</code> gets disabled, company still takes advantage of some part of
+tools provided by <code>CEDET</code>. One of them is
+<a href="http://cedet.sourceforge.net/ede.shtml">EDE</a>, the project
+manager. See the github README page of
+<a href="https://github.com/randomphrase/company-c-headers">company-c-headers</a> to see
+how could you use <code>EDE</code> to tell <code>company</code> to use system include path.</li>
+  <li><a href="https://github.com/emacs-helm/helm">helm</a> is an alternative to
+<a href="https://www.masteringemacs.org/article/introduction-to-ido-mode">ido</a>. Maybe
+it could be tried while I have more time.</li>
+  <li><a href="https://github.com/abingham/emacs-ycmd">emacs-ycmd</a> is another completion
+framework for Emacs.</li>
+  <li><code>irony</code> offers a flychecker, since I already uses the google style and
+cpplint, I will not try <code>flycheck-irony</code> for the time being, though it may
+offer advantages such as full compilation error detection.</li>
+</ul>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[On Auto Completion in Emacs]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/08/11/on-auto-completion-in-emacs/"/>
+    <updated>2015-08-11T09:07:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/08/11/on-auto-completion-in-emacs</id>
+    <content type="html"><![CDATA[<p>Just finished setting up Emacs using
+<a href="http://company-mode.github.io/">company</a> to do auto-completion. Here I would
+like to note down the reason why I made the shift from
+<a href="https://github.com/auto-complete/auto-complete">auto-complete</a> to <code>company</code>
+for programming. However, for tasks like writing configuration file, LaTeX
+documents or markdown note, I still use <code>auto-complete</code>.</p>
+
+<!-- more -->
+
+<h2 id="comparison-between-company-and-auto-complete">Comparison Between <code>company</code> and <code>auto-complete</code></h2>
+
+<p>At the first iteration of my Emacs configuration for C/C++, I followed the
+following three videos to get a basic setup:</p>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=HTUE03LnaXA">Emacs as a C/C++ Editor/IDE (Part I): auto-complete, yasnippet, and autoplete</a></li>
+  <li><a href="https://www.youtube.com/watch?v=r_HW0EB67eY">Emacs as a C/C++ Editor/IDE (Part 2): iedit, flymake-google-cpplint, google-c-style</a></li>
+  <li><a href="https://www.youtube.com/watch?v=Ib914gNr0ys">Emacs as a C/C++ Editor/IDE (Part 3): Installing CEDET mode for true intellisense</a></li>
+</ul>
+
+<p>which introduces the <code>auto-complete</code> for doing automatically completion.</p>
+
+<p>At the same time, the extension
+ <a href="https://github.com/tkf/emacs-jedi">emacs-jedi</a> only supports <code>auto-complete</code>
+backend. And <code>emacs-jedi</code> is the only python code completion extension for
+Emacs at then, which turns out that there were a number of others I did not
+notice(see previously post on Python in Emacs). So I decided to use
+auto-complete.</p>
+
+<p>Then as the projects I worked on got bigger, the possible candidates provided
+by <code>auto-complete</code> becomes too large to be useful due to the reason that
+<code>auto-complete</code> will fetch all candidates from all sources.</p>
+
+<p>The same problem happens to <code>auto-complete</code> in file path completion as
+well. You get a lot of non-sense completion when you only want to get
+completion in the path you want, which is a rather narrow space in the whole
+space of all your possible completion candidates.</p>
+
+<p>There could be a way to dynamically change the order of sources, but <code>company</code>
+seems to do this automatically or people writes the backends for <code>company</code> do
+this. In whatever case, the user does not need to attend to those things.</p>
+
+<p>That is not the fatal problem yet, <code>auto-complete</code> has a annoying problem which
+I do not know how to fix is that the time needed for the completion list to
+respond to new input is at the magnitude of seconds. I am pretty sure this is
+not a performance problem given that the completion list comes up pretty fast.</p>
+
+<p><code>company</code> also solves the file completion problem and c headers completion
+problem by providing a separate function in their respective backends, which I
+just need to map another key binding to it so the completion will be very
+accurate when you are programming.</p>
+
+<p><code>auto-complete</code> does good when you are writing text heavy contents such as
+LaTeX or markdown but not logically heavy ones such as programming language.</p>
+
+<p>For a more complete comparison you could refer to the end of the 
+<a href="http://company-mode.github.io/">github page</a> of <code>company</code>.</p>
+
+<h2 id="on-using-them-together">On Using Them Together</h2>
+
+<p>One more realization is that those two extensions are not exclusive at all. I
+did not find a backend like the sources provided by <code>auto-complete</code> for
+complete word in buffers related functions, which is the area <code>auto-complete</code> 
+works well.</p>
+
+<p>Below is some sample on how to use them from my
+<a href="https://github.com/shawnLeeZX/emacs.d">Emacs configuration</a>.</p>
+
+<p>```cl
+(add-hook ‘after-init-hook ‘global-company-mode)</p>
+
+<p>;;   “Modes for which <code>company-mode' mode is turned on by
+;; </code>global-company-mode’.  If nil, means no modes.  If t, then all major modes
+;; have it turned on.  If a list, it should be a list of <code>major-mode' symbol
+;; names for which </code>company-mode’ should be automatically turned on.  The sense
+;; of the list is negated if it begins with <code>not'.  For example: (c-mode
+;; c++-mode) means that </code>company-mode’ is turned on for buffers in C and C++
+;; modes only.  (not message-mode) means that <code>company-mode' is always turned
+;; on except in </code>message-mode’ buffers.”
+(setq company-global-modes ‘(
+                            c-mode
+                            c++-mode
+                            ))
+```</p>
+
+<p><code>cl
+;; Enable auto-complete for modes in ac-modes by default.
+(global-auto-complete-mode t)
+;; We reset the default mode for auto-complete given that we want to some modes
+;; to use company-mode.
+(set-default 'ac-modes
+             '(
+               magit-log-edit-mode
+               log-edit-mode org-mode text-mode haml-mode
+               git-commit-mode
+               conf-mode conf-unix-mode conf-colon-mode
+               inferior-emacs-lisp-mode inferior-python-mode
+               sql-interactive-mode
+               sass-mode yaml-mode csv-mode espresso-mode haskell-mode
+               html-mode nxml-mode smarty-mode clojure-mode
+               lisp-mode textile-mode markdown-mode tuareg-mode
+               js3-mode css-mode less-css-mode sql-mode
+               web-mode
+               ))
+</code></p>
+
+<h2 id="difference-between-tab-and-tab">Difference Between <tab> and TAB</tab></h2>
+
+<p>The last thing I want to note down is that TAB key.</p>
+
+<p>Emacs has two tabs, <code>(kbd "&lt;tab&gt;")</code> and <code>(kbd "TAB")</code>. To make things more
+complex, <code>yasnippet</code>, <code>auto-complete</code>, indentation in Emacs, typing real tab
+stops and <code>company</code> all uses <code>tab</code>, which makes it very complicated.</p>
+
+<p>From this
+<a href="https://www.reddit.com/r/emacs/comments/2aemny/difference_between_tab_and_tab/">thread</a>
+in Reddit, here, I knew that <code>(kbd "&lt;tab&gt;")</code> stands for the physical key you
+have pressed and <code>(kbd "TAB")</code> stands for the control character. So to speak,
+normally, if you are not binding <code>&lt;tab&gt;</code> to <code>TAB</code>, the tab you typed is not
+actually the control character TAB, but triggers some function that is hooked
+on the physical key’s response.</p>
+
+<p>As for the second part of the puzzle, when you are typing tab at a location
+where the indentation of the statement is not right, Emacs will indent your
+line first. The key to differentiate <code>yasnippet</code> and <code>auto-complete</code> is whether
+you are typing or not when you pressed the tab key. If you are, completion menu
+will be triggered, if you are not <code>yasnippet</code> will be triggered(this is a
+mechanism that could be configured in auto-complete and is not the default, by
+default, I think the completion menu will pop up automatically). As for
+<code>company</code> and <code>yasnippet</code>, in my experiments, after setting the trigger key to
+tab, by default it seems that snippets are always gotten expanded the first,
+then <code>company-complete</code> will be triggered if no snippets could be found. See
+the following code snippets for how to set up key binding for <code>company</code>(it only
+uses <code>company</code> if <code>irony-mode</code> is in usage).</p>
+
+<p><code>cl
+;; Setup keymapping for company-complete.
+(add-hook 'irony-mode-hook (lambda ()
+                             (local-set-key (kbd "&lt;tab&gt;") 'company-complete-common)
+                             (local-set-key (kbd "C-c C-f") 'company-files)
+                             ))
+</code></p>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=HTUE03LnaXA">Emacs as a C/C++ Editor/IDE (Part I): auto-complete, yasnippet, and autoplete</a></li>
+  <li><a href="https://www.youtube.com/watch?v=r_HW0EB67eY">Emacs as a C/C++ Editor/IDE (Part 2): iedit, flymake-google-cpplint, google-c-style</a></li>
+  <li><a href="https://www.youtube.com/watch?v=Ib914gNr0ys">Emacs as a C/C++ Editor/IDE (Part 3): Installing CEDET mode for true intellisense</a></li>
+  <li><a href="http://tuhdo.github.io/c-ide.html">tutorial on customizing C/C++ environment for emacs</a></li>
+  <li><a href="https://www.masteringemacs.org/article/mastering-key-bindings-emacs">Mastering Key Bindings in Emacs</a></li>
+</ul>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[On IDEs of Python in Emacs]]></title>
@@ -178,211 +482,6 @@ git clone https://github.com/gkovacs/pdfocr
 <p><code>bash
 pdfocr.rb -i foo.pdf -o out.pdf
 </code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Zoom In and Out Gnome Using Mouse]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/07/02/zoom-in-and-out-gnome-using-mouse/"/>
-    <updated>2015-07-02T17:18:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/07/02/zoom-in-and-out-gnome-using-mouse</id>
-    <content type="html"><![CDATA[<p>Just tried to find a solution to zoom in and out in the GNOME desktop, so that
-things could be seen better in case they are too small during presentation.</p>
-
-<!-- more -->
-
-<p>The solution a program called <code>mousewheelzoom</code>, whose source is held at github:
-<a href="https://github.com/tobiasquinn/gnome-shell-mousewheel-zoom">gnome-shell-mousewheel-zoom</a>.</p>
-
-<p>The installation instructions could be found there.</p>
-
-<hr />
-
-<p>Besides the solution that works, two solutions that did not work are also going
-to noted below.</p>
-
-<h3 id="compiz-setting">Compiz Setting</h3>
-
-<p>At first I tried to changing setting in Compizconfig Settingsmanager, as
-suggested in the
-<a href="http://askubuntu.com/questions/82398/how-to-zoom-inzoom-out">link</a>. It turns
-out that compiz is used by Unity, not GNOME. Since I have changed the desktop
-environment, it does not obviously.</p>
-
-<h3 id="gnome-native-solution">GNOME Native solution</h3>
-
-<p>Then GNOME also offers such function directly in their <em>Universal Access</em>,
-under <em>Seeing</em> tab, in category Zoom — just type Universal Access in the
-Dock. However, it does not work either.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Convert Djvu File to PDF with Text Kept]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/03/27/how-to-convert-djvu-file-to-pdf-with-text-kept/"/>
-    <updated>2015-03-27T20:47:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/03/27/how-to-convert-djvu-file-to-pdf-with-text-kept</id>
-    <content type="html"><![CDATA[<p>Finally, I have come up with a solution to convert Djvu format e-book to Pdf
-format. This post is going to note down exactly HOW.</p>
-
-<p>First, some background about why I am doing this.</p>
-
-<p>In the ancient time, well-know scholars are proud of their collection of books
-in their personal library, which is the physical incarnation of their knowledge
-and journey of learning. Although still a majority of people prefers the old
-way of reading paper books, the way to keep one’s collection of books is going
-to change to the electronic format way eventually. There are three significant
-benefits of doing this:</p>
-
-<ol>
-  <li>You are able to bring with you all your books anywhere without any extra
-effort.</li>
-  <li>E-books are searchable, which speed up your reading a lot.</li>
-  <li>You can open multiple copies of your book at the same time so the cross
-reference is much more easier than reading paper version.</li>
-</ol>
-
-<p>But one major drawback of the past years where I almost read e-books
-exclusively is that at the time when I can only find djvu format of certain
-files, I have no way to highlight text on the e-book, especially for Math
-books, a lot of which are in djvu format.</p>
-
-<p>After meeting with one file that I must take note, I decide to figure out a
-solution. So here it is.</p>
-
-<!-- more -->
-
-<p>Basically, the mechanism works like this. We extract image and text from the
-original djvu files separately. Then we create the wanted pdf with them.</p>
-
-<p>The solution is a combination of several open source tools:</p>
-
-<ol>
-  <li><a href="http://jwilk.net/software/ocrodjvu">djvu2hocr</a>. It is a wrapper for OCR
-systems, that allows you to perform OCR on DjVu files. Optical character
-recognition (OCR) is the mechanical or electronic conversion of images of
-typewritten or printed text into machine-encoded text.</li>
-  <li><a href="http://djvu.sourceforge.net/">ddjvu</a>. We use it to decode image from djvu
-file. It is part of the open source project DjVuLibre that offers program to
-manipulate djvu files. But one of the most pity is that no program it offers
-could add highlight and annotations to djvu in a GUI way. I think this is
-one of the major reasons djvu cannot catch on besides some other big
-reasons.</li>
-  <li><a href="https://rubygems.org/gems/pdfbeads">pdfbeads</a>. PDFBeads is a small utility
-written in Ruby which takes scanned page images and converts them into a
-single PDF file.</li>
-  <li><a href="http://www.ghostscript.com/">gs</a> PostScript and PDF language interpreter
-and previewer. If you are using a modern UNIX environment, it is highly
-possible you would have it installed by default. We need this when deal with
-djvu books, since pdfbeads creates very large intermediate files which makes
-converting large books infeasible. So we need to create pdf pages one by one
-and use gs to merge them.</li>
-</ol>
-
-<h2 id="installation">INSTALLATION</h2>
-
-<p>Only installation on Ubuntu is going to be described.</p>
-
-<h3 id="ocrodjvu">ocrodjvu</h3>
-
-<p><code>djvu2hocr</code> and <code>ddjvu</code> are from <code>ocrodjvu</code>.</p>
-
-<p>ocrodjvu is in the official repository, so just type in:</p>
-
-<p><code>bash
-sudo apt-get install ocrodjvu
-</code></p>
-
-<h3 id="pdfbeads">pdfbeads</h3>
-
-<p><code>pdfbeads</code> is written in ruby. The package manager <code>gem</code> of ruby will handle
-dependency in ruby but there are some addition library header needed to be
-installed depending on your operating system. As for me, <code>libleptonica-dev</code> is
-needed. Type in:</p>
-
-<p><code>bash
-sudo apt-get install libleptonica-dev
-</code></p>
-
-<blockquote>
-  <p><a href="http://www.leptonica.com/">Leptonica</a> is a pedagogically-oriented open
-source site containing software that is broadly useful for image processing
-and image analysis applications.</p>
-</blockquote>
-
-<p>If you have not done a lot image manipulation, it is highly probable that you
-also need to install <code>libmagickwand-dev</code>:</p>
-
-<p><code>bash
-sudo apt-get install libmagickwand-dev
-</code></p>
-
-<p>It mainly installs development package for ImageMagick. From its websites,
-it is a:</p>
-
-<blockquote>
-  <p><a href="http://www.leptonica.com/">ImageMagick</a>® is a software suite to create,
-edit, compose, or convert bitmap images. It can read and write images in a
-variety of formats (over 200) including PNG, JPEG, JPEG-2000, GIF, TIFF, DPX,
-EXR, WebP, Postscript, PDF, and SVG. Use ImageMagick to resize, flip, mirror,
-rotate, distort, shear and transform images, adjust image colors, apply
-various special effects, or draw text, lines, polygons, ellipses and Bézier
-curves.</p>
-</blockquote>
-
-<p>And to ensure we are getting a reasonable size of pdf finally, we need to
-use <a href="http://jbig2.com/">JBIG2</a> compression instead of TIFF G4 when creating
-pdf. JBIG2 is an International Telecommunication Union format that represents a
-revolutionary breakthrough in captured document technology. Using JBIG2
-encoding, a scanned image can be compressed up to 10x smaller than with TIFF
-G4.</p>
-
-<p>This time we need to compile it from
-<a href="https://github.com/agl/jbig2enc">source</a>. Standard pipe is good:</p>
-
-<p><code>bash
-./autogen.sh
-./configure
-make
-make install (or sudo make install)
-</code></p>
-
-<p>I have done a simple test on how much more compress JBIG2 could offer. Using
-TIFF G4, one random chosen page of my djvu file will be 77K, while it is 21K
-using JBIG2. Considering that the final output size of my pdf file is 49M, it
-would beyond 100M if I used TIFF G4, which is too big for a pdf book.</p>
-
-<p>With all prerequisite ready, we could install pdfbeads now:</p>
-
-<p><code>bash
-sudo gem install pdfbeads
-</code></p>
-
-<h3 id="gs">gs</h3>
-
-<p><code>gs</code> should be available already on Ubuntu.</p>
-
-<h2 id="usage">Usage</h2>
-
-<p>Basic usage for small file could be found on
-<a href="http://askubuntu.com/questions/46233/converting-djvu-to-pdf">Converting DJVU to PDF</a>,
-where I learned how to convert djvu file.</p>
-
-<p>But if you want to convert something that is a book, converting it directly
-using the method in the above link is going to crash your PC, at least freeze
-it until you kill the process because pdfbeads is creating very huge
-intermediate files. It exceeded 10G before I killed it in my case.</p>
-
-<p>So to deal with the case, I write a script to process djvu file page by page
-and merge all the pdf pages in the end. The script could be found on
-<a href="https://github.com/shawnLeeZX/daily_tools/blob/master/djvu_2_pdf.sh">here</a>.</p>
-
-<h2 id="remark-on-other-solution">Remark on Other Solution</h2>
-
-<p>Before I dived in all those complicated tools, I tried to some easier
-solutions, including online converter and <code>gscan2pdf</code>. They both does not
-work. <code>gscan2pdf</code> is capable of converting djvu to pdf with text. But it may
-have trouble handling hundreds of pages ones given the error report I got.</p>
 ]]></content>
   </entry>
   

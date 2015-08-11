@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: C++ | SHAWN LEE]]></title>
+  <link href="http://shawnLeeZX.github.io/blog/categories/c-plus-plus/atom.xml" rel="self"/>
+  <link href="http://shawnLeeZX.github.io/"/>
+  <updated>2015-08-11T11:37:43+08:00</updated>
+  <id>http://shawnLeeZX.github.io/</id>
+  <author>
+    <name><![CDATA[Shawn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[On Code Completion & Navigation for C/C++ in Emacs]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/08/11/on-code-completion-for-c-slash-c-plus-plus/"/>
+    <updated>2015-08-11T09:21:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/08/11/on-code-completion-for-c-slash-c-plus-plus</id>
+    <content type="html"><![CDATA[<p>Due to the same reason that I decided to add <code>company</code> to provide faster and
+more accurate completion functionality, I switched from
+<a href="http://cedet.sourceforge.net/">CEDET</a> to
+<a href="https://github.com/Sarcasm/irony-mode">irony</a> +
+<a href="https://github.com/leoliu/ggtags">ggtags</a>.</p>
+
+<p>Here is the note TODO</p>
+
+<!-- more -->
+
+<h2 id="irony">Irony</h2>
+
+<h3 id="installation">Installation</h3>
+
+<p>To setup <code>irony</code>, in the <a href="https://github.com/Sarcasm/irony-mode">README</a> of
+<code>irony</code>’s git repo, the installation process provided by the author is pretty
+workable. The only thing may need to be noted is that what packages you need to
+install if you are not going to compile <code>libclang</code> from source.</p>
+
+<p>In Ubuntu, you need those two packages: <code>libclang-dev</code> and <code>clang</code>. By
+mentioning only <code>libclang</code>, it gives me the feeling that I do not need an
+executable of <code>clang</code>, however, there is some errors occurs without
+<code>clang</code>. But due to the trial and error when making <code>irony-mode</code> to work, I am
+not sure it is really caused by lacking of <code>clang</code>.</p>
+
+<h3 id="make-it-work">Make It Work</h3>
+
+<p>You need to let <code>clang</code> know where to find you source file for it to parse
+it. To achieve this, <code>irony</code> provides a concept called
+<a href="https://github.com/Sarcasm/irony-mode#compilation-database">compilation database</a>. Refer
+to it to know how to make <code>irony</code> work. The following is some remarks.</p>
+
+<p>Basically, the most important compilation flags are the include folder path for
+header files. Since <code>irony</code> does not aim to provide code navigation function,
+all information it needs are in header files.</p>
+
+<p>One problem that bugs me a lot when I was setting up <code>irony</code> is that <code>clang</code> in
+<code>irony</code> and <code>gcc</code> handles <code>-I</code> flag differently. The path must immediately
+follows the <code>-I</code>, with no spaces. If there are spaces, <code>irony</code> could not find
+the corresponding paths.</p>
+
+<h3 id="limitations">Limitations</h3>
+
+<p>During my testing with <code>irony</code>, I found that it could not handle definition
+with template, which is used a lot in C++ numerical library. The limitation
+also makes sense since that declarations are generated dynamically during
+compilation for template definition, so maybe you could not get relevant
+information just by parsing the template definition.</p>
+
+<h2 id="ggtags">ggtags</h2>
+
+<p><a href="http://www.gnu.org/software/global/">gtags</a> is better
+<a href="http://ctags.sourceforge.net/">ctags</a> in various ways. See the
+<a href="https://github.com/leoliu/ggtags">table</a> provided by
+<a href="https://github.com/leoliu/ggtags">ggtags</a>’s developers.</p>
+
+<h3 id="setup-system-tags">Setup System Tags</h3>
+
+<p>I copy this section from this
+<a href="http://tuhdo.github.io/c-ide.html#sec-7-2">tutorial</a> in case I may forget it.</p>
+
+<p><code>GNU Global</code> has an environment variable named <code>GTAGSLIBPATH</code>. This variable holds
+<code>GTAGS</code> database of external libraries that your project depends on but not
+inside your project. For example, your project may rely on system headers such
+as <code>stdio.h</code>, <code>stdlib.h</code>… but these headers are internal to your project. However,
+remember that you can only jump to tag definitions of external dependencies,
+and nothing else (such as files or references). But, again, once you are inside
+the external library, you can start jumping around sicne it becomes your
+current project.</p>
+
+<p>To make <code>GNU Global</code> sees your system headers, follow these steps:</p>
+
+<p>Export this environment variable in your shell init file, such as <code>.bashrc</code> or
+<code>.zshrc</code>:</p>
+
+<p><code>bash
+export GTAGSLIBPATH=$HOME/.gtags/
+</code></p>
+
+<p>Execute these commands in your terminal:</p>
+
+<p>```bash
+# Create a directory for holding database, since
+# you cannot create a database in your system paths
+mkdir ~/.gtags</p>
+
+<h1 id="create-symbolic-links-to-your-external-libraries">Create symbolic links to your external libraries</h1>
+<p>ln -s /usr/include usr-include
+ln -s /usr/local/include/ usr-local-include</p>
+
+<h1 id="generate-gnu-global-database">Generate GNU Global database</h1>
+<p>gtags -c
+```</p>
+
+<p>The <code>-c</code> option tells <code>GNU Global</code> to generate tag database in compact format. It
+is necessary because if your project contains C++ headers like <code>Boost</code>, without
+<code>-c</code> your <code>GTAGS</code> database can be more than 1 GB. Same goes for <code>ctags</code>. The <code>GNU
+Global</code> devs explained that it is because the <code>GTAGS</code> database includes the image
+of tagged line, and the <code>Boost</code> headers have a lot of very long lines.</p>
+
+<p>After all the above steps, restart with a shell loaded with that variable. To
+verify Emacs gets the variable, <code>M-x getenv</code> and enter <code>GTAGSLIBPATH</code> and see
+if your predefined value is available. Executing <code>ggtags-find-tag-dwim</code> or
+<code>helm-gtags-dwim</code> jumps to the definition of a system tag like a normal tag.</p>
+
+<p>The disadvantage of using <code>GNU Global</code> is that currently it cannot include
+files without extension. In the C++ system include directory like
+<code>/usr/include/c++/4.8/</code>, it contains files without extension such as
+<code>iostream</code>, <code>string</code>, <code>set</code>, <code>map</code>…. so you can write <code>#include</code> directives
+without having to append <code>.h</code> at the end. <code>GNU Global</code> devs are considering to
+add support for this use case.</p>
+
+<h2 id="some-remarks">Some Remarks</h2>
+
+<ul>
+  <li>Even if you do not enable <code>semantic</code> in <code>CEDET</code>, <code>ECB</code> the Emacs Code Browser
+extension still works. I think it just invoke <code>semantic</code> by itself and only
+parse current buffer, which is rather cheap operation.</li>
+  <li>If you want to know more about CEDET, here is
+<a href="http://alexott.net/en/writings/emacs-devenv/EmacsCedet.html">a nice introductory post</a>
+explaining it.</li>
+  <li>Though <code>CEDET</code> gets disabled, company still takes advantage of some part of
+tools provided by <code>CEDET</code>. One of them is
+<a href="http://cedet.sourceforge.net/ede.shtml">EDE</a>, the project
+manager. See the github README page of
+<a href="https://github.com/randomphrase/company-c-headers">company-c-headers</a> to see
+how could you use <code>EDE</code> to tell <code>company</code> to use system include path.</li>
+  <li><a href="https://github.com/emacs-helm/helm">helm</a> is an alternative to
+<a href="https://www.masteringemacs.org/article/introduction-to-ido-mode">ido</a>. Maybe
+it could be tried while I have more time.</li>
+  <li><a href="https://github.com/abingham/emacs-ycmd">emacs-ycmd</a> is another completion
+framework for Emacs.</li>
+  <li><code>irony</code> offers a flychecker, since I already uses the google style and
+cpplint, I will not try <code>flycheck-irony</code> for the time being, though it may
+offer advantages such as full compilation error detection.</li>
+</ul>
+]]></content>
+  </entry>
+  
+</feed>
