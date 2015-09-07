@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Note | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/note/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-08-21T15:01:15+08:00</updated>
+  <updated>2015-09-07T15:30:15+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,262 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[On Linux Laptop Battery]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/09/07/on-linux-laptop-battery/"/>
+    <updated>2015-09-07T14:15:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/09/07/on-linux-laptop-battery</id>
+    <content type="html"><![CDATA[<p>I would like to note down the how to prolong battery life, in term of both
+hours and years.</p>
+
+<p>Roughly, there are three tricks to extend battery time, <code>laptop-mode</code>,
+<code>powertop</code> and changing screen lightness, and one trick to extend life,
+stopping battery charging according to thresholds. The last trick is only
+applicable to Thinkpad.</p>
+
+<!-- more -->
+
+<h2 id="extending-battery-time">Extending Battery Time</h2>
+
+<p>I have three tricks for extending the battery time, <code>laptop_mode</code>, <code>powertop</code>
+and setting the lightness of the screen. The exact number is forgotten, but
+roughly if the original time of the laptop is around 4 hours, enabling
+<code>laptop_mode</code> will get me one extra, <code>powertop</code> two extra and lightness one
+extra.</p>
+
+<p>Normally, people are told to use one battery management programs considering
+that different programs may conflict, but I found <code>laptop_mode</code> works well with
+<code>powertop</code>, a long time ago. So I settled with it.</p>
+
+<h3 id="laptopmode">laptop_mode</h3>
+
+<p><a href="http://www.samwel.tk/laptop_mode/">laptop_mode</a> is about:</p>
+
+<blockquote>
+  <p>Laptop mode is a kernel “mode” that allows you to extend the battery life of
+your laptop. It does this by making disk write activity “bursty”, so that only
+reads of uncached data result in a disk spinup. It causes a significant
+improvement in battery life (for usage patterns that allow it).</p>
+</blockquote>
+
+<p>There are configuration files for it, but I did not try to use them.</p>
+
+<h3 id="powertop">powertop</h3>
+
+<p><a href="https://01.org/powertop">powertop</a> is from Intel. It could tune a number of
+options to save power usage. For details, refer to
+<a href="https://wiki.archlinux.org/index.php/Powertop">here</a>. I will only note down
+normal usage scenario.</p>
+
+<p>After first installation, we need to run:</p>
+
+<p><code>bash
+sudo powertop --calibrate
+</code></p>
+
+<p>It will take several minutes to finish, and the screen could be dark for tens
+of seconds. So do not panic when this happens. Also, do not touch your laptop
+when powertop is calibrating. After this, you could get power consumption in
+Watt and estimated remaining time in <code>powertop</code>. If you skip this, <code>powertop</code>
+will still work, but not those two information.</p>
+
+<p>Start <code>powertop</code>, in the <code>tunable</code> tab, you could see a number of tunable
+options to improve your battery time. Make all the “Bad” to “Good” will save a
+lot of power consumption. However, the change is lost after you reboot. To make
+it permanent, do the following.</p>
+
+<p>Run,</p>
+
+<p><code>bash
+sudo powertop --html
+</code></p>
+
+<p>You will get a html version report under current directory. Go to the tunable
+page, you could see the command to tune, similar with the following:</p>
+
+<p><code>bash
+# Those following are the settings from powertop to save power.
+echo '1500' &gt; '/proc/sys/vm/dirty_writeback_centisecs';
+echo '0' &gt; '/proc/sys/kernel/nmi_watchdog';
+echo 'min_power' &gt; '/sys/class/scsi_host/host1/link_power_management_policy';
+echo 'min_power' &gt; '/sys/class/scsi_host/host2/link_power_management_policy';
+echo 'min_power' &gt; '/sys/class/scsi_host/host0/link_power_management_policy';
+echo 'auto' &gt; '/sys/bus/usb/devices/1-6/power/control';
+echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:16.0/power/control';
+echo 'auto' &gt; '/sys/bus/pci/devices/0000:02:00.0/power/control';
+echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1f.3/power/control';
+echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1f.2/power/control';
+echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1f.6/power/control';
+echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1f.0/power/control';
+echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1d.0/power/control';
+echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1c.1/power/control';
+echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:1c.0/power/control';
+echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:14.0/power/control';
+echo 'auto' &gt; '/sys/bus/pci/devices/0000:00:02.0/power/control';
+</code></p>
+
+<p>Copy all those lines, or only the ones you want to tune to <code>/etc/rc.local</code>,
+then the change will be permanent.</p>
+
+<h3 id="set-default-lightness">Set Default Lightness</h3>
+
+<p>As least for me, no new packages are needed. Just put the following line in
+<code>/etc/rc.local</code> is OK. Given the difference in hardwares, the <code>intel_backlight</code>
+may be something else.</p>
+
+<p><code>bash
+# Set default brightness. The maximum value is 852. The value 350 here is hard tuned.
+echo 350 &gt; /sys/class/backlight/intel_backlight/brightness
+</code></p>
+
+<h2 id="extending-battery-life">Extending Battery Life</h2>
+
+<p>I am delighted to find out that Thinkpad has such a good support for
+Linux. Lenovo has a good mechanism to extend battery life on Windows. It will
+stop charging the battery if the battery level has exceeded some threshold,
+which would prolong the battery life given the properties of Lithium battery.</p>
+
+<p>Thinkpad still support it if you are using Linux. The solution depends on the
+hardware of your Thinkpad. If you are installing on a recent Thinkpad that has
+an Ivy Bridge or newer processor (X230, T430, T530, etc.), like me, you could
+use a utility named <a href="http://www.thinkwiki.org/wiki/Tpacpi-bat">tpacpi-bat</a>.</p>
+
+<p>If you are using an old Thinkpad, go
+<a href="http://www.thinkwiki.org/wiki/Tp_smapi">there</a> for a solution.</p>
+
+<h3 id="install-acpi-call">Install <code>acpi-call</code></h3>
+
+<p>I use Ubuntu 14.04, so the procedure to install <code>tpacpi-bat</code> on Ubuntu will be
+described.</p>
+
+<p><code>tpacpi-bat</code> has a <a href="https://launchpad.net/~morgwai/+archive/ubuntu/tpbat">ppa</a>
+for Debian based system. Just add the ppa to your source:</p>
+
+<p><code>bash
+sudo sudo add-apt-repository PPA_NAME
+</code></p>
+
+<p><code>tpacpi-bat</code> depends on <code>acpi-call</code>, which is part of <code>acpi-call-dkms</code>. So we
+need to install <code>acpi-call-dkms</code> first. It is also part of the ppa.</p>
+
+<p>The main reason that I write this note is that the package has a bug. This bug
+is widely
+<a href="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=762281">discovered</a> almost
+one year ago, it is strange why it is not fixed yet. After setting up the ppa,
+first try installing <code>acpi-call-dkms</code>.</p>
+
+<p>The installation will fail with message similar with the following:</p>
+
+<p><code>bash
+make KERNELRELEASE=3.19.0-26-generic KVERSION=3.19.0-26-generic KDIR=/lib/modules/3.19.0-26-generic/build....(bad exit status: 2)
+Error! Bad return status for module build on kernel: 3.19.0-26-generic (x86_64)
+Consult /var/lib/dkms/acpi_call/1.1.0/build/make.log for more information.
+dpkg: error processing package acpi-call-dkms (--configure):
+</code></p>
+
+<p>Have a check at the <code>make.log</code>, the compilation error is:</p>
+
+<p><code>bash
+Please don't include &lt;acpi/acpi.h&gt; directly, include &lt;linux/acpi.h&gt; instead
+</code></p>
+
+<p>So I go to <code>/var/lib/dkms/acpi_call/1.1.0/source/acpi_call.c</code>, where the
+installer unpacks the source. I changed <code>&lt;acpi/acpi.h&gt;</code> to <code>&lt;linux/acpi.h&gt;</code>,
+then try the installation(wit the same command) again. Wow, the compilation
+passed and the installation is successful.</p>
+
+<h3 id="install-tpacpi-bat">Install <code>tpacpi-bat</code></h3>
+
+<p>This step is easy, just normal apt installation.</p>
+
+<p><code>bash
+sudo apt-get install tpacpi-bat
+</code></p>
+
+<h3 id="configuration">Configuration</h3>
+
+<p>After installation, now we need to configure the charge threshold of our
+battery. The help message of <code>tpacpi-bat</code> does not seem to be very clear for
+me. So I will note down how to get and set charging battery thresholds.</p>
+
+<p><code>bash
+# tpacpi-bat get start-threshold primary-battery
+tpacpi-bat   -g   ST             1
+</code></p>
+
+<p>Thinkpad has one primary battery and one secondary battery. 1 stands for
+primary battery and 2 stands for secondary battery.</p>
+
+<p>To set the start threshold for starting charging:</p>
+
+<p><code>bash
+# tpacpi-bat set start-threshold primary-battery   start-threshold
+tpacpi-bat   -s  ST              1                 40 
+</code></p>
+
+<p>It means the battery won’t charge if the its battery level is higher than 40.</p>
+
+<p>To make the change permanent, add the following lines in <code>/etc/rc.local</code>.</p>
+
+<p><code>bash
+# Primary battery
+tpacpi-bat -s ST 1 40 # Start threshold
+tpacpi-bat -s SP 1 80 # Stop threshold
+# Secondary battery
+tpacpi-bat -s ST 2 40
+tpacpi-bat -s SP 2 80
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Note on texlive from Ubuntu Source]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/09/02/note-on-texlive-from-ubuntu-source/"/>
+    <updated>2015-09-02T21:49:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/09/02/note-on-texlive-from-ubuntu-source</id>
+    <content type="html"><![CDATA[<p>Some note on the installing LaTeX packages from network.</p>
+
+<!-- more -->
+
+<p>It is very convenient to install packages using <code>tlmgr</code>. However, sometimes
+the mirror you are trying to connect would be extremely slow, which makes it
+feel like tlmgr has stuck.</p>
+
+<p>If you have not been deal with texlive installation for a long time, like me
+today, the first thoughts stuck me is that there is something wrong with
+texlive installation given that I was doing a fresh installation on a new
+laptop I did not familiar. Only after about a hour’s debugging, the idea that
+maybe it is the network issue struck me.</p>
+
+<p>Here I want to note down some points about how tlmgr choose its mirror servers,
+so I won’t be figuring out the same problem next time.</p>
+
+<p>By default, <code>tlmgr</code>’s default repository url is a multiplexor, which will
+choose a mirror in the closest network proximity to your location. See the
+right pane of this <a href="ctan.org/mirrors">page</a>.</p>
+
+<p>To set such behavior of <code>tlmgr</code>, the command is like this:</p>
+
+<p><code>bash
+tlmgr option repository ctan
+</code></p>
+
+<p>where <code>ctan</code> is the nickname for tlmgr for the multiplexor mirror.</p>
+
+<p>Today the multiplexor gave me a server that is not working my LAN
+network. Luckily that I get a workable mirror from my PC and use that to solve
+the network problem.</p>
+
+<p>The url of a mirror is like this:
+<code>http://ftp.yzu.edu.tw/CTAN/systems/texlive/tlnet</code>. The example here is the
+mirror that works for me this time.</p>
+
+<p><em>NOTE FOR ME</em>:</p>
+
+<p>I have set this mirror as default for my laptop.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[On Code Completion & Navigation for C/C++ in Emacs]]></title>
@@ -368,120 +624,6 @@ current project and no documentation seems to hint me how to deal with that.</p>
 <p>Lastly, the refactoring function provided by elpy seems exciting so that I
 won’t need to use <code>search-and-replace</code> or <code>multi-occur</code> stuff. But I did not
 try it yet. Look forward to.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Some Notes on IPython Startup Script]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/08/03/some-notes-on-ipython-startup-script/"/>
-    <updated>2015-08-03T16:22:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/08/03/some-notes-on-ipython-startup-script</id>
-    <content type="html"><![CDATA[<p>This post is going to note down how to let ipython automatically reload a
-module after changing the module and how to run magic function from python
-start-up scripts.</p>
-
-<!-- more -->
-
-<p>ipython will not reload any modules if you have changed some module under given
-that ipython want to keep the interactive session so all your data during the
-session is going to be kept. To overcome this situation while you are writing
-some module or library code, the <code>autoload</code> magic function could be used.</p>
-
-<p>```python
-%load_ext autoreload</p>
-
-<p>%autoreload 2
-```</p>
-
-<p>```bash
-%autoreload
-Reload all modules (except those excluded by %aimport) automatically now.</p>
-
-<p>%autoreload 0
-Disable automatic reloading.</p>
-
-<p>%autoreload 1
-Reload all modules imported with %aimport every time before executing the Python code typed.</p>
-
-<p>%autoreload 2
-Reload all modules (except those excluded by %aimport) every time before executing the Python code typed.</p>
-
-<p>%aimport
-List modules which are to be automatically imported or not to be imported.</p>
-
-<p>%aimport foo
-Import module ‘foo’ and mark it to be autoreloaded for %autoreload 1</p>
-
-<p>%aimport -foo
-Mark module ‘foo’ to not be autoreloaded.
-```</p>
-
-<p>For more details, refer to ipython’s
-<a href="http://ipython.org/ipython-doc/dev/config/extensions/autoreload.html">documentation</a>.</p>
-
-<p>To avoid typing those magic function again and again, they could be put in the
-ipython startup script(Name it with <code>.py</code> suffix under
-<code>.ipython/profile_default/startup</code>. All python scripts under that folder will
-be loaded according to lexical order), which looks like the following:</p>
-
-<p>```python
-from IPython import get_ipython
-ipython = get_ipython()</p>
-
-<p>ipython.magic(“pylab”)
-ipython.magic(“load_ext autoreload”)
-ipython.magic(“autoreload 2”)
-```</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Add Text to Scanned Pdf Without Text]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/07/14/how-to-add-text-to-scanned-pdf-without-text/"/>
-    <updated>2015-07-14T10:43:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/07/14/how-to-add-text-to-scanned-pdf-without-text</id>
-    <content type="html"><![CDATA[<p>I am reading some paper that is decades ago so no pdf file with text could
-found, so I looked up to some solution. Here it is.</p>
-
-<!-- more -->
-
-<p><a href="https://github.com/gkovacs/pdfocr">Pdfocr</a> is a ruby script that integrates
-open source tools to add text layer to pdf files.</p>
-
-<p>To be able to use it, there are some dependence needed, just as shell scripts.</p>
-
-<p><code>bash
-sudo apt-get install pdftk
-sudo apt-get install tesseract-ocr tesseract-ocr-eng exactimage
-</code></p>
-
-<p>You can infer what those programs are used for based what the author
-<a href="http://ubuntuforums.org/showthread.php?t=1456756">said</a> below.</p>
-
-<blockquote>
-  <p>pdfocr was written by me (Geza Kovacs). It is simply a script which automates
-the following process:</p>
-
-  <ol>
-    <li>Splitting the PDF file into separate pages using pdftk</li>
-    <li>Extracting out the image data using pdfimages</li>
-    <li>Doing OCR (optical character recognition) using cuneiform</li>
-    <li>Embedding the detected text back into the PDF file using hocr2pdf</li>
-    <li>Merging together the files using pdftk.</li>
-  </ol>
-</blockquote>
-
-<p>Lastly, clone the ruby code.</p>
-
-<p><code>bash
-git clone https://github.com/gkovacs/pdfocr
-</code></p>
-
-<p>Then enjoy.</p>
-
-<p><code>bash
-pdfocr.rb -i foo.pdf -o out.pdf
-</code></p>
 ]]></content>
   </entry>
   
