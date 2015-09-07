@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Emacs | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/emacs/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-09-07T15:30:15+08:00</updated>
+  <updated>2015-09-07T20:02:18+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -133,9 +133,8 @@ add support for this use case.</p>
 <h2 id="some-remarks">Some Remarks</h2>
 
 <ul>
-  <li>Even if you do not enable <code>semantic</code> in <code>CEDET</code>, <code>ECB</code> the Emacs Code Browser
-extension still works. I think it just invoke <code>semantic</code> by itself and only
-parse current buffer, which is rather cheap operation.</li>
+  <li><code>semantic-mode</code> is still used to provide method overview for ECB. It is
+configured to only parse current buffer, which is rather acceptable in speed.</li>
   <li>If you want to know more about CEDET, here is
 <a href="http://alexott.net/en/writings/emacs-devenv/EmacsCedet.html">a nice introductory post</a>
 explaining it.</li>
