@@ -4,7 +4,7 @@
   <title><![CDATA[Category: LaTeX | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/latex/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-09-07T20:02:18+08:00</updated>
+  <updated>2015-09-21T21:06:37+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,54 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Note on texlive from Ubuntu Source]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/09/02/note-on-texlive-from-ubuntu-source/"/>
+    <updated>2015-09-02T21:49:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/09/02/note-on-texlive-from-ubuntu-source</id>
+    <content type="html"><![CDATA[<p>Some note on the installing LaTeX packages from network.</p>
+
+<!-- more -->
+
+<p>It is very convenient to install packages using <code>tlmgr</code>. However, sometimes
+the mirror you are trying to connect would be extremely slow, which makes it
+feel like tlmgr has stuck.</p>
+
+<p>If you have not been deal with texlive installation for a long time, like me
+today, the first thoughts stuck me is that there is something wrong with
+texlive installation given that I was doing a fresh installation on a new
+laptop I did not familiar. Only after about a hour’s debugging, the idea that
+maybe it is the network issue struck me.</p>
+
+<p>Here I want to note down some points about how tlmgr choose its mirror servers,
+so I won’t be figuring out the same problem next time.</p>
+
+<p>By default, <code>tlmgr</code>’s default repository url is a multiplexor, which will
+choose a mirror in the closest network proximity to your location. See the
+right pane of this <a href="ctan.org/mirrors">page</a>.</p>
+
+<p>To set such behavior of <code>tlmgr</code>, the command is like this:</p>
+
+<p><code>bash
+tlmgr option repository ctan
+</code></p>
+
+<p>where <code>ctan</code> is the nickname for tlmgr for the multiplexor mirror.</p>
+
+<p>Today the multiplexor gave me a server that is not working my LAN
+network. Luckily that I get a workable mirror from my PC and use that to solve
+the network problem.</p>
+
+<p>The url of a mirror is like this:
+<code>http://ftp.yzu.edu.tw/CTAN/systems/texlive/tlnet</code>. The example here is the
+mirror that works for me this time.</p>
+
+<p><em>NOTE FOR ME</em>:</p>
+
+<p>I have set this mirror as default for my laptop.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Writing Math Equations on Octopress 2.0]]></title>

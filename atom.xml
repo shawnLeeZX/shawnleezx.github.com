@@ -4,7 +4,7 @@
   <title><![CDATA[SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-09-07T20:02:18+08:00</updated>
+  <updated>2015-09-21T21:06:37+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,368 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[On Teaching and Learning]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/09/21/on-teaching-and-learning/"/>
+    <updated>2015-09-21T20:37:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/09/21/on-teaching-and-learning</id>
+    <content type="html"><![CDATA[<p>Some notes on teaching and learning.</p>
+
+<!-- more -->
+
+<p>The way we teach reflects the way we learn and the way we communicate. Teaching
+gives me another perspective on how may I could be taught or just, learn from
+others. Such experience has led me a long way to realize my deficiency.</p>
+
+<p>I attended a workshop on teaching today and want to note down something
+learned. It is the first time I got systematical training on how to teaching,
+which is equivalent to how to learn.</p>
+
+<p>The following stuffs come from the handout in the workshop.</p>
+
+<h3 id="seven-research-based-principles-for-smart-teaching">Seven Research-based Principles for Smart Teaching</h3>
+
+<p>There are seven principles in teaching, which also means in learning.</p>
+
+<ol>
+  <li>prior knowledge</li>
+  <li>structuring knowledge</li>
+  <li>motivation</li>
+  <li>self-awareness on the one’s situation</li>
+  <li>synthesis of different parts of acquired knowledge </li>
+  <li>feedback</li>
+  <li>emotional feeling, social and intellectual climate</li>
+</ol>
+
+<p>This is a systematical summary of elements that involves in the learning
+process. Prior knowledge is what you already have; structuring knowledge is how
+you condense your knowledge and build inner connection between different
+separate parts; motivation is power house behind all your efforts;
+self-awareness is about a clear awareness of one’s current situation — what
+one have known, what one do not know, what one know one do not know; synthesis
+is where something new could happen; feedback is how people get to know their
+mistakes, so they could fix them, and learn new things; emotional stability and
+social support is very important for long term learning.</p>
+
+<p>After some thinking, it seems that nothing is really new for me, but the
+summary is helpful.</p>
+
+<h3 id="on-motivation">On Motivation</h3>
+
+<p>Another important part on teaching and learning discussed is what motivate
+people to do better on tasks that need cognitive thinking.</p>
+
+<p>I long have known only money is not enough. Today I got a very good summary:</p>
+
+<blockquote>
+  <p>Pay people enough to take the issue of money off the table.</p>
+</blockquote>
+
+<p>The factors that motivate to do great work is autonomy, mastery and
+purpose. There should many materials online talking on this given this is a
+research output from scientists.</p>
+
+<h3 id="three-skills-on-communication">Three Skills On Communication</h3>
+
+<ol>
+  <li>Storytelling</li>
+  <li>Contextualizing</li>
+  <li>Sketching</li>
+</ol>
+
+<p>All those are kind of one thing. People learn from examples, so we need
+storytelling; people learn from examples that they know the most, so we need
+contextualize the examples with their experience; people learn bit by bit,
+dynamically, so we need to present it bit by bit, like sketching a picture.</p>
+
+<p>It is easier said that done. Practice is important.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[On Linux Laptop Battery]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/09/07/on-linux-laptop-battery/"/>
+    <updated>2015-09-07T14:15:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/09/07/on-linux-laptop-battery</id>
+    <content type="html"><![CDATA[<p>I would like to note down the how to prolong battery life, in term of both
+hours and years.</p>
+
+<p>Roughly, there are three tricks to extend battery time, <code>laptop-mode</code>,
+<code>powertop</code> and changing screen lightness, and one trick to extend life,
+stopping battery charging according to thresholds. The last trick is only
+applicable to Thinkpad.</p>
+
+<!-- more -->
+
+<h2 id="extending-battery-time">Extending Battery Time</h2>
+
+<p>I have three tricks for extending the battery time, <code>laptop_mode</code>, <code>powertop</code>
+and setting the lightness of the screen. The exact number is forgotten, but
+roughly if the original time of the laptop is around 4 hours, enabling
+<code>laptop_mode</code> will get me one extra, <code>powertop</code> two extra and lightness one
+extra.</p>
+
+<p>Normally, people are told to use one battery management programs considering
+that different programs may conflict, but I found <code>laptop_mode</code> works well with
+<code>powertop</code>, a long time ago. So I settled with it.</p>
+
+<h3 id="laptopmode">laptop_mode</h3>
+
+<p><a href="http://www.samwel.tk/laptop_mode/">laptop_mode</a> is about:</p>
+
+<blockquote>
+  <p>Laptop mode is a kernel “mode” that allows you to extend the battery life of
+your laptop. It does this by making disk write activity “bursty”, so that only
+reads of uncached data result in a disk spinup. It causes a significant
+improvement in battery life (for usage patterns that allow it).</p>
+</blockquote>
+
+<p>There are configuration files for it, but I did not try to use them.</p>
+
+<h3 id="powertop">powertop</h3>
+
+<p><a href="https://01.org/powertop">powertop</a> is from Intel. It could tune a number of
+options to save power usage. For details, refer to
+<a href="https://wiki.archlinux.org/index.php/Powertop">here</a>. I will only note down
+normal usage scenario.</p>
+
+<p>After first installation, we need to run:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">sudo powertop --calibrate
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>It will take several minutes to finish, and the screen could be dark for tens
+of seconds. So do not panic when this happens. Also, do not touch your laptop
+when powertop is calibrating. After this, you could get power consumption in
+Watt and estimated remaining time in <code>powertop</code>. If you skip this, <code>powertop</code>
+will still work, but not those two information.</p>
+
+<p>Start <code>powertop</code>, in the <code>tunable</code> tab, you could see a number of tunable
+options to improve your battery time. Make all the “Bad” to “Good” will save a
+lot of power consumption. However, the change is lost after you reboot. To make
+it permanent, do the following.</p>
+
+<p>Run,</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">sudo powertop --html
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>You will get a html version report under current directory. Go to the tunable
+page, you could see the command to tune, similar with the following:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="c"># Those following are the settings from powertop to save power.</span>
+</span><span class="line"><span class="nb">echo</span> <span class="s1">&#39;1500&#39;</span> &gt; <span class="s1">&#39;/proc/sys/vm/dirty_writeback_centisecs&#39;</span>;
+</span><span class="line"><span class="nb">echo</span> <span class="s1">&#39;0&#39;</span> &gt; <span class="s1">&#39;/proc/sys/kernel/nmi_watchdog&#39;</span>;
+</span><span class="line"><span class="nb">echo</span> <span class="s1">&#39;min_power&#39;</span> &gt; <span class="s1">&#39;/sys/class/scsi_host/host1/link_power_management_policy&#39;</span>;
+</span><span class="line"><span class="nb">echo</span> <span class="s1">&#39;min_power&#39;</span> &gt; <span class="s1">&#39;/sys/class/scsi_host/host2/link_power_management_policy&#39;</span>;
+</span><span class="line"><span class="nb">echo</span> <span class="s1">&#39;min_power&#39;</span> &gt; <span class="s1">&#39;/sys/class/scsi_host/host0/link_power_management_policy&#39;</span>;
+</span><span class="line"><span class="nb">echo</span> <span class="s1">&#39;auto&#39;</span> &gt; <span class="s1">&#39;/sys/bus/usb/devices/1-6/power/control&#39;</span>;
+</span><span class="line"><span class="nb">echo</span> <span class="s1">&#39;auto&#39;</span> &gt; <span class="s1">&#39;/sys/bus/pci/devices/0000:00:16.0/power/control&#39;</span>;
+</span><span class="line"><span class="nb">echo</span> <span class="s1">&#39;auto&#39;</span> &gt; <span class="s1">&#39;/sys/bus/pci/devices/0000:02:00.0/power/control&#39;</span>;
+</span><span class="line"><span class="nb">echo</span> <span class="s1">&#39;auto&#39;</span> &gt; <span class="s1">&#39;/sys/bus/pci/devices/0000:00:1f.3/power/control&#39;</span>;
+</span><span class="line"><span class="nb">echo</span> <span class="s1">&#39;auto&#39;</span> &gt; <span class="s1">&#39;/sys/bus/pci/devices/0000:00:1f.2/power/control&#39;</span>;
+</span><span class="line"><span class="nb">echo</span> <span class="s1">&#39;auto&#39;</span> &gt; <span class="s1">&#39;/sys/bus/pci/devices/0000:00:1f.6/power/control&#39;</span>;
+</span><span class="line"><span class="nb">echo</span> <span class="s1">&#39;auto&#39;</span> &gt; <span class="s1">&#39;/sys/bus/pci/devices/0000:00:1f.0/power/control&#39;</span>;
+</span><span class="line"><span class="nb">echo</span> <span class="s1">&#39;auto&#39;</span> &gt; <span class="s1">&#39;/sys/bus/pci/devices/0000:00:1d.0/power/control&#39;</span>;
+</span><span class="line"><span class="nb">echo</span> <span class="s1">&#39;auto&#39;</span> &gt; <span class="s1">&#39;/sys/bus/pci/devices/0000:00:1c.1/power/control&#39;</span>;
+</span><span class="line"><span class="nb">echo</span> <span class="s1">&#39;auto&#39;</span> &gt; <span class="s1">&#39;/sys/bus/pci/devices/0000:00:1c.0/power/control&#39;</span>;
+</span><span class="line"><span class="nb">echo</span> <span class="s1">&#39;auto&#39;</span> &gt; <span class="s1">&#39;/sys/bus/pci/devices/0000:00:14.0/power/control&#39;</span>;
+</span><span class="line"><span class="nb">echo</span> <span class="s1">&#39;auto&#39;</span> &gt; <span class="s1">&#39;/sys/bus/pci/devices/0000:00:02.0/power/control&#39;</span>;
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Copy all those lines, or only the ones you want to tune to <code>/etc/rc.local</code>,
+then the change will be permanent.</p>
+
+<h3 id="set-default-lightness">Set Default Lightness</h3>
+
+<p>As least for me, no new packages are needed. Just put the following line in
+<code>/etc/rc.local</code> is OK. Given the difference in hardwares, the <code>intel_backlight</code>
+may be something else.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="c"># Set default brightness. The maximum value is 852. The value 350 here is hard tuned.</span>
+</span><span class="line"><span class="nb">echo </span>350 &gt; /sys/class/backlight/intel_backlight/brightness
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="extending-battery-life">Extending Battery Life</h2>
+
+<p>I am delighted to find out that Thinkpad has such a good support for
+Linux. Lenovo has a good mechanism to extend battery life on Windows. It will
+stop charging the battery if the battery level has exceeded some threshold,
+which would prolong the battery life given the properties of Lithium battery.</p>
+
+<p>Thinkpad still support it if you are using Linux. The solution depends on the
+hardware of your Thinkpad. If you are installing on a recent Thinkpad that has
+an Ivy Bridge or newer processor (X230, T430, T530, etc.), like me, you could
+use a utility named <a href="http://www.thinkwiki.org/wiki/Tpacpi-bat">tpacpi-bat</a>.</p>
+
+<p>If you are using an old Thinkpad, go
+<a href="http://www.thinkwiki.org/wiki/Tp_smapi">there</a> for a solution.</p>
+
+<h3 id="install-acpi-call">Install <code>acpi-call</code></h3>
+
+<p>I use Ubuntu 14.04, so the procedure to install <code>tpacpi-bat</code> on Ubuntu will be
+described.</p>
+
+<p><code>tpacpi-bat</code> has a <a href="https://launchpad.net/~morgwai/+archive/ubuntu/tpbat">ppa</a>
+for Debian based system. Just add the ppa to your source:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">sudo sudo add-apt-repository PPA_NAME
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><code>tpacpi-bat</code> depends on <code>acpi-call</code>, which is part of <code>acpi-call-dkms</code>. So we
+need to install <code>acpi-call-dkms</code> first. It is also part of the ppa.</p>
+
+<p>The main reason that I write this note is that the package has a bug. This bug
+is widely
+<a href="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=762281">discovered</a> almost
+one year ago, it is strange why it is not fixed yet. After setting up the ppa,
+first try installing <code>acpi-call-dkms</code>.</p>
+
+<p>The installation will fail with message similar with the following:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">make <span class="nv">KERNELRELEASE</span><span class="o">=</span>3.19.0-26-generic <span class="nv">KVERSION</span><span class="o">=</span>3.19.0-26-generic <span class="nv">KDIR</span><span class="o">=</span>/lib/modules/3.19.0-26-generic/build....<span class="o">(</span>bad <span class="nb">exit </span>status: 2<span class="o">)</span>
+</span><span class="line">Error! Bad <span class="k">return </span>status <span class="k">for </span>module build on kernel: 3.19.0-26-generic <span class="o">(</span>x86_64<span class="o">)</span>
+</span><span class="line">Consult /var/lib/dkms/acpi_call/1.1.0/build/make.log <span class="k">for </span>more information.
+</span><span class="line">dpkg: error processing package acpi-call-dkms <span class="o">(</span>--configure<span class="o">)</span>:
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Have a check at the <code>make.log</code>, the compilation error is:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">Please don<span class="err">&#39;</span>t include &lt;acpi/acpi.h&gt; directly, include &lt;linux/acpi.h&gt; instead
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>So I go to <code>/var/lib/dkms/acpi_call/1.1.0/source/acpi_call.c</code>, where the
+installer unpacks the source. I changed <code>&lt;acpi/acpi.h&gt;</code> to <code>&lt;linux/acpi.h&gt;</code>,
+then try the installation(wit the same command) again. Wow, the compilation
+passed and the installation is successful.</p>
+
+<h3 id="install-tpacpi-bat">Install <code>tpacpi-bat</code></h3>
+
+<p>This step is easy, just normal apt installation.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">sudo apt-get install tpacpi-bat
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="configuration">Configuration</h3>
+
+<p>After installation, now we need to configure the charge threshold of our
+battery. The help message of <code>tpacpi-bat</code> does not seem to be very clear for
+me. So I will note down how to get and set charging battery thresholds.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="c"># tpacpi-bat get start-threshold primary-battery</span>
+</span><span class="line">tpacpi-bat   -g   ST             1
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Thinkpad has one primary battery and one secondary battery. 1 stands for
+primary battery and 2 stands for secondary battery.</p>
+
+<p>To set the start threshold for starting charging:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="c"># tpacpi-bat set start-threshold primary-battery   start-threshold</span>
+</span><span class="line">tpacpi-bat   -s  ST              1                 40
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>It means the battery won’t charge if the its battery level is higher than 40.</p>
+
+<p>To make the change permanent, add the following lines in <code>/etc/rc.local</code>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="c"># Primary battery</span>
+</span><span class="line">tpacpi-bat -s ST 1 40 <span class="c"># Start threshold</span>
+</span><span class="line">tpacpi-bat -s SP 1 80 <span class="c"># Stop threshold</span>
+</span><span class="line"><span class="c"># Secondary battery</span>
+</span><span class="line">tpacpi-bat -s ST 2 40
+</span><span class="line">tpacpi-bat -s SP 2 80
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Note on texlive from Ubuntu Source]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/09/02/note-on-texlive-from-ubuntu-source/"/>
+    <updated>2015-09-02T21:49:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/09/02/note-on-texlive-from-ubuntu-source</id>
+    <content type="html"><![CDATA[<p>Some note on the installing LaTeX packages from network.</p>
+
+<!-- more -->
+
+<p>It is very convenient to install packages using <code>tlmgr</code>. However, sometimes
+the mirror you are trying to connect would be extremely slow, which makes it
+feel like tlmgr has stuck.</p>
+
+<p>If you have not been deal with texlive installation for a long time, like me
+today, the first thoughts stuck me is that there is something wrong with
+texlive installation given that I was doing a fresh installation on a new
+laptop I did not familiar. Only after about a hour’s debugging, the idea that
+maybe it is the network issue struck me.</p>
+
+<p>Here I want to note down some points about how tlmgr choose its mirror servers,
+so I won’t be figuring out the same problem next time.</p>
+
+<p>By default, <code>tlmgr</code>’s default repository url is a multiplexor, which will
+choose a mirror in the closest network proximity to your location. See the
+right pane of this <a href="ctan.org/mirrors">page</a>.</p>
+
+<p>To set such behavior of <code>tlmgr</code>, the command is like this:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">tlmgr option repository ctan
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>where <code>ctan</code> is the nickname for tlmgr for the multiplexor mirror.</p>
+
+<p>Today the multiplexor gave me a server that is not working my LAN
+network. Luckily that I get a workable mirror from my PC and use that to solve
+the network problem.</p>
+
+<p>The url of a mirror is like this:
+<code>http://ftp.yzu.edu.tw/CTAN/systems/texlive/tlnet</code>. The example here is the
+mirror that works for me this time.</p>
+
+<p><em>NOTE FOR ME</em>:</p>
+
+<p>I have set this mirror as default for my laptop.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[On Code Completion & Navigation for C/C++ in Emacs]]></title>
@@ -2064,564 +2426,6 @@ headlines.  — Page 657</p>
 生命永恒的奥秘，满足于觉察现存世界的神奇结构，窥见它的一鳞半爪，并且以诚挚的努力
 去领悟在自然界中显示出来的那个理性的一部分，即使只是其极小的一部分，我也就心满意
 足了。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Connection between Fourier Components in Real and Complex Form]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/04/11/connection-between-fourier-components-in-normal-and-complex-form/"/>
-    <updated>2015-04-11T10:59:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/04/11/connection-between-fourier-components-in-normal-and-complex-form</id>
-    <content type="html"><![CDATA[<p>This post notes down my current understanding of the intuition behind using
-complex exponentials to represent function, stressing on the connection between
-the complex form and the normally all real form.</p>
-
-<!-- more -->
-
-<h2 id="brief-note-on-complex-number">Brief Note on Complex Number</h2>
-
-<p>One of the most useful properties of complex number is its ability to unify
-algebraic and geometrical operations. More about this could be found on
-<a href="http://betterexplained.com/articles/a-visual-intuitive-guide-to-imaginary-numbers/">Better Explained</a>
-which is a good elementary explanation of imaginary number.</p>
-
-<p>It was not until seriously studying Fourier Transformation that I figured out
-the nature of Complex Number.</p>
-
-<p>Number system is human’s way to model nature. Integer number models
-counting. Negative number models things like debt. Zero models null. Fraction
-number models division and fraction. Those consist of rational number. But to
-really model length, which occurs naturally in Pythagoran theorem, irrational
-number has to be introduced. Rational number and irrational number together
-make up real number system, where limit of points – may be compared with
-limit of length is regarded as a conceptual number, to make the system
-complete(complete is a mathematical terminology).</p>
-
-<p>But all those models are for scalar. Nature is not one dimensional. It is
-rules of vector that engine this world. This is where complex comes
-from. </p>
-
-<p>The most elegant equation in the history is Euler Equation:</p>
-
-<script type="math/tex; mode=display">
-e^{ix} = cos(x) + i sin(x)
-</script>
-
-<p><img class="center" src="http://upload.wikimedia.org/wikipedia/commons/7/71/Euler%27s_formula.svg" title="Euler Equation Illustration" /></p>
-
-<p>It is saying that every complex exponential is a 2D vector, where $(x, y) =
-(cos\phi, sin\phi)$. Instead of just modeling scalar, we model 2D vector using
-complex number. So by manipulating algebra of complex, we are doing geometrical
-operations. And the meaning of imaginary $i$ is rotating the vector 90 degree
-anti-clockwise. That’s the reason why it connects algebra and geometry.</p>
-
-<p>This will be clearer after Fourier related stuff is introduced in the following
-sections.</p>
-
-<p>I am still wondering if we could unify more dimensions into number instead of
-just two?</p>
-
-<h2 id="fourier-series">Fourier Series</h2>
-
-<p>Fourier Series is about this statement:</p>
-
-<blockquote>
-  <p>Every periodic function could be represented using arbitrary number of
-ocsillating functions, namely cosines and sines or complex exponentials.</p>
-</blockquote>
-
-<p>As noted in the beginning, this post is about intuition behind the relationship
-between cosines sines and complex exponentials.</p>
-
-<p>First we see fourier series in its real form decomposition.</p>
-
-<script type="math/tex; mode=display">
-f(t) = \sum\limits_{n = -\infty}^{\infty} c_{n}cos(nw_{0}t + \phi)
-</script>
-
-<p>We could also write it in form of $sin(t)$ given that it is just a shifted
-version of $cos(t)$. But we will see that using $cos(t)$ makes sense in a
-moment.</p>
-
-<p>NOW, every $cos(nw_{0}t + \phi)$ is the real part of $e^{i(nw_{0}t + \phi)}$.
-Remember that the algebra operations between complex exponentials are
-equivalent to vector operations. So instead seeing combination of different
-Fourier components as superposition of constantly changing(with regard to $t$)
-scalar addition, we see it as vector addition in a 2D dimensional complex
-plane. See illustration
-<a href="http://betterexplained.com/articles/an-interactive-guide-to-the-fourier-transform/">here</a>,
-in about half the article.</p>
-
-<p>Though they vibrate in circle, which indicates the way the interact with each
-other, we only see its effect – cosine(real) part. So each time we measure or
-in other word, sample, we get the real part, which is the final function we
-want.</p>
-
-<p>By converting back and forth between the real form and complex form, you will
-find terms related to frequency $s$ is $cos(st + \phi)$ and
-$\frac{1}{2}e^{ist}e^{i\phi} + \frac{1}{2}e^{-ist}e^{-i\phi}$. The negative
-frequency part is used to “drag” back or cancel out the imaginary or the part
-that is orthogonal to real part. Or in other word, we only want the real part.</p>
-
-<p>Intuitively, it means to make the decomposition conforming with observation, we
-use conjugation to drag the vector back to real line. Now it makes sense that
-we choose $cos(nw_{0}t + \phi)$ to decompose instead of $sin(nw_{0}t +
-\tau)$. Cosine is related to the x-axis by definition which is real line.</p>
-
-<p>We could stop here. The connection between the real form and the complex form
-is pretty clear now. But there is more, in a finer level.</p>
-
-<p>Given that each components of the decomposition is orthogonal, now we need only
-to consider one of its term $cos(nw_{0}t + \phi)$.</p>
-
-<p>From now on for notation simplicity we denote $nw_{0}$ as $s$. Each component
-could also be decomposed into two components, remembering that we see each
-component as two dimension vector. The phase $\phi$ determines the vector
-initially. We can see this clearer by expanding($1/2$ is dropped for
-convenience):</p>
-
-<script type="math/tex; mode=display">
-e^{ist}e^{i\phi} + e^{-ist}e^{-i\phi} = e^{ist}(cos(\phi) + i sin(\phi)) +
-e^{-ist}(cos(\phi) - i sin(\phi))
-</script>
-
-<p>THIS actually means in a finer level, the innate vector property is also
-modeled – every component consists of two basic components, sine and cosine
-and $\phi$ decides how they combine with each other initially, which determines
-how they interact with each other forever.</p>
-
-<p>The decomposition into sine and cosine also makes a lot of sense. cos is
-orthogonal to sine and together they can represent any trigonometric function.</p>
-
-<h2 id="note-on-other-derivation">Note On Other Derivation</h2>
-
-<p>There is another way to get real form of fourier series to complex
-form. Actually it is the first time I realize the connection between them,
-though fourier was learned way earlier(TERRIBLE COLLEGE EDUCATION!!!).</p>
-
-<p>Fourier decomposition is written the following way:</p>
-
-<script type="math/tex; mode=display">
-f(t) = \sum\limits_{n = -\infty}^{\infty} c_{n}sin(nw_{0}t + \phi)
-</script>
-
-<p>By some derivation, we have:</p>
-
-<script type="math/tex; mode=display">
-f(t) = \sum\limits_{n = -\infty}^{\infty} a_{n} cos(nw_{0}t) + b_{n}sin(nw_{0}t)
-</script>
-
-<p>The phase is merge into coefficients $a_{n}$ and $b_{n}$.</p>
-
-<p>Given $sin(t) = \frac{1}{2i}(e^{it} - e^{-it})$ and $cos(t) = \frac{1}{2}(e^{it} + e^{-it})$,
-substitute above equations in, we also get the complex form.</p>
-
-<p>This approach is harder to understand because it gets the atomic level wrong –
-it should be $e^{it}$ not $cos(t) + i sin(t)$. But it does have benefits.</p>
-
-<p>Each function $f$ could be decompose into a combination of even and odd part
-by:</p>
-
-<script type="math/tex; mode=display">
-f = \frac{1}{2}(f(t) + f(-t)) + \frac{1}{2}(f(t) - f(-t))
-</script>
-
-<p>The formed is the even part and the latter is the odd part. Let $f(t) = e^{it}$
-we can see that $i sin(t)$ the odd part of $e^{it}$ and $cos(t)$ the even part.</p>
-
-<p>It makes clear that when the function is even, we get zero value in coefficients
-of $sin(t)$ while when the function is odd, we get zero value in coefficients
-of $cos(t)$: if a function has a odd component $sin(t)$, it never is going to
-be even.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[A Preliminary Summary On What CNN Is Doing Mathematically]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/04/07/a-preliminary-summary-on-what-cnn-is-doing-mathematically/"/>
-    <updated>2015-04-07T19:05:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/04/07/a-preliminary-summary-on-what-cnn-is-doing-mathematically</id>
-    <content type="html"><![CDATA[<p>There is too much to stuff all those notes into one weekly summary, so I decide
-to decouple it into this post. It is about a description of the process what
-Convolutional Neural Network(CNN) is doing mathematically.</p>
-
-<!-- more -->
-
-<p>Last week I have written an informal one. The informality was resulted from an
-unclear understanding of space, mapping and the way CNN works. Things get much
-clearer now.</p>
-
-<p>The task CNN is trying to achieve is the same with all the other machine
-learning algorithms – finding a mapping that will transform the preliminary
-input to one kind of output that makes the task easier to solve or directly
-solve the task. The formed one is called feature learning and the latter is
-called classification or anything else that is the target.</p>
-
-<p>The problem is how exactly such mapping is found? Or more specifically, why CNN
-is more powerful than other algorithms?</p>
-
-<h2 id="how-mapping-is-found-mathematically">How Mapping Is Found Mathematically</h2>
-
-<p>First we address the first problem, though those two are actually the same.</p>
-
-<p>Instead of trying to find a mapping to our problem directly, which are methods
-called shallow model today, CNN tries to find a sequence of mappings to
-decouple information from its most primitive form. If we rephrase the word
-mapping to operation, it may sound more like plain English. Then judging from
-the information extracted, it answers whatever relevant questions we are
-interested, such as classification of images of different animals.</p>
-
-<p>More mathematically, CNN tries to find the mapping by finding a representation
-of the mapping on relevant bases which are found by compositing preliminary
-bases. Then in the space represented by the relevant bases, divide the new
-space using previous shallow model.</p>
-
-<p>The latter part has not been investigated fully yet. I guess support vector
-machine may be the key to this problem.</p>
-
-<p>Further zooming in the process, in each layer, every kernel of CNN will
-convolute with the input. In the first layer, the input is the raw signal. In
-the following layer, the input is the output of last layer. A kernel here is a
-basis. Convoluting with input is actually taking inner product with input.</p>
-
-<p>In the first layer, by computing the inner product of a basis function with a
-signal, we get a value. This value is one way to look at the signal, or the
-information extracted which may be comprehended by human, like the existence of
-a certain of kind edge. By taking inner product of all bases, we get the
-signal’s representation in form of coordinates of the set of bases.</p>
-
-<p>From now on, the task is to find combinations of the first layer’s bases that
-are more informative. By using more layers, we hope to find relevant
-combinations in exponential number of possible ones.</p>
-
-<p>The most preliminary bases actually have mathematical terminology: in the
-continuous case, it is called Schauder basis; in the discrete case, it is
-called Hamel basis. In this case, the coordinates of the signal is the same
-with its ground truth value.</p>
-
-<p>Feature mappings from previous layer to current layer are the key to find a
-more complex bases. It brings the search in the space of preliminary bases to a
-more advanced space of more advanced bases. A best example is an input in form
-of a three channel image will have three feature mappings, one corresponding to
-one color. If we just concatenate three pixels of different color, we have no
-idea it corresponds to different frequencies of light. But if we take it from
-three channels, we are using the high-level information of colors. Another
-example is provided in the next section.</p>
-
-<p>Now the process up to the first part of the process is done. The second part
-will not be described given that I have not understood it fully yet.</p>
-
-<p>The followings are some notes on properties of such process:</p>
-
-<ol>
-  <li>The key of depth is reusing information hierarchically and preventing
-exploration on meaningless part of function space. This is the main reason
-why deep model works and will be elaborated with an example in the next
-section.</li>
-  <li>Coordinates are coordinates. There is only one ground truth of
-nature. Coordinates are the way we see the ground truth. Different spaces
-are actually different with different levels of abstraction. Different
-levels of abstraction are achieved using different sets of bases.</li>
-  <li>Taking inner product is the process to map point in one space to another
-space. This is also the intuition behind Riesz Theorem that any linear
-functional could be represented using inner product.</li>
-  <li>The intuition of taking inner product is also computing correlation between
-the basis and the signal. The more they are similar, the bigger the
-coordinate(in CNN terminology system, the bigger the response). </li>
-  <li>Bases are connected with hidden factors referred by Bengio.</li>
-  <li>Spatial information is kept by the intuition of cascading local receptive
-fields.</li>
-</ol>
-
-<hr />
-
-<h2 id="analytically-why-more-depth-is-more-powerful">Analytically Why More Depth Is More Powerful</h2>
-
-<p>Imagine a square whose components are two horizontal edges and two vertical
-edges. To detect such shape, we could imagine a three layer convolutional
-neural network. In the first layer of filters, we have two kernels – one
-for horizontal edges and one for vertical edges. Write them in matrix form,
-they are like this:</p>
-
-<p>Horizontal Edge Kernel</p>
-
-<script type="math/tex; mode=display">% &lt;![CDATA[
-
-\begin{bmatrix}
-0 & 0 & 0 \\
-1 & 1 & 1 \\
-0 & 0 & 0
-\end{bmatrix}
- %]]&gt;</script>
-
-<p>and Vertical Edge Kernel</p>
-
-<script type="math/tex; mode=display">% &lt;![CDATA[
-
-\begin{bmatrix}
-0 & 1 & 0 \\
-0 & 1 & 0 \\
-0 & 1 & 0
-\end{bmatrix}
- %]]&gt;</script>
-
-<p>The square we are going to detect is like this:</p>
-
-<script type="math/tex; mode=display">% &lt;![CDATA[
-
-\begin{bmatrix}
-1   & 1 & 1 & 1 &  1 \\
-1   & 0 & 0 & 0 &  1 \\
-1   & 0 & 0 & 0 &  1 \\
-1   & 0 & 0 & 0 &  1 \\
-1   & 1 & 1 & 1 &  1 
-\end{bmatrix}
- %]]&gt;</script>
-
-<p>As we moving the two kernels, we get response similar like this:</p>
-
-<p>feature map for horizontal edge detection kernel:</p>
-
-<script type="math/tex; mode=display">% &lt;![CDATA[
-
-\begin{bmatrix}
-x & 1 & x \\
-0 & 0 & 0 \\
-x & 1 & x
-\end{bmatrix}
- %]]&gt;</script>
-
-<p>and feature map for vertical edge detection kernel:</p>
-
-<script type="math/tex; mode=display">% &lt;![CDATA[
-
-\begin{bmatrix}
-x & 0 & x \\
-1 & 0 & 1 \\
-x & 0 & x
-\end{bmatrix}
- %]]&gt;</script>
-
-<p>$x$ is the response of angle, which may not be black and white. And since they
-are not very influential to our discussion, it is denoted $x$.</p>
-
-<p>In the next convolution layer, the input are two feature maps, then the kernel
-for detecting square will be like:</p>
-
-<script type="math/tex; mode=display">% &lt;![CDATA[
-
-\begin{bmatrix}
-x & 1 & x \\
-0 & 0 & 0 \\
-x & 1 & x
-\end{bmatrix}
-and
-\begin{bmatrix}
- x & 0 & x \\
- 1 & 0 & 1 \\
- x & 0 & x
-\end{bmatrix}
- %]]&gt;</script>
-
-<p>The final inner product will be normalized to one. In this case, we are only
-using four kernels.</p>
-
-<p>If we switch to one layer CNN, The kernel for detecting square will be like:</p>
-
-<script type="math/tex; mode=display">% &lt;![CDATA[
-
-\begin{bmatrix}
-x   & 1 & 1 & 1 & x \\
-1   & 0 & 0 & 0 & 1 \\
-1   & 0 & 0 & 0 & 1 \\
-1   & 0 & 0 & 0 & 1 \\
-x   & 1 & 1 & 1 & x
-\end{bmatrix}
- %]]&gt;</script>
-
-<p>The zero and one is expanded because each edges consist of more than one
-pixels. Three here is used for illustration.</p>
-
-<p>It seems that we can detect shape only using one kernel. But wait… we are not
-only trying to detect only square. We should also try to detect circle,
-rectangles etc… So we will have more than more kernels. In this case, the
-space of possible number of kernels will exponentially explode given the
-possible changes we may swap the zero and one in the pixels of kernels.</p>
-
-<p>But in previous three layer cases, the space of possible changes are shrunk
-dramatically. The key here is explained in previous section, we are reusing the
-information that only consecutive edges are sensible combination of pixels and
-the number of possibilities of changing locations of edges is much smaller than
-changing values of pixels.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How Do We Create Meaningful Many Dimensional Space?]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/03/28/how-do-we-create-meaningful-many-dimensional-space/"/>
-    <updated>2015-03-28T20:58:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/03/28/how-do-we-create-meaningful-many-dimensional-space</id>
-    <content type="html"><![CDATA[<p>This post should be the third notes on understanding fundamentals of Analysis,
-or in a more broad sense, understanding fundamental of Mathematics, though some
-other randoms post are written previously.
-The <a href="http://shawnLeeZX.github.io/blog/2013/12/24/axiomization-of-natural-number/">first</a>
- is about the axiomization of Natural Number. It gives the exact definition of
-natural number, whose concept is taken for granted for most people. The
-<a href="http://shawnLeeZX.github.io/blog/2014/09/30/why-and-how-we-construct-real-number-system/">second</a>
-is about the construction of Real Number System. It offers a complete field
-which all the remaining Mathematics is built on.</p>
-
-<p>The above two posts are both in essential, one dimensional. They are the
-infrastructure of univariate function, univariate calculus and other univariate
-Math subjects. After building the one dimensional infrastructure, the next step
-is to step in the world of more than one – two dimensional, three dimensional,
-finite dimensional, and the infinite dimensional, which all will be called many
-dimensional space in this post.</p>
-
-<p>So this is about how do we create meaningful many dimensional space that
-suitable for the real world problem. In such space, we could deal with, two
-dimensional plane, three dimensional space, ultimately countably infinite
-dimensional space and uncountably infinite dimensional space, furthermore, the
-one of the most important subjects in modern analysis – function space.</p>
-
-<!-- more -->
-
-<h2 id="the-leap-to-abstract-mathematics">The Leap to Abstract Mathematics</h2>
-
-<p>Such transition is a great leap in the development of Mathematics. It makes
-Mathematics become more and more abstract. The inevitability is showed in the
-following. As having been numbered before, there are at least four extremely
-common many dimensional space we must deal with: two dimensional, three
-dimensional, which we are familiar with; countably infinite dimensional space,
-for instance, countable sequences, which is quite common; uncountably infinite
-dimensional space, for instance the space of all continuous function defined on
-$R$, which some may not be very familiar. Actually, there is a lot more than
-that since at least we would have a number of spaces such as 7D and 8D etc.. So
-mathematicians cannot deal with those spaces be copying the way they deal with
-$R$. They have to find a way to see those thing in common. In the popular word
-of programmers, they need to abstract them. Ha ha, programming is great, right?</p>
-
-<p>Consequently, here comes Abstract Algebra, General Topology and ultimately,
-Functional Analysis. Let get to know what these three terms are about(but it is
-highly probable that you have no idea what I am talking about given learning
-Math is far from learning concepts): Abstract Algebra is about abstracting common
-operations that is used in $R$, which is called using the terminology algebraic structure. For
-instance, a ring is an algebraic structure with operations generalizing the
-arithmetic operations of addition and multiplication. So such operation will
-not only be able to be applied to number, but to polynomials, matrices and
-etc..[1] More word may be find in this rather old post on
-<a href="http://shawnLeeZX.github.io/blog/2013/12/24/basis-of-algebra-structure/">Basic of Algebra Structure</a>;
-General Topology is about the mathematical study of shapes and topological
-spaces. It is an area of mathematics concerned with the properties of space
-that are preserved under continuous deformations including stretching and
-bending, but not tearing or gluing[2]. The sets with the same properties are
-called open set. Abstract Algebra abstracts operations of $R$. General Topology
-abstracts objects or points of $R$. With objects and operations on those
-objects, we could analyze them, where comes Functional Analysis(Though
-Functional Analysis is just about analyze functions, all machinery developed
-above is to try to deal with function space. So the problem and technique in
-Functional Analysis could all be applied to other many dimensional space).</p>
-
-<h2 id="hilbert-space">Hilbert Space</h2>
-
-<p>Once we have abstract stuff, things could become very weird given that we could
-tweak the stuff anyway we want. But the key is to remember why we initiate the
-search for an abstract solution for solving real world problem. So the light to
-guide the abstract construction is to let things meet natural intuitions. This
-is the point I learned hardest while teaching myself functional analysis, which
-is the thread that guides me to bridge the gap between those highly abstract
-concepts to the details in the real world problems I aim to solve.</p>
-
-<p>Hilbert Space is the solution to the question posed at the beginning – finding
-a meaningful many dimensional space. From now on, why Hilbert Space fits with
-natural intuition will be elaborated. But keep in mind that though
-understanding intuition playing a very important role in learning Mathematics,
-it is never sufficient, a large amount of information is skipped at the time
-Abstract Algebra and General Topology is introduced above. It is the process to
-learning them, to do exercise that gives me such intuition.</p>
-
-<p>A natural step following one number, denoted $\xi$, is to list a tuple
-$(\xi_{1}, \xi_{2})$. $\xi_{1}$ could be the size of one department and
-$\xi_{2}$ could be the price of the department. We take it in tuple maybe
-because to want to investigate something that is related to those two
-both. Then naturally, we would like to extend it to $(\xi_{1} \ldots
-\xi_{n})$, then $(\xi_{1} \ldots \xi_{n}), n = 1 \ldots \infty$,
-which is called countably infinite, then $(\xi_{1} \ldots \xi_{n})$, where we
-regard $\xi_{i}$ is as dense(note the dense does not mean its usual meaning in
-topology) as point in $R$(this sentence is actually mathematically wrong given
-the incountablity of the set, but it makes the point through more easily),
-which is called uncountably finite. Each instance of previous examples is a
-point in its space. For instance, $(\xi_{1} \ldots \xi_{n}), n = 1 \ldots
-\infty$ is a point in the space of all possible value of $\xi_{i}$. The point
-is actually called vector and the space is noted as Vector Space defined on
-Field $R$ or $C$ if it is complex.</p>
-
-<p>Again, the natural question to ask is how much similarity with $R$ we could
-keep while generalizing? This is the process we construct the meaningful many
-dimensional space. The answer is that we want to get completeness, compactness,
-connectivity, which are contents of topology and metric space, “absolute value”
-of point, which is the content of Normed Vector Space, “length” of “lines”
-which is the content of Real Analysis and others. Given the limitation of time,
-none of them will be covered here. The point of this post is to try to note
-down the hardest to understood properties kept after generalization –
-geometric intuition on 2D or 3D space.</p>
-
-<p>What is the geometric intuition I am talking about?</p>
-
-<p>In Normed Vector Space, we could assign any norm we want, for instance, $L^{p}$
-norm. But it seems  2-norm, also Euclidean norm that is the most natural norm
-for we human. But why it is the most natural one? How do we define natural?</p>
-
-<p>The following are some direct answer:</p>
-
-<p><span class="caption-wrapper left"><img class="caption" src="https://cloud.githubusercontent.com/assets/2428233/6881526/a9f838a8-d59d-11e4-8b39-52e744eff47e.png" width="" height="" title="Geometric Proof of Pythagoras Theorem" /><span class="caption-text">Geometric Proof of Pythagoras Theorem</span></span></p>
-
-<ol>
-  <li>As we rotate one vector, its length will not change in 2-norm, but not other
-norms.</li>
-  <li>It makes Pythagoras Theorem held. So when we drop the coordinate system, and
-see vectors in pure geometric way, its length will still be the same.</li>
-</ol>
-
-<p>But those all special phenomenon of one underlying truth – 2-norm could be
-derived from inner product(Besides completeness, it is inner product that plays
-the most important role in the definition of Hilbert Space), and inner product
-gives angle a sensible definition.</p>
-
-<p>Before we elaborate the point, let us think a minute about what exactly angle
-is? This is again one blind spot that we take for granted, at least me.</p>
-
-<p>Try searching on its wikipedia page. Actually we cannot define angle like we
-define natural number using Peano Axiom. We are told it is some thing that is
-between two straight line or defined it through trigonometric function, which
-is essentially ratio, in high school. Underlying those definition, we are
-actually define it through its behavior. This makes sense, since ultimately,
-angles do not exist on their own and are the relation between lines.</p>
-
-<p>But we could model such relationship using one entity – inner product. Angle
-could be defined as:</p>
-
-<script type="math/tex; mode=display">% &lt;![CDATA[
-
-\theta = arccos\frac{<x, y>}{||x||||y||}
- %]]&gt;</script>
-
-<p>Through this way, angle is connected with value(coordinates) of lines(vectors)
-naturally. As angle is kept, our intuition is actually kept. More specifically
-the intuition of rotation, orthogonality and projection are all kept. Those are
-what we call natural.</p>
-
-<p>To make sense of it, it is recommended to prove polarization identity using
-property of inner product and law of cosine using elementary geometry
-method(polarization identity and law of cosine are the same theorem in different
-names in different contexts).</p>
-
-<h2 id="reference">Reference</h2>
-<ol>
-  <li>http://en.wikipedia.org/wiki/Ring_(mathematics)</li>
-  <li>http://en.wikipedia.org/wiki/Topology</li>
-</ol>
 ]]></content>
   </entry>
   
