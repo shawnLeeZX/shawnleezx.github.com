@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Optimization | SHAWN LEE]]></title>
+  <link href="http://shawnLeeZX.github.io/blog/categories/optimization/atom.xml" rel="self"/>
+  <link href="http://shawnLeeZX.github.io/"/>
+  <updated>2015-10-18T13:02:17+08:00</updated>
+  <id>http://shawnLeeZX.github.io/</id>
+  <author>
+    <name><![CDATA[Shawn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Linear Programming From Dual Mapping Point of View]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/"/>
+    <updated>2015-10-18T12:39:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view</id>
+    <content type="html"><![CDATA[<p>Yet another note on Math.</p>
+
+<!-- more -->
+
+<p>Denote the matrix of a linear mapping $T$ corresponds to natural bases as $A$,
+then $A^{T}$ is the matrix corresponds to the dual map of $T$. Now suppose $A
+\in R^{M \times N}$.</p>
+
+<p>For a linear programming problem, the constraints are $Ax \leq b$, intuitively,
+we understand it as a polyhedron, the intersection of finite number of
+halfspaces.</p>
+
+<p>We could also understand it from linear mapping and dual bases point of view.</p>
+
+<p>$A$ maps points from $R^{N}$ to $R^{M}$. A column of $A$ corresponds to the
+coordinates of the an natural basis of $R^{N}$ in the new $R^{M}$, meanwhile,
+a column of $A^{T}$, which is a row of $A$, corresponds to the coordinates of a
+dual basis of a natural basis of $R^{M}$ in $R^{N}$ if it is transformed by
+$A^{T}$.</p>
+
+<p>So a row $\vec{a_{i}}$ of $A$ is a $A^{T}$ transformed dual basis that
+corresponds to one natural basis in $R^{M}$, which corresponds to a hyperplane
+in $R^{N}$, also an element of the dual space of $R^{N}$.</p>
+
+<p>From this perspective, the polyhedron in $R^{N}$ is a squashed(or enlarged)
+quadrant of $R^{M}$, which is the intersection of hyperplanes whose normals are
+natural bases of $R^{M}$ — the hyperplanes only need to pass a constant
+value, probably corresponding dimension of $b$(have not thought very clearly),
+do not necessarily pass origin point.</p>
+
+<p>If $M &gt; N$, $R^{M}$ gets squashed, and there are much freedom in the way how
+the space gets squashed, which is analog with we have more equations than
+variables, so it is easier to get solutions. Otherwise, $R^{M}$ gets enlarged,
+however, no matter how the enlarging is done, it still remains as a low
+dimensional space in the high dimensional space, thus the freedom is limited,
+which is analog with more variables than equations, so it is harder or
+impossible to get solutions.</p>
+]]></content>
+  </entry>
+  
+</feed>

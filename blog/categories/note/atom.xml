@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Note | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/note/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-09-21T21:06:37+08:00</updated>
+  <updated>2015-10-18T13:02:17+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Linear Programming From Dual Mapping Point of View]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/"/>
+    <updated>2015-10-18T12:39:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view</id>
+    <content type="html"><![CDATA[<p>Yet another note on Math.</p>
+
+<!-- more -->
+
+<p>Denote the matrix of a linear mapping $T$ corresponds to natural bases as $A$,
+then $A^{T}$ is the matrix corresponds to the dual map of $T$. Now suppose $A
+\in R^{M \times N}$.</p>
+
+<p>For a linear programming problem, the constraints are $Ax \leq b$, intuitively,
+we understand it as a polyhedron, the intersection of finite number of
+halfspaces.</p>
+
+<p>We could also understand it from linear mapping and dual bases point of view.</p>
+
+<p>$A$ maps points from $R^{N}$ to $R^{M}$. A column of $A$ corresponds to the
+coordinates of the an natural basis of $R^{N}$ in the new $R^{M}$, meanwhile,
+a column of $A^{T}$, which is a row of $A$, corresponds to the coordinates of a
+dual basis of a natural basis of $R^{M}$ in $R^{N}$ if it is transformed by
+$A^{T}$.</p>
+
+<p>So a row $\vec{a_{i}}$ of $A$ is a $A^{T}$ transformed dual basis that
+corresponds to one natural basis in $R^{M}$, which corresponds to a hyperplane
+in $R^{N}$, also an element of the dual space of $R^{N}$.</p>
+
+<p>From this perspective, the polyhedron in $R^{N}$ is a squashed(or enlarged)
+quadrant of $R^{M}$, which is the intersection of hyperplanes whose normals are
+natural bases of $R^{M}$ — the hyperplanes only need to pass a constant
+value, probably corresponding dimension of $b$(have not thought very clearly),
+do not necessarily pass origin point.</p>
+
+<p>If $M &gt; N$, $R^{M}$ gets squashed, and there are much freedom in the way how
+the space gets squashed, which is analog with we have more equations than
+variables, so it is easier to get solutions. Otherwise, $R^{M}$ gets enlarged,
+however, no matter how the enlarging is done, it still remains as a low
+dimensional space in the high dimensional space, thus the freedom is limited,
+which is analog with more variables than equations, so it is harder or
+impossible to get solutions.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[On Teaching and Learning]]></title>
@@ -486,166 +531,6 @@ framework for Emacs.</li>
   <li><code>irony</code> offers a flychecker, since I already uses the google style and
 cpplint, I will not try <code>flycheck-irony</code> for the time being, though it may
 offer advantages such as full compilation error detection.</li>
-</ul>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[On Auto Completion in Emacs]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/08/11/on-auto-completion-in-emacs/"/>
-    <updated>2015-08-11T09:07:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/08/11/on-auto-completion-in-emacs</id>
-    <content type="html"><![CDATA[<p>Just finished setting up Emacs using
-<a href="http://company-mode.github.io/">company</a> to do auto-completion. Here I would
-like to note down the reason why I made the shift from
-<a href="https://github.com/auto-complete/auto-complete">auto-complete</a> to <code>company</code>
-for programming. However, for tasks like writing configuration file, LaTeX
-documents or markdown note, I still use <code>auto-complete</code>.</p>
-
-<!-- more -->
-
-<h2 id="comparison-between-company-and-auto-complete">Comparison Between <code>company</code> and <code>auto-complete</code></h2>
-
-<p>At the first iteration of my Emacs configuration for C/C++, I followed the
-following three videos to get a basic setup:</p>
-
-<ul>
-  <li><a href="https://www.youtube.com/watch?v=HTUE03LnaXA">Emacs as a C/C++ Editor/IDE (Part I): auto-complete, yasnippet, and autoplete</a></li>
-  <li><a href="https://www.youtube.com/watch?v=r_HW0EB67eY">Emacs as a C/C++ Editor/IDE (Part 2): iedit, flymake-google-cpplint, google-c-style</a></li>
-  <li><a href="https://www.youtube.com/watch?v=Ib914gNr0ys">Emacs as a C/C++ Editor/IDE (Part 3): Installing CEDET mode for true intellisense</a></li>
-</ul>
-
-<p>which introduces the <code>auto-complete</code> for doing automatically completion.</p>
-
-<p>At the same time, the extension
- <a href="https://github.com/tkf/emacs-jedi">emacs-jedi</a> only supports <code>auto-complete</code>
-backend. And <code>emacs-jedi</code> is the only python code completion extension for
-Emacs at then, which turns out that there were a number of others I did not
-notice(see previously post on Python in Emacs). So I decided to use
-auto-complete.</p>
-
-<p>Then as the projects I worked on got bigger, the possible candidates provided
-by <code>auto-complete</code> becomes too large to be useful due to the reason that
-<code>auto-complete</code> will fetch all candidates from all sources.</p>
-
-<p>The same problem happens to <code>auto-complete</code> in file path completion as
-well. You get a lot of non-sense completion when you only want to get
-completion in the path you want, which is a rather narrow space in the whole
-space of all your possible completion candidates.</p>
-
-<p>There could be a way to dynamically change the order of sources, but <code>company</code>
-seems to do this automatically or people writes the backends for <code>company</code> do
-this. In whatever case, the user does not need to attend to those things.</p>
-
-<p>That is not the fatal problem yet, <code>auto-complete</code> has a annoying problem which
-I do not know how to fix is that the time needed for the completion list to
-respond to new input is at the magnitude of seconds. I am pretty sure this is
-not a performance problem given that the completion list comes up pretty fast.</p>
-
-<p><code>company</code> also solves the file completion problem and c headers completion
-problem by providing a separate function in their respective backends, which I
-just need to map another key binding to it so the completion will be very
-accurate when you are programming.</p>
-
-<p><code>auto-complete</code> does good when you are writing text heavy contents such as
-LaTeX or markdown but not logically heavy ones such as programming language.</p>
-
-<p>For a more complete comparison you could refer to the end of the 
-<a href="http://company-mode.github.io/">github page</a> of <code>company</code>.</p>
-
-<h2 id="on-using-them-together">On Using Them Together</h2>
-
-<p>One more realization is that those two extensions are not exclusive at all. I
-did not find a backend like the sources provided by <code>auto-complete</code> for
-complete word in buffers related functions, which is the area <code>auto-complete</code> 
-works well.</p>
-
-<p>Below is some sample on how to use them from my
-<a href="https://github.com/shawnLeeZX/emacs.d">Emacs configuration</a>.</p>
-
-<p>```cl
-(add-hook ‘after-init-hook ‘global-company-mode)</p>
-
-<p>;;   “Modes for which <code>company-mode' mode is turned on by
-;; </code>global-company-mode’.  If nil, means no modes.  If t, then all major modes
-;; have it turned on.  If a list, it should be a list of <code>major-mode' symbol
-;; names for which </code>company-mode’ should be automatically turned on.  The sense
-;; of the list is negated if it begins with <code>not'.  For example: (c-mode
-;; c++-mode) means that </code>company-mode’ is turned on for buffers in C and C++
-;; modes only.  (not message-mode) means that <code>company-mode' is always turned
-;; on except in </code>message-mode’ buffers.”
-(setq company-global-modes ‘(
-                            c-mode
-                            c++-mode
-                            ))
-```</p>
-
-<p><code>cl
-;; Enable auto-complete for modes in ac-modes by default.
-(global-auto-complete-mode t)
-;; We reset the default mode for auto-complete given that we want to some modes
-;; to use company-mode.
-(set-default 'ac-modes
-             '(
-               magit-log-edit-mode
-               log-edit-mode org-mode text-mode haml-mode
-               git-commit-mode
-               conf-mode conf-unix-mode conf-colon-mode
-               inferior-emacs-lisp-mode inferior-python-mode
-               sql-interactive-mode
-               sass-mode yaml-mode csv-mode espresso-mode haskell-mode
-               html-mode nxml-mode smarty-mode clojure-mode
-               lisp-mode textile-mode markdown-mode tuareg-mode
-               js3-mode css-mode less-css-mode sql-mode
-               web-mode
-               ))
-</code></p>
-
-<h2 id="difference-between-tab-and-tab">Difference Between <tab> and TAB</tab></h2>
-
-<p>The last thing I want to note down is that TAB key.</p>
-
-<p>Emacs has two tabs, <code>(kbd "&lt;tab&gt;")</code> and <code>(kbd "TAB")</code>. To make things more
-complex, <code>yasnippet</code>, <code>auto-complete</code>, indentation in Emacs, typing real tab
-stops and <code>company</code> all uses <code>tab</code>, which makes it very complicated.</p>
-
-<p>From this
-<a href="https://www.reddit.com/r/emacs/comments/2aemny/difference_between_tab_and_tab/">thread</a>
-in Reddit, here, I knew that <code>(kbd "&lt;tab&gt;")</code> stands for the physical key you
-have pressed and <code>(kbd "TAB")</code> stands for the control character. So to speak,
-normally, if you are not binding <code>&lt;tab&gt;</code> to <code>TAB</code>, the tab you typed is not
-actually the control character TAB, but triggers some function that is hooked
-on the physical key’s response.</p>
-
-<p>As for the second part of the puzzle, when you are typing tab at a location
-where the indentation of the statement is not right, Emacs will indent your
-line first. The key to differentiate <code>yasnippet</code> and <code>auto-complete</code> is whether
-you are typing or not when you pressed the tab key. If you are, completion menu
-will be triggered, if you are not <code>yasnippet</code> will be triggered(this is a
-mechanism that could be configured in auto-complete and is not the default, by
-default, I think the completion menu will pop up automatically). As for
-<code>company</code> and <code>yasnippet</code>, in my experiments, after setting the trigger key to
-tab, by default it seems that snippets are always gotten expanded the first,
-then <code>company-complete</code> will be triggered if no snippets could be found. See
-the following code snippets for how to set up key binding for <code>company</code>(it only
-uses <code>company</code> if <code>irony-mode</code> is in usage).</p>
-
-<p><code>cl
-;; Setup keymapping for company-complete.
-(add-hook 'irony-mode-hook (lambda ()
-                             (local-set-key (kbd "&lt;tab&gt;") 'company-complete-common)
-                             (local-set-key (kbd "C-c C-f") 'company-files)
-                             ))
-</code></p>
-
-<h2 id="reference">Reference</h2>
-
-<ul>
-  <li><a href="https://www.youtube.com/watch?v=HTUE03LnaXA">Emacs as a C/C++ Editor/IDE (Part I): auto-complete, yasnippet, and autoplete</a></li>
-  <li><a href="https://www.youtube.com/watch?v=r_HW0EB67eY">Emacs as a C/C++ Editor/IDE (Part 2): iedit, flymake-google-cpplint, google-c-style</a></li>
-  <li><a href="https://www.youtube.com/watch?v=Ib914gNr0ys">Emacs as a C/C++ Editor/IDE (Part 3): Installing CEDET mode for true intellisense</a></li>
-  <li><a href="http://tuhdo.github.io/c-ide.html">tutorial on customizing C/C++ environment for emacs</a></li>
-  <li><a href="https://www.masteringemacs.org/article/mastering-key-bindings-emacs">Mastering Key Bindings in Emacs</a></li>
 </ul>
 ]]></content>
   </entry>
