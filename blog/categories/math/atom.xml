@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-11-02T11:09:32+08:00</updated>
+  <updated>2015-11-02T11:13:52+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Linear Programming From Dual Mapping Point of View]]></title>
+    <title type="html"><![CDATA[On Linear Programming, Duality of LP and Operator, a Functional Analysis Point of view]]></title>
     <link href="http://shawnLeeZX.github.io/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/"/>
     <updated>2015-10-18T12:39:00+08:00</updated>
     <id>http://shawnLeeZX.github.io/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view</id>
@@ -126,7 +126,7 @@ x \geq 0
 
 <p>Conic programming just extends the meaning of $\geq$ and inner product.</p>
 
-<h2 id="the-algebraic-nature-of-dual-map">The Algebraic Nature of Dual Map</h2>
+<h2 id="the-algebraic-nature-of-operator">The Algebraic Nature of Operator</h2>
 
 <p>All of the thinking about originates from the way I learn Math. I want to get a
 picture from the symbols and relationships. Up to now, all concepts I know
