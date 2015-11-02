@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Topology | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/topology/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-10-18T13:34:59+08:00</updated>
+  <updated>2015-11-02T11:09:32+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -67,7 +67,8 @@ will explain why the former definition is right.</p>
 <p>The point is that it is $y$ that we want to constrain. So for whatever
 change $y$ is made as long as it is in the neighborhood of $\epsilon$,
 $x$ within the neighborhood of $\delta$ will capture it all. In more
-plain English, the change is all caused by those $x$.</p>
+plain English, no matter how $x$ changes, $y$ will not go beyond a change of
+$\delta$.</p>
 
 <p>Now time for a counter example.</p>
 
@@ -101,7 +102,7 @@ set to an open set.</p>
 definition of open mapping dose not imply constraint on the image
 mapped. <a href="http://mathforum.org/library/drmath/view/62395.html">Here</a> is
 an educational example. It constructs a mapping which is open but not
-continuous, from $R$ with usual topology to $[0 1]$ with usual
+continuous, from $R$ with usual topology to $[0, 1]$ with usual
 topology. One intuition behind is that even if the image mapped is
 open set, no constraint is imposed so it could be too large compared
 with the pre-image of it.</p>
