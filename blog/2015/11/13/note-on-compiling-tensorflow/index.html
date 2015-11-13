@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>SOURCE ADDRESS SPOOFING AND ILLEGAL ADDRESSES - SHAWN LEE</title>
+  <title>Note On Compiling Tensorflow - SHAWN LEE</title>
   <meta name="author" content="Shawn">
 
   
-  <meta name="description" content="SOURCE ADDRESS SPOOFING AND ILLEGAL ADDRESSES There are 10 major classes of source addresses you should deny on your external interface in all cases &hellip;">
+  <meta name="description" content="A note on setting library path for cudnn when compiling tensorflow, in case I
+forget it next time. Directly providing the library path to cudnn, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2013/08/28/source-address-spoofing-and-illegal-addresses">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2015/11/13/note-on-compiling-tensorflow">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="SHAWN LEE" type="application/atom+xml">
@@ -130,7 +131,7 @@ MathJax.Hub.Config({
   
   <header>
     
-      <h1 class="entry-title">SOURCE ADDRESS SPOOFING and ILLEGAL ADDRESSES</h1>
+      <h1 class="entry-title">Note on Compiling Tensorflow</h1>
     
     
       <p class="meta">
@@ -146,7 +147,7 @@ MathJax.Hub.Config({
   
 
 
-<time datetime="2013-08-28T10:37:00+08:00" pubdate data-updated="true">Aug 28<span>th</span>, 2013</time>
+<time datetime="2015-11-13T11:35:00+08:00" pubdate data-updated="true">Nov 13<span>th</span>, 2015</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -155,58 +156,33 @@ MathJax.Hub.Config({
   </header>
 
 
-<div class="entry-content"><p>SOURCE ADDRESS SPOOFING AND ILLEGAL ADDRESSES</p>
+<div class="entry-content"><p>A note on setting library path for cudnn when compiling tensorflow, in case I
+forget it next time.</p>
 
-<p>There are 10 major classes of source addresses you should deny on your external interface in all cases. These are incoming packets claiming to be from the following:
-<!-- more --></p>
+<!-- more -->
 
-<ul>
-  <li>
-    <p>Your IP address You will never see legal incoming packets claiming to be from your machine. Because the source address is the only information available and it can be modified, this is one of the forms of legitimate address spoofing you can detect at the packet-filtering level. Incoming packets claiming to be from your machine are spoofed. You can’t be certain whether other incoming packets are coming from where they claim to be. (Note that some operating systems crash if they receive a packet in which both the source and the destination addresses belong to the host’s network interface.)</p>
-  </li>
-  <li>
-    <p>Your LAN addresses You will rarely see legal incoming packets on the external, Internet interface claiming to be from your LAN. It’s possible to see such packets if the LAN has multiple access points to the Internet, but it would probably be a sign of a misconfigured local network. In most cases, such a packet would be part of an attempt to gain access to your site by exploiting your local trust relationships.</p>
-  </li>
-  <li>
-    <p>Class A, B, and C private IP addresses These three sets of addresses in the historical Class A, B, and C ranges are reserved for use in private LANs. They aren’t intended for use on the Internet. As such, these addresses can be used by any site internally without the need to purchase registered IP addresses. Your machine should never see incoming packets from these source addresses:</p>
-  </li>
-  <li>
-    <p>Class A private addresses are assigned the range from 10.0.0.0 to 10.255.255.255.</p>
-  </li>
-  <li>
-    <p>Class B private addresses are assigned the range from 172.16.0.0 to 172.31.255.255.</p>
-  </li>
-  <li>
-    <p>Class C private addresses are assigned the range from 192.168.0.0 to 192.168.255.255.</p>
-  </li>
-  <li>
-    <p>Class D multicast IP addresses IP addresses in the Class D range are set aside for use as destination addresses when participating in a multicast network broadcast, such as an audiocast or a videocast. They range from 224.0.0.0 to 239.255.255.255. Your machine should never see packets from these source addresses.</p>
-  </li>
-  <li>
-    <p>Class E reserved IP addresses IP addresses in the Class E range were set aside for future and experimental use and are not assigned publicly. They range from 240.0.0.0 to 247.255.255.255. Your machine should never see packets from these source addressesand mostly likely won’t. (Because the entire address range is permanently reserved up through 255.255.255.255, the Class E range can realistically be defined as 240.0.0.0 to 255.255.255.255. In fact, some sources define the Class E address range to be exactly that.)</p>
-  </li>
-  <li>
-    <p>Loopback interface addresses The loopback interface is a private network interface used by the Linux system for local, network-based services. Rather than sending local traffic through the network interface driver, the operating system takes a shortcut through the loopback interface as a performance improvement. By definition, loopback traffic is targeted for the system generating it. It doesn’t go out on the network. The loopback address range is 127.0.0.0 to 127.255.255.255. You’ll usually see it referred to as 127.0.0.1, localhost, or the loopback interface, lo.</p>
-  </li>
-  <li>
-    <p>Malformed broadcast addresses Broadcast addresses are special addresses applying to all machines on a network. Address 0.0.0.0 is a special broadcast source address. A legitimate broadcast source address will be either 0.0.0.0 or a regular IP address. DHCP clients and servers will see incoming broadcast packets from source address 0.0.0.0. This is the only legal use of this source address. It is not a legitimate point-to-point, unicast source address. When seen as the source address in a regular, point-to-point, nonbroadcast packet, the address is forged, or the sender isn’t fully configured.</p>
-  </li>
-  <li>
-    <p>Class A network 0 addresses As suggested previously, any source address in the 0.0.0.0 through 0.255.255.255 range is illegal as a unicast address.</p>
-  </li>
-  <li>
-    <p>Link local network addresses DHCP clients sometimes assign themselves a link local address when they can’t get an address from a server. These addresses range from 169.254.0.0 to 169.254.255.255.</p>
-  </li>
-  <li>
-    <p>TEST-NET addresses The address space from 192.0.2.0 to 192.0.2.255 is reserved for test networks.</p>
-  </li>
-</ul>
+<p>Directly providing the library path to cudnn, which has the following directory
+structure,</p>
 
-<p>A number of other address blocks are reserved by IANA and are not in use. In my experience, it’s good to filter out these additional blocks. There’s a danger in doing so, however: As the IPv4 address space gets tighter and the number of Internet sites grows, IANA has been allocating these blocks more frequently since mid-2000. Unless you monitor the IANA block allocations on a regular basis, sooner or later you will be blocking legitimate addresses.</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">include  lib
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>Unintentionally blocking newly allocated legitimate addresses is inconsequential for a residential site. Business sites must balance their need to maintain access against the cost of constantly monitoring the allocated address blocks. For Internet businesses that have been the subject of ongoing DoS attacks, it could very well be in their best interests to make the effort, simply to reduce the number of possible spoofed source addresses that their site will respond to.</p>
+<p>does not work.</p>
 
-<p>Source: Chapter Two, Linux Firewall 3rd</p>
+<p>According to the error message, it seems that the configuration tries to find
+header file and shared libraries directly under the provided folder, thus this
+time, I made another folder specifically for tensorflow — it is not in
+<code>LD_LIBRARY</code>, so other programs do not use it — then the compilation works.</p>
+
+<p>Since I just want to make sure I could get through the compilation process to
+make sure if in case there are features not provided in the official binary, I
+have a way to use it, I settled for now. But since the default folder is just
+where CUDA lives, I guess if I made the directory structure of CUDNN the same
+as CUDA, which I just need to add a symbol link <code>lib64</code> to <code>lib</code>, the
+compilation may still work.</p>
+
+<p>So this is the note.</p>
 </div>
 
 
@@ -229,12 +205,12 @@ MathJax.Hub.Config({
   
 
 
-<time datetime="2013-08-28T10:37:00+08:00" pubdate data-updated="true">Aug 28<span>th</span>, 2013</time>
+<time datetime="2015-11-13T11:35:00+08:00" pubdate data-updated="true">Nov 13<span>th</span>, 2015</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/cs/'>CS</a>, <a class='category' href='/blog/categories/network/'>Network</a>, <a class='category' href='/blog/categories/note/'>Note</a>
+    <a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/note/'>Note</a>
   
 </span>
 
@@ -250,10 +226,8 @@ MathJax.Hub.Config({
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/08/12/reading-summary-of-hacker-and-painter-chapter-two/" title="Previous Post: Reading Summary of Hacker and Painter Chapter Two">&laquo; Reading Summary of Hacker and Painter Chapter Two</a>
+        <a class="basic-alignment left" href="/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/" title="Previous Post: On Linear Programming, Duality of LP and Operator, a Functional Analysis Point of view">&laquo; On Linear Programming, Duality of LP and Operator, a Functional Analysis Point of view</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/08/29/monolithic-kernel-versus-microkernel-designs/" title="Next Post: Monolithic Kernel Versus Microkernel Designs">Monolithic Kernel Versus Microkernel Designs &raquo;</a>
       
     </p>
   </footer>
@@ -329,8 +303,8 @@ MathJax.Hub.Config({
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2013/08/28/source-address-spoofing-and-illegal-addresses/';
-        var disqus_url = 'http://shawnLeeZX.github.io/blog/2013/08/28/source-address-spoofing-and-illegal-addresses/';
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2015/11/13/note-on-compiling-tensorflow/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2015/11/13/note-on-compiling-tensorflow/';
         var disqus_script = 'embed.js';
       
     (function () {
