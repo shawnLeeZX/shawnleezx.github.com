@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Optimization | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/optimization/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-11-13T11:46:02+08:00</updated>
+  <updated>2015-11-15T21:26:39+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,58 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Notes on Semidefinite Programming]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/11/15/notes-on-semidefinite-programming/"/>
+    <updated>2015-11-15T21:23:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/11/15/notes-on-semidefinite-programming</id>
+    <content type="html"><![CDATA[<p>Yet another note on math.</p>
+
+<!-- more -->
+
+<p>SDP is actually a relaxation techniques that projects the problem to a higher
+dimension space with a symmetrical matrix special structure. So the original
+non-linear problem gets linearized. In the simplest case, $x$ gets mapped to
+$X = xx^{T}$, then relaxed to $X \in S_{+}$ It just puts the second order terms
+of $x$ in the matrix. Similar things could be done in for higher order terms,
+and finally, any order polynomial could be achieved in some way.</p>
+
+<p>I am still not thinking very clearly how operator could be put into the context
+since here matrices are just a special way to put a really long
+vector. Frobenius inner product is just normal inner product. The power of SDP
+comes from infinite number of quadratic constraints enforced by the PD
+condition.</p>
+
+<p>The connection could possibly be this way. It is inspired by how matrix
+derivative is defined using Frobenius norm. Though operator’s nature comes from
+it spectral structure, it is still made by $m \times n$ numbers put in a
+special way. So a corresponding change in the corresponding position means
+something. By measuring the norm, and inner product in this way, we are somehow
+connected to the spectral structure of the matrix. By adding different matrices
+together this way, we are somehow combining different operations, though I have
+not learned any applications that matches this exactly. An perfect example of
+this is the perturbation of a matrix. The perturbation in each dimension is
+added on the face value(the number displayed on the entries of the matrix), so
+it natural to think regardless of the spectral structure of the matrix,
+whatever it may be normalized then or by changed by some other operations, the
+face value change is how we perceive physical beings.</p>
+
+<p>SDP is solved using interior point methods, whose intuitive is to guide the
+optimization by the objective function, using gradient and hessian
+information. To make sure the point stay feasible when optimizing, a term $-log
+det|A|$ is added to the objective function, who will ensure $X \succeq \mu I$
+for some $\mu$, meaning it is positive definite.</p>
+
+<p>This is a very beautiful idea. Actually it is what I was looking for in
+non-linear optimization so that the boundary information not only guide
+optimization only when the point is near the boundary but also when it is far
+in the boundary.</p>
+
+<p>More thinking may be added when I learned more about SDP, matrix algebra and
+matrix calculus.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[On Linear Programming, Duality of LP and Operator, a Functional Analysis Point of view]]></title>

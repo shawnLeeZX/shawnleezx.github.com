@@ -4,7 +4,7 @@
   <title><![CDATA[SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-11-13T11:46:02+08:00</updated>
+  <updated>2015-11-15T21:26:16+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -14,37 +14,54 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Note On Compiling Tensorflow]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/11/13/note-on-compiling-tensorflow/"/>
-    <updated>2015-11-13T11:35:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/11/13/note-on-compiling-tensorflow</id>
-    <content type="html"><![CDATA[<p>A note on setting library path for cudnn when compiling tensorflow, in case I
-forget it next time.</p>
+    <title type="html"><![CDATA[Notes on Semidefinite Programming]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/11/15/notes-on-semidefinite-programming/"/>
+    <updated>2015-11-15T21:23:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/11/15/notes-on-semidefinite-programming</id>
+    <content type="html"><![CDATA[<p>Yet another note on math.</p>
 
 <!-- more -->
 
-<p>Directly providing the library path to cudnn, which has the following directory
-structure,</p>
+<p>SDP is actually a relaxation techniques that projects the problem to a higher
+dimension space with a symmetrical matrix special structure. So the original
+non-linear problem gets linearized. In the simplest case, $x$ gets mapped to
+$X = xx^{T}$, then relaxed to $X \in S_{+}$ It just puts the second order terms
+of $x$ in the matrix. Similar things could be done in for higher order terms,
+and finally, any order polynomial could be achieved in some way.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">include  lib
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>I am still not thinking very clearly how operator could be put into the context
+since here matrices are just a special way to put a really long
+vector. Frobenius inner product is just normal inner product. The power of SDP
+comes from infinite number of quadratic constraints enforced by the PD
+condition.</p>
 
-<p>does not work.</p>
+<p>The connection could possibly be this way. It is inspired by how matrix
+derivative is defined using Frobenius norm. Though operator’s nature comes from
+it spectral structure, it is still made by $m \times n$ numbers put in a
+special way. So a corresponding change in the corresponding position means
+something. By measuring the norm, and inner product in this way, we are somehow
+connected to the spectral structure of the matrix. By adding different matrices
+together this way, we are somehow combining different operations, though I have
+not learned any applications that matches this exactly. An perfect example of
+this is the perturbation of a matrix. The perturbation in each dimension is
+added on the face value(the number displayed on the entries of the matrix), so
+it natural to think regardless of the spectral structure of the matrix,
+whatever it may be normalized then or by changed by some other operations, the
+face value change is how we perceive physical beings.</p>
 
-<p>According to the error message, it seems that the configuration tries to find
-header file and shared libraries directly under the provided folder, thus this
-time, I made another folder specifically for tensorflow — it is not in
-<code>LD_LIBRARY</code>, so other programs do not use it — then the compilation works.</p>
+<p>SDP is solved using interior point methods, whose intuitive is to guide the
+optimization by the objective function, using gradient and hessian
+information. To make sure the point stay feasible when optimizing, a term $-log
+det|A|$ is added to the objective function, who will ensure $X \succeq \mu I$
+for some $\mu$, meaning it is positive definite.</p>
 
-<p>Since I just want to make sure I could get through the compilation process to
-make sure if in case there are features not provided in the official binary, I
-have a way to use it, I settled for now. But since the default folder is just
-where CUDA lives, I guess if I made the directory structure of CUDNN the same
-as CUDA, which I just need to add a symbol link <code>lib64</code> to <code>lib</code>, the
-compilation may still work.</p>
+<p>This is a very beautiful idea. Actually it is what I was looking for in
+non-linear optimization so that the boundary information not only guide
+optimization only when the point is near the boundary but also when it is far
+in the boundary.</p>
 
-<p>So this is the note.</p>
+<p>More thinking may be added when I learned more about SDP, matrix algebra and
+matrix calculus.</p>
 ]]></content>
   </entry>
   

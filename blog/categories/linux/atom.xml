@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-11-13T11:46:02+08:00</updated>
+  <updated>2015-11-15T21:26:39+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,41 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Note On Compiling Tensorflow]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/11/13/note-on-compiling-tensorflow/"/>
-    <updated>2015-11-13T11:35:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/11/13/note-on-compiling-tensorflow</id>
-    <content type="html"><![CDATA[<p>A note on setting library path for cudnn when compiling tensorflow, in case I
-forget it next time.</p>
-
-<!-- more -->
-
-<p>Directly providing the library path to cudnn, which has the following directory
-structure,</p>
-
-<p><code>bash
-include  lib
-</code></p>
-
-<p>does not work.</p>
-
-<p>According to the error message, it seems that the configuration tries to find
-header file and shared libraries directly under the provided folder, thus this
-time, I made another folder specifically for tensorflow — it is not in
-<code>LD_LIBRARY</code>, so other programs do not use it — then the compilation works.</p>
-
-<p>Since I just want to make sure I could get through the compilation process to
-make sure if in case there are features not provided in the official binary, I
-have a way to use it, I settled for now. But since the default folder is just
-where CUDA lives, I guess if I made the directory structure of CUDNN the same
-as CUDA, which I just need to add a symbol link <code>lib64</code> to <code>lib</code>, the
-compilation may still work.</p>
-
-<p>So this is the note.</p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[On Linux Laptop Battery]]></title>
@@ -793,6 +758,37 @@ ansible-playbook playbook.yml --extra-vars "hosts=local_machine"
 <p><code>bash
 ansible-playbook playbook.yml --extra-vars "hosts=servers"
 </code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Only Generate Ctags Files for the Header Files Included]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2014/02/27/only-generate-ctags-files-for-the-header-files-included/"/>
+    <updated>2014-02-27T16:35:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2014/02/27/only-generate-ctags-files-for-the-header-files-included</id>
+    <content type="html"><![CDATA[<p>Inspired by this post, <a href="http://www.topbug.net/blog/2012/03/17/generate-ctags-files-for-c-slash-c-plus-plus-source-files-and-all-of-their-included-header-files/">Generate Ctags Files for C/C++ Source Files and All of Their Included Header Files</a>
+, I write the following line in Makefile for only generating Ctags files for
+the files I use, not for all the files under <code>/usr/include</code>, throught which,
+not only space will be save, but more importantly, I get a clearer completion
+list when I use the completion function of vim.</p>
+
+<p><code>make
+CXX = g++
+tags:
+	$(CXX) -M $(INCFLAGS) $(SOURCES) | sed -e 's/[\\ ]/\n/g' |\
+						sed -e '/^$$/d' -e '/\.o:[ \t]*$$/d' |\
+			ctags -L - --c++-kinds=+p --fields=+iaS --extra=+q
+	cscope -bRq
+</code></p>
+
+<p>To understand this snippet, you need to be able to write decent Makefile and
+know how to use sed. Here is a short explanation.</p>
+
+<p>Tags is a target I want to build(remember to add it to .PHONY). <code>g++ -M</code> will
+generate all header files included. After generated, they are piped to sed to
+be further processed in order to be eable to used by ctags. <code>-L</code> flag of ctags
+tells ctags to get the files need to generate tags from a list and the list is
+from stdin by adding <code>-</code>.</p>
 ]]></content>
   </entry>
   
