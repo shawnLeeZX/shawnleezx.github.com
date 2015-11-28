@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-11-15T21:26:39+08:00</updated>
+  <updated>2015-11-28T12:07:23+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,102 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Cone, Dual Cone and Generalized Inequalities]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/11/28/cone-dual-cone-and-generalized-inequalities/"/>
+    <updated>2015-11-28T11:04:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/11/28/cone-dual-cone-and-generalized-inequalities</id>
+    <content type="html"><![CDATA[<p>Yet another note on Math.</p>
+
+<p>I did not internalized the idea that a pointed cone identifies a generalized
+equality until now, and would like to note it down.</p>
+
+<!-- more -->
+
+<h2 id="cone">Cone</h2>
+
+<p>Let’s start with why we want inequality. We want it because we want to compare
+two objects. In $R$, an object in this domain is a scalar and represents
+something like length, or so. Suppose we want to compare the length of one edge
+of a table and the length of a ruler. We put those two together.  Intuitively,
+a table looks longer than a ruler, so we say if we want to compare anything
+similar like those again, we standardize a unit, according to the reference to
+the length of table or ruler, which in the ancient time is the length of some
+king’s feet, give a length $x$ to object one, $y$ to object two, then if object
+one is longer than object two, we call $x &gt; y$.</p>
+
+<p>How could we generalize this idea to higher dimensional space? Consider vector
+inequality. Suppose we want buy a department. The only factors we want to
+consider is which floor our department is(assume the higher the better), and
+how many square meters it has. What does department $x$ is better than $y$
+mean? An intuitive answer is a department that is both higher and bigger is a
+better choice. We call it $x \succeq y$.</p>
+
+<p>We could see how cone abstract things here, in vector inequality.</p>
+
+<p>First we break thing down, if we get two rulers, whose lengths are too similar
+to tell who is longer in a distance, how could we tell? Without equipment, we
+just put those two rules together, and see their difference. This is the mental
+procedure we execute when we compare, so in scalar case, $x &gt; y$ means $x - y
+&gt; 0$; in vector case, $x \succeq y$ means $x - y \succeq 0$.</p>
+
+<p>What is special about $x - y$?</p>
+
+<p>If we take it abstractly, $x - y$ means how much better when $x$ is compared to
+$y$. How we define inequality is determined by how we measure the ``better’’
+amount, so the measurement makes sense. For scalar it is just their value
+difference. But for vector we cannot judge when department $x$ has higher floor
+number than $y$ but smaller square meters. The solution to this dilemma is to
+only compare the case where the comparison makes sense. Mathematically, it
+means we only compare $x, y$ when $x, y$ stay in a domain, which depends on
+both $x, y$, where the comparison makes sense. If $x - y$ is in the domain, we
+compare, otherwise, do not bother.</p>
+
+<p>Though we only convert the comparison of $x, y$ to whether $x - y$ belongs to a
+domain. We do not know what the domain looks like yet. We want to reach the
+conclusion the domain is a pointed cone, or in another name, proper cone.</p>
+
+<p>The next task is to figure out the properties of the domain. What properties do
+we want? Let’s list them:</p>
+
+<ol>
+  <li>Comparison is about direction and it does not matter if $x$ is a hundred
+bigger than $y$, or one hundred percent bigger.</li>
+  <li>Strict inequality should exist.</li>
+  <li>Difference could be added together: If $x$ is better than $y$, $y$ is better
+tan $z$, we should have $x$ is better than $z$.</li>
+  <li>Limitation stays in the domain: slightly better is still better.</li>
+</ol>
+
+<p>Denoting the domain $K$, those four are translated to</p>
+
+<ol>
+  <li>$K$ is a pointed cone, i.e., if $u \in K$ and $-u \in K$, then $u = 0$; for
+any $x \in K$ and $\alpha &gt; 0$, we have $\alpha u \in K$.</li>
+  <li>$K$ has non-empty interior.</li>
+  <li>$K$ is non-empty and closed under addition; i.e., for any $x, y \in K$, $x +
+y \in K$.</li>
+  <li>$K$ is closed.</li>
+</ol>
+
+<h2 id="dual-cone">Dual Cone</h2>
+
+<p>Dual cone is about giving each dimension of an object a linear measurement of
+weight, or more intuitively a price, so:</p>
+
+<ol>
+  <li>A integrated ``betterness’’ could be quantified for all pairs instead of
+just $K$, a restricted set of comparable pairs.</li>
+  <li>consequently could lead to dual problem, which is a upper and lower bound by
+linear approximation.</li>
+</ol>
+
+<p>Due to time limitation, I will just write those for now. Some pictures and
+example of minimum elements and minimal elements from <em>Chapter 2, Convex
+Optimization Bloyd</em> could be helpful.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Notes on Semidefinite Programming]]></title>
@@ -296,87 +392,6 @@ coordinates. Actually, such coordinates are:</p>
 </script>
 
 <p>which is just $\vec{(AB)_{i}}$.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[What A Mathematical Object Random Variable Really Is]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/05/14/what-mathematical-object-random-really-is/"/>
-    <updated>2015-05-14T11:14:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/05/14/what-mathematical-object-random-really-is</id>
-    <content type="html"><![CDATA[<p>An example will be noted here to illustrate what a random variable really is.</p>
-
-<p>Sadly, things will be clearer with graph but for now I do not have a solution
-to make good illustration really quickly enough — normally I write a post in
-about half an hour.</p>
-
-<!-- more -->
-
-<p>The problem setting is that if we toss a coin twice, there are four possible
-outcomes that we could get — $(hh, ht, th, tt)$, where $h$ stands for head
-while $t$ stands for tail. If we denote the results as tuples, we could
-represent the experiment results as $((1, 1), (1, 0), (0, 1), (0, 0))$. If we
-take each element of the tuple with two elements as dimension of a vector
-space, each tuple could be regarded as an element in a vector space. we could
-represent our experiment result in a 2D plane.</p>
-
-<p>Consider that a random variable $X$ which is used to denote the number of heads
-in this experiment. Its value would be 0, 1 or 2.</p>
-
-<p>Now we make the statement that random variable a mapping, which maps the
-original event space $\Omega$(the four tuples here) to a subset$T’$(a set of
-${0, 1, 2}$ here) of a set $T$(the positive integer set $N^{+}$). Let’s see
-what this actually means.</p>
-
-<p>In the first level, the understanding could be pretty straight forward. $X$
-in some sense agglomerate the event space in the most preliminary level – the
-atomic exclusive level to a coarser level — the number of heads. So $(1, 0)$
-and $(0, 1)$ all collapse to the point ${1}$ in the set $T$. Correspondingly,
-the probability measure assigned on each event is changed. Mathematically,
-given a set $A$ in $T$, its probability now is </p>
-
-<script type="math/tex; mode=display">
-P^{X}(A) = P(\{\omega: X(\omega) \in A \}) = P(X^{-1}(A)) = P(X \in A)
-</script>
-
-<p>However, there is a way to think in the framework of functional analysis. Each
-mapping, precisely, function, in a vector space(Hilbert space could be a
-properer setting) could be regarded as projecting points in the vector space to
-the basis determined by the adjoint operator of this function.</p>
-
-<p>In previous example, a two dimensional space is reduced into one dimensional
-space, whose basis is the adjoint operator of the function $X$. And the
-probability measure of a point in this new one dimensional space is the sum of
-all points in the two dimensional points that will be projected at that
-point. Now, let’s see what those statements mean.</p>
-
-<p>If we draw a line crossing origin with slope one, all points with the same
-number of heads will be projected at the same point in this line. The point
-with two heads, which is $(1, 1)$, will be projected at point $(1, 1)$. The
-points with one head, which is $(1, 0) and (0, 1)$, will be projected at
-$(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2})$. Finally, the point with no head
-will be projected at $(0, 0)$. Now we drop the second dimension, each point in
-this line will semantically mean the number of heads, where the random variable
-will vary. Their probability measure will be summed while points are being
-projecting.</p>
-
-<p>The counting of heads is also represented by the function $(x + y)$(the value
-in each dimension of previous two dimensional space actually means the number
-of heads, so their sum will the number of heads), which is the adjoint operator
-of basis $(1, 1)$. This form is the representation of the basis of our new
-space in our old two dimensional space.</p>
-
-<p>One last note. When we are reducing dimensionality, we are also discarding the
-information of how many number of tail we get.</p>
-
-<p>In conclusion, what random variable really is?</p>
-
-<p>Random variable first maps original event space onto another event space, then
-defines a new probability distribution on the new space according its relation
-to the old event space. The intuitive meaning of the random variable is how it
-deals with original event space, which is counting the number of heads
-here. But essentially, it defines a distribution or in other words, probability
-measure at each point(the number of heads), in the new space.</p>
 ]]></content>
   </entry>
   
