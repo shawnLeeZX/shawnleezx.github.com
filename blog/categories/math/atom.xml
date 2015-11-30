@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-11-28T12:07:23+08:00</updated>
+  <updated>2015-11-30T11:44:37+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,115 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[General Transform, Linear Transform, Matrix]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/11/30/general-transform-linear-transform-matrix/"/>
+    <updated>2015-11-30T10:30:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/11/30/general-transform-linear-transform-matrix</id>
+    <content type="html"><![CDATA[<p>Yet another note on Math.</p>
+
+<p>Previously, the origin of Matrix for me comes from linear transform, and
+nothing more. Most of the intuitive comes from linear space transform, as in
+the example of orthogonal Fourier transform or wavelet transform. As I learn
+more and more optimization, and how it computes dual, matrix as a limit case of
+non-linear transform comes to me. The linear transform characteristics is just
+to approximate the nonlinear transform locally.</p>
+
+<!-- more -->
+
+<h2 id="how-matrix-originally-arises">How Matrix Originally Arises</h2>
+
+<p>Originally, matrix origins from linear transform, and is called linear
+operator.</p>
+
+<p>The deviation comes from how a basis of space $X$ gets mapped to another space
+$Y$. For details, please refer to <em>Linear Algebra Done Right</em>, <em>Introductory
+Functional Analysis with Application</em>, <em>A Friendly Introduction to Wavelet</em>, or
+any other books that talks about linear algebra.</p>
+
+<p>The underlying idea is pure linear, and does not touch nonlinear at all.</p>
+
+<h2 id="matrix-as-limit-case-of-nonlinear-transform">Matrix As Limit Case of Nonlinear Transform</h2>
+
+<p>The study of constrained nonlinear optimization made me thinking, when seeing
+it in the most general form</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{align*}
+  \text{minimize  } & f(x) \\
+  \text{subject to } & g_i(x) \leq 0
+\end{align*}
+ %]]&gt;</script>
+
+<p>First I simplify the problem to linear programming.</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{align*}
+  \text{minimize  } & f(x) \\
+  \text{subject to } & Ax - b \leq 0
+\end{align*}
+ %]]&gt;</script>
+
+<p>Solving system of linear equations is a central theme in Math, and it confused
+me when I had no idea relating the matrix $A$ in the system of equations to the
+space transform intuition of matrix.</p>
+
+<p>If I try to explain it by normal space transform, $Ax$ becomes</p>
+
+<script type="math/tex; mode=display">
+\sum\limits_{i}\vec{a_{i}}x_{i}
+</script>
+
+<p>where $\vec{a_{i}}$ is columns of $A$.</p>
+
+<p>It is explained as whether $b$ is in range of $A$, and range of $A$ is
+picturized as a space, which have nothing to do with $A$. The connection is
+broken.</p>
+
+<p>But if we change a perspective, write $Ax$ as</p>
+
+<script type="math/tex; mode=display">
+\vec{a_{i}}^{T}x
+</script>
+
+<p>where here $\vec{a_{i}}^{T}$ is the row of $A$.</p>
+
+<p>Denote the space $x$ belongs to as $X$, the one $Ax$ belongs to as $Y$, dual of
+$X$ as $X^{*}$.</p>
+
+<p>Assuming the bases of $X$ is orthonormal, which is normally in practice,
+<script type="math/tex">\vec{a_{i}}</script> is a basis of $Y^{*}$ gets mapped to <script type="math/tex">X^*</script>.</p>
+
+<p>Dual space $X^{*}$ consists of linear functional defined on $X$. The intuitive
+of linear functional $g(x)$ is the effect of change on $x$ will influence
+$g(x)$ linearly. Think it as cost or price would clarify.</p>
+
+<p>Write <script type="math/tex">\vec{a_{i}}^{T}x = g_{i}(x)</script>, the procedure how matrix transform $x$
+becomes clearer. The idea is a linear weighted combination of different
+elements of $x$. <script type="math/tex">\vec{a_{i}}^{T}x = g_{i}(x) \leq b_{i}</script> means in the direction of
+$\vec{a_{i}}$, the projection of $x$ on it could not exceed a certain value,
+which is also could be understood as some physical meaning, such as price,
+or threshold.</p>
+
+<p>So matrix is a stack of linear functionals and overall they together make up
+some linear transform. If all the linear functionals are linear independent,
+the system is invertable, so the matrix has an inverse. If all the linear
+functionals are orthogonal, then the weighted sum does not influence each
+other.</p>
+
+<p>Now, the rank of matrix makes a lot of sense, and matrices that are not
+unitary could be of more use.</p>
+
+<p>Back to the most general form of nonlinear optimization. When the system
+approaches its optimal solution, everything becomes more and more linear. The
+problem actually boiled down to again, a linear problem. Everything matters are
+just <script type="math/tex">g_{i}'</script>, which is just as linear as linear programming, and as
+matrix. This is the base of Lagrange multiplier methods.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Cone, Dual Cone and Generalized Inequalities]]></title>
@@ -354,44 +463,6 @@ pixels, naming all dimensions. So its variance is the largest, which makes it
 similar with first fourier basis. I think similar argument could be made to
 other principal components and Fourier bases as well. But they may be less
 obvious then the first one.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[A Concept Explanation on Composition of Matrice Representing Linear Transform]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/05/22/a-concept-explanation-on-composition-of-matrice-representing-linear-transform/"/>
-    <updated>2015-05-22T22:18:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/05/22/a-concept-explanation-on-composition-of-matrice-representing-linear-transform</id>
-    <content type="html"><![CDATA[<!-- more -->
-
-<p>It is a bit hard to internalize the fact that the composition of finite
-dimensional linear transformation is the multiplication of the matrices
-representing them. I figured out a concept explanation.</p>
-
-<p>Denoting the first transformation matrix as $A$ and the second as $B$,
-$\vec{a_{i}}$ as the row of $A$ and $\vec{b_{j}}$ as the row of $B$, the to
-be transformed vector as $x$, basically, each $\vec{a}_{i}$ determines how
-each coordinate $x_{i}$ of $\vec{x}$ will contribute to the result
-coordinates.</p>
-
-<p>Then if you do another linear transform on $\vec{Ax}$, each $\vec{b}_{j}$ determines how
-each coordinate of $\vec{Ax}$ will contribute to the final vector. Since the transform is
-linear, we could first consider how $\vec{a_{i}}$ contributes to the final
-vector, its final result with $x$ is just a multiple of $x_{i}$. Each
-component of $\vec{a_{i}}$ actually could be taken as a to be transformed
-vector of $B$. Each row of $AB$ could be viewed in the following way.</p>
-
-<p>$\vec{a_{i}}$ is the new coordinate of standard basis $\vec{e_{i}}$ after
-applying $A$. Starting from there, the second new coordinates of those first
-new coordinates are obtained by applying $B$. So if we apply $AB$ on standard
-basis $\vec{e_{i}}$, the result is going to be the second new
-coordinates. Actually, such coordinates are:</p>
-
-<script type="math/tex; mode=display">
-\sum\vec{b_{j}}(\vec{a_{i}})_{j}
-</script>
-
-<p>which is just $\vec{(AB)_{i}}$.</p>
 ]]></content>
   </entry>
   

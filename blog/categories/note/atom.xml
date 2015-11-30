@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Note | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/note/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-11-28T12:07:23+08:00</updated>
+  <updated>2015-11-30T11:44:37+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,115 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[General Transform, Linear Transform, Matrix]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/11/30/general-transform-linear-transform-matrix/"/>
+    <updated>2015-11-30T10:30:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/11/30/general-transform-linear-transform-matrix</id>
+    <content type="html"><![CDATA[<p>Yet another note on Math.</p>
+
+<p>Previously, the origin of Matrix for me comes from linear transform, and
+nothing more. Most of the intuitive comes from linear space transform, as in
+the example of orthogonal Fourier transform or wavelet transform. As I learn
+more and more optimization, and how it computes dual, matrix as a limit case of
+non-linear transform comes to me. The linear transform characteristics is just
+to approximate the nonlinear transform locally.</p>
+
+<!-- more -->
+
+<h2 id="how-matrix-originally-arises">How Matrix Originally Arises</h2>
+
+<p>Originally, matrix origins from linear transform, and is called linear
+operator.</p>
+
+<p>The deviation comes from how a basis of space $X$ gets mapped to another space
+$Y$. For details, please refer to <em>Linear Algebra Done Right</em>, <em>Introductory
+Functional Analysis with Application</em>, <em>A Friendly Introduction to Wavelet</em>, or
+any other books that talks about linear algebra.</p>
+
+<p>The underlying idea is pure linear, and does not touch nonlinear at all.</p>
+
+<h2 id="matrix-as-limit-case-of-nonlinear-transform">Matrix As Limit Case of Nonlinear Transform</h2>
+
+<p>The study of constrained nonlinear optimization made me thinking, when seeing
+it in the most general form</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{align*}
+  \text{minimize  } & f(x) \\
+  \text{subject to } & g_i(x) \leq 0
+\end{align*}
+ %]]&gt;</script>
+
+<p>First I simplify the problem to linear programming.</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{align*}
+  \text{minimize  } & f(x) \\
+  \text{subject to } & Ax - b \leq 0
+\end{align*}
+ %]]&gt;</script>
+
+<p>Solving system of linear equations is a central theme in Math, and it confused
+me when I had no idea relating the matrix $A$ in the system of equations to the
+space transform intuition of matrix.</p>
+
+<p>If I try to explain it by normal space transform, $Ax$ becomes</p>
+
+<script type="math/tex; mode=display">
+\sum\limits_{i}\vec{a_{i}}x_{i}
+</script>
+
+<p>where $\vec{a_{i}}$ is columns of $A$.</p>
+
+<p>It is explained as whether $b$ is in range of $A$, and range of $A$ is
+picturized as a space, which have nothing to do with $A$. The connection is
+broken.</p>
+
+<p>But if we change a perspective, write $Ax$ as</p>
+
+<script type="math/tex; mode=display">
+\vec{a_{i}}^{T}x
+</script>
+
+<p>where here $\vec{a_{i}}^{T}$ is the row of $A$.</p>
+
+<p>Denote the space $x$ belongs to as $X$, the one $Ax$ belongs to as $Y$, dual of
+$X$ as $X^{*}$.</p>
+
+<p>Assuming the bases of $X$ is orthonormal, which is normally in practice,
+<script type="math/tex">\vec{a_{i}}</script> is a basis of $Y^{*}$ gets mapped to <script type="math/tex">X^*</script>.</p>
+
+<p>Dual space $X^{*}$ consists of linear functional defined on $X$. The intuitive
+of linear functional $g(x)$ is the effect of change on $x$ will influence
+$g(x)$ linearly. Think it as cost or price would clarify.</p>
+
+<p>Write <script type="math/tex">\vec{a_{i}}^{T}x = g_{i}(x)</script>, the procedure how matrix transform $x$
+becomes clearer. The idea is a linear weighted combination of different
+elements of $x$. <script type="math/tex">\vec{a_{i}}^{T}x = g_{i}(x) \leq b_{i}</script> means in the direction of
+$\vec{a_{i}}$, the projection of $x$ on it could not exceed a certain value,
+which is also could be understood as some physical meaning, such as price,
+or threshold.</p>
+
+<p>So matrix is a stack of linear functionals and overall they together make up
+some linear transform. If all the linear functionals are linear independent,
+the system is invertable, so the matrix has an inverse. If all the linear
+functionals are orthogonal, then the weighted sum does not influence each
+other.</p>
+
+<p>Now, the rank of matrix makes a lot of sense, and matrices that are not
+unitary could be of more use.</p>
+
+<p>Back to the most general form of nonlinear optimization. When the system
+approaches its optimal solution, everything becomes more and more linear. The
+problem actually boiled down to again, a linear problem. Everything matters are
+just <script type="math/tex">g_{i}'</script>, which is just as linear as linear programming, and as
+matrix. This is the base of Lagrange multiplier methods.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Cone, Dual Cone and Generalized Inequalities]]></title>
@@ -346,84 +455,6 @@ the whole is to make sure the new space has good properties.</p>
 <p>So for operators, the most important is to enforce regularities to make sure
 there is good properties in the new space, which is algebraic in nature instead
 of geometrical.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[On Teaching and Learning]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/09/21/on-teaching-and-learning/"/>
-    <updated>2015-09-21T20:37:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/09/21/on-teaching-and-learning</id>
-    <content type="html"><![CDATA[<p>Some notes on teaching and learning.</p>
-
-<!-- more -->
-
-<p>The way we teach reflects the way we learn and the way we communicate. Teaching
-gives me another perspective on how may I could be taught or just, learn from
-others. Such experience has led me a long way to realize my deficiency.</p>
-
-<p>I attended a workshop on teaching today and want to note down something
-learned. It is the first time I got systematical training on how to teaching,
-which is equivalent to how to learn.</p>
-
-<p>The following stuffs come from the handout in the workshop.</p>
-
-<h3 id="seven-research-based-principles-for-smart-teaching">Seven Research-based Principles for Smart Teaching</h3>
-
-<p>There are seven principles in teaching, which also means in learning.</p>
-
-<ol>
-  <li>prior knowledge</li>
-  <li>structuring knowledge</li>
-  <li>motivation</li>
-  <li>self-awareness on the one’s situation</li>
-  <li>synthesis of different parts of acquired knowledge </li>
-  <li>feedback</li>
-  <li>emotional feeling, social and intellectual climate</li>
-</ol>
-
-<p>This is a systematical summary of elements that involves in the learning
-process. Prior knowledge is what you already have; structuring knowledge is how
-you condense your knowledge and build inner connection between different
-separate parts; motivation is power house behind all your efforts;
-self-awareness is about a clear awareness of one’s current situation — what
-one have known, what one do not know, what one know one do not know; synthesis
-is where something new could happen; feedback is how people get to know their
-mistakes, so they could fix them, and learn new things; emotional stability and
-social support is very important for long term learning.</p>
-
-<p>After some thinking, it seems that nothing is really new for me, but the
-summary is helpful.</p>
-
-<h3 id="on-motivation">On Motivation</h3>
-
-<p>Another important part on teaching and learning discussed is what motivate
-people to do better on tasks that need cognitive thinking.</p>
-
-<p>I long have known only money is not enough. Today I got a very good summary:</p>
-
-<blockquote>
-  <p>Pay people enough to take the issue of money off the table.</p>
-</blockquote>
-
-<p>The factors that motivate to do great work is autonomy, mastery and
-purpose. There should many materials online talking on this given this is a
-research output from scientists.</p>
-
-<h3 id="three-skills-on-communication">Three Skills On Communication</h3>
-
-<ol>
-  <li>Storytelling</li>
-  <li>Contextualizing</li>
-  <li>Sketching</li>
-</ol>
-
-<p>All those are kind of one thing. People learn from examples, so we need
-storytelling; people learn from examples that they know the most, so we need
-contextualize the examples with their experience; people learn bit by bit,
-dynamically, so we need to present it bit by bit, like sketching a picture.</p>
-
-<p>It is easier said that done. Practice is important.</p>
 ]]></content>
   </entry>
   
