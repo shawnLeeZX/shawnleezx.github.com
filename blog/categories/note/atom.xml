@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Note | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/note/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-11-30T11:44:37+08:00</updated>
+  <updated>2015-12-11T16:20:03+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -119,6 +119,74 @@ approaches its optimal solution, everything becomes more and more linear. The
 problem actually boiled down to again, a linear problem. Everything matters are
 just <script type="math/tex">g_{i}'</script>, which is just as linear as linear programming, and as
 matrix. This is the base of Lagrange multiplier methods.</p>
+
+<h2 id="optimality-condition-of-equality-constrained-optimization-an-example">Optimality Condition of Equality Constrained Optimization: An Example</h2>
+
+<p>An example would make the idea that matrix’s nature on linear transform
+clearer. I learned this example ten days after I wrote this note.</p>
+
+<p>Given the following equality constrained problem</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{align*}
+  \text{minimize  } & f(x) \\
+  \text{subject to } & H(x) = \theta
+\end{align*}
+ %]]&gt;</script>
+
+<p>Note we are using vector notation now. Denote the Jacobian of $H(x)$ as
+$H’(x)$; $x \in X$, $H(x) \in Z$, where $X$ is a linear vector space, while $Z$
+is a normed space. Suppose this problem reaches its constrained minimum
+<script type="math/tex">x^{*}</script>. We assume <script type="math/tex">x^*</script> is a regular point, which means <script type="math/tex">H'(x^*)</script> maps
+$X$ onto $Z$. If $Z$ is of finite dimension, it just means <script type="math/tex">H'(x^*)</script> is of
+full rank.</p>
+
+<p>To digress a little, if the mapping <script type="math/tex">H'(^*x)</script> is not onto, it means there is
+linear dependence in the gradients of <script type="math/tex">H(^*x)</script> at <script type="math/tex">x^*</script>. When equality
+constrains have linear dependence, the feasible region is empty. A picture
+would be two parallel hyperplane, who do not intersect each other. For more
+complex examples, refer to chapters of <em>Nonlinear Programming, Bertsekas</em>, or
+<em>Nonlinear Programming, Theory and Algorithms</em> on optimality conditions.</p>
+
+<p>The above clarification of terminology is to make the argument satisfies for
+both infinite dimension and finite dimension space.</p>
+
+<p>Since <script type="math/tex">x^*</script> is minimum(for now we use $x$ instead of <script type="math/tex">x^*</script> for convenience
+sake), $\nabla f(x)$ has to be orthogonal to the direction $h$, where $H’(x)h =
+\theta$. It means $\nabla f(x)$ is orthogonal to $N(H’(x))$, null space of
+$H’(x)$. Now we could see clearly a linear transform, aka matrix is the limit
+case of a general non-linear transform, or in another word, the local
+approximation of general non-linear transform $H(x)$, in form of $H’(x)$.</p>
+
+<p>To recap the last section, from a linear algebra point of view, we internalize
+$Ax$ by how a component of $x$ is represented by coordinates in the new
+space. But from a transform point of view, we internalize matrix as applying
+each row of $A$, a linear functional to $x$ repeatedly. So whether a matrix is
+of full, or be orthogonal does not matter that much. We just create a transform
+by stacking some functional row by row.</p>
+
+<p>The latter point of view is the intrinsic nature of transform. But the reason
+much efforts have been made in linear algebra is because often ultimately a
+problem would be attacked from linear point of view, which is the case of this
+example. With the machinery from linear algebra, a much rich structure could be
+used instead of just general transform.</p>
+
+<p>Remember in a <a href="{{ root_url }}/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>
+on Linear programming, the intuition of $Ax$ is to map a point from a space $X$
+of points to another space of points $Z$, then its dual map or adjoin map
+$A^{T}$ is to map dual space <script type="math/tex">Z^{*}</script> to <script type="math/tex">X^{*}</script>.</p>
+
+<p>If $\nabla f(x) \perp N(H’(x))$, it means <script type="math/tex">f(x) \in R(H'(x)^*)</script>. So there
+exists a <script type="math/tex">z^{*} \in Z^{*}</script> satisfying <script type="math/tex">f(x) = z^{*}H'(x)^{*}</script>, which could
+be written as</p>
+
+<script type="math/tex; mode=display">
+\nabla f(x) + \langle z^{*}, H'(x) \rangle
+</script>
+
+<p>which is the optimality condition of optimization problems with equality
+constraints.</p>
 ]]></content>
   </entry>
   
