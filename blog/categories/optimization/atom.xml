@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Optimization | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/optimization/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-12-11T16:20:03+08:00</updated>
+  <updated>2015-12-14T22:29:56+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,149 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[On Duality in Optimization]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/12/14/on-duality-in-optimization/"/>
+    <updated>2015-12-14T21:09:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/12/14/on-duality-in-optimization</id>
+    <content type="html"><![CDATA[<p>Yet another note on Math.</p>
+
+<p>A more general picture of duality in optimization emerges itself. Some time is
+still needed to unify all duality in optimization, but for now I summarize a
+draft version of it here using duality of linear programming as an example.</p>
+
+<!-- more -->
+
+<h2 id="intuition-of-lagrange-multiplier-from-functional-analysis">Intuition of Lagrange Multiplier From Functional Analysis</h2>
+
+<p>In its most general form, optimization problem is</p>
+
+<script type="math/tex; mode=display">
+\max\ f(x)\\
+G(x) \geq 0\\
+H(x) = 0
+</script>
+
+<p>where $G(x)$ is the group of inequality constrains <script type="math/tex">g_i(x)</script>; $H(x)$ is the
+group of equality constrains <script type="math/tex">h_i(x)</script>; $x \in X = R^{n}$ or $x \in X = R^{m
+\times n}$, where $x$ is taken as matrix variables.</p>
+
+<p>The domain of the problem is implicitly defined by $G(x)$ and
+$H(x)$. Geometrically, $H(x) = 0$ describes some surface in $X$. $G(x)$
+describes some ``half space’’.</p>
+
+<p>The question to ask is: what objects should we take those constrains as? so we
+could internalize and reason with them.</p>
+
+<p>In abstract sense, if we take $f(x), G(x), H(x)$ as variables, or in a more
+intuitive word, as objects, in our perception the problem seems not to be that
+abstract and convoluted. Their dependency on $x$ seems to gone. This is the
+idea from functional analysis. We are just doing space transform on the
+original space $X$. After the transform, we try to find the extreme value of a
+specific coordinate of the new space, which is $f(x)$, in a sub-area of the new
+space, which describes by constrains.</p>
+
+<p>Despite of the non-linearity, every natural phenomena in nature, thus in Math,
+comes from certain metamorphism of linear phenomena. To say it in another way,
+though we could create very bizarre phenomena with math trick, the real world
+should be analyzed starting from the linearity, not for simplicity or
+computation’s sake.</p>
+
+<p>But how could we come up with linearity?</p>
+
+<p>This brings to think why constrains exists. It exists because in real world,
+certain things has to be satisfied, it could be a fixed location, or limited
+amount of resources and so on. The real world constrain is somehow connected to
+the objective function, otherwise it won’t exist at all. So how could we model
+such connection?</p>
+
+<p>This is the key to the entry of duality.</p>
+
+<p>We have to find the connection of variables $G(x), H(x)$ to another variable
+$f(x)$. As having been discussed, every natural phenomena somehow comes from
+metamorphism of linear phenomena. An example is the invention of calculus,
+which is the how non-linear phenomena behaves locally. The way we connect those
+variables is through their linear combination. This in the language of
+functional analysis is to say we analyze the primal space from its dual space.</p>
+
+<p>Now back to Lagrange duality. Lagrange multiplier is elements in dual space of
+the space made up by $f(x), G(x), H(x)$.</p>
+
+<p>This intuition unscramble constrains.</p>
+
+<h2 id="an-example-linear-programming">An Example: Linear Programming</h2>
+
+<p>Linear programming is the case where all things are linear. So nothing
+metamorphized. When we only deal with gradients in a specific point in
+non-linear programming, such as the case of KKT condition, Fritz-John
+condition, it is actually exactly the optimality condition of linear
+programming.</p>
+
+<p>Previously I have noted an possible motivation of Linear programming. Now I
+could see the previous note(about two months ago) is just a special case of
+previous idea.</p>
+
+<p>For a LP problem, as the following</p>
+
+<script type="math/tex; mode=display">
+\max\ c^{T}\\
+Ax = b\\
+x \geq 0
+</script>
+
+<p>I tried to see it from adjoin operator point of view, which is to find
+something from $A^{T}$. For details, please refer to previous
+<a href="{{ root_url }}/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>.</p>
+
+<p>Now we write the Lagrange of LP, the dual function is</p>
+
+<script type="math/tex; mode=display">
+\inf\limits_{x} c^{T}x + y^{T}(Ax - b) - s^{T}x
+</script>
+
+<p>note we have $s \geq 0$.</p>
+
+<p>Now we see how could we deduce it from previous argument of last
+<a href="{{ root_url }}/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>.</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{align*}
+                &  \langle 1, c^{T}x \rangle + \langle y, Ax -b \rangle - \langle s, x \rangle\\
+\Leftrightarrow &  \langle c, x \rangle + \langle y, Ax -b \rangle - \langle s, x \rangle\\
+\Leftrightarrow &  \langle c - s, x \rangle + \langle y, Ax \rangle - \langle y, b \rangle\\
+\Leftrightarrow & - \langle y, b \rangle +  \langle c - s, x \rangle + \langle y, Ax \rangle \\
+\Leftrightarrow & - \langle y, b \rangle +  \langle c - s, x \rangle + \langle A^{T}y, x \rangle \\
+\Leftrightarrow & - \langle y, b \rangle +  \langle c - s + A^{T}y, x \rangle \\
+\Leftrightarrow &  \langle y, b \rangle +  \langle c - s - A^{T}y, x \rangle \\
+\end{align*}
+ %]]&gt;</script>
+
+<p>We find some connection between dual space and primal space now. To make the
+part of dual space be a lower bound, we ask $s \geq 0$. This is just the
+zooming idea previously.</p>
+
+<p>The more geometrically picture is the geometrical intuition from Lagrange
+duality.</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{align*}
+ & \inf\limits_{x} \langle c, x \rangle + \langle y, Ax -b \rangle - \langle s, x \rangle\\
+\Leftrightarrow & \inf\limits_{x} \langle c - s, x \rangle + \langle y, Ax \rangle - \langle y, b \rangle\\
+\Leftrightarrow & - \langle y, b \rangle + \inf\limits_{x} \langle c - s, x \rangle + \langle y, Ax \rangle \\
+\Leftrightarrow & - \langle y, b \rangle + \inf\limits_{x} \langle c - s, x \rangle + \langle A^{T}y, x \rangle \\
+\Leftrightarrow & - \langle y, b \rangle + \inf\limits_{x} \langle c - s + A^{T}y, x \rangle \\
+\Leftrightarrow &  \langle y, b \rangle + \inf\limits_{x} \langle c - s - A^{T}y, x \rangle \\
+\end{align*}
+ %]]&gt;</script>
+
+<p>The $\inf$ could move the dual variable down. So we have a constrained problem
+again.(Details are omitted, and could be found at <em>Nonlinear Optimization
+Andrzej Ruszczynski</em> or some other books talk about Lagrange duality).</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Cone, Dual Cone and Generalized Inequalities]]></title>

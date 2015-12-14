@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Note | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/note/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-12-11T16:20:03+08:00</updated>
+  <updated>2015-12-14T22:29:56+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,149 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[On Duality in Optimization]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/12/14/on-duality-in-optimization/"/>
+    <updated>2015-12-14T21:09:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/12/14/on-duality-in-optimization</id>
+    <content type="html"><![CDATA[<p>Yet another note on Math.</p>
+
+<p>A more general picture of duality in optimization emerges itself. Some time is
+still needed to unify all duality in optimization, but for now I summarize a
+draft version of it here using duality of linear programming as an example.</p>
+
+<!-- more -->
+
+<h2 id="intuition-of-lagrange-multiplier-from-functional-analysis">Intuition of Lagrange Multiplier From Functional Analysis</h2>
+
+<p>In its most general form, optimization problem is</p>
+
+<script type="math/tex; mode=display">
+\max\ f(x)\\
+G(x) \geq 0\\
+H(x) = 0
+</script>
+
+<p>where $G(x)$ is the group of inequality constrains <script type="math/tex">g_i(x)</script>; $H(x)$ is the
+group of equality constrains <script type="math/tex">h_i(x)</script>; $x \in X = R^{n}$ or $x \in X = R^{m
+\times n}$, where $x$ is taken as matrix variables.</p>
+
+<p>The domain of the problem is implicitly defined by $G(x)$ and
+$H(x)$. Geometrically, $H(x) = 0$ describes some surface in $X$. $G(x)$
+describes some ``half space’’.</p>
+
+<p>The question to ask is: what objects should we take those constrains as? so we
+could internalize and reason with them.</p>
+
+<p>In abstract sense, if we take $f(x), G(x), H(x)$ as variables, or in a more
+intuitive word, as objects, in our perception the problem seems not to be that
+abstract and convoluted. Their dependency on $x$ seems to gone. This is the
+idea from functional analysis. We are just doing space transform on the
+original space $X$. After the transform, we try to find the extreme value of a
+specific coordinate of the new space, which is $f(x)$, in a sub-area of the new
+space, which describes by constrains.</p>
+
+<p>Despite of the non-linearity, every natural phenomena in nature, thus in Math,
+comes from certain metamorphism of linear phenomena. To say it in another way,
+though we could create very bizarre phenomena with math trick, the real world
+should be analyzed starting from the linearity, not for simplicity or
+computation’s sake.</p>
+
+<p>But how could we come up with linearity?</p>
+
+<p>This brings to think why constrains exists. It exists because in real world,
+certain things has to be satisfied, it could be a fixed location, or limited
+amount of resources and so on. The real world constrain is somehow connected to
+the objective function, otherwise it won’t exist at all. So how could we model
+such connection?</p>
+
+<p>This is the key to the entry of duality.</p>
+
+<p>We have to find the connection of variables $G(x), H(x)$ to another variable
+$f(x)$. As having been discussed, every natural phenomena somehow comes from
+metamorphism of linear phenomena. An example is the invention of calculus,
+which is the how non-linear phenomena behaves locally. The way we connect those
+variables is through their linear combination. This in the language of
+functional analysis is to say we analyze the primal space from its dual space.</p>
+
+<p>Now back to Lagrange duality. Lagrange multiplier is elements in dual space of
+the space made up by $f(x), G(x), H(x)$.</p>
+
+<p>This intuition unscramble constrains.</p>
+
+<h2 id="an-example-linear-programming">An Example: Linear Programming</h2>
+
+<p>Linear programming is the case where all things are linear. So nothing
+metamorphized. When we only deal with gradients in a specific point in
+non-linear programming, such as the case of KKT condition, Fritz-John
+condition, it is actually exactly the optimality condition of linear
+programming.</p>
+
+<p>Previously I have noted an possible motivation of Linear programming. Now I
+could see the previous note(about two months ago) is just a special case of
+previous idea.</p>
+
+<p>For a LP problem, as the following</p>
+
+<script type="math/tex; mode=display">
+\max\ c^{T}\\
+Ax = b\\
+x \geq 0
+</script>
+
+<p>I tried to see it from adjoin operator point of view, which is to find
+something from $A^{T}$. For details, please refer to previous
+<a href="{{ root_url }}/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>.</p>
+
+<p>Now we write the Lagrange of LP, the dual function is</p>
+
+<script type="math/tex; mode=display">
+\inf\limits_{x} c^{T}x + y^{T}(Ax - b) - s^{T}x
+</script>
+
+<p>note we have $s \geq 0$.</p>
+
+<p>Now we see how could we deduce it from previous argument of last
+<a href="{{ root_url }}/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>.</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{align*}
+                &  \langle 1, c^{T}x \rangle + \langle y, Ax -b \rangle - \langle s, x \rangle\\
+\Leftrightarrow &  \langle c, x \rangle + \langle y, Ax -b \rangle - \langle s, x \rangle\\
+\Leftrightarrow &  \langle c - s, x \rangle + \langle y, Ax \rangle - \langle y, b \rangle\\
+\Leftrightarrow & - \langle y, b \rangle +  \langle c - s, x \rangle + \langle y, Ax \rangle \\
+\Leftrightarrow & - \langle y, b \rangle +  \langle c - s, x \rangle + \langle A^{T}y, x \rangle \\
+\Leftrightarrow & - \langle y, b \rangle +  \langle c - s + A^{T}y, x \rangle \\
+\Leftrightarrow &  \langle y, b \rangle +  \langle c - s - A^{T}y, x \rangle \\
+\end{align*}
+ %]]&gt;</script>
+
+<p>We find some connection between dual space and primal space now. To make the
+part of dual space be a lower bound, we ask $s \geq 0$. This is just the
+zooming idea previously.</p>
+
+<p>The more geometrically picture is the geometrical intuition from Lagrange
+duality.</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{align*}
+ & \inf\limits_{x} \langle c, x \rangle + \langle y, Ax -b \rangle - \langle s, x \rangle\\
+\Leftrightarrow & \inf\limits_{x} \langle c - s, x \rangle + \langle y, Ax \rangle - \langle y, b \rangle\\
+\Leftrightarrow & - \langle y, b \rangle + \inf\limits_{x} \langle c - s, x \rangle + \langle y, Ax \rangle \\
+\Leftrightarrow & - \langle y, b \rangle + \inf\limits_{x} \langle c - s, x \rangle + \langle A^{T}y, x \rangle \\
+\Leftrightarrow & - \langle y, b \rangle + \inf\limits_{x} \langle c - s + A^{T}y, x \rangle \\
+\Leftrightarrow &  \langle y, b \rangle + \inf\limits_{x} \langle c - s - A^{T}y, x \rangle \\
+\end{align*}
+ %]]&gt;</script>
+
+<p>The $\inf$ could move the dual variable down. So we have a constrained problem
+again.(Details are omitted, and could be found at <em>Nonlinear Optimization
+Andrzej Ruszczynski</em> or some other books talk about Lagrange duality).</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[General Transform, Linear Transform, Matrix]]></title>
@@ -370,159 +513,6 @@ as CUDA, which I just need to add a symbol link <code>lib64</code> to <code>lib<
 compilation may still work.</p>
 
 <p>So this is the note.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[On Linear Programming, Duality of LP and Operator, a Functional Analysis Point of view]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/"/>
-    <updated>2015-10-18T12:39:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view</id>
-    <content type="html"><![CDATA[<p>Yet another note on Math, about visualization of Linear Programming, some
-thoughts on Operator and Adjoin.</p>
-
-<!-- more -->
-
-<h2 id="dual-map-and-adjoin-operator">Dual Map and Adjoin Operator</h2>
-
-<p>Denote the matrix of a linear mapping $T$ corresponds to natural bases as $A$,
-then $A^{T}$ is the matrix corresponds to the dual map of $T$. More
-specifically, if the bases of the two space, the original space and its dual,
-are orthogonal respectively, $A^{T}$ is the adjoin operator of $A$. Now suppose
-$A \in R^{M \times N}$.</p>
-
-<p>For a linear programming problem, the constraints are $Ax \leq b$, intuitively,
-we understand it as a polyhedron, the intersection of finite number of
-halfspaces.</p>
-
-<p>We could also understand it from linear mapping and dual bases point of view.</p>
-
-<p>$A$ maps points from $R^{N}$ to $R^{M}$. A column of $A$ corresponds to the
-coordinates of the an natural basis of $R^{N}$ in the new $R^{M}$, meanwhile,
-a column of $A^{T}$, which is a row of $A$, corresponds to the coordinates of a
-dual basis of a natural basis of $R^{M}$ in $R^{N}$ if it is transformed by
-$A^{T}$.</p>
-
-<p>So a row $\vec{a_{i}}$ of $A$ is a $A^{T}$ transformed dual basis that
-corresponds to one natural basis in $R^{M}$, which corresponds to a hyperplane
-in $R^{N}$, also an element of the dual space of $R^{N}$.</p>
-
-<h2 id="on-the-feasible-region-of-linear-programming">On the Feasible Region of Linear Programming</h2>
-
-<p>Now we try to see whether we could get a picture from the above concepts.</p>
-
-<h3 id="a-previous-possibly-wrong-attempt">A Previous Possibly Wrong Attempt</h3>
-
-<p>This is the first visualization I have tried. It turns out not that right after
-I discussed the idea with my optimization course teacher.</p>
-
-<p>From this perspective, the polyhedron in $R^{N}$ is a squashed(or enlarged)
-quadrant of $R^{M}$, which is the intersection of hyperplanes whose normals are
-natural bases of $R^{M}$ — the hyperplanes only need to pass a constant
-value, probably corresponding dimension of $b$(have not thought very clearly),
-do not necessarily pass origin point.</p>
-
-<p>If $M &gt; N$, $R^{M}$ gets squashed, and there are much freedom in the way how
-the space gets squashed, which is analog with we have more equations than
-variables, so it is easier to get solutions. Otherwise, $R^{M}$ gets enlarged,
-however, no matter how the enlarging is done, it still remains as a low
-dimensional space in the high dimensional space, thus the freedom is limited,
-which is analog with more variables than equations, so it is harder or
-impossible to get solutions.</p>
-
-<h3 id="reason-in-the-standard-form">Reason In the Standard Form</h3>
-
-<p>If we convert the problem to the standard form of linear programming, we could
-see that the dimension or the original space is usually larger than the dual
-space, otherwise, the feasible region could be easily empty. In this case, the
-argument, that the dual space gets squashed, does not hold. But a different
-picture turns out immediately.</p>
-
-<p>Intuitively, which means it is not necessarily right, as long the objective
-function does not parallel with one of the constraints, the solution to LP is a
-basic solution, otherwise, we could move the point along one of the constraint
-to change the objective value. Now we only discuss basic solutions.</p>
-
-<p>For every basic solution, we have $N$ constraints being active. Note that $N$
-is the dimension of the dual space. Thus, each set of $N$ active constraints
-corresponds to a version of dual space that gets mapped from the standard basis
-of dual space by those columns of $A^{T}$. More specifically, each active
-hyperplane in the $R^{M}$ is a basis in the dual space $R^{N}$.</p>
-
-<h2 id="on-duality-of-linear-programming">On Duality of Linear Programming</h2>
-
-<p>This leads to an intuition about how on earth the dual problem of LP is
-conceived in the first place, and makes its extension to conic programming
-clear.</p>
-
-<p>From my understanding, the dual in Optimization is to find a lower bound of the
-distance in the original space in its dual space, being it the shortest
-distance from a point to a subspace, from a point to a closed convex set or a
-convex epigraph to a concave epigraph of functions. Those three examples, which
-is three types of dual in infinite dimensional optimization try to find a
-linear approximate lower bound for a normally non-linear objective
-function. Their dual problems are usually some kind of LP, or other forms could
-be easily solved. But for LP, all parts in the problem is already linear. From
-this line of thinking, the dual of LP is to find a lower bound in the dual
-space of $Ax$. How could this be? The key lies in the adjoin operator.</p>
-
-<p>The standard form of LP is</p>
-
-<script type="math/tex; mode=display">
-\max\ c^{T}\\
-Ax = b\\
-x \geq 0
-</script>
-
-<p>We have an adjoin relation</p>
-
-<script type="math/tex; mode=display">
-\langle Ax, y\rangle = \langle x, A^{T}y \rangle\\
-\langle b, y\rangle = \langle x, A^{T}y\rangle\\ 
-\langle b, y\rangle \leq \langle x, c\rangle
-</script>
-
-<p>The last inequality holds because we have $x \geq 0$.</p>
-
-<p>Conic programming just extends the meaning of $\geq$ and inner product.</p>
-
-<h2 id="the-algebraic-nature-of-operator">The Algebraic Nature of Operator</h2>
-
-<p>All of the thinking about originates from the way I learn Math. I want to get a
-picture from the symbols and relationships. Up to now, all concepts I know
-could be put into a 2D or 3D system with or without coordinates in my mind,
-being it topology space, metric space, Banach space, inner product space,
-Hilbert space, dual space, affine set, convex set, cone, measure, probability
-measure and so on. Dual in optimization is a new concept, and I want to put it
-somewhere in the system. In about 4 days, I almost finished the book
-<em>Optimization by Vector Space Method</em>, which is about infinite dimensional
-optimization, and learned the three kinds of duals mentioned before. I indeed
-came up with similar visualization tricks mentioned in the book before I read
-them. But in the section, some words rang a bell, after a few days I read them
-and pondered on the meaning of adjoin, the relation between the $Ax$ and $X$.</p>
-
-<p>At the beginning of the Chapter Six</p>
-
-<blockquote>
-  <p>Because it is difficult to obtain a simple geometric representation of an
-arbitrary linear operator, the material in this chapter tends to be somewhat
-more algebraic in character than that of other chapters. Effort is made,
-however, to extend some of the geometric ideas used for the study of linear
-functionals to general linear operators and also to interpret adjoints in
-terms of relations among hyperplanes.</p>
-</blockquote>
-
-<p>The point of an operator $A$ is to transform a point in $X$ to a new space for
-some purpose. It is not clear to see why it helps in the general form, but
-think Fourier Transform, which is to transform a point in the signal space to
-the frequency space. Boom, science advanced. In retrospect, do we need to keep
-a picture in the natural basis of signal space when considering the frequency
-space? No. In some research paper I read, for instance, scattering transform,
-the whole is to make sure the new space has good properties.</p>
-
-<p>So for operators, the most important is to enforce regularities to make sure
-there is good properties in the new space, which is algebraic in nature instead
-of geometrical.</p>
 ]]></content>
   </entry>
   
