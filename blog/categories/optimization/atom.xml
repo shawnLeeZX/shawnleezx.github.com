@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Optimization | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/optimization/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-12-14T22:29:56+08:00</updated>
+  <updated>2015-12-15T21:15:39+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,128 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[On KKT Condition and Optimality Condition of Conic Linear Programming]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/12/15/on-kkt-condition-and-optimality-condition-of-conic-linear-programming/"/>
+    <updated>2015-12-15T20:18:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/12/15/on-kkt-condition-and-optimality-condition-of-conic-linear-programming</id>
+    <content type="html"><![CDATA[<p>Yet another note on Math.</p>
+
+<p>In LP and SDP, the complementary slackness are written as</p>
+
+<script type="math/tex; mode=display">
+(c - A^{T}y)^{T}x = 0\\
+(C -\sum\limits_{i}y_{i}A_{i}) \bullet X = 0
+</script>
+
+<p>While KKT condition’s complementary slackness is</p>
+
+<script type="math/tex; mode=display">
+v^{T}g(x) = 0
+</script>
+
+<p>It is hard to connect them at first glance, since dual variable $v$ is dual to
+the space of $g(x)$, which is not necessarily in the same space with $x$.
+Especially when $x$ is the big matrix $X$ in SDP, $g(X)$ lies in vector space
+instead of matrix space.</p>
+
+<p>This is the note for the how they are connected.</p>
+
+<!-- more -->
+
+<h2 id="linear-programming">Linear Programming</h2>
+
+<p>For linear programming, we write down its Lagrange</p>
+
+<script type="math/tex; mode=display">
+c^{T}x + y^{T}(b - Ax) - s^{T}x
+</script>
+
+<p>its gradient is $c - A^{T}y - s$</p>
+
+<p>so its KKT condition is</p>
+
+<script type="math/tex; mode=display">
+c - A^{T}y - s = 0 \text{ Stationary point}\\
+x \geq 0, Ax = b \text{ Primal feasibility}\\
+s^{T}x = 0, s \geq 0 \text{ Complementary slackness}
+</script>
+
+<p>Now we see $(c - A^{T}y)^{T}x = 0$ is the combination of stationary point
+condition and complementary slackness condition. The special structure occurs
+here because</p>
+
+<ol>
+  <li>In linear problem, analytic solution of equation is possible.</li>
+  <li>$g(x)$ is just $x$, so their spaces are the same.</li>
+</ol>
+
+<p>Note when LP reaches its optimal value, we always have $c^{T}x = b^{T}y =
+(A^{T}y)^{T}x$, but there is a difference $s$ between $c$ and $A^{T}y$. Here we
+see the specialty of LP. When one dimension of $s$ is not zero, we have
+correspond dimension of $x$ to be zero. Due to the linearity of $c^{T}x$, the
+zero directly reflects on the objective value, which makes correspond
+dimension’s contribution to zero. Now it is clearer why duality gap is always
+zero.</p>
+
+<h2 id="semi-definite-programming">Semi-Definite Programming</h2>
+
+<p>For SDP, if we want to draw analog with LP, the Lagrange may look like</p>
+
+<script type="math/tex; mode=display">
+C \bullet X + \sum\limits_{i}y_i(b_i - A_i \bullet X) - S \bullet X
+</script>
+
+<p>its gradient is <script type="math/tex">C - \sum\limits_{i}y_i A_i - S</script>.</p>
+
+<p>So its KKT condition is</p>
+
+<script type="math/tex; mode=display">
+C - \sum\limits_{i}y_i A_i - S = 0\\
+x \succeq 0, A_i x = b_i\\
+S \bullet X = 0
+</script>
+
+<p>which is almost the same in format with that of LP.</p>
+
+<p>But note</p>
+
+<ol>
+  <li>KKT does not work wit matrix inequality yet, so $S \bullet X$ cannot be
+moved up to the Lagrange function. Though it does suggest some form of
+KKT condition that could deal with matrix inequality may exist.</li>
+  <li>The relationship is not linear anymore, both in $X \succeq 0$ and $C \bullet
+X$ because the symmetric constrain enforced on $X$, which makes $X$ not just
+a matrix form vector.</li>
+  <li>$g(X) \succeq 0$ maps matrix to matrix space, so actually complementary
+slackness also should be in the space of matrix, and in form of matrix inner
+product.</li>
+</ol>
+
+<p>So there should be a duality gap normally.</p>
+
+<h2 id="last-note-on-dual-variables">Last Note on Dual Variables</h2>
+
+<p>From above, we see the reason we have matrix inner product style complementary
+slackness is due to we are using dual variable in matrix space. It is
+interesting to see how general dual variable or linear hyperplane is on solving
+problem on any space, though I have not learned any proof of Lagrange on spaces
+other than Euclidean space yet.</p>
+
+<h2 id="last-note-on-linearity">Last Note on Linearity</h2>
+
+<p>In conic linear programming,</p>
+
+<ol>
+  <li>when putting constrains in Lagrange function, it directly interacts with
+objective function, meaning variable $x$ could be separated out.</li>
+  <li>The specialty of $x \geq 0$ makes its dual variable the slack variable.</li>
+  <li>Linearity makes dual function $\inf \ldots$ analytic solvable, so we only
+see $\max$ in the dual problem.</li>
+</ol>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[On Duality in Optimization]]></title>
@@ -105,7 +227,7 @@ x \geq 0
 
 <p>I tried to see it from adjoin operator point of view, which is to find
 something from $A^{T}$. For details, please refer to previous
-<a href="{{ root_url }}/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>.</p>
+<a href="/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>.</p>
 
 <p>Now we write the Lagrange of LP, the dual function is</p>
 
@@ -116,7 +238,7 @@ something from $A^{T}$. For details, please refer to previous
 <p>note we have $s \geq 0$.</p>
 
 <p>Now we see how could we deduce it from previous argument of last
-<a href="{{ root_url }}/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>.</p>
+<a href="/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>.</p>
 
 <script type="math/tex; mode=display">% &lt;![CDATA[
 

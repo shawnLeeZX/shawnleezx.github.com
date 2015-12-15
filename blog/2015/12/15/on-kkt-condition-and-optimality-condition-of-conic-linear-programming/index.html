@@ -1,0 +1,415 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>On KKT Condition and Optimality Condition of Conic Linear Programming - SHAWN LEE</title>
+  <meta name="author" content="Shawn">
+
+  
+  <meta name="description" content="Yet another note on Math. In LP and SDP, the complementary slackness are written as (c - A^{T}y)^{T}x = 0\\
+(C -\sum\limits_{i}y_{i}A_{i}) \bullet X &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2015/12/15/on-kkt-condition-and-optimality-condition-of-conic-linear-programming">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="SHAWN LEE" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <script src="/javascripts/audio.min.js"></script>
+  <script>
+   audiojs.events.ready(function() {
+     var as = audiojs.createAll();
+   });
+  </script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<!-- Add snarl icon here. -->
+<link href="/favicon.png" rel="icon">
+
+<!-- For drop menu. -->
+<script src="/javascripts/libs/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+<script src="/javascripts/menu.min.js" type="text/javascript"></script>
+
+<!-- For table. -->
+<link rel="stylesheet" type="text/css" href="/stylesheets/table.css">
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+    <img src="/favicon.png" alt="Shawn">
+    <h1><a href="/">SHAWN LEE</a></h1>
+    
+    <h2>What ones really can own at last are their stories. Just try to live a good one.</h2>
+    
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:shawnLeeZX.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">知 Home</a></li>
+  <li><a href="/academic">心 Academic</a>
+      <!-- <ul> -->
+          <!-- <li><a href="/academic/academic-biography.html">Academic Biography</li> -->
+          <!-- <li><a href="/academic/transcript.html">Selected Transcript</li> -->
+          <!-- <li><a href="/academic/english-proficiency.html">English Proficiency</li> -->
+          <!-- <li><a href="/academic/research.html">Research</li> -->
+      <!-- </ul> -->
+  </li>
+  <li><a href="/blog">行 Blog</a></li>
+  <li><a href="/blog/archives">合一 Archives</a>
+      <ul>
+          <li><a href="/blog/categories/cs">CS</a></li>
+          <li><a href="/blog/categories/research">Research</a></li>
+          <li><a href="/blog/categories/math">Math</a></li>
+          <li><a href="/blog/categories/life">Life</a></li>
+          <li><a href="/blog/categories/other">Other</a></li>
+      </ul>
+  </li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">On KKT Condition and Optimality Condition of Conic Linear Programming</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-12-15T20:18:00+08:00" pubdate data-updated="true">Dec 15<span>th</span>, 2015</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Yet another note on Math.</p>
+
+<p>In LP and SDP, the complementary slackness are written as</p>
+
+<script type="math/tex; mode=display">
+(c - A^{T}y)^{T}x = 0\\
+(C -\sum\limits_{i}y_{i}A_{i}) \bullet X = 0
+</script>
+
+<p>While KKT condition’s complementary slackness is</p>
+
+<script type="math/tex; mode=display">
+v^{T}g(x) = 0
+</script>
+
+<p>It is hard to connect them at first glance, since dual variable $v$ is dual to
+the space of $g(x)$, which is not necessarily in the same space with $x$.
+Especially when $x$ is the big matrix $X$ in SDP, $g(X)$ lies in vector space
+instead of matrix space.</p>
+
+<p>This is the note for the how they are connected.</p>
+
+<!-- more -->
+
+<h2 id="linear-programming">Linear Programming</h2>
+
+<p>For linear programming, we write down its Lagrange</p>
+
+<script type="math/tex; mode=display">
+c^{T}x + y^{T}(b - Ax) - s^{T}x
+</script>
+
+<p>its gradient is $c - A^{T}y - s$</p>
+
+<p>so its KKT condition is</p>
+
+<script type="math/tex; mode=display">
+c - A^{T}y - s = 0 \text{ Stationary point}\\
+x \geq 0, Ax = b \text{ Primal feasibility}\\
+s^{T}x = 0, s \geq 0 \text{ Complementary slackness}
+</script>
+
+<p>Now we see $(c - A^{T}y)^{T}x = 0$ is the combination of stationary point
+condition and complementary slackness condition. The special structure occurs
+here because</p>
+
+<ol>
+  <li>In linear problem, analytic solution of equation is possible.</li>
+  <li>$g(x)$ is just $x$, so their spaces are the same.</li>
+</ol>
+
+<p>Note when LP reaches its optimal value, we always have $c^{T}x = b^{T}y =
+(A^{T}y)^{T}x$, but there is a difference $s$ between $c$ and $A^{T}y$. Here we
+see the specialty of LP. When one dimension of $s$ is not zero, we have
+correspond dimension of $x$ to be zero. Due to the linearity of $c^{T}x$, the
+zero directly reflects on the objective value, which makes correspond
+dimension’s contribution to zero. Now it is clearer why duality gap is always
+zero.</p>
+
+<h2 id="semi-definite-programming">Semi-Definite Programming</h2>
+
+<p>For SDP, if we want to draw analog with LP, the Lagrange may look like</p>
+
+<script type="math/tex; mode=display">
+C \bullet X + \sum\limits_{i}y_i(b_i - A_i \bullet X) - S \bullet X
+</script>
+
+<p>its gradient is <script type="math/tex">C - \sum\limits_{i}y_i A_i - S</script>.</p>
+
+<p>So its KKT condition is</p>
+
+<script type="math/tex; mode=display">
+C - \sum\limits_{i}y_i A_i - S = 0\\
+x \succeq 0, A_i x = b_i\\
+S \bullet X = 0
+</script>
+
+<p>which is almost the same in format with that of LP.</p>
+
+<p>But note</p>
+
+<ol>
+  <li>KKT does not work wit matrix inequality yet, so $S \bullet X$ cannot be
+moved up to the Lagrange function. Though it does suggest some form of
+KKT condition that could deal with matrix inequality may exist.</li>
+  <li>The relationship is not linear anymore, both in $X \succeq 0$ and $C \bullet
+X$ because the symmetric constrain enforced on $X$, which makes $X$ not just
+a matrix form vector.</li>
+  <li>$g(X) \succeq 0$ maps matrix to matrix space, so actually complementary
+slackness also should be in the space of matrix, and in form of matrix inner
+product.</li>
+</ol>
+
+<p>So there should be a duality gap normally.</p>
+
+<h2 id="last-note-on-dual-variables">Last Note on Dual Variables</h2>
+
+<p>From above, we see the reason we have matrix inner product style complementary
+slackness is due to we are using dual variable in matrix space. It is
+interesting to see how general dual variable or linear hyperplane is on solving
+problem on any space, though I have not learned any proof of Lagrange on spaces
+other than Euclidean space yet.</p>
+
+<h2 id="last-note-on-linearity">Last Note on Linearity</h2>
+
+<p>In conic linear programming,</p>
+
+<ol>
+  <li>when putting constrains in Lagrange function, it directly interacts with
+objective function, meaning variable $x$ could be separated out.</li>
+  <li>The specialty of $x \geq 0$ makes its dual variable the slack variable.</li>
+  <li>Linearity makes dual function $\inf \ldots$ analytic solvable, so we only
+see $\max$ in the dual problem.</li>
+</ol>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Shawn</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-12-15T20:18:00+08:00" pubdate data-updated="true">Dec 15<span>th</span>, 2015</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/math/'>Math</a>, <a class='category' href='/blog/categories/note/'>Note</a>, <a class='category' href='/blog/categories/optimization/'>Optimization</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/12/14/on-duality-in-optimization/" title="Previous Post: On Duality in Optimization">&laquo; On Duality in Optimization</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/12/15/on-kkt-condition-and-optimality-condition-of-conic-linear-programming/">On KKT Condition and Optimality Condition of Conic Linear Programming</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/12/14/on-duality-in-optimization/">On Duality in Optimization</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/11/30/general-transform-linear-transform-matrix/">General Transform, Linear Transform, Matrix</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/11/28/cone-dual-cone-and-generalized-inequalities/">Cone, Dual Cone and Generalized Inequalities</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/11/15/notes-on-semidefinite-programming/">Notes on Semidefinite Programming</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Tag Cloud</h1>
+    <span id="tag-cloud"><embed type='application/x-shockwave-flash' src='/javascripts/tagcloud.swf'width='100%' height='250' bgcolor='#f2f2f2' id='tagcloudflash' name='tagcloudflash' quality='high' allowscriptaccess='always'flashvars="tcolor=0x333333&amp;tcolor2=0x333333&amp;hicolor=0x000000&amp;tspeed=100&amp;distr=true&amp;mode=tags&amp;tagcloud=%3Ctags%3E%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fai%27+style%3D%27font-size%3A+10.4%25%27%3EAI%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fanalysis%27+style%3D%27font-size%3A+11.2%25%27%3EAnalysis%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fandroid%27+style%3D%27font-size%3A+11.2%25%27%3EAndroid%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fansible%27+style%3D%27font-size%3A+11.2%25%27%3EAnsible%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fant%27+style%3D%27font-size%3A+10.4%25%27%3EAnt%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fassembly%27+style%3D%27font-size%3A+10.4%25%27%3EAssembly%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fbibtex%27+style%3D%27font-size%3A+10.4%25%27%3EBibtex%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fc%27+style%3D%27font-size%3A+10.4%25%27%3EC%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fc-%27+style%3D%27font-size%3A+10.4%25%27%3EC%2B%2B%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcnn%27+style%3D%27font-size%3A+10.4%25%27%3ECNN%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcs%27+style%3D%27font-size%3A+33.6%25%27%3ECS%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcscope%27+style%3D%27font-size%3A+10.4%25%27%3ECscope%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fctags%27+style%3D%27font-size%3A+10.4%25%27%3ECtags%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fculture%27+style%3D%27font-size%3A+10.4%25%27%3ECulture%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcv%27+style%3D%27font-size%3A+11.2%25%27%3ECV%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fdeep-learning%27+style%3D%27font-size%3A+10.4%25%27%3EDeep_Learning%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fdesign%27+style%3D%27font-size%3A+12.4%25%27%3EDesign%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fdjvu%27+style%3D%27font-size%3A+10.4%25%27%3EDjvu%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Feclim%27+style%3D%27font-size%3A+10.4%25%27%3EEclim%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Feconomics%27+style%3D%27font-size%3A+10.8%25%27%3EEconomics%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Femacs%27+style%3D%27font-size%3A+12.8%25%27%3EEmacs%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fencoding%27+style%3D%27font-size%3A+10.4%25%27%3EEncoding%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fexcerpt%27+style%3D%27font-size%3A+11.6%25%27%3EExcerpt%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Ffourier%27+style%3D%27font-size%3A+10.4%25%27%3EFourier%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Ffunctional-analysis%27+style%3D%27font-size%3A+10.4%25%27%3EFunctional_Analysis%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fgnome%27+style%3D%27font-size%3A+10.4%25%27%3EGnome%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fhadoop%27+style%3D%27font-size%3A+10.4%25%27%3EHadoop%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fhistory%27+style%3D%27font-size%3A+10.8%25%27%3EHistory%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Finformation%27+style%3D%27font-size%3A+10.4%25%27%3EInformation%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fjava%27+style%3D%27font-size%3A+10.4%25%27%3EJava%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flatex%27+style%3D%27font-size%3A+12.0%25%27%3ELaTeX%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flibconfig%27+style%3D%27font-size%3A+10.4%25%27%3ELibconfig%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flife%27+style%3D%27font-size%3A+20.8%25%27%3ELife%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flinux%27+style%3D%27font-size%3A+16.8%25%27%3ELinux%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flwip%27+style%3D%27font-size%3A+10.4%25%27%3ELwip%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fmarkdown%27+style%3D%27font-size%3A+10.4%25%27%3EMarkdown%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fmath%27+style%3D%27font-size%3A+19.6%25%27%3EMath%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fmatrix%27+style%3D%27font-size%3A+10.4%25%27%3EMatrix%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fml%27+style%3D%27font-size%3A+12.0%25%27%3EML%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fnetwork%27+style%3D%27font-size%3A+10.4%25%27%3ENetwork%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fnote%27+style%3D%27font-size%3A+50.0%25%27%3ENote%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Foctave%27+style%3D%27font-size%3A+10.4%25%27%3EOctave%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Foctopress%27+style%3D%27font-size%3A+10.8%25%27%3EOctopress%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Foptimization%27+style%3D%27font-size%3A+12.0%25%27%3EOptimization%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fother%27+style%3D%27font-size%3A+12.8%25%27%3EOther%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fpdf%27+style%3D%27font-size%3A+10.8%25%27%3EPdf%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fperf%27+style%3D%27font-size%3A+10.4%25%27%3EPerf%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fpgm%27+style%3D%27font-size%3A+10.4%25%27%3EPGM%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fphd%27+style%3D%27font-size%3A+12.0%25%27%3EPhD%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fpresentation%27+style%3D%27font-size%3A+10.8%25%27%3EPresentation%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fprobability%27+style%3D%27font-size%3A+11.2%25%27%3EProbability%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fproof%27+style%3D%27font-size%3A+10.4%25%27%3EProof%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fpython%27+style%3D%27font-size%3A+10.8%25%27%3EPython%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Freading%27+style%3D%27font-size%3A+14.4%25%27%3EReading%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fregex%27+style%3D%27font-size%3A+10.8%25%27%3ERegex%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Frepost%27+style%3D%27font-size%3A+21.2%25%27%3ERepost%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fresearch%27+style%3D%27font-size%3A+22.4%25%27%3EResearch%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fsignal-processing%27+style%3D%27font-size%3A+10.8%25%27%3ESignal_Processing%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fstatistics%27+style%3D%27font-size%3A+11.2%25%27%3EStatistics%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fteaching%27+style%3D%27font-size%3A+10.4%25%27%3ETeaching%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Ftopology%27+style%3D%27font-size%3A+10.4%25%27%3ETopology%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fvim%27+style%3D%27font-size%3A+13.2%25%27%3EVim%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fwavelet%27+style%3D%27font-size%3A+10.4%25%27%3EWavelet%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fxml%27+style%3D%27font-size%3A+10.4%25%27%3EXml%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fyaml%27+style%3D%27font-size%3A+10.4%25%27%3EYaml%3C%2Fa%3E+%3C%2Ftags%3E"></span>
+</section>
+
+<section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/categories/ai/'>AI (1)</a></li><li><a href='/blog/categories/analysis/'>Analysis (3)</a></li><li><a href='/blog/categories/android/'>Android (3)</a></li><li><a href='/blog/categories/ansible/'>Ansible (3)</a></li><li><a href='/blog/categories/ant/'>Ant (1)</a></li><li><a href='/blog/categories/assembly/'>Assembly (1)</a></li><li><a href='/blog/categories/bibtex/'>Bibtex (1)</a></li><li><a href='/blog/categories/c/'>C (1)</a></li><li><a href='/blog/categories/c-plus-plus/'>C++ (1)</a></li><li><a href='/blog/categories/cnn/'>CNN (1)</a></li><li><a href='/blog/categories/cs/'>CS (59)</a></li><li><a href='/blog/categories/cscope/'>Cscope (1)</a></li><li><a href='/blog/categories/ctags/'>Ctags (1)</a></li><li><a href='/blog/categories/culture/'>Culture (1)</a></li><li><a href='/blog/categories/cv/'>CV (3)</a></li><li><a href='/blog/categories/deep-learning/'>Deep_Learning (1)</a></li><li><a href='/blog/categories/design/'>Design (6)</a></li><li><a href='/blog/categories/djvu/'>Djvu (1)</a></li><li><a href='/blog/categories/eclim/'>Eclim (1)</a></li><li><a href='/blog/categories/economics/'>Economics (2)</a></li><li><a href='/blog/categories/emacs/'>Emacs (7)</a></li><li><a href='/blog/categories/encoding/'>Encoding (1)</a></li><li><a href='/blog/categories/excerpt/'>Excerpt (4)</a></li><li><a href='/blog/categories/fourier/'>Fourier (1)</a></li><li><a href='/blog/categories/functional-analysis/'>Functional_Analysis (1)</a></li><li><a href='/blog/categories/gnome/'>Gnome (1)</a></li><li><a href='/blog/categories/hadoop/'>Hadoop (1)</a></li><li><a href='/blog/categories/history/'>History (2)</a></li><li><a href='/blog/categories/information/'>Information (1)</a></li><li><a href='/blog/categories/java/'>Java (1)</a></li><li><a href='/blog/categories/latex/'>LaTeX (5)</a></li><li><a href='/blog/categories/libconfig/'>Libconfig (1)</a></li><li><a href='/blog/categories/life/'>Life (27)</a></li><li><a href='/blog/categories/linux/'>Linux (17)</a></li><li><a href='/blog/categories/lwip/'>Lwip (1)</a></li><li><a href='/blog/categories/markdown/'>Markdown (1)</a></li><li><a href='/blog/categories/math/'>Math (24)</a></li><li><a href='/blog/categories/matrix/'>Matrix (1)</a></li><li><a href='/blog/categories/ml/'>ML (5)</a></li><li><a href='/blog/categories/network/'>Network (1)</a></li><li><a href='/blog/categories/note/'>Note (100)</a></li><li><a href='/blog/categories/octave/'>Octave (1)</a></li><li><a href='/blog/categories/octopress/'>Octopress (2)</a></li><li><a href='/blog/categories/optimization/'>Optimization (5)</a></li><li><a href='/blog/categories/other/'>Other (7)</a></li><li><a href='/blog/categories/pdf/'>Pdf (2)</a></li><li><a href='/blog/categories/perf/'>Perf (1)</a></li><li><a href='/blog/categories/pgm/'>PGM (1)</a></li><li><a href='/blog/categories/phd/'>PhD (5)</a></li><li><a href='/blog/categories/presentation/'>Presentation (2)</a></li><li><a href='/blog/categories/probability/'>Probability (3)</a></li><li><a href='/blog/categories/proof/'>Proof (1)</a></li><li><a href='/blog/categories/python/'>Python (2)</a></li><li><a href='/blog/categories/reading/'>Reading (11)</a></li><li><a href='/blog/categories/regex/'>Regex (2)</a></li><li><a href='/blog/categories/repost/'>Repost (28)</a></li><li><a href='/blog/categories/research/'>Research (31)</a></li><li><a href='/blog/categories/signal-processing/'>Signal_Processing (2)</a></li><li><a href='/blog/categories/statistics/'>Statistics (3)</a></li><li><a href='/blog/categories/teaching/'>Teaching (1)</a></li><li><a href='/blog/categories/topology/'>Topology (1)</a></li><li><a href='/blog/categories/vim/'>Vim (8)</a></li><li><a href='/blog/categories/wavelet/'>Wavelet (1)</a></li><li><a href='/blog/categories/xml/'>Xml (1)</a></li><li><a href='/blog/categories/yaml/'>Yaml (1)</a></li></ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Shawn -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2015/12/15/on-kkt-condition-and-optimality-condition-of-conic-linear-programming/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2015/12/15/on-kkt-condition-and-optimality-condition-of-conic-linear-programming/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
