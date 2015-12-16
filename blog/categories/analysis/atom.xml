@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Analysis | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/analysis/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-12-15T21:15:39+08:00</updated>
+  <updated>2015-12-16T16:38:49+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -21,10 +21,10 @@
     <content type="html"><![CDATA[<p>This post should be the third notes on understanding fundamentals of Analysis,
 or in a more broad sense, understanding fundamental of Mathematics, though some
 other randoms post are written previously.
-The <a href="/blog/2013/12/24/axiomization-of-natural-number/">first</a>
+The <a href="{{ root_url }}/blog/2013/12/24/axiomization-of-natural-number/">first</a>
  is about the axiomization of Natural Number. It gives the exact definition of
 natural number, whose concept is taken for granted for most people. The
-<a href="/blog/2014/09/30/why-and-how-we-construct-real-number-system/">second</a>
+<a href="{{ root_url }}/blog/2014/09/30/why-and-how-we-construct-real-number-system/">second</a>
 is about the construction of Real Number System. It offers a complete field
 which all the remaining Mathematics is built on.</p>
 
@@ -67,7 +67,7 @@ instance, a ring is an algebraic structure with operations generalizing the
 arithmetic operations of addition and multiplication. So such operation will
 not only be able to be applied to number, but to polynomials, matrices and
 etc..[1] More word may be find in this rather old post on
-<a href="/blog/2013/12/24/basis-of-algebra-structure/">Basic of Algebra Structure</a>;
+<a href="{{ root_url }}/blog/2013/12/24/basis-of-algebra-structure/">Basic of Algebra Structure</a>;
 General Topology is about the mathematical study of shapes and topological
 spaces. It is an area of mathematics concerned with the properties of space
 that are preserved under continuous deformations including stretching and
@@ -131,7 +131,7 @@ for we human. But why it is the most natural one? How do we define natural?</p>
 
 <p>The following are some direct answer:</p>
 
-<p><span class='caption-wrapper left'><img class='caption' src='https://cloud.githubusercontent.com/assets/2428233/6881526/a9f838a8-d59d-11e4-8b39-52e744eff47e.png' width='' height='' title='Geometric Proof of Pythagoras Theorem'><span class='caption-text'>Geometric Proof of Pythagoras Theorem</span></span></p>
+<p>{% imgcap left https://cloud.githubusercontent.com/assets/2428233/6881526/a9f838a8-d59d-11e4-8b39-52e744eff47e.png Geometric Proof of Pythagoras Theorem %}</p>
 
 <ol>
   <li>As we rotate one vector, its length will not change in 2-norm, but not other
@@ -199,7 +199,7 @@ beginning to teach myself analysis like a math major student from
 scratch.</p>
 
 <p>This post is about another concept called <strong>compact</strong>. You can find
-previous post about real number system <a href="/blog/2014/09/30/why-and-how-we-construct-real-number-system/">here</a>.</p>
+previous post about real number system <a href="{{ root_url }}/blog/2014/09/30/why-and-how-we-construct-real-number-system/">here</a>.</p>
 
 <!-- more -->
 
@@ -488,7 +488,7 @@ bridges the gap between finite and infinite.</p>
 <ol>
   <li>Walter Rudin Principles of Mathematical Analysis, Third Edition</li>
   <li><a href="http://math.stackexchange.com/questions/597828/compact-sets-of-metric-spaces-are-closed">math.stackchange</a></li>
-  <li>Some pdf <a href="/docs/about_compact.pdf">here</a>. Obtained from <a href="/docs/about_compact.pdf">here</a></li>
+  <li>Some pdf <a href="{{root_url}}/docs/about_compact.pdf">here</a>. Obtained from <a href="{{root_url}}/docs/about_compact.pdf">here</a></li>
 </ol>
 ]]></content>
   </entry>
@@ -784,8 +784,8 @@ split the rational into 2 sets.</p>
 <h2 id="reference">Reference</h2>
 
 <ol>
-  <li>Construction of The Real Number System <a href="/docs/CONSTRUCTION_OF_THE_REAL_NUMBER_SYSTEM.pdf">pdf</a></li>
-  <li>Chapter 1, Fundamental of Mathematical Analysis <a href="/docs/construction_of_real_number_and_complex_number.pdf">pdf</a></li>
+  <li>Construction of The Real Number System <a href="{{ root_url }}/docs/CONSTRUCTION_OF_THE_REAL_NUMBER_SYSTEM.pdf">pdf</a></li>
+  <li>Chapter 1, Fundamental of Mathematical Analysis <a href="{{ root_url }}/docs/construction_of_real_number_and_complex_number.pdf">pdf</a></li>
   <li>Principles of Mathematical Analysis, 3rd Edition</li>
 </ol>
 ]]></content>

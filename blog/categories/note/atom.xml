@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Note | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/note/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-12-15T21:15:39+08:00</updated>
+  <updated>2015-12-16T16:38:49+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,191 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Optimization Summary]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/12/16/optimization-summary/"/>
+    <updated>2015-12-16T15:06:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/12/16/optimization-summary</id>
+    <content type="html"><![CDATA[<p>Yet another note on Math.</p>
+
+<p>The semester’s course on Optimization is going to end. This is a summary note
+to unify the mathematical picture learned during this period.</p>
+
+<!-- more -->
+
+<h2 id="problem-formulation">Problem Formulation</h2>
+
+<p>In the most general form, an optimization problem is to find an extreme value,
+taking minimum for ease of writing, in the following form</p>
+
+<script type="math/tex; mode=display">
+\min\ f(X)\\
+G(X) \succeq \theta\\
+H(X) = \theta
+</script>
+
+<p>where $X$ could be a scalar, vector or matrix; $G(X)$ is a stack of inequality
+constrains, whose row is one inequality constrain; $\theta$ is zero vector;
+$H(X)$ is a stack of equality constrains, whose row is one equality constrain.</p>
+
+<p>To solve the above problem, analysis should be made to properties of $f(X),
+G(X)$ and $H(X)$. Geometric intuition is the source of aspiration and algebraic
+descriptions or relaxation of geometric intuition is how we could solve the
+problem.</p>
+
+<p>The geometric picture of $f(X)$ is contour of its value, whose metaphor is the
+contour of the height of a mountain; or just the mountain by seeing how high
+its. The first picture is in the domain of $X$, while the second one is in the
+$(X, f(X))$, which adds another dimension.</p>
+
+<p>$G(X)$ and $H(X)$ explicitly or implicitly define an sub-area of all possible
+$X$. Its picture is harder to visualize, and is the difficulty aspects in
+optimization.</p>
+
+<h2 id="domain-type">Domain Type</h2>
+
+<p>Different types of variables has different structure and properties that
+enforced on the domain. As an example, Conic Linear Programming is to explore
+the structureness to simplify problems.</p>
+
+<p>It does not occur to me clearly for now how possibly the enforced peculiar
+structure of Semi-definite programming or Second Order Cone Programming could
+have physical meaning. But SDP how take advantage of matrix variable and
+inequality is inspiring.</p>
+
+<h2 id="geometry-of-domain">Geometry of Domain</h2>
+
+<p>The work around is to assume only to solve problems who is convex, and call the
+remaining problems non-convex, consequently classifying it as hard.</p>
+
+<p>It seems this is rather a restrict and side step the difficult but important
+problems. This was the perception I had when I first heard about Optimization
+years ago. But the actually it is not after really struggling through it.</p>
+
+<p>Convexity of a set is the atom to describe geometry of the whole set in the
+following sense: if two points are in the set, then we want any points between
+them are also in the set. Normally, points have some physical meaning in real
+world problem, not some bizarre mathematical fabrication. In physical world,
+extremity breaks thing, but not their intermediate value. Thus it is a good
+model unless we discover some bizarre phenomena(which probably already exists
+but I do not know).</p>
+
+<p>Convexity and concavity of function are the only two ways how function could
+vary locally. The really mattered properties of convexity is non-decreasing, so
+concavity is non-increasing. They get named quasa-convex for convexity part.</p>
+
+<p>If we could analyzed the atoms how sets compose a bigger set and how functions
+composes a ``larger’’ function, we begin to get a look into the whole picture.</p>
+
+<p>Current situation of optimization is local geometry has been well studied, but
+a way to generalize to the global geometry lacks. So I guess it is not the
+a good understanding of convexity is the first step to understand more complex
+problems.</p>
+
+<h2 id="dimensionality-of-domain">Dimensionality of Domain</h2>
+
+<p>This section is about the concept of <em>affine</em>.</p>
+
+<p>The motivation of ``affine’’ is to create a term that could be used to describe
+the dimension of domain. So essentially, an affine set is linear variety or the
+whole space. Linear variety is a concept. For example, a linear variety in 3D
+space would be a line, a plane.</p>
+
+<h2 id="unifying-optimization-duality-with-functional-analysis">Unifying Optimization Duality with Functional Analysis</h2>
+
+<p>If we start from a Linear Programming(LP), which is the following problem</p>
+
+<script type="math/tex; mode=display">
+\min\ c^{T}x\\
+Ax = b
+x \geq 0
+</script>
+
+<p>and its dual</p>
+
+<script type="math/tex; mode=display">
+\max\ b^{T}y\\
+A^{T}y \leq c
+</script>
+
+<p>From function analysis point of view, those two problems involves four space,
+space of $x$(we call it primal space for convenience from now), dual space of
+primal space, space of $y$(we call it transformed space from now), dual space
+of transformed space. Duality of LP is the characterization of relationship
+between those four spaces.</p>
+
+<p>If we upgrade this view to non-linear case,</p>
+
+<script type="math/tex; mode=display">
+\min\ f(X)\\
+G(X) \succeq \theta\\
+H(X) = \theta
+</script>
+
+<p>we see $G(X)$ and $H(X)$ are also a transform, but not linear. But similar idea
+should also apply. This is the idea of Lagrange multiplier and Lagrange
+duality.</p>
+
+<p>The idea is to analyze in the transformed space $(f(X), Z)$, where $Z$ is the
+whose variables are $G(X), H(X)$(in proof involved with Lagrange duality, we
+break $H(X)$ to two inequalities). $Z$ and its dual <script type="math/tex">Z^{*}</script> centralize all
+duality in optimization.</p>
+
+<p>The hard part is to analyze what the space $Z$ is like. First, different types
+of variables have different properties and work with different inequalities,
+such as vector and vector inequality, matrix and matrix inequality. Second,
+what the transformed space is like after mapping is hard to deal with.</p>
+
+<p>The key properties of $Z$ is whether it has an interior point and is convex,
+which determines whether we could find a separating hyperplane, an element in
+dual space.</p>
+
+<p>Farkas lemma is just a special case where we could explicitly know what the
+transformed space looks like.</p>
+
+<h2 id="on-cone-and-dual-cone">On Cone and Dual Cone</h2>
+
+<p>This section is about cone and dual cone. One more example could be seen in the
+next section.</p>
+
+<p>Cone is about direction. It is hard to describe it informally without concrete
+examples. Pointed cone identifies inequality relations, which is summarized in
+this <a href="{{ root_url }}/blog/2015/11/28/cone-dual-cone-and-generalized-inequalities/">note</a>.</p>
+
+<p>Dual cone is about the direction that at least slightly the same with primal
+cone, so in this direction values also could increase, or decrease if it is a
+negative dual cone. Dual cone is a set in dual space of primal space, whose
+elements are normals of hyperplane. Remember a normal of a hyperplane is about
+the direction where the values goes up(or down depending on definition).</p>
+
+<h2 id="variational-idea-kkt-condition-fritz-john-condition">Variational Idea, KKT Condition, Fritz-John Condition</h2>
+
+<p>Existence of Lagrange multiplier is the zero order properties of a constrained
+optimal point. By considering the first derivative, we could get how gradients
+at the optimal point are related to each other.</p>
+
+<p>Equality constrain in the limit is to carve subspace out, so all things should
+happen in this subspace. Gradients of inequality constrains determine whether
+the we could still have descent directions, which is Fritz-John or KKT
+condition. The idea is if negative dual cone of positive range of gradients of
+inequality constrains do not intersect with negative dual cone of $\nabla
+f(x)$, then we reach a constrained minimum. The regularity conditions of KKT
+just means the gradients of inequality constrains do not conflict with each
+other, which if happens would only leave a feasible set that has nothing to do
+with $f(x)$, which is the case the dual variable associated with $\nabla f(x)$
+is zero in Fritz-John optimality condition.</p>
+
+<h2 id="optimization-algorithms">Optimization Algorithms</h2>
+
+<p>Few has been explored in this area for now.</p>
+
+<p>The idea is to explore the structures of the four spaces mentioned, and the
+target function to find the extreme values and corresponding solutions, either
+globally, for instance using the simplex method, or locally, using gradient
+based methods.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[On KKT Condition and Optimality Condition of Conic Linear Programming]]></title>
@@ -227,7 +412,7 @@ x \geq 0
 
 <p>I tried to see it from adjoin operator point of view, which is to find
 something from $A^{T}$. For details, please refer to previous
-<a href="/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>.</p>
+<a href="{{ root_url }}/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>.</p>
 
 <p>Now we write the Lagrange of LP, the dual function is</p>
 
@@ -238,7 +423,7 @@ something from $A^{T}$. For details, please refer to previous
 <p>note we have $s \geq 0$.</p>
 
 <p>Now we see how could we deduce it from previous argument of last
-<a href="/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>.</p>
+<a href="{{ root_url }}/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>.</p>
 
 <script type="math/tex; mode=display">% &lt;![CDATA[
 
@@ -437,7 +622,7 @@ problem would be attacked from linear point of view, which is the case of this
 example. With the machinery from linear algebra, a much rich structure could be
 used instead of just general transform.</p>
 
-<p>Remember in a <a href="/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>
+<p>Remember in a <a href="{{ root_url }}/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>
 on Linear programming, the intuition of $Ax$ is to map a point from a space $X$
 of points to another space of points $Z$, then its dual map or adjoin map
 $A^{T}$ is to map dual space <script type="math/tex">Z^{*}</script> to <script type="math/tex">X^{*}</script>.</p>
@@ -548,58 +733,6 @@ linear approximation.</li>
 <p>Due to time limitation, I will just write those for now. Some pictures and
 example of minimum elements and minimal elements from <em>Chapter 2, Convex
 Optimization Bloyd</em> could be helpful.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Notes on Semidefinite Programming]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/11/15/notes-on-semidefinite-programming/"/>
-    <updated>2015-11-15T21:23:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/11/15/notes-on-semidefinite-programming</id>
-    <content type="html"><![CDATA[<p>Yet another note on math.</p>
-
-<!-- more -->
-
-<p>SDP is actually a relaxation techniques that projects the problem to a higher
-dimension space with a symmetrical matrix special structure. So the original
-non-linear problem gets linearized. In the simplest case, $x$ gets mapped to
-$X = xx^{T}$, then relaxed to $X \in S_{+}$ It just puts the second order terms
-of $x$ in the matrix. Similar things could be done in for higher order terms,
-and finally, any order polynomial could be achieved in some way.</p>
-
-<p>I am still not thinking very clearly how operator could be put into the context
-since here matrices are just a special way to put a really long
-vector. Frobenius inner product is just normal inner product. The power of SDP
-comes from infinite number of quadratic constraints enforced by the PD
-condition.</p>
-
-<p>The connection could possibly be this way. It is inspired by how matrix
-derivative is defined using Frobenius norm. Though operator’s nature comes from
-it spectral structure, it is still made by $m \times n$ numbers put in a
-special way. So a corresponding change in the corresponding position means
-something. By measuring the norm, and inner product in this way, we are somehow
-connected to the spectral structure of the matrix. By adding different matrices
-together this way, we are somehow combining different operations, though I have
-not learned any applications that matches this exactly. An perfect example of
-this is the perturbation of a matrix. The perturbation in each dimension is
-added on the face value(the number displayed on the entries of the matrix), so
-it natural to think regardless of the spectral structure of the matrix,
-whatever it may be normalized then or by changed by some other operations, the
-face value change is how we perceive physical beings.</p>
-
-<p>SDP is solved using interior point methods, whose intuitive is to guide the
-optimization by the objective function, using gradient and hessian
-information. To make sure the point stay feasible when optimizing, a term $-log
-det|A|$ is added to the objective function, who will ensure $X \succeq \mu I$
-for some $\mu$, meaning it is positive definite.</p>
-
-<p>This is a very beautiful idea. Actually it is what I was looking for in
-non-linear optimization so that the boundary information not only guide
-optimization only when the point is near the boundary but also when it is far
-in the boundary.</p>
-
-<p>More thinking may be added when I learned more about SDP, matrix algebra and
-matrix calculus.</p>
 ]]></content>
   </entry>
   
