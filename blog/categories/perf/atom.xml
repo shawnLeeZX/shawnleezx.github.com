@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Perf | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/perf/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-12-22T16:56:39+08:00</updated>
+  <updated>2016-01-03T14:34:53+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -94,7 +94,7 @@ perf命令解释：</p>
 
 <p>如此得到如下的性能分析结果图：</p>
 
-<p><img class="center" src="/resources/profile/one_thread_profile.png" title="“One thread profile result” “One thread profile result”" ></p>
+<p>{% img center /resources/profile/one_thread_profile.png “One thread profile result” “One thread profile result” %}</p>
 
 <p>最右侧是涉及到perf的部分，应是由于统计需要而引入的额外开销。右上角是的ld-2.15是linux用于加载共享库的共享库（即用于加载以<code>*.so</code>为后缀的共享库）。</p>
 
@@ -154,7 +154,7 @@ exit(0); } ```
 
 <p>得到分析结果如下图：</p>
 
-<p><img class="center" src="/resources/profile/two_thread_profile.png" title="“Two thread profile result” “Two thread profile result”" ></p>
+<p>{% img center /resources/profile/two_thread_profile.png “Two thread profile result” “Two thread profile result” %}</p>
 
 <p>可以看到，c共享函数库负责main函数，而pthread共享函数库负责多产生出的一个线程。</p>
 
@@ -164,8 +164,8 @@ exit(0); } ```
 
 <p>代码就不粘在这里了，当将循环部分做成库函数放入静态以及共享链接库时，分别得到如下两个结果。</p>
 
-<p><span class='caption-wrapper center'><img class='caption' src='/resources/profile/static_profile.png' width='' height='' title='Static library profile result'><span class='caption-text'>Static library profile result</span></span>
-<span class='caption-wrapper center'><img class='caption' src='/resources/profile/shared_profile.png' width='' height='' title='Shared library profile result'><span class='caption-text'>Shared library profile result</span></span></p>
+<p>{% imgcap center /resources/profile/static_profile.png Static library profile result%}
+{% imgcap center /resources/profile/shared_profile.png Shared library profile result%}</p>
 
 <p>可以看到，静态链接库的内容被直接放到了main里，而共享链接库则是通过调用实现。</p>
 
@@ -173,11 +173,11 @@ exit(0); } ```
 
 <p>最终回到lwip上，当使用lwip的网络功能时。对于一个使用BSD-Style的简单服务器端select_server，其接受socket传来的数据之后直接丢弃数据，使用perf得到的结果图如下。</p>
 
-<p><span class='caption-wrapper center'><img class='caption' src='/resources/profile/select_server.png' width='' height='' title='简单服务器分析图'><span class='caption-text'>简单服务器分析图</span></span></p>
+<p>{% imgcap center /resources/profile/select_server.png 简单服务器分析图%}</p>
 
 <p>对于一个简单的http服务器，使用perf得到的结果图如下。</p>
 
-<p><span class='caption-wrapper center'><img class='caption' src='/resources/profile/rawt_http.png' width='' height='' title='简单http服务器分析图'><span class='caption-text'>简单http服务器分析图</span></span></p>
+<p>{% imgcap center /resources/profile/rawt_http.png 简单http服务器分析图%}</p>
 
 <p>在这两个分析图中，存在一个内核的函数对liblwip.so的调用（由于我的内核镜像没有代码信息，所以只能显示地址）——liblwip.so即是用于使用lwip的共享函数库。为什么会存在这种情况？</p>
 

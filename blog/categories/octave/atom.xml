@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octave | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/octave/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-12-22T16:56:39+08:00</updated>
+  <updated>2016-01-03T14:34:53+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -87,7 +87,7 @@ print(“toy_scenario_result.jpg”, “-djpg”);
 
 <p>The result:</p>
 
-<p><img src="/images/toy_scenario_result.jpg" title="“Result” “Result”" ></p>
+<p>{% img /images/toy_scenario_result.jpg “Result” “Result” %}</p>
 ]]></content>
   </entry>
   
