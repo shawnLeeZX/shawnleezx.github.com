@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2016-01-03T14:34:53+08:00</updated>
+  <updated>2016-01-03T22:30:39+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -162,7 +162,7 @@ next section.</p>
 
 <p>Cone is about direction. It is hard to describe it informally without concrete
 examples. Pointed cone identifies inequality relations, which is summarized in
-this <a href="{{ root_url }}/blog/2015/11/28/cone-dual-cone-and-generalized-inequalities/">note</a>.</p>
+this <a href="/blog/2015/11/28/cone-dual-cone-and-generalized-inequalities/">note</a>.</p>
 
 <p>Dual cone is about the direction that at least slightly the same with primal
 cone, so in this direction values also could increase, or decrease if it is a
@@ -412,7 +412,7 @@ x \geq 0
 
 <p>I tried to see it from adjoin operator point of view, which is to find
 something from $A^{T}$. For details, please refer to previous
-<a href="{{ root_url }}/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>.</p>
+<a href="/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>.</p>
 
 <p>Now we write the Lagrange of LP, the dual function is</p>
 
@@ -423,7 +423,7 @@ something from $A^{T}$. For details, please refer to previous
 <p>note we have $s \geq 0$.</p>
 
 <p>Now we see how could we deduce it from previous argument of last
-<a href="{{ root_url }}/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>.</p>
+<a href="/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>.</p>
 
 <script type="math/tex; mode=display">% &lt;![CDATA[
 
@@ -622,7 +622,7 @@ problem would be attacked from linear point of view, which is the case of this
 example. With the machinery from linear algebra, a much rich structure could be
 used instead of just general transform.</p>
 
-<p>Remember in a <a href="{{ root_url }}/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>
+<p>Remember in a <a href="/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>
 on Linear programming, the intuition of $Ax$ is to map a point from a space $X$
 of points to another space of points $Z$, then its dual map or adjoin map
 $A^{T}$ is to map dual space <script type="math/tex">Z^{*}</script> to <script type="math/tex">X^{*}</script>.</p>
