@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Note | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/note/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2016-01-03T22:30:39+08:00</updated>
+  <updated>2016-01-05T12:03:41+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,116 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[On Environment Variable Setup of Linux]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2016/01/05/on-environment-variable-setup-of-linux/"/>
+    <updated>2016-01-05T11:28:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2016/01/05/on-environment-variable-setup-of-linux</id>
+    <content type="html"><![CDATA[<p>I have spent some time figuring out how Linux sets up its environment variables
+for login shell, non-login shell to let Emacs inherits environment variables
+and make tmux loads <code>.bashrc</code> and note it here.</p>
+
+<!-- more -->
+
+<h2 id="login-shell">Login Shell</h2>
+
+<p>We start by figuring out the boot process.</p>
+
+<p>For text console,</p>
+
+<ol>
+  <li>At the end of boot the mother of all processes <code>init</code> is started. init’s
+environment, including PATH, is defined in its source code and cannot be
+changed at run time.</li>
+  <li><code>init</code> runs the start-up scripts from <code>/etc/init.d</code> depending on the run level
+set in <code>/etc/inittab</code>. Since init’s environment is very bare, the scripts
+define their required environment variables within themselves.</li>
+  <li><code>init</code> starts the text login process that waits for the user to log in. When
+the user logs in, the login process checks <code>/etc/passwd</code> to see what shell
+should be started for this particular user.</li>
+  <li>The shell starts and reads its shell-specific configuration files.
+    <ol>
+      <li>For Bash, it first reads <code>/etc/profile</code> to get values that are defined
+for all users. After reading that file, it looks for <code>~/.bash_profile</code>,
+<code>~/.bash_login</code>, and <code>~/.profile</code>, in that order, and reads and executes
+commands from the first of these files that exists and is readable.</li>
+    </ol>
+  </li>
+</ol>
+
+<p>For graphical UI,</p>
+
+<ol>
+  <li>At the end of booting, the mother of all processes – <code>init</code> – is started.</li>
+  <li><code>init</code> runs the start-up scripts from <code>/etc/init.d</code> depending on the run
+level set in <code>/etc/inittab</code>. Since <code>init</code>’s environment is very bare, the
+scripts define required environment variables within themselves.</li>
+  <li>Init starts the GDM display manager, which in turn will start the graphical
+login.</li>
+  <li>When the user successfully logs in, GDM starts xsession, which reads the
+file <code>/etc/gdm/Xsession</code> and with it the environment variables for the
+user’s session. The default version of the Xsession file first reads
+<code>/etc/profile</code> for global settings and then <code>~/.profile</code> to add the user’s
+individual settings.</li>
+</ol>
+
+<p>The above boot process is the process to set up environment to login shell. So
+if any user specific environment that is need for a graphical program, one
+could choose to put it in <code>~/.bash_profile</code>, <code>~/.bash_login</code>, and
+<code>~/.profile</code>. I chose to put it in <code>.profile</code>. I actually spent time figuring
+this out, so Emacs could inherit environment variables the local libraries I
+installed.</p>
+
+<p>As for system wide setup, put it in <code>/etc/profile</code>.</p>
+
+<h2 id="non-login-shell">Non-login Shell</h2>
+
+<p>If a shell is needed after login, the setting should go to the non-login
+shell’s, <code>.bashrc</code>. For instance, the terminals created by <code>terminal</code>,
+<code>terminator</code> and other terminal programs are non-login shells. This is where I
+previously put all my configurations in.</p>
+
+<p>The following comes from <code>man bash</code>’s <em>INVOCATION</em> section.</p>
+
+<pre><code>When bash is invoked as an interactive login shell, or as a non-interactive
+shell with the `--login` option, it first reads and executes commands from the
+file `/etc/profile`, if that file exists.  After reading that file, it looks
+for `~/.bash_profile`, `~/.bash_login`, and `~/.profile`, in that order, and
+reads and executes commands from the first one that exists and is readable.
+The --noprofile option may be used when the shell is started to inhibit this
+behavior.
+
+When a login shell exits, bash reads and executes commands from the file
+`~/.bash_logout`, if it exists.
+
+When an interactive shell that is not a login shell is started, bash reads and
+executes commands from `/etc/bash.bashrc` and `~/.bashrc`, if these files
+exist.
+</code></pre>
+
+<h2 id="distribution">Distribution</h2>
+
+<p>Each Linux distribution may tweak files mentioned above, for instance, unset
+some variables somewhere, so if you set its value before where it is unset,
+your setting will not take effect. Normally, if one’s configuration does not
+work, consider go through all previous configurations and understand what they
+exactly do in such a distribution.</p>
+
+<h2 id="misc">Misc</h2>
+
+<p>If one uses <code>tmux</code>, the terminal multiplexer, note it creates login shells. So
+if one wants <code>.bashrc</code>, especially aliases, to work under <code>tmux</code>, remember to
+source it after whatever login shell configuration one may use.</p>
+
+<h2 id="reference">Reference</h2>
+
+<ol>
+  <li>https://wiki.debian.org/EnvironmentVariables</li>
+  <li>https://help.ubuntu.com/community/EnvironmentVariables</li>
+</ol>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Optimization Summary]]></title>
@@ -637,102 +747,6 @@ be written as</p>
 
 <p>which is the optimality condition of optimization problems with equality
 constraints.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Cone, Dual Cone and Generalized Inequalities]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/11/28/cone-dual-cone-and-generalized-inequalities/"/>
-    <updated>2015-11-28T11:04:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/11/28/cone-dual-cone-and-generalized-inequalities</id>
-    <content type="html"><![CDATA[<p>Yet another note on Math.</p>
-
-<p>I did not internalized the idea that a pointed cone identifies a generalized
-equality until now, and would like to note it down.</p>
-
-<!-- more -->
-
-<h2 id="cone">Cone</h2>
-
-<p>Let’s start with why we want inequality. We want it because we want to compare
-two objects. In $R$, an object in this domain is a scalar and represents
-something like length, or so. Suppose we want to compare the length of one edge
-of a table and the length of a ruler. We put those two together.  Intuitively,
-a table looks longer than a ruler, so we say if we want to compare anything
-similar like those again, we standardize a unit, according to the reference to
-the length of table or ruler, which in the ancient time is the length of some
-king’s feet, give a length $x$ to object one, $y$ to object two, then if object
-one is longer than object two, we call $x &gt; y$.</p>
-
-<p>How could we generalize this idea to higher dimensional space? Consider vector
-inequality. Suppose we want buy a department. The only factors we want to
-consider is which floor our department is(assume the higher the better), and
-how many square meters it has. What does department $x$ is better than $y$
-mean? An intuitive answer is a department that is both higher and bigger is a
-better choice. We call it $x \succeq y$.</p>
-
-<p>We could see how cone abstract things here, in vector inequality.</p>
-
-<p>First we break thing down, if we get two rulers, whose lengths are too similar
-to tell who is longer in a distance, how could we tell? Without equipment, we
-just put those two rules together, and see their difference. This is the mental
-procedure we execute when we compare, so in scalar case, $x &gt; y$ means $x - y
-&gt; 0$; in vector case, $x \succeq y$ means $x - y \succeq 0$.</p>
-
-<p>What is special about $x - y$?</p>
-
-<p>If we take it abstractly, $x - y$ means how much better when $x$ is compared to
-$y$. How we define inequality is determined by how we measure the ``better’’
-amount, so the measurement makes sense. For scalar it is just their value
-difference. But for vector we cannot judge when department $x$ has higher floor
-number than $y$ but smaller square meters. The solution to this dilemma is to
-only compare the case where the comparison makes sense. Mathematically, it
-means we only compare $x, y$ when $x, y$ stay in a domain, which depends on
-both $x, y$, where the comparison makes sense. If $x - y$ is in the domain, we
-compare, otherwise, do not bother.</p>
-
-<p>Though we only convert the comparison of $x, y$ to whether $x - y$ belongs to a
-domain. We do not know what the domain looks like yet. We want to reach the
-conclusion the domain is a pointed cone, or in another name, proper cone.</p>
-
-<p>The next task is to figure out the properties of the domain. What properties do
-we want? Let’s list them:</p>
-
-<ol>
-  <li>Comparison is about direction and it does not matter if $x$ is a hundred
-bigger than $y$, or one hundred percent bigger.</li>
-  <li>Strict inequality should exist.</li>
-  <li>Difference could be added together: If $x$ is better than $y$, $y$ is better
-tan $z$, we should have $x$ is better than $z$.</li>
-  <li>Limitation stays in the domain: slightly better is still better.</li>
-</ol>
-
-<p>Denoting the domain $K$, those four are translated to</p>
-
-<ol>
-  <li>$K$ is a pointed cone, i.e., if $u \in K$ and $-u \in K$, then $u = 0$; for
-any $x \in K$ and $\alpha &gt; 0$, we have $\alpha u \in K$.</li>
-  <li>$K$ has non-empty interior.</li>
-  <li>$K$ is non-empty and closed under addition; i.e., for any $x, y \in K$, $x +
-y \in K$.</li>
-  <li>$K$ is closed.</li>
-</ol>
-
-<h2 id="dual-cone">Dual Cone</h2>
-
-<p>Dual cone is about giving each dimension of an object a linear measurement of
-weight, or more intuitively a price, so:</p>
-
-<ol>
-  <li>A integrated ``betterness’’ could be quantified for all pairs instead of
-just $K$, a restricted set of comparable pairs.</li>
-  <li>consequently could lead to dual problem, which is a upper and lower bound by
-linear approximation.</li>
-</ol>
-
-<p>Due to time limitation, I will just write those for now. Some pictures and
-example of minimum elements and minimal elements from <em>Chapter 2, Convex
-Optimization Bloyd</em> could be helpful.</p>
 ]]></content>
   </entry>
   

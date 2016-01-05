@@ -4,7 +4,7 @@
   <title><![CDATA[SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2016-01-03T22:30:39+08:00</updated>
+  <updated>2016-01-05T12:03:41+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,116 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[On Environment Variable Setup of Linux]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2016/01/05/on-environment-variable-setup-of-linux/"/>
+    <updated>2016-01-05T11:28:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2016/01/05/on-environment-variable-setup-of-linux</id>
+    <content type="html"><![CDATA[<p>I have spent some time figuring out how Linux sets up its environment variables
+for login shell, non-login shell to let Emacs inherits environment variables
+and make tmux loads <code>.bashrc</code> and note it here.</p>
+
+<!-- more -->
+
+<h2 id="login-shell">Login Shell</h2>
+
+<p>We start by figuring out the boot process.</p>
+
+<p>For text console,</p>
+
+<ol>
+  <li>At the end of boot the mother of all processes <code>init</code> is started. init’s
+environment, including PATH, is defined in its source code and cannot be
+changed at run time.</li>
+  <li><code>init</code> runs the start-up scripts from <code>/etc/init.d</code> depending on the run level
+set in <code>/etc/inittab</code>. Since init’s environment is very bare, the scripts
+define their required environment variables within themselves.</li>
+  <li><code>init</code> starts the text login process that waits for the user to log in. When
+the user logs in, the login process checks <code>/etc/passwd</code> to see what shell
+should be started for this particular user.</li>
+  <li>The shell starts and reads its shell-specific configuration files.
+    <ol>
+      <li>For Bash, it first reads <code>/etc/profile</code> to get values that are defined
+for all users. After reading that file, it looks for <code>~/.bash_profile</code>,
+<code>~/.bash_login</code>, and <code>~/.profile</code>, in that order, and reads and executes
+commands from the first of these files that exists and is readable.</li>
+    </ol>
+  </li>
+</ol>
+
+<p>For graphical UI,</p>
+
+<ol>
+  <li>At the end of booting, the mother of all processes – <code>init</code> – is started.</li>
+  <li><code>init</code> runs the start-up scripts from <code>/etc/init.d</code> depending on the run
+level set in <code>/etc/inittab</code>. Since <code>init</code>’s environment is very bare, the
+scripts define required environment variables within themselves.</li>
+  <li>Init starts the GDM display manager, which in turn will start the graphical
+login.</li>
+  <li>When the user successfully logs in, GDM starts xsession, which reads the
+file <code>/etc/gdm/Xsession</code> and with it the environment variables for the
+user’s session. The default version of the Xsession file first reads
+<code>/etc/profile</code> for global settings and then <code>~/.profile</code> to add the user’s
+individual settings.</li>
+</ol>
+
+<p>The above boot process is the process to set up environment to login shell. So
+if any user specific environment that is need for a graphical program, one
+could choose to put it in <code>~/.bash_profile</code>, <code>~/.bash_login</code>, and
+<code>~/.profile</code>. I chose to put it in <code>.profile</code>. I actually spent time figuring
+this out, so Emacs could inherit environment variables the local libraries I
+installed.</p>
+
+<p>As for system wide setup, put it in <code>/etc/profile</code>.</p>
+
+<h2 id="non-login-shell">Non-login Shell</h2>
+
+<p>If a shell is needed after login, the setting should go to the non-login
+shell’s, <code>.bashrc</code>. For instance, the terminals created by <code>terminal</code>,
+<code>terminator</code> and other terminal programs are non-login shells. This is where I
+previously put all my configurations in.</p>
+
+<p>The following comes from <code>man bash</code>’s <em>INVOCATION</em> section.</p>
+
+<pre><code>When bash is invoked as an interactive login shell, or as a non-interactive
+shell with the `--login` option, it first reads and executes commands from the
+file `/etc/profile`, if that file exists.  After reading that file, it looks
+for `~/.bash_profile`, `~/.bash_login`, and `~/.profile`, in that order, and
+reads and executes commands from the first one that exists and is readable.
+The --noprofile option may be used when the shell is started to inhibit this
+behavior.
+
+When a login shell exits, bash reads and executes commands from the file
+`~/.bash_logout`, if it exists.
+
+When an interactive shell that is not a login shell is started, bash reads and
+executes commands from `/etc/bash.bashrc` and `~/.bashrc`, if these files
+exist.
+</code></pre>
+
+<h2 id="distribution">Distribution</h2>
+
+<p>Each Linux distribution may tweak files mentioned above, for instance, unset
+some variables somewhere, so if you set its value before where it is unset,
+your setting will not take effect. Normally, if one’s configuration does not
+work, consider go through all previous configurations and understand what they
+exactly do in such a distribution.</p>
+
+<h2 id="misc">Misc</h2>
+
+<p>If one uses <code>tmux</code>, the terminal multiplexer, note it creates login shells. So
+if one wants <code>.bashrc</code>, especially aliases, to work under <code>tmux</code>, remember to
+source it after whatever login shell configuration one may use.</p>
+
+<h2 id="reference">Reference</h2>
+
+<ol>
+  <li>https://wiki.debian.org/EnvironmentVariables</li>
+  <li>https://help.ubuntu.com/community/EnvironmentVariables</li>
+</ol>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Optimization Summary]]></title>
@@ -2119,42 +2229,6 @@ the following process:</p>
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td><td class="code"><pre><code class="bash"><span class="line">pdfocr.rb -i foo.pdf -o out.pdf
 </span></code></pre></td></tr></table></div></figure></notextile></div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Zoom In and Out Gnome Using Mouse]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/07/02/zoom-in-and-out-gnome-using-mouse/"/>
-    <updated>2015-07-02T17:18:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/07/02/zoom-in-and-out-gnome-using-mouse</id>
-    <content type="html"><![CDATA[<p>Just tried to find a solution to zoom in and out in the GNOME desktop, so that
-things could be seen better in case they are too small during presentation.</p>
-
-<!-- more -->
-
-<p>The solution a program called <code>mousewheelzoom</code>, whose source is held at github:
-<a href="https://github.com/tobiasquinn/gnome-shell-mousewheel-zoom">gnome-shell-mousewheel-zoom</a>.</p>
-
-<p>The installation instructions could be found there.</p>
-
-<hr />
-
-<p>Besides the solution that works, two solutions that did not work are also going
-to noted below.</p>
-
-<h3 id="compiz-setting">Compiz Setting</h3>
-
-<p>At first I tried to changing setting in Compizconfig Settingsmanager, as
-suggested in the
-<a href="http://askubuntu.com/questions/82398/how-to-zoom-inzoom-out">link</a>. It turns
-out that compiz is used by Unity, not GNOME. Since I have changed the desktop
-environment, it does not obviously.</p>
-
-<h3 id="gnome-native-solution">GNOME Native solution</h3>
-
-<p>Then GNOME also offers such function directly in their <em>Universal Access</em>,
-under <em>Seeing</em> tab, in category Zoom — just type Universal Access in the
-Dock. However, it does not work either.</p>
 ]]></content>
   </entry>
   
