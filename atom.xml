@@ -4,7 +4,7 @@
   <title><![CDATA[SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2016-01-06T09:34:45+08:00</updated>
+  <updated>2016-01-07T22:13:00+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -1122,6 +1122,13 @@ as CUDA, which I just need to add a symbol link <code>lib64</code> to <code>lib<
 compilation may still work.</p>
 
 <p>So this is the note.</p>
+
+<hr />
+
+<p>Updated on Jan 7, 2016</p>
+
+<p>Adding a symbol link <code>lib64</code> to <code>lib</code> under where cudnn lives does work. The
+folder structure is the one mentioned above.</p>
 ]]></content>
   </entry>
   
