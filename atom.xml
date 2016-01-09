@@ -4,7 +4,7 @@
   <title><![CDATA[SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2016-01-07T22:13:00+08:00</updated>
+  <updated>2016-01-09T10:26:01+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -49,6 +49,12 @@ the following command</p>
 <p>One drawback of making such a change is <code>guake</code> will stay on the secondary
 window forever. Did not get the time to look into the source code to know why
 :(.</p>
+
+<p><em>Updated on Jan 9, 2016.</em></p>
+
+<p>It is weird. <code>guake</code> functions normally now, after a reboot. This is probably
+not the first time I reboot. I guess it is the package updates that fixed
+something.</p>
 
 <h2 id="physical-layout-of-monitors">Physical Layout of Monitors</h2>
 
