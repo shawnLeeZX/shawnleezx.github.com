@@ -4,7 +4,7 @@
   <title><![CDATA[SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2016-01-09T11:17:41+08:00</updated>
+  <updated>2016-01-09T19:46:36+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,62 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Note on Running Tensorflow in Anaconda]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2016/01/09/note-on-running-tensorflow-in-anaconda/"/>
+    <updated>2016-01-09T19:25:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2016/01/09/note-on-running-tensorflow-in-anaconda</id>
+    <content type="html"><![CDATA[<p>Due to conflict of protobuf version, I have to run tensorflow in a sandbox
+environment, aka anaconda. This is the note to note down some of its tricky
+parts I spent some time figuring out.</p>
+
+<!-- more -->
+
+<p>Most of the packages are backward compatible, so normal packages could be
+installed on servers normally, by <a href="http://www.ansible">Ansible</a>. But if
+Caffe(it seems the newest Caffe upgraded to protobuf3) and tensorflow want to
+be installed in the same machine, protobuf2 and protobuf3 have to co-exist. Due
+to their
+<a href="https://www.tensorflow.org/versions/master/get_started/os_setup.html#mac-os-x-typeerror-init-got-an-unexpected-keyword-argument-syntax">conflict</a>,
+they cannot co-exist. So to not break others environment, I have to install
+tensorflow in anaconda.</p>
+
+<p>There are two things I think I may need in the future:</p>
+
+<ol>
+  <li>To install Anaconda and all consequent python packages in it using Ansible.</li>
+  <li>A bug either in pip or in conda that needs some workaround.</li>
+</ol>
+
+<h2 id="using-ansible-with-anaconda">Using Ansible with Anaconda</h2>
+
+<p>Conda has a <a href="http://conda.pydata.org/docs/help/silent.html">silent mode</a>, so it
+could be install using shell script, which could be achieved using the <code>shell</code>
+module in Ansible.</p>
+
+<p>To install consequent packages all in Anaconda environment, we could write a
+playbook that has the location of <code>pip</code> as a variable, so by passing different
+<code>pip</code> binary, we could install the python packages wherever we want.</p>
+
+<h2 id="solve-cannot-remove-entries-from-nonexistent-file--easy-installpth">Solve &#8220;Cannot remove entries from nonexistent file: … easy-install.pth’’</h2>
+
+<p>There is a bug preventing one upgrading packages in Anaconda. Where this bug
+belongs to pip/setuptools or conda seems still in
+<a href="https://github.com/pypa/pip/issues/2751">consideration</a>.</p>
+
+<p>The workaround I used, one of the workarounds suggested by the above link,
+which I think is the simplest one is to add <code>--ignore-installed</code> option to
+<code>pip</code>.</p>
+
+<p>If your packages in contained in <code>conda</code>’s collection, the best solution is to
+install it there. For instance, for <code>numpy</code>, it is just better to install by</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">conda update numpy
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Setting up Multi-Monitor on Gnome Ubuntu 14.04 with NVIDIA Card]]></title>
@@ -2229,108 +2285,6 @@ to enforce constraints on parameters, I decided to try Keras first.</p>
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="p">(</span><span class="nv">eval-after-load</span> <span class="s">&quot;auto-complete&quot;</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;ac-modes</span> <span class="ss">&#39;lua-mode</span><span class="p">))</span><span class="o">.</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[暂时的人生终极意义]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/07/29/zan-shi-de-ren-sheng-zhong-ji-yi-yi/"/>
-    <updated>2015-07-29T12:16:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/07/29/zan-shi-de-ren-sheng-zhong-ji-yi-yi</id>
-    <content type="html"><![CDATA[<!-- more -->
-
-<p>近日闲暇时间重新看了看大约十年前的电视剧《仙剑奇侠传》，勾起了许许多多的回忆。在
-缅怀的同时，也不由得思考起了许多问题。</p>
-
-<p>从非正统的道家书籍——玄幻小说处得知过一句话：修炼有三个境界；一为看山是山，看水是
-水；二为看山不是山，看水不是水；三为看山还是山，看水还是水。</p>
-
-<p>自五年前大学入学开始，可以说是世界在我眼前开始展现其真实的面貌，我开始一点一点地
-搭建自己的世界观、价值观、人生观。与此同时，当今社会各种各样丑陋的事情也我眼前一
-一略过。人间失格，偌大的中国于我看来不过是一个崩坏的社会。从小看见的一个表象上合
-理的世界逐渐崩坏，是以看山不是山，看水不是水。</p>
-
-<p>自有彼领悟之后，我过得有些“世人皆醉吾独醒”的味道。</p>
-
-<p>现代历史学对历史学家的定义是研究人类文明进程的学者，而不是将人类的历史视为一个循
-环往复的无尽轮回。而历史进程的发展的源动力于我看来和马克思的观点相仿——底层基础决
-定上层建筑。世界人口的增长导致的植物和猎物的不足促使人类由食物的采集者和狩猎者演
-变成为农耕民族；对自然规律的发现引发的世界工业化和现代化降低了知识传播的成本，继
-而开启民智，使得社会由集权统治、精英统治转变向民主社会。每一个社会的变化期总是会
-导致人们思想的剧烈动荡，继而引起文化的变革。在这些社会变革的时期，普通人是最为迷
-惘和痛苦的；而对于境界超越普通人的可能影响最后文化形成的社会精英来说，由于同类数
-量的稀少，他们也是极为孤独的。这是民族或者种族进化时期个体所不可避免的阵痛。</p>
-
-<p>但这个变革时期的哲学家们需要思考这个时代人们的生命的终极意义。我们究竟因何而来，
-又将往何处而去？</p>
-
-<p>在过往千年的人类文明中，哲学家们给出的答案大约可以归为两种：一个大众容易理解的答
-案和一个大众不能理解的答案。前者告诉我们世界是有一个万能的神创造的，我们生命的所
-有答案都可以由他那里得到解答。这种答案由于其亲和性往往在社会中处于统治地位；而后
-者中的思考者希望寻求自己的答案，然而由于人类经验、观察、推理和知识积累的局限，导
-致最终这类哲学家的答案往往是：生活是一个谜团，永远不要尝试去弄明白他。</p>
-
-<p>对于第一种答案来说，西方社会中世纪千年的经验告诉我们这类“便宜”的信仰往往使人和社
-会停滞不前，但是对于一个真正的答案的寻找需要同样昂贵的代价。自文艺复兴之后，西方
-人便开始重新寻找终极问题的答案。十八世纪，黑格尔将人类文明的进化视为一个“世界精
-神”的进化历程。但“世界精神”的进化需要的是一代代极度聪慧的人毕生对于自然、社会和
-自身的思考：达尔文的《物种起源》；马克思的《资本论》；弗洛伊德的《精神分析》；赫
-伯的《行为组织》（Organization of Behavior)；第谷穷其一生的观星；开普勒的三定律；
-牛顿的万有引力定律；爱因斯坦的相对论。我想这个列表还可以排很长。</p>
-
-<p>一代代人类最具天赋的人在去尝试去解决一个花费时长注定超越其生命历程的巨大问题的极
-小部分。这种对于“我们因何而来？又讲往何处而去”的探寻若从参与其中的人最终能够走出
-的步伐来看，不能不说是悲壮的史诗。但从另一个角度来想，这也是人类历史的上少有的机
-遇，不足二百年以前绝大部分的智人都处在常年饥饿的状态中，穷其一生但求温饱，极少有
-人能够有机会能够去思考这些最根本的问题。</p>
-
-<p>这种思考是人类意识给予人最独特的天赋。在人们觉得有意义的事情大致可以分为三类：一
-为独善其身；二为兼济天下；三即为那些仰望群星璀璨的夜空的时候，思考我们最初从哪里
-来，又最终往何处去。第一类我们可以归其为生物自身的生存所带来的意义，第二类我们可
-以归其为种族自身生存所带来的意义。这两类意义任何动物均具有，唯有第三类意义——对生
-命与世界最终极的思考是唯有人类才能够尝试去探寻的。</p>
-
-<p>回到之前所谓看山不是山，看水不是水的崩坏的现代中国。如今社会残酷的资本竞争和生存
-压力使得人类从之前三类之中的天然有意义的生活转变到一种人造的虚幻的生活之中，纸醉
-金迷、灯红酒绿，看似狂欢盛世，实际却是人人皆处于无边寂寞的精神孤岛之中。几乎所有
-社会承认的名望、地位、财富都是虚幻，此所谓看山不是山，看水不是水。</p>
-
-<p>但如克尔凯郭尔认为黑格尔的人类文明是“世界精神”的进化的理论里没有人类个体的角色，
-继而缺乏对个人生说的指导一样，这样宏大的第三类意义也不能指导我们去过好我们的一生。
-即使着世界再过于崩坏，我们还是不得不生存在其中。侠气地讲，有人的地方就有江湖。</p>
-
-<p>所以当我问自己我能在第三条类路上走到何处时，我总是想起孔子的六个字“尽人事，知天
-命”。</p>
-
-<p>一年以前，在粗浅了解中国传统社会统一的价值文化——士文化和美国现代社会自由、民主、
-平等、博爱、创新的价值文化之后，中国传统文化中的僵化礼制和祖先崇拜在我对中国传统
-文化的认知中被视为非常邪恶，在这样于过去中不可自拔的文化注定在新世界里是没有位置
-的。而对这种氏族组织的社会的彻底转变需要的是几代人上百年的逐渐演变，如中世纪西欧
-社会所经历的千年中世纪。</p>
-
-<p>但最近我逐渐发觉自由、创新这类现代公民的素质和对人生终极意义的寻找并不是同一个类
-别的事物。西方社会纵然是一个“现代”社会，但其并没有对人生的应该如何度过有自己统一
-的答案。如电影《少年时代》里描述的普通美国人的一生，我想他们社会的大众其实和我们
-一样迷惘，一样不知所措。世界变化太快，人类对于自己和社会的认识永远处于一种滞后的
-状态。但对于其中的最杰出者，其对于生命的领悟和中国古代圣人的领悟多少殊途同归——华
-盛顿、查理芒格、乔布斯：华盛顿历任两任总统之后归隐田园类似道家道士修为初成下山历
-练，功成之后回到山宗，归隐山野；《穷查理宝典》的作者给查理一生的总结即是：正心、
-修身、齐家、致富、助天下，正是一个儒家士人最终极的理想；而乔布斯对于内心的追随正
-应合了阳明心学与知行合一。而对于现代快节奏生活最有用的抗压技能反而是佛家的冥想。</p>
-
-<p>然后我就想起了一百年前当时青年所讨论的西方社会什么该学，中华文化什么该留，古人的
-思想虽然有其社会的局限，但其智慧却是超越时空的疆界的。如此，就到了最后那句话：看
-山还是山，看水还是水。西方社会在寻找外在世界的答案的过程中远远超越了东方，但对于
-内心世界答案的寻找大家都半斤八两。</p>
-
-<p>理了这么长的思路，最终好像能再尝试总结一个暂时的答案。</p>
-
-<p>道家在这个答案里占总纲地位。人生是一次修行，我们要经历独自的修行来获得我们的真元，
-为儒家之正心、修身，亦为习得冥想和心学；小成之后需下山经滚滚红尘世界，历千百聚散
-离合，走过儒家的齐家、治国、平天下的士人理想；大成之后归隐山林，小隐隐于野，大隐
-隐于十，收徒著书，协助“世界精神”向前迈进一小步。</p>
-
-<p>最终终得坐化，或者飞升。</p>
 ]]></content>
   </entry>
   

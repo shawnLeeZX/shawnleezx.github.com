@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Note | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/note/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2016-01-09T11:17:56+08:00</updated>
+  <updated>2016-01-09T19:46:36+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,62 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Note on Running Tensorflow in Anaconda]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2016/01/09/note-on-running-tensorflow-in-anaconda/"/>
+    <updated>2016-01-09T19:25:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2016/01/09/note-on-running-tensorflow-in-anaconda</id>
+    <content type="html"><![CDATA[<p>Due to conflict of protobuf version, I have to run tensorflow in a sandbox
+environment, aka anaconda. This is the note to note down some of its tricky
+parts I spent some time figuring out.</p>
+
+<!-- more -->
+
+<p>Most of the packages are backward compatible, so normal packages could be
+installed on servers normally, by <a href="http://www.ansible">Ansible</a>. But if
+Caffe(it seems the newest Caffe upgraded to protobuf3) and tensorflow want to
+be installed in the same machine, protobuf2 and protobuf3 have to co-exist. Due
+to their
+<a href="https://www.tensorflow.org/versions/master/get_started/os_setup.html#mac-os-x-typeerror-init-got-an-unexpected-keyword-argument-syntax">conflict</a>,
+they cannot co-exist. So to not break others environment, I have to install
+tensorflow in anaconda.</p>
+
+<p>There are two things I think I may need in the future:</p>
+
+<ol>
+  <li>To install Anaconda and all consequent python packages in it using Ansible.</li>
+  <li>A bug either in pip or in conda that needs some workaround.</li>
+</ol>
+
+<h2 id="using-ansible-with-anaconda">Using Ansible with Anaconda</h2>
+
+<p>Conda has a <a href="http://conda.pydata.org/docs/help/silent.html">silent mode</a>, so it
+could be install using shell script, which could be achieved using the <code>shell</code>
+module in Ansible.</p>
+
+<p>To install consequent packages all in Anaconda environment, we could write a
+playbook that has the location of <code>pip</code> as a variable, so by passing different
+<code>pip</code> binary, we could install the python packages wherever we want.</p>
+
+<h2 id="solve-cannot-remove-entries-from-nonexistent-file--easy-installpth">Solve ``Cannot remove entries from nonexistent file: … easy-install.pth’’</h2>
+
+<p>There is a bug preventing one upgrading packages in Anaconda. Where this bug
+belongs to pip/setuptools or conda seems still in
+<a href="https://github.com/pypa/pip/issues/2751">consideration</a>.</p>
+
+<p>The workaround I used, one of the workarounds suggested by the above link,
+which I think is the simplest one is to add <code>--ignore-installed</code> option to
+<code>pip</code>.</p>
+
+<p>If your packages in contained in <code>conda</code>’s collection, the best solution is to
+install it there. For instance, for <code>numpy</code>, it is just better to install by</p>
+
+<p><code>bash
+conda update numpy
+</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Setting up Multi-Monitor on Gnome Ubuntu 14.04 with NVIDIA Card]]></title>
@@ -418,7 +474,7 @@ next section.</p>
 
 <p>Cone is about direction. It is hard to describe it informally without concrete
 examples. Pointed cone identifies inequality relations, which is summarized in
-this <a href="{{ root_url }}/blog/2015/11/28/cone-dual-cone-and-generalized-inequalities/">note</a>.</p>
+this <a href="/blog/2015/11/28/cone-dual-cone-and-generalized-inequalities/">note</a>.</p>
 
 <p>Dual cone is about the direction that at least slightly the same with primal
 cone, so in this direction values also could increase, or decrease if it is a
@@ -573,149 +629,6 @@ objective function, meaning variable $x$ could be separated out.</li>
   <li>Linearity makes dual function $\inf \ldots$ analytic solvable, so we only
 see $\max$ in the dual problem.</li>
 </ol>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[On Duality in Optimization]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/12/14/on-duality-in-optimization/"/>
-    <updated>2015-12-14T21:09:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/12/14/on-duality-in-optimization</id>
-    <content type="html"><![CDATA[<p>Yet another note on Math.</p>
-
-<p>A more general picture of duality in optimization emerges itself. Some time is
-still needed to unify all duality in optimization, but for now I summarize a
-draft version of it here using duality of linear programming as an example.</p>
-
-<!-- more -->
-
-<h2 id="intuition-of-lagrange-multiplier-from-functional-analysis">Intuition of Lagrange Multiplier From Functional Analysis</h2>
-
-<p>In its most general form, optimization problem is</p>
-
-<script type="math/tex; mode=display">
-\max\ f(x)\\
-G(x) \geq 0\\
-H(x) = 0
-</script>
-
-<p>where $G(x)$ is the group of inequality constrains <script type="math/tex">g_i(x)</script>; $H(x)$ is the
-group of equality constrains <script type="math/tex">h_i(x)</script>; $x \in X = R^{n}$ or $x \in X = R^{m
-\times n}$, where $x$ is taken as matrix variables.</p>
-
-<p>The domain of the problem is implicitly defined by $G(x)$ and
-$H(x)$. Geometrically, $H(x) = 0$ describes some surface in $X$. $G(x)$
-describes some ``half space’’.</p>
-
-<p>The question to ask is: what objects should we take those constrains as? so we
-could internalize and reason with them.</p>
-
-<p>In abstract sense, if we take $f(x), G(x), H(x)$ as variables, or in a more
-intuitive word, as objects, in our perception the problem seems not to be that
-abstract and convoluted. Their dependency on $x$ seems to gone. This is the
-idea from functional analysis. We are just doing space transform on the
-original space $X$. After the transform, we try to find the extreme value of a
-specific coordinate of the new space, which is $f(x)$, in a sub-area of the new
-space, which describes by constrains.</p>
-
-<p>Despite of the non-linearity, every natural phenomena in nature, thus in Math,
-comes from certain metamorphism of linear phenomena. To say it in another way,
-though we could create very bizarre phenomena with math trick, the real world
-should be analyzed starting from the linearity, not for simplicity or
-computation’s sake.</p>
-
-<p>But how could we come up with linearity?</p>
-
-<p>This brings to think why constrains exists. It exists because in real world,
-certain things has to be satisfied, it could be a fixed location, or limited
-amount of resources and so on. The real world constrain is somehow connected to
-the objective function, otherwise it won’t exist at all. So how could we model
-such connection?</p>
-
-<p>This is the key to the entry of duality.</p>
-
-<p>We have to find the connection of variables $G(x), H(x)$ to another variable
-$f(x)$. As having been discussed, every natural phenomena somehow comes from
-metamorphism of linear phenomena. An example is the invention of calculus,
-which is the how non-linear phenomena behaves locally. The way we connect those
-variables is through their linear combination. This in the language of
-functional analysis is to say we analyze the primal space from its dual space.</p>
-
-<p>Now back to Lagrange duality. Lagrange multiplier is elements in dual space of
-the space made up by $f(x), G(x), H(x)$.</p>
-
-<p>This intuition unscramble constrains.</p>
-
-<h2 id="an-example-linear-programming">An Example: Linear Programming</h2>
-
-<p>Linear programming is the case where all things are linear. So nothing
-metamorphized. When we only deal with gradients in a specific point in
-non-linear programming, such as the case of KKT condition, Fritz-John
-condition, it is actually exactly the optimality condition of linear
-programming.</p>
-
-<p>Previously I have noted an possible motivation of Linear programming. Now I
-could see the previous note(about two months ago) is just a special case of
-previous idea.</p>
-
-<p>For a LP problem, as the following</p>
-
-<script type="math/tex; mode=display">
-\max\ c^{T}\\
-Ax = b\\
-x \geq 0
-</script>
-
-<p>I tried to see it from adjoin operator point of view, which is to find
-something from $A^{T}$. For details, please refer to previous
-<a href="{{ root_url }}/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>.</p>
-
-<p>Now we write the Lagrange of LP, the dual function is</p>
-
-<script type="math/tex; mode=display">
-\inf\limits_{x} c^{T}x + y^{T}(Ax - b) - s^{T}x
-</script>
-
-<p>note we have $s \geq 0$.</p>
-
-<p>Now we see how could we deduce it from previous argument of last
-<a href="{{ root_url }}/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>.</p>
-
-<script type="math/tex; mode=display">% &lt;![CDATA[
-
-\begin{align*}
-                &  \langle 1, c^{T}x \rangle + \langle y, Ax -b \rangle - \langle s, x \rangle\\
-\Leftrightarrow &  \langle c, x \rangle + \langle y, Ax -b \rangle - \langle s, x \rangle\\
-\Leftrightarrow &  \langle c - s, x \rangle + \langle y, Ax \rangle - \langle y, b \rangle\\
-\Leftrightarrow & - \langle y, b \rangle +  \langle c - s, x \rangle + \langle y, Ax \rangle \\
-\Leftrightarrow & - \langle y, b \rangle +  \langle c - s, x \rangle + \langle A^{T}y, x \rangle \\
-\Leftrightarrow & - \langle y, b \rangle +  \langle c - s + A^{T}y, x \rangle \\
-\Leftrightarrow &  \langle y, b \rangle +  \langle c - s - A^{T}y, x \rangle \\
-\end{align*}
- %]]&gt;</script>
-
-<p>We find some connection between dual space and primal space now. To make the
-part of dual space be a lower bound, we ask $s \geq 0$. This is just the
-zooming idea previously.</p>
-
-<p>The more geometrically picture is the geometrical intuition from Lagrange
-duality.</p>
-
-<script type="math/tex; mode=display">% &lt;![CDATA[
-
-\begin{align*}
- & \inf\limits_{x} \langle c, x \rangle + \langle y, Ax -b \rangle - \langle s, x \rangle\\
-\Leftrightarrow & \inf\limits_{x} \langle c - s, x \rangle + \langle y, Ax \rangle - \langle y, b \rangle\\
-\Leftrightarrow & - \langle y, b \rangle + \inf\limits_{x} \langle c - s, x \rangle + \langle y, Ax \rangle \\
-\Leftrightarrow & - \langle y, b \rangle + \inf\limits_{x} \langle c - s, x \rangle + \langle A^{T}y, x \rangle \\
-\Leftrightarrow & - \langle y, b \rangle + \inf\limits_{x} \langle c - s + A^{T}y, x \rangle \\
-\Leftrightarrow &  \langle y, b \rangle + \inf\limits_{x} \langle c - s - A^{T}y, x \rangle \\
-\end{align*}
- %]]&gt;</script>
-
-<p>The $\inf$ could move the dual variable down. So we have a constrained problem
-again.(Details are omitted, and could be found at <em>Nonlinear Optimization
-Andrzej Ruszczynski</em> or some other books talk about Lagrange duality).</p>
 ]]></content>
   </entry>
   

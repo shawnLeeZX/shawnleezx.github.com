@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ansible | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/ansible/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2016-01-09T11:17:56+08:00</updated>
+  <updated>2016-01-09T19:46:36+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,62 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Note on Running Tensorflow in Anaconda]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2016/01/09/note-on-running-tensorflow-in-anaconda/"/>
+    <updated>2016-01-09T19:25:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2016/01/09/note-on-running-tensorflow-in-anaconda</id>
+    <content type="html"><![CDATA[<p>Due to conflict of protobuf version, I have to run tensorflow in a sandbox
+environment, aka anaconda. This is the note to note down some of its tricky
+parts I spent some time figuring out.</p>
+
+<!-- more -->
+
+<p>Most of the packages are backward compatible, so normal packages could be
+installed on servers normally, by <a href="http://www.ansible">Ansible</a>. But if
+Caffe(it seems the newest Caffe upgraded to protobuf3) and tensorflow want to
+be installed in the same machine, protobuf2 and protobuf3 have to co-exist. Due
+to their
+<a href="https://www.tensorflow.org/versions/master/get_started/os_setup.html#mac-os-x-typeerror-init-got-an-unexpected-keyword-argument-syntax">conflict</a>,
+they cannot co-exist. So to not break others environment, I have to install
+tensorflow in anaconda.</p>
+
+<p>There are two things I think I may need in the future:</p>
+
+<ol>
+  <li>To install Anaconda and all consequent python packages in it using Ansible.</li>
+  <li>A bug either in pip or in conda that needs some workaround.</li>
+</ol>
+
+<h2 id="using-ansible-with-anaconda">Using Ansible with Anaconda</h2>
+
+<p>Conda has a <a href="http://conda.pydata.org/docs/help/silent.html">silent mode</a>, so it
+could be install using shell script, which could be achieved using the <code>shell</code>
+module in Ansible.</p>
+
+<p>To install consequent packages all in Anaconda environment, we could write a
+playbook that has the location of <code>pip</code> as a variable, so by passing different
+<code>pip</code> binary, we could install the python packages wherever we want.</p>
+
+<h2 id="solve-cannot-remove-entries-from-nonexistent-file--easy-installpth">Solve ``Cannot remove entries from nonexistent file: … easy-install.pth’’</h2>
+
+<p>There is a bug preventing one upgrading packages in Anaconda. Where this bug
+belongs to pip/setuptools or conda seems still in
+<a href="https://github.com/pypa/pip/issues/2751">consideration</a>.</p>
+
+<p>The workaround I used, one of the workarounds suggested by the above link,
+which I think is the simplest one is to add <code>--ignore-installed</code> option to
+<code>pip</code>.</p>
+
+<p>If your packages in contained in <code>conda</code>’s collection, the best solution is to
+install it there. For instance, for <code>numpy</code>, it is just better to install by</p>
+
+<p><code>bash
+conda update numpy
+</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ansible Variables Explained]]></title>
@@ -280,13 +336,13 @@ ansible-playbook playbook.yml --extra-vars "hosts=servers"
     <updated>2014-02-20T00:19:00+08:00</updated>
     <id>http://shawnLeeZX.github.io/blog/2014/02/20/setup-linux-from-fresh-installation-using-ansible</id>
     <content type="html"><![CDATA[<p>Previously, I have wrote two posts about linux administration – the
-<a href="{{ root_url }}/blog/2014/02/20/from-linux-user-to-administrator/">first</a> one talked about the jobs should be done on one machine, the
-<a href="{{ root_url }}/blog/2014/02/20/linux-administration-beyond-one-machine/">second</a> one talked about how to setup ansible to control remote nodes.</p>
+<a href="/blog/2014/02/20/from-linux-user-to-administrator/">first</a> one talked about the jobs should be done on one machine, the
+<a href="/blog/2014/02/20/linux-administration-beyond-one-machine/">second</a> one talked about how to setup ansible to control remote nodes.</p>
 
 <p>This post talks about how to use ansible to make a customized ubuntu 12.04
 desktop from fresh installation using ansible. However, setting up a server is
 subset of setting up desktop machine, which has been mentioned in the second
-<a href="{{ root_url }}/blog/2014/02/20/linux-administration-beyond-one-machine/">post</a>.</p>
+<a href="/blog/2014/02/20/linux-administration-beyond-one-machine/">post</a>.</p>
 
 <!-- more -->
 
@@ -324,7 +380,7 @@ rmdir Downloads Music Public Videos Documents Templates
 </code></p>
 
 <p>To make the terminal works more efficiently, I install <code>tmux</code> beforehand and
-config it as this <a href="{{ root_url }}/blog/2014/02/08/make-vim-style-tmux/">post</a>.</p>
+config it as this <a href="/blog/2014/02/08/make-vim-style-tmux/">post</a>.</p>
 
 <p><code>bash
 sudo apt-get install tmux
@@ -394,7 +450,7 @@ not work on server.</p>
 
 <p>Previously, I have wrote how to compile vim from source on a linux server. You
 can find it
-<a href="{{ root_url }}/blog/2014/02/20/from-linux-user-to-administrator/#compilevim">here</a>. To
+<a href="/blog/2014/02/20/from-linux-user-to-administrator/#compilevim">here</a>. To
 compile vim on desktop with clipboard enabled, your os should have necessary
 X11 libraries:</p>
 
@@ -521,7 +577,7 @@ vars:
 tasks:
     <ul>
       <li>name: Add SOME_ONE as sysadmin in all the servers
-user: name=SOME_ONE groups=sudo password={{ password }}
+user: name=SOME_ONE groups=sudo password=
 sudo: yes
 ```</li>
     </ul>
