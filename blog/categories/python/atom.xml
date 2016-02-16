@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2016-02-16T22:18:39+08:00</updated>
+  <updated>2016-02-16T22:21:15+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,62 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Note on Running Tensorflow in Anaconda]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2016/01/09/note-on-running-tensorflow-in-anaconda/"/>
+    <updated>2016-01-09T19:25:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2016/01/09/note-on-running-tensorflow-in-anaconda</id>
+    <content type="html"><![CDATA[<p>Due to conflict of protobuf version, I have to run tensorflow in a sandbox
+environment, aka anaconda. This is the note to note down some of its tricky
+parts I spent some time figuring out.</p>
+
+<!-- more -->
+
+<p>Most of the packages are backward compatible, so normal packages could be
+installed on servers normally, by <a href="http://www.ansible">Ansible</a>. But if
+Caffe(it seems the newest Caffe upgraded to protobuf3) and tensorflow want to
+be installed in the same machine, protobuf2 and protobuf3 have to co-exist. Due
+to their
+<a href="https://www.tensorflow.org/versions/master/get_started/os_setup.html#mac-os-x-typeerror-init-got-an-unexpected-keyword-argument-syntax">conflict</a>,
+they cannot co-exist. So to not break others environment, I have to install
+tensorflow in anaconda.</p>
+
+<p>There are two things I think I may need in the future:</p>
+
+<ol>
+  <li>To install Anaconda and all consequent python packages in it using Ansible.</li>
+  <li>A bug either in pip or in conda that needs some workaround.</li>
+</ol>
+
+<h2 id="using-ansible-with-anaconda">Using Ansible with Anaconda</h2>
+
+<p>Conda has a <a href="http://conda.pydata.org/docs/help/silent.html">silent mode</a>, so it
+could be install using shell script, which could be achieved using the <code>shell</code>
+module in Ansible.</p>
+
+<p>To install consequent packages all in Anaconda environment, we could write a
+playbook that has the location of <code>pip</code> as a variable, so by passing different
+<code>pip</code> binary, we could install the python packages wherever we want.</p>
+
+<h2 id="solve-cannot-remove-entries-from-nonexistent-file--easy-installpth">Solve ``Cannot remove entries from nonexistent file: … easy-install.pth’’</h2>
+
+<p>There is a bug preventing one upgrading packages in Anaconda. Where this bug
+belongs to pip/setuptools or conda seems still in
+<a href="https://github.com/pypa/pip/issues/2751">consideration</a>.</p>
+
+<p>The workaround I used, one of the workarounds suggested by the above link,
+which I think is the simplest one is to add <code>--ignore-installed</code> option to
+<code>pip</code>.</p>
+
+<p>If your packages in contained in <code>conda</code>’s collection, the best solution is to
+install it there. For instance, for <code>numpy</code>, it is just better to install by</p>
+
+<p><code>bash
+conda update numpy
+</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[On IDEs of Python in Emacs]]></title>

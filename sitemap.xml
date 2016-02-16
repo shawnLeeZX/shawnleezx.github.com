@@ -198,7 +198,7 @@
     </url>
     <url>
         <loc>http://shawnLeeZX.github.io/blog/2013/11/06/you-si-xiang-de-xue-jie/</loc>
-        <lastmod>2015-09-02T21:18:06+08:00</lastmod>
+        <lastmod>2016-02-16T22:20:13+08:00</lastmod>
     </url>
     <url>
         <loc>http://shawnLeeZX.github.io/blog/2013/11/14/reload-a-buffer-in-vim/</loc>
@@ -482,7 +482,7 @@
     </url>
     <url>
         <loc>http://shawnLeeZX.github.io/blog/2014/08/18/learning-emacs-in-3-days/</loc>
-        <lastmod>2015-09-02T21:18:06+08:00</lastmod>
+        <lastmod>2016-02-16T22:20:13+08:00</lastmod>
     </url>
     <url>
         <loc>http://shawnLeeZX.github.io/blog/2014/08/20/wu-shi-liu-yi-ran-zhi-tian-ming/</loc>
@@ -680,11 +680,11 @@
     </url>
     <url>
         <loc>http://shawnLeeZX.github.io/blog/2015/11/13/note-on-compiling-tensorflow/</loc>
-        <lastmod>2015-11-15T21:28:05+08:00</lastmod>
+        <lastmod>2016-02-16T22:20:13+08:00</lastmod>
     </url>
     <url>
         <loc>http://shawnLeeZX.github.io/blog/2015/11/15/notes-on-semidefinite-programming/</loc>
-        <lastmod>2015-11-15T21:23:57+08:00</lastmod>
+        <lastmod>2016-02-16T22:20:13+08:00</lastmod>
     </url>
     <url>
         <loc>
@@ -713,6 +713,24 @@
         <lastmod>2015-12-16T16:36:13+08:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://shawnLeeZX.github.io/blog/2016/01/05/on-environment-variable-setup-of-linux/
+        </loc>
+        <lastmod>2016-02-16T22:20:13+08:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://shawnLeeZX.github.io/blog/2016/01/06/setting-up-multi-monitor-on-gnome-ubuntu-14-dot-04-with-nvidia-card/
+        </loc>
+        <lastmod>2016-02-16T22:20:13+08:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://shawnLeeZX.github.io/blog/2016/01/09/note-on-running-tensorflow-in-anaconda/
+        </loc>
+        <lastmod>2016-02-16T22:20:13+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://shawnLeeZX.github.io/blog/2016/02/16/vlcxia-shi-yong-zhong-wen-zi-mu/</loc>
         <lastmod>2016-02-16T22:17:39+08:00</lastmod>
     </url>
@@ -722,11 +740,15 @@
     </url>
     <url>
         <loc>http://shawnLeeZX.github.io/blog/</loc>
-        <lastmod>2016-02-16T22:17:39+08:00</lastmod>
+        <lastmod>2016-02-16T22:20:13+08:00</lastmod>
     </url>
     <url>
         <loc>http://shawnLeeZX.github.io/blog/archives/</loc>
-        <lastmod>2016-02-16T22:17:39+08:00</lastmod>
+        <lastmod>2016-02-16T22:20:13+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://shawnLeeZX.github.io/quotes/</loc>
+        <lastmod>2016-02-16T22:20:13+08:00</lastmod>
     </url>
     <url>
         <loc>http://shawnLeeZX.github.io/robots.txt</loc>
@@ -738,6 +760,6 @@
     </url>
     <url>
         <loc>http://shawnLeeZX.github.io/</loc>
-        <lastmod>2015-09-02T21:18:06+08:00</lastmod>
+        <lastmod>2016-02-16T22:20:13+08:00</lastmod>
     </url>
 </urlset>

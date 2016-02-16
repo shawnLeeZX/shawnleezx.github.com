@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Optimization | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/optimization/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2016-02-16T22:18:39+08:00</updated>
+  <updated>2016-02-16T22:21:15+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -568,21 +568,30 @@ Optimization Bloyd</em> could be helpful.</p>
 
 <!-- more -->
 
-<p>SDP is actually a relaxation techniques that projects the problem to a higher
-dimension space with a symmetrical matrix special structure. So the original
-non-linear problem gets linearized. In the simplest case, $x$ gets mapped to
-$X = xx^{T}$, then relaxed to $X \in S_{+}$ It just puts the second order terms
-of $x$ in the matrix. Similar things could be done in for higher order terms,
-and finally, any order polynomial could be achieved in some way.</p>
+<p>I understand SDP as a relaxation techniques that explode the problem to a
+higher dimension space with a symmetrical matrix special structure. The
+original problem corresponds to a manifold in the new higher dimensional
+space. So we are allowed to approach problems in direction that is not possible
+in the low dimensional space. An illustration idea could be the worm hole idea
+in physics. Another benefits could be to linearize original non-linear
+problem. In the simplest case, $x$ gets mapped to $X = xx^{T}$, then relaxed to
+$X \in S_{+}$. It just puts the second order terms of $x$ in the
+matrix. Similar things could be done in for higher order terms, and finally,
+any order polynomial could be achieved in some way.</p>
 
-<p>I am still not thinking very clearly how operator could be put into the context
+<strike>
+I am still not thinking very clearly how operator could be put into the context
 since here matrices are just a special way to put a really long
 vector. Frobenius inner product is just normal inner product. The power of SDP
 comes from infinite number of quadratic constraints enforced by the PD
-condition.</p>
+condition.
+</strike>
 
-<p>The connection could possibly be this way. It is inspired by how matrix
-derivative is defined using Frobenius norm. Though operator’s nature comes from
+<p><br /></p>
+
+<strike>
+The connection could possibly be this way. It is inspired by how matrix
+derivative is defined using Frobenius norm. Though operator's nature comes from
 it spectral structure, it is still made by $m \times n$ numbers put in a
 special way. So a corresponding change in the corresponding position means
 something. By measuring the norm, and inner product in this way, we are somehow
@@ -593,7 +602,49 @@ this is the perturbation of a matrix. The perturbation in each dimension is
 added on the face value(the number displayed on the entries of the matrix), so
 it natural to think regardless of the spectral structure of the matrix,
 whatever it may be normalized then or by changed by some other operations, the
-face value change is how we perceive physical beings.</p>
+face value change is how we perceive physical beings.
+</strike>
+
+<p><br /></p>
+
+<p>The structure of <script type="math/tex">S_{+}</script> is defined in the exactly same way with vector
+space. Its inner product is Frobenius inner product, which just vectorize
+matrices and calculate normal vector inner product. The difference is the
+symmetric constraints and positive semi-definite constraints.</p>
+
+<p>But what is the connection between seeing matrix as a vector and as an operator?</p>
+
+<p>Such structure does not connect to spectral properties of a symmetric
+matrix. Frobenius norm also is not related to the semantics of an operator —
+transform.</p>
+
+<p>The intuition of the PSD matrix is to transform a vector to another vector
+within the positive dual cone of the original vector. (I guess this is the
+definition that could extended to asymmetric matrices, taking rotation matrix
+within 90 degree as an example).</p>
+
+<p>Spectral properties of symmetric matrices mean if we choose the bases right,
+matrix multiplication is just component-wise scaling.</p>
+
+<p>Those are illustrating pictures coming from linear algebra. But in the general
+form, matrix multiplication $Ax$ works as <script type="math/tex">a_{i}^{T}x, i = 1 \ldots n</script>, where
+<script type="math/tex">a_{i}^{T}</script> is the ith row of $A$, not as <script type="math/tex">\sum\limits_{i}a_{i}x_i</script>, where
+<script type="math/tex">a_{i}</script> is ith column of $A$, which is the picture from linear algebra.</p>
+
+<p>The transform is formed by stacking <script type="math/tex">n</script> linear hyperplanes, or linear
+functionals together. Since linear functional is in the dual space <script type="math/tex">X^{*}</script> of
+$X$, and also in finite dimensional case <script type="math/tex">X^{*}</script> equivalent to $X$, this is
+the reason we could get useful relations in $X$.</p>
+
+<p>In this case, $A - B$ calculates the difference in the linear functionals of
+$A, B$. $A \bullet B$ calculates a sum value of inner products of all
+functionals of $A, B$. Inner product is the way we measure difference between
+hyperplanes.</p>
+
+<p>Now, from the above sense, the structure defined before is for the matrix
+itself, but not for how it could transform a vector.</p>
+
+<p>A last note on how to solve SDP.</p>
 
 <p>SDP is solved using interior point methods, whose intuitive is to guide the
 optimization by the objective function, using gradient and hessian
@@ -606,8 +657,14 @@ non-linear optimization so that the boundary information not only guide
 optimization only when the point is near the boundary but also when it is far
 in the boundary.</p>
 
-<p>More thinking may be added when I learned more about SDP, matrix algebra and
-matrix calculus.</p>
+<strike>More thinking may be added when I learned more about SDP, matrix algebra and
+matrix calculus.</strike>
+
+<p><br /></p>
+
+<p>I guess this note is roughly finalized.</p>
+
+<p>Updated on Dec 18th, 2015</p>
 ]]></content>
   </entry>
   
