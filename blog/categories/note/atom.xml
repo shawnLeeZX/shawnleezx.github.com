@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Note | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/note/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-12-16T16:38:49+08:00</updated>
+  <updated>2016-02-16T22:18:39+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,40 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[VLC下使用中文字幕]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2016/02/16/vlcxia-shi-yong-zhong-wen-zi-mu/"/>
+    <updated>2016-02-16T22:00:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2016/02/16/vlcxia-shi-yong-zhong-wen-zi-mu</id>
+    <content type="html"><![CDATA[<p>记如何在VLC下使用中文字幕。</p>
+
+<!-- more -->
+
+<p>默认状态下，VLC会遇到两个问题，一是解码的codecs所用不对，而是用于显示字体的渲染
+器(render)所用字体不对。</p>
+
+<p>第一个问题的解决办法一是更改VLC所用的codecs；二是修改文件的codecs为utf-8。第一
+种方法在<a href="http://bbs.feng.com/read-htm-tid-344593.html">这里</a>有介绍。第二种方法
+我发现Vim可以完美完成，特此记之。</p>
+
+<p>用Vim打开字幕文件，然后使用如下命令：</p>
+
+<p><code>
+:set fileencoding=utf-8
+</code></p>
+
+<p>保存，退出。</p>
+
+<p>第二个问题的解决也来自之上的
+<a href="http://bbs.feng.com/read-htm-tid-344593.html">链接</a>。为防止链接失效，特此重述
+方法：</p>
+
+<p>打开VLC的<code>Preferences</code>窗口（<code>Ctrl+P</code>），点击右下角的<code>all</code>，在左边的索引中依次选择
+<code>Video -&gt; Subtitles/OSD -&gt; Text renderer</code>，右边的设置区第一项为<code>Font</code>，点击<code>Browse</code>按
+钮选择一项中文字体，如<code>WenQuanYi Micro Hei</code>。更改完成之后需要重启VLC。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Optimization Summary]]></title>
@@ -637,102 +671,6 @@ be written as</p>
 
 <p>which is the optimality condition of optimization problems with equality
 constraints.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Cone, Dual Cone and Generalized Inequalities]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/11/28/cone-dual-cone-and-generalized-inequalities/"/>
-    <updated>2015-11-28T11:04:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/11/28/cone-dual-cone-and-generalized-inequalities</id>
-    <content type="html"><![CDATA[<p>Yet another note on Math.</p>
-
-<p>I did not internalized the idea that a pointed cone identifies a generalized
-equality until now, and would like to note it down.</p>
-
-<!-- more -->
-
-<h2 id="cone">Cone</h2>
-
-<p>Let’s start with why we want inequality. We want it because we want to compare
-two objects. In $R$, an object in this domain is a scalar and represents
-something like length, or so. Suppose we want to compare the length of one edge
-of a table and the length of a ruler. We put those two together.  Intuitively,
-a table looks longer than a ruler, so we say if we want to compare anything
-similar like those again, we standardize a unit, according to the reference to
-the length of table or ruler, which in the ancient time is the length of some
-king’s feet, give a length $x$ to object one, $y$ to object two, then if object
-one is longer than object two, we call $x &gt; y$.</p>
-
-<p>How could we generalize this idea to higher dimensional space? Consider vector
-inequality. Suppose we want buy a department. The only factors we want to
-consider is which floor our department is(assume the higher the better), and
-how many square meters it has. What does department $x$ is better than $y$
-mean? An intuitive answer is a department that is both higher and bigger is a
-better choice. We call it $x \succeq y$.</p>
-
-<p>We could see how cone abstract things here, in vector inequality.</p>
-
-<p>First we break thing down, if we get two rulers, whose lengths are too similar
-to tell who is longer in a distance, how could we tell? Without equipment, we
-just put those two rules together, and see their difference. This is the mental
-procedure we execute when we compare, so in scalar case, $x &gt; y$ means $x - y
-&gt; 0$; in vector case, $x \succeq y$ means $x - y \succeq 0$.</p>
-
-<p>What is special about $x - y$?</p>
-
-<p>If we take it abstractly, $x - y$ means how much better when $x$ is compared to
-$y$. How we define inequality is determined by how we measure the ``better’’
-amount, so the measurement makes sense. For scalar it is just their value
-difference. But for vector we cannot judge when department $x$ has higher floor
-number than $y$ but smaller square meters. The solution to this dilemma is to
-only compare the case where the comparison makes sense. Mathematically, it
-means we only compare $x, y$ when $x, y$ stay in a domain, which depends on
-both $x, y$, where the comparison makes sense. If $x - y$ is in the domain, we
-compare, otherwise, do not bother.</p>
-
-<p>Though we only convert the comparison of $x, y$ to whether $x - y$ belongs to a
-domain. We do not know what the domain looks like yet. We want to reach the
-conclusion the domain is a pointed cone, or in another name, proper cone.</p>
-
-<p>The next task is to figure out the properties of the domain. What properties do
-we want? Let’s list them:</p>
-
-<ol>
-  <li>Comparison is about direction and it does not matter if $x$ is a hundred
-bigger than $y$, or one hundred percent bigger.</li>
-  <li>Strict inequality should exist.</li>
-  <li>Difference could be added together: If $x$ is better than $y$, $y$ is better
-tan $z$, we should have $x$ is better than $z$.</li>
-  <li>Limitation stays in the domain: slightly better is still better.</li>
-</ol>
-
-<p>Denoting the domain $K$, those four are translated to</p>
-
-<ol>
-  <li>$K$ is a pointed cone, i.e., if $u \in K$ and $-u \in K$, then $u = 0$; for
-any $x \in K$ and $\alpha &gt; 0$, we have $\alpha u \in K$.</li>
-  <li>$K$ has non-empty interior.</li>
-  <li>$K$ is non-empty and closed under addition; i.e., for any $x, y \in K$, $x +
-y \in K$.</li>
-  <li>$K$ is closed.</li>
-</ol>
-
-<h2 id="dual-cone">Dual Cone</h2>
-
-<p>Dual cone is about giving each dimension of an object a linear measurement of
-weight, or more intuitively a price, so:</p>
-
-<ol>
-  <li>A integrated ``betterness’’ could be quantified for all pairs instead of
-just $K$, a restricted set of comparable pairs.</li>
-  <li>consequently could lead to dual problem, which is a upper and lower bound by
-linear approximation.</li>
-</ol>
-
-<p>Due to time limitation, I will just write those for now. Some pictures and
-example of minimum elements and minimal elements from <em>Chapter 2, Convex
-Optimization Bloyd</em> could be helpful.</p>
 ]]></content>
   </entry>
   

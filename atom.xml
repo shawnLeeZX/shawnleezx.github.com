@@ -4,7 +4,7 @@
   <title><![CDATA[SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-12-16T16:38:27+08:00</updated>
+  <updated>2016-02-16T22:18:12+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[VLC下使用中文字幕]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2016/02/16/vlcxia-shi-yong-zhong-wen-zi-mu/"/>
+    <updated>2016-02-16T22:00:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2016/02/16/vlcxia-shi-yong-zhong-wen-zi-mu</id>
+    <content type="html"><![CDATA[<p>记如何在VLC下使用中文字幕。</p>
+
+<!-- more -->
+
+<p>默认状态下，VLC会遇到两个问题，一是解码的codecs所用不对，而是用于显示字体的渲染
+器(render)所用字体不对。</p>
+
+<p>第一个问题的解决办法一是更改VLC所用的codecs；二是修改文件的codecs为utf-8。第一
+种方法在<a href="http://bbs.feng.com/read-htm-tid-344593.html">这里</a>有介绍。第二种方法
+我发现Vim可以完美完成，特此记之。</p>
+
+<p>用Vim打开字幕文件，然后使用如下命令：</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">:set fileencoding=utf-8</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>保存，退出。</p>
+
+<p>第二个问题的解决也来自之上的
+<a href="http://bbs.feng.com/read-htm-tid-344593.html">链接</a>。为防止链接失效，特此重述
+方法：</p>
+
+<p>打开VLC的<code>Preferences</code>窗口（<code>Ctrl+P</code>），点击右下角的<code>all</code>，在左边的索引中依次选择
+<code>Video -&gt; Subtitles/OSD -&gt; Text renderer</code>，右边的设置区第一项为<code>Font</code>，点击<code>Browse</code>按
+钮选择一项中文字体，如<code>WenQuanYi Micro Hei</code>。更改完成之后需要重启VLC。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Optimization Summary]]></title>
@@ -2062,42 +2095,6 @@ the following process:</p>
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td><td class="code"><pre><code class="bash"><span class="line">pdfocr.rb -i foo.pdf -o out.pdf
 </span></code></pre></td></tr></table></div></figure></notextile></div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Zoom In and Out Gnome Using Mouse]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/07/02/zoom-in-and-out-gnome-using-mouse/"/>
-    <updated>2015-07-02T17:18:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/07/02/zoom-in-and-out-gnome-using-mouse</id>
-    <content type="html"><![CDATA[<p>Just tried to find a solution to zoom in and out in the GNOME desktop, so that
-things could be seen better in case they are too small during presentation.</p>
-
-<!-- more -->
-
-<p>The solution a program called <code>mousewheelzoom</code>, whose source is held at github:
-<a href="https://github.com/tobiasquinn/gnome-shell-mousewheel-zoom">gnome-shell-mousewheel-zoom</a>.</p>
-
-<p>The installation instructions could be found there.</p>
-
-<hr />
-
-<p>Besides the solution that works, two solutions that did not work are also going
-to noted below.</p>
-
-<h3 id="compiz-setting">Compiz Setting</h3>
-
-<p>At first I tried to changing setting in Compizconfig Settingsmanager, as
-suggested in the
-<a href="http://askubuntu.com/questions/82398/how-to-zoom-inzoom-out">link</a>. It turns
-out that compiz is used by Unity, not GNOME. Since I have changed the desktop
-environment, it does not obviously.</p>
-
-<h3 id="gnome-native-solution">GNOME Native solution</h3>
-
-<p>Then GNOME also offers such function directly in their <em>Universal Access</em>,
-under <em>Seeing</em> tab, in category Zoom — just type Universal Access in the
-Dock. However, it does not work either.</p>
 ]]></content>
   </entry>
   

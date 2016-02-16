@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2015-12-16T16:38:49+08:00</updated>
+  <updated>2016-02-16T22:18:39+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,40 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[VLC下使用中文字幕]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2016/02/16/vlcxia-shi-yong-zhong-wen-zi-mu/"/>
+    <updated>2016-02-16T22:00:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2016/02/16/vlcxia-shi-yong-zhong-wen-zi-mu</id>
+    <content type="html"><![CDATA[<p>记如何在VLC下使用中文字幕。</p>
+
+<!-- more -->
+
+<p>默认状态下，VLC会遇到两个问题，一是解码的codecs所用不对，而是用于显示字体的渲染
+器(render)所用字体不对。</p>
+
+<p>第一个问题的解决办法一是更改VLC所用的codecs；二是修改文件的codecs为utf-8。第一
+种方法在<a href="http://bbs.feng.com/read-htm-tid-344593.html">这里</a>有介绍。第二种方法
+我发现Vim可以完美完成，特此记之。</p>
+
+<p>用Vim打开字幕文件，然后使用如下命令：</p>
+
+<p><code>
+:set fileencoding=utf-8
+</code></p>
+
+<p>保存，退出。</p>
+
+<p>第二个问题的解决也来自之上的
+<a href="http://bbs.feng.com/read-htm-tid-344593.html">链接</a>。为防止链接失效，特此重述
+方法：</p>
+
+<p>打开VLC的<code>Preferences</code>窗口（<code>Ctrl+P</code>），点击右下角的<code>all</code>，在左边的索引中依次选择
+<code>Video -&gt; Subtitles/OSD -&gt; Text renderer</code>，右边的设置区第一项为<code>Font</code>，点击<code>Browse</code>按
+钮选择一项中文字体，如<code>WenQuanYi Micro Hei</code>。更改完成之后需要重启VLC。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Note On Compiling Tensorflow]]></title>
@@ -532,267 +566,6 @@ GET THINGS DONE. Its has a web interface and app on smartphone.</li>
   <li>Lastly, you can find my <code>emacs.d</code> <a href="https://github.com/shawnLeeZX/emacs.d">here</a>.</li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ansible Variables Explained]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2014/04/08/ansible-variables-explained/"/>
-    <updated>2014-04-08T20:10:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2014/04/08/ansible-variables-explained</id>
-    <content type="html"><![CDATA[<p>The variables mechanism provided by ansible is great, however, not well
-documented. It takes me hours to understand different types of variables of
-ansible.</p>
-
-<p>I will describe it in a logical sequence when writing or using ansible
-playbook. I assume the root folder of your ansible playbooks is under
-<code>/etc/ansible/</code>.</p>
-
-<p><em>NOTE: the examples are taken from ansible documentation.</em></p>
-
-<!-- more -->
-
-<p>I will skip describing why we need variables … You should be knowledgable
-about why…</p>
-
-<h2 id="host-variables">Host Variables</h2>
-
-<p>First, there will be host specifical need, you can define those variables in
-two ways. </p>
-
-<h3 id="ad-hoc-way">Ad hoc Way</h3>
-
-<p>The first is to define them in the inventory files, like the following:</p>
-
-<p><code>bash
-[atlanta]
-host1 http_port=80 maxRequestsPerChild=808
-host2 http_port=303 maxRequestsPerChild=909
-</code></p>
-
-<h3 id="ansible-best-practice">Ansible Best Practice</h3>
-
-<p>To better maintain your playbooks, it would be better you define your host
-specifical variables seperated from inventory file. Ansible provides mechanism
-to let you define variables in <code>host_vars</code> folder. For example:</p>
-
-<h2 id="bash">```bash</h2>
-<p># file: /etc/ansible/host_vars/xyz.boston.example.com
-ntp_server: override.example.com
-```</p>
-
-<h2 id="group-variables">Group Variables</h2>
-
-<p>Second, beyond host specifical variables, there is group variables. Similarly,
-there is also two ways to define group variables.</p>
-
-<h3 id="ad-hoc-way-1">Ad hoc Way</h3>
-
-<p>The first is to define them in the inventory files, like the following:</p>
-
-<p>```bash
-[atlanta]
-host1
-host2</p>
-
-<p>[atlanta:vars]
-ntp_server=ntp.atlanta.example.com
-proxy=proxy.atlanta.example.com
-```
-In the above example, lines under the <code>[altanta:vars]</code> define variables of
-group <code>atlanta</code>.</p>
-
-<h3 id="best-practice">Best Practice</h3>
-
-<p>Similarly, for ansible best practice, you should define group specifical files
-in <code>host_vars</code> file. For example, you can define variables for group <code>raleigh</code>
-in file <code>/etc/ansible/group_vars/raleigh</code>, using the following lines:</p>
-
-<h2 id="yaml">```yaml</h2>
-<p>ntp_server: acme.example.org
-database_server: storage.example.org
-```</p>
-
-<h2 id="some-built-in-variables-provided-by-ansible">Some Built-in Variables Provided by Ansible</h2>
-
-<p><code>bash
-ansible_ssh_host
-  The name of the host to connect to, if different from the alias you wish to give to it.
-ansible_ssh_port
-  The ssh port number, if not 22
-ansible_ssh_user
-  The default ssh user name to use.
-ansible_ssh_pass
-  The ssh password to use (this is insecure, we strongly recommend using --ask-pass or SSH keys)
-ansible_sudo_pass
-  The sudo password to use (this is insecure, we strongly recommend using --ask-sudo-pass)
-ansible_connection
-  Connection type of the host. Candidates are local, ssh or paramiko.  The default is paramiko before Ansible 1.2, and 'smart' afterwards which detects whether usage of 'ssh' would be feasible based on whether ControlPersist is supported.
-ansible_ssh_private_key_file
-  Private key file used by ssh.  Useful if using multiple keys and you don't want to use SSH agent.
-ansible_python_interpreter
-  The target host python path. This is useful for systems with more
-  than one Python or not located at "/usr/bin/python" such as \*BSD, or where /usr/bin/python
-  is not a 2.X series Python.  We do not use the "/usr/bin/env" mechanism as that requires the remote user's
-  path to be set right and also assumes the "python" executable is named python, where the executable might
-  be named something like "python26".
-ansible\_\*\_interpreter
-  Works for anything such as ruby or perl and works just like ansible_python_interpreter.
-  This replaces shebang of modules which will run on that host.
-</code></p>
-
-<h2 id="facts">Facts</h2>
-
-<p>There is another type of variables called fact, which is built-in and used to
-store information discovered while probing remote hosts. More details can be
-found <a href="http://docs.ansible.com/playbooks_variables.html#id25">here</a>.</p>
-
-<h2 id="playbook-variables">Playbook Variables</h2>
-
-<p>Variables defined in <code>host_vars</code> and <code>group_vars</code> are actually attributes of
-hosts and groups. There is also need to define variables in playbook, which
-normally is used for operation. Again, there are also two ways to define
-ansible playbook specifical variables.</p>
-
-<p>From now on, examples are taken from
-<a href="https://github.com/phred/ansible-examples/blob/master/pedantically_commented_playbook.yml">pedantically_commented_playbook</a>.</p>
-
-<h3 id="ad-hoc-way-2">Ad hoc Way</h3>
-
-<p>The first is to define using <code>var</code> attribute. For example:</p>
-
-<p>```yaml
-###########
-# Playbook attribute: vars
-# Default: none
-# Required: no
-# Description:
-#  Set configuration variables passed to templates &amp; included playbooks
-#  and handlers.  See below for examples.
-vars:
-color: brown</p>
-
-<p>web:
-  memcache: 192.168.1.2
-  httpd: apache
-# Tree-like structures work as expected, but be careful to surround
-#  the variable name with ${} when using.
-#
-# For this example, ${web.memcache} and ${web.apache} are both usable
-#  variables.</p>
-
-<h6 id="section">#</h6>
-<p># The following works in Ansible 0.5 and later, and will set $config_path
-# “/etc/ntpd.conf” as expected.
-#
-# In older versions, $config_path will be set to the string “/etc/$config”
-#
-config: ntpd.conf
-config_path: /etc/$config</p>
-
-<h6 id="section-1">#</h6>
-<p># Variables can be set conditionally. This is actually a tiny snippet
-# of Python that will get filled in and evaluated during playbook execution.
-# This expressioun should always evaluate to True or False.
-#
-# In this playbook, this will always evaluate to False, because ‘color’
-#  is set to ‘brown’ above.
-#
-# When ansible interprets the following, it will first expand $color to
-# ‘brown’ and then evaluate ‘brown’ == ‘blue’ as a Python expression.
-is_color_blue: “‘$color’ == ‘blue’”</p>
-
-<h4 id="section-2">#</h4>
-<p># Builtin Variables
-#
-# Everything that the ‘setup’ module provides can be used in the
-# vars section.  Ansible native, Facter, and Ohai facts can all be
-# used.
-#
-# Run the setup module to see what else you can use:
-# ansible -m setup -i /path/to/hosts.ini host1
-main_vhost: ${ansible_fqdn}
-public_ip:  ${ansible_eth0.ipv4.address}</p>
-
-<h1 id="varsfiles-is-better-suited-for-distro-specific-settings-however">vars_files is better suited for distro-specific settings, however…</h1>
-<p>is_ubuntu: “’${ansible_distribution}’ == ‘ubuntu’”
-```</p>
-
-<h3 id="best-practice-1">Best Practice</h3>
-
-<p>Second, you can use <code>vars_file</code> to organize your variables. This is extremely
-useful when you are in need to provide different variables when concerning
-dynamically determined information. For example:</p>
-
-<p>```yaml
-##########
-# Playbook attribute: vars_files
-# Required: no
-# Description:
-#   Specifies a list of YAML files to load variables from.
-#
-#   Always evaluated after the ‘vars’ section, no matter which section
-#   occurs first in the playbook.  Examples are below.
-#
-#   Example YAML for a file to be included by vars_files:
-#   —
-#   monitored_by: phobos.mars.nasa.gov
-#   fish_sticks: “good with custard”
-#   # (END OF DOCUMENT)
-#
-#   A ‘vars’ YAML file represents a list of variables. Don’t use playbook
-#   YAML for a ‘vars’ file.
-#
-#   Remove the indentation &amp; comments of course, the ‘—’ should be at
-#   the left margin in the variables file.
-#
-vars_files:
-# Include a file from this absolute path
-- /srv/ansible/vars/vars_file.yml</p>
-
-<h1 id="include-a-file-from-a-path-relative-to-this-playbook">Include a file from a path relative to this playbook</h1>
-<ul>
-  <li>vars/vars_file.yml</li>
-</ul>
-
-<h1 id="by-the-way-variables-set-in-vars-are-available-here">By the way, variables set in ‘vars’ are available here.</h1>
-<ul>
-  <li>vars/$hostname.yml</li>
-</ul>
-
-<h1 id="its-also-possible-to-pass-an-array-of-files-in-which-case">It’s also possible to pass an array of files, in which case</h1>
-<p># Ansible will loop over the array and include the first file that
-# exists.  If none exist, ansible-playbook will halt with an error.
-#
-# An excellent way to handle platform-specific differences.
-- [ vars/$platform.yml, vars/default.yml ]</p>
-
-<h1 id="files-in-varsfiles-process-in-order-so-later-files-can">Files in vars_files process in order, so later files can</h1>
-<p># provide more specific configuration:
-- [ vars/$host.yml ]</p>
-
-<h1 id="hey-but-if-youre-doing-host-specific-variable-files-you-might">Hey, but if you’re doing host-specific variable files, you might</h1>
-<p># consider setting the variable for a group in your hosts.ini and
-# adding your host to that group. Just a thought.
-```</p>
-
-<h2 id="passing-variables-on-the-command-line">Passing Variables On The Command Line</h2>
-
-<p>You are absolutely in need to switch from test machine to real deployment,
-which means you need to change the host rather frequently. This is the case
-where command line variables are useful.</p>
-
-<p>For example, you need to change host name each time. To test, you use:</p>
-
-<p><code>bash
-ansible-playbook playbook.yml --extra-vars "hosts=local_machine"
-</code></p>
-
-<p>As for real deployment, you can use:</p>
-
-<p><code>bash
-ansible-playbook playbook.yml --extra-vars "hosts=servers"
-</code></p>
 ]]></content>
   </entry>
   
