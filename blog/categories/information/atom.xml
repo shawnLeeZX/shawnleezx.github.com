@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Information | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/information/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2016-02-16T22:21:15+08:00</updated>
+  <updated>2016-02-23T10:23:55+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -102,6 +102,42 @@ probability have.  And, this connects the dots.</p>
 
 <p>you can get the pdf version
 <a href="https://github.com/hhiker/ml_math/blob/master/information_theory/understanding_entropy/understanding_entropy.pdf">here</a>.</p>
+
+<h2 id="a-more-concrete-example">A More Concrete Example</h2>
+
+<p>Updated on Feb 23, 2016</p>
+
+<p>In the above passages, entropy is interpreted in term of assumption in
+statistical mechanics, good mathematical properties and minimum coding
+length. Though mathematical satisfying, it still feels like circumventing the
+core of the problem.</p>
+
+<p>Following the above arguments, information models how unexpected a event
+occurs. To concretize the such a statement, I try to formulate a concrete event
+and in what sense we define unexpected. The example below seems to come from my
+own imagination, but some vague memory tells me I have seen similar example
+somewhere else that inspires this, though I do not remember exactly where.</p>
+
+<p>Suppose we want to search for something a large room. What is the best way to
+search for that thing? A natural answer is to divide the room into equally
+space grid, such as</p>
+
+<p><code>bash
++-----+-----+-----+-----+
+|a    |     |a    |     |
+|thing|     |thing|     |
++-----+-----+-----+-----+
+</code></p>
+
+<p>Then search for the thing one by one. Each grid above could be taken as a event
+space in the overall event space, which is the whole room. To search for
+something, first we need to give candidates labels to distinguish them. How
+possibly could we assign them labels? So if the thing is in half of those
+grids, one only need to one bit, $log(\frac{1}{1/2})$, for the label to contain
+enough information, meaning certain grid has the thing or not. So that is where
+$log$ comes around: in an exponential configuration of labels, what is the
+minimum set of labels that contain all the information. In another terminology,
+it is coding.</p>
 ]]></content>
   </entry>
   

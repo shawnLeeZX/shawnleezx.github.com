@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Note | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/note/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2016-02-16T22:21:15+08:00</updated>
+  <updated>2016-02-23T10:23:55+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -508,7 +508,7 @@ next section.</p>
 
 <p>Cone is about direction. It is hard to describe it informally without concrete
 examples. Pointed cone identifies inequality relations, which is summarized in
-this <a href="{{ root_url }}/blog/2015/11/28/cone-dual-cone-and-generalized-inequalities/">note</a>.</p>
+this <a href="/blog/2015/11/28/cone-dual-cone-and-generalized-inequalities/">note</a>.</p>
 
 <p>Dual cone is about the direction that at least slightly the same with primal
 cone, so in this direction values also could increase, or decrease if it is a
