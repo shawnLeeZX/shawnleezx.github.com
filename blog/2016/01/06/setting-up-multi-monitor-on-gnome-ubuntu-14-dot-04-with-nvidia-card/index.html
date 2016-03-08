@@ -224,6 +224,13 @@ what its CLI version is).</p>
 <p>I also have tried to add the above line in <code>.profile</code>, but it seems the layout
 setting is decided after <code>.profile</code> is loaded, so it did not work.</p>
 
+<p><em>Updated on Mar 8, 2016.</em></p>
+
+<p>I seems to figured out how gnome handle layout of monitors. The one that powered
+on the first will be the primary monitor, and be put on the left. The one added
+later will be put at the right. So if you want to change the layout of monitors,
+just disconnect the one you want to put at the right, then connect again.</p>
+
 <h2 id="a-peak-at-kde">A Peak at KDE</h2>
 
 <p>At the first time I tried to set <code>workspaces-only-on-primary</code> to <code>false</code>, it
