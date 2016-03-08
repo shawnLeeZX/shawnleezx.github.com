@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>LaTeX Note - SHAWN LEE</title>
+  <title>Note on Installing Ubuntu on Newer Machines - SHAWN LEE</title>
   <meta name="author" content="Shawn">
 
   
-  <meta name="description" content="Notes about LaTeX. Multiline Equations You can present equations with several lines, using the array statement. Inside
-its declaration you must : &hellip;">
+  <meta name="description" content="This is the note supposed to note something peculiar things I met during
+setting up Ubuntu on a newer machine, which is to say, with UEFI replacing &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@ its declaration you must : &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2013/10/15/latex-note">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2016/03/08/note-on-installing-ubuntu-on-newer-machines">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="SHAWN LEE" type="application/atom+xml">
@@ -132,7 +132,7 @@ MathJax.Hub.Config({
   
   <header>
     
-      <h1 class="entry-title">LaTeX Note</h1>
+      <h1 class="entry-title">Note on Installing Ubuntu on Newer Machines</h1>
     
     
       <p class="meta">
@@ -148,7 +148,7 @@ MathJax.Hub.Config({
   
 
 
-<time datetime="2013-10-15T11:08:00+08:00" pubdate data-updated="true">Oct 15<span>th</span>, 2013</time>
+<time datetime="2016-03-08T13:48:00+08:00" pubdate data-updated="true">Mar 8<span>th</span>, 2016</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -157,70 +157,226 @@ MathJax.Hub.Config({
   </header>
 
 
-<div class="entry-content"><p>Notes about LaTeX.</p>
+<div class="entry-content"><p>This is the note supposed to note something peculiar things I met during
+setting up Ubuntu on a newer machine, which is to say, with UEFI replacing
+BIOS, GPT replacing MBR, Display Port and HDMI replacing VGA and DVI, and with
+several GPUs.</p>
+
+<p>Due to time reason, I fell back to my old way of installing Ubuntu, and have
+not figured out what is the right way to install the newer machine mentioned
+above, but the note is to note down possible guess, and the things have been
+figured out, so I may have a thread to follow next time.</p>
 
 <!-- more -->
 
-<h2 id="multiline-equations">Multiline Equations</h2>
+<p>At the time I entered what was called BIOS of the machine, which is called
+UEFI(Unified Extensible Firmware Interface), I was amazed that it was an almost
+desktop GUI. The official lab machine of mine has a similar firmware, but since
+I was not supposed to have access to it, I did not play with it much. I think
+my most recent laptop should have also used UEFI, but I did not have any memory
+what it is like, I guess I did not need to change things so I did not enter it.</p>
 
-<p>You can present equations with several lines, using the array statement. Inside
-its declaration you must :</p>
+<h2 id="gpu-control-from-boot-to-os">GPU Control From Boot to OS</h2>
 
-<ul>
-  <li>Define the number of columns</li>
-  <li>Define column alignment</li>
-  <li>Define column indentation</li>
-  <li>Indicate column separator with &amp; symbol &amp;</li>
-</ul>
+<p>The first thing I tried to figure out is how a GPU could be installed
+properly. In other words, how could a GPU inserted in a socket could be
+detected by the motherboard, then OS?</p>
 
-<p>Example: {rcl} means: 3 columns with indentations respectively right, center and
-left.</p>
+<p>Normally a PC motherboard has an integrated card, and an optional discrete
+graphical unit could be installed GPU card through PCIE sockets. There is a
+switch in the UEFI to tell the motherboard where to look for a graphical
+unit. Also, even if the GPU is not powered up, I could have a hint on the
+monitor to tell me to what happened. So I think a GPU has a basic function unit
+that offers motherboard basic graphical function so it could be used till the
+machine boots into an OS.</p>
 
-<h3 id="multiline-equations-without-equation-number">Multiline Equations Without Equation Number</h3>
+<p>The first problem I have met is there was no output when I connect DVI adapter
+of the monitor to a TITAN Black that was inserted in the latter socket of the
+motherboard, and could only get output when I connect the adapter to the GPU
+inserted in the first PCIE socket. The GPU is not a TITAN Black but a 760.</p>
 
-<p>To use it without equation number, use displaymath environment.</p>
+<p>There are two guesses why this situations happen. The first is UEFI only detect
+GPU at the first PCIE socket and ignores all the remaining. This is reasonable
+since no one is supposed to use multiple GPUs during boot time. But it seems I
+have tried put a TITAN Black at the first socket, though I cannot clearly
+remember it. So another guess is my current UEFI does not support TITAN at boot
+time.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<p>After the UEFI transfer the control to OS, the drivers in UEFI should not
+function anymore. So drivers need to be installed in the OS.</p>
+
+<p>The open source NVIDIA card driver, Nouveau, will be installed when installing
+Ubuntu. I thought only when a NVIDIA GPU is physically inserted, its open
+source driver would be installed. However, it seems the open source driver will
+be installed even without a card. Maybe it is because in this case, a GPU card
+could be used right after installation without re-installing kernel modules.</p>
+
+<p>Nouveau has to be removed if I want to install the newest driver from NVIDIA
+through the <code>*run</code> file, otherwise they would conflict. To do this, a file
+needs to be added to <code>/etc/modprobe.d/</code> with the following contents.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line"># generated by nvidia-installer
+</span><span class="line">blacklist nouveau
+</span><span class="line">options nouveau modeset=0</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>It is actually generated by the <code>*run</code> file. I think it tells kernel not to
+load nouveau module.</p>
+
+<p>Then regenerate your kernel</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">update-initramfs -u</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>To completely wipe out <code>nouveau</code> — though I think even without doing it, it
+would work, run the following command</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">sudo apt-get remove xserver-xorg-video-nouveau</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>To run <code>*run</code> file, one needs to log into a text console. A way I could find
+that is commonly suggested on the web is to switch to one virtual terminal by
+`Ctrl+Alt+F1’, then stop the X service</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">sudo stop lightdm   or
+</span><span class="line">sudo lightdm stop</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>It did not work for me. So I need to reboot into text mode by editing
+grub. More concretely, when the grub menu pops up, press <code>e</code> on the item, and
+find <code>splash quiet</code>, and change it to <code>text</code>, then press <code>F10</code> to boot using
+current edited entry.</p>
+
+<p>One last thing before running the <code>*run</code> file. The <code>*run</code> file will build GPU
+driver to kernel, but only once. So if your OS gets upgraded, you won’t be able
+to log in desktop again. To work get around this, we need to install <code>dkms</code>, so
+each time the kernel gets upgraded, all modules already built will be
+automatically built again into the kernel.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">sudo apt-get install dkms</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>All are settled, just run the <code>*run</code> file to install the driver.</p>
+
+<p>To see what modules has been managed by <code>dkms</code>, use <code>dkms status</code>.</p>
+
+<p>One last thing that tricked me up is to tell motherboard to use discrete
+graphical unit after the driver has been installed. Otherwise, I could still
+make it till the GUI login page, but after I have input my password, the screen
+just flash a little, and ask me to log in again. I guess the problem is
+since motherboard is configured to use integrated graphical unit, so the
+discrete one is actually inactive, when <code>xorg.conf' tells </code>X11` to use the
+discrete graphical unit, nothing is there. The solution is just to fall back.</p>
+
+<p>I also have some guess on how <code>X11</code> make use of multiple GPUs. I have two
+versions of <code>xorg.conf</code>, one from my official lab machine, and one from the one
+I am setting up.</p>
+
+<p>The official one</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="latex"><span class="line"><span class="k">\begin</span><span class="nb">{</span>displaymath<span class="nb">}</span>
-</span><span class="line">	<span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>rcl<span class="nb">}</span>
-</span><span class="line">	z <span class="nb">&amp;</span> = <span class="nb">&amp;</span> a <span class="k">\\</span> f(x,y,z) <span class="nb">&amp;</span> = <span class="nb">&amp;</span> x + y + z
-</span><span class="line">	<span class="k">\end</span><span class="nb">{</span>array<span class="nb">}</span>
-</span><span class="line"><span class="k">\end</span><span class="nb">{</span>displaymath<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">Section "Device"
+</span><span class="line">    Identifier     "Device0"
+</span><span class="line">    Driver         "nvidia"
+</span><span class="line">    VendorName     "NVIDIA Corporation"
+</span><span class="line">    BoardName      "GeForce GTX TITAN Black"
+</span><span class="line">EndSection
+</span><span class="line">
+</span><span class="line">Section "Device"
+</span><span class="line">    Identifier     "Device1"
+</span><span class="line">    Driver         "nvidia"
+</span><span class="line">    VendorName     "NVIDIA Corporation"
+</span><span class="line">    BoardName      "GeForce GTX TITAN Black"
+</span><span class="line">    BusID          "PCI:1:0:0"
+</span><span class="line">    Screen          1
+</span><span class="line">EndSection</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<h3 id="multiline-equations-with-equation-number">Multiline Equations with Equation Number</h3>
+<p>The other one is just</p>
 
-<p>If you want  equation number, use equation environment.</p>
-
-<p>You have two choice, use eqnarray or change displaymath to equation.</p>
-
-<p>eqnarray is a quick way to write three columns eqations, like this:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="latex"><span class="line"><span class="k">\begin</span><span class="nb">{</span>eqnarray<span class="nb">}</span>
-</span><span class="line">	z <span class="nb">&amp;</span> = <span class="nb">&amp;</span> a <span class="k">\\</span> f(x,y,z) <span class="nb">&amp;</span> = <span class="nb">&amp;</span> x + y + z
-</span><span class="line"><span class="k">\end</span><span class="nb">{</span>eqnarray<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>If you want more customized feature, use equation instead:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 <span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="latex"><span class="line"><span class="k">\begin</span><span class="nb">{</span>equation<span class="nb">}</span>
-</span><span class="line">	<span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>rcl<span class="nb">}</span>
-</span><span class="line">	z <span class="nb">&amp;</span> = <span class="nb">&amp;</span> a <span class="k">\\</span> f(x,y,z) <span class="nb">&amp;</span> = <span class="nb">&amp;</span> x + y + z
-</span><span class="line">	<span class="k">\end</span><span class="nb">{</span>array<span class="nb">}</span>
-</span><span class="line"><span class="k">\end</span><span class="nb">{</span>equation<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</pre></td><td class="code"><pre><code class=""><span class="line">Section "Device"
+</span><span class="line">    Identifier     "Device0"
+</span><span class="line">    Driver         "nvidia"
+</span><span class="line">    VendorName     "NVIDIA Corporation"
+</span><span class="line">EndSection</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The first one is generated by <code>nvidia-settings', the second one is generated by
+</code>*run` file. I have three TITAN Black installed on the motherboard with the
+second configuration file, and they are all functional.</p>
+
+<p>The guess now is if no bus id is specified in <code>xorg.conf</code>, <code>X11</code> could pick any
+one, and prefer to the one with lowest PCI id or GPU id.</p>
+
+<p>A side note. To get the bus id of a card, use <code>lspci</code>, which output corresponds
+to GPU is</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">01:00.0 VGA compatible controller: NVIDIA Corporation GK110B [GeForce GTX TITAN Black] (rev a1)</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><code>01:00.0</code> is the bus id, though I am still now know why the period becomes a colon.</p>
+
+<h2 id="note-on-cuda">Note On CUDA</h2>
+
+<p>After all those efforts to install NVIDIA driver through <code>*run</code> file, I found
+<code>cuda</code> installation(using the network deb provided by NVIDIA) just overrided
+the driver I have just installed…</p>
+
+<p>I am not sure whether dkms will be automatically installed, or nouveau be
+automatically blacklisted, though the installation of cuda does not mention it,
+which is to mean they probably will take care of this. If this is so the
+installation of NVIDIA driver and CUDA will be much easier.</p>
+
+<p>I notice the <code>xorg.conf</code> is not changed after the &#8220;new’’ driver being
+installed.</p>
+
+<h2 id="bios-mode-or-uefi-mode-ubuntu">BIOS mode or UEFI mode Ubuntu</h2>
+
+<p>The last set of note is about installing Ubuntu in BIOS mode or UEFI mode,
+which corresponds to using MBR or GPT partition table, and may be some other
+difference.</p>
+
+<p>At the time when choosing the boot media, even if your USB only has one Ubuntu
+on it, the boot menu would show up as entries, one for normal BIOS mode
+ubuntu(which is just named Ubuntu), one for UEFI mode(which has a UEFI in the
+name). I have not tried the second one. The UEFI is a pretty new thing to me,
+since the last time I learned something about it, UEFI is still in its
+infancy.</p>
+
+<p>If UEFI is chosen, the partition table of the hard disk where the boot loader
+would be installed must be GPT, which is written in the new standard. The boot
+loader of MBR and GPT are different(obviously). For GPT, an explicitly
+formatted and allocated partition seems to be needed(not verified). As for MBR,
+as everyone knows, the space for the boot loader will always be left out. Also,
+to boot from a GPT partitioned disk, a boot flag need to be marked on the disk,
+otherwise, OS won’t boot. There are still many other difference I have not
+figured out yet.</p>
+
+<h2 id="reference">Reference</h2>
+
+<ol>
+  <li><a href="http://www.linuxsecrets.com/blog/15questions-troubleshooting/2015/09/10/1651-how-to-remove-nouveau-and-install-nvidia-drivers">How to Remove Nouveau and Install Nvidia Drivers</a></li>
+</ol>
 </div>
 
 
@@ -243,12 +399,12 @@ left.</p>
   
 
 
-<time datetime="2013-10-15T11:08:00+08:00" pubdate data-updated="true">Oct 15<span>th</span>, 2013</time>
+<time datetime="2016-03-08T13:48:00+08:00" pubdate data-updated="true">Mar 8<span>th</span>, 2016</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/cs/'>CS</a>, <a class='category' href='/blog/categories/latex/'>LaTeX</a>, <a class='category' href='/blog/categories/note/'>Note</a>
+    <a class='category' href='/blog/categories/cs/'>CS</a>, <a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/note/'>Note</a>
   
 </span>
 
@@ -264,10 +420,8 @@ left.</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/10/15/understanding-recall/" title="Previous Post: Understanding Recall in Pattern Recognition and Information Retrival">&laquo; Understanding Recall in Pattern Recognition and Information Retrival</a>
+        <a class="basic-alignment left" href="/blog/2016/02/16/vlcxia-shi-yong-zhong-wen-zi-mu/" title="Previous Post: VLC下使用中文字幕">&laquo; VLC下使用中文字幕</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/10/18/zhuan-zai-qing-hua-sheng-de-duo-nian-fen-dou-ling-wu/" title="Next Post: [转载］清华生的多年奋斗领悟">[转载］清华生的多年奋斗领悟 &raquo;</a>
       
     </p>
   </footer>
@@ -343,8 +497,8 @@ left.</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2013/10/15/latex-note/';
-        var disqus_url = 'http://shawnLeeZX.github.io/blog/2013/10/15/latex-note/';
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2016/03/08/note-on-installing-ubuntu-on-newer-machines/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2016/03/08/note-on-installing-ubuntu-on-newer-machines/';
         var disqus_script = 'embed.js';
       
     (function () {

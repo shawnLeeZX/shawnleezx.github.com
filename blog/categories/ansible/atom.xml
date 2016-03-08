@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ansible | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/ansible/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2016-02-23T10:23:55+08:00</updated>
+  <updated>2016-03-08T17:52:07+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -336,13 +336,13 @@ ansible-playbook playbook.yml --extra-vars "hosts=servers"
     <updated>2014-02-20T00:19:00+08:00</updated>
     <id>http://shawnLeeZX.github.io/blog/2014/02/20/setup-linux-from-fresh-installation-using-ansible</id>
     <content type="html"><![CDATA[<p>Previously, I have wrote two posts about linux administration – the
-<a href="/blog/2014/02/20/from-linux-user-to-administrator/">first</a> one talked about the jobs should be done on one machine, the
-<a href="/blog/2014/02/20/linux-administration-beyond-one-machine/">second</a> one talked about how to setup ansible to control remote nodes.</p>
+<a href="{{ root_url }}/blog/2014/02/20/from-linux-user-to-administrator/">first</a> one talked about the jobs should be done on one machine, the
+<a href="{{ root_url }}/blog/2014/02/20/linux-administration-beyond-one-machine/">second</a> one talked about how to setup ansible to control remote nodes.</p>
 
 <p>This post talks about how to use ansible to make a customized ubuntu 12.04
 desktop from fresh installation using ansible. However, setting up a server is
 subset of setting up desktop machine, which has been mentioned in the second
-<a href="/blog/2014/02/20/linux-administration-beyond-one-machine/">post</a>.</p>
+<a href="{{ root_url }}/blog/2014/02/20/linux-administration-beyond-one-machine/">post</a>.</p>
 
 <!-- more -->
 
@@ -380,7 +380,7 @@ rmdir Downloads Music Public Videos Documents Templates
 </code></p>
 
 <p>To make the terminal works more efficiently, I install <code>tmux</code> beforehand and
-config it as this <a href="/blog/2014/02/08/make-vim-style-tmux/">post</a>.</p>
+config it as this <a href="{{ root_url }}/blog/2014/02/08/make-vim-style-tmux/">post</a>.</p>
 
 <p><code>bash
 sudo apt-get install tmux
@@ -450,7 +450,7 @@ not work on server.</p>
 
 <p>Previously, I have wrote how to compile vim from source on a linux server. You
 can find it
-<a href="/blog/2014/02/20/from-linux-user-to-administrator/#compilevim">here</a>. To
+<a href="{{ root_url }}/blog/2014/02/20/from-linux-user-to-administrator/#compilevim">here</a>. To
 compile vim on desktop with clipboard enabled, your os should have necessary
 X11 libraries:</p>
 
@@ -577,7 +577,7 @@ vars:
 tasks:
     <ul>
       <li>name: Add SOME_ONE as sysadmin in all the servers
-user: name=SOME_ONE groups=sudo password=
+user: name=SOME_ONE groups=sudo password={{ password }}
 sudo: yes
 ```</li>
     </ul>
