@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2016-03-08T18:12:56+08:00</updated>
+  <updated>2016-03-15T11:40:00+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,138 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[A Quick Survey on Distributed Log Processing: Unison and Logstash]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2016/03/15/a-quick-survey-on-log-processing/"/>
+    <updated>2016-03-15T10:53:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2016/03/15/a-quick-survey-on-log-processing</id>
+    <content type="html"><![CDATA[<p>Having multiple machines to train neural networks, I was trying to think how
+could I automatically gather all the training logs, so I could analyze them in
+one place.</p>
+
+<p>I did a survey on technologies available. The ones that I found are: <code>Logstash</code>
+and <code>unison</code>. <code>Logstash</code> seems to be the optimal solution, though may be a little
+an overkill. However, I settled to use <code>unison</code> in the end. The rationale
+behind this is I have to get around many VPNs. The VPNs I used, or maybe most
+VPNs setups, won’t let the machines in LAN of the VPN network ping back to the
+machine that uses VPN to connect. It may just not come from a security reason,
+though it could be; it may just because it is not necessary to set up the route
+table to the IP addresses allocated to the connecting machine. So in this case,
+the log cannot be sent back to the connecting machine, as the way <code>Logstash</code>
+does. A solution is needed to initialize the centralization from the connect
+machine site. So <code>Logstash</code> is ruled out, and I settled with <code>unison</code>.</p>
+
+<p>The following is a quick note on <code>unison</code> works, which took me a while to
+figure out. For an practical introduction to <code>Logstash</code>, see the
+<a href="http://www.slashroot.in/logstash-tutorial-linux-central-logging-server">tutorial</a>
+here.</p>
+
+<!-- more -->
+
+<h2 id="introductory-note">Introductory Note</h2>
+
+<p><a href="http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html#basics">Unison</a>
+is a file-synchronization tool for Unix and Windows. It allows two replicas of
+a collection of files and directories to be stored on different hosts (or
+different disks on the same host), modified separately, and then brought up to
+date by propagating the changes in each replica to the other.</p>
+
+<p><code>Unison</code> supports transmission via <code>ssh</code>, <code>socket</code>, <code>file</code> and <code>rsh</code>. Each of
+those protocols has its own setups, except for the <code>file</code> protocol — it
+synchronizes files within the single machine. For instance, to use ssh, the two
+machines to be able to ssh to each other.</p>
+
+<p>The way <code>unison</code> is used is similar with <code>scp</code> or <code>cp</code> in the sense that they
+are all a command line source destination style. An example would be</p>
+
+<p><code>bash
+unison -testserver /tmp/ ssh://192.168.72.1//tmp
+</code></p>
+
+<p>The format of a source or destination is
+<code>[protocol:]//[user@][host][:port][/path]</code>. The one with no host name is
+supposed to your local machine. The <code>-testserver</code> option above is used to test
+whether the network between the local machine and the remote machine is
+reachable.</p>
+
+<p>To avoid typing the addresses each time, since <code>unison</code> is about syncing, not
+copying, <code>unison</code> offers a thing called profile. The command above, without the
+<code>-testserver</code> option, converts to a profile is</p>
+
+<p><code>
+root = /home/use1/work/sync/
+root = ssh://192.168.72.1//home/user1/work/sync
+</code></p>
+
+<p>For more sophisticated profiles, see the office
+<a href="http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html#profile">doc</a>.</p>
+
+<p>The question following is where do we store profiles?</p>
+
+<p><code>unison</code> will store all its logistics files under the folder pointed by
+environment variable <code>UNISON</code>, which if not specified, is <code>.unison</code> under the
+<code>$HOME</code> folder. A profile file us named in the format of <code>*.prf</code>. Suppose the
+above profile is saved as <code>test.prf</code>. To use that profile, type</p>
+
+<p><code>bash
+unison test
+</code></p>
+
+<p>The last thing I spent some time to figure out is how it actually sync between
+machines, so it won’t mess up my data. Roughly, it adds another layer of logic
+above <code>rsync</code>, which is suggested from the document</p>
+
+<pre><code>Transfers are optimised using a version of the rsync protocol, making it ideal
+for slower links. Unison has a clear and precise specification, and is
+resilient to failure due to its careful handling of the replicas and its
+private structures.
+</code></pre>
+
+<p>The logic is added I think is the way to get some fingerprints of the files, so
+it knows which files is updated when syncing, and only sync those are really updated.</p>
+
+<pre><code>Touching a file without changing its contents should never affect whether or
+not Unison does an update. (When running with the fastcheck preference set to
+true—the default on Unix systems—Unison uses file modtimes for a quick first
+pass to tell which files have definitely not changed; then, for each file that
+might have changed, it computes a fingerprint of the file's contents and
+compares it against the last-synchronized contents. Also, the -times option
+allows you to synchronize file times, but it does not cause identical files to
+be changed; Unison will only modify the file times.)
+</code></pre>
+
+<p>So calling unison at either end will sync the files right.</p>
+
+<h2 id="sync-between-more-than-machines">Sync Between More than Machines</h2>
+
+<p>The built-in doc of <code>unison</code>, which is available via <code>unison -doc tutorial</code>,
+has a section discussing how <code>unison</code> could be used to sync between more than
+machines.</p>
+
+<p>Using Unison to Synchronize More Than Two Machines</p>
+
+<pre><code>Unison is designed for synchronizing pairs of replicas. However, it is
+possible to use it to keep larger groups of machines in sync by
+performing multiple pairwise synchronizations.
+
+If you need to do this, the most reliable way to set things up is to
+organize the machines into a “star topology,” with one machine
+designated as the “hub” and the rest as “spokes,” and with each spoke
+machine synchronizing only with the hub. The big advantage of the star
+topology is that it eliminates the possibility of confusing “spurious
+conflicts” arising from the fact that a separate archive is maintained
+by Unison for every pair of hosts that it synchronizes.
+</code></pre>
+
+<p>I did not get what does it mean in the first reading. After that, I guess the
+method it suggests is to establish a pair-wise sync among machines with certain
+topology, which is to say: one needs to set up multiple profiles; each profile
+sync between two machines; those machines form a topology so there is a hub
+that will have a centralized sync state among all machines if you sync in the
+right order.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Note on Installing Ubuntu on Newer Machines]]></title>
@@ -522,48 +654,6 @@ source it after whatever login shell configuration one may use.</p>
   <li>https://wiki.debian.org/EnvironmentVariables</li>
   <li>https://help.ubuntu.com/community/EnvironmentVariables</li>
 </ol>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Note On Compiling Tensorflow]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/11/13/note-on-compiling-tensorflow/"/>
-    <updated>2015-11-13T11:35:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/11/13/note-on-compiling-tensorflow</id>
-    <content type="html"><![CDATA[<p>A note on setting library path for cudnn when compiling tensorflow, in case I
-forget it next time.</p>
-
-<!-- more -->
-
-<p>Directly providing the library path to cudnn, which has the following directory
-structure,</p>
-
-<p><code>bash
-include  lib
-</code></p>
-
-<p>does not work.</p>
-
-<p>According to the error message, it seems that the configuration tries to find
-header file and shared libraries directly under the provided folder, thus this
-time, I made another folder specifically for tensorflow — it is not in
-<code>LD_LIBRARY</code>, so other programs do not use it — then the compilation works.</p>
-
-<p>Since I just want to make sure I could get through the compilation process to
-make sure if in case there are features not provided in the official binary, I
-have a way to use it, I settled for now. But since the default folder is just
-where CUDA lives, I guess if I made the directory structure of CUDNN the same
-as CUDA, which I just need to add a symbol link <code>lib64</code> to <code>lib</code>, the
-compilation may still work.</p>
-
-<p>So this is the note.</p>
-
-<hr />
-
-<p>Updated on Jan 7, 2016</p>
-
-<p>Adding a symbol link <code>lib64</code> to <code>lib</code> under where cudnn lives does work. The
-folder structure is the one mentioned above.</p>
 ]]></content>
   </entry>
   
