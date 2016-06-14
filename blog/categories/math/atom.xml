@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2016-03-15T11:40:00+08:00</updated>
+  <updated>2016-06-14T21:37:49+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,57 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Note On Representation of Operator]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2016/05/01/note-on-representation-of-operator/"/>
+    <updated>2016-05-01T17:02:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2016/05/01/note-on-representation-of-operator</id>
+    <content type="html"><![CDATA[<p>A note to remind me of some intuition ruminated. Do not have the time to write
+down detailed proof.</p>
+
+<p>It is about spectral theorem of matrix, adjoint operator, SVD and tensor.</p>
+
+<!-- more -->
+
+<h2 id="spectral-theorem">Spectral Theorem</h2>
+
+<p>The representation theory of linear functional is essentially one dimension
+version of group representation theory. The $w$ in the inner product $\langle
+x, w \rangle$ representation of functional $f(x)$ is essentially the normal of
+the hyperplane, which is the functional’s representation in the dual space. The
+process of applying $f$ on $x$ is a process of projection.</p>
+
+<p>For a general operator $T: X \rightarrow Y$, whose representation is denoted
+$A$, if the bases of the $X, Y$ are orthogonal, the adjoint operator $T^{*}$ of
+$T$’s representation is $A^{T}$(on the condition that bases of $X, Y$ is chosen
+to be orthogonal). The process of applying $T$ on $x$ is a process of first
+doing multiple projection, then sum those projection together. The fact that
+adjoint operator has the spectral theorem is just because in certain bases,
+when we are applying the multiple projection, we are not projecting at all, but
+just scale along the hyperplane. The process of changing bases, applying
+scaling, then changing bases back written in form of matrix multiplication is
+$M^{-1}\Lambda M$, which is the spectral decomposition of representation of $T$.</p>
+
+<h2 id="adjoint-operator-is-just-the-transpose">Adjoint Operator is Just the Transpose</h2>
+
+<p>The projection perspective also explains why $T^{*} = A^{T}$.</p>
+
+<p>Let $Ax = y$. Each $x_i$ contributes to $y_i$ linearly. So just like a linear
+equation has a unique solution as long as $A$ is of full rank, there must be a
+one-to-one relationship between $T$ and $T^{*}$, which is formalized using
+representation theory of functional again.</p>
+
+<h2 id="svd">SVD</h2>
+
+<p>SVD just factorizes the multi-projection into a rotation matrix and a scaling
+matrix.</p>
+
+<h2 id="tensor">Tensor</h2>
+
+<p>Tensor is a generalized operator that handles multi-linearity.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Optimization Summary]]></title>
@@ -162,7 +213,7 @@ next section.</p>
 
 <p>Cone is about direction. It is hard to describe it informally without concrete
 examples. Pointed cone identifies inequality relations, which is summarized in
-this <a href="/blog/2015/11/28/cone-dual-cone-and-generalized-inequalities/">note</a>.</p>
+this <a href="{{ root_url }}/blog/2015/11/28/cone-dual-cone-and-generalized-inequalities/">note</a>.</p>
 
 <p>Dual cone is about the direction that at least slightly the same with primal
 cone, so in this direction values also could increase, or decrease if it is a
@@ -412,7 +463,7 @@ x \geq 0
 
 <p>I tried to see it from adjoin operator point of view, which is to find
 something from $A^{T}$. For details, please refer to previous
-<a href="/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>.</p>
+<a href="{{ root_url }}/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>.</p>
 
 <p>Now we write the Lagrange of LP, the dual function is</p>
 
@@ -423,7 +474,7 @@ something from $A^{T}$. For details, please refer to previous
 <p>note we have $s \geq 0$.</p>
 
 <p>Now we see how could we deduce it from previous argument of last
-<a href="/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>.</p>
+<a href="{{ root_url }}/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>.</p>
 
 <script type="math/tex; mode=display">% &lt;![CDATA[
 
@@ -622,7 +673,7 @@ problem would be attacked from linear point of view, which is the case of this
 example. With the machinery from linear algebra, a much rich structure could be
 used instead of just general transform.</p>
 
-<p>Remember in a <a href="/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>
+<p>Remember in a <a href="{{ root_url }}/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>
 on Linear programming, the intuition of $Ax$ is to map a point from a space $X$
 of points to another space of points $Z$, then its dual map or adjoin map
 $A^{T}$ is to map dual space <script type="math/tex">Z^{*}</script> to <script type="math/tex">X^{*}</script>.</p>
@@ -637,102 +688,6 @@ be written as</p>
 
 <p>which is the optimality condition of optimization problems with equality
 constraints.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Cone, Dual Cone and Generalized Inequalities]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/11/28/cone-dual-cone-and-generalized-inequalities/"/>
-    <updated>2015-11-28T11:04:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/11/28/cone-dual-cone-and-generalized-inequalities</id>
-    <content type="html"><![CDATA[<p>Yet another note on Math.</p>
-
-<p>I did not internalized the idea that a pointed cone identifies a generalized
-equality until now, and would like to note it down.</p>
-
-<!-- more -->
-
-<h2 id="cone">Cone</h2>
-
-<p>Let’s start with why we want inequality. We want it because we want to compare
-two objects. In $R$, an object in this domain is a scalar and represents
-something like length, or so. Suppose we want to compare the length of one edge
-of a table and the length of a ruler. We put those two together.  Intuitively,
-a table looks longer than a ruler, so we say if we want to compare anything
-similar like those again, we standardize a unit, according to the reference to
-the length of table or ruler, which in the ancient time is the length of some
-king’s feet, give a length $x$ to object one, $y$ to object two, then if object
-one is longer than object two, we call $x &gt; y$.</p>
-
-<p>How could we generalize this idea to higher dimensional space? Consider vector
-inequality. Suppose we want buy a department. The only factors we want to
-consider is which floor our department is(assume the higher the better), and
-how many square meters it has. What does department $x$ is better than $y$
-mean? An intuitive answer is a department that is both higher and bigger is a
-better choice. We call it $x \succeq y$.</p>
-
-<p>We could see how cone abstract things here, in vector inequality.</p>
-
-<p>First we break thing down, if we get two rulers, whose lengths are too similar
-to tell who is longer in a distance, how could we tell? Without equipment, we
-just put those two rules together, and see their difference. This is the mental
-procedure we execute when we compare, so in scalar case, $x &gt; y$ means $x - y
-&gt; 0$; in vector case, $x \succeq y$ means $x - y \succeq 0$.</p>
-
-<p>What is special about $x - y$?</p>
-
-<p>If we take it abstractly, $x - y$ means how much better when $x$ is compared to
-$y$. How we define inequality is determined by how we measure the ``better’’
-amount, so the measurement makes sense. For scalar it is just their value
-difference. But for vector we cannot judge when department $x$ has higher floor
-number than $y$ but smaller square meters. The solution to this dilemma is to
-only compare the case where the comparison makes sense. Mathematically, it
-means we only compare $x, y$ when $x, y$ stay in a domain, which depends on
-both $x, y$, where the comparison makes sense. If $x - y$ is in the domain, we
-compare, otherwise, do not bother.</p>
-
-<p>Though we only convert the comparison of $x, y$ to whether $x - y$ belongs to a
-domain. We do not know what the domain looks like yet. We want to reach the
-conclusion the domain is a pointed cone, or in another name, proper cone.</p>
-
-<p>The next task is to figure out the properties of the domain. What properties do
-we want? Let’s list them:</p>
-
-<ol>
-  <li>Comparison is about direction and it does not matter if $x$ is a hundred
-bigger than $y$, or one hundred percent bigger.</li>
-  <li>Strict inequality should exist.</li>
-  <li>Difference could be added together: If $x$ is better than $y$, $y$ is better
-tan $z$, we should have $x$ is better than $z$.</li>
-  <li>Limitation stays in the domain: slightly better is still better.</li>
-</ol>
-
-<p>Denoting the domain $K$, those four are translated to</p>
-
-<ol>
-  <li>$K$ is a pointed cone, i.e., if $u \in K$ and $-u \in K$, then $u = 0$; for
-any $x \in K$ and $\alpha &gt; 0$, we have $\alpha u \in K$.</li>
-  <li>$K$ has non-empty interior.</li>
-  <li>$K$ is non-empty and closed under addition; i.e., for any $x, y \in K$, $x +
-y \in K$.</li>
-  <li>$K$ is closed.</li>
-</ol>
-
-<h2 id="dual-cone">Dual Cone</h2>
-
-<p>Dual cone is about giving each dimension of an object a linear measurement of
-weight, or more intuitively a price, so:</p>
-
-<ol>
-  <li>A integrated ``betterness’’ could be quantified for all pairs instead of
-just $K$, a restricted set of comparable pairs.</li>
-  <li>consequently could lead to dual problem, which is a upper and lower bound by
-linear approximation.</li>
-</ol>
-
-<p>Due to time limitation, I will just write those for now. Some pictures and
-example of minimum elements and minimal elements from <em>Chapter 2, Convex
-Optimization Bloyd</em> could be helpful.</p>
 ]]></content>
   </entry>
   

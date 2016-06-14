@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Information | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/information/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2016-03-15T11:40:00+08:00</updated>
+  <updated>2016-06-14T21:37:49+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -122,12 +122,14 @@ somewhere else that inspires this, though I do not remember exactly where.</p>
 search for that thing? A natural answer is to divide the room into equally
 space grid, such as</p>
 
-<p><code>bash
-+-----+-----+-----+-----+
+<p>```bash</p>
+
+<p>+—–+—–+—–+—–+
 |a    |     |a    |     |
 |thing|     |thing|     |
-+-----+-----+-----+-----+
-</code></p>
++—–+—–+—–+—–+</p>
+
+<p>```</p>
 
 <p>Then search for the thing one by one. Each grid above could be taken as a event
 space in the overall event space, which is the whole room. To search for

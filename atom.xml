@@ -4,7 +4,7 @@
   <title><![CDATA[SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2016-03-15T11:40:00+08:00</updated>
+  <updated>2016-06-14T21:37:27+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,57 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Note On Representation of Operator]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2016/05/01/note-on-representation-of-operator/"/>
+    <updated>2016-05-01T17:02:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2016/05/01/note-on-representation-of-operator</id>
+    <content type="html"><![CDATA[<p>A note to remind me of some intuition ruminated. Do not have the time to write
+down detailed proof.</p>
+
+<p>It is about spectral theorem of matrix, adjoint operator, SVD and tensor.</p>
+
+<!-- more -->
+
+<h2 id="spectral-theorem">Spectral Theorem</h2>
+
+<p>The representation theory of linear functional is essentially one dimension
+version of group representation theory. The $w$ in the inner product $\langle
+x, w \rangle$ representation of functional $f(x)$ is essentially the normal of
+the hyperplane, which is the functional’s representation in the dual space. The
+process of applying $f$ on $x$ is a process of projection.</p>
+
+<p>For a general operator $T: X \rightarrow Y$, whose representation is denoted
+$A$, if the bases of the $X, Y$ are orthogonal, the adjoint operator $T^{*}$ of
+$T$’s representation is $A^{T}$(on the condition that bases of $X, Y$ is chosen
+to be orthogonal). The process of applying $T$ on $x$ is a process of first
+doing multiple projection, then sum those projection together. The fact that
+adjoint operator has the spectral theorem is just because in certain bases,
+when we are applying the multiple projection, we are not projecting at all, but
+just scale along the hyperplane. The process of changing bases, applying
+scaling, then changing bases back written in form of matrix multiplication is
+$M^{-1}\Lambda M$, which is the spectral decomposition of representation of $T$.</p>
+
+<h2 id="adjoint-operator-is-just-the-transpose">Adjoint Operator is Just the Transpose</h2>
+
+<p>The projection perspective also explains why $T^{*} = A^{T}$.</p>
+
+<p>Let $Ax = y$. Each $x_i$ contributes to $y_i$ linearly. So just like a linear
+equation has a unique solution as long as $A$ is of full rank, there must be a
+one-to-one relationship between $T$ and $T^{*}$, which is formalized using
+representation theory of functional again.</p>
+
+<h2 id="svd">SVD</h2>
+
+<p>SVD just factorizes the multi-projection into a rotation matrix and a scaling
+matrix.</p>
+
+<h2 id="tensor">Tensor</h2>
+
+<p>Tensor is a generalized operator that handles multi-linearity.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[A Quick Survey on Distributed Log Processing: Unison and Logstash]]></title>
@@ -2458,60 +2509,6 @@ uses <code>company</code> if <code>irony-mode</code> is in usage).</p>
   <li><a href="http://tuhdo.github.io/c-ide.html">tutorial on customizing C/C++ environment for emacs</a></li>
   <li><a href="https://www.masteringemacs.org/article/mastering-key-bindings-emacs">Mastering Key Bindings in Emacs</a></li>
 </ul>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[On IDEs of Python in Emacs]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/08/05/on-ides-of-python-in-emacs/"/>
-    <updated>2015-08-05T10:30:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/08/05/on-ides-of-python-in-emacs</id>
-    <content type="html"><![CDATA[<p>I was finally annoyed enough to find a replacement of <code>auto-complete</code> in
-Emacs. Reasons will be noted down later. In this note, three common extensions
-for writing Python under Emacs will be compared and noted, which are:</p>
-
-<ol>
-  <li><a href="https://github.com/tkf/emacs-jedi">jedi</a></li>
-  <li><a href="https://github.com/jorgenschaefer/elpy">elpy</a></li>
-  <li><a href="https://github.com/proofit404/anaconda-mode">anaconda</a></li>
-</ol>
-
-<!-- more -->
-
-<p>I always used emacs-jedi since I made the shift from Vim to Emacs.</p>
-
-<p>The functionality provided by emacs-jedi is actually quite good. The only function
-that lacks is the one to refactor. So it is not the fault of emacs-jedi that makes me
-want to change extensions. However, the detail will be left to the comparison
-between <code>company-mode</code> and <code>auto-complete</code>.</p>
-
-<p>Though emacs-jedi is not bad, it is also not that good compared with elpy, in my
-opinion.</p>
-
-<p>You could get good code completion, etc, basically everything roughly equal in
-those three extensions. There are some details about elpy that makes me prefer
-to elpy.</p>
-
-<p>At the time that I set up emacs-jedi, basically I copied some the author’s hacking
-code to let emacs-jedi recognize my current python files, or project
-automatically. It works, but it does not feel elegant.</p>
-
-<p>I could get by with that if it is not due to the reason of <code>auto-complete</code>.</p>
-
-<p>With elpy, you could use command <code>elpy-set-project-root</code> to tell elpy that you
-need current project to be taken into account, which does not feel
-automatically but it is more user friendly and elegant.</p>
-
-<p>What’s more, elpy takes into account the <code>PYTHON_PATH</code> environment variable
-into account automatically. I guess emacs-jedi does this as well.</p>
-
-<p>As for anaconda, actually I found it prior to elpy and also gave it a
-try. However, it failed when I tried to get code completion on-the-fly in my
-current project and no documentation seems to hint me how to deal with that.</p>
-
-<p>Lastly, the refactoring function provided by elpy seems exciting so that I
-won’t need to use <code>search-and-replace</code> or <code>multi-occur</code> stuff. But I did not
-try it yet. Look forward to.</p>
 ]]></content>
   </entry>
   
