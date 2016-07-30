@@ -4,7 +4,7 @@
   <title><![CDATA[SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2016-06-14T21:37:27+08:00</updated>
+  <updated>2016-07-30T09:08:11+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,108 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[Repost] Explosion of the Space Shuttle Challenger Address to the Nation]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2016/07/30/repost-explosion-of-the-space-shuttle-challenger-address-to-the-nation/"/>
+    <updated>2016-07-30T08:42:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2016/07/30/repost-explosion-of-the-space-shuttle-challenger-address-to-the-nation</id>
+    <content type="html"><![CDATA[<p>The <a href="https://youtu.be/SBOVkptjJhE?t=3959">speech</a> after Challenger crashed. The
+<a href="http://history.nasa.gov/reagan12886.html">transcript</a> from NASA website.</p>
+
+<h2 id="excerpts">Excerpts</h2>
+
+<p>We’ve grown used to wonders in this century. It’s hard to dazzle us. But for 25
+years the United States space program has been doing just that. We’ve grown
+used to the idea of space, and perhaps we forget that we’ve only just
+begun. We’re still pioneers. They, the members of the Challenger crew, were
+pioneers.</p>
+
+<p>I know it is hard to understand, but sometimes painful things like this
+happen. It’s all part of the process of exploration and discovery. It’s all
+part of taking a chance and expanding man’s horizons. <strong>The future doesn’t belong
+to the fainthearted; it belongs to the brave</strong>. The Challenger crew was pulling
+us into the future, and we’ll continue to follow them.</p>
+
+<p>There’s a coincidence today. On this day 390 years ago, the great explorer Sir
+Francis Drake died aboard ship off the coast of Panama. <strong>In his lifetime the
+great frontiers were the oceans, and an historian later said, “He lived by the
+sea, died on it, and was buried in it.”</strong> Well, today we can say of the
+Challenger crew: Their dedication was, like Drake’s, complete.</p>
+
+<p>The crew of the space shuttle Challenger honored us by the manner in which they
+lived their lives. <strong>We will never forget them, nor the last time we saw them,
+this morning, as they prepared for their journey and waved goodbye and “slipped
+the surly bonds of earth” to “touch the face of God.”</strong></p>
+
+<h2 id="full-speech">Full Speech</h2>
+
+<!-- more -->
+
+<p>Ladies and gentlemen, I’d planned to speak to you tonight to report on the
+state of the Union, but the events of earlier today have led me to change those
+plans. Today is a day for mourning and remembering.</p>
+
+<p>Nancy and I are pained to the core by the tragedy of the shuttle Challenger. We
+know we share this pain with all of the people of our country. This is truly a
+national loss.</p>
+
+<p>Nineteen years ago, almost to the day, we lost three astronauts in a terrible
+accident on the ground. But we’ve never lost an astronaut in flight; we’ve
+never had a tragedy like this. And perhaps we’ve forgotten the courage it took
+for the crew of the shuttle; but they, the Challenger Seven, were aware of the
+dangers, but overcame them and did their jobs brilliantly. We mourn seven
+heroes: Michael Smith, Dick Scobee, Judith Resnik, Ronald McNair, Ellison
+Onizuka, Gregory Jarvis, and Christa McAuliffe. We mourn their loss as a nation
+together.</p>
+
+<p>For the families of the seven, we cannot bear, as you do, the full impact of
+this tragedy. But we feel the loss, and we’re thinking about you so very
+much. Your loved ones were daring and brave, and they had that special grace,
+that special spirit that says, “Give me a challenge and I’ll meet it with joy.”
+They had a hunger to explore the universe and discover its truths. They wished
+to serve, and they did. They served all of us.</p>
+
+<p>We’ve grown used to wonders in this century. It’s hard to dazzle us. But for 25
+years the United States space program has been doing just that. We’ve grown
+used to the idea of space, and perhaps we forget that we’ve only just
+begun. We’re still pioneers. They, the members of the Challenger crew, were
+pioneers.</p>
+
+<p>And I want to say something to the schoolchildren of America who were watching
+the live coverage of the shuttle’s takeoff. I know it is hard to understand,
+but sometimes painful things like this happen. It’s all part of the process of
+exploration and discovery. It’s all part of taking a chance and expanding man’s
+horizons. The future doesn’t belong to the fainthearted; it belongs to the
+brave. The Challenger crew was pulling us into the future, and we’ll continue
+to follow them.</p>
+
+<p>I’ve always had great faith in and respect for our space program, and what
+happened today does nothing to diminish it. We don’t hide our space program. We
+don’t keep secrets and cover things up. We do it all up front and in
+public. That’s the way freedom is, and we wouldn’t change it for a minute.</p>
+
+<p>We’ll continue our quest in space. There will be more shuttle flights and more
+shuttle crews and, yes, more volunteers, more civilians, more teachers in
+space. Nothing ends here; our hopes and our journeys continue.</p>
+
+<p>I want to add that I wish I could talk to every man and woman who works for
+NASA or who worked on this mission and tell them: “Your dedication and
+professionalism have moved and impressed us for decades. And we know of your
+anguish. We share it.”</p>
+
+<p>There’s a coincidence today. On this day 390 years ago, the great explorer Sir
+Francis Drake died aboard ship off the coast of Panama. In his lifetime the
+great frontiers were the oceans, and an historian later said, “He lived by the
+sea, died on it, and was buried in it.” Well, today we can say of the
+Challenger crew: Their dedication was, like Drake’s, complete.</p>
+
+<p>The crew of the space shuttle Challenger honored us by the manner in which they
+lived their lives. We will never forget them, nor the last time we saw them,
+this morning, as they prepared for their journey and waved goodbye and “slipped
+the surly bonds of earth” to “touch the face of God.”</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Note On Representation of Operator]]></title>
@@ -2314,200 +2416,6 @@ framework for Emacs.</li>
   <li><code>irony</code> offers a flychecker, since I already uses the google style and
 cpplint, I will not try <code>flycheck-irony</code> for the time being, though it may
 offer advantages such as full compilation error detection.</li>
-</ul>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[On Auto Completion in Emacs]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/08/11/on-auto-completion-in-emacs/"/>
-    <updated>2015-08-11T09:07:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/08/11/on-auto-completion-in-emacs</id>
-    <content type="html"><![CDATA[<p>Just finished setting up Emacs using
-<a href="http://company-mode.github.io/">company</a> to do auto-completion. Here I would
-like to note down the reason why I made the shift from
-<a href="https://github.com/auto-complete/auto-complete">auto-complete</a> to <code>company</code>
-for programming. However, for tasks like writing configuration file, LaTeX
-documents or markdown note, I still use <code>auto-complete</code>.</p>
-
-<!-- more -->
-
-<h2 id="comparison-between-company-and-auto-complete">Comparison Between <code>company</code> and <code>auto-complete</code></h2>
-
-<p>At the first iteration of my Emacs configuration for C/C++, I followed the
-following three videos to get a basic setup:</p>
-
-<ul>
-  <li><a href="https://www.youtube.com/watch?v=HTUE03LnaXA">Emacs as a C/C++ Editor/IDE (Part I): auto-complete, yasnippet, and autoplete</a></li>
-  <li><a href="https://www.youtube.com/watch?v=r_HW0EB67eY">Emacs as a C/C++ Editor/IDE (Part 2): iedit, flymake-google-cpplint, google-c-style</a></li>
-  <li><a href="https://www.youtube.com/watch?v=Ib914gNr0ys">Emacs as a C/C++ Editor/IDE (Part 3): Installing CEDET mode for true intellisense</a></li>
-</ul>
-
-<p>which introduces the <code>auto-complete</code> for doing automatically completion.</p>
-
-<p>At the same time, the extension
- <a href="https://github.com/tkf/emacs-jedi">emacs-jedi</a> only supports <code>auto-complete</code>
-backend. And <code>emacs-jedi</code> is the only python code completion extension for
-Emacs at then, which turns out that there were a number of others I did not
-notice(see previously post on Python in Emacs). So I decided to use
-auto-complete.</p>
-
-<p>Then as the projects I worked on got bigger, the possible candidates provided
-by <code>auto-complete</code> becomes too large to be useful due to the reason that
-<code>auto-complete</code> will fetch all candidates from all sources.</p>
-
-<p>The same problem happens to <code>auto-complete</code> in file path completion as
-well. You get a lot of non-sense completion when you only want to get
-completion in the path you want, which is a rather narrow space in the whole
-space of all your possible completion candidates.</p>
-
-<p>There could be a way to dynamically change the order of sources, but <code>company</code>
-seems to do this automatically or people writes the backends for <code>company</code> do
-this. In whatever case, the user does not need to attend to those things.</p>
-
-<p>That is not the fatal problem yet, <code>auto-complete</code> has a annoying problem which
-I do not know how to fix is that the time needed for the completion list to
-respond to new input is at the magnitude of seconds. I am pretty sure this is
-not a performance problem given that the completion list comes up pretty fast.</p>
-
-<p><code>company</code> also solves the file completion problem and c headers completion
-problem by providing a separate function in their respective backends, which I
-just need to map another key binding to it so the completion will be very
-accurate when you are programming.</p>
-
-<p><code>auto-complete</code> does good when you are writing text heavy contents such as
-LaTeX or markdown but not logically heavy ones such as programming language.</p>
-
-<p>For a more complete comparison you could refer to the end of the 
-<a href="http://company-mode.github.io/">github page</a> of <code>company</code>.</p>
-
-<h2 id="on-using-them-together">On Using Them Together</h2>
-
-<p>One more realization is that those two extensions are not exclusive at all. I
-did not find a backend like the sources provided by <code>auto-complete</code> for
-complete word in buffers related functions, which is the area <code>auto-complete</code> 
-works well.</p>
-
-<p>Below is some sample on how to use them from my
-<a href="https://github.com/shawnLeeZX/emacs.d">Emacs configuration</a>.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;after-init-hook</span> <span class="ss">&#39;global-company-mode</span><span class="p">)</span>
-</span><span class="line">
-</span><span class="line"><span class="c1">;;   &quot;Modes for which `company-mode&#39; mode is turned on by</span>
-</span><span class="line"><span class="c1">;; `global-company-mode&#39;.  If nil, means no modes.  If t, then all major modes</span>
-</span><span class="line"><span class="c1">;; have it turned on.  If a list, it should be a list of `major-mode&#39; symbol</span>
-</span><span class="line"><span class="c1">;; names for which `company-mode&#39; should be automatically turned on.  The sense</span>
-</span><span class="line"><span class="c1">;; of the list is negated if it begins with `not&#39;.  For example: (c-mode</span>
-</span><span class="line"><span class="c1">;; c++-mode) means that `company-mode&#39; is turned on for buffers in C and C++</span>
-</span><span class="line"><span class="c1">;; modes only.  (not message-mode) means that `company-mode&#39; is always turned</span>
-</span><span class="line"><span class="c1">;; on except in `message-mode&#39; buffers.&quot;</span>
-</span><span class="line"><span class="p">(</span><span class="k">setq</span> <span class="nv">company-global-modes</span> <span class="o">&#39;</span><span class="p">(</span>
-</span><span class="line">                            <span class="nv">c-mode</span>
-</span><span class="line">                            <span class="nv">c++-mode</span>
-</span><span class="line">                            <span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="c1">;; Enable auto-complete for modes in ac-modes by default.</span>
-</span><span class="line"><span class="p">(</span><span class="nv">global-auto-complete-mode</span> <span class="no">t</span><span class="p">)</span>
-</span><span class="line"><span class="c1">;; We reset the default mode for auto-complete given that we want to some modes</span>
-</span><span class="line"><span class="c1">;; to use company-mode.</span>
-</span><span class="line"><span class="p">(</span><span class="nv">set-default</span> <span class="ss">&#39;ac-modes</span>
-</span><span class="line">             <span class="o">&#39;</span><span class="p">(</span>
-</span><span class="line">               <span class="nv">magit-log-edit-mode</span>
-</span><span class="line">               <span class="nv">log-edit-mode</span> <span class="nv">org-mode</span> <span class="nv">text-mode</span> <span class="nv">haml-mode</span>
-</span><span class="line">               <span class="nv">git-commit-mode</span>
-</span><span class="line">               <span class="nv">conf-mode</span> <span class="nv">conf-unix-mode</span> <span class="nv">conf-colon-mode</span>
-</span><span class="line">               <span class="nv">inferior-emacs-lisp-mode</span> <span class="nv">inferior-python-mode</span>
-</span><span class="line">               <span class="nv">sql-interactive-mode</span>
-</span><span class="line">               <span class="nv">sass-mode</span> <span class="nv">yaml-mode</span> <span class="nv">csv-mode</span> <span class="nv">espresso-mode</span> <span class="nv">haskell-mode</span>
-</span><span class="line">               <span class="nv">html-mode</span> <span class="nv">nxml-mode</span> <span class="nv">smarty-mode</span> <span class="nv">clojure-mode</span>
-</span><span class="line">               <span class="nv">lisp-mode</span> <span class="nv">textile-mode</span> <span class="nv">markdown-mode</span> <span class="nv">tuareg-mode</span>
-</span><span class="line">               <span class="nv">js3-mode</span> <span class="nv">css-mode</span> <span class="nv">less-css-mode</span> <span class="nv">sql-mode</span>
-</span><span class="line">               <span class="nv">web-mode</span>
-</span><span class="line">               <span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h2 id="difference-between-tab-and-tab">Difference Between <tab> and TAB</tab></h2>
-
-<p>The last thing I want to note down is that TAB key.</p>
-
-<p>Emacs has two tabs, <code>(kbd "&lt;tab&gt;")</code> and <code>(kbd "TAB")</code>. To make things more
-complex, <code>yasnippet</code>, <code>auto-complete</code>, indentation in Emacs, typing real tab
-stops and <code>company</code> all uses <code>tab</code>, which makes it very complicated.</p>
-
-<p>From this
-<a href="https://www.reddit.com/r/emacs/comments/2aemny/difference_between_tab_and_tab/">thread</a>
-in Reddit, here, I knew that <code>(kbd "&lt;tab&gt;")</code> stands for the physical key you
-have pressed and <code>(kbd "TAB")</code> stands for the control character. So to speak,
-normally, if you are not binding <code>&lt;tab&gt;</code> to <code>TAB</code>, the tab you typed is not
-actually the control character TAB, but triggers some function that is hooked
-on the physical key’s response.</p>
-
-<p>As for the second part of the puzzle, when you are typing tab at a location
-where the indentation of the statement is not right, Emacs will indent your
-line first. The key to differentiate <code>yasnippet</code> and <code>auto-complete</code> is whether
-you are typing or not when you pressed the tab key. If you are, completion menu
-will be triggered, if you are not <code>yasnippet</code> will be triggered(this is a
-mechanism that could be configured in auto-complete and is not the default, by
-default, I think the completion menu will pop up automatically). As for
-<code>company</code> and <code>yasnippet</code>, in my experiments, after setting the trigger key to
-tab, by default it seems that snippets are always gotten expanded the first,
-then <code>company-complete</code> will be triggered if no snippets could be found. See
-the following code snippets for how to set up key binding for <code>company</code>(it only
-uses <code>company</code> if <code>irony-mode</code> is in usage).</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="cl"><span class="line"><span class="c1">;; Setup keymapping for company-complete.</span>
-</span><span class="line"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;irony-mode-hook</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">()</span>
-</span><span class="line">                             <span class="p">(</span><span class="nv">local-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&quot;&lt;tab&gt;&quot;</span><span class="p">)</span> <span class="ss">&#39;company-complete-common</span><span class="p">)</span>
-</span><span class="line">                             <span class="p">(</span><span class="nv">local-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&quot;C-c C-f&quot;</span><span class="p">)</span> <span class="ss">&#39;company-files</span><span class="p">)</span>
-</span><span class="line">                             <span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h2 id="reference">Reference</h2>
-
-<ul>
-  <li><a href="https://www.youtube.com/watch?v=HTUE03LnaXA">Emacs as a C/C++ Editor/IDE (Part I): auto-complete, yasnippet, and autoplete</a></li>
-  <li><a href="https://www.youtube.com/watch?v=r_HW0EB67eY">Emacs as a C/C++ Editor/IDE (Part 2): iedit, flymake-google-cpplint, google-c-style</a></li>
-  <li><a href="https://www.youtube.com/watch?v=Ib914gNr0ys">Emacs as a C/C++ Editor/IDE (Part 3): Installing CEDET mode for true intellisense</a></li>
-  <li><a href="http://tuhdo.github.io/c-ide.html">tutorial on customizing C/C++ environment for emacs</a></li>
-  <li><a href="https://www.masteringemacs.org/article/mastering-key-bindings-emacs">Mastering Key Bindings in Emacs</a></li>
 </ul>
 ]]></content>
   </entry>
