@@ -4,7 +4,7 @@
   <title><![CDATA[SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2016-08-30T11:46:55+08:00</updated>
+  <updated>2016-08-30T12:51:12+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -237,24 +237,6 @@ $w_{j,h.b}$, which transform $x_{j−1}$ and $x’_{j−1}$ into $x_{j}(g, h,
 b)$and $x’_{j}(g, h, b)$ having sparse supports on different fibres $b$. The
 next contraction $ρW_{j+1}$ reduces distances along fibres indexed by $(g, h)
 \in G_j$,but not across $b \in B_j$,which preserves distances.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[An idea to gather people's stories]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2016/08/27/a-idea-to-gather-peoples-stories/"/>
-    <updated>2016-08-27T09:35:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2016/08/27/a-idea-to-gather-peoples-stories</id>
-    <content type="html"><![CDATA[<p>In post-religion world, the God has stepped down, even humanism. People start to
-look for icons that is personal yet inspirational, who could set an example for
-their life. The idea of this project is to collect the people who may a
-tech-utopian, aka the people who believe by making progress in technology, and
-ease the dissemination of knowledge and information, eventually, the power could
-be brought to the people.</p>
-
-<p><a href="https://en.wikipedia.org/wiki/Mark_Shuttleworth">Mark_Shuttleworth</a>, the funder
-of Ubuntu.</p>
-
 ]]></content>
   </entry>
   
@@ -2465,6 +2447,54 @@ primary battery and 2 stands for secondary battery.</p>
 </span><span class="line">tpacpi-bat -s ST 2 40
 </span><span class="line">tpacpi-bat -s SP 2 80
 </span></code></pre></td></tr></table></div></figure></notextile></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Note on texlive from Ubuntu Source]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2015/09/02/note-on-texlive-from-ubuntu-source/"/>
+    <updated>2015-09-02T21:49:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2015/09/02/note-on-texlive-from-ubuntu-source</id>
+    <content type="html"><![CDATA[<p>Some note on the installing LaTeX packages from network.</p>
+
+<!-- more -->
+
+<p>It is very convenient to install packages using <code>tlmgr</code>. However, sometimes
+the mirror you are trying to connect would be extremely slow, which makes it
+feel like tlmgr has stuck.</p>
+
+<p>If you have not been deal with texlive installation for a long time, like me
+today, the first thoughts stuck me is that there is something wrong with
+texlive installation given that I was doing a fresh installation on a new
+laptop I did not familiar. Only after about a hour’s debugging, the idea that
+maybe it is the network issue struck me.</p>
+
+<p>Here I want to note down some points about how tlmgr choose its mirror servers,
+so I won’t be figuring out the same problem next time.</p>
+
+<p>By default, <code>tlmgr</code>’s default repository url is a multiplexor, which will
+choose a mirror in the closest network proximity to your location. See the
+right pane of this <a href="ctan.org/mirrors">page</a>.</p>
+
+<p>To set such behavior of <code>tlmgr</code>, the command is like this:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">tlmgr option repository ctan
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>where <code>ctan</code> is the nickname for tlmgr for the multiplexor mirror.</p>
+
+<p>Today the multiplexor gave me a server that is not working my LAN
+network. Luckily that I get a workable mirror from my PC and use that to solve
+the network problem.</p>
+
+<p>The url of a mirror is like this:
+<code>http://ftp.yzu.edu.tw/CTAN/systems/texlive/tlnet</code>. The example here is the
+mirror that works for me this time.</p>
+
+<p><em>NOTE FOR ME</em>:</p>
+
+<p>I have set this mirror as default for my laptop.</p>
 ]]></content>
   </entry>
   
