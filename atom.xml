@@ -4,7 +4,7 @@
   <title><![CDATA[SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2016-07-30T09:12:06+08:00</updated>
+  <updated>2016-08-30T11:46:55+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,251 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Key points of Understanding Deep Conv Net]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2016/08/29/key-points-of-understanding-deep-conv-net/"/>
+    <updated>2016-08-29T10:41:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2016/08/29/key-points-of-understanding-deep-conv-net</id>
+    <content type="html"><![CDATA[<p>This note tries to summarize the keypoints of the paper by Mallat:
+<a href="http://www.ncbi.nlm.nih.gov/pubmed/26953183">Understanding deep convolutional networks</a>.</p>
+
+<p>Key concepts: contraction, linearization, fibre, parallel transport,
+multi-scale support vector</p>
+
+<!-- more -->
+
+<p>Mechanically, Convolutional Neural Network could be formalized using cascading
+the following of operators that compose a function $f$, whose value is in $R$
+for regression problems, and is the index of the sample’s class for
+classification problems.</p>
+
+<script type="math/tex; mode=display">
+x_j = \rho W_j x_{j-1}
+</script>
+
+<p>where $j$ indicates the depth of a network.</p>
+
+<p>Essentially, neural network is a way to combat the curse of dimensionality. In
+the paper, Mallat formalizes this process using linearization of hierarchical
+symmetry, space contraction and sparse separation. In short, it is done by
+defining a new variable $\Phi(x)$, where $\Phi$ is a <em>contractive</em> operator
+that reduces the range of variations of $x$, while still <em>separating</em> different
+values of $f: \Phi(x) \not= \Phi(x’)$ if $f(x) \not= f(x’)$. $\Phi$ should have
+the properties to <strong>linearize hierarchical symmetries, does space contraction and
+achieve sparse separation</strong> to keep classification margin (value margin for
+regression). $\Phi$ is called the new representation of $x$.</p>
+
+<h2 id="linearization-of-symmetries">Linearization of symmetries</h2>
+
+<p>Neural network finds equivalence classes $\Phi(x)$ that linearize
+$f$. $\Phi(x)$ is built by collapsing complex symmetry groups.</p>
+
+<h3 id="linearization">Linearization</h3>
+
+<p>By definition, linearization means to find a representation $\Phi$ that $f$ on
+$x \in \Omega$, where the domain $\Omega$ is a high dimensional open set, which
+could be $L^2(R^n)$ or $R^d$, could be approximated by a linear combination</p>
+
+<p><script type="math/tex">\bar{f} = \sum_i\Phi_i(x)</script>.</p>
+
+<p>The idea of linearization is to find important yet highly complex basis vector
+that linearly contributes to $f$, so $f$ is a linear projection of
+<script type="math/tex">\Phi_i(x)</script>. An example would be the word vector, like <code>actor - man + woman =
+actress</code>. Similar phenomenon is observed in images as well.</p>
+
+<p>On the other hand, it also means $\Phi(x)$ absorbs in the variability that is
+not related to $f$. An example could be translation variability, which is
+absorbed by subsampling in NN.</p>
+
+<p>It is difficulty for me to understand what does Mallat mean by</p>
+
+<p>&#8220;We can then optimize a low-dimensional linear projection along directions where
+$f$ is constant.’’</p>
+
+<p>The above is the meaning I have guessed. In summary, if $\Phi$ is fixed, the
+optimization works on the linear projection’s weight. &#8220;$f$ is constant’’ means
+after the change of variable, the variability in the original space $\Omega$
+has been absorbed, so a variability in the direction that does not change
+$\Phi$ does not change $f$.</p>
+
+<h3 id="space-collapse">Space collapse</h3>
+
+<p>The key is to find $\Phi$ that linearizes $f$, which is to find $\Phi$ that
+collapses the directions that $f$ remains constant. Mallat formalizes this
+&#8220;collapse’’ in term of group theory, or more particularly the group of
+transformations.</p>
+
+<p>The word collapse is my own creation, which tries to summarize the key point of
+building invariant representation $\Phi$ utilizing groups of
+symmetry. It corresponds to the absorbing of variability in previous
+section. <script type="math/tex">\Phi_i(x)</script> represents an equivalence class (could be the orbit of
+the group, more on this later) of $x$. Collapse is the process of combining
+those classes together to form an equivalence class.</p>
+
+<p>Formally, if $f$ is invariant to an operator $g$ that preserves the value of
+$f$, which is to say $f(gx) = f(x)$, we can safely incorporate $g$ in $\Phi(x)$
+(putting $gx$ in an equivalence class), so any transformation $g$ on $x$, aka
+$gx$, does not change $\Phi(x)$, consequently it does not change $f$. Acting as
+an equivalence class, they contribute to the linearization of $f$.</p>
+
+<p>An example could be the translation group as an example, $f(gx) = f(x - u)$,
+where $u \in \Omega$, representing the displacement of the translation. $f$’s
+value does not change by translation, so by averaging (subsampling) spatially,
+a direction that $f$ remains constant is collapsed out. This direction is part
+of a equivalence class formed by collapsing out the translation group.</p>
+
+<p>By pinpointing those equivalence classes $\Phi(x)$, linearization is achieved
+by doing linearly projection on them.</p>
+
+<h2 id="more-details">More details</h2>
+
+<p>The high level plan stops here. Those above two are the main components making
+up the framework of NN. Now we fill in the details, aka sparse separation,
+space contraction, separation of scales and complex interaction among
+multi-scale.</p>
+
+<h3 id="the-functional-form-of-phi">The functional form of $\Phi$</h3>
+
+<p>$\Phi$ is handcrafted basis when the time of dictionary learning or deep
+learning has not come. It is a vector that captures important (in any criteria
+matters for the problem at hand) features.</p>
+
+<h3 id="contraction-for-sparsity">Contraction for sparsity</h3>
+
+<p>There are some general criteria for basis $\Phi$, one of which may require them
+be sparse. A sparse signal brings to better linear separation. Or in other
+word, factors of variation are better disentangled.</p>
+
+<p>For fixed basis vectors, such as wavelets in scattering network they are
+defined to separate scale and frequency. Thus for signals that only contains a
+few of those, the wavelet coefficients would be rather sparse.</p>
+
+<p>For an adaptive basis vector, to promote sparsity, Mallat puts forward the
+concept of space contraction, which is achieved through the non-linear
+activation function, a modulus or a ReLU. It explicitly contract the volume of
+the space to achieve a sparse representation.</p>
+
+<p>In the case of fixed basis like wavelet, if the representation is already
+sparse, non-linear activation won’t reduce the volume too much since most of
+the dimensions are already zero.</p>
+
+<h3 id="diffeomorphism-calls-for-multi-scale-separation">Diffeomorphism calls for multi-scale separation</h3>
+
+<p>Diffeomorphism can also be modeled a group symmetry. Diffeomorphism could be
+factorized as a translation and a scaling effects. So to linearize
+diffeomorphism, a multi-scale basis to separate the scaling effects are needed.</p>
+
+<h3 id="multi-scale-interaction">Multi-scale interaction</h3>
+
+<p>It is not enough to only separate signal using basis vectors, but also to model
+their interactions. This justifies a deep architecture.</p>
+
+<h2 id="combining-all-the-above-together">Combining all the above together</h2>
+
+<p>Now we could map each symbol in the following to their functional roles.</p>
+
+<script type="math/tex; mode=display">
+x_j = \rho W_j x_{j-1}
+</script>
+
+<p>Each row of $W$ is the basis vector; $\rho$ is the contraction operator to
+promote sparsity; <script type="math/tex">x_j = ... x_{j-1}</script> is the recursive form that takes cares
+multi-scale separation and interaction.</p>
+
+<p>At the same time, <script type="math/tex">W_{j-1}x_{j-1}</script> linearizes <script type="math/tex">W_j x_j</script>. If we adding
+pooling in, it corresponds to collapsing the direction where $f$ remains
+constant.</p>
+
+<h2 id="recast-in-term-of-differential-geometry">Recast in term of differential geometry</h2>
+
+<p>Mallat use the formalism in differential geometry to succinctly define the
+hierarchically built $\Phi$.</p>
+
+<p>According to Mallat, the power of Neural Network is it is able learn such a
+representation that linearize hierarchical symmetry groups, which is formalized
+using fibres of hierarchical symmetry groups. Nonlinear contraction reduces the
+variability of each fibre, so removing the variability that is not directly
+related to currently sample being processed. Fibres of current layer are
+transported to fibres of next layers, which are fibres of large
+groups. Cascadingly applying the parallel transport on a sample, we obtain
+multi-scale support vectors that are sparse.</p>
+
+<p>However, it is hard to map these math names to the operational name of conv
+net. Here is my best guess up to now.</p>
+
+<p>Each channel of a conv filter is a part of the orbits.
+The equivalence class is the cross-channel sum of orbits of filters. The index
+$P_j$ is the indices of orbits, which could be understood as the spatial
+indices (orbits of translation group) and channel indices (orbits of those
+groups, such as rotation groups). Since we have done a summation, how each 2D
+filter corresponds to each part of the orbit does not matter, thus we get an
+equivalence class.</p>
+
+<p>Each equivalence class is called a fibre, which is just the fancy in
+differential geometry to call an operator. In this case, the fibre is just the
+cascadingly built operator $ρW_j$ mentioned at the beginning section. $ρW_j$
+computes an approximate mapping from fibre of layer $j-1$ to $j$, which is
+called a parallel transport in $P_j$.
+A parallel transport is defined by a group $G_j$ of symmetries acting on the
+index set $P_j$ of a layer $x_j$.
+It is called an approximate mapping because fibre is supposed to be an
+equivalence class of orbits of $x_{j-1}$, and the transport be mapping from
+those equivalence class. however $pW_j$ starts from $x_{j-1}$, not
+equivalence classes of orbits of $x_{j-1}$. So it is assumed to be approximated
+by applying $g$ to $x_j$, we get $\bar{g}$ on $x_{j-1}$. Again implicitly
+$x_{j}$ will be unrolled to the equivalence class of orbit of this layer,
+which is a larger groups which is semidirect products of groups of layer $j-1$,
+and groups (corresponding to channels in layer $j$) of layer $j$. The
+approximation only makes sense by corresponding each channel of a filter to be
+a part of a orbit of $g$, as in the previous paragraph. The channel of filters
+are the groups of layer $j-1$, while the number of filters (output channel
+number in most convnet implementations) is the groups of the layer
+$j$. Assuming each filter channel corresponds to a part of the
+orbit, $g.x_{j} = g.[\rho W_j x_{j-1}] \approx \rho W_j[\bar{g}.x_{j-1}]$
+in the paper makes sense, since the summation cross channel would absorb $g$ in
+$W_{j}$.</p>
+
+<p>So the convolution is called convolutions along the fibres. Implicitly, $\rho
+W_j$ expands $x_{j-1}$ to its orbits, then computes equivalence classes of
+orbits of $x_{j}$ by cross-channelly adding the result of applying filters on
+those orbits. If in this sense, $x_{j-1}$ is indeed an equivalence class of
+orbits. I guess the approximation means that this is just an assumption, since
+no constrains are enforced to make sure channels of a filter are orbits of
+$x_{j-1}$.</p>
+
+<p>In this model, network filters are guiding nonlinear contractions, to reduce the
+data variability in directions of local symmetries. The classification margin
+can be controlled by sparse separations along network fibres</p>
+
+<p>Each fibre is complex basis vector. Sparsity ensures separateness. Mallat
+introduces the concept of multi-scale support vector, explained in the
+following. To avoid further contracting their distance, they can be separated
+along different fibres indexed by $b$. The separation is achieved by filters
+$w_{j,h.b}$, which transform $x_{j−1}$ and $x’_{j−1}$ into $x_{j}(g, h,
+b)$and $x’_{j}(g, h, b)$ having sparse supports on different fibres $b$. The
+next contraction $ρW_{j+1}$ reduces distances along fibres indexed by $(g, h)
+\in G_j$,but not across $b \in B_j$,which preserves distances.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[An idea to gather people's stories]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2016/08/27/a-idea-to-gather-peoples-stories/"/>
+    <updated>2016-08-27T09:35:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2016/08/27/a-idea-to-gather-peoples-stories</id>
+    <content type="html"><![CDATA[<p>In post-religion world, the God has stepped down, even humanism. People start to
+look for icons that is personal yet inspirational, who could set an example for
+their life. The idea of this project is to collect the people who may a
+tech-utopian, aka the people who believe by making progress in technology, and
+ease the dissemination of knowledge and information, eventually, the power could
+be brought to the people.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Mark_Shuttleworth">Mark_Shuttleworth</a>, the funder
+of Ubuntu.</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[Repost] Explosion of the Space Shuttle Challenger Address to the Nation]]></title>
@@ -2220,206 +2465,6 @@ primary battery and 2 stands for secondary battery.</p>
 </span><span class="line">tpacpi-bat -s ST 2 40
 </span><span class="line">tpacpi-bat -s SP 2 80
 </span></code></pre></td></tr></table></div></figure></notextile></div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Note on texlive from Ubuntu Source]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/09/02/note-on-texlive-from-ubuntu-source/"/>
-    <updated>2015-09-02T21:49:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/09/02/note-on-texlive-from-ubuntu-source</id>
-    <content type="html"><![CDATA[<p>Some note on the installing LaTeX packages from network.</p>
-
-<!-- more -->
-
-<p>It is very convenient to install packages using <code>tlmgr</code>. However, sometimes
-the mirror you are trying to connect would be extremely slow, which makes it
-feel like tlmgr has stuck.</p>
-
-<p>If you have not been deal with texlive installation for a long time, like me
-today, the first thoughts stuck me is that there is something wrong with
-texlive installation given that I was doing a fresh installation on a new
-laptop I did not familiar. Only after about a hour’s debugging, the idea that
-maybe it is the network issue struck me.</p>
-
-<p>Here I want to note down some points about how tlmgr choose its mirror servers,
-so I won’t be figuring out the same problem next time.</p>
-
-<p>By default, <code>tlmgr</code>’s default repository url is a multiplexor, which will
-choose a mirror in the closest network proximity to your location. See the
-right pane of this <a href="ctan.org/mirrors">page</a>.</p>
-
-<p>To set such behavior of <code>tlmgr</code>, the command is like this:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">tlmgr option repository ctan
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>where <code>ctan</code> is the nickname for tlmgr for the multiplexor mirror.</p>
-
-<p>Today the multiplexor gave me a server that is not working my LAN
-network. Luckily that I get a workable mirror from my PC and use that to solve
-the network problem.</p>
-
-<p>The url of a mirror is like this:
-<code>http://ftp.yzu.edu.tw/CTAN/systems/texlive/tlnet</code>. The example here is the
-mirror that works for me this time.</p>
-
-<p><em>NOTE FOR ME</em>:</p>
-
-<p>I have set this mirror as default for my laptop.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[On Code Completion & Navigation for C/C++ in Emacs]]></title>
-    <link href="http://shawnLeeZX.github.io/blog/2015/08/11/on-code-completion-for-c-slash-c-plus-plus/"/>
-    <updated>2015-08-11T09:21:00+08:00</updated>
-    <id>http://shawnLeeZX.github.io/blog/2015/08/11/on-code-completion-for-c-slash-c-plus-plus</id>
-    <content type="html"><![CDATA[<p>Due to the same reason that I decided to add <code>company</code> to provide faster and
-more accurate completion functionality, I switched from
-<a href="http://cedet.sourceforge.net/">CEDET</a> to
-<a href="https://github.com/Sarcasm/irony-mode">irony</a> +
-<a href="https://github.com/leoliu/ggtags">ggtags</a>.</p>
-
-<p>Here is the note TODO</p>
-
-<!-- more -->
-
-<h2 id="irony">Irony</h2>
-
-<h3 id="installation">Installation</h3>
-
-<p>To setup <code>irony</code>, in the <a href="https://github.com/Sarcasm/irony-mode">README</a> of
-<code>irony</code>’s git repo, the installation process provided by the author is pretty
-workable. The only thing may need to be noted is that what packages you need to
-install if you are not going to compile <code>libclang</code> from source.</p>
-
-<p>In Ubuntu, you need those two packages: <code>libclang-dev</code> and <code>clang</code>. By
-mentioning only <code>libclang</code>, it gives me the feeling that I do not need an
-executable of <code>clang</code>, however, there is some errors occurs without
-<code>clang</code>. But due to the trial and error when making <code>irony-mode</code> to work, I am
-not sure it is really caused by lacking of <code>clang</code>.</p>
-
-<h3 id="make-it-work">Make It Work</h3>
-
-<p>You need to let <code>clang</code> know where to find you source file for it to parse
-it. To achieve this, <code>irony</code> provides a concept called
-<a href="https://github.com/Sarcasm/irony-mode#compilation-database">compilation database</a>. Refer
-to it to know how to make <code>irony</code> work. The following is some remarks.</p>
-
-<p>Basically, the most important compilation flags are the include folder path for
-header files. Since <code>irony</code> does not aim to provide code navigation function,
-all information it needs are in header files.</p>
-
-<p>One problem that bugs me a lot when I was setting up <code>irony</code> is that <code>clang</code> in
-<code>irony</code> and <code>gcc</code> handles <code>-I</code> flag differently. The path must immediately
-follows the <code>-I</code>, with no spaces. If there are spaces, <code>irony</code> could not find
-the corresponding paths.</p>
-
-<h3 id="limitations">Limitations</h3>
-
-<p>During my testing with <code>irony</code>, I found that it could not handle definition
-with template, which is used a lot in C++ numerical library. The limitation
-also makes sense since that declarations are generated dynamically during
-compilation for template definition, so maybe you could not get relevant
-information just by parsing the template definition.</p>
-
-<h2 id="ggtags">ggtags</h2>
-
-<p><a href="http://www.gnu.org/software/global/">gtags</a> is better
-<a href="http://ctags.sourceforge.net/">ctags</a> in various ways. See the
-<a href="https://github.com/leoliu/ggtags">table</a> provided by
-<a href="https://github.com/leoliu/ggtags">ggtags</a>’s developers.</p>
-
-<h3 id="setup-system-tags">Setup System Tags</h3>
-
-<p>I copy this section from this
-<a href="http://tuhdo.github.io/c-ide.html#sec-7-2">tutorial</a> in case I may forget it.</p>
-
-<p><code>GNU Global</code> has an environment variable named <code>GTAGSLIBPATH</code>. This variable holds
-<code>GTAGS</code> database of external libraries that your project depends on but not
-inside your project. For example, your project may rely on system headers such
-as <code>stdio.h</code>, <code>stdlib.h</code>… but these headers are internal to your project. However,
-remember that you can only jump to tag definitions of external dependencies,
-and nothing else (such as files or references). But, again, once you are inside
-the external library, you can start jumping around sicne it becomes your
-current project.</p>
-
-<p>To make <code>GNU Global</code> sees your system headers, follow these steps:</p>
-
-<p>Export this environment variable in your shell init file, such as <code>.bashrc</code> or
-<code>.zshrc</code>:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="nb">export </span><span class="nv">GTAGSLIBPATH</span><span class="o">=</span><span class="nv">$HOME</span>/.gtags/
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Execute these commands in your terminal:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="c"># Create a directory for holding database, since</span>
-</span><span class="line"><span class="c"># you cannot create a database in your system paths</span>
-</span><span class="line">mkdir ~/.gtags
-</span><span class="line">
-</span><span class="line"><span class="c"># Create symbolic links to your external libraries</span>
-</span><span class="line">ln -s /usr/include usr-include
-</span><span class="line">ln -s /usr/local/include/ usr-local-include
-</span><span class="line">
-</span><span class="line"><span class="c"># Generate GNU Global database</span>
-</span><span class="line">gtags -c
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>The <code>-c</code> option tells <code>GNU Global</code> to generate tag database in compact format. It
-is necessary because if your project contains C++ headers like <code>Boost</code>, without
-<code>-c</code> your <code>GTAGS</code> database can be more than 1 GB. Same goes for <code>ctags</code>. The <code>GNU
-Global</code> devs explained that it is because the <code>GTAGS</code> database includes the image
-of tagged line, and the <code>Boost</code> headers have a lot of very long lines.</p>
-
-<p>After all the above steps, restart with a shell loaded with that variable. To
-verify Emacs gets the variable, <code>M-x getenv</code> and enter <code>GTAGSLIBPATH</code> and see
-if your predefined value is available. Executing <code>ggtags-find-tag-dwim</code> or
-<code>helm-gtags-dwim</code> jumps to the definition of a system tag like a normal tag.</p>
-
-<p>The disadvantage of using <code>GNU Global</code> is that currently it cannot include
-files without extension. In the C++ system include directory like
-<code>/usr/include/c++/4.8/</code>, it contains files without extension such as
-<code>iostream</code>, <code>string</code>, <code>set</code>, <code>map</code>…. so you can write <code>#include</code> directives
-without having to append <code>.h</code> at the end. <code>GNU Global</code> devs are considering to
-add support for this use case.</p>
-
-<h2 id="some-remarks">Some Remarks</h2>
-
-<ul>
-  <li><code>semantic-mode</code> is still used to provide method overview for ECB. It is
-configured to only parse current buffer, which is rather acceptable in speed.</li>
-  <li>If you want to know more about CEDET, here is
-<a href="http://alexott.net/en/writings/emacs-devenv/EmacsCedet.html">a nice introductory post</a>
-explaining it.</li>
-  <li>Though <code>CEDET</code> gets disabled, company still takes advantage of some part of
-tools provided by <code>CEDET</code>. One of them is
-<a href="http://cedet.sourceforge.net/ede.shtml">EDE</a>, the project
-manager. See the github README page of
-<a href="https://github.com/randomphrase/company-c-headers">company-c-headers</a> to see
-how could you use <code>EDE</code> to tell <code>company</code> to use system include path.</li>
-  <li><a href="https://github.com/emacs-helm/helm">helm</a> is an alternative to
-<a href="https://www.masteringemacs.org/article/introduction-to-ido-mode">ido</a>. Maybe
-it could be tried while I have more time.</li>
-  <li><a href="https://github.com/abingham/emacs-ycmd">emacs-ycmd</a> is another completion
-framework for Emacs.</li>
-  <li><code>irony</code> offers a flychecker, since I already uses the google style and
-cpplint, I will not try <code>flycheck-irony</code> for the time being, though it may
-offer advantages such as full compilation error detection.</li>
-</ul>
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: CNN | SHAWN LEE]]></title>
   <link href="http://shawnLeeZX.github.io/blog/categories/cnn/atom.xml" rel="self"/>
   <link href="http://shawnLeeZX.github.io/"/>
-  <updated>2016-07-30T09:12:06+08:00</updated>
+  <updated>2016-08-30T11:46:55+08:00</updated>
   <id>http://shawnLeeZX.github.io/</id>
   <author>
     <name><![CDATA[Shawn]]></name>
@@ -12,6 +12,233 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Key points of Understanding Deep Conv Net]]></title>
+    <link href="http://shawnLeeZX.github.io/blog/2016/08/29/key-points-of-understanding-deep-conv-net/"/>
+    <updated>2016-08-29T10:41:00+08:00</updated>
+    <id>http://shawnLeeZX.github.io/blog/2016/08/29/key-points-of-understanding-deep-conv-net</id>
+    <content type="html"><![CDATA[<p>This note tries to summarize the keypoints of the paper by Mallat:
+<a href="http://www.ncbi.nlm.nih.gov/pubmed/26953183">Understanding deep convolutional networks</a>.</p>
+
+<p>Key concepts: contraction, linearization, fibre, parallel transport,
+multi-scale support vector</p>
+
+<!-- more -->
+
+<p>Mechanically, Convolutional Neural Network could be formalized using cascading
+the following of operators that compose a function $f$, whose value is in $R$
+for regression problems, and is the index of the sample’s class for
+classification problems.</p>
+
+<script type="math/tex; mode=display">
+x_j = \rho W_j x_{j-1}
+</script>
+
+<p>where $j$ indicates the depth of a network.</p>
+
+<p>Essentially, neural network is a way to combat the curse of dimensionality. In
+the paper, Mallat formalizes this process using linearization of hierarchical
+symmetry, space contraction and sparse separation. In short, it is done by
+defining a new variable $\Phi(x)$, where $\Phi$ is a <em>contractive</em> operator
+that reduces the range of variations of $x$, while still <em>separating</em> different
+values of $f: \Phi(x) \not= \Phi(x’)$ if $f(x) \not= f(x’)$. $\Phi$ should have
+the properties to <strong>linearize hierarchical symmetries, does space contraction and
+achieve sparse separation</strong> to keep classification margin (value margin for
+regression). $\Phi$ is called the new representation of $x$.</p>
+
+<h2 id="linearization-of-symmetries">Linearization of symmetries</h2>
+
+<p>Neural network finds equivalence classes $\Phi(x)$ that linearize
+$f$. $\Phi(x)$ is built by collapsing complex symmetry groups.</p>
+
+<h3 id="linearization">Linearization</h3>
+
+<p>By definition, linearization means to find a representation $\Phi$ that $f$ on
+$x \in \Omega$, where the domain $\Omega$ is a high dimensional open set, which
+could be $L^2(R^n)$ or $R^d$, could be approximated by a linear combination</p>
+
+<p><script type="math/tex">\bar{f} = \sum_i\Phi_i(x)</script>.</p>
+
+<p>The idea of linearization is to find important yet highly complex basis vector
+that linearly contributes to $f$, so $f$ is a linear projection of
+<script type="math/tex">\Phi_i(x)</script>. An example would be the word vector, like <code>actor - man + woman =
+actress</code>. Similar phenomenon is observed in images as well.</p>
+
+<p>On the other hand, it also means $\Phi(x)$ absorbs in the variability that is
+not related to $f$. An example could be translation variability, which is
+absorbed by subsampling in NN.</p>
+
+<p>It is difficulty for me to understand what does Mallat mean by</p>
+
+<p>``We can then optimize a low-dimensional linear projection along directions where
+$f$ is constant.’’</p>
+
+<p>The above is the meaning I have guessed. In summary, if $\Phi$ is fixed, the
+optimization works on the linear projection’s weight. ``$f$ is constant’’ means
+after the change of variable, the variability in the original space $\Omega$
+has been absorbed, so a variability in the direction that does not change
+$\Phi$ does not change $f$.</p>
+
+<h3 id="space-collapse">Space collapse</h3>
+
+<p>The key is to find $\Phi$ that linearizes $f$, which is to find $\Phi$ that
+collapses the directions that $f$ remains constant. Mallat formalizes this
+``collapse’’ in term of group theory, or more particularly the group of
+transformations.</p>
+
+<p>The word collapse is my own creation, which tries to summarize the key point of
+building invariant representation $\Phi$ utilizing groups of
+symmetry. It corresponds to the absorbing of variability in previous
+section. <script type="math/tex">\Phi_i(x)</script> represents an equivalence class (could be the orbit of
+the group, more on this later) of $x$. Collapse is the process of combining
+those classes together to form an equivalence class.</p>
+
+<p>Formally, if $f$ is invariant to an operator $g$ that preserves the value of
+$f$, which is to say $f(gx) = f(x)$, we can safely incorporate $g$ in $\Phi(x)$
+(putting $gx$ in an equivalence class), so any transformation $g$ on $x$, aka
+$gx$, does not change $\Phi(x)$, consequently it does not change $f$. Acting as
+an equivalence class, they contribute to the linearization of $f$.</p>
+
+<p>An example could be the translation group as an example, $f(gx) = f(x - u)$,
+where $u \in \Omega$, representing the displacement of the translation. $f$’s
+value does not change by translation, so by averaging (subsampling) spatially,
+a direction that $f$ remains constant is collapsed out. This direction is part
+of a equivalence class formed by collapsing out the translation group.</p>
+
+<p>By pinpointing those equivalence classes $\Phi(x)$, linearization is achieved
+by doing linearly projection on them.</p>
+
+<h2 id="more-details">More details</h2>
+
+<p>The high level plan stops here. Those above two are the main components making
+up the framework of NN. Now we fill in the details, aka sparse separation,
+space contraction, separation of scales and complex interaction among
+multi-scale.</p>
+
+<h3 id="the-functional-form-of-phi">The functional form of $\Phi$</h3>
+
+<p>$\Phi$ is handcrafted basis when the time of dictionary learning or deep
+learning has not come. It is a vector that captures important (in any criteria
+matters for the problem at hand) features.</p>
+
+<h3 id="contraction-for-sparsity">Contraction for sparsity</h3>
+
+<p>There are some general criteria for basis $\Phi$, one of which may require them
+be sparse. A sparse signal brings to better linear separation. Or in other
+word, factors of variation are better disentangled.</p>
+
+<p>For fixed basis vectors, such as wavelets in scattering network they are
+defined to separate scale and frequency. Thus for signals that only contains a
+few of those, the wavelet coefficients would be rather sparse.</p>
+
+<p>For an adaptive basis vector, to promote sparsity, Mallat puts forward the
+concept of space contraction, which is achieved through the non-linear
+activation function, a modulus or a ReLU. It explicitly contract the volume of
+the space to achieve a sparse representation.</p>
+
+<p>In the case of fixed basis like wavelet, if the representation is already
+sparse, non-linear activation won’t reduce the volume too much since most of
+the dimensions are already zero.</p>
+
+<h3 id="diffeomorphism-calls-for-multi-scale-separation">Diffeomorphism calls for multi-scale separation</h3>
+
+<p>Diffeomorphism can also be modeled a group symmetry. Diffeomorphism could be
+factorized as a translation and a scaling effects. So to linearize
+diffeomorphism, a multi-scale basis to separate the scaling effects are needed.</p>
+
+<h3 id="multi-scale-interaction">Multi-scale interaction</h3>
+
+<p>It is not enough to only separate signal using basis vectors, but also to model
+their interactions. This justifies a deep architecture.</p>
+
+<h2 id="combining-all-the-above-together">Combining all the above together</h2>
+
+<p>Now we could map each symbol in the following to their functional roles.</p>
+
+<script type="math/tex; mode=display">
+x_j = \rho W_j x_{j-1}
+</script>
+
+<p>Each row of $W$ is the basis vector; $\rho$ is the contraction operator to
+promote sparsity; <script type="math/tex">x_j = ... x_{j-1}</script> is the recursive form that takes cares
+multi-scale separation and interaction.</p>
+
+<p>At the same time, <script type="math/tex">W_{j-1}x_{j-1}</script> linearizes <script type="math/tex">W_j x_j</script>. If we adding
+pooling in, it corresponds to collapsing the direction where $f$ remains
+constant.</p>
+
+<h2 id="recast-in-term-of-differential-geometry">Recast in term of differential geometry</h2>
+
+<p>Mallat use the formalism in differential geometry to succinctly define the
+hierarchically built $\Phi$.</p>
+
+<p>According to Mallat, the power of Neural Network is it is able learn such a
+representation that linearize hierarchical symmetry groups, which is formalized
+using fibres of hierarchical symmetry groups. Nonlinear contraction reduces the
+variability of each fibre, so removing the variability that is not directly
+related to currently sample being processed. Fibres of current layer are
+transported to fibres of next layers, which are fibres of large
+groups. Cascadingly applying the parallel transport on a sample, we obtain
+multi-scale support vectors that are sparse.</p>
+
+<p>However, it is hard to map these math names to the operational name of conv
+net. Here is my best guess up to now.</p>
+
+<p>Each channel of a conv filter is a part of the orbits.
+The equivalence class is the cross-channel sum of orbits of filters. The index
+$P_j$ is the indices of orbits, which could be understood as the spatial
+indices (orbits of translation group) and channel indices (orbits of those
+groups, such as rotation groups). Since we have done a summation, how each 2D
+filter corresponds to each part of the orbit does not matter, thus we get an
+equivalence class.</p>
+
+<p>Each equivalence class is called a fibre, which is just the fancy in
+differential geometry to call an operator. In this case, the fibre is just the
+cascadingly built operator $ρW_j$ mentioned at the beginning section. $ρW_j$
+computes an approximate mapping from fibre of layer $j-1$ to $j$, which is
+called a parallel transport in $P_j$.
+A parallel transport is defined by a group $G_j$ of symmetries acting on the
+index set $P_j$ of a layer $x_j$.
+It is called an approximate mapping because fibre is supposed to be an
+equivalence class of orbits of $x_{j-1}$, and the transport be mapping from
+those equivalence class. however $pW_j$ starts from $x_{j-1}$, not
+equivalence classes of orbits of $x_{j-1}$. So it is assumed to be approximated
+by applying $g$ to $x_j$, we get $\bar{g}$ on $x_{j-1}$. Again implicitly
+$x_{j}$ will be unrolled to the equivalence class of orbit of this layer,
+which is a larger groups which is semidirect products of groups of layer $j-1$,
+and groups (corresponding to channels in layer $j$) of layer $j$. The
+approximation only makes sense by corresponding each channel of a filter to be
+a part of a orbit of $g$, as in the previous paragraph. The channel of filters
+are the groups of layer $j-1$, while the number of filters (output channel
+number in most convnet implementations) is the groups of the layer
+$j$. Assuming each filter channel corresponds to a part of the
+orbit, $g.x_{j} = g.[\rho W_j x_{j-1}] \approx \rho W_j[\bar{g}.x_{j-1}]$
+in the paper makes sense, since the summation cross channel would absorb $g$ in
+$W_{j}$.</p>
+
+<p>So the convolution is called convolutions along the fibres. Implicitly, $\rho
+W_j$ expands $x_{j-1}$ to its orbits, then computes equivalence classes of
+orbits of $x_{j}$ by cross-channelly adding the result of applying filters on
+those orbits. If in this sense, $x_{j-1}$ is indeed an equivalence class of
+orbits. I guess the approximation means that this is just an assumption, since
+no constrains are enforced to make sure channels of a filter are orbits of
+$x_{j-1}$.</p>
+
+<p>In this model, network filters are guiding nonlinear contractions, to reduce the
+data variability in directions of local symmetries. The classification margin
+can be controlled by sparse separations along network fibres</p>
+
+<p>Each fibre is complex basis vector. Sparsity ensures separateness. Mallat
+introduces the concept of multi-scale support vector, explained in the
+following. To avoid further contracting their distance, they can be separated
+along different fibres indexed by $b$. The separation is achieved by filters
+$w_{j,h.b}$, which transform $x_{j−1}$ and $x’_{j−1}$ into $x_{j}(g, h,
+b)$and $x’_{j}(g, h, b)$ having sparse supports on different fibres $b$. The
+next contraction $ρW_{j+1}$ reduces distances along fibres indexed by $(g, h)
+\in G_j$,but not across $b \in B_j$,which preserves distances.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[A Preliminary Summary On What CNN Is Doing Mathematically]]></title>
