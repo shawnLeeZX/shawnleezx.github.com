@@ -1,163 +1,128 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
+<html>
+
+  <head>
   <meta charset="utf-8">
-  <title>Note -- Code Java Under Vim - SHAWN LEE</title>
-  <meta name="author" content="Shawn">
-
-  
-  <meta name="description" content="Introduction I am becoming a die-hard vimer… This post will talk about how to establish a powerful Java IDE using
-vim. Ant If you want to write java &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Shawn" property="og:site_name">
+  <link href="/favicon.png" rel="icon">
 
   
-  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2013/10/03/note-code-java-under-vim">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="SHAWN LEE" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <script src="/javascripts/audio.min.js"></script>
-  <script>
-   audiojs.events.ready(function() {
-     var as = audiojs.createAll();
+  <meta content="Note -- Code Java Under Vim" property="og:title">
+  
+
+  
+  <meta content="article" property="og:type">
+  
+
+  
+  <meta content="<h1>World Hacker's Notebook</h1>" property="og:description">
+  
+
+  
+  <meta content="http://shawnLeeZX.github.io/blog/2013/10/03/note-code-java-under-vim/" property="og:url">
+  
+
+  
+  <meta content="2013-10-03T10:06:00+08:00" property="article:published_time">
+  <meta content="http://shawnLeeZX.github.io/about/" property="article:author">
+  
+
+  <meta property="og:image" content="">
+
+  
+  
+  <meta content="CS" property="article:section">
+  
+  
+
+  
+  
+  
+
+  <title>Note -- Code Java Under Vim - Shawn</title>
+  <meta name="description" content="IntroductionI am becoming a die-hard vimer…This post will talk about how to establish a powerful Java IDE usingvim.">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!-- Typesetting math using MathJax -->
+  <!-- mathjax config similar to math.stackexchange -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'] ],
+       displayMath: [ ['$$', '$$']],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     },
+     messageStyle: "none",
+     "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
    });
   </script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script
 
-<!-- Add snarl icon here. -->
-<link href="/favicon.png" rel="icon">
-
-<!-- For drop menu. -->
-<script src="/javascripts/libs/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
-<script src="/javascripts/menu.min.js" type="text/javascript"></script>
-
-<!-- For table. -->
-<link rel="stylesheet" type="text/css" href="/stylesheets/table.css">
-
-<!-- mathjax config similar to math.stackexchange -->
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  jax: ["input/TeX", "output/HTML-CSS"],
-  tex2jax: {
-    inlineMath: [ ['$', '$'] ],
-    displayMath: [ ['$$', '$$']],
-    processEscapes: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-  },
-  messageStyle: "none",
-  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
-});
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
-
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-44220731-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
-
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2013/10/03/note-code-java-under-vim/">
+  <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
 </head>
 
-<body   >
-  <header role="banner"><hgroup>
-    <img src="/favicon.png" alt="Shawn">
-    <h1><a href="/">SHAWN LEE</a></h1>
-    
-    <h2>As much as I loved to be a geek, the path was chosen for freedom and enlightenment.</h2>
-    
-</hgroup>
+  <body>
+    <section>
+<nav class="navbar navbar-default navbar-fixed-top">
 
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:shawnLeeZX.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">因九州 Home</a></li>
-  <li><a href="/academic">成极客 Academic</a>
-      <!-- <ul> -->
-          <!-- <li><a href="/academic/academic-biography.html">Academic Biography</li> -->
-          <!-- <li><a href="/academic/transcript.html">Selected Transcript</li> -->
-          <!-- <li><a href="/academic/english-proficiency.html">English Proficiency</li> -->
-          <!-- <li><a href="/academic/research.html">Research</li> -->
-      <!-- </ul> -->
-  </li>
-  <li><a href="/blog">求自由 Blog</a></li>
-  <li><a href="/blog/archives">以启蒙 Archives</a>
-      <ul>
-          <li><a href="/blog/categories/cs">CS</a></li>
-          <li><a href="/blog/categories/research">Research</a></li>
-          <li><a href="/blog/categories/math">Math</a></li>
-          <li><a href="/blog/categories/life">Life</a></li>
-          <li><a href="/blog/categories/other">Other</a></li>
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Shawn</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/blog/archives">Archive</a></li>
       </ul>
-  </li>
-  <li><a href="/quotes"> Quotes</a></li>
-</ul>
 
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
 </nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
-    
-      <h1 class="entry-title">Note -- Code Java Under Vim</h1>
-    
-    
-      <p class="meta">
-        
+</section>
+
+    <section>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="page-title" itemprop="name headline">Note -- Code Java Under Vim</h1>
+      <p class="post-meta"><time datetime="2013-10-03T10:06:00+08:00" itemprop="datePublished">Oct 3, 2013</time></p>
+    </div>
+
+</div>
 
 
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-03T10:06:00+08:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2013</time>
-        
-         | <a href="#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-<div class="entry-content"><h2 id="introduction">Introduction</h2>
+  <div class="post-content container" itemprop="articleBody">
+    <h2 id="introduction">Introduction</h2>
 
 <p>I am becoming a die-hard vimer…</p>
 
@@ -171,7 +136,7 @@ vim.</p>
 <p>If you want to write java code in pure command line. Ant is the
 makefile for java.</p>
 
-<p>Note: Now the <code>build.xml</code> I wrote will rebuild depends everytime,
+<p>Note: Now the <code class="highlighter-rouge">build.xml</code> I wrote will rebuild depends everytime,
 which is no efficienty, and I found solutions
 <a href="http://stackoverflow.com/questions/2163739/is-there-a-way-to-guarantee-that-an-ant-dependency-is-run-only-once">here</a>,
 and
@@ -188,35 +153,30 @@ But they are not very satisfactory.</p>
 <p>For more information, there is one book called <em>Ant: the Definitive
 Guide</em>.</p>
 
-<h4 id="one-note-about-arg-tag">One note about <code>arg</code> tag</h4>
+<h4 id="one-note-about-arg-tag">One note about <code class="highlighter-rouge">arg</code> tag</h4>
 
 <p>The documentation of ant sometimes is not very clear, for example:</p>
 
-<p>If one argument takes one parameter, you cannot put them in one <code>arg</code>
-tag. The following code will not work, because ant takes <code>-docs</code> and
-<code>src</code> as separate argument.</p>
+<p>If one argument takes one parameter, you cannot put them in one <code class="highlighter-rouge">arg</code>
+tag. The following code will not work, because ant takes <code class="highlighter-rouge">-docs</code> and
+<code class="highlighter-rouge">src</code> as separate argument.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="xml"><span class="line">    <span class="nt">&lt;java</span> <span class="na">jar=</span><span class="s">&quot;${jar.dir}/${ant.project.name}.jar&quot;</span> <span class="na">fork=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">        <span class="nt">&lt;arg</span> <span class="na">value=</span><span class="s">&quot;-docs src&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">    <span class="nt">&lt;/java&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code>        <span class="nt">&lt;java</span> <span class="na">jar=</span><span class="s">"${jar.dir}/${ant.project.name}.jar"</span> <span class="na">fork=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;arg</span> <span class="na">value=</span><span class="s">"-docs src"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/java&gt;</span>
+</code></pre>
+</div>
 
 <p>You have to do it this way:</p>
 
 <p>It should be written as following:</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="xml"><span class="line">    <span class="nt">&lt;java</span> <span class="na">jar=</span><span class="s">&quot;${jar.dir}/${ant.project.name}.jar&quot;</span> <span class="na">fork=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">        <span class="nt">&lt;arg</span> <span class="na">value=</span><span class="s">&quot;-docs&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">        <span class="nt">&lt;arg</span> <span class="na">value=</span><span class="s">&quot;src&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">    <span class="nt">&lt;/java&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code>        <span class="nt">&lt;java</span> <span class="na">jar=</span><span class="s">"${jar.dir}/${ant.project.name}.jar"</span> <span class="na">fork=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;arg</span> <span class="na">value=</span><span class="s">"-docs"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;arg</span> <span class="na">value=</span><span class="s">"src"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/java&gt;</span>
+</code></pre>
+</div>
 
 <h3 id="jar-package">Jar Package</h3>
 
@@ -238,7 +198,7 @@ executable jar file.</p>
 <a href="http://one-jar.sourceforge.net/">here</a>.</p>
 
 <p>There are several ways to use the software. But if you want to write
-your own ant <code>build.xml</code>, the most approriate way is to use the <em>Ant
+your own ant <code class="highlighter-rouge">build.xml</code>, the most approriate way is to use the <em>Ant
 Taskdef</em> way.</p>
 
 <p><a href="http://one-jar.sourceforge.net/index.php?page=getting-started&amp;file=ant">Here</a>
@@ -249,119 +209,64 @@ get one-jar work.</p>
 
 <p>So, here is an example:</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-<span class="line-number">43</span>
-<span class="line-number">44</span>
-<span class="line-number">45</span>
-<span class="line-number">46</span>
-<span class="line-number">47</span>
-<span class="line-number">48</span>
-<span class="line-number">49</span>
-<span class="line-number">50</span>
-<span class="line-number">51</span>
-<span class="line-number">52</span>
-<span class="line-number">53</span>
-<span class="line-number">54</span>
-<span class="line-number">55</span>
-<span class="line-number">56</span>
-</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;project</span> <span class="na">name=</span><span class="s">&quot;HSearchEngine&quot;</span> <span class="na">basedir=</span><span class="s">&quot;.&quot;</span> <span class="na">default=</span><span class="s">&quot;main&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;one-jar.dist.dir&quot;</span> <span class="na">value=</span><span class="s">&quot;/home/hhiker/mine/software/one-jar-ant/&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">    <span class="nt">&lt;import</span> <span class="na">file=</span><span class="s">&quot;${one-jar.dist.dir}/one-jar-ant-task.xml&quot;</span> <span class="na">optional=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">
-</span><span class="line">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;src.dir&quot;</span>        <span class="na">value=</span><span class="s">&quot;src&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">
-</span><span class="line">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;build.dir&quot;</span>      <span class="na">value=</span><span class="s">&quot;build&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;classes.dir&quot;</span>    <span class="na">value=</span><span class="s">&quot;${build.dir}/classes&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;jar.dir&quot;</span>        <span class="na">value=</span><span class="s">&quot;${build.dir}/jar&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">
-</span><span class="line">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;jars.dir&quot;</span>        <span class="na">value=</span><span class="s">&quot;./jars&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">
-</span><span class="line">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;main-class&quot;</span>     <span class="na">value=</span><span class="s">&quot;IndexFiles&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">
-</span><span class="line">    <span class="nt">&lt;path</span> <span class="na">id=</span><span class="s">&quot;classpath&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">                <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">&quot;${jars.dir}&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">    <span class="nt">&lt;/path&gt;</span>
-</span><span class="line">
-</span><span class="line">    <span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">&quot;clean&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">        <span class="nt">&lt;delete</span> <span class="na">dir=</span><span class="s">&quot;${build.dir}&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">    <span class="nt">&lt;/target&gt;</span>
-</span><span class="line">
-</span><span class="line">    <span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">&quot;init&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">        <span class="nt">&lt;mkdir</span> <span class="na">dir=</span><span class="s">&quot;${classes.dir}&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">        <span class="nt">&lt;mkdir</span> <span class="na">dir=</span><span class="s">&quot;${jar.dir}&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">    <span class="nt">&lt;/target&gt;</span>
-</span><span class="line">
-</span><span class="line">    <span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">&quot;compile&quot;</span> <span class="na">depends=</span><span class="s">&quot;init&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">        <span class="nt">&lt;javac</span> <span class="na">srcdir=</span><span class="s">&quot;${src.dir}&quot;</span> <span class="na">destdir=</span><span class="s">&quot;${classes.dir}&quot;</span> <span class="na">classpathref=</span><span class="s">&quot;classpath&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">    <span class="nt">&lt;/target&gt;</span>
-</span><span class="line">
-</span><span class="line">    <span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">&quot;jar&quot;</span> <span class="na">depends=</span><span class="s">&quot;compile&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">        <span class="nt">&lt;one-jar</span> <span class="na">destfile=</span><span class="s">&quot;${jar.dir}/${ant.project.name}.jar&quot;</span> <span class="na">onejarmainclass=</span><span class="s">&quot;${main-class}&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">            <span class="nt">&lt;manifest&gt;</span>
-</span><span class="line">                <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;Main-Class&quot;</span> <span class="na">value=</span><span class="s">&quot;${main-class}&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">            <span class="nt">&lt;/manifest&gt;</span>
-</span><span class="line">            <span class="nt">&lt;main&gt;</span>
-</span><span class="line">                <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">&quot;${classes.dir}&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">            <span class="nt">&lt;/main&gt;</span>
-</span><span class="line">            <span class="nt">&lt;lib&gt;</span>
-</span><span class="line">                <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">&quot;${jars.dir}&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">            <span class="nt">&lt;/lib&gt;</span>
-</span><span class="line">        <span class="nt">&lt;/one-jar&gt;</span>
-</span><span class="line">    <span class="nt">&lt;/target&gt;</span>
-</span><span class="line">
-</span><span class="line">    <span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">&quot;run&quot;</span> <span class="na">depends=</span><span class="s">&quot;jar&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">        <span class="nt">&lt;java</span> <span class="na">jar=</span><span class="s">&quot;${jar.dir}/${ant.project.name}.jar&quot;</span> <span class="na">fork=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">            <span class="nt">&lt;arg</span> <span class="na">value=</span><span class="s">&quot;-docs&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">            <span class="nt">&lt;arg</span> <span class="na">value=</span><span class="s">&quot;src&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">        <span class="nt">&lt;/java&gt;</span>
-</span><span class="line">    <span class="nt">&lt;/target&gt;</span>
-</span><span class="line">
-</span><span class="line">    <span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">&quot;clean-build&quot;</span> <span class="na">depends=</span><span class="s">&quot;clean, jar&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">
-</span><span class="line">    <span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">&quot;main&quot;</span> <span class="na">depends=</span><span class="s">&quot;clean, run&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line"><span class="nt">&lt;/project&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;project</span> <span class="na">name=</span><span class="s">"HSearchEngine"</span> <span class="na">basedir=</span><span class="s">"."</span> <span class="na">default=</span><span class="s">"main"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"one-jar.dist.dir"</span> <span class="na">value=</span><span class="s">"/home/hhiker/mine/software/one-jar-ant/"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;import</span> <span class="na">file=</span><span class="s">"${one-jar.dist.dir}/one-jar-ant-task.xml"</span> <span class="na">optional=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"src.dir"</span>        <span class="na">value=</span><span class="s">"src"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"build.dir"</span>      <span class="na">value=</span><span class="s">"build"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"classes.dir"</span>    <span class="na">value=</span><span class="s">"${build.dir}/classes"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"jar.dir"</span>        <span class="na">value=</span><span class="s">"${build.dir}/jar"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"jars.dir"</span>        <span class="na">value=</span><span class="s">"./jars"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"main-class"</span>     <span class="na">value=</span><span class="s">"IndexFiles"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;path</span> <span class="na">id=</span><span class="s">"classpath"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">"${jars.dir}"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/path&gt;</span>
+
+    <span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">"clean"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;delete</span> <span class="na">dir=</span><span class="s">"${build.dir}"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/target&gt;</span>
+
+    <span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">"init"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;mkdir</span> <span class="na">dir=</span><span class="s">"${classes.dir}"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;mkdir</span> <span class="na">dir=</span><span class="s">"${jar.dir}"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/target&gt;</span>
+
+    <span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">"compile"</span> <span class="na">depends=</span><span class="s">"init"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;javac</span> <span class="na">srcdir=</span><span class="s">"${src.dir}"</span> <span class="na">destdir=</span><span class="s">"${classes.dir}"</span> <span class="na">classpathref=</span><span class="s">"classpath"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/target&gt;</span>
+
+    <span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">"jar"</span> <span class="na">depends=</span><span class="s">"compile"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;one-jar</span> <span class="na">destfile=</span><span class="s">"${jar.dir}/${ant.project.name}.jar"</span> <span class="na">onejarmainclass=</span><span class="s">"${main-class}"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;manifest&gt;</span>
+                <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"Main-Class"</span> <span class="na">value=</span><span class="s">"${main-class}"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/manifest&gt;</span>
+            <span class="nt">&lt;main&gt;</span>
+                <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">"${classes.dir}"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/main&gt;</span>
+            <span class="nt">&lt;lib&gt;</span>
+                <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">"${jars.dir}"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/lib&gt;</span>
+        <span class="nt">&lt;/one-jar&gt;</span>
+    <span class="nt">&lt;/target&gt;</span>
+
+    <span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">"run"</span> <span class="na">depends=</span><span class="s">"jar"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;java</span> <span class="na">jar=</span><span class="s">"${jar.dir}/${ant.project.name}.jar"</span> <span class="na">fork=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;arg</span> <span class="na">value=</span><span class="s">"-docs"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;arg</span> <span class="na">value=</span><span class="s">"src"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/java&gt;</span>
+    <span class="nt">&lt;/target&gt;</span>
+
+    <span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">"clean-build"</span> <span class="na">depends=</span><span class="s">"clean, jar"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">"main"</span> <span class="na">depends=</span><span class="s">"clean, run"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/project&gt;</span>
+</code></pre>
+</div>
 
 <p>The main thing changed because of one-jar is:</p>
 
@@ -369,11 +274,10 @@ get one-jar work.</p>
 
 <p>Add the following line in your ant build file.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;one-jar.dist.dir&quot;</span> <span class="na">value=</span><span class="s">&quot;/home/hhiker/mine/software/one-jar-ant/&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line"><span class="nt">&lt;import</span> <span class="na">file=</span><span class="s">&quot;${one-jar.dist.dir}/one-jar-ant-task.xml&quot;</span> <span class="na">optional=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"one-jar.dist.dir"</span> <span class="na">value=</span><span class="s">"/home/hhiker/mine/software/one-jar-ant/"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;import</span> <span class="na">file=</span><span class="s">"${one-jar.dist.dir}/one-jar-ant-task.xml"</span> <span class="na">optional=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+</code></pre>
+</div>
 
 <p>In one-jar-ant-task.xml, it defines a new task called one-jar, which
 is used by user, meaing us.</p>
@@ -385,113 +289,68 @@ it must be in the same directory, which is one-jar.dist.dir above.</p>
 
 <p>Basic usage of one-jar is:</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="xml"><span class="line">    <span class="nt">&lt;one-jar</span> <span class="na">destfile=</span><span class="s">&quot;${jar.dir}/${ant.project.name}.jar&quot;</span> <span class="na">onejarmainclass=</span><span class="s">&quot;${main-class}&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">        <span class="nt">&lt;manifest&gt;</span>
-</span><span class="line">            <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;Main-Class&quot;</span> <span class="na">value=</span><span class="s">&quot;${main-class}&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">        <span class="nt">&lt;/manifest&gt;</span>
-</span><span class="line">        <span class="nt">&lt;main&gt;</span>
-</span><span class="line">            <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">&quot;${classes.dir}&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">        <span class="nt">&lt;/main&gt;</span>
-</span><span class="line">        <span class="nt">&lt;lib&gt;</span>
-</span><span class="line">            <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">&quot;${jars.dir}&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">        <span class="nt">&lt;/lib&gt;</span>
-</span><span class="line">    <span class="nt">&lt;/one-jar&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code>        <span class="nt">&lt;one-jar</span> <span class="na">destfile=</span><span class="s">"${jar.dir}/${ant.project.name}.jar"</span> <span class="na">onejarmainclass=</span><span class="s">"${main-class}"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;manifest&gt;</span>
+                <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"Main-Class"</span> <span class="na">value=</span><span class="s">"${main-class}"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/manifest&gt;</span>
+            <span class="nt">&lt;main&gt;</span>
+                <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">"${classes.dir}"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/main&gt;</span>
+            <span class="nt">&lt;lib&gt;</span>
+                <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">"${jars.dir}"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/lib&gt;</span>
+        <span class="nt">&lt;/one-jar&gt;</span>
+</code></pre>
+</div>
 
-<p>Note: </p>
+<p>Note:</p>
 
 <ul>
-  <li>by experimenting, <code>lib</code> tag of one-jar can only contain <code>fileset</code> tag.</li>
-  <li>If <code>manifest</code> is omitted, one-jar will generate one automatically.</li>
+  <li>by experimenting, <code class="highlighter-rouge">lib</code> tag of one-jar can only contain <code class="highlighter-rouge">fileset</code> tag.</li>
+  <li>If <code class="highlighter-rouge">manifest</code> is omitted, one-jar will generate one automatically.</li>
 </ul>
 
 <p>The outline of one-jar task is showed below(from
 <a href="http://one-jar.sourceforge.net/index.php?page=build-tools&amp;file=ant">here</a>).</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;one-jar</span> <span class="na">destfile=</span><span class="s">...</span> <span class="na">manifest=</span><span class="s">...</span><span class="nt">&gt;</span>
-</span><span class="line">    <span class="nt">&lt;manifest&gt;</span>
-</span><span class="line">        Attributes for the manifest of the One-JAR.  Use this instead of
-</span><span class="line">        specifying a &quot;manifest&quot; attribute above
-</span><span class="line">        <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">&quot;attr&quot;</span> <span class="na">value=</span><span class="s">&quot;value&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">        ... etc.
-</span><span class="line">    <span class="nt">&lt;/manifest&gt;</span>
-</span><span class="line">	<span class="nt">&lt;main</span> <span class="err">[</span><span class="na">jar=</span><span class="s">&quot;main.jar&quot;</span><span class="err">]</span><span class="nt">&gt;</span>
-</span><span class="line">		<span class="nt">&lt;filesets&gt;</span> which comprise the class-files of the main application.
-</span><span class="line">		Do not put JAR files in here; rather use the &quot;jar&quot; attribute if you already have a
-</span><span class="line">		pre-canned main program.
-</span><span class="line">	<span class="nt">&lt;/main&gt;</span>
-</span><span class="line">	<span class="nt">&lt;lib&gt;</span>
-</span><span class="line">		<span class="nt">&lt;filesets&gt;</span> containing Jar-files which support the main application.
-</span><span class="line">	<span class="nt">&lt;/lib&gt;</span>
-</span><span class="line">	<span class="nt">&lt;binlib&gt;</span>
-</span><span class="line">		<span class="nt">&lt;filesets&gt;</span> containing native libraries.  Native libraries are expanded into a
-</span><span class="line">		temporary directory at runtime: these files are deleted on exit.
-</span><span class="line">	<span class="nt">&lt;/binlib&gt;</span>
-</span><span class="line">	<span class="nt">&lt;wrap&gt;</span>
-</span><span class="line">		<span class="nt">&lt;filesets&gt;</span> containing class-loader wrappers.  These check classloaders
-</span><span class="line">		that are loaded from the supporting Jar files to make sure they are compatible
-</span><span class="line">		with the One-JAR classloader. This is a complex subject, contact one-jar-support for
-</span><span class="line">		more information and consulting services if you need to wrap a classloader.
-</span><span class="line">		You will know you need this if your application does not load classes when
-</span><span class="line">		you expect it should, from JAR files inside the <span class="nt">&lt;lib&gt;</span> directory.
-</span><span class="line">	<span class="nt">&lt;/wrap&gt;</span>
-</span><span class="line">	<span class="nt">&lt;fileset&gt;</span>
-</span><span class="line">		Any other stuff you want in the top-level One-JAR file.  Remember though, any
-</span><span class="line">		.class files you put in here will not be able to &quot;see into&quot; JAR files loaded
-</span><span class="line">		from /main and /lib because their classloader will be the top-level Java
-</span><span class="line">		Application Loader, which does not understand One-JAR files (this is how One-JAR
-</span><span class="line">		came about in the first place). Contact one-jar support if you find
-</span><span class="line">		yourself having problems with this kind of issue.
-</span><span class="line">	<span class="nt">&lt;/fileset&gt;</span>
-</span><span class="line"><span class="nt">&lt;/one-jar&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code>    <span class="nt">&lt;one-jar</span> <span class="na">destfile=</span><span class="s">...</span> <span class="na">manifest=</span><span class="s">...</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;manifest&gt;</span>
+            Attributes for the manifest of the One-JAR.  Use this instead of
+            specifying a "manifest" attribute above
+            <span class="nt">&lt;attribute</span> <span class="na">name=</span><span class="s">"attr"</span> <span class="na">value=</span><span class="s">"value"</span><span class="nt">&gt;</span>
+            ... etc.
+        <span class="nt">&lt;/manifest&gt;</span>
+    	<span class="nt">&lt;main</span> <span class="err">[</span><span class="na">jar=</span><span class="s">"main.jar"</span><span class="err">]</span><span class="nt">&gt;</span>
+    		<span class="nt">&lt;filesets&gt;</span> which comprise the class-files of the main application.  
+    		Do not put JAR files in here; rather use the "jar" attribute if you already have a 
+    		pre-canned main program.
+    	<span class="nt">&lt;/main&gt;</span>
+    	<span class="nt">&lt;lib&gt;</span>
+    		<span class="nt">&lt;filesets&gt;</span> containing Jar-files which support the main application.
+    	<span class="nt">&lt;/lib&gt;</span>
+    	<span class="nt">&lt;binlib&gt;</span>
+    		<span class="nt">&lt;filesets&gt;</span> containing native libraries.  Native libraries are expanded into a 
+    		temporary directory at runtime: these files are deleted on exit.
+    	<span class="nt">&lt;/binlib&gt;</span>
+    	<span class="nt">&lt;wrap&gt;</span>
+    		<span class="nt">&lt;filesets&gt;</span> containing class-loader wrappers.  These check classloaders 
+    		that are loaded from the supporting Jar files to make sure they are compatible 
+    		with the One-JAR classloader. This is a complex subject, contact one-jar-support for
+    		more information and consulting services if you need to wrap a classloader.
+    		You will know you need this if your application does not load classes when
+    		you expect it should, from JAR files inside the <span class="nt">&lt;lib&gt;</span> directory.
+    	<span class="nt">&lt;/wrap&gt;</span>
+    	<span class="nt">&lt;fileset&gt;</span>
+    		Any other stuff you want in the top-level One-JAR file.  Remember though, any
+    		.class files you put in here will not be able to "see into" JAR files loaded
+    		from /main and /lib because their classloader will be the top-level Java 
+    		Application Loader, which does not understand One-JAR files (this is how One-JAR 
+    		came about in the first place). Contact one-jar support if you find 
+    		yourself having problems with this kind of issue.
+    	<span class="nt">&lt;/fileset&gt;</span>
+    <span class="nt">&lt;/one-jar&gt;</span>
+</code></pre>
+</div>
 
 <h3 id="auto-complete-tags">Auto complete tags</h3>
 
@@ -500,53 +359,34 @@ it on <a href="www.vim.org">vim.org</a>.</p>
 
 <p>Add the following config for ant type file.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="s2">&quot; File auto-generated by PairTools 1.5.2</span>
-</span><span class="line"><span class="s2">&quot;</span> Enable modules
-</span><span class="line"><span class="nb">let </span>g:pairtools_ant_pairclamp <span class="o">=</span> 1
-</span><span class="line"><span class="nb">let </span>g:pairtools_ant_tagwrench <span class="o">=</span> 1
-</span><span class="line"><span class="nb">let </span>g:pairtools_ant_jigsaw <span class="o">=</span> 1
-</span><span class="line"><span class="s2">&quot; Configure PairClamp</span>
-</span><span class="line"><span class="s2">let g:pairtools_ant_autoclose = 1</span>
-</span><span class="line"><span class="s2">let g:pairtools_ant_forcepairs = 0</span>
-</span><span class="line"><span class="s2">let g:pairtools_ant_closepairs = &quot;</span><span class="o">(</span>:<span class="o">)</span>,<span class="o">[</span>:<span class="o">]</span>,<span class="o">{</span>:<span class="o">}</span>,<span class="se">\&quot;</span>:<span class="se">\&quot;</span><span class="s2">&quot;</span>
-</span><span class="line"><span class="s2">let g:pairtools_ant_smartclose = 1</span>
-</span><span class="line"><span class="s2">let g:pairtools_ant_smartcloserules = &#39;\w&#39;</span>
-</span><span class="line"><span class="s2">let g:pairtools_ant_apostrophe = 0</span>
-</span><span class="line"><span class="s2">let g:pairtools_ant_antimagic = 1</span>
-</span><span class="line"><span class="s2">let g:pairtools_ant_antimagicfield = &quot;</span>Comment,String<span class="s2">&quot;</span>
-</span><span class="line"><span class="s2">let g:pairtools_ant_pcexpander = 0</span>
-</span><span class="line"><span class="s2">let g:pairtools_ant_pceraser = 1</span>
-</span><span class="line"><span class="s2">&quot;</span> Configure TagWrench
-</span><span class="line"><span class="nb">let </span>g:pairtools_ant_tagwrenchhook <span class="o">=</span> <span class="s1">&#39;tagwrench#BuiltinBasicTagHook&#39;</span>
-</span><span class="line"><span class="nb">let </span>g:pairtools_ant_twexpander <span class="o">=</span> 1
-</span><span class="line"><span class="nb">let </span>g:pairtools_ant_tweraser <span class="o">=</span> 1
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="s2">" File auto-generated by PairTools 1.5.2
+"</span> Enable modules
+<span class="nb">let </span>g:pairtools_ant_pairclamp <span class="o">=</span> 1
+<span class="nb">let </span>g:pairtools_ant_tagwrench <span class="o">=</span> 1
+<span class="nb">let </span>g:pairtools_ant_jigsaw <span class="o">=</span> 1
+<span class="s2">" Configure PairClamp
+let g:pairtools_ant_autoclose = 1
+let g:pairtools_ant_forcepairs = 0
+let g:pairtools_ant_closepairs = "</span><span class="o">(</span>:<span class="o">)</span>,[:],<span class="o">{</span>:<span class="o">}</span>,<span class="se">\"</span>:<span class="se">\"</span><span class="s2">"
+let g:pairtools_ant_smartclose = 1
+let g:pairtools_ant_smartcloserules = '</span><span class="se">\w</span><span class="s2">'
+let g:pairtools_ant_apostrophe = 0
+let g:pairtools_ant_antimagic = 1
+let g:pairtools_ant_antimagicfield = "</span>Comment,String<span class="s2">"
+let g:pairtools_ant_pcexpander = 0
+let g:pairtools_ant_pceraser = 1
+"</span> Configure TagWrench
+<span class="nb">let </span>g:pairtools_ant_tagwrenchhook <span class="o">=</span> <span class="s1">'tagwrench#BuiltinBasicTagHook'</span>
+<span class="nb">let </span>g:pairtools_ant_twexpander <span class="o">=</span> 1
+<span class="nb">let </span>g:pairtools_ant_tweraser <span class="o">=</span> 1
+</code></pre>
+</div>
 
 <p>One thing needs attention is this line:</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="nb">let </span>g:pairtools_ant_tagwrenchhook <span class="o">=</span> <span class="s1">&#39;tagwrench#BuiltinBasicTagHook&#39;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">let </span>g:pairtools_ant_tagwrenchhook <span class="o">=</span> <span class="s1">'tagwrench#BuiltinBasicTagHook'</span>
+</code></pre>
+</div>
 <p>This line tells PairTools to use BuiltinBasicTagHook for ant tags.</p>
 
 <p>BuiltinBasicTagHook is a basic tag builder that automatically add an
@@ -558,24 +398,24 @@ never generate closing tags.</p>
 <p>I do not write xml code frequently, thus I add the following line to
 make all xml files to be viewed as ant files.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">au BufNewFile,BufRead *.xml <span class="nb">set </span><span class="nv">filetype</span><span class="o">=</span>ant
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>au BufNewFile,BufRead <span class="k">*</span>.xml <span class="nb">set </span><span class="nv">filetype</span><span class="o">=</span>ant
+</code></pre>
+</div>
 
 <p>I have tried the following code, but it does not work. Guess it is overrided.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">au BufNewFile,BufRead *.xml setf ant
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-<p>## Eclim</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>au BufNewFile,BufRead <span class="k">*</span>.xml setf ant
+</code></pre>
+</div>
+<h2 id="eclim">Eclim</h2>
 
 <h3 id="compile">Compile</h3>
 
 <p>Eclim provides the following command to let you call the build.xml written:</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">:Ant <span class="o">[</span>&lt;target&gt; ...<span class="o">]</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>:Ant <span class="o">[</span>&lt;target&gt; ...]
+</code></pre>
+</div>
 
 <p>which performs the following steps:</p>
 
@@ -608,23 +448,23 @@ statement.</p>
 
 <p>Use ctags to jump around the code. This statement will generate tags for Java.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">ctags -R --language-force<span class="o">=</span>java
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ctags -R --language-force<span class="o">=</span>java
+</code></pre>
+</div>
 
 <p>Added the tag generated in your java config file:</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="nb">set </span>tags+<span class="o">=</span>JAVA_TAG
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">set </span>tags+<span class="o">=</span>JAVA_TAG
+</code></pre>
+</div>
 
 <p>Then everytime you write a java program, those tag will work.</p>
 
 <p>This command will show language ctags supports.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">ctags --list-kinds<span class="o">=</span>java
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ctags --list-kinds<span class="o">=</span>java
+</code></pre>
+</div>
 
 <p>I still have one question here:</p>
 
@@ -649,15 +489,15 @@ an example, create a folder named java_doc under bundle, make a folder
 named doc, then put doc generated under this folder, which is more
 manageable.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">ant -f run.xml run -Dvimdoclet.source.root<span class="o">=</span>/home/hhiker/mine/software/jdk1.7.0_40/share/ -Dvimdoclet.outputDir tmp
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ant -f run.xml run -Dvimdoclet.source.root<span class="o">=</span>/home/hhiker/mine/software/jdk1.7.0_40/share/ -Dvimdoclet.outputDir tmp
+</code></pre>
+</div>
 
 <p>Generate helptags:</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">:helptags ~/.vim/bundle/java_doc/doc
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>:helptags ~/.vim/bundle/java_doc/doc
+</code></pre>
+</div>
 
 <p>Note: Although eclim provides javadoc preview feature as well, after
 some usage, I found this one better.</p>
@@ -675,19 +515,14 @@ checking on the fly(by default it is the time when you save files)</p>
 
 <p>Add the following lines to make Syntastic more useful:</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="s2">&quot; For ~/.vim/bundle/syntastic/</span>
-</span><span class="line"><span class="s2">&quot;</span> <span class="o">======================================================</span>
-</span><span class="line"><span class="nb">set </span>statusline+<span class="o">=</span>%#warningmsg#
-</span><span class="line"><span class="nb">set </span>statusline+<span class="o">=</span>%<span class="o">{</span>SyntasticStatuslineFlag<span class="o">()}</span>
-</span><span class="line"><span class="nb">set </span>statusline+<span class="o">=</span>%*
-</span><span class="line"><span class="err">&quot;</span> <span class="o">======================================================</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="s2">" For ~/.vim/bundle/syntastic/
+"</span> <span class="o">======================================================</span>
+<span class="nb">set </span>statusline+<span class="o">=</span>%#warningmsg#
+<span class="nb">set </span>statusline+<span class="o">=</span>%<span class="o">{</span>SyntasticStatuslineFlag<span class="o">()}</span>
+<span class="nb">set </span>statusline+<span class="o">=</span>%<span class="k">*</span>
+<span class="s2">" ======================================================
+</span></code></pre>
+</div>
 
 <p>Type :Errors in vim to get a location list of errors.</p>
 
@@ -702,133 +537,26 @@ folders…</p>
 <p>The proper way to avoid this is to remove the git repo of plugins. But what if this
 already happened? Remove and readd them.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">git rm --cached -rf PLUGIN_FOLDER_NAME
-</span><span class="line">git add PLUGIN_FOLDER_NAME
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>git rm --cached -rf PLUGIN_FOLDER_NAME
+git add PLUGIN_FOLDER_NAME
+</code></pre>
+</div>
 
 <h2 id="conclusion">Conclusion</h2>
 
 <p>It took me days to get this done. Hope it helps.</p>
-</div>
 
+  </div>
 
-  <footer>
-    <p class="meta">
-      
-  
-
-<span class="byline author vcard">Posted by <span class="fn">Shawn</span></span>
-
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-03T10:06:00+08:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2013</time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/ant/'>Ant</a>, <a class='category' href='/blog/categories/cs/'>CS</a>, <a class='category' href='/blog/categories/eclim/'>Eclim</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/note/'>Note</a>, <a class='category' href='/blog/categories/vim/'>Vim</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2013/09/24/wei-shi-yao-zhong-guo-yi-ding-yao-ba-chu-kou-zhuan-de-qian-lai-mai-mei-guo-guo-zhai/" title="Previous Post: 为什么中国一定要把出口赚的钱来买美国国债">&laquo; 为什么中国一定要把出口赚的钱来买美国国债</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2013/10/06/the-collection-of-linux-softwares/" title="Next Post: The Collection of Linux Softwares">The Collection of Linux Softwares &raquo;</a>
-      
-    </p>
-  </footer>
 </article>
 
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
+    </section>
 
-</div>
-
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
     
-      <li class="post">
-        <a href="/blog/2016/08/29/key-points-of-understanding-deep-conv-net/">Key Points of Understanding Deep Conv Net</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/07/30/repost-explosion-of-the-space-shuttle-challenger-address-to-the-nation/">[Repost] Explosion of the Space Shuttle Challenger Address to the Nation</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/05/01/note-on-representation-of-operator/">Note on Representation of Operator</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/03/15/a-quick-survey-on-log-processing/">A Quick Survey on Distributed Log Processing: Unison and Logstash</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/03/08/note-on-installing-ubuntu-on-newer-machines/">Note on Installing Ubuntu on Newer Machines</a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><embed type='application/x-shockwave-flash' src='/javascripts/tagcloud.swf'width='100%' height='250' bgcolor='#f2f2f2' id='tagcloudflash' name='tagcloudflash' quality='high' allowscriptaccess='always'flashvars="tcolor=0x333333&amp;tcolor2=0x333333&amp;hicolor=0x000000&amp;tspeed=100&amp;distr=true&amp;mode=tags&amp;tagcloud=%3Ctags%3E%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fai%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EAI%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fanalysis%27+style%3D%27font-size%3A+11.11111111111111%25%27%3EAnalysis%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fandroid%27+style%3D%27font-size%3A+11.11111111111111%25%27%3EAndroid%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fansible%27+style%3D%27font-size%3A+11.481481481481481%25%27%3EAnsible%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fant%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EAnt%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fassembly%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EAssembly%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fbibtex%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EBibtex%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fc%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EC%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fc-%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EC%2B%2B%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcnn%27+style%3D%27font-size%3A+10.74074074074074%25%27%3ECNN%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcs%27+style%3D%27font-size%3A+32.96296296296296%25%27%3ECS%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcscope%27+style%3D%27font-size%3A+10.37037037037037%25%27%3ECscope%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fctags%27+style%3D%27font-size%3A+10.37037037037037%25%27%3ECtags%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fculture%27+style%3D%27font-size%3A+10.37037037037037%25%27%3ECulture%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcv%27+style%3D%27font-size%3A+11.11111111111111%25%27%3ECV%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fdeep-learning%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EDeep_Learning%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fdesign%27+style%3D%27font-size%3A+12.222222222222221%25%27%3EDesign%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fdjvu%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EDjvu%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Feclim%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EEclim%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Feconomics%27+style%3D%27font-size%3A+10.74074074074074%25%27%3EEconomics%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Femacs%27+style%3D%27font-size%3A+12.592592592592592%25%27%3EEmacs%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fencoding%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EEncoding%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fexcerpt%27+style%3D%27font-size%3A+11.481481481481481%25%27%3EExcerpt%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Ffourier%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EFourier%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Ffunctional-analysis%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EFunctional_Analysis%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fgnome%27+style%3D%27font-size%3A+10.74074074074074%25%27%3EGnome%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fhadoop%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EHadoop%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fhistory%27+style%3D%27font-size%3A+10.74074074074074%25%27%3EHistory%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Finformation%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EInformation%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fjava%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EJava%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flatex%27+style%3D%27font-size%3A+11.851851851851851%25%27%3ELaTeX%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flibconfig%27+style%3D%27font-size%3A+10.37037037037037%25%27%3ELibconfig%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flife%27+style%3D%27font-size%3A+20.37037037037037%25%27%3ELife%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flinux%27+style%3D%27font-size%3A+18.14814814814815%25%27%3ELinux%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flwip%27+style%3D%27font-size%3A+10.37037037037037%25%27%3ELwip%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fmarkdown%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EMarkdown%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fmath%27+style%3D%27font-size%3A+19.62962962962963%25%27%3EMath%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fmatrix%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EMatrix%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fml%27+style%3D%27font-size%3A+11.851851851851851%25%27%3EML%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fnetwork%27+style%3D%27font-size%3A+10.37037037037037%25%27%3ENetwork%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fnote%27+style%3D%27font-size%3A+50.0%25%27%3ENote%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Foctave%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EOctave%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Foctopress%27+style%3D%27font-size%3A+10.74074074074074%25%27%3EOctopress%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Foptimization%27+style%3D%27font-size%3A+12.222222222222221%25%27%3EOptimization%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fother%27+style%3D%27font-size%3A+12.592592592592592%25%27%3EOther%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fpdf%27+style%3D%27font-size%3A+10.74074074074074%25%27%3EPdf%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fperf%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EPerf%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fpgm%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EPGM%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fphd%27+style%3D%27font-size%3A+11.851851851851851%25%27%3EPhD%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fpresentation%27+style%3D%27font-size%3A+10.74074074074074%25%27%3EPresentation%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fprobability%27+style%3D%27font-size%3A+11.11111111111111%25%27%3EProbability%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fproof%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EProof%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fpython%27+style%3D%27font-size%3A+11.11111111111111%25%27%3EPython%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Freading%27+style%3D%27font-size%3A+14.074074074074074%25%27%3EReading%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fregex%27+style%3D%27font-size%3A+10.74074074074074%25%27%3ERegex%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Frepost%27+style%3D%27font-size%3A+20.74074074074074%25%27%3ERepost%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fresearch%27+style%3D%27font-size%3A+21.48148148148148%25%27%3EResearch%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fsignal-processing%27+style%3D%27font-size%3A+10.74074074074074%25%27%3ESignal_Processing%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fstatistics%27+style%3D%27font-size%3A+11.11111111111111%25%27%3EStatistics%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fteaching%27+style%3D%27font-size%3A+10.37037037037037%25%27%3ETeaching%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Ftopology%27+style%3D%27font-size%3A+10.37037037037037%25%27%3ETopology%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fvim%27+style%3D%27font-size%3A+12.962962962962962%25%27%3EVim%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fwavelet%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EWavelet%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fxml%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EXml%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fyaml%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EYaml%3C%2Fa%3E+%3C%2Ftags%3E"></span>
-</section>
-
-<section>
-  <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/ai/'>AI (1)</a></li><li><a href='/blog/categories/analysis/'>Analysis (3)</a></li><li><a href='/blog/categories/android/'>Android (3)</a></li><li><a href='/blog/categories/ansible/'>Ansible (4)</a></li><li><a href='/blog/categories/ant/'>Ant (1)</a></li><li><a href='/blog/categories/assembly/'>Assembly (1)</a></li><li><a href='/blog/categories/bibtex/'>Bibtex (1)</a></li><li><a href='/blog/categories/c/'>C (1)</a></li><li><a href='/blog/categories/c-plus-plus/'>C++ (1)</a></li><li><a href='/blog/categories/cnn/'>CNN (2)</a></li><li><a href='/blog/categories/cs/'>CS (62)</a></li><li><a href='/blog/categories/cscope/'>Cscope (1)</a></li><li><a href='/blog/categories/ctags/'>Ctags (1)</a></li><li><a href='/blog/categories/culture/'>Culture (1)</a></li><li><a href='/blog/categories/cv/'>CV (3)</a></li><li><a href='/blog/categories/deep-learning/'>Deep_Learning (1)</a></li><li><a href='/blog/categories/design/'>Design (6)</a></li><li><a href='/blog/categories/djvu/'>Djvu (1)</a></li><li><a href='/blog/categories/eclim/'>Eclim (1)</a></li><li><a href='/blog/categories/economics/'>Economics (2)</a></li><li><a href='/blog/categories/emacs/'>Emacs (7)</a></li><li><a href='/blog/categories/encoding/'>Encoding (1)</a></li><li><a href='/blog/categories/excerpt/'>Excerpt (4)</a></li><li><a href='/blog/categories/fourier/'>Fourier (1)</a></li><li><a href='/blog/categories/functional-analysis/'>Functional_Analysis (1)</a></li><li><a href='/blog/categories/gnome/'>Gnome (2)</a></li><li><a href='/blog/categories/hadoop/'>Hadoop (1)</a></li><li><a href='/blog/categories/history/'>History (2)</a></li><li><a href='/blog/categories/information/'>Information (1)</a></li><li><a href='/blog/categories/java/'>Java (1)</a></li><li><a href='/blog/categories/latex/'>LaTeX (5)</a></li><li><a href='/blog/categories/libconfig/'>Libconfig (1)</a></li><li><a href='/blog/categories/life/'>Life (28)</a></li><li><a href='/blog/categories/linux/'>Linux (22)</a></li><li><a href='/blog/categories/lwip/'>Lwip (1)</a></li><li><a href='/blog/categories/markdown/'>Markdown (1)</a></li><li><a href='/blog/categories/math/'>Math (26)</a></li><li><a href='/blog/categories/matrix/'>Matrix (1)</a></li><li><a href='/blog/categories/ml/'>ML (5)</a></li><li><a href='/blog/categories/network/'>Network (1)</a></li><li><a href='/blog/categories/note/'>Note (108)</a></li><li><a href='/blog/categories/octave/'>Octave (1)</a></li><li><a href='/blog/categories/octopress/'>Octopress (2)</a></li><li><a href='/blog/categories/optimization/'>Optimization (6)</a></li><li><a href='/blog/categories/other/'>Other (7)</a></li><li><a href='/blog/categories/pdf/'>Pdf (2)</a></li><li><a href='/blog/categories/perf/'>Perf (1)</a></li><li><a href='/blog/categories/pgm/'>PGM (1)</a></li><li><a href='/blog/categories/phd/'>PhD (5)</a></li><li><a href='/blog/categories/presentation/'>Presentation (2)</a></li><li><a href='/blog/categories/probability/'>Probability (3)</a></li><li><a href='/blog/categories/proof/'>Proof (1)</a></li><li><a href='/blog/categories/python/'>Python (3)</a></li><li><a href='/blog/categories/reading/'>Reading (11)</a></li><li><a href='/blog/categories/regex/'>Regex (2)</a></li><li><a href='/blog/categories/repost/'>Repost (29)</a></li><li><a href='/blog/categories/research/'>Research (31)</a></li><li><a href='/blog/categories/signal-processing/'>Signal_Processing (2)</a></li><li><a href='/blog/categories/statistics/'>Statistics (3)</a></li><li><a href='/blog/categories/teaching/'>Teaching (1)</a></li><li><a href='/blog/categories/topology/'>Topology (1)</a></li><li><a href='/blog/categories/vim/'>Vim (8)</a></li><li><a href='/blog/categories/wavelet/'>Wavelet (1)</a></li><li><a href='/blog/categories/xml/'>Xml (1)</a></li><li><a href='/blog/categories/yaml/'>Yaml (1)</a></li></ul>
-</section>
-
-
-
-
-
-  
-</aside>
-
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2016 - Shawn -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-<script type="text/javascript">
+    <div class="container">
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><script type="text/javascript">
       var disqus_shortname = 'nautilus-shell-of-hhiker';
       
         
@@ -843,16 +571,16 @@ already happened? Remove and readd them.</p>
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+      </section>
+    </div>
+    
 
+    <!-- <nav class="navbar navbar-default navbar-fixed-bottom"> -->
+<!-- <div class="container footer-content"> -->
+    <!-- Nothing is there. -->
+<!-- </div> -->
+<!-- </nav> -->
+  </body>
 
-
-
-
-
-
-
-
-
-
-</body>
 </html>

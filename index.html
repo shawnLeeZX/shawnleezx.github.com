@@ -1,274 +1,197 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
+<html>
+
+  <head>
   <meta charset="utf-8">
-  <title>SHAWN LEE</title>
-  <meta name="author" content="Shawn">
-
-  
-  <meta name="description" content="This is Shuai Li, also Shawn. Research Interests I’m currently a Master of Philosophy student at Chinese University of Hong
-Kong(CUHK). My research &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Shawn" property="og:site_name">
+  <link href="/favicon.png" rel="icon">
 
   
-  <link rel="canonical" href="http://shawnLeeZX.github.io">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="SHAWN LEE" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <script src="/javascripts/audio.min.js"></script>
-  <script>
-   audiojs.events.ready(function() {
-     var as = audiojs.createAll();
+  <meta content="Shawn" property="og:title">
+  
+
+  
+  <meta content="website" property="og:type">
+  
+
+  
+  <meta content="<h1>World Hacker's Notebook</h1>" property="og:description">
+  
+
+  
+  <meta content="http://shawnLeeZX.github.io/" property="og:url">
+  
+
+  
+
+  <meta property="og:image" content="">
+
+  
+
+  
+
+  <title>Shawn</title>
+  <meta name="description" content="<h1>World Hacker's Notebook</h1>">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!-- Typesetting math using MathJax -->
+  <!-- mathjax config similar to math.stackexchange -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'] ],
+       displayMath: [ ['$$', '$$']],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     },
+     messageStyle: "none",
+     "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
    });
   </script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script
 
-<!-- Add snarl icon here. -->
-<link href="/favicon.png" rel="icon">
-
-<!-- For drop menu. -->
-<script src="/javascripts/libs/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
-<script src="/javascripts/menu.min.js" type="text/javascript"></script>
-
-<!-- For table. -->
-<link rel="stylesheet" type="text/css" href="/stylesheets/table.css">
-
-<!-- mathjax config similar to math.stackexchange -->
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  jax: ["input/TeX", "output/HTML-CSS"],
-  tex2jax: {
-    inlineMath: [ ['$', '$'] ],
-    displayMath: [ ['$$', '$$']],
-    processEscapes: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-  },
-  messageStyle: "none",
-  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
-});
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
-
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-44220731-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
-
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/">
+  <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
 </head>
 
-<body    class="collapse-sidebar sidebar-footer" >
-  <header role="banner"><hgroup>
-    <img src="/favicon.png" alt="Shawn">
-    <h1><a href="/">SHAWN LEE</a></h1>
-    
-    <h2>As much as I loved to be a geek, the path was chosen for freedom and enlightenment.</h2>
-    
-</hgroup>
+  <body>
+    <section>
+<nav class="navbar navbar-default navbar-fixed-top">
 
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:shawnLeeZX.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">因九州 Home</a></li>
-  <li><a href="/academic">成极客 Academic</a>
-      <!-- <ul> -->
-          <!-- <li><a href="/academic/academic-biography.html">Academic Biography</li> -->
-          <!-- <li><a href="/academic/transcript.html">Selected Transcript</li> -->
-          <!-- <li><a href="/academic/english-proficiency.html">English Proficiency</li> -->
-          <!-- <li><a href="/academic/research.html">Research</li> -->
-      <!-- </ul> -->
-  </li>
-  <li><a href="/blog">求自由 Blog</a></li>
-  <li><a href="/blog/archives">以启蒙 Archives</a>
-      <ul>
-          <li><a href="/blog/categories/cs">CS</a></li>
-          <li><a href="/blog/categories/research">Research</a></li>
-          <li><a href="/blog/categories/math">Math</a></li>
-          <li><a href="/blog/categories/life">Life</a></li>
-          <li><a href="/blog/categories/other">Other</a></li>
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Shawn</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/blog/archives">Archive</a></li>
       </ul>
-  </li>
-  <li><a href="/quotes"> Quotes</a></li>
-</ul>
 
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
 </nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article role="article">
-  
-  <p>This is Shuai Li, also Shawn.</p>
+</section>
 
-<h3 id="research-interests">Research Interests</h3>
-
-<p>I’m currently a Master of Philosophy student at Chinese University of Hong
-Kong(CUHK). My research areas are Computer Vision, Machine Learning and
-Artificial Intelligence, with current focus on Deep Learning on Computer
-Vision. I deem vision problem as an entry point to understand perception
-problems of Artificial Intelligence, which may be the first step to understand
-intelligence.</p>
-
-<h3 id="short-bio">Short Bio</h3>
-
-<p>Before that, I was a Research Assistant at the same place and working on the
-same problem. Prior to then, I was a research intern at Microsoft Research Asia
-working on distributed machine learning techniques for learning intermediate
-representation of large scale text corpus. I received a B.E in Computer Science
-from Special Class for Gifted Young, University of Science and Technology of
-China(USTC).</p>
-
-<h3 id="general-interests">General Interests</h3>
-
-<h4 id="product-design">Product Design</h4>
-
-<p>Besides intellectual and philosophical curiosity, the impact of Machine
-Learning as a transcendental technology may have on civilization is my major
-motivation to work in this area. As a result, I have a side interest in Product
-Design, Human Computer Interaction and Hacking. In 2014, collaborating with
-students of USTC and Stanford University(SU), we designed an arm-mounted haptic
-navigation wearable device in Design and Innovation Course(ME310) of SU and our
-product was ranked the best five out of sixty teams in the China-US Maker
-Contest.</p>
-
-<h4 id="engineering">Engineering</h4>
-
-<p>In addition, I deem engineering is an inextricable part of scientific
-innovation. If looking back in history, the interaction between philosophers
-and artisans were one key element to give European society the dynamics
-Renaissance and Industrial Revolution needed. Its modern spiritual incarnation
-in our time is called a hacker. Consequently, I spare considerably efforts on
-programming skills. I am an enthusiastic Linux, Emacs, Vim user since 2011 so
-that I could directly touch the engineering technology I use without being
-abstracted away by the package providers.</p>
-
-<h3 id="hobbies">Hobbies</h3>
-
-<p>BTW, I run often. I read, mostly on non-fiction, especially philosophy,
-history, biography. I enjoy music, mostly on light music, ancient Chinese style
-music. I bike when having time. I keep photographic memory on 
-<a href="https://www.flickr.com/photos/hhikers/">Flickr</a>.</p>
-
-<h3 id="epilogue">Epilogue</h3>
-
-<p>I initially created this site to understand how web applications work
-in 2013. Ever since then, this site has become my notebook to keep draft notes
-on everything but mainly on Computer Science, Mathematics, Research and Life.</p>
-
-
-  
-    <footer>
-      <!-- <p class="meta"> -->
-        <!--  -->
-        <!-- 
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-09-21T09:29:00+08:00" pubdate data-updated="true">Sep 21<span>st</span>, 2013</time> -->
-        <!--  -->
-      <!-- </p> -->
-      
-        <div class="sharing">
-  
-  
-  
-</div>
-
-      
-    </footer>
-  
-</article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
-
-</div>
-
-<aside class="sidebar">
-  
-    
-  
-</aside>
-
+    <section>
+      <section>
+  <div class="jumbotron">
+    <div class="container">
+      <h1>World Hacker's Notebook</h1>
 
     </div>
   </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2016 - Shawn -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
+</section>
 
-</footer>
-  
+<div class="container">
+  <p>This is Shuai Li, also Shawn.</p>
 
-<script type="text/javascript">
-      var disqus_shortname = 'nautilus-shell-of-hhiker';
-      
-        
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://shawnLeeZX.github.io/index.html';
-        var disqus_url = 'http://shawnLeeZX.github.io/index.html';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
+<p>This page is for the pragmatical, and the busy. For idealists, take a look at
+the <a href="/about">About</a>.</p>
 
+<p>I’m currently a Master of Philosophy student at Chinese University of Hong
+Kong (CUHK). My research areas are Computer Vision, Machine Learning and
+Artificial Intelligence, with current focus on Deep Learning on Computer
+Vision. I think the vision problem is an entry point to understand perception
+problems of Artificial Intelligence, which may be the first step to understand
+intelligence. I have made progress, though have little to show for it yet.</p>
 
+<p>Before that, I was a Research Assistant at the same place and worked on the
+same problem. Prior to then, I was a research intern at Microsoft Research Asia (MSRA)
+working on distributed machine learning techniques for learning intermediate
+representation of large scale text corpus. I received a B.E in Computer Science
+from Special Class for Gifted Young, University of Science and Technology of
+China (USTC).</p>
 
+<h3 id="general-interests">General Interests</h3>
 
+<p>I hope that someday, I could combine the following interests to hack the real
+physical world.<br /></p>
 
+<h4 id="hacking">Hacking</h4>
 
+<p>I loving building things. Looking back in history, the interaction between
+philosophers and artisans were a key element to give European society the
+dynamics Renaissance and Industrial Revolution needed. Its modern spiritual
+incarnation in our time is called hacking. Partly thanks to the cyber-culture
+born out of counter culture in 1960s and beyond, the world does not become a
+Dystopian one. Consequently, I spare considerably time on programming.  I am an
+enthusiastic Linux, Emacs, Vim user. I empathize with the free software
+philosophy. I am writing a neural network package (in shadow mode still) based on
+<a href="tensorflow.org">Tensorflow</a>. I am thinking how could we
+<a href="http://www.linuxjournal.com/content/whats-our-next-fight">decentralize information and computing power</a>
+again.</p>
 
+<h4 id="mathematics">Mathematics</h4>
 
+<p>Mathematics is the art to abstract structure from the physical world. I am
+mostly interested in the mathematical structure underlying neural networks. I
+have read (some have not understood) all the papers in the
+area. Philosophically, I think the structure may relate to manifolds. A hidden
+node in the neural network is the representation of a concept, whose
+mathematical structure is a manifold, though we still need to come up with its
+definition. We may need ideas from information geometry, lie group, or perhaps
+more.</p>
 
+<h4 id="entrepreneurship">Entrepreneurship</h4>
 
+<p>I am also interested in how Machine Learning could be converted to technology
+that empowers people.  Besides intellectual and philosophical curiosity, the
+impact of Machine Learning as a technology may have on civilization is my major
+motivation to work in this area. I have some rough ideas, and may start to work
+on some prototype in the near future. I have some experience in product
+design. In 2014, collaborating with students of USTC and Stanford University
+(SU), we designed an arm-mounted haptic navigation wearable device in Design
+and Innovation Course (ME310) of SU and our product was ranked the best five
+out of sixty teams in the China-US Maker Contest.</p>
 
-</body>
+<h3 id="hobbies">Hobbies</h3>
+
+<p>BTW, I love running (knee injured, resorting to swimming). I read fiction and
+non-fiction books, especially philosophy, history, biography, and classical
+novels. I enjoy music, and hope to learn an instrument when I have time. I bike
+when having time. I keep photographic memory on
+<a href="https://www.flickr.com/photos/hhikers/">Flickr</a>.</p>
+
+</div>
+
+    </section>
+
+    
+
+    <!-- <nav class="navbar navbar-default navbar-fixed-bottom"> -->
+<!-- <div class="container footer-content"> -->
+    <!-- Nothing is there. -->
+<!-- </div> -->
+<!-- </nav> -->
+  </body>
+
 </html>

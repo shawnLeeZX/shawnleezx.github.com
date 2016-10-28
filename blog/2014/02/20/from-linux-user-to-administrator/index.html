@@ -1,163 +1,128 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
+<html>
+
+  <head>
   <meta charset="utf-8">
-  <title>From Linux User to Administrator - SHAWN LEE</title>
-  <meta name="author" content="Shawn">
-
-  
-  <meta name="description" content="Recently, I received a job to do sysadmin stuff on some servers, which have
-ubuntu installed on them. Here I wrote down what I have done for setting &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Shawn" property="og:site_name">
+  <link href="/favicon.png" rel="icon">
 
   
-  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2014/02/20/from-linux-user-to-administrator">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="SHAWN LEE" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <script src="/javascripts/audio.min.js"></script>
-  <script>
-   audiojs.events.ready(function() {
-     var as = audiojs.createAll();
+  <meta content="From Linux User to Administrator" property="og:title">
+  
+
+  
+  <meta content="article" property="og:type">
+  
+
+  
+  <meta content="<h1>World Hacker's Notebook</h1>" property="og:description">
+  
+
+  
+  <meta content="http://shawnLeeZX.github.io/blog/2014/02/20/from-linux-user-to-administrator/" property="og:url">
+  
+
+  
+  <meta content="2014-02-20T00:04:00+08:00" property="article:published_time">
+  <meta content="http://shawnLeeZX.github.io/about/" property="article:author">
+  
+
+  <meta property="og:image" content="">
+
+  
+  
+  <meta content="Linux" property="article:section">
+  
+  
+
+  
+  
+  
+
+  <title>From Linux User to Administrator - Shawn</title>
+  <meta name="description" content="Recently, I received a job to do sysadmin stuff on some servers, which haveubuntu installed on them. Here I wrote down what I have done for setting upthose s...">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!-- Typesetting math using MathJax -->
+  <!-- mathjax config similar to math.stackexchange -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'] ],
+       displayMath: [ ['$$', '$$']],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     },
+     messageStyle: "none",
+     "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
    });
   </script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script
 
-<!-- Add snarl icon here. -->
-<link href="/favicon.png" rel="icon">
-
-<!-- For drop menu. -->
-<script src="/javascripts/libs/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
-<script src="/javascripts/menu.min.js" type="text/javascript"></script>
-
-<!-- For table. -->
-<link rel="stylesheet" type="text/css" href="/stylesheets/table.css">
-
-<!-- mathjax config similar to math.stackexchange -->
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  jax: ["input/TeX", "output/HTML-CSS"],
-  tex2jax: {
-    inlineMath: [ ['$', '$'] ],
-    displayMath: [ ['$$', '$$']],
-    processEscapes: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-  },
-  messageStyle: "none",
-  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
-});
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
-
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-44220731-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
-
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2014/02/20/from-linux-user-to-administrator/">
+  <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
 </head>
 
-<body   >
-  <header role="banner"><hgroup>
-    <img src="/favicon.png" alt="Shawn">
-    <h1><a href="/">SHAWN LEE</a></h1>
-    
-    <h2>As much as I loved to be a geek, the path was chosen for freedom and enlightenment.</h2>
-    
-</hgroup>
+  <body>
+    <section>
+<nav class="navbar navbar-default navbar-fixed-top">
 
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:shawnLeeZX.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">因九州 Home</a></li>
-  <li><a href="/academic">成极客 Academic</a>
-      <!-- <ul> -->
-          <!-- <li><a href="/academic/academic-biography.html">Academic Biography</li> -->
-          <!-- <li><a href="/academic/transcript.html">Selected Transcript</li> -->
-          <!-- <li><a href="/academic/english-proficiency.html">English Proficiency</li> -->
-          <!-- <li><a href="/academic/research.html">Research</li> -->
-      <!-- </ul> -->
-  </li>
-  <li><a href="/blog">求自由 Blog</a></li>
-  <li><a href="/blog/archives">以启蒙 Archives</a>
-      <ul>
-          <li><a href="/blog/categories/cs">CS</a></li>
-          <li><a href="/blog/categories/research">Research</a></li>
-          <li><a href="/blog/categories/math">Math</a></li>
-          <li><a href="/blog/categories/life">Life</a></li>
-          <li><a href="/blog/categories/other">Other</a></li>
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Shawn</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/blog/archives">Archive</a></li>
       </ul>
-  </li>
-  <li><a href="/quotes"> Quotes</a></li>
-</ul>
 
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
 </nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
-    
-      <h1 class="entry-title">From Linux User to Administrator</h1>
-    
-    
-      <p class="meta">
-        
+</section>
+
+    <section>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="page-title" itemprop="name headline">From Linux User to Administrator</h1>
+      <p class="post-meta"><time datetime="2014-02-20T00:04:00+08:00" itemprop="datePublished">Feb 20, 2014</time></p>
+    </div>
+
+</div>
 
 
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-20T00:04:00+08:00" pubdate data-updated="true">Feb 20<span>th</span>, 2014</time>
-        
-         | <a href="#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-<div class="entry-content"><p>Recently, I received a job to do sysadmin stuff on some servers, which have
+  <div class="post-content container" itemprop="articleBody">
+    <p>Recently, I received a job to do sysadmin stuff on some servers, which have
 ubuntu installed on them. Here I wrote down what I have done for setting up
 those servers.</p>
 
@@ -185,34 +150,24 @@ of the necessary jobs should be done by a sysadmin.</p>
 be set.</p>
 
 <p><strong>NOTE</strong>: this method works for any linux distribution. For debian/ubuntu, a
-alternative will be the <code>update-alternatives</code> program. See 
+alternative will be the <code class="highlighter-rouge">update-alternatives</code> program. See 
 <a href="#cuttingedge">Use cutting-edge development tools in linux section</a>.</p>
 
 <p>Take setting vim as an example.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="c">### Setting for default editor.</span>
-</span><span class="line"><span class="c">### The default editor I use is vim.</span>
-</span><span class="line"><span class="c">### Define the absolute path of vim, thus to make the update of vi easier.</span>
-</span><span class="line"><span class="nb">export </span><span class="nv">VIM</span><span class="o">=</span>/usr/bin
-</span><span class="line"><span class="nb">export </span><span class="nv">VIMRUNTIME</span><span class="o">=</span>/usr/share/vim/vim73
-</span><span class="line">
-</span><span class="line"><span class="c">### Two variables concerning default editor of linux.</span>
-</span><span class="line"><span class="nb">export </span><span class="nv">EDITOR</span><span class="o">=</span><span class="nv">$VIM</span>/vim
-</span><span class="line"><span class="nb">export </span><span class="nv">VISUAL</span><span class="o">=</span><span class="nv">$VIM</span>/vim
-</span><span class="line"><span class="c">### The default editor defined for git.</span>
-</span><span class="line"><span class="nb">export </span><span class="nv">GIT_EDITOR</span><span class="o">=</span><span class="nv">$VIM</span>/vim
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">### Setting for default editor.</span>
+<span class="c">### The default editor I use is vim.</span>
+<span class="c">### Define the absolute path of vim, thus to make the update of vi easier.</span>
+<span class="nb">export </span><span class="nv">VIM</span><span class="o">=</span>/usr/bin
+<span class="nb">export </span><span class="nv">VIMRUNTIME</span><span class="o">=</span>/usr/share/vim/vim73
+
+<span class="c">### Two variables concerning default editor of linux.</span>
+<span class="nb">export </span><span class="nv">EDITOR</span><span class="o">=</span><span class="nv">$VIM</span>/vim
+<span class="nb">export </span><span class="nv">VISUAL</span><span class="o">=</span><span class="nv">$VIM</span>/vim
+<span class="c">### The default editor defined for git.</span>
+<span class="nb">export </span><span class="nv">GIT_EDITOR</span><span class="o">=</span><span class="nv">$VIM</span>/vim
+</code></pre>
+</div>
 
 <h2 id="change-color-display-in-the-bash-shell">Change Color Display in the Bash Shell</h2>
 
@@ -224,41 +179,37 @@ environment variable LS_COLORS should be changed.</p>
 <h2 id="monitor-who-is-sshing-in">Monitor who is sshing in.</h2>
 
 <p>Another need is to monitor who is logging on the server using ssh. This can be
-done via <code>ps</code> command.</p>
+done via <code class="highlighter-rouge">ps</code> command.</p>
 
-<p>The most commonly used two ps command is <code>ps aux</code> and <code>ps lax</code>. I will not
+<p>The most commonly used two ps command is <code class="highlighter-rouge">ps aux</code> and <code class="highlighter-rouge">ps lax</code>. I will not
 explain the meaning of those options. See man page or Chapter 5, Section 7 of
 the book <em>UINUX and Linux System Administrator Handbook 4th Edition</em>. The
 former one is for normal users. The latter one is more technical.</p>
 
 <p>To monitor who are sshing in, use the following command:</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">ps aux | egrep <span class="s2">&quot;ssh|STAT&quot;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ps aux | egrep <span class="s2">"ssh|STAT"</span>
+</code></pre>
+</div>
 
-<p>One thing need to be explained is the <code>STAT</code> in the regex pattern – it will
+<p>One thing need to be explained is the <code class="highlighter-rouge">STAT</code> in the regex pattern – it will
 make egrep leave the title of the ouput table for better viewing.</p>
 
 <p>The output is like(note the color may not be right since it is text copied)</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-</span><span class="line">root       723  0.0  0.0  50040  2944 ?        Ss   09:56   0:00 /usr/sbin/sshd -D
-</span><span class="line">root      7439  0.0  0.0  90248  3992 ?        Ss   14:43   0:00 sshd: shawn <span class="o">[</span>priv<span class="o">]</span>
-</span><span class="line">shawn     7553  0.0  0.0  90384  1956 ?        S    14:43   0:00 sshd: shawn@pts/0
-</span><span class="line">shawn     8207  0.0  0.0  13592   920 pts/4    S+   15:49   0:00 egrep --color<span class="o">=</span>auto ssh|STAT
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root       723  0.0  0.0  50040  2944 ?        Ss   09:56   0:00 /usr/sbin/sshd -D
+root      7439  0.0  0.0  90248  3992 ?        Ss   14:43   0:00 sshd: shawn <span class="o">[</span>priv]
+shawn     7553  0.0  0.0  90384  1956 ?        S    14:43   0:00 sshd: shawn@pts/0
+shawn     8207  0.0  0.0  13592   920 pts/4    S+   15:49   0:00 egrep --color<span class="o">=</span>auto ssh|STAT
+</code></pre>
+</div>
 
 <p>In the above example, only one user is sshing in.</p>
 
 <p>The first one(PID 723) should be the monitor server for accepting ssh client
 calls. sshd(PID 7439) and sshd(7553) should be both used to serve the ssh
-client. Every session requires those two. <code>sshd: shawn [priv]</code> means this is
+client. Every session requires those two. <code class="highlighter-rouge">sshd: shawn [priv]</code> means this is
 the privilege separation thread sshd runs for the user logging in. The last one
 is egrep I just typed.</p>
 
@@ -274,10 +225,10 @@ still really, really annoying, mind you, but not devastating.<br />
 <h2 id="account-management">Account Management</h2>
 
 <p>This practice works mainly for Ubuntu/Debian system, which have a higher level
-utility <code>adduser</code> command to add users. However, the principles works pretty
+utility <code class="highlighter-rouge">adduser</code> command to add users. However, the principles works pretty
 the same, I guess.</p>
 
-<p>Be default, <code>adduser</code> will create a user and a group with the same name for
+<p>Be default, <code class="highlighter-rouge">adduser</code> will create a user and a group with the same name for
 this user, which means this group will only have one member if no manual change
 made. To better capture the structure of your users, the group feature of Linux
 should be better utilized.</p>
@@ -285,25 +236,24 @@ should be better utilized.</p>
 <p>For example, the simplest devision of users are sysadmins and users. The
 following command create two groups:</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">adduser --group sysadmin
-</span><span class="line">adduser --group user
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>adduser --group sysadmin
+adduser --group user
+</code></pre>
+</div>
 
-<p>Then add one user to the <code>sysadmin</code> group:</p>
+<p>Then add one user to the <code class="highlighter-rouge">sysadmin</code> group:</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">adduser USER_NAME --ingroup sysadmin
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>adduser USER_NAME --ingroup sysadmin
+</code></pre>
+</div>
 
 <p>However, this does not empower the user with the administrator’s power. To
-achieve this, you have to add the user to the <code>sudo</code> group. The method is the
+achieve this, you have to add the user to the <code class="highlighter-rouge">sudo</code> group. The method is the
 same:</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">adduser USER_NAME --ingroup sysadmin
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>adduser USER_NAME --ingroup sysadmin
+</code></pre>
+</div>
 
 <p>To know more about setting sudo users and groups, see this <a href="http://mixeduperic.com/ubuntu/how-to-setup-a-user-or-group-with-sudo-privileges-on-ubuntu.html">post</a>.</p>
 
@@ -320,22 +270,20 @@ from source.</p>
 
 <p>To use this ppa, type the following commands:</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-</span><span class="line">sudo apt-get update
-</span><span class="line">sudo apt-get install g++-4.8
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt-get update
+sudo apt-get install g++-4.8
+</code></pre>
+</div>
 
 <p>However, this is not done yet. To make the 4.8 version gcc/g++ the default gcc
 compiler, use the following commands:</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 80 --slave /usr/bin/g++ g++ /usr/bin/g++-4.8
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 80 --slave /usr/bin/g++ g++ /usr/bin/g++-4.8
+</code></pre>
+</div>
 
-<p>See the man page of <code>update-alternatives</code> to understand its usage.</p>
+<p>See the man page of <code class="highlighter-rouge">update-alternatives</code> to understand its usage.</p>
 
 <p><a name="compilevim"></a></p>
 
@@ -345,81 +293,55 @@ compiler, use the following commands:</p>
 vim from source. Consult the vim source doc for the meaning of their config if
 needed.</p>
 
-<p><strong>NOTE</strong>:<code>env LDFLAGS=</code> tells bash where to find shared libs, which will be detailed
+<p><strong>NOTE</strong>:<code class="highlighter-rouge">env LDFLAGS=</code> tells bash where to find shared libs, which will be detailed
 later.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="c">#!/bin/bash</span>
-</span><span class="line">
-</span><span class="line">env <span class="nv">LDFLAGS</span><span class="o">=</span><span class="s2">&quot;$LDFLAGS -L/usr/lib/x86_64-linux-gnu/&quot;</span> ./configure --disable-gui <span class="se">\</span>
-</span><span class="line">        --enable-luainterp <span class="se">\</span>
-</span><span class="line">        --enable-perlinterp <span class="se">\</span>
-</span><span class="line">        --enable-pythoninterp <span class="se">\</span>
-</span><span class="line">        --enable-rubyinterp <span class="se">\</span>
-</span><span class="line">        --enable-tclinterp <span class="se">\</span>
-</span><span class="line">        --enable-cscope <span class="se">\</span>
-</span><span class="line">        --enable-multibyte <span class="se">\</span>
-</span><span class="line">        --enable-xim <span class="se">\</span>
-</span><span class="line">        --enable-fontset <span class="se">\</span>
-</span><span class="line">        --with-features<span class="o">=</span>huge <span class="se">\</span>
-</span><span class="line">        --prefix<span class="o">=</span>/home/shawn/mine/softwares/vim
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+env <span class="nv">LDFLAGS</span><span class="o">=</span><span class="s2">"</span><span class="nv">$LDFLAGS</span><span class="s2"> -L/usr/lib/x86_64-linux-gnu/"</span> ./configure --disable-gui <span class="se">\</span>
+        --enable-luainterp <span class="se">\</span>
+        --enable-perlinterp <span class="se">\</span>
+        --enable-pythoninterp <span class="se">\</span>
+        --enable-rubyinterp <span class="se">\</span>
+        --enable-tclinterp <span class="se">\</span>
+        --enable-cscope <span class="se">\</span>
+        --enable-multibyte <span class="se">\</span>
+        --enable-xim <span class="se">\</span>
+        --enable-fontset <span class="se">\</span>
+        --with-features<span class="o">=</span>huge <span class="se">\</span>
+        --prefix<span class="o">=</span>/home/shawn/mine/softwares/vim
+</code></pre>
+</div>
 <p>However, one thing that may bring trouble is the dependent library needed when
 compiling vim.</p>
 
 <p>If you are not bother not knowing what you are installing, you can just install
 all the dependence using:</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">sudo apt-get install build-dep vim
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo apt-get install build-dep vim
+</code></pre>
+</div>
 <p>But I want to know what I have installed on my computer and what are they used
 for. Thus I perfer installing those dependences one by one by hand.</p>
 
 <p>Here I note down the dependence I have to installe.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="c"># For compiling vim from source.</span>
-</span><span class="line"><span class="c">## Install terminal library.</span>
-</span><span class="line">sudo apt-get install libncurses5-dev
-</span><span class="line"><span class="c">## Install lua library.</span>
-</span><span class="line">sudo apt-get install liblua5.2-dev
-</span><span class="line">sudo apt-get install lua5.2
-</span><span class="line"><span class="c">## Install perl library.</span>
-</span><span class="line">sudo apt-get install libperl-dev
-</span><span class="line"><span class="c">## Install python library.</span>
-</span><span class="line">sudo apt-get install python2.7-dev
-</span><span class="line"><span class="c">## Install ruby library.</span>
-</span><span class="line">sudo apt-get install ruby-dev
-</span><span class="line"><span class="c">## Install tcl library.</span>
-</span><span class="line">sudo apt-get install tcl-dev
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># For compiling vim from source.</span>
+<span class="c">## Install terminal library.</span>
+sudo apt-get install libncurses5-dev
+<span class="c">## Install lua library.</span>
+sudo apt-get install liblua5.2-dev
+sudo apt-get install lua5.2
+<span class="c">## Install perl library.</span>
+sudo apt-get install libperl-dev
+<span class="c">## Install python library.</span>
+sudo apt-get install python2.7-dev
+<span class="c">## Install ruby library.</span>
+sudo apt-get install ruby-dev
+<span class="c">## Install tcl library.</span>
+sudo apt-get install tcl-dev
+</code></pre>
+</div>
 <p><strong>NOTE</strong>: what library you need to install depends on the packages installed on
 your operating system. The one you need to install is highly probably not the
 same with me.</p>
@@ -429,13 +351,13 @@ compilcation of vim.</p>
 
 <h3 id="tell-bash-where-to-find-the-shared-lib-needed">Tell bash where to find the shared lib needed.</h3>
 
-<p>When you are running <code>./configure</code>, it will only try to find shared libs in
+<p>When you are running <code class="highlighter-rouge">./configure</code>, it will only try to find shared libs in
 default folder. For example, at the first time I was compiling vim,
-<code>./configure</code> could not find a terminal library to use – meaning it cannot
-find <code>libncurses.so</code>. By reading the output log, I find it only try to search
-shared lib in folder <code>/usr/lib</code>, however, <code>libncurses.so</code> resides in
-<code>/usr/lib/x86_64-linux-gnu/</code>, which I guess is because the machine I am
-compiling vim on is 64bit. So to let it know where to find those libs, <code>env LDFLAGS=...</code> is added before <code>./configure</code>.</p>
+<code class="highlighter-rouge">./configure</code> could not find a terminal library to use – meaning it cannot
+find <code class="highlighter-rouge">libncurses.so</code>. By reading the output log, I find it only try to search
+shared lib in folder <code class="highlighter-rouge">/usr/lib</code>, however, <code class="highlighter-rouge">libncurses.so</code> resides in
+<code class="highlighter-rouge">/usr/lib/x86_64-linux-gnu/</code>, which I guess is because the machine I am
+compiling vim on is 64bit. So to let it know where to find those libs, <code class="highlighter-rouge">env LDFLAGS=...</code> is added before <code class="highlighter-rouge">./configure</code>.</p>
 
 <h3 id="make-sure-the-name-of-the-shared-lib-is-right">Make sure the name of the shared lib is right.</h3>
 
@@ -445,143 +367,37 @@ standard folder. The mechanism used by linux is a little complicated. See this
 <a href="http://www.tldp.org/HOWTO/Program-Library-HOWTO/">post</a> to be better informed if you want.</p>
 
 <p>Here I just illustrate this thing by an example. When I am compiling vim,
-<code>./configure</code> could not find the shared lib of lua. By checking the name of the
-shared lib installed of lua, I have its name is <code>liblua5.2.so</code> in folder
-<code>/usr/lib/x86_64-linux-gnu</code>. To make it can be recognized by <code>./configure</code>, I
+<code class="highlighter-rouge">./configure</code> could not find the shared lib of lua. By checking the name of the
+shared lib installed of lua, I have its name is <code class="highlighter-rouge">liblua5.2.so</code> in folder
+<code class="highlighter-rouge">/usr/lib/x86_64-linux-gnu</code>. To make it can be recognized by <code class="highlighter-rouge">./configure</code>, I
 created a symbol link using the following command as a work around:</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="bash"><span class="line">ln -s liblua5.2.so liblua.so
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-<p>### Miscellaneous</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ln -s liblua5.2.so liblua.so
+</code></pre>
+</div>
+<h3 id="miscellaneous">Miscellaneous</h3>
 
 <h4 id="clipboard-in-pure-terminal">-clipboard in pure terminal</h4>
 
 <p>Clipboards of vi is handled by X11 on linux. So if you are using vim on
 server, it will be compiled without clipboard feature, meaning you cannot not
-access system clipboard from vim, and <code>--version</code> will show <code>-clipboard</code>.</p>
+access system clipboard from vim, and <code class="highlighter-rouge">--version</code> will show <code class="highlighter-rouge">-clipboard</code>.</p>
 
 <p>If you want to compile vim for usage on desktop environment, see this after
 this post
 <a href="/blog/2014/02/20/setup-linux-from-fresh-installation-using-ansible/#desktopvim">here</a>.</p>
-</div>
 
+  </div>
 
-  <footer>
-    <p class="meta">
-      
-  
-
-<span class="byline author vcard">Posted by <span class="fn">Shawn</span></span>
-
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-20T00:04:00+08:00" pubdate data-updated="true">Feb 20<span>th</span>, 2014</time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/cs/'>CS</a>, <a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/note/'>Note</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2014/02/15/repost-timeline-the-advance-of-the-data-civilization/" title="Previous Post: [Repost] Timeline: The Advance of the Data Civilization">&laquo; [Repost] Timeline: The Advance of the Data Civilization</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2014/02/20/linux-administration-beyond-one-machine/" title="Next Post: Linux Administration Beyond One Machine">Linux Administration Beyond One Machine &raquo;</a>
-      
-    </p>
-  </footer>
 </article>
 
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
+    </section>
 
-</div>
-
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
     
-      <li class="post">
-        <a href="/blog/2016/08/29/key-points-of-understanding-deep-conv-net/">Key Points of Understanding Deep Conv Net</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/07/30/repost-explosion-of-the-space-shuttle-challenger-address-to-the-nation/">[Repost] Explosion of the Space Shuttle Challenger Address to the Nation</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/05/01/note-on-representation-of-operator/">Note on Representation of Operator</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/03/15/a-quick-survey-on-log-processing/">A Quick Survey on Distributed Log Processing: Unison and Logstash</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/03/08/note-on-installing-ubuntu-on-newer-machines/">Note on Installing Ubuntu on Newer Machines</a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><embed type='application/x-shockwave-flash' src='/javascripts/tagcloud.swf'width='100%' height='250' bgcolor='#f2f2f2' id='tagcloudflash' name='tagcloudflash' quality='high' allowscriptaccess='always'flashvars="tcolor=0x333333&amp;tcolor2=0x333333&amp;hicolor=0x000000&amp;tspeed=100&amp;distr=true&amp;mode=tags&amp;tagcloud=%3Ctags%3E%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fai%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EAI%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fanalysis%27+style%3D%27font-size%3A+11.11111111111111%25%27%3EAnalysis%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fandroid%27+style%3D%27font-size%3A+11.11111111111111%25%27%3EAndroid%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fansible%27+style%3D%27font-size%3A+11.481481481481481%25%27%3EAnsible%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fant%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EAnt%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fassembly%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EAssembly%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fbibtex%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EBibtex%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fc%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EC%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fc-%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EC%2B%2B%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcnn%27+style%3D%27font-size%3A+10.74074074074074%25%27%3ECNN%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcs%27+style%3D%27font-size%3A+32.96296296296296%25%27%3ECS%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcscope%27+style%3D%27font-size%3A+10.37037037037037%25%27%3ECscope%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fctags%27+style%3D%27font-size%3A+10.37037037037037%25%27%3ECtags%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fculture%27+style%3D%27font-size%3A+10.37037037037037%25%27%3ECulture%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fcv%27+style%3D%27font-size%3A+11.11111111111111%25%27%3ECV%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fdeep-learning%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EDeep_Learning%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fdesign%27+style%3D%27font-size%3A+12.222222222222221%25%27%3EDesign%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fdjvu%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EDjvu%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Feclim%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EEclim%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Feconomics%27+style%3D%27font-size%3A+10.74074074074074%25%27%3EEconomics%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Femacs%27+style%3D%27font-size%3A+12.592592592592592%25%27%3EEmacs%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fencoding%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EEncoding%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fexcerpt%27+style%3D%27font-size%3A+11.481481481481481%25%27%3EExcerpt%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Ffourier%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EFourier%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Ffunctional-analysis%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EFunctional_Analysis%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fgnome%27+style%3D%27font-size%3A+10.74074074074074%25%27%3EGnome%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fhadoop%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EHadoop%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fhistory%27+style%3D%27font-size%3A+10.74074074074074%25%27%3EHistory%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Finformation%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EInformation%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fjava%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EJava%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flatex%27+style%3D%27font-size%3A+11.851851851851851%25%27%3ELaTeX%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flibconfig%27+style%3D%27font-size%3A+10.37037037037037%25%27%3ELibconfig%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flife%27+style%3D%27font-size%3A+20.37037037037037%25%27%3ELife%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flinux%27+style%3D%27font-size%3A+18.14814814814815%25%27%3ELinux%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Flwip%27+style%3D%27font-size%3A+10.37037037037037%25%27%3ELwip%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fmarkdown%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EMarkdown%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fmath%27+style%3D%27font-size%3A+19.62962962962963%25%27%3EMath%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fmatrix%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EMatrix%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fml%27+style%3D%27font-size%3A+11.851851851851851%25%27%3EML%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fnetwork%27+style%3D%27font-size%3A+10.37037037037037%25%27%3ENetwork%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fnote%27+style%3D%27font-size%3A+50.0%25%27%3ENote%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Foctave%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EOctave%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Foctopress%27+style%3D%27font-size%3A+10.74074074074074%25%27%3EOctopress%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Foptimization%27+style%3D%27font-size%3A+12.222222222222221%25%27%3EOptimization%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fother%27+style%3D%27font-size%3A+12.592592592592592%25%27%3EOther%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fpdf%27+style%3D%27font-size%3A+10.74074074074074%25%27%3EPdf%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fperf%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EPerf%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fpgm%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EPGM%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fphd%27+style%3D%27font-size%3A+11.851851851851851%25%27%3EPhD%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fpresentation%27+style%3D%27font-size%3A+10.74074074074074%25%27%3EPresentation%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fprobability%27+style%3D%27font-size%3A+11.11111111111111%25%27%3EProbability%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fproof%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EProof%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fpython%27+style%3D%27font-size%3A+11.11111111111111%25%27%3EPython%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Freading%27+style%3D%27font-size%3A+14.074074074074074%25%27%3EReading%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fregex%27+style%3D%27font-size%3A+10.74074074074074%25%27%3ERegex%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Frepost%27+style%3D%27font-size%3A+20.74074074074074%25%27%3ERepost%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fresearch%27+style%3D%27font-size%3A+21.48148148148148%25%27%3EResearch%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fsignal-processing%27+style%3D%27font-size%3A+10.74074074074074%25%27%3ESignal_Processing%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fstatistics%27+style%3D%27font-size%3A+11.11111111111111%25%27%3EStatistics%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fteaching%27+style%3D%27font-size%3A+10.37037037037037%25%27%3ETeaching%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Ftopology%27+style%3D%27font-size%3A+10.37037037037037%25%27%3ETopology%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fvim%27+style%3D%27font-size%3A+12.962962962962962%25%27%3EVim%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fwavelet%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EWavelet%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fxml%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EXml%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2FshawnLeeZX.github.io%2Fblog%2Fcategories%2Fyaml%27+style%3D%27font-size%3A+10.37037037037037%25%27%3EYaml%3C%2Fa%3E+%3C%2Ftags%3E"></span>
-</section>
-
-<section>
-  <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/categories/ai/'>AI (1)</a></li><li><a href='/blog/categories/analysis/'>Analysis (3)</a></li><li><a href='/blog/categories/android/'>Android (3)</a></li><li><a href='/blog/categories/ansible/'>Ansible (4)</a></li><li><a href='/blog/categories/ant/'>Ant (1)</a></li><li><a href='/blog/categories/assembly/'>Assembly (1)</a></li><li><a href='/blog/categories/bibtex/'>Bibtex (1)</a></li><li><a href='/blog/categories/c/'>C (1)</a></li><li><a href='/blog/categories/c-plus-plus/'>C++ (1)</a></li><li><a href='/blog/categories/cnn/'>CNN (2)</a></li><li><a href='/blog/categories/cs/'>CS (62)</a></li><li><a href='/blog/categories/cscope/'>Cscope (1)</a></li><li><a href='/blog/categories/ctags/'>Ctags (1)</a></li><li><a href='/blog/categories/culture/'>Culture (1)</a></li><li><a href='/blog/categories/cv/'>CV (3)</a></li><li><a href='/blog/categories/deep-learning/'>Deep_Learning (1)</a></li><li><a href='/blog/categories/design/'>Design (6)</a></li><li><a href='/blog/categories/djvu/'>Djvu (1)</a></li><li><a href='/blog/categories/eclim/'>Eclim (1)</a></li><li><a href='/blog/categories/economics/'>Economics (2)</a></li><li><a href='/blog/categories/emacs/'>Emacs (7)</a></li><li><a href='/blog/categories/encoding/'>Encoding (1)</a></li><li><a href='/blog/categories/excerpt/'>Excerpt (4)</a></li><li><a href='/blog/categories/fourier/'>Fourier (1)</a></li><li><a href='/blog/categories/functional-analysis/'>Functional_Analysis (1)</a></li><li><a href='/blog/categories/gnome/'>Gnome (2)</a></li><li><a href='/blog/categories/hadoop/'>Hadoop (1)</a></li><li><a href='/blog/categories/history/'>History (2)</a></li><li><a href='/blog/categories/information/'>Information (1)</a></li><li><a href='/blog/categories/java/'>Java (1)</a></li><li><a href='/blog/categories/latex/'>LaTeX (5)</a></li><li><a href='/blog/categories/libconfig/'>Libconfig (1)</a></li><li><a href='/blog/categories/life/'>Life (28)</a></li><li><a href='/blog/categories/linux/'>Linux (22)</a></li><li><a href='/blog/categories/lwip/'>Lwip (1)</a></li><li><a href='/blog/categories/markdown/'>Markdown (1)</a></li><li><a href='/blog/categories/math/'>Math (26)</a></li><li><a href='/blog/categories/matrix/'>Matrix (1)</a></li><li><a href='/blog/categories/ml/'>ML (5)</a></li><li><a href='/blog/categories/network/'>Network (1)</a></li><li><a href='/blog/categories/note/'>Note (108)</a></li><li><a href='/blog/categories/octave/'>Octave (1)</a></li><li><a href='/blog/categories/octopress/'>Octopress (2)</a></li><li><a href='/blog/categories/optimization/'>Optimization (6)</a></li><li><a href='/blog/categories/other/'>Other (7)</a></li><li><a href='/blog/categories/pdf/'>Pdf (2)</a></li><li><a href='/blog/categories/perf/'>Perf (1)</a></li><li><a href='/blog/categories/pgm/'>PGM (1)</a></li><li><a href='/blog/categories/phd/'>PhD (5)</a></li><li><a href='/blog/categories/presentation/'>Presentation (2)</a></li><li><a href='/blog/categories/probability/'>Probability (3)</a></li><li><a href='/blog/categories/proof/'>Proof (1)</a></li><li><a href='/blog/categories/python/'>Python (3)</a></li><li><a href='/blog/categories/reading/'>Reading (11)</a></li><li><a href='/blog/categories/regex/'>Regex (2)</a></li><li><a href='/blog/categories/repost/'>Repost (29)</a></li><li><a href='/blog/categories/research/'>Research (31)</a></li><li><a href='/blog/categories/signal-processing/'>Signal_Processing (2)</a></li><li><a href='/blog/categories/statistics/'>Statistics (3)</a></li><li><a href='/blog/categories/teaching/'>Teaching (1)</a></li><li><a href='/blog/categories/topology/'>Topology (1)</a></li><li><a href='/blog/categories/vim/'>Vim (8)</a></li><li><a href='/blog/categories/wavelet/'>Wavelet (1)</a></li><li><a href='/blog/categories/xml/'>Xml (1)</a></li><li><a href='/blog/categories/yaml/'>Yaml (1)</a></li></ul>
-</section>
-
-
-
-
-
-  
-</aside>
-
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2016 - Shawn -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-<script type="text/javascript">
+    <div class="container">
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><script type="text/javascript">
       var disqus_shortname = 'nautilus-shell-of-hhiker';
       
         
@@ -596,16 +412,16 @@ this post
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+      </section>
+    </div>
+    
 
+    <!-- <nav class="navbar navbar-default navbar-fixed-bottom"> -->
+<!-- <div class="container footer-content"> -->
+    <!-- Nothing is there. -->
+<!-- </div> -->
+<!-- </nav> -->
+  </body>
 
-
-
-
-
-
-
-
-
-
-</body>
 </html>
