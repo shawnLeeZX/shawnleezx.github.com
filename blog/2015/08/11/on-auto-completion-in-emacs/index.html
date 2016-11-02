@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Shawn" property="og:site_name">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <meta content="On Auto Completion in Emacs" property="og:title">
+  
+
+  
+  <meta content="article" property="og:type">
+  
+
+  
+  <meta content="<h1>World Hacker's Notebook</h1>" property="og:description">
+  
+
+  
+  <meta content="http://shawnLeeZX.github.io/blog/2015/08/11/on-auto-completion-in-emacs/" property="og:url">
+  
+
+  
+  <meta content="2015-08-11T09:07:00+08:00" property="article:published_time">
+  <meta content="http://shawnLeeZX.github.io/about/" property="article:author">
+  
+
+  <meta property="og:image" content="">
+
+  
+  
+  <meta content="Emacs" property="article:section">
+  
+  
+
+  
+  
+  
+
+  <title>On Auto Completion in Emacs - Shawn</title>
+  <meta name="description" content="Just finished setting up Emacs usingcompany to do auto-completion. Here I wouldlike to note down the reason why I made the shift fromauto-complete to company...">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!-- Typesetting math using MathJax -->
+  <!-- mathjax config similar to math.stackexchange -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'] ],
+       displayMath: [ ['$$', '$$']],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     },
+     messageStyle: "none",
+     "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+   });
+  </script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2015/08/11/on-auto-completion-in-emacs/">
+  <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
+</head>
+
+  <body>
+    <section>
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Shawn</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/blog/archives">Archive</a></li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</section>
+
+    <section>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="page-title" itemprop="name headline">On Auto Completion in Emacs</h1>
+      <p class="post-meta"><time datetime="2015-08-11T09:07:00+08:00" itemprop="datePublished">Aug 11, 2015</time></p>
+    </div>
+
+</div>
+
+
+  <div class="post-content container" itemprop="articleBody">
+    <p>Just finished setting up Emacs using
+<a href="http://company-mode.github.io/">company</a> to do auto-completion. Here I would
+like to note down the reason why I made the shift from
+<a href="https://github.com/auto-complete/auto-complete">auto-complete</a> to <code class="highlighter-rouge">company</code>
+for programming. However, for tasks like writing configuration file, LaTeX
+documents or markdown note, I still use <code class="highlighter-rouge">auto-complete</code>.</p>
+
+<!-- more -->
+
+<h2 id="comparison-between-company-and-auto-complete">Comparison Between <code class="highlighter-rouge">company</code> and <code class="highlighter-rouge">auto-complete</code></h2>
+
+<p>At the first iteration of my Emacs configuration for C/C++, I followed the
+following three videos to get a basic setup:</p>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=HTUE03LnaXA">Emacs as a C/C++ Editor/IDE (Part I): auto-complete, yasnippet, and autoplete</a></li>
+  <li><a href="https://www.youtube.com/watch?v=r_HW0EB67eY">Emacs as a C/C++ Editor/IDE (Part 2): iedit, flymake-google-cpplint, google-c-style</a></li>
+  <li><a href="https://www.youtube.com/watch?v=Ib914gNr0ys">Emacs as a C/C++ Editor/IDE (Part 3): Installing CEDET mode for true intellisense</a></li>
+</ul>
+
+<p>which introduces the <code class="highlighter-rouge">auto-complete</code> for doing automatically completion.</p>
+
+<p>At the same time, the extension
+ <a href="https://github.com/tkf/emacs-jedi">emacs-jedi</a> only supports <code class="highlighter-rouge">auto-complete</code>
+backend. And <code class="highlighter-rouge">emacs-jedi</code> is the only python code completion extension for
+Emacs at then, which turns out that there were a number of others I did not
+notice(see previously post on Python in Emacs). So I decided to use
+auto-complete.</p>
+
+<p>Then as the projects I worked on got bigger, the possible candidates provided
+by <code class="highlighter-rouge">auto-complete</code> becomes too large to be useful due to the reason that
+<code class="highlighter-rouge">auto-complete</code> will fetch all candidates from all sources.</p>
+
+<p>The same problem happens to <code class="highlighter-rouge">auto-complete</code> in file path completion as
+well. You get a lot of non-sense completion when you only want to get
+completion in the path you want, which is a rather narrow space in the whole
+space of all your possible completion candidates.</p>
+
+<p>There could be a way to dynamically change the order of sources, but <code class="highlighter-rouge">company</code>
+seems to do this automatically or people writes the backends for <code class="highlighter-rouge">company</code> do
+this. In whatever case, the user does not need to attend to those things.</p>
+
+<p>That is not the fatal problem yet, <code class="highlighter-rouge">auto-complete</code> has a annoying problem which
+I do not know how to fix is that the time needed for the completion list to
+respond to new input is at the magnitude of seconds. I am pretty sure this is
+not a performance problem given that the completion list comes up pretty fast.</p>
+
+<p><code class="highlighter-rouge">company</code> also solves the file completion problem and c headers completion
+problem by providing a separate function in their respective backends, which I
+just need to map another key binding to it so the completion will be very
+accurate when you are programming.</p>
+
+<p><code class="highlighter-rouge">auto-complete</code> does good when you are writing text heavy contents such as
+LaTeX or markdown but not logically heavy ones such as programming language.</p>
+
+<p>For a more complete comparison you could refer to the end of the 
+<a href="http://company-mode.github.io/">github page</a> of <code class="highlighter-rouge">company</code>.</p>
+
+<h2 id="on-using-them-together">On Using Them Together</h2>
+
+<p>One more realization is that those two extensions are not exclusive at all. I
+did not find a backend like the sources provided by <code class="highlighter-rouge">auto-complete</code> for
+complete word in buffers related functions, which is the area <code class="highlighter-rouge">auto-complete</code> 
+works well.</p>
+
+<p>Below is some sample on how to use them from my
+<a href="https://github.com/shawnLeeZX/emacs.d">Emacs configuration</a>.</p>
+
+<div class="language-cl highlighter-rouge"><pre class="highlight"><code><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">'after-init-hook</span> <span class="ss">'global-company-mode</span><span class="p">)</span>
+
+<span class="c1">;;   "Modes for which `company-mode' mode is turned on by</span>
+<span class="c1">;; `global-company-mode'.  If nil, means no modes.  If t, then all major modes</span>
+<span class="c1">;; have it turned on.  If a list, it should be a list of `major-mode' symbol</span>
+<span class="c1">;; names for which `company-mode' should be automatically turned on.  The sense</span>
+<span class="c1">;; of the list is negated if it begins with `not'.  For example: (c-mode</span>
+<span class="c1">;; c++-mode) means that `company-mode' is turned on for buffers in C and C++</span>
+<span class="c1">;; modes only.  (not message-mode) means that `company-mode' is always turned</span>
+<span class="c1">;; on except in `message-mode' buffers."</span>
+<span class="p">(</span><span class="k">setq</span> <span class="nv">company-global-modes</span> <span class="o">'</span><span class="p">(</span>
+                            <span class="nv">c-mode</span>
+                            <span class="nv">c++-mode</span>
+                            <span class="p">))</span>
+</code></pre>
+</div>
+
+<div class="language-cl highlighter-rouge"><pre class="highlight"><code><span class="c1">;; Enable auto-complete for modes in ac-modes by default.</span>
+<span class="p">(</span><span class="nv">global-auto-complete-mode</span> <span class="no">t</span><span class="p">)</span>
+<span class="c1">;; We reset the default mode for auto-complete given that we want to some modes</span>
+<span class="c1">;; to use company-mode.</span>
+<span class="p">(</span><span class="nv">set-default</span> <span class="ss">'ac-modes</span>
+             <span class="o">'</span><span class="p">(</span>
+               <span class="nv">magit-log-edit-mode</span>
+               <span class="nv">log-edit-mode</span> <span class="nv">org-mode</span> <span class="nv">text-mode</span> <span class="nv">haml-mode</span>
+               <span class="nv">git-commit-mode</span>
+               <span class="nv">conf-mode</span> <span class="nv">conf-unix-mode</span> <span class="nv">conf-colon-mode</span>
+               <span class="nv">inferior-emacs-lisp-mode</span> <span class="nv">inferior-python-mode</span>
+               <span class="nv">sql-interactive-mode</span>
+               <span class="nv">sass-mode</span> <span class="nv">yaml-mode</span> <span class="nv">csv-mode</span> <span class="nv">espresso-mode</span> <span class="nv">haskell-mode</span>
+               <span class="nv">html-mode</span> <span class="nv">nxml-mode</span> <span class="nv">smarty-mode</span> <span class="nv">clojure-mode</span>
+               <span class="nv">lisp-mode</span> <span class="nv">textile-mode</span> <span class="nv">markdown-mode</span> <span class="nv">tuareg-mode</span>
+               <span class="nv">js3-mode</span> <span class="nv">css-mode</span> <span class="nv">less-css-mode</span> <span class="nv">sql-mode</span>
+               <span class="nv">web-mode</span>
+               <span class="p">))</span>
+</code></pre>
+</div>
+
+<h2 id="difference-between-tab-and-tab">Difference Between <tab> and TAB</tab></h2>
+
+<p>The last thing I want to note down is that TAB key.</p>
+
+<p>Emacs has two tabs, <code class="highlighter-rouge">(kbd "&lt;tab&gt;")</code> and <code class="highlighter-rouge">(kbd "TAB")</code>. To make things more
+complex, <code class="highlighter-rouge">yasnippet</code>, <code class="highlighter-rouge">auto-complete</code>, indentation in Emacs, typing real tab
+stops and <code class="highlighter-rouge">company</code> all uses <code class="highlighter-rouge">tab</code>, which makes it very complicated.</p>
+
+<p>From this
+<a href="https://www.reddit.com/r/emacs/comments/2aemny/difference_between_tab_and_tab/">thread</a>
+in Reddit, here, I knew that <code class="highlighter-rouge">(kbd "&lt;tab&gt;")</code> stands for the physical key you
+have pressed and <code class="highlighter-rouge">(kbd "TAB")</code> stands for the control character. So to speak,
+normally, if you are not binding <code class="highlighter-rouge">&lt;tab&gt;</code> to <code class="highlighter-rouge">TAB</code>, the tab you typed is not
+actually the control character TAB, but triggers some function that is hooked
+on the physical key’s response.</p>
+
+<p>As for the second part of the puzzle, when you are typing tab at a location
+where the indentation of the statement is not right, Emacs will indent your
+line first. The key to differentiate <code class="highlighter-rouge">yasnippet</code> and <code class="highlighter-rouge">auto-complete</code> is whether
+you are typing or not when you pressed the tab key. If you are, completion menu
+will be triggered, if you are not <code class="highlighter-rouge">yasnippet</code> will be triggered(this is a
+mechanism that could be configured in auto-complete and is not the default, by
+default, I think the completion menu will pop up automatically). As for
+<code class="highlighter-rouge">company</code> and <code class="highlighter-rouge">yasnippet</code>, in my experiments, after setting the trigger key to
+tab, by default it seems that snippets are always gotten expanded the first,
+then <code class="highlighter-rouge">company-complete</code> will be triggered if no snippets could be found. See
+the following code snippets for how to set up key binding for <code class="highlighter-rouge">company</code>(it only
+uses <code class="highlighter-rouge">company</code> if <code class="highlighter-rouge">irony-mode</code> is in usage).</p>
+
+<div class="language-cl highlighter-rouge"><pre class="highlight"><code><span class="c1">;; Setup keymapping for company-complete.</span>
+<span class="p">(</span><span class="nv">add-hook</span> <span class="ss">'irony-mode-hook</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">()</span>
+                             <span class="p">(</span><span class="nv">local-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">"&lt;tab&gt;"</span><span class="p">)</span> <span class="ss">'company-complete-common</span><span class="p">)</span>
+                             <span class="p">(</span><span class="nv">local-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">"C-c C-f"</span><span class="p">)</span> <span class="ss">'company-files</span><span class="p">)</span>
+                             <span class="p">))</span>
+</code></pre>
+</div>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=HTUE03LnaXA">Emacs as a C/C++ Editor/IDE (Part I): auto-complete, yasnippet, and autoplete</a></li>
+  <li><a href="https://www.youtube.com/watch?v=r_HW0EB67eY">Emacs as a C/C++ Editor/IDE (Part 2): iedit, flymake-google-cpplint, google-c-style</a></li>
+  <li><a href="https://www.youtube.com/watch?v=Ib914gNr0ys">Emacs as a C/C++ Editor/IDE (Part 3): Installing CEDET mode for true intellisense</a></li>
+  <li><a href="http://tuhdo.github.io/c-ide.html">tutorial on customizing C/C++ environment for emacs</a></li>
+  <li><a href="https://www.masteringemacs.org/article/mastering-key-bindings-emacs">Mastering Key Bindings in Emacs</a></li>
+</ul>
+
+  </div>
+
+</article>
+
+    </section>
+
+    
+    <div class="container">
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2015/08/11/on-auto-completion-in-emacs/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2015/08/11/on-auto-completion-in-emacs/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+      </section>
+    </div>
+    
+
+    <!-- <nav class="navbar navbar-default navbar-fixed-bottom"> -->
+<!-- <div class="container footer-content"> -->
+    <!-- Nothing is there. -->
+<!-- </div> -->
+<!-- </nav> -->
+  </body>
+
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Shawn" property="og:site_name">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <meta content="Setup Linux From Fresh Installation Using Ansible" property="og:title">
+  
+
+  
+  <meta content="article" property="og:type">
+  
+
+  
+  <meta content="<h1>World Hacker's Notebook</h1>" property="og:description">
+  
+
+  
+  <meta content="http://shawnLeeZX.github.io/blog/2014/02/20/setup-linux-from-fresh-installation-using-ansible/" property="og:url">
+  
+
+  
+  <meta content="2014-02-20T00:19:00+08:00" property="article:published_time">
+  <meta content="http://shawnLeeZX.github.io/about/" property="article:author">
+  
+
+  <meta property="og:image" content="">
+
+  
+  
+  <meta content="CS" property="article:section">
+  
+  
+
+  
+  
+  
+
+  <title>Setup Linux From Fresh Installation Using Ansible - Shawn</title>
+  <meta name="description" content="Previously, I have wrote two posts about linux administration – thefirst one talked about the jobs should be done on one machine, thesecond one talked about ...">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!-- Typesetting math using MathJax -->
+  <!-- mathjax config similar to math.stackexchange -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'] ],
+       displayMath: [ ['$$', '$$']],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     },
+     messageStyle: "none",
+     "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+   });
+  </script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2014/02/20/setup-linux-from-fresh-installation-using-ansible/">
+  <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
+</head>
+
+  <body>
+    <section>
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Shawn</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/blog/archives">Archive</a></li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</section>
+
+    <section>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="page-title" itemprop="name headline">Setup Linux From Fresh Installation Using Ansible</h1>
+      <p class="post-meta"><time datetime="2014-02-20T00:19:00+08:00" itemprop="datePublished">Feb 20, 2014</time></p>
+    </div>
+
+</div>
+
+
+  <div class="post-content container" itemprop="articleBody">
+    <p>Previously, I have wrote two posts about linux administration – the
+<a href="/blog/2014/02/20/from-linux-user-to-administrator/">first</a> one talked about the jobs should be done on one machine, the
+<a href="/blog/2014/02/20/linux-administration-beyond-one-machine/">second</a> one talked about how to setup ansible to control remote nodes.</p>
+
+<p>This post talks about how to use ansible to make a customized ubuntu 12.04
+desktop from fresh installation using ansible. However, setting up a server is
+subset of setting up desktop machine, which has been mentioned in the second
+<a href="/blog/2014/02/20/linux-administration-beyond-one-machine/">post</a>.</p>
+
+<!-- more -->
+
+<p>This post is caused by a misbehaved system backup image – the system backup
+image is not working. I have to pay the debt now.</p>
+
+<p>However, this time I am equipped with ansible, an apps and IT infrastructure
+automation software. I plan to write a playbook to set up customized ubuntu
+from scratch.</p>
+
+<p>An important note about using this method to customze machine is you HAVE TO
+HAVE A DECENT NETWORK CONNECTION to finish this in a short(meaning bearable)
+time.</p>
+
+<h2 id="a-note-about-virtualbox">A note about virtualbox</h2>
+
+<p>For some reason, I have to use linux on virtualbox, this is how to mount shared
+folder on the virtual ubuntu on virtual machine.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo mount -t vboxsf NAME_OF_SHARED_FOLDER MOUNT_POINT
+</code></pre>
+</div>
+
+<p>However, if you choose <code class="highlighter-rouge">automount</code> and <code class="highlighter-rouge">make permenant</code> option when enabling
+shared folder, you can find your shared folder here:
+<code class="highlighter-rouge">/media/sf_SHARED_FOLDER_NAME</code>.</p>
+
+<h2 id="preparation">Preparation</h2>
+
+<p>Remove unnecessary folders created by ubuntu:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd
+</span>rmdir Downloads Music Public Videos Documents Templates
+</code></pre>
+</div>
+
+<p>To make the terminal works more efficiently, I install <code class="highlighter-rouge">tmux</code> beforehand and
+config it as this <a href="/blog/2014/02/08/make-vim-style-tmux/">post</a>.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo apt-get install tmux
+</code></pre>
+</div>
+
+<p>To use the more cutting-edge ansible, I install <code class="highlighter-rouge">git</code> beforehand.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo apt-get install git
+</code></pre>
+</div>
+
+<h2 id="set-up-ansible">Set up ansible</h2>
+
+<p>Then I clone the most recent version of <code class="highlighter-rouge">ansible</code>.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>git clone https://github.com/ansible/ansible
+</code></pre>
+</div>
+
+<p>Add the following line in <code class="highlighter-rouge">.bashrc</code> to source the <code class="highlighter-rouge">env-setup</code> script to make
+ansible available in the <code class="highlighter-rouge">PATH</code>.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">source </span>PATH_TO_ANSIBLE_FOLDER/hacking/env-setup
+</code></pre>
+</div>
+
+<p>Install dependences of ansible</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo apt-get install python-pip
+sudo pip install paramiko PyYAML jinja2 httplib2
+</code></pre>
+</div>
+<h2 id="run-ansible-locally">Run ansible locally</h2>
+
+<p>I will only talk about how to run ansible playbook locally.</p>
+
+<p>The playbook is like this:</p>
+
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="nn">---</span>
+
+  <span class="pi">-</span> <span class="s">hosts</span><span class="pi">:</span> <span class="s">local_machine</span>
+    <span class="s">connection</span><span class="pi">:</span> <span class="s">local</span>
+    <span class="s">user</span><span class="pi">:</span> <span class="s">shawn</span>
+    <span class="s">gather_facts</span><span class="pi">:</span> <span class="s">no</span>
+    <span class="s">sudo</span><span class="pi">:</span> <span class="s">yes</span>
+
+    <span class="s">roles</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">set_up_system</span>
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">local_machine</code> is a group which only have <code class="highlighter-rouge">127.0.0.1</code> ip and 
+<code class="highlighter-rouge">connection: local</code> tells ansible to run the playbook locally.</p>
+
+<p>Remember to add the <code class="highlighter-rouge">-K</code> option when using <code class="highlighter-rouge">sudo: yes</code>.</p>
+
+<p>The playbooks I wrote can be found <a href="https://github.com/hhiker/ansible_playbook_setup_machine">here</a>.</p>
+
+<p><a name="desktopvim"></a></p>
+<h2 id="a-note-on-compiling-vim">A note on compiling vim</h2>
+
+<p>There is one crucial feature of vim – multiple clipboards. However, this
+feature is only available when linux have X11 environment, which means it does
+not work on server.</p>
+
+<p>Previously, I have wrote how to compile vim from source on a linux server. You
+can find it
+<a href="/blog/2014/02/20/from-linux-user-to-administrator/#compilevim">here</a>. To
+compile vim on desktop with clipboard enabled, your os should have necessary
+X11 libraries:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo apt-get install xorg-dev
+</code></pre>
+</div>
+
+<p>This will work.</p>
+
+<p>To check whether your the Makefile your have configured have X11 enabled or
+not, try the following command:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>egrep X11 src/auto/config.h
+
+</code></pre>
+</div>
+<p>if the output is this, it means your have clipboard support.</p>
+
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="cp">#define HAVE_X11
+</span></code></pre>
+</div>
+
+<p>If the output is this, it means no clipboard support is available.
+```c
+/* #undef HAVE_11 */</p>
+
+  </div>
+
+</article>
+
+    </section>
+
+    
+    <div class="container">
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2014/02/20/setup-linux-from-fresh-installation-using-ansible/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2014/02/20/setup-linux-from-fresh-installation-using-ansible/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+      </section>
+    </div>
+    
+
+    <!-- <nav class="navbar navbar-default navbar-fixed-bottom"> -->
+<!-- <div class="container footer-content"> -->
+    <!-- Nothing is there. -->
+<!-- </div> -->
+<!-- </nav> -->
+  </body>
+
+</html>

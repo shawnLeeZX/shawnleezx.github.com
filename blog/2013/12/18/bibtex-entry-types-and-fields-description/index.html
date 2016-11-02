@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Shawn" property="og:site_name">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <meta content="Bibtex entry types and fields description" property="og:title">
+  
+
+  
+  <meta content="article" property="og:type">
+  
+
+  
+  <meta content="<h1>World Hacker's Notebook</h1>" property="og:description">
+  
+
+  
+  <meta content="http://shawnLeeZX.github.io/blog/2013/12/18/bibtex-entry-types-and-fields-description/" property="og:url">
+  
+
+  
+  <meta content="2013-12-18T09:59:00+08:00" property="article:published_time">
+  <meta content="http://shawnLeeZX.github.io/about/" property="article:author">
+  
+
+  <meta property="og:image" content="">
+
+  
+  
+  <meta content="LaTeX" property="article:section">
+  
+  
+
+  
+  
+  
+
+  <title>Bibtex entry types and fields description - Shawn</title>
+  <meta name="description" content="Entry Types  @article: Entry for an article from a journal or magazine.          required fields: author, title, journal, year.      optional fields: volume,...">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!-- Typesetting math using MathJax -->
+  <!-- mathjax config similar to math.stackexchange -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'] ],
+       displayMath: [ ['$$', '$$']],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     },
+     messageStyle: "none",
+     "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+   });
+  </script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2013/12/18/bibtex-entry-types-and-fields-description/">
+  <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
+</head>
+
+  <body>
+    <section>
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Shawn</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/blog/archives">Archive</a></li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</section>
+
+    <section>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="page-title" itemprop="name headline">Bibtex entry types and fields description</h1>
+      <p class="post-meta"><time datetime="2013-12-18T09:59:00+08:00" itemprop="datePublished">Dec 18, 2013</time></p>
+    </div>
+
+</div>
+
+
+  <div class="post-content container" itemprop="articleBody">
+    <h2 id="entry-types">Entry Types</h2>
+
+<ul>
+  <li><strong>@article</strong>: Entry for an article from a journal or magazine.
+    <ul>
+      <li>required fields: author, title, journal, year.</li>
+      <li>optional fields: volume, number, pages, month, note.</li>
+    </ul>
+  </li>
+  <li><strong>@book</strong>: Entry for a book with a definite publisher.
+    <ul>
+      <li>required fields: author or editor, title, publisher, year.</li>
+      <li>optional fields: volume or number, series, address, edition, month, note.</li>
+    </ul>
+  </li>
+  <li><strong>@booklet</strong>: Entry for a printed and bound work without the name of a publisher or
+sponsoring organization.
+    <ul>
+      <li>required fields: title.</li>
+      <li>optional fields: author, howpublished, address, month, year, note.
+<!-- more --></li>
+    </ul>
+  </li>
+  <li><strong>@conference</strong>: Is the same as * @inproceedings below.</li>
+  <li><strong>@inbook</strong>: Entry for a part (chapter, section, certain pages) of a book.
+    <ul>
+      <li>required fields: author or editor, title, chapter and/or pages, publisher,
+year.</li>
+      <li>optional fields: volume or number, series, type, address, edition, month,
+note.</li>
+    </ul>
+  </li>
+  <li><strong>@incollection</strong>: Entry for part of a book that has its own title.
+    <ul>
+      <li>required fields: author, title, booktitle, publisher, year.</li>
+      <li>optional fields: editor, volume or number, series, type, chapter, pages,
+address, edition, month, note.</li>
+    </ul>
+  </li>
+  <li><strong>@inproceedings</strong>: Entry for an article in conference proceedings.
+    <ul>
+      <li>required fields: author, title, booktitle, year.</li>
+      <li>optional fields: editor, volume or number, series, pages, address, month,
+organization, publisher, note.</li>
+    </ul>
+  </li>
+  <li><strong>@manual</strong>: Entry for technical documentation.
+    <ul>
+      <li>required fields: title.</li>
+      <li>optional fields: author, organization, address, edition, month, year,
+note.</li>
+    </ul>
+  </li>
+  <li><strong>@mastersthesis</strong>: Entry for a Master’s thesis.
+    <ul>
+      <li>required fields: author, title, school, year.</li>
+      <li>optional fields: type, address, month, note.</li>
+    </ul>
+  </li>
+  <li><strong>@misc</strong>: Entry for a work that does not fit under any of the others.
+    <ul>
+      <li>required fields: none.</li>
+      <li>optional fields: author, title, howpublished, month, year, note.</li>
+    </ul>
+  </li>
+  <li><strong>@phdthesis</strong>: Entry for a PhD thesis.
+    <ul>
+      <li>required fields: author, title, school, year.</li>
+      <li>optional fields: type, address, month, note.</li>
+    </ul>
+  </li>
+  <li><strong>@proceedings</strong>: Entry for conference proceedings.
+    <ul>
+      <li>required fields: title, year.</li>
+      <li>optional fields: editor, volume or number, series, address, month,
+organization, publisher, note.</li>
+    </ul>
+  </li>
+  <li><strong>@techreport</strong>: Entry for a report published by a school or other institution,
+usually as part of a series.
+    <ul>
+      <li>required fields: author, title, institution, year.</li>
+      <li>optional fields: type, number, address, month, note.</li>
+    </ul>
+  </li>
+  <li><strong>@unpublished</strong>: Entry for an unpublished work with an author and title.
+    <ul>
+      <li>required fields: author, title, note.</li>
+      <li>optional fields: month, year.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="the-fields">The fields</h2>
+
+<p>The fields that may be used within a bibliographic entry are listed below
+together with their meanings. They are always given in the form:</p>
+
+<p>field name = {field text}</p>
+
+<p>or</p>
+
+<p>field name = “field text”</p>
+
+<ul>
+  <li><strong>address</strong>: The address of the publisher or other institution. For major
+publishing houses, it is sufficient to give just the city. For smaller
+publishers, giving the full address is recommended.</li>
+  <li><strong>annote</strong>: An annotation that may be used by non-standard bibliography styles to
+produce an annotated bibliography. The standard BIBTEX styles ignore it.</li>
+  <li><strong>author</strong>: The name(s) of the author(s).</li>
+  <li><strong>booktitle</strong> The title of a book when only part of it is being cited.</li>
+  <li><strong>chapter</strong>: A chapter or section number.</li>
+  <li><strong>crossref</strong>: The key of another entry in the database that shares many of the
+same field entries.</li>
+  <li><strong>edition</strong>: The edition of a book, usually written in full and capitalized, as
+‘Second’. The standard styles will change it to lower case as necessary.</li>
+  <li><strong>editor</strong>: The name(s) of the editor(s). If there is also an author field, then
+this gives the editor of the book or collection in which the citation appears.</li>
+  <li><strong>howpublished</strong>: States anything unusual about the method of publishing. Should
+be capitalized. Example: ‘Privately published’.</li>
+  <li><strong>institution</strong>: The name of the sponsoring institution for a technical report.</li>
+  <li>journal The name of a journal or magazine. Abbreviations are provided for the
+most common ones.</li>
+  <li><strong>key</strong>: An addition for alphabetizing purposes when the author infor- mation is
+missing. This is not the same as the key for identifying the entry to a \cite
+command.</li>
+  <li><strong>month</strong>: The month in which the work was published or, if unpublished, when it
+was written. Abbreviations exist in the form of the first three letters of the
+(English) names.</li>
+  <li><strong>note</strong>: Any additional information that should be added. Capitalize the first
+letter.</li>
+  <li><strong>number</strong>: The number of a journal, magazine, technical report, or work in a
+series. Journals are usually identified by volume and number; technical
+reports are issued a number by the institution; books in series sometimes have
+a number given to them.</li>
+  <li><strong>organization</strong>: The sponsoring organization for a conference or a manual.</li>
+  <li><strong>pages</strong>: A page number or a range of pages, in the form 32,41,58 or 87–101 or
+68+. The last form indicates page 68 and following pages. A single hyphen
+given for a range will be converted by the standard styles to the double
+hyphen to produce a dash, as ‘87–101’.</li>
+  <li><strong>publisher</strong>: The publisher’s name.</li>
+  <li><strong>school</strong>: The name of the academic institution where a thesis was written.
+series The name of a series or set of books. When citing a book from a series,
+the title field gives the name of the book itself while the optional series
+specifies the title of whole set.</li>
+  <li><strong>title</strong>: The title of the work, obeying the capitalization rules listed in</li>
+  <li><strong>type</strong>: The type of technical report, for example, ‘Research Note’.</li>
+  <li><strong>url</strong>: The universal resource locator, or Internet address, for online documents;
+this is not standard but supplied by more modern bibliography styles.</li>
+  <li><strong>volume</strong>: The volume number of a journal or multi-volume book.</li>
+  <li><strong>year</strong>: The year in which the work was published or, if unpublished, in which it
+was written. It should normally consist of four numerals, such as 1993.</li>
+</ul>
+
+<p>Additional field names may be included, which BIBTEX will simply
+ignore. For example, to add the abstract of an article in the database,</p>
+
+<p>abstract = {text of an abstract}</p>
+
+<p>This can be of use in other applications as well as for database manage-
+ment.</p>
+
+<p>from: Guide to LaTeX, fourth edition, Helmut Kopka and Patrick W.Daly</p>
+
+  </div>
+
+</article>
+
+    </section>
+
+    
+    <div class="container">
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2013/12/18/bibtex-entry-types-and-fields-description/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2013/12/18/bibtex-entry-types-and-fields-description/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+      </section>
+    </div>
+    
+
+    <!-- <nav class="navbar navbar-default navbar-fixed-bottom"> -->
+<!-- <div class="container footer-content"> -->
+    <!-- Nothing is there. -->
+<!-- </div> -->
+<!-- </nav> -->
+  </body>
+
+</html>

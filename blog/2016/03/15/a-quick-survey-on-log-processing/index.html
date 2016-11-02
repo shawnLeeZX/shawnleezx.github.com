@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Shawn" property="og:site_name">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <meta content="A Quick Survey on Distributed Log Processing: Unison and Logstash" property="og:title">
+  
+
+  
+  <meta content="article" property="og:type">
+  
+
+  
+  <meta content="<h1>World Hacker's Notebook</h1>" property="og:description">
+  
+
+  
+  <meta content="http://shawnLeeZX.github.io/blog/2016/03/15/a-quick-survey-on-log-processing/" property="og:url">
+  
+
+  
+  <meta content="2016-03-15T10:53:00+08:00" property="article:published_time">
+  <meta content="http://shawnLeeZX.github.io/about/" property="article:author">
+  
+
+  <meta property="og:image" content="">
+
+  
+  
+  <meta content="CS" property="article:section">
+  
+  
+
+  
+  
+  
+
+  <title>A Quick Survey on Distributed Log Processing: Unison and Logstash - Shawn</title>
+  <meta name="description" content="Having multiple machines to train neural networks, I was trying to think howcould I automatically gather all the training logs, so I could analyze them inone...">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!-- Typesetting math using MathJax -->
+  <!-- mathjax config similar to math.stackexchange -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'] ],
+       displayMath: [ ['$$', '$$']],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     },
+     messageStyle: "none",
+     "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+   });
+  </script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2016/03/15/a-quick-survey-on-log-processing/">
+  <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
+</head>
+
+  <body>
+    <section>
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Shawn</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/blog/archives">Archive</a></li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</section>
+
+    <section>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="page-title" itemprop="name headline">A Quick Survey on Distributed Log Processing: Unison and Logstash</h1>
+      <p class="post-meta"><time datetime="2016-03-15T10:53:00+08:00" itemprop="datePublished">Mar 15, 2016</time></p>
+    </div>
+
+</div>
+
+
+  <div class="post-content container" itemprop="articleBody">
+    <p>Having multiple machines to train neural networks, I was trying to think how
+could I automatically gather all the training logs, so I could analyze them in
+one place.</p>
+
+<p>I did a survey on technologies available. The ones that I found are: <code class="highlighter-rouge">Logstash</code>
+and <code class="highlighter-rouge">unison</code>. <code class="highlighter-rouge">Logstash</code> seems to be the optimal solution, though may be a little
+an overkill. However, I settled to use <code class="highlighter-rouge">unison</code> in the end. The rationale
+behind this is I have to get around many VPNs. The VPNs I used, or maybe most
+VPNs setups, won’t let the machines in LAN of the VPN network ping back to the
+machine that uses VPN to connect. It may just not come from a security reason,
+though it could be; it may just because it is not necessary to set up the route
+table to the IP addresses allocated to the connecting machine. So in this case,
+the log cannot be sent back to the connecting machine, as the way <code class="highlighter-rouge">Logstash</code>
+does. A solution is needed to initialize the centralization from the connect
+machine site. So <code class="highlighter-rouge">Logstash</code> is ruled out, and I settled with <code class="highlighter-rouge">unison</code>.</p>
+
+<p>The following is a quick note on <code class="highlighter-rouge">unison</code> works, which took me a while to
+figure out. For an practical introduction to <code class="highlighter-rouge">Logstash</code>, see the
+<a href="http://www.slashroot.in/logstash-tutorial-linux-central-logging-server">tutorial</a>
+here.</p>
+
+<!-- more -->
+
+<h2 id="introductory-note">Introductory Note</h2>
+
+<p><a href="http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html#basics">Unison</a>
+is a file-synchronization tool for Unix and Windows. It allows two replicas of
+a collection of files and directories to be stored on different hosts (or
+different disks on the same host), modified separately, and then brought up to
+date by propagating the changes in each replica to the other.</p>
+
+<p><code class="highlighter-rouge">Unison</code> supports transmission via <code class="highlighter-rouge">ssh</code>, <code class="highlighter-rouge">socket</code>, <code class="highlighter-rouge">file</code> and <code class="highlighter-rouge">rsh</code>. Each of
+those protocols has its own setups, except for the <code class="highlighter-rouge">file</code> protocol — it
+synchronizes files within the single machine. For instance, to use ssh, the two
+machines to be able to ssh to each other.</p>
+
+<p>The way <code class="highlighter-rouge">unison</code> is used is similar with <code class="highlighter-rouge">scp</code> or <code class="highlighter-rouge">cp</code> in the sense that they
+are all a command line source destination style. An example would be</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>unison -testserver /tmp/ ssh://192.168.72.1//tmp
+</code></pre>
+</div>
+
+<p>The format of a source or destination is
+<code class="highlighter-rouge">[protocol:]//[user@][host][:port][/path]</code>. The one with no host name is
+supposed to your local machine. The <code class="highlighter-rouge">-testserver</code> option above is used to test
+whether the network between the local machine and the remote machine is
+reachable.</p>
+
+<p>To avoid typing the addresses each time, since <code class="highlighter-rouge">unison</code> is about syncing, not
+copying, <code class="highlighter-rouge">unison</code> offers a thing called profile. The command above, without the
+<code class="highlighter-rouge">-testserver</code> option, converts to a profile is</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>root = /home/use1/work/sync/
+root = ssh://192.168.72.1//home/user1/work/sync
+</code></pre>
+</div>
+
+<p>For more sophisticated profiles, see the office
+<a href="http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html#profile">doc</a>.</p>
+
+<p>The question following is where do we store profiles?</p>
+
+<p><code class="highlighter-rouge">unison</code> will store all its logistics files under the folder pointed by
+environment variable <code class="highlighter-rouge">UNISON</code>, which if not specified, is <code class="highlighter-rouge">.unison</code> under the
+<code class="highlighter-rouge">$HOME</code> folder. A profile file us named in the format of <code class="highlighter-rouge">*.prf</code>. Suppose the
+above profile is saved as <code class="highlighter-rouge">test.prf</code>. To use that profile, type</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>unison <span class="nb">test</span>
+</code></pre>
+</div>
+
+<p>The last thing I spent some time to figure out is how it actually sync between
+machines, so it won’t mess up my data. Roughly, it adds another layer of logic
+above <code class="highlighter-rouge">rsync</code>, which is suggested from the document</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Transfers are optimised using a version of the rsync protocol, making it ideal
+for slower links. Unison has a clear and precise specification, and is
+resilient to failure due to its careful handling of the replicas and its
+private structures.
+</code></pre>
+</div>
+
+<p>The logic is added I think is the way to get some fingerprints of the files, so
+it knows which files is updated when syncing, and only sync those are really updated.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Touching a file without changing its contents should never affect whether or
+not Unison does an update. (When running with the fastcheck preference set to
+true—the default on Unix systems—Unison uses file modtimes for a quick first
+pass to tell which files have definitely not changed; then, for each file that
+might have changed, it computes a fingerprint of the file's contents and
+compares it against the last-synchronized contents. Also, the -times option
+allows you to synchronize file times, but it does not cause identical files to
+be changed; Unison will only modify the file times.)
+</code></pre>
+</div>
+
+<p>So calling unison at either end will sync the files right.</p>
+
+<h2 id="sync-between-more-than-machines">Sync Between More than Machines</h2>
+
+<p>The built-in doc of <code class="highlighter-rouge">unison</code>, which is available via <code class="highlighter-rouge">unison -doc tutorial</code>,
+has a section discussing how <code class="highlighter-rouge">unison</code> could be used to sync between more than
+machines.</p>
+
+<p>Using Unison to Synchronize More Than Two Machines</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Unison is designed for synchronizing pairs of replicas. However, it is
+possible to use it to keep larger groups of machines in sync by
+performing multiple pairwise synchronizations.
+
+If you need to do this, the most reliable way to set things up is to
+organize the machines into a “star topology,” with one machine
+designated as the “hub” and the rest as “spokes,” and with each spoke
+machine synchronizing only with the hub. The big advantage of the star
+topology is that it eliminates the possibility of confusing “spurious
+conflicts” arising from the fact that a separate archive is maintained
+by Unison for every pair of hosts that it synchronizes.
+</code></pre>
+</div>
+
+<p>I did not get what does it mean in the first reading. After that, I guess the
+method it suggests is to establish a pair-wise sync among machines with certain
+topology, which is to say: one needs to set up multiple profiles; each profile
+sync between two machines; those machines form a topology so there is a hub
+that will have a centralized sync state among all machines if you sync in the
+right order.</p>
+
+  </div>
+
+</article>
+
+    </section>
+
+    
+    <div class="container">
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2016/03/15/a-quick-survey-on-log-processing/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2016/03/15/a-quick-survey-on-log-processing/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+      </section>
+    </div>
+    
+
+    <!-- <nav class="navbar navbar-default navbar-fixed-bottom"> -->
+<!-- <div class="container footer-content"> -->
+    <!-- Nothing is there. -->
+<!-- </div> -->
+<!-- </nav> -->
+  </body>
+
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Shawn" property="og:site_name">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <meta content="Connection between Fourier Components in Real and Complex Form" property="og:title">
+  
+
+  
+  <meta content="article" property="og:type">
+  
+
+  
+  <meta content="<h1>World Hacker's Notebook</h1>" property="og:description">
+  
+
+  
+  <meta content="http://shawnLeeZX.github.io/blog/2015/04/11/connection-between-fourier-components-in-normal-and-complex-form/" property="og:url">
+  
+
+  
+  <meta content="2015-04-11T10:59:00+08:00" property="article:published_time">
+  <meta content="http://shawnLeeZX.github.io/about/" property="article:author">
+  
+
+  <meta property="og:image" content="">
+
+  
+  
+  <meta content="Math" property="article:section">
+  
+  
+
+  
+  
+  
+
+  <title>Connection between Fourier Components in Real and Complex Form - Shawn</title>
+  <meta name="description" content="This post notes down my current understanding of the intuition behind usingcomplex exponentials to represent function, stressing on the connection betweenthe...">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!-- Typesetting math using MathJax -->
+  <!-- mathjax config similar to math.stackexchange -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'] ],
+       displayMath: [ ['$$', '$$']],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     },
+     messageStyle: "none",
+     "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+   });
+  </script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2015/04/11/connection-between-fourier-components-in-normal-and-complex-form/">
+  <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
+</head>
+
+  <body>
+    <section>
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Shawn</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/blog/archives">Archive</a></li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</section>
+
+    <section>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="page-title" itemprop="name headline">Connection between Fourier Components in Real and Complex Form</h1>
+      <p class="post-meta"><time datetime="2015-04-11T10:59:00+08:00" itemprop="datePublished">Apr 11, 2015</time></p>
+    </div>
+
+</div>
+
+
+  <div class="post-content container" itemprop="articleBody">
+    <p>This post notes down my current understanding of the intuition behind using
+complex exponentials to represent function, stressing on the connection between
+the complex form and the normally all real form.</p>
+
+<!-- more -->
+
+<h2 id="brief-note-on-complex-number">Brief Note on Complex Number</h2>
+
+<p>One of the most useful properties of complex number is its ability to unify
+algebraic and geometrical operations. More about this could be found on
+<a href="http://betterexplained.com/articles/a-visual-intuitive-guide-to-imaginary-numbers/">Better Explained</a>
+which is a good elementary explanation of imaginary number.</p>
+
+<p>It was not until seriously studying Fourier Transformation that I figured out
+the nature of Complex Number.</p>
+
+<p>Number system is human’s way to model nature. Integer number models
+counting. Negative number models things like debt. Zero models null. Fraction
+number models division and fraction. Those consist of rational number. But to
+really model length, which occurs naturally in Pythagoran theorem, irrational
+number has to be introduced. Rational number and irrational number together
+make up real number system, where limit of points – may be compared with
+limit of length is regarded as a conceptual number, to make the system
+complete(complete is a mathematical terminology).</p>
+
+<p>But all those models are for scalar. Nature is not one dimensional. It is
+rules of vector that engine this world. This is where complex comes
+from.</p>
+
+<p>The most elegant equation in the history is Euler Equation:</p>
+
+<script type="math/tex; mode=display">e^{ix} = cos(x) + i sin(x)</script>
+
+<p><img class="center" src="http://upload.wikimedia.org/wikipedia/commons/7/71/Euler%27s_formula.svg" alt="Title:Euler Equation Illustration" /></p>
+
+<p>It is saying that every complex exponential is a 2D vector, where $(x, y) =
+(cos\phi, sin\phi)$. Instead of just modeling scalar, we model 2D vector using
+complex number. So by manipulating algebra of complex, we are doing geometrical
+operations. And the meaning of imaginary $i$ is rotating the vector 90 degree
+anti-clockwise. That’s the reason why it connects algebra and geometry.</p>
+
+<p>This will be clearer after Fourier related stuff is introduced in the following
+sections.</p>
+
+<p>I am still wondering if we could unify more dimensions into number instead of
+just two?</p>
+
+<h2 id="fourier-series">Fourier Series</h2>
+
+<p>Fourier Series is about this statement:</p>
+
+<blockquote>
+  <p>Every periodic function could be represented using arbitrary number of
+ocsillating functions, namely cosines and sines or complex exponentials.</p>
+</blockquote>
+
+<p>As noted in the beginning, this post is about intuition behind the relationship
+between cosines sines and complex exponentials.</p>
+
+<p>First we see fourier series in its real form decomposition.</p>
+
+<script type="math/tex; mode=display">f(t) = \sum\limits_{n = -\infty}^{\infty} c_{n}cos(nw_{0}t + \phi)</script>
+
+<p>We could also write it in form of $sin(t)$ given that it is just a shifted
+version of $cos(t)$. But we will see that using $cos(t)$ makes sense in a
+moment.</p>
+
+<p>NOW, every $cos(nw_{0}t + \phi)$ is the real part of $e^{i(nw_{0}t + \phi)}$.
+Remember that the algebra operations between complex exponentials are
+equivalent to vector operations. So instead seeing combination of different
+Fourier components as superposition of constantly changing(with regard to $t$)
+scalar addition, we see it as vector addition in a 2D dimensional complex
+plane. See illustration
+<a href="http://betterexplained.com/articles/an-interactive-guide-to-the-fourier-transform/">here</a>,
+in about half the article.</p>
+
+<p>Though they vibrate in circle, which indicates the way the interact with each
+other, we only see its effect – cosine(real) part. So each time we measure or
+in other word, sample, we get the real part, which is the final function we
+want.</p>
+
+<p>By converting back and forth between the real form and complex form, you will
+find terms related to frequency $s$ is $cos(st + \phi)$ and
+$\frac{1}{2}e^{ist}e^{i\phi} + \frac{1}{2}e^{-ist}e^{-i\phi}$. The negative
+frequency part is used to “drag” back or cancel out the imaginary or the part
+that is orthogonal to real part. Or in other word, we only want the real part.</p>
+
+<p>Intuitively, it means to make the decomposition conforming with observation, we
+use conjugation to drag the vector back to real line. Now it makes sense that
+we choose $cos(nw_{0}t + \phi)$ to decompose instead of $sin(nw_{0}t +
+\tau)$. Cosine is related to the x-axis by definition which is real line.</p>
+
+<p>We could stop here. The connection between the real form and the complex form
+is pretty clear now. But there is more, in a finer level.</p>
+
+<p>Given that each components of the decomposition is orthogonal, now we need only
+to consider one of its term $cos(nw_{0}t + \phi)$.</p>
+
+<p>From now on for notation simplicity we denote $nw_{0}$ as $s$. Each component
+could also be decomposed into two components, remembering that we see each
+component as two dimension vector. The phase $\phi$ determines the vector
+initially. We can see this clearer by expanding($1/2$ is dropped for
+convenience):</p>
+
+<script type="math/tex; mode=display">e^{ist}e^{i\phi} + e^{-ist}e^{-i\phi} = e^{ist}(cos(\phi) + i sin(\phi)) +
+e^{-ist}(cos(\phi) - i sin(\phi))</script>
+
+<p>THIS actually means in a finer level, the innate vector property is also
+modeled – every component consists of two basic components, sine and cosine
+and $\phi$ decides how they combine with each other initially, which determines
+how they interact with each other forever.</p>
+
+<p>The decomposition into sine and cosine also makes a lot of sense. cos is
+orthogonal to sine and together they can represent any trigonometric function.</p>
+
+<h2 id="note-on-other-derivation">Note On Other Derivation</h2>
+
+<p>There is another way to get real form of fourier series to complex
+form. Actually it is the first time I realize the connection between them,
+though fourier was learned way earlier(TERRIBLE COLLEGE EDUCATION!!!).</p>
+
+<p>Fourier decomposition is written the following way:</p>
+
+<script type="math/tex; mode=display">f(t) = \sum\limits_{n = -\infty}^{\infty} c_{n}sin(nw_{0}t + \phi)</script>
+
+<p>By some derivation, we have:</p>
+
+<script type="math/tex; mode=display">f(t) = \sum\limits_{n = -\infty}^{\infty} a_{n} cos(nw_{0}t) + b_{n}sin(nw_{0}t)</script>
+
+<p>The phase is merge into coefficients $a_{n}$ and $b_{n}$.</p>
+
+<p>Given $sin(t) = \frac{1}{2i}(e^{it} - e^{-it})$ and $cos(t) = \frac{1}{2}(e^{it} + e^{-it})$,
+substitute above equations in, we also get the complex form.</p>
+
+<p>This approach is harder to understand because it gets the atomic level wrong –
+it should be $e^{it}$ not $cos(t) + i sin(t)$. But it does have benefits.</p>
+
+<p>Each function $f$ could be decompose into a combination of even and odd part
+by:</p>
+
+<script type="math/tex; mode=display">f = \frac{1}{2}(f(t) + f(-t)) + \frac{1}{2}(f(t) - f(-t))</script>
+
+<p>The formed is the even part and the latter is the odd part. Let $f(t) = e^{it}$
+we can see that $i sin(t)$ the odd part of $e^{it}$ and $cos(t)$ the even part.</p>
+
+<p>It makes clear that when the function is even, we get zero value in coefficients
+of $sin(t)$ while when the function is odd, we get zero value in coefficients
+of $cos(t)$: if a function has a odd component $sin(t)$, it never is going to
+be even.</p>
+
+  </div>
+
+</article>
+
+    </section>
+
+    
+    <div class="container">
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2015/04/11/connection-between-fourier-components-in-normal-and-complex-form/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2015/04/11/connection-between-fourier-components-in-normal-and-complex-form/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+      </section>
+    </div>
+    
+
+    <!-- <nav class="navbar navbar-default navbar-fixed-bottom"> -->
+<!-- <div class="container footer-content"> -->
+    <!-- Nothing is there. -->
+<!-- </div> -->
+<!-- </nav> -->
+  </body>
+
+</html>

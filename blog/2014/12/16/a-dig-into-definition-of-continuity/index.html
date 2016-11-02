@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Shawn" property="og:site_name">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <meta content="A Dig Into Definition of Continuity" property="og:title">
+  
+
+  
+  <meta content="article" property="og:type">
+  
+
+  
+  <meta content="<h1>World Hacker's Notebook</h1>" property="og:description">
+  
+
+  
+  <meta content="http://shawnLeeZX.github.io/blog/2014/12/16/a-dig-into-definition-of-continuity/" property="og:url">
+  
+
+  
+  <meta content="2014-12-16T15:04:00+08:00" property="article:published_time">
+  <meta content="http://shawnLeeZX.github.io/about/" property="article:author">
+  
+
+  <meta property="og:image" content="">
+
+  
+  
+  <meta content="Math" property="article:section">
+  
+  
+
+  
+  
+  
+
+  <title>A Dig Into Definition of Continuity - Shawn</title>
+  <meta name="description" content="This post is about explaining intuitions behind the definition ofcontinuity, in calculus context and topological context, with a focuson why it is not define...">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!-- Typesetting math using MathJax -->
+  <!-- mathjax config similar to math.stackexchange -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'] ],
+       displayMath: [ ['$$', '$$']],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     },
+     messageStyle: "none",
+     "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+   });
+  </script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2014/12/16/a-dig-into-definition-of-continuity/">
+  <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
+</head>
+
+  <body>
+    <section>
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Shawn</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/blog/archives">Archive</a></li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</section>
+
+    <section>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="page-title" itemprop="name headline">A Dig Into Definition of Continuity</h1>
+      <p class="post-meta"><time datetime="2014-12-16T15:04:00+08:00" itemprop="datePublished">Dec 16, 2014</time></p>
+    </div>
+
+</div>
+
+
+  <div class="post-content container" itemprop="articleBody">
+    <p>This post is about explaining intuitions behind the definition of
+continuity, in calculus context and topological context, with a focus
+on why it is not defined in the other way around. A number of counter
+examples are provided.</p>
+
+<p>Note that between calculus context and topological context, there is
+still one intermediate step which is metric space context. But it is
+basically not different too much in the calculus context so I omit it.</p>
+
+<!-- more -->
+
+<h2 id="puzzle-in-calculus-context">Puzzle in Calculus Context</h2>
+
+<p>In Calculus continuity is defined in the following way:</p>
+
+<p>Given a function $f(x)$, we call $f$ is continuous at point $c$, if
+for any $\epsilon &gt; 0$, there exists a $\delta &gt; 0$, for $|x - c|
+&lt; \delta$ the value of $f(x)$ satisfies</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+|f(x) - f(c)| < \epsilon %]]></script>
+
+<p>The intuition continuity want to capture is if there is a small change
+in the input(the independent variable), there should be a
+corresponding small change in the output(the dependent variable).</p>
+
+<p>It is the small change in $x$ that causes small change in $y$, where
+$y$ denotes $f(x)$, but why the definition of continuity is <em>for any
+$\epsilon$</em>, which is the change of $y$, <em>there is a $\delta$</em>, which
+is the change of $x$? Why not define it as the following way.</p>
+
+<p>Given a function $f(x)$, we call $f$ is continuous at point $c$, if
+for any $\delta &gt; 0$, there exists a $\epsilon &gt; 0$, for $|x - c|
+&lt; \delta$ the value of $f(x)$ satisfies</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+|f(x) - f(c)| < \epsilon %]]></script>
+
+<p>I puzzled on this for a long time but now it feels obvious that the
+latter definition is wrong. Before counter example is put forward, I
+will explain why the former definition is right.</p>
+
+<p>The point is that it is $y$ that we want to constrain. So for whatever
+change $y$ is made as long as it is in the neighborhood of $\epsilon$,
+$x$ within the neighborhood of $\delta$ will capture it all. In more
+plain English, no matter how $x$ changes, $y$ will not go beyond a change of
+$\delta$.</p>
+
+<p>Now time for a counter example.</p>
+
+<p>Consider $f(x) = \frac{1}{x}$ defined for $x &gt; 0$. Then $lim_{x
+\rightarrow 0.5} f(x) = 2$ in the usual sense. Yet in this case, with
+$\delta = \frac{1}{2}$, there is no $\epsilon &gt; 0$ such that $0 &lt; |
+x - 0.5| &lt; \delta$ implies $|f(x) - 2| &lt; \epsilon$.</p>
+
+<p>This example comes from
+<a href="http://math.stackexchange.com/questions/993866/switching-the-definition-of-epsilon-delta-limit">here</a>.</p>
+
+<h2 id="puzzle-in-topology-context">Puzzle in Topology Context</h2>
+
+<p>If we generalize continuity to topological space. Then it is defined
+as following.</p>
+
+<p>Mapping of a topological space $(X, T_X)$ into a topological space
+$(Y, T_Y)$ is continuous if and only if the inverse image $f^{−1}(W)$
+of every open set $W \in T_Y$ is open, i.e. $f^{−1}(W) \in T_X$.</p>
+
+<p>Again why it is not defined in the reverse way:</p>
+
+<p>Mapping of a topological space $(X, T_X)$ into a topological space
+$(Y, T_Y)$ is continuous if and only if the image $f(W)$ of every open
+set $W \in T_X$ is open, i.e. $f(W) \in T_Y$.</p>
+
+<p>The second definition is called <em>Open mapping</em>, which means map an open
+set to an open set.</p>
+
+<p>Similar with the intuition explained in previous section, the
+definition of open mapping dose not imply constraint on the image
+mapped. <a href="http://mathforum.org/library/drmath/view/62395.html">Here</a> is
+an educational example. It constructs a mapping which is open but not
+continuous, from $R$ with usual topology to $[0, 1]$ with usual
+topology. One intuition behind is that even if the image mapped is
+open set, no constraint is imposed so it could be too large compared
+with the pre-image of it.</p>
+
+<p>If we drop $R$ all together, and only think of open set in the
+topological sense. We could think open set as a thing with
+semidecidable properties. Below is an explanation from
+<a href="http://math.stackexchange.com/questions/932942/why-are-continuous-functions-the-right-morphisms-between-topological-spaces">here</a>. I
+copy it here for integrity.</p>
+
+<blockquote>
+  <p>General topology is actually a kind of logic. I don’t know who this
+insight is due to, but see Vickers’ Topology via Logic for much more
+on this theme. In particular, the open subsets of a topological
+space should be thought of as axiomatizing semidecidable properties:
+properties that you can confirm but not necessarily disconfirm,
+given limited tools (e.g. finite time and precision).</p>
+
+  <p>For example, you can confirm whether two things are less than 5
+inches apart by measuring the distance between them to finite
+precision and seeing if it’s less than 5, so an open ball of radius
+5 in a metric space describes a semidecidable property, but you
+can’t confirm whether two things are less than or equal to 5 inches
+apart by measuring the distance between them to finite precision
+because if you get 4.99±0.2 inches you don’t know whether that’s
+over or under 5.</p>
+
+  <p>Semidecidability can be used to justify all of the topological space
+axioms, which is a nice exercise. For example, arbitrary unions of
+open sets are open because given a method of confirming whether
+you’re in each of those open sets, you get a method of confirming
+whether you’re in any of them by running all of the methods
+simultaneously and waiting for one to finish. But you only get
+finite intersections when you try to do the same thing for waiting
+for all of the methods to finish because method n might take n
+seconds finish.</p>
+
+  <p>Continuous functions then axiomatize “computable functions”: for f
+to be continuous means that it should be possible to compute f(x)
+“to arbitrary precision” by computing x “to arbitrary precision,”
+where going off of the example of metric spaces “to arbitrary
+precision” means “to within an arbitrary open set,” since it’s
+semidecidable whether f(x) is contained within an open set. In other
+words, to locate f(x) within some open set U, it suffices to locate
+x within some open set V. After a moment’s thought you’ll see that
+this is precisely the condition that f−1(U)=V.</p>
+
+  <p>(I particularly like this justification of topological spaces and
+continuity because, unlike the justification coming from thinking
+about metric spaces, it continues to apply to spaces that aren’t
+Hausdorff, and in fact it tells you what it means for a space to not
+be Hausdorff. One equivalent definition of being Hausdorff is that
+the diagonal {(x,x)∈X×X} is closed in X×X. This is equivalent to
+“x≠y” being semidecidable, so a space fails to be Hausdorff
+precisely when “x≠y” fails to be semidecidable.)</p>
+</blockquote>
+
+<p>I would like to read <em>Topology Via Logic</em> some day.</p>
+
+<p>Based on the granularity of your topology space, for instance if $T_X$
+is equipped with discrete topology, then any mapping is continuous,
+you have different level of continuous. You can tweak your topological
+space $T_X$ to make your function continuous.</p>
+
+<p>Now for one counter example that continuous mapping that is not open
+mapping.</p>
+
+<p>$f(x) = 1$ for $x \in R$, the mapping is continuous but not open.</p>
+
+  </div>
+
+</article>
+
+    </section>
+
+    
+    <div class="container">
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2014/12/16/a-dig-into-definition-of-continuity/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2014/12/16/a-dig-into-definition-of-continuity/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+      </section>
+    </div>
+    
+
+    <!-- <nav class="navbar navbar-default navbar-fixed-bottom"> -->
+<!-- <div class="container footer-content"> -->
+    <!-- Nothing is there. -->
+<!-- </div> -->
+<!-- </nav> -->
+  </body>
+
+</html>

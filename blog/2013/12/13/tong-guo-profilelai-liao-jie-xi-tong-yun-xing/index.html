@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Shawn" property="og:site_name">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <meta content="通过profile来了解系统运行" property="og:title">
+  
+
+  
+  <meta content="article" property="og:type">
+  
+
+  
+  <meta content="<h1>World Hacker's Notebook</h1>" property="og:description">
+  
+
+  
+  <meta content="http://shawnLeeZX.github.io/blog/2013/12/13/tong-guo-profilelai-liao-jie-xi-tong-yun-xing/" property="og:url">
+  
+
+  
+  <meta content="2013-12-13T21:49:00+08:00" property="article:published_time">
+  <meta content="http://shawnLeeZX.github.io/about/" property="article:author">
+  
+
+  <meta property="og:image" content="">
+
+  
+  
+  <meta content="CS" property="article:section">
+  
+  
+
+  
+  
+  
+
+  <title>通过profile来了解系统运行 - Shawn</title>
+  <meta name="description" content="最近在阅读Light Weight TCP/IPStack(LWIP)的源码，对于其核心的tcpip_thread在何时被加载不解，在探索过程中有了此篇文章中的内容。同时在此感谢本课程助教的帮助告知我在每个动态库可以指定在被加载时和卸载时的初始化和清理函数，具体会在之后的内容中提及。本文使用的所有代码在这里。">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!-- Typesetting math using MathJax -->
+  <!-- mathjax config similar to math.stackexchange -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'] ],
+       displayMath: [ ['$$', '$$']],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     },
+     messageStyle: "none",
+     "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+   });
+  </script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2013/12/13/tong-guo-profilelai-liao-jie-xi-tong-yun-xing/">
+  <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
+</head>
+
+  <body>
+    <section>
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Shawn</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/blog/archives">Archive</a></li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</section>
+
+    <section>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="page-title" itemprop="name headline">通过profile来了解系统运行</h1>
+      <p class="post-meta"><time datetime="2013-12-13T21:49:00+08:00" itemprop="datePublished">Dec 13, 2013</time></p>
+    </div>
+
+</div>
+
+
+  <div class="post-content container" itemprop="articleBody">
+    <p>最近在阅读Light Weight TCP/IP
+Stack(LWIP)的源码，对于其核心的tcpip_thread在何时被加载不解，在探索过程中有了此篇文章中的内容。同时在此感谢本课程助教的帮助告知我在每个动态库可以指定在被加载时和卸载时的初始化和清理函数，具体会在之后的内容中提及。</p>
+
+<p>本文使用的所有代码在<a href="/resources/profile/profile_source.tar.gz">这里</a>。</p>
+
+<!-- more -->
+
+<h2 id="profile">Profile工具</h2>
+
+<h3 id="perf">perf</h3>
+
+<p>本文适用的profile工具为perf。perf是Linux下的程序性能分析工具，更多内容见perf的<a href="https://perf.wiki.kernel.org/index.php/Main_Page">wiki</a>。</p>
+
+<p>本来我用的是oprofile，但是其总是莫明其妙地出问题，于是找替代找到了perf。觉得oprofile不好用。</p>
+
+<h3 id="gprof">gprof</h3>
+
+<p>另外提一下另一个GNU系列的gprof，其也是一个性能分析工具。其和perf和oprofile的区别在于其不是通过内核的探测CPU等产生的事件来进行性能统计，而是在编译时直接在代码中添加用于数据统计的代码。所以gprof到目前我所探索的有限功能为止，我觉得只能用于检测不涉及内核的程序——需要profile的代码不位于内核中，想要profile的进程或者线程不是由内核建立（这一点就使其不能用于profile
+lwip）。</p>
+
+<p>虽然适用范围有限，但是其产生的信息非常详尽，所以如果可以用是非常好地。这里是一个使用<a href="http://www.thegeekstuff.com/2012/08/gprof-tutorial/">教程</a>。</p>
+
+<h3 id="gprof2dot">gprof2dot</h3>
+
+<p>gprof2dot是一个将profile工具产生的数据转化为直观的图形现实的工具，对工作效率的提升可谓之为神器。使用只需要两个python脚本——<a href="/resources/profile/grof2dot.py">gprof2dot.py</a>和<a href="/resources/profile/xdot.py">xdot.py</a>。前者用于产生图像数据，后者用于交互式地查看图像。</p>
+
+<h2 id="section">单线程程序</h2>
+
+<p>第一个看看简单c程序。</p>
+
+<p>我们拟profile下面这个程序，one_thread_profile.c：</p>
+
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;math.h&gt;
+</span>
+<span class="cp">#define POWER 8
+</span>
+<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">increment_a</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">a</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="k">const</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">pow</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">a</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">increment_a</span><span class="p">();</span>
+      <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>分析程序使用命令如下：</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>g++ -g one_thread_profile.c
+perf record -g -e cycles:u ./a.out
+perf script | gprof2dot.py -f perf | xdot.py
+</code></pre>
+</div>
+<p>perf命令解释：</p>
+
+<ul>
+  <li><code class="highlighter-rouge">-e cycles:u</code>表示仅记录用户态的事件，这样使得输出的结果更加简单易读。</li>
+  <li><code class="highlighter-rouge">-g</code>表示产生函数调用图。</li>
+</ul>
+
+<p>grof2dot命令解释：</p>
+
+<ul>
+  <li><code class="highlighter-rouge">-f</code>表示使用的数据是perf产生的格式。</li>
+</ul>
+
+<p>如此得到如下的性能分析结果图：</p>
+
+<p><img class="center" src="/resources/profile/one_thread_profile.png" alt="One thread profile result" title="One thread profile result" /></p>
+
+<p>最右侧是涉及到perf的部分，应是由于统计需要而引入的额外开销。右上角是的ld-2.15是linux用于加载共享库的共享库（即用于加载以<code class="highlighter-rouge">*.so</code>为后缀的共享库）。</p>
+
+<p>而在左侧，则可以清晰地看见c的库函数对入口main函数的调用，然后main函数对increment_a()的调用。</p>
+
+<p><strong>注</strong>：之后对于perf以及ld产生的开销以及如何产生分析图不再说明。</p>
+
+<h2 id="section-1">多线程程序</h2>
+
+<p>之后的实例程序的编译只要使用相应Makefile即可。</p>
+
+<p>多线程程序的代码two_thread_profile如下：</p>
+
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;pthread.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;math.h&gt;
+</span>
+<span class="cp">#define POWER 8
+</span>
+<span class="n">pthread_t</span> <span class="n">new_thread</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">looper</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">pow</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">a</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="o">*</span><span class="nf">thread_function</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">looper</span><span class="p">();</span>
+    <span class="k">return</span> <span class="p">((</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="k">const</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">err</span><span class="p">;</span>
+
+    <span class="n">err</span> <span class="o">=</span> <span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">new_thread</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">thread_function</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Err when create thread.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">exit</span><span class="p">(</span><span class="n">err</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">looper</span><span class="p">();</span>
+
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>程序分两个线程，分别调用<code class="highlighter-rouge">looper()</code>进行循环。</p>
+
+<p>得到分析结果如下图：</p>
+
+<p><img class="center" src="/resources/profile/two_thread_profile.png" alt="Two thread profile result Title:Two thread profile result" /></p>
+
+<p>可以看到，c共享函数库负责main函数，而pthread共享函数库负责多产生出的一个线程。</p>
+
+<h2 id="section-2">静态链接库与共享链接库</h2>
+
+<p>有关链接库的教程看<a href="http://www.tldp.org/HOWTO/Program-Library-HOWTO/">这里</a>。</p>
+
+<p>代码就不粘在这里了，当将循环部分做成库函数放入静态以及共享链接库时，分别得到如下两个结果。</p>
+
+<figure class="image-caption center">
+  <a class="image-popup" href="/resources/profile/static_profile.png">
+    <img class="caption" src="/resources/profile/static_profile.png" width="100%" height="100%" title="" alt="" />
+  </a>
+  <figcaption class="caption-text">
+    
+  </figcaption>
+</figure>
+
+<figure class="image-caption center">
+  <a class="image-popup" href="/resources/profile/shared_profile.png">
+    <img class="caption" src="/resources/profile/shared_profile.png" width="100%" height="100%" title="" alt="" />
+  </a>
+  <figcaption class="caption-text">
+    
+  </figcaption>
+</figure>
+
+<p>可以看到，静态链接库的内容被直接放到了main里，而共享链接库则是通过调用实现。</p>
+
+<h2 id="section-3">在加载时被初始化的共享链接库</h2>
+
+<p>最终回到lwip上，当使用lwip的网络功能时。对于一个使用BSD-Style的简单服务器端select_server，其接受socket传来的数据之后直接丢弃数据，使用perf得到的结果图如下。</p>
+
+<figure class="image-caption center">
+  <a class="image-popup" href="/resources/profile/select_server.png">
+    <img class="caption" src="/resources/profile/select_server.png" width="100%" height="100%" title="" alt="" />
+  </a>
+  <figcaption class="caption-text">
+    
+  </figcaption>
+</figure>
+
+<p>对于一个简单的http服务器，使用perf得到的结果图如下。</p>
+
+<figure class="image-caption center">
+  <a class="image-popup" href="/resources/profile/rawt_http.png">
+    <img class="caption" src="/resources/profile/rawt_http.png" width="100%" height="100%" title="" alt="" />
+  </a>
+  <figcaption class="caption-text">
+    
+  </figcaption>
+</figure>
+
+<p>在这两个分析图中，存在一个内核的函数对liblwip.so的调用（由于我的内核镜像没有代码信息，所以只能显示地址）——liblwip.so即是用于使用lwip的共享函数库。为什么会存在这种情况？</p>
+
+<p>通过询问助教，得知每个动态库可以指定在被加载时和卸载时的初始化和清理函数。</p>
+
+<p>实现的方式有两种，第一种如下，需要在编译生成so库时指定-nostartfiles选项。（函数名固定）</p>
+
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="p">......</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">_fini</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="p">......</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>这种方式现在不提倡，倾向于使用第二种。第二种使用gcc的扩展，如下：（函数名可以自定义）</p>
+
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">constructor</span><span class="p">))</span> <span class="n">libso_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="p">......</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>void __attribute__((destructor)) libso_fini(void)
+{
+    ......
+}
+</code></pre>
+</div>
+
+<p>再进一步就没有进行探索了，现阶段的结论应该是对函数库的初始化函数的调用是有操作系统内核完成。</p>
+
+  </div>
+
+</article>
+
+    </section>
+
+    
+    <div class="container">
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2013/12/13/tong-guo-profilelai-liao-jie-xi-tong-yun-xing/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2013/12/13/tong-guo-profilelai-liao-jie-xi-tong-yun-xing/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+      </section>
+    </div>
+    
+
+    <!-- <nav class="navbar navbar-default navbar-fixed-bottom"> -->
+<!-- <div class="container footer-content"> -->
+    <!-- Nothing is there. -->
+<!-- </div> -->
+<!-- </nav> -->
+  </body>
+
+</html>

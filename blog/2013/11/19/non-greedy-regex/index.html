@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Shawn" property="og:site_name">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <meta content="Non Greedy Regex" property="og:title">
+  
+
+  
+  <meta content="article" property="og:type">
+  
+
+  
+  <meta content="<h1>World Hacker's Notebook</h1>" property="og:description">
+  
+
+  
+  <meta content="http://shawnLeeZX.github.io/blog/2013/11/19/non-greedy-regex/" property="og:url">
+  
+
+  
+  <meta content="2013-11-19T10:16:00+08:00" property="article:published_time">
+  <meta content="http://shawnLeeZX.github.io/about/" property="article:author">
+  
+
+  <meta property="og:image" content="">
+
+  
+  
+  <meta content="CS" property="article:section">
+  
+  
+
+  
+  
+  
+
+  <title>Non Greedy Regex - Shawn</title>
+  <meta name="description" content="My RE isn’t matching/deleting what I want it to. (Or, “Greedy vs. stingy pattern matching”)The two most common causes for this problem are:  misusing the ‘.’...">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!-- Typesetting math using MathJax -->
+  <!-- mathjax config similar to math.stackexchange -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'] ],
+       displayMath: [ ['$$', '$$']],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     },
+     messageStyle: "none",
+     "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+   });
+  </script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2013/11/19/non-greedy-regex/">
+  <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
+</head>
+
+  <body>
+    <section>
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Shawn</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/blog/archives">Archive</a></li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</section>
+
+    <section>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="page-title" itemprop="name headline">Non Greedy Regex</h1>
+      <p class="post-meta"><time datetime="2013-11-19T10:16:00+08:00" itemprop="datePublished">Nov 19, 2013</time></p>
+    </div>
+
+</div>
+
+
+  <div class="post-content container" itemprop="articleBody">
+    <h2 id="my-re-isnt-matchingdeleting-what-i-want-it-to-or-greedy-vs-stingy-pattern-matching">My RE isn’t matching/deleting what I want it to. (Or, “Greedy vs. stingy pattern matching”)</h2>
+
+<p>The two most common causes for this problem are:</p>
+
+<ol>
+  <li>misusing the ‘.’
+metacharacter</li>
+  <li>misusing the ‘*’ metacharacter.</li>
+</ol>
+
+<p>The RE ‘.*’ is designed to be “greedy” (i.e., matching as many characters as
+possible). However, sometimes users need an expression which is “stingy,”
+matching the shortest possible string.</p>
+
+<!-- more -->
+
+<h2 id="misusing-the--metacharacter">misusing the ‘.’ metacharacter</h2>
+
+<p>On single-line patterns, the ‘.’ metacharacter matches any single character on the line. (‘.’ cannot match the newline at the end of the line because the newline is removed when the line is put into the pattern space; sed adds a newline automatically when the pattern space is printed.) On multi-line patterns obtained with the ‘N’ or ‘G’ commands, ‘.’ will match a newline in the middle of the pattern space. If there are 3 lines in the pattern space, “s/.*//” will delete all 3 lines, not just the first one (leaving 1 blank line, since the trailing newline is added to the output).</p>
+
+<p>Normal misuse of ‘.’ occurs in trying to match a word or bounded field, and forgetting that ‘.’ will also cross the field limits. Suppose you want to delete the first word in braces:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>   echo {one} {two} {three} | sed 's/{.\*}/{}/'       # fails
+   echo {one} {two} {three} | sed 's/{[^}]\*}/{}/'    # succeeds 's/{.\*}/{}/' is not the solution, since the regex '.' will match any character, including the close braces. Replace the '.' with '[^}]', which signifies a negated character set '[^...]' containing anything other than a right brace. FWIW, we know that 's/{one}/{}/' would also solve our question, but we're trying to illustrate the use of the negated character set: [^anything-but-this].
+</code></pre>
+</div>
+
+<p>A negated character set should be used for matching words between quote marks, for fields separated by commas, and so on. See also section 4.12 (“How do I parse a comma-delimited data file?”).</p>
+
+<h2 id="misusing-the--metacharacter-1">misusing the ‘*’ metacharacter</h2>
+
+<p>The ‘*’ metacharacter represents zero or more instances of the previous expression. The ‘*’ metacharacter looks for the leftmost possible match first and will match zero characters. Thus,</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>   echo foo | sed 's/o\*/EEE/' will generate 'EEEfoo', not 'fEEE' as one might expect. This is because /o\*/ matches the null string at the beginning of the word.
+</code></pre>
+</div>
+
+<p>After finding the leftmost possible match, the ‘*’ is GREEDY; it always tries to match the longest possible string. When two or three instances of ‘.*’ occur in the same RE, the leftmost instance will grab the most characters. Consider this example, which uses grouping ‘(…)’ to save patterns:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>   echo bar bat bay bet bit | sed 's/^.\*\(b.\*\)/\1/' What will be displayed is 'bit', never anything longer, because the leftmost '.\*' took the longest possible match. Remember this rule: "leftmost match, longest possible string, zero also matches."
+</code></pre>
+</div>
+
+<p>from: http://sed.sourceforge.net/sedfaq5.html</p>
+
+  </div>
+
+</article>
+
+    </section>
+
+    
+    <div class="container">
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2013/11/19/non-greedy-regex/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2013/11/19/non-greedy-regex/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+      </section>
+    </div>
+    
+
+    <!-- <nav class="navbar navbar-default navbar-fixed-bottom"> -->
+<!-- <div class="container footer-content"> -->
+    <!-- Nothing is there. -->
+<!-- </div> -->
+<!-- </nav> -->
+  </body>
+
+</html>

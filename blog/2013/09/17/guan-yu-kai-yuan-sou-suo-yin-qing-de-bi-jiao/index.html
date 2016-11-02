@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Shawn" property="og:site_name">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <meta content="关于开源搜索引擎的比较" property="og:title">
+  
+
+  
+  <meta content="article" property="og:type">
+  
+
+  
+  <meta content="<h1>World Hacker's Notebook</h1>" property="og:description">
+  
+
+  
+  <meta content="http://shawnLeeZX.github.io/blog/2013/09/17/guan-yu-kai-yuan-sou-suo-yin-qing-de-bi-jiao/" property="og:url">
+  
+
+  
+  <meta content="2013-09-17T22:13:00+08:00" property="article:published_time">
+  <meta content="http://shawnLeeZX.github.io/about/" property="article:author">
+  
+
+  <meta property="og:image" content="">
+
+  
+  
+  <meta content="CS" property="article:section">
+  
+  
+
+  
+  
+  
+
+  <title>关于开源搜索引擎的比较 - Shawn</title>
+  <meta name="description" content="说明这是VikSingh在2009年7月6日撰写的一篇对比各个开源搜索引擎的文章，我在上一门教授搜索引擎的课程，课程要求对已存在的各开源搜索引擎进行调研，在调研之中发现了这篇文章，将其作为调研总结，故此翻译此文。">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!-- Typesetting math using MathJax -->
+  <!-- mathjax config similar to math.stackexchange -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'] ],
+       displayMath: [ ['$$', '$$']],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     },
+     messageStyle: "none",
+     "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+   });
+  </script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2013/09/17/guan-yu-kai-yuan-sou-suo-yin-qing-de-bi-jiao/">
+  <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
+</head>
+
+  <body>
+    <section>
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Shawn</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/blog/archives">Archive</a></li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</section>
+
+    <section>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="page-title" itemprop="name headline">关于开源搜索引擎的比较</h1>
+      <p class="post-meta"><time datetime="2013-09-17T22:13:00+08:00" itemprop="datePublished">Sep 17, 2013</time></p>
+    </div>
+
+</div>
+
+
+  <div class="post-content container" itemprop="articleBody">
+    <h2 id="section">说明</h2>
+
+<p>这是Vik
+Singh在2009年7月6日撰写的一篇对比各个开源搜索引擎的文章，我在上一门教授搜索引擎的课程，课程要求对已存在的各开源搜索引擎进行调研，在调研之中发现了这篇文章，将其作为调研总结，故此翻译此文。</p>
+
+<!-- more -->
+
+<h2 id="section-1">动机</h2>
+
+<p>本月下旬，我们将要在SIGIR上进行半天关于开放搜索的的教程。其关注于如何使用开源软件和云端服务快速搭建高级搜索服务的原型。开放搜索不仅仅是使用开源技术栈搭建一个像谷歌一样的搜索工具条，而更多的是鼓励社区来利用和扩展搜索技术来提高软件的质量。</p>
+
+<p>我们把我们的演讲分成了两个部分：</p>
+
+<ul>
+  <li>
+    <p>服务：开放搜索Web API（Yahoo!BOSS, Twitter, Bing, and Google AJAX
+Search)，包括能够从这些服务中获益的有趣的混合样例，排名模型和学术搜索。</p>
+  </li>
+  <li>
+    <p>软件：如何使用流行的开源软件包对你自己数据进行垂直索引的建立。</p>
+  </li>
+</ul>
+
+<p>在研究软件这一部分时，我非常惊讶地发现了能够获得的开源垂直搜索解决方案的数量：</p>
+
+<blockquote>
+  <p>Lucene (Nutch, Solr, Hounder), Sphinx, zettair, Terrier, Galago,
+Minnion, MG4J, Wumpus, RDBMS (mysql, sqlite), Indri, Xapian, grep …</p>
+</blockquote>
+
+<p>但是令我更加惊讶的是这些解决方案之间对比的缺乏。这些平台中的许多仅宣传了他们的性能benchmark，但他们却相互孤立，使用不同的数据集，而且似乎更加关注于速度而不是相关性。</p>
+
+<p>我能够找到的最好的关于这些开源搜索引擎性能和质量的对比是Middleton+Baezaâ’07，但是这篇论文已经十分老旧，而且没有公开其源码和数据集。</p>
+
+<p>因此，我进行了一些有趣，随意的实验（如果你想要运行代码样例——该实验不是为了SIGIR而进行——请阅读文末结尾段的免责申明），来测试一些流行的垂直索引解决方案。下图是我选择测试的平台和相关的测试特征。</p>
+
+<figure class="image-caption center">
+  <a class="image-popup" href="/resources/open_search/opensearch_compare.jpg">
+    <img class="caption" src="/resources/open_search/opensearch_compare.jpg" width="100%" height="100%" title="" alt="" />
+  </a>
+  <figcaption class="caption-text">
+    
+  </figcaption>
+</figure>
+
+<p>在进行测试设计的过程中，我决定不对引擎的参数进行任何的调制——我真正想要测试的是这些平台的”Out
+of the
+Box”性能，从而能够模拟普通开发者的情形。而且，如果你想要优化，你会在不同平台上和数据集上不停地调，不停地调，不停地调参数。。。对一个仅仅准备利用一个周末时间进行的benchmark来说（参见结论段的免责申明），这就是永远。</p>
+
+<p>同时，我尽量使用各个平台上所期待的库函数和二进制指令来进行每个实验。</p>
+
+<h2 id="twitter">在Twitter上的实验</h2>
+
+<p>对于第一个实验，我想要看看这些平台在索引Twitter数据时的性能。Twitter正在变得主流，同时其实时性和简洁性和传统的网络内容非常不同（这些搜索平台一般来说被调制得对传统内容更加适合），所以对Twitter数据的实验应该会更加有趣。</p>
+
+<p>因此我使用爬虫从Twitter上爬下了一个样本数据集。大概一天一夜之后，我大概下载了约1M的tweets（～10/秒）。</p>
+
+<p>在进行索引建立之前，我对所获得的Twitter数据进行了简单的分析：</p>
+
+<ul>
+  <li>
+    <p>Tweets数量：968,937</p>
+  </li>
+  <li>
+    <p>可索引的文本大小（用户，姓名，文本短讯）：92M</p>
+  </li>
+  <li>
+    <p>平均Tweet大小：12单词</p>
+  </li>
+  <li>
+    <p>基于单词过滤器的简单Tweets分类如下。</p>
+  </li>
+</ul>
+
+<figure class="image-caption center">
+  <a class="image-popup" href="/resources/open_search/twitter_1m_stats.jpg">
+    <img class="caption" src="/resources/open_search/twitter_1m_stats.jpg" width="100%" height="100%" title="" alt="" />
+  </a>
+  <figcaption class="caption-text">
+    
+  </figcaption>
+</figure>
+
+<p>这个统计数据非常有趣——尤其是请教问题的Tweets占了很高的百分比。Twitter（或者其他应用）能够更好地服务这项需求吗？</p>
+
+<h2 id="section-2">索引建立性能对比</h2>
+
+<p>下图是各个所选择的垂直搜索解决方案对Twitter数据进行索引的性能表格：</p>
+
+<figure class="image-caption center">
+  <a class="image-popup" href="/resources/open_search/open_search_tweets_perf.jpg">
+    <img class="caption" src="/resources/open_search/open_search_tweets_perf.jpg" width="100%" height="100%" title="" alt="" />
+  </a>
+  <figcaption class="caption-text">
+    
+  </figcaption>
+</figure>
+
+<h2 id="section-3">相关性测量：医疗数据</h2>
+
+<p>尽管对于短文本的索引建立性能测试有些意思，但却不能够测量搜索的性能和相关性。</p>
+
+<p>为了测量相关性，我们需要能够给出对搜索结果进行相关性判断的判断数据。我所能够找到的能够公开下载（几乎所有的都要求通过CD邮寄）的最好的数据集是TREC-9
+Filtering
+track，其提供了196,403个医疗期刊的引用——共约300MB平均每个记录含有125个tokens的可索引文本（题目，作者，摘要，关键词）。更重要的是，该数据集提供了类查询形式（&lt;任务，
+文档， 2|1|0 rating&gt;）的判断数据。一个任务的例子是“37 yr old man with
+sickle cell disease.”
+为了将其转化为一个搜索benchmark，我将这些任务看成OR’ed查询。为了测量其结果的相关性，我计算了这63条查询的前十条查询结果的平均DCG。</p>
+
+<figure class="image-caption center">
+  <a class="image-popup" href="/resources/open_search/opensearch_ohsumed.jpg">
+    <img class="caption" src="/resources/open_search/opensearch_ohsumed.jpg" width="100%" height="100%" title="" alt="" />
+  </a>
+  <figcaption class="caption-text">
+    
+  </figcaption>
+</figure>
+
+<h2 id="section-4">结论和下载</h2>
+
+<p>基于这些初步的结果和我从网络和领域中的人们（之后会有关于这方面更多的强调）得到零散的信息，对大多数垂直搜索索引应用，我可能会推荐Lucene（其是一个IR库——如果你想要像snippet,
+爬虫，servlets这样的搜索挂饰，可以使用像Solr/Nutch这样的wrapper平台），尤其是你需要的是能够拿来就用并且存在有力的社区支持的东西。</p>
+
+<p>需要提醒的是这些实验都十分初步（仅仅有一个周末的时间预算），且能够被进一步提高——在更大更好的数据集上进行测试，微调代码实现和建立社区支持（我是第一个表达这些结果远非完美的人，所以我开源了我的代码）。一个让每一个人都接受的benchmark不是一件容易的事，考虑到不同的数据集，平台APIs和调试参数（至少数据库还支持SQL！）这仅仅是个开始，我此视为一个进化中的计划，其需要社区支持来走上正轨。</p>
+
+<p>从这里拿走任何有价值的结果，然后测试你自己的benchmark吧。</p>
+
+<p>为了吸引进一步在搜索领域的发展和benchmark的开发，我将代码开源在这里：</p>
+
+<p>http://github.com/zooie/opensearch/tree/master</p>
+
+<p>随意发布更多新的有趣的结果。</p>
+
+<p>译者注：原始文章地址在这里，译文中省略了许多相关资源的链接，可以在原文中找到。http://zooie.wordpress.com/2009/07/06/a-comparison-of-open-source-search-engines-and-indexing-twitter/</p>
+
+  </div>
+
+</article>
+
+    </section>
+
+    
+    <div class="container">
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2013/09/17/guan-yu-kai-yuan-sou-suo-yin-qing-de-bi-jiao/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2013/09/17/guan-yu-kai-yuan-sou-suo-yin-qing-de-bi-jiao/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+      </section>
+    </div>
+    
+
+    <!-- <nav class="navbar navbar-default navbar-fixed-bottom"> -->
+<!-- <div class="container footer-content"> -->
+    <!-- Nothing is there. -->
+<!-- </div> -->
+<!-- </nav> -->
+  </body>
+
+</html>

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Shawn" property="og:site_name">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <meta content="Reading Summary of How To Do Research At MIT AI Lab" property="og:title">
+  
+
+  
+  <meta content="article" property="og:type">
+  
+
+  
+  <meta content="<h1>World Hacker's Notebook</h1>" property="og:description">
+  
+
+  
+  <meta content="http://shawnLeeZX.github.io/blog/2013/03/14/reading-summary-of-how-to-do-research-at-mit-ai-lab/" property="og:url">
+  
+
+  
+  <meta content="2013-03-14T09:20:00+08:00" property="article:published_time">
+  <meta content="http://shawnLeeZX.github.io/about/" property="article:author">
+  
+
+  <meta property="og:image" content="">
+
+  
+  
+  <meta content="Research" property="article:section">
+  
+  
+
+  
+  
+  
+
+  <title>Reading Summary of How To Do Research At MIT AI Lab - Shawn</title>
+  <meta name="description" content="Recently, I am trying to figure out what it means to do some research in the AI field. And I came across again the very article written by the people of the ...">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!-- Typesetting math using MathJax -->
+  <!-- mathjax config similar to math.stackexchange -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'] ],
+       displayMath: [ ['$$', '$$']],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     },
+     messageStyle: "none",
+     "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+   });
+  </script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2013/03/14/reading-summary-of-how-to-do-research-at-mit-ai-lab/">
+  <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
+</head>
+
+  <body>
+    <section>
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Shawn</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/blog/archives">Archive</a></li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</section>
+
+    <section>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="page-title" itemprop="name headline">Reading Summary of How To Do Research At MIT AI Lab</h1>
+      <p class="post-meta"><time datetime="2013-03-14T09:20:00+08:00" itemprop="datePublished">Mar 14, 2013</time></p>
+    </div>
+
+</div>
+
+
+  <div class="post-content container" itemprop="articleBody">
+    <p>Recently, I am trying to figure out what it means to do some research in the AI field. And I came across again the very article written by the people of the great university — MIT. This time, with clearer questions and more experience, I read it again. Here is the reading notes:</p>
+
+<h2 id="first-it-is-about-reading-in-the-ai-field">First, it is about reading in the AI field.</h2>
+<!-- more -->
+
+<p>According to the article, for me, a novice undergraduate, it is ok for now to just read textbook and published articles. If I would do research in the future, it may be more suitable to try to get in the research community and read draft passed around by those people.</p>
+
+<h3 id="what-journals-should-i-read">What journals should I read:</h3>
+
+<p>(TODO: since the article was published in 1988, the information may be some kind of outdated. Try search on the google to get the up-to-date information.)</p>
+
+<blockquote>
+  <p>Principle journal for central-systems is Artificial Intelligence, also referred as “the journal of Artificial Intelligence”, or “AIJ”. Most of the really important papers in AI eventually make it into AIJ, so it’s worth scanning through back issues every year or so; but a lot of what it prints is really boring.</p>
+
+  <p>Computational Intelligence is a new competitor that’s worth checking out. Cognitive Science also prints a fair number of significant AI papers. Machine Learning is the main source on what it says. IEEE PAMI is probably the best established vision journal; two or three interesting papers per issue. The International Journal of Computer Vision (IJCV) is new and so far has been interesting. Papers in Robotics Research are mostly on dynamics; sometimes it also has a landmark AIish robotics paper. IEEE Robotics and Automation has occasional good papers.</p>
+</blockquote>
+
+<h3 id="how-should-i-read-a-article">How should I read a article:</h3>
+<p>See page 5 of the original article.</p>
+
+<p>If I am interested in one specific subfield, what should I do:</p>
+
+<ul>
+  <li>Try to find a senior graduate student and ask him for the ten most important articles in this field. Right now, that I can think of is to:</li>
+</ul>
+
+<ol>
+  <li>ask the graduate students in the lab which I have contacts.</li>
+  <li>I can find phd students by browsing the websites of top schools, like cmu, which is the only university that I have done some study. And it may be better to ask them about such stuff.
+However, before all this, find yourself a subfield.</li>
+</ol>
+
+<h2 id="second-it-is-about-getting-connected">Second, it is about getting connected.</h2>
+
+<p>What could I do right now:</p>
+
+<ol>
+  <li>find electronic mailing lists that discuss AI subfields.</li>
+  <li>when I read something interesting, try to recommend it to someone may be interested. For example, the video about waston I read days ago. Some good books may be of some help as well.</li>
+</ol>
+
+<p>Here is the heuristics:</p>
+
+<p>• There’s a bunch of electronic mailing lists that discuss AI subfields like
+connectionism or vision. Get yourself on the ones that seem interesting.</p>
+
+<p>• Whenever you talk about an idea you’ve had with someone who knows the
+field, they are likely not to give an evaluation of your idea, but to say, “Have
+you read X?” Not a test question, but a suggestion about something to read
+that will probably be relevant. If you haven’t read X, get the full reference
+from your interlocutor, or better yet, ask to borrow and Xerox his copy.</p>
+
+<p>• When you read a paper that excites you, make five copies and give them to
+people you think will be interested in it. They’ll probably return the favor.</p>
+
+<p>• The lab has a number of on-going informal paper discussion groups on vari-
+ous subfields. These meet every week or two to discuss a paper that everyone
+has read.</p>
+
+<p>• Some people don’t mind if you read their desks. That is, read the papers that
+they intend to read soon are heaped there and turn over pretty regularly.
+You can look over them and see if there’s anything that looks interesting.
+Be sure to ask before doing this; some people do mind. Try people who seem
+friendly and connected.</p>
+
+<p>• Similarly, some people don’t mind your browsing their filing cabinets. There
+are people in the lab who are into scholarship and whose cabinets are quite
+comprehensive. This is often a faster and more reliable way to find papers
+than using the school library.</p>
+
+<p>• Whenever you write something yourself, distribute copies of a draft of it
+to people who are likely to be interested. (This has a potential problem:
+plagiarism is rare in AI, but it does happen. You can put something like
+“Please do not photocopy or quote” on the front page as a partial prophy-
+lactic.) Most people don’t read most of the papers they’re given, so don’t
+take it personally when only a few of the copies you distribute come back
+with comments on them. If you go through several drafts—which for a jour-
+nal article you should—few readers will read more than one of them. Your
+advisor is expected to be an exception.</p>
+
+<p>• When you finish a paper, send copies to everyone you think might be in-
+terested. Don’t assume they’ll read it in the journal or proceedings sponta-
+neously. Internal publication series (memos and technical reports) are even
+less likely to be read.</p>
+
+<p>• The more different people you can get connected with, the better. Try to
+swap papers with people from different research groups, different AI labs,
+different academic fields. Make yourself the bridge between two groups of
+interesting people working on related problems who aren’t talking to each
+other and suddenly reams of interesting papers will flow across your desk.</p>
+
+<p>• When a paper cites something that looks interesting, make a note of it.
+Keep a log of interesting references. Go to the library every once in a while
+and look the lot of them up. You can intensively work backward through a
+“reference graph” of citations when you are hot on the trail of an interesting
+topic. A reference graph is a web of citations: paper A cites papers B
+and C, B cites C and D, C cites D, and so on. Papers that you notice
+cited frequently are always worth reading. Reference graphs have weird
+properties. One is that often there are two groups of people working on the
+same topic who don’t know about each other. You may find yourself close to
+closure on searching a graph and suddenly find your way into another whole
+section. This happens when there are different schools or approaches. It’s
+very valuable to understand as many approaches as possible—often more so
+than understanding one approach in greater depth.</p>
+
+<p>• Hang out. Talk to people. Tell them what you’re up to and ask what they’re
+doing. (If you’re shy about talking to other students about your ideas, say
+because you feel you haven’t got any, then try talking to them about the
+really good—or unbelievably foolish—stuff you’ve been reading. This leads
+naturally into the topic of what one might do next.) There’s an informal
+lunch group that meets in the seventh floor playroom around noon every
+day. People tend to work nights in our lab, and so go for dinner in loose
+groups. Invite yourself along.</p>
+
+<p>• If you interact with outsiders much—giving demos or going to conferences—
+get a business card. Make it easy to remember your name.</p>
+
+<p>• At some point you’ll start going to scientific conferences. When you do, you
+will discover fact that almost all the papers presented at any conference are
+boring or silly. (There are interesting reasons for this that aren’t relevant
+here.) Why go to them then? To meet people in the world outside your lab.
+Outside people can spread the news about your work, invite you to give
+talks, tell you about the atmosphere and personalities at a site, introduce
+you to people, help you find a summer job, and so forth. How to meet
+people? Walk up to someone whose paper you’ve liked, say “I really liked
+your paper”, and ask a question.</p>
+
+<p>• Get summer jobs away at other labs. This gives you a whole new pool of
+people to get connected with who probably have a different way of looking
+at things. One good way to get summer jobs at other labs is to ask senior
+grad students how. They’re likely to have been places that you’d want to
+go and can probably help you make the right connections.</p>
+
+<h2 id="third-it-is-about-writting">Third, it is about writting.</h2>
+
+<p>It seems that I have begun to write before I got instruction from this article. And now my direction is more clear — it feels better when your understanding accords with the extraordinary people. So try to officially get started and keep going.</p>
+
+<h3 id="thing-to-keep-in-mind">Thing to keep in mind:</h3>
+
+<ol>
+  <li>write at the time your work developing, not at the time it is done.</li>
+  <li>what you write is always drafts, so do not try to write perfectly if you are not going to officially publish it — it takes too much time.</li>
+</ol>
+
+<h3 id="here-are-reasons-to-write">Here are reasons to write:</h3>
+
+<p>• You are required to write one or two theses during your graduate student
+career: a PhD and maybe an MS, depending on your department.</p>
+
+<p>• Writing a lot more than that gives you practice.</p>
+
+<p>• Academia runs on publish-or-perish. In most fields and schools, this starts
+in earnest when you become a professor, but most graduate students in our
+lab publish before they graduate. Publishing and distributing papers is good
+politics and good publicity.</p>
+
+<p>• Writing down your ideas is the best way to debug them. Usually you will
+find that what seemed perfectly clear in your head is in fact an incoherent
+mess on paper.</p>
+
+<p>• If your work is to benefit anyone other than yourself, you must communicate
+it. This is a basic responsibility of research. If you write well more people
+will read your work!</p>
+
+<p>• AI is too hard to do by yourself. You need constant feedback from other
+people. Comments on your papers are one of the most important forms of
+that.</p>
+
+<p>Here is how to improve my writting skills:</p>
+
+<p>• Read books about how to write. <em>Strunk and White’s Elements of Style</em>
+gives the basic dos and don’ts. <em>Claire Cook’s The MLA’s Line By Line
+(Houghton Mifflin)</em> is about editing at the sentence level. <em>Jacques Barzun’s
+Simple and Direct: A Rhetoric for Writers (Harper and Row, 1985)</em> is about
+composition.</p>
+
+<p>• When writing a paper, read books that are well-written, thinking in back-
+ground mode about the syntactic mechanics. You’ll find yourself absorbing
+the author’s style.</p>
+
+<p>• Learning to write well requires doing a lot of it, over a period of years, and
+getting and taking seriously criticism of what you’ve written. There’s no
+way to get dramatically better at it quickly.</p>
+
+<p>• Writing is sometimes painful, and it can seem a distraction from doing the
+“real” work. But as you get better at it, it goes faster, and if you approach
+it as a craft, you can get a lot of enjoyment out of the process for its own
+sake.</p>
+
+<p>• You will certainly suffer from writer’s block at some point. Writer’s block
+has many sources and no sure cure. Perfectionism can lead to writer’s block:
+whatever you start to write seems not good enough. Realize that writing is
+a debugging process. Write something sloppy first and go back and fix it up.
+Starting sloppy gets the ideas out and gets you into the flow. If you “can’t”
+write text, write an outline. Make it more and more detailed until it’s easy
+to write the subsubsubsections. If you find it really hard to be sloppy, try
+turning the contrast knob on your terminal all the way down so you can’t
+see what you are writing. Type whatever comes into your head, even if it
+seems like garbage. After you’ve got a lot of text out, turn the knob back
+up and edit what you’ve written into something sensible.</p>
+
+<h3 id="how-to-write">How to write.</h3>
+
+<p>Another mistake is to imagine that the whole thing can be written out
+in order. Usually you should start with the meat of the paper and write
+the introduction last, after you know what the paper really says. Another
+cause of writer’s block is unrealistic expectations about how easy writing is.
+Writing is hard work and takes a long time; don’t get frustrated and give
+up if you find you write only a page a day.</p>
+
+<p>• Perfectionism can also lead to endless repolishing of a perfectly adequate
+paper. This is a waste of time. (It can also be a way of semideliberately
+avoiding doing research.) Think of the paper you are writing as one state-
+ment in a conversation you are having with other people in the field. In a
+conversation not everything goes perfectly; few expect that what they say
+in a single utterance will be the whole story or last word in the interchange.</p>
+
+<p>• Writing letters is good practice. Most technical papers would be improved
+if the style was more like a letter to a friend. Keeping a diary is also a way
+to practice writing (and lets you be more stylistically experimental than
+technical papers). Both practices have other substantial benefits.</p>
+
+<p>• It’s a common trap to spend more time hacking the formatter macrology
+than the content. Avoid this. LaTeX is imperfect, but it has most of the
+macrology you want. If that’s not enough, you can probably borrow code
+from someone else who has wanted to do the same thing. Most sites (in-
+cluding MIT) maintain a library of locally-written extensions.</p>
+
+<p>• Know what you want to say. This is the hardest and most important factor
+in writing clearly. If you write something clumsy and can’t seem to fix it,
+probably you aren’t sure what you really want to say. Once you know what
+to say, just say it.</p>
+
+<p>• Make it easy for the reader to find out what you’ve done. Put the sexy stuff
+up front, at all levels of organization from paragraph up to the whole paper.
+Carefully craft the abstract. Be sure it tells what your good idea is. Be
+sure you yourself know what it is! Then figure out how to say it in a few
+sentences. Too many abstracts tell what the paper is generally about and
+promise an idea without saying what it is.</p>
+
+<p>• Don’t “sell” what you’ve done with big words or claims. Your readers are
+good people; honesty and self-respect suffice. Contrariwise, don’t apologize
+for or cut down your own work.</p>
+
+<p>• Often you’ll write a clause or sentence or paragraph that you know is bad,
+but you won’t be able to find a way to fix it. This happens because you’ve
+worked yourself into a corner and no local choice can get you out. You have
+to back out and rewrite the whole passage. This happens less with practice.</p>
+
+<p>• Make sure your paper has an idea in it. If your program solves problem X in
+10 ms, tell the reader why it’s so fast. Don’t just explain how your system
+is built and what it does, also explain why it works and why it’s interesting.</p>
+
+<p>• Write for people, not machines. It’s not enough that your argument be
+correct, it has to be easy to follow. Don’t rely on the reader to make any
+but the most obvious deductions. That you explained how the frobnitz
+worked in a footnote on page seven is not a justification when the reader
+gets confused by your introducing it without further explanation on page
+twenty-three. Formal papers are particularly hard to write clearly. Do not
+imitate math texts; their standard of elegance is to say as little as possible,
+and so to make the reader’s job as hard as possible. This is not appropriate
+for AI.</p>
+
+<p>• After you have written a paper, delete the first paragraph or the first few
+sentences. You’ll probably find that they were content-free generalities, and
+that a much better introductory sentence can be found at the end of the
+first paragraph of the beginning of the second.</p>
+
+<h2 id="fourth-it-is-about-finding-information-of-advisors">Fourth, it is about finding information of advisors.</h2>
+
+<p>For me right now, only the first tow points given is practical:</p>
+
+<p>• Read the Lab’s research summary. It gives a page or so description of what
+each of the faculty and many of the graduate students are up to.</p>
+
+<p>• Read recent papers of any faculty member whose work seems at all interest-
+ing.</p>
+
+<h2 id="the-last-is-the-emotional-factors">The last, is the emotional factors:</h2>
+
+<p>I want to begin with one sentence in the article:</p>
+
+<p>It’s easy to interpret your project failing as your failing; in fact, it proves that you had the courage to do something difficult.
+In my word, knows your limitation, and, keep trying and exercise in moderation.</p>
+
+<p>Another thing that is hard to realise is that you alone cannot revolutionize the AI field, just try to find one subfield and forward a little bit of its state-of-art.</p>
+
+<h3 id="how-to-prevent-yourself-from-being-stuck">How to prevent yourself from being stuck.</h3>
+
+<p>• Setting your sights too high leads to paralysis. Work on a subproblem to
+get back into the flow.</p>
+
+<p>• You can get into a positive feedback loop in which doubts about your ability
+to do the work eat away at your enthusiasm so that in fact you can’t get
+anything done. Realize that research ability is a learned skill, not innate
+genius.</p>
+
+<p>• If you find yourself seriously stuck, with nothing at all happening for a week
+or more, promise to work one hour a day. After a few days of that, you’ll
+probably find yourself back in the flow.</p>
+
+<p>• It’s hard to get started working in the morning, easy to keep going once
+you’ve started. Leave something easy or fun unfinished in the evening that
+you can start with in the morning. Start the morning with real work—if you
+start by reading your mail, you may never get to something more productive.</p>
+
+<p>• Fear of failure can make work hard. If you find yourself inexplicably “unable”
+to get work done, ask whether you are avoiding putting your ideas to the
+test. The prospect of discovering that your last several months of work have
+been for naught may be what’s stopping you. There’s no way to avoid this;
+just realize that failure and wasted work are part of the process.</p>
+
+<p>• Read Alan Lakien’s book How to Get Control of Your Time and Your Life,
+which is recommended even by people who hate self-help books. It has
+invaluable techniques for getting yourself into productive action.</p>
+
+<p>TODO: great books, How to Get Control of Your Time and Your Life</p>
+
+<h3 id="there-is-more-value-in-you-than-you-think">There is more value in you than you think:</h3>
+
+<p>It’s easy not to see the progress you have made. “If I can do it, it’s trivial. My
+ideas are all obvious.” They may be obvious to you in retrospect, but probably
+they are not obvious to anyone else. Explaining your work to lots of strangers will
+help you keep in mind just how hard it is to understand what now seems trivial
+to you. Write it up.</p>
+
+<h3 id="be-more-realistic-and-focus-on-one-subfield">Be more realistic and focus on one subfield.</h3>
+
+<p>It’s easy to think that I’m the one who is going to solve this AI problem for once and for all.
+There’s nothing wrong with this; it takes vision to make any progress in a field
+this tangled. The potential pitfall is discovering that the problems are all harder
+than you expected, that research takes longer than you expected, and that you
+can’t do it all by yourself. This leads some of us into a severe crisis of confidence.
+You have to face the fact that all you can do is contribute your bit to a corner of a
+subfield, that your thesis is not going to solve the big problems. That may require
+radical self-reevaluation; often painful, and sometimes requiring a year or so to
+complete. Doing that is very worthwhile, though; taking yourself less seriously
+allows you to approach research in a spirit of play.</p>
+
+<h3 id="ways-to-know-about-lives-of-scientists">Ways to know about lives of scientists:</h3>
+
+<p>In getting a feeling for what research is like, and as inspiration and consolation
+in times of doubt, it’s useful to read some of the livelier scientific autobiographies.
+Good ones are Gregory Bateson’s Advice to a Young Scientist, Freeman Dyson’s
+Disturbing the Universe, Richard Feynmann’s Surely You Are Joking, Mr. Feyn-
+mann!, George Hardy’s A Mathematician’s Apology, and Jim Watson’s The Double
+Helix.</p>
+
+  </div>
+
+</article>
+
+    </section>
+
+    
+    <div class="container">
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2013/03/14/reading-summary-of-how-to-do-research-at-mit-ai-lab/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2013/03/14/reading-summary-of-how-to-do-research-at-mit-ai-lab/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+      </section>
+    </div>
+    
+
+    <!-- <nav class="navbar navbar-default navbar-fixed-bottom"> -->
+<!-- <div class="container footer-content"> -->
+    <!-- Nothing is there. -->
+<!-- </div> -->
+<!-- </nav> -->
+  </body>
+
+</html>
