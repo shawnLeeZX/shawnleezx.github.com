@@ -5,9 +5,22 @@
     <description>&lt;h1&gt;World Hacker's Notebook&lt;/h1&gt;</description>
     <link>http://shawnLeeZX.github.io/</link>
     <atom:link href="http://shawnLeeZX.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 02 Nov 2016 21:53:13 +0800</pubDate>
-    <lastBuildDate>Wed, 02 Nov 2016 21:53:13 +0800</lastBuildDate>
+    <pubDate>Sat, 05 Nov 2016 10:17:58 +0800</pubDate>
+    <lastBuildDate>Sat, 05 Nov 2016 10:17:58 +0800</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>The Brave World</title>
+        <description>&lt;p&gt;我想，从今而始，新世界到来了。&lt;/p&gt;
+</description>
+        <pubDate>Sat, 05 Nov 2016 10:11:56 +0800</pubDate>
+        <link>http://shawnLeeZX.github.io/blog/2016/11/05/the-brave-world/</link>
+        <guid isPermaLink="true">http://shawnLeeZX.github.io/blog/2016/11/05/the-brave-world/</guid>
+        
+        
+        <category>Life</category>
+        
+      </item>
     
       <item>
         <title>Excerpts of The Glory and The Dream, Narrative History of America</title>
@@ -331,6 +344,26 @@ next contraction $ρW_{j+1}$ reduces distances along fibres indexed by $(g, h)
         
         
         <category>CNN</category>
+        
+      </item>
+    
+      <item>
+        <title>An idea to gather people's stories</title>
+        <description>&lt;p&gt;In post-religion world, the God has stepped down, even humanism. People start to
+look for icons that is personal yet inspirational, who could set an example for
+their life. The idea of this project is to collect the people who may a
+tech-utopian, aka the people who believe by making progress in technology, and
+ease the dissemination of knowledge and information, eventually, the power could
+be brought to the people.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Mark_Shuttleworth&quot;&gt;Mark_Shuttleworth&lt;/a&gt;, the funder
+of Ubuntu.&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 27 Aug 2016 09:35:00 +0800</pubDate>
+        <link>http://shawnLeeZX.github.io/blog/2016/08/27/a-idea-to-gather-peoples-stories/</link>
+        <guid isPermaLink="true">http://shawnLeeZX.github.io/blog/2016/08/27/a-idea-to-gather-peoples-stories/</guid>
+        
         
       </item>
     
@@ -969,286 +1002,6 @@ install it there. For instance, for &lt;code class=&quot;highlighter-rouge&quot;
         <category>Note</category>
         
         <category>Ansible</category>
-        
-      </item>
-    
-      <item>
-        <title>Setting up Multi-Monitor on Gnome Ubuntu 14.04 with NVIDIA Card</title>
-        <description>&lt;p&gt;I got an old monitor and spent some time tweaking the dual monitor setting of
-my PC in the office. Here I note down&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;a tweak to make multiple monitor in Gnome functions better, and some notes
-on the behavior of &lt;code class=&quot;highlighter-rouge&quot;&gt;guake&lt;/code&gt; under multi-monitor setting.&lt;/li&gt;
-  &lt;li&gt;a hack to let X Windows remember the monitor layout&lt;/li&gt;
-  &lt;li&gt;and a short comparison between Gnome 3 and KDE Plasma 4.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;!-- more --&gt;
-
-&lt;h2 id=&quot;dual-monitor-on-gnome&quot;&gt;Dual Monitor on Gnome&lt;/h2&gt;
-
-&lt;p&gt;I uses &lt;a href=&quot;https://www.gnome.org/&quot;&gt;Gnome&lt;/a&gt; as my desktop environment ever since the
-time I started using Linux. So naturally, the desktop I tried this time to
-manage multi-monitor support is Gnome. By default, the dual monitor worked
-pretty OK. The only one thing that may need a tweak is: by default, Gnome(my
-version is 3.9.90), only supports workspace in primary monitor, so when you
-switch back and forth between different workspace, the secondary monitor stays
-fixed on whatever it is on. This kind of makes the extra monitor many times
-less useful. To make the secondary monitor attach to current workspace, so it
-moves when you switch workspaces, you need to configure Gnome a little bit, by
-the following command&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gsettings &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;org.gnome.shell.overrides workspaces-only-on-primary &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;One drawback of making such a change is &lt;code class=&quot;highlighter-rouge&quot;&gt;guake&lt;/code&gt; will stay on the secondary
-window forever. Did not get the time to look into the source code to know why
-:(.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Updated on Jan 9, 2016.&lt;/em&gt;&lt;/p&gt;
-
-&lt;strike&gt;It is weird. `guake` functions normally now, after a reboot. This is probably
-not the first time I reboot. I guess it is the package updates that fixed
-something.&lt;/strike&gt;
-
-&lt;p&gt;I figured out why. When you maximize &lt;code class=&quot;highlighter-rouge&quot;&gt;guake&lt;/code&gt; it sticks with that monitor, but
-your cancel maximization, it would reconsider it position by probing which
-monitor the mouse is in and set itself there.&lt;/p&gt;
-
-&lt;h2 id=&quot;physical-layout-of-monitors&quot;&gt;Physical Layout of Monitors&lt;/h2&gt;
-
-&lt;p&gt;I do not know how much it depends on operating system, drivers and
-hardware. The &lt;code class=&quot;highlighter-rouge&quot;&gt;display&lt;/code&gt;(the GUI one of Gnome) or &lt;code class=&quot;highlighter-rouge&quot;&gt;nvidia-settings&lt;/code&gt;(the CLI one
-comes with proprietary driver) forgets the monitor layout after reboot, such as
-&lt;code class=&quot;highlighter-rouge&quot;&gt;DVI-I-1&lt;/code&gt; should be on the left of &lt;code class=&quot;highlighter-rouge&quot;&gt;DVI-D-0&lt;/code&gt;, even if I wrote it in the
-&lt;code class=&quot;highlighter-rouge&quot;&gt;xorg.conf&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Though finally I switched the monitors physically, for some other reason, and
-made peace with the forgetful display manager, I struggled some time to figure
-out how to make the layout right.&lt;/p&gt;
-
-&lt;p&gt;The solution I used is to use &lt;code class=&quot;highlighter-rouge&quot;&gt;xrandr&lt;/code&gt; after the GUI session has set up by
-adding a script containing the following line in the startup application of
-Gnome(there is a GUI program called &lt;code class=&quot;highlighter-rouge&quot;&gt;Startup Application&lt;/code&gt;, though I do not know
-what its CLI version is).&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xrandr --output DVI-I-1 --mode 1920x1080 --right-of DVI-D-0
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;I also have tried to add the above line in &lt;code class=&quot;highlighter-rouge&quot;&gt;.profile&lt;/code&gt;, but it seems the layout
-setting is decided after &lt;code class=&quot;highlighter-rouge&quot;&gt;.profile&lt;/code&gt; is loaded, so it did not work.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Updated on Mar 8, 2016.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;I seems to figured out how gnome handle layout of monitors. The one that powered
-on the first will be the primary monitor, and be put on the left. The one added
-later will be put at the right. So if you want to change the layout of monitors,
-just disconnect the one you want to put at the right, then connect again.&lt;/p&gt;
-
-&lt;h2 id=&quot;a-peak-at-kde&quot;&gt;A Peak at KDE&lt;/h2&gt;
-
-&lt;p&gt;At the first time I tried to set &lt;code class=&quot;highlighter-rouge&quot;&gt;workspaces-only-on-primary&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;false&lt;/code&gt;, it
-did not have any effect, and first all workspaces other than the first one
-started to get severe artifact when moving windows around, then even the first
-one started to get artifacts. It made the desktop unusable.&lt;/p&gt;
-
-&lt;p&gt;After trying to search for an solution in Google for a while, I learned there
-seems Gnome do not have any multi-monitor support at all, at least they do not
-consider this a feature to be proud of at their website for Gnome 3. So I think
-maybe Gnome does not work for Gnome.&lt;/p&gt;
-
-&lt;p&gt;Then some video introducing Plasma let me pay some attention to KDE
-desktop. The modern design of KDE Plasma 5.5 really impressed me, though in
-retrospect I was dazzled by Gnome 3’s new design at the first I saw it. It is
-just the case that I have been used to Gnome 3 for such a long time and do not
-feel its design at all now.&lt;/p&gt;
-
-&lt;p&gt;I installed Plasma from source by&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install kubuntu-desktop
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;This is the first time I started to feel Ubuntu 14.04 is getting old. It only
-has Plasma 4.14(the minor version may not be right, but it is 4).&lt;/p&gt;
-
-&lt;p&gt;After tinkering it a little bit, though it must be the case I did not get
-myself familiar with it, I have the first impression as following:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;It seems to have many widgets, which is better than Gnome, whose desktop
-widget feels like antiques.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Besides that, I did not find an obvious solution to&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;multiple workspaces, which is available by default in Gnome&lt;/li&gt;
-  &lt;li&gt;the dash application runner(I am not sure its exact name, just you press the
-&lt;code class=&quot;highlighter-rouge&quot;&gt;super&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;win&lt;/code&gt; key in you desktop and it shows up). I tried to install
-a app called &lt;code class=&quot;highlighter-rouge&quot;&gt;homerun&lt;/code&gt;, but it just adds too much icons in the desktop and
-creates too much clutters.&lt;/li&gt;
-  &lt;li&gt;Obvious, &lt;code class=&quot;highlighter-rouge&quot;&gt;guake&lt;/code&gt; does not work here anymore.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;The above three are really killer app, and cannot not be lacking.&lt;/p&gt;
-
-&lt;p&gt;So the first impression is KDE is for the GUI users.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;It has a good file manager called &lt;code class=&quot;highlighter-rouge&quot;&gt;Dolphin&lt;/code&gt;, whose functionality is better
-than &lt;code class=&quot;highlighter-rouge&quot;&gt;Nautilus&lt;/code&gt;. But I almost do not use GUI file management since I do it
-all in CLI.&lt;/li&gt;
-  &lt;li&gt;A similar application launcher of dash of Gnome is &lt;code class=&quot;highlighter-rouge&quot;&gt;Krunner&lt;/code&gt;. But like
-Unity, it not only search for applications, but also search for files, any
-opened applications etc, which creates much clutter, though this is a
-desktop user wants.&lt;/li&gt;
-  &lt;li&gt;Again, no easy drop-down terminal like &lt;code class=&quot;highlighter-rouge&quot;&gt;guake&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;It adds too much clutter that may not be useful, compared with a clean wall
-paper of Gnome. I think Plasma 5.5 tries to fix this, but I did not have the
-chance to try.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;As having been said, it must be the case I am not familiar with a new desktop
-environment, but I guess I will settle with it, because after I was little
-frustrated with the KDE desktop, I tried to switch back to Gnome. Suddenly,
-everything started to work well! Maybe it is because I installed a lot of
-libraries when I was installing KDE, which fixed some problems. But now I feel
-current setting, the one I mentioned at the first section of this note,
-awesome.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 06 Jan 2016 08:16:00 +0800</pubDate>
-        <link>http://shawnLeeZX.github.io/blog/2016/01/06/setting-up-multi-monitor-on-gnome-ubuntu-14-dot-04-with-nvidia-card/</link>
-        <guid isPermaLink="true">http://shawnLeeZX.github.io/blog/2016/01/06/setting-up-multi-monitor-on-gnome-ubuntu-14-dot-04-with-nvidia-card/</guid>
-        
-        
-        <category>Note</category>
-        
-        <category>Gnome</category>
-        
-        <category>Linux</category>
-        
-        <category>CS</category>
-        
-      </item>
-    
-      <item>
-        <title>On Environment Variable Setup of Linux</title>
-        <description>&lt;p&gt;I have spent some time figuring out how Linux sets up its environment variables
-for login shell, non-login shell to let Emacs inherits environment variables
-and make tmux loads &lt;code class=&quot;highlighter-rouge&quot;&gt;.bashrc&lt;/code&gt; and note it here.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;h2 id=&quot;login-shell&quot;&gt;Login Shell&lt;/h2&gt;
-
-&lt;p&gt;We start by figuring out the boot process.&lt;/p&gt;
-
-&lt;p&gt;For text console,&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;At the end of boot the mother of all processes &lt;code class=&quot;highlighter-rouge&quot;&gt;init&lt;/code&gt; is started. init’s
-environment, including PATH, is defined in its source code and cannot be
-changed at run time.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;init&lt;/code&gt; runs the start-up scripts from &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/init.d&lt;/code&gt; depending on the run level
-set in &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/inittab&lt;/code&gt;. Since init’s environment is very bare, the scripts
-define their required environment variables within themselves.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;init&lt;/code&gt; starts the text login process that waits for the user to log in. When
-the user logs in, the login process checks &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/passwd&lt;/code&gt; to see what shell
-should be started for this particular user.&lt;/li&gt;
-  &lt;li&gt;The shell starts and reads its shell-specific configuration files.
-    &lt;ol&gt;
-      &lt;li&gt;For Bash, it first reads &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/profile&lt;/code&gt; to get values that are defined
-for all users. After reading that file, it looks for &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.bash_profile&lt;/code&gt;,
-&lt;code class=&quot;highlighter-rouge&quot;&gt;~/.bash_login&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.profile&lt;/code&gt;, in that order, and reads and executes
-commands from the first of these files that exists and is readable.&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;For graphical UI,&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;At the end of booting, the mother of all processes – &lt;code class=&quot;highlighter-rouge&quot;&gt;init&lt;/code&gt; – is started.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;init&lt;/code&gt; runs the start-up scripts from &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/init.d&lt;/code&gt; depending on the run
-level set in &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/inittab&lt;/code&gt;. Since &lt;code class=&quot;highlighter-rouge&quot;&gt;init&lt;/code&gt;’s environment is very bare, the
-scripts define required environment variables within themselves.&lt;/li&gt;
-  &lt;li&gt;Init starts the GDM display manager, which in turn will start the graphical
-login.&lt;/li&gt;
-  &lt;li&gt;When the user successfully logs in, GDM starts xsession, which reads the
-file &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/gdm/Xsession&lt;/code&gt; and with it the environment variables for the
-user’s session. The default version of the Xsession file first reads
-&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/profile&lt;/code&gt; for global settings and then &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.profile&lt;/code&gt; to add the user’s
-individual settings.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;The above boot process is the process to set up environment to login shell. So
-if any user specific environment that is need for a graphical program, one
-could choose to put it in &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.bash_profile&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.bash_login&lt;/code&gt;, and
-&lt;code class=&quot;highlighter-rouge&quot;&gt;~/.profile&lt;/code&gt;. I chose to put it in &lt;code class=&quot;highlighter-rouge&quot;&gt;.profile&lt;/code&gt;. I actually spent time figuring
-this out, so Emacs could inherit environment variables the local libraries I
-installed.&lt;/p&gt;
-
-&lt;p&gt;As for system wide setup, put it in &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/profile&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;non-login-shell&quot;&gt;Non-login Shell&lt;/h2&gt;
-
-&lt;p&gt;If a shell is needed after login, the setting should go to the non-login
-shell’s, &lt;code class=&quot;highlighter-rouge&quot;&gt;.bashrc&lt;/code&gt;. For instance, the terminals created by &lt;code class=&quot;highlighter-rouge&quot;&gt;terminal&lt;/code&gt;,
-&lt;code class=&quot;highlighter-rouge&quot;&gt;terminator&lt;/code&gt; and other terminal programs are non-login shells. This is where I
-previously put all my configurations in.&lt;/p&gt;
-
-&lt;p&gt;The following comes from &lt;code class=&quot;highlighter-rouge&quot;&gt;man bash&lt;/code&gt;’s &lt;em&gt;INVOCATION&lt;/em&gt; section.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;When bash is invoked as an interactive login shell, or as a non-interactive
-shell with the `--login` option, it first reads and executes commands from the
-file `/etc/profile`, if that file exists.  After reading that file, it looks
-for `~/.bash_profile`, `~/.bash_login`, and `~/.profile`, in that order, and
-reads and executes commands from the first one that exists and is readable.
-The --noprofile option may be used when the shell is started to inhibit this
-behavior.
-
-When a login shell exits, bash reads and executes commands from the file
-`~/.bash_logout`, if it exists.
-
-When an interactive shell that is not a login shell is started, bash reads and
-executes commands from `/etc/bash.bashrc` and `~/.bashrc`, if these files
-exist.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;distribution&quot;&gt;Distribution&lt;/h2&gt;
-
-&lt;p&gt;Each Linux distribution may tweak files mentioned above, for instance, unset
-some variables somewhere, so if you set its value before where it is unset,
-your setting will not take effect. Normally, if one’s configuration does not
-work, consider go through all previous configurations and understand what they
-exactly do in such a distribution.&lt;/p&gt;
-
-&lt;h2 id=&quot;misc&quot;&gt;Misc&lt;/h2&gt;
-
-&lt;p&gt;If one uses &lt;code class=&quot;highlighter-rouge&quot;&gt;tmux&lt;/code&gt;, the terminal multiplexer, note it creates login shells. So
-if one wants &lt;code class=&quot;highlighter-rouge&quot;&gt;.bashrc&lt;/code&gt;, especially aliases, to work under &lt;code class=&quot;highlighter-rouge&quot;&gt;tmux&lt;/code&gt;, remember to
-source it after whatever login shell configuration one may use.&lt;/p&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;https://wiki.debian.org/EnvironmentVariables&lt;/li&gt;
-  &lt;li&gt;https://help.ubuntu.com/community/EnvironmentVariables&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-        <pubDate>Tue, 05 Jan 2016 11:28:00 +0800</pubDate>
-        <link>http://shawnLeeZX.github.io/blog/2016/01/05/on-environment-variable-setup-of-linux/</link>
-        <guid isPermaLink="true">http://shawnLeeZX.github.io/blog/2016/01/05/on-environment-variable-setup-of-linux/</guid>
-        
-        
-        <category>Note</category>
-        
-        <category>Linux</category>
         
       </item>
     
