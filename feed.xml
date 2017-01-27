@@ -5,9 +5,52 @@
     <description>&lt;h1&gt;World Hacker's Notebook&lt;/h1&gt;</description>
     <link>http://shawnLeeZX.github.io/</link>
     <atom:link href="http://shawnLeeZX.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 01 Jan 2017 15:36:28 +0800</pubDate>
-    <lastBuildDate>Sun, 01 Jan 2017 15:36:28 +0800</lastBuildDate>
+    <pubDate>Fri, 27 Jan 2017 11:31:20 +0800</pubDate>
+    <lastBuildDate>Fri, 27 Jan 2017 11:31:20 +0800</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>A Command Line Music Player in One Line of Code</title>
+        <description>&lt;p&gt;I manually maintain the songs and music I listen by folder, and most of the
+time, the only function of a music player useful is to import music in a folder
+and listen to them. However, for unknown reason, rhythmbox (default music player
+of Ubuntu) consumes a large number of memory and CPU times. So I consider
+finding a way to do play music through command line, which lets me get rid
+clicking, and the other trouble.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mpg123&lt;/code&gt; is an open-source mp3 file players, and it supports playing by file
+list. To play all the mp3 files under current folder&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find . -name &lt;span class=&quot;s2&quot;&gt;&quot;*.mp3&quot;&lt;/span&gt; | mpg123 -@ -
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;which pipes the files found by &lt;code class=&quot;highlighter-rouge&quot;&gt;find&lt;/code&gt; to mpg123, where &lt;code class=&quot;highlighter-rouge&quot;&gt;-@&lt;/code&gt; is short for
+&lt;code class=&quot;highlighter-rouge&quot;&gt;--list&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt; is short for stand input.&lt;/p&gt;
+
+&lt;p&gt;To pause the playing, type &lt;code class=&quot;highlighter-rouge&quot;&gt;C-Z&lt;/code&gt; which stops the program. Type &lt;code class=&quot;highlighter-rouge&quot;&gt;fg&lt;/code&gt; to bring it
+to the foreground and play again.&lt;/p&gt;
+
+&lt;p&gt;To create a shuffled play list, just pipe through &lt;code class=&quot;highlighter-rouge&quot;&gt;shuf&lt;/code&gt; before &lt;code class=&quot;highlighter-rouge&quot;&gt;mpg123&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find . -name &lt;span class=&quot;s2&quot;&gt;&quot;*.mp3&quot;&lt;/span&gt; | shuf | mpg123 -@ -
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Enjoy :).&lt;/p&gt;
+</description>
+        <pubDate>Thu, 26 Jan 2017 16:22:37 +0800</pubDate>
+        <link>http://shawnLeeZX.github.io/blog/2017/01/26/a-command-line-music-player-in-one-line-of-code/</link>
+        <guid isPermaLink="true">http://shawnLeeZX.github.io/blog/2017/01/26/a-command-line-music-player-in-one-line-of-code/</guid>
+        
+        
+        <category>Linux</category>
+        
+        <category>Note</category>
+        
+      </item>
     
       <item>
         <title>相由心生</title>
@@ -960,46 +1003,6 @@ figured out yet.&lt;/p&gt;
         <category>Note</category>
         
         <category>CS</category>
-        
-      </item>
-    
-      <item>
-        <title>VLC下使用中文字幕</title>
-        <description>&lt;p&gt;记如何在VLC下使用中文字幕。&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;默认状态下，VLC会遇到两个问题，一是解码的codecs所用不对，而是用于显示字体的渲染
-器(render)所用字体不对。&lt;/p&gt;
-
-&lt;p&gt;第一个问题的解决办法一是更改VLC所用的codecs；二是修改文件的codecs为utf-8。第一
-种方法在&lt;a href=&quot;http://bbs.feng.com/read-htm-tid-344593.html&quot;&gt;这里&lt;/a&gt;有介绍。第二种方法
-我发现Vim可以完美完成，特此记之。&lt;/p&gt;
-
-&lt;p&gt;用Vim打开字幕文件，然后使用如下命令：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:set fileencoding=utf-8
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;保存，退出。&lt;/p&gt;
-
-&lt;p&gt;第二个问题的解决也来自之上的
-&lt;a href=&quot;http://bbs.feng.com/read-htm-tid-344593.html&quot;&gt;链接&lt;/a&gt;。为防止链接失效，特此重述
-方法：&lt;/p&gt;
-
-&lt;p&gt;打开VLC的&lt;code class=&quot;highlighter-rouge&quot;&gt;Preferences&lt;/code&gt;窗口（&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+P&lt;/code&gt;），点击右下角的&lt;code class=&quot;highlighter-rouge&quot;&gt;all&lt;/code&gt;，在左边的索引中依次选择
-&lt;code class=&quot;highlighter-rouge&quot;&gt;Video -&amp;gt; Subtitles/OSD -&amp;gt; Text renderer&lt;/code&gt;，右边的设置区第一项为&lt;code class=&quot;highlighter-rouge&quot;&gt;Font&lt;/code&gt;，点击&lt;code class=&quot;highlighter-rouge&quot;&gt;Browse&lt;/code&gt;按
-钮选择一项中文字体，如&lt;code class=&quot;highlighter-rouge&quot;&gt;WenQuanYi Micro Hei&lt;/code&gt;。更改完成之后需要重启VLC。&lt;/p&gt;
-</description>
-        <pubDate>Tue, 16 Feb 2016 22:00:00 +0800</pubDate>
-        <link>http://shawnLeeZX.github.io/blog/2016/02/16/vlcxia-shi-yong-zhong-wen-zi-mu/</link>
-        <guid isPermaLink="true">http://shawnLeeZX.github.io/blog/2016/02/16/vlcxia-shi-yong-zhong-wen-zi-mu/</guid>
-        
-        
-        <category>Note</category>
-        
-        <category>Linux</category>
         
       </item>
     
