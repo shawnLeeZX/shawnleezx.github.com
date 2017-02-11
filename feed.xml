@@ -5,9 +5,36 @@
     <description>&lt;h1&gt;World Hacker's Notebook&lt;/h1&gt;</description>
     <link>http://shawnLeeZX.github.io/</link>
     <atom:link href="http://shawnLeeZX.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 27 Jan 2017 11:31:20 +0800</pubDate>
-    <lastBuildDate>Fri, 27 Jan 2017 11:31:20 +0800</lastBuildDate>
+    <pubDate>Sat, 11 Feb 2017 22:22:17 +0800</pubDate>
+    <lastBuildDate>Sat, 11 Feb 2017 22:22:17 +0800</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>Calculating Receptive Field of CNN</title>
+        <description>&lt;!-- more --&gt;
+
+&lt;p&gt;The receptive field (RF) $l_k$ of layer $k$ is:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;l_k = l_{k-1} + ((f_k - 1) * \prod_{i=1}^{k-1}s_i)&lt;/script&gt;
+
+&lt;p&gt;where $l_{k-1}$ is the receptive field of layer $k-1$, $f_k$ is the filter size
+(height or width, but assuming they are the same here), and $s_i$ is the stride
+of layer $i$.&lt;/p&gt;
+
+&lt;p&gt;The formula above calculates receptive field from bottom up (from layer
+1). Intuitively, RF in layer $k$ covers $(f_k - 1) * s_{k-1}$ more pixels
+relative with layer $k-1$. However, the increment needs to be translated to the
+first layer, so the increments is a factorial — a stride in layer $k-1$ is
+exponentially more strides in the lower layers.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 11 Feb 2017 22:20:05 +0800</pubDate>
+        <link>http://shawnLeeZX.github.io/blog/2017/02/11/calculating-receptive-field-of-cnn/</link>
+        <guid isPermaLink="true">http://shawnLeeZX.github.io/blog/2017/02/11/calculating-receptive-field-of-cnn/</guid>
+        
+        
+        <category>CNN</category>
+        
+      </item>
     
       <item>
         <title>A Command Line Music Player in One Line of Code</title>
@@ -780,229 +807,6 @@ right order.&lt;/p&gt;
         <category>Note</category>
         
         <category>Linux</category>
-        
-      </item>
-    
-      <item>
-        <title>Note on Installing Ubuntu on Newer Machines</title>
-        <description>&lt;p&gt;This is the note supposed to note something peculiar things I met during
-setting up Ubuntu on a newer machine, which is to say, with UEFI replacing
-BIOS, GPT replacing MBR, Display Port and HDMI replacing VGA and DVI, and with
-several GPUs.&lt;/p&gt;
-
-&lt;p&gt;Due to time reason, I fell back to my old way of installing Ubuntu, and have
-not figured out what is the right way to install the newer machine mentioned
-above, but the note is to note down possible guess, and the things have been
-figured out, so I may have a thread to follow next time.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;At the time I entered what was called BIOS of the machine, which is called
-UEFI(Unified Extensible Firmware Interface), I was amazed that it was an almost
-desktop GUI. The official lab machine of mine has a similar firmware, but since
-I was not supposed to have access to it, I did not play with it much. I think
-my most recent laptop should have also used UEFI, but I did not have any memory
-what it is like, I guess I did not need to change things so I did not enter it.&lt;/p&gt;
-
-&lt;h2 id=&quot;gpu-control-from-boot-to-os&quot;&gt;GPU Control From Boot to OS&lt;/h2&gt;
-
-&lt;p&gt;The first thing I tried to figure out is how a GPU could be installed
-properly. In other words, how could a GPU inserted in a socket could be
-detected by the motherboard, then OS?&lt;/p&gt;
-
-&lt;p&gt;Normally a PC motherboard has an integrated card, and an optional discrete
-graphical unit could be installed GPU card through PCIE sockets. There is a
-switch in the UEFI to tell the motherboard where to look for a graphical
-unit. Also, even if the GPU is not powered up, I could have a hint on the
-monitor to tell me to what happened. So I think a GPU has a basic function unit
-that offers motherboard basic graphical function so it could be used till the
-machine boots into an OS.&lt;/p&gt;
-
-&lt;p&gt;The first problem I have met is there was no output when I connect DVI adapter
-of the monitor to a TITAN Black that was inserted in the latter socket of the
-motherboard, and could only get output when I connect the adapter to the GPU
-inserted in the first PCIE socket. The GPU is not a TITAN Black but a 760.&lt;/p&gt;
-
-&lt;p&gt;There are two guesses why this situations happen. The first is UEFI only detect
-GPU at the first PCIE socket and ignores all the remaining. This is reasonable
-since no one is supposed to use multiple GPUs during boot time. But it seems I
-have tried put a TITAN Black at the first socket, though I cannot clearly
-remember it. So another guess is my current UEFI does not support TITAN at boot
-time.&lt;/p&gt;
-
-&lt;p&gt;After the UEFI transfer the control to OS, the drivers in UEFI should not
-function anymore. So drivers need to be installed in the OS.&lt;/p&gt;
-
-&lt;p&gt;The open source NVIDIA card driver, Nouveau, will be installed when installing
-Ubuntu. I thought only when a NVIDIA GPU is physically inserted, its open
-source driver would be installed. However, it seems the open source driver will
-be installed even without a card. Maybe it is because in this case, a GPU card
-could be used right after installation without re-installing kernel modules.&lt;/p&gt;
-
-&lt;p&gt;Nouveau has to be removed if I want to install the newest driver from NVIDIA
-through the &lt;code class=&quot;highlighter-rouge&quot;&gt;*run&lt;/code&gt; file, otherwise they would conflict. To do this, a file
-needs to be added to &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/modprobe.d/&lt;/code&gt; with the following contents.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# generated by nvidia-installer
-blacklist nouveau
-options nouveau modeset=0
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;It is actually generated by the &lt;code class=&quot;highlighter-rouge&quot;&gt;*run&lt;/code&gt; file. I think it tells kernel not to
-load nouveau module.&lt;/p&gt;
-
-&lt;p&gt;Then regenerate your kernel&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;update-initramfs -u
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;To completely wipe out &lt;code class=&quot;highlighter-rouge&quot;&gt;nouveau&lt;/code&gt; — though I think even without doing it, it
-would work, run the following command&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get remove xserver-xorg-video-nouveau
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;To run &lt;code class=&quot;highlighter-rouge&quot;&gt;*run&lt;/code&gt; file, one needs to log into a text console. A way I could find
-that is commonly suggested on the web is to switch to one virtual terminal by
-`Ctrl+Alt+F1’, then stop the X service&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo stop lightdm   or
-sudo lightdm stop
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;It did not work for me. So I need to reboot into text mode by editing
-grub. More concretely, when the grub menu pops up, press &lt;code class=&quot;highlighter-rouge&quot;&gt;e&lt;/code&gt; on the item, and
-find &lt;code class=&quot;highlighter-rouge&quot;&gt;splash quiet&lt;/code&gt;, and change it to &lt;code class=&quot;highlighter-rouge&quot;&gt;text&lt;/code&gt;, then press &lt;code class=&quot;highlighter-rouge&quot;&gt;F10&lt;/code&gt; to boot using
-current edited entry.&lt;/p&gt;
-
-&lt;p&gt;One last thing before running the &lt;code class=&quot;highlighter-rouge&quot;&gt;*run&lt;/code&gt; file. The &lt;code class=&quot;highlighter-rouge&quot;&gt;*run&lt;/code&gt; file will build GPU
-driver to kernel, but only once. So if your OS gets upgraded, you won’t be able
-to log in desktop again. To work get around this, we need to install &lt;code class=&quot;highlighter-rouge&quot;&gt;dkms&lt;/code&gt;, so
-each time the kernel gets upgraded, all modules already built will be
-automatically built again into the kernel.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install dkms
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;All are settled, just run the &lt;code class=&quot;highlighter-rouge&quot;&gt;*run&lt;/code&gt; file to install the driver.&lt;/p&gt;
-
-&lt;p&gt;To see what modules has been managed by &lt;code class=&quot;highlighter-rouge&quot;&gt;dkms&lt;/code&gt;, use &lt;code class=&quot;highlighter-rouge&quot;&gt;dkms status&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;One last thing that tricked me up is to tell motherboard to use discrete
-graphical unit after the driver has been installed. Otherwise, I could still
-make it till the GUI login page, but after I have input my password, the screen
-just flash a little, and ask me to log in again. I guess the problem is
-since motherboard is configured to use integrated graphical unit, so the
-discrete one is actually inactive, when &lt;code class=&quot;highlighter-rouge&quot;&gt;xorg.conf' tells &lt;/code&gt;X11` to use the
-discrete graphical unit, nothing is there. The solution is just to fall back.&lt;/p&gt;
-
-&lt;p&gt;I also have some guess on how &lt;code class=&quot;highlighter-rouge&quot;&gt;X11&lt;/code&gt; make use of multiple GPUs. I have two
-versions of &lt;code class=&quot;highlighter-rouge&quot;&gt;xorg.conf&lt;/code&gt;, one from my official lab machine, and one from the one
-I am setting up.&lt;/p&gt;
-
-&lt;p&gt;The official one&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Section &quot;Device&quot;
-    Identifier     &quot;Device0&quot;
-    Driver         &quot;nvidia&quot;
-    VendorName     &quot;NVIDIA Corporation&quot;
-    BoardName      &quot;GeForce GTX TITAN Black&quot;
-EndSection
-
-Section &quot;Device&quot;
-    Identifier     &quot;Device1&quot;
-    Driver         &quot;nvidia&quot;
-    VendorName     &quot;NVIDIA Corporation&quot;
-    BoardName      &quot;GeForce GTX TITAN Black&quot;
-    BusID          &quot;PCI:1:0:0&quot;
-    Screen          1
-EndSection
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;The other one is just&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Section &quot;Device&quot;
-    Identifier     &quot;Device0&quot;
-    Driver         &quot;nvidia&quot;
-    VendorName     &quot;NVIDIA Corporation&quot;
-EndSection
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;The first one is generated by &lt;code class=&quot;highlighter-rouge&quot;&gt;nvidia-settings', the second one is generated by
-&lt;/code&gt;*run` file. I have three TITAN Black installed on the motherboard with the
-second configuration file, and they are all functional.&lt;/p&gt;
-
-&lt;p&gt;The guess now is if no bus id is specified in &lt;code class=&quot;highlighter-rouge&quot;&gt;xorg.conf&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;X11&lt;/code&gt; could pick any
-one, and prefer to the one with lowest PCI id or GPU id.&lt;/p&gt;
-
-&lt;p&gt;A side note. To get the bus id of a card, use &lt;code class=&quot;highlighter-rouge&quot;&gt;lspci&lt;/code&gt;, which output corresponds
-to GPU is&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;01:00.0 VGA compatible controller: NVIDIA Corporation GK110B [GeForce GTX TITAN Black] (rev a1)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;01:00.0&lt;/code&gt; is the bus id, though I am still now know why the period becomes a colon.&lt;/p&gt;
-
-&lt;h2 id=&quot;note-on-cuda&quot;&gt;Note On CUDA&lt;/h2&gt;
-
-&lt;p&gt;After all those efforts to install NVIDIA driver through &lt;code class=&quot;highlighter-rouge&quot;&gt;*run&lt;/code&gt; file, I found
-&lt;code class=&quot;highlighter-rouge&quot;&gt;cuda&lt;/code&gt; installation(using the network deb provided by NVIDIA) just overrided
-the driver I have just installed…&lt;/p&gt;
-
-&lt;p&gt;I am not sure whether dkms will be automatically installed, or nouveau be
-automatically blacklisted, though the installation of cuda does not mention it,
-which is to mean they probably will take care of this. If this is so the
-installation of NVIDIA driver and CUDA will be much easier.&lt;/p&gt;
-
-&lt;p&gt;I notice the &lt;code class=&quot;highlighter-rouge&quot;&gt;xorg.conf&lt;/code&gt; is not changed after the ``new’’ driver being
-installed.&lt;/p&gt;
-
-&lt;h2 id=&quot;bios-mode-or-uefi-mode-ubuntu&quot;&gt;BIOS mode or UEFI mode Ubuntu&lt;/h2&gt;
-
-&lt;p&gt;The last set of note is about installing Ubuntu in BIOS mode or UEFI mode,
-which corresponds to using MBR or GPT partition table, and may be some other
-difference.&lt;/p&gt;
-
-&lt;p&gt;At the time when choosing the boot media, even if your USB only has one Ubuntu
-on it, the boot menu would show up as entries, one for normal BIOS mode
-ubuntu(which is just named Ubuntu), one for UEFI mode(which has a UEFI in the
-name). I have not tried the second one. The UEFI is a pretty new thing to me,
-since the last time I learned something about it, UEFI is still in its
-infancy.&lt;/p&gt;
-
-&lt;p&gt;If UEFI is chosen, the partition table of the hard disk where the boot loader
-would be installed must be GPT, which is written in the new standard. The boot
-loader of MBR and GPT are different(obviously). For GPT, an explicitly
-formatted and allocated partition seems to be needed(not verified). As for MBR,
-as everyone knows, the space for the boot loader will always be left out. Also,
-to boot from a GPT partitioned disk, a boot flag need to be marked on the disk,
-otherwise, OS won’t boot. There are still many other difference I have not
-figured out yet.&lt;/p&gt;
-
-&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.linuxsecrets.com/blog/15questions-troubleshooting/2015/09/10/1651-how-to-remove-nouveau-and-install-nvidia-drivers&quot;&gt;How to Remove Nouveau and Install Nvidia Drivers&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-        <pubDate>Tue, 08 Mar 2016 13:48:00 +0800</pubDate>
-        <link>http://shawnLeeZX.github.io/blog/2016/03/08/note-on-installing-ubuntu-on-newer-machines/</link>
-        <guid isPermaLink="true">http://shawnLeeZX.github.io/blog/2016/03/08/note-on-installing-ubuntu-on-newer-machines/</guid>
-        
-        
-        <category>Linux</category>
-        
-        <category>Note</category>
-        
-        <category>CS</category>
         
       </item>
     
