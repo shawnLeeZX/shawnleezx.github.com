@@ -5,18 +5,121 @@
     <description>&lt;h1&gt;World Hacker's Notebook&lt;/h1&gt;</description>
     <link>http://shawnLeeZX.github.io/</link>
     <atom:link href="http://shawnLeeZX.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 14 Mar 2017 15:20:49 +0800</pubDate>
-    <lastBuildDate>Tue, 14 Mar 2017 15:20:49 +0800</lastBuildDate>
+    <pubDate>Tue, 14 Mar 2017 18:56:31 +0800</pubDate>
+    <lastBuildDate>Tue, 14 Mar 2017 18:56:31 +0800</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
+        <title>Determinant, Differential Form, and Wedge Product</title>
+        <description>&lt;p&gt;This is a note to push a thorough understanding of determinant in stack for
+future reference.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&quot;determinant&quot;&gt;Determinant&lt;/h2&gt;
+
+&lt;p&gt;I have seen many ways to derive determinant. Notably, two of them make the most
+sense.&lt;/p&gt;
+
+&lt;p&gt;In &lt;em&gt;Linear Algebra Done Right&lt;/em&gt;, determinant is defined as the product of
+eigenvalues, which is based on the geometrical intuition of determinant — how
+the volume will change if multiplied by this matrix. It arrives at its
+recursive computational definition by reasoning from matrices that are almost
+diagonal. The intuition underlying is each matrix can be viewed as a summation
+of permutations of a series of diagonal matrices.&lt;/p&gt;
+
+&lt;p&gt;In &lt;em&gt;Vector Calculus, Linear Algebra, and Differential Forms — A Unified
+Approach&lt;/em&gt;, the author starts from the 2D and 3D cases, and induces the general
+form of determinant by generalizing on certain important properties. It also
+starts from the geometric perspective, though not from eigenvalues.&lt;/p&gt;
+
+&lt;p&gt;Essentially, the derivation of determinant above can be seen as a generalized of
+computational formula of 3D volume in a vector space by observing its key
+properties. It can be seen as a primary mathematical object that represents
+the volume of objects in the space.&lt;/p&gt;
+
+&lt;h2 id=&quot;differential-form&quot;&gt;Differential Form&lt;/h2&gt;
+
+&lt;p&gt;Differential form is built on on determinant. In the derivation of determinant
+previously (in the previous books), we do not stress what the vector is. In
+differential form, the vector is operator that operates on vectors (called
+co-vector in differential geometry). In this case, k-form is defined as&lt;/p&gt;
+
+&lt;p&gt;A k-form is $dx_{1}, dx_{2} \ldots dx_{k}$ is the linear function over
+k-tuples of vectors $(v_1, v_2 \ldots, v_k)$ equal to the determinant of the
+matrix whose general term is $dx_i(v_j)$; i.e., the element in the $i$th row,
+$j$th column is the $i$th-component of the $j$th vector, $v_{ji}$.&lt;/p&gt;
+
+&lt;p&gt;where $dx_{i}, i = 1 \ldots k$ is the co-vector that operates on vector $v_j$
+, which extracts (whose output is) the $i$th coefficients of $v_j$.&lt;/p&gt;
+
+&lt;h2 id=&quot;wedge-product&quot;&gt;Wedge Product&lt;/h2&gt;
+
+&lt;p&gt;Wedge product is the formalized binary operation that preserves the properties
+of determinant (making sure the results still compute volume) when multiplying
+two differential form together.&lt;/p&gt;
+
+&lt;p&gt;In this sense, the derivation of wedge product is also the derivation that why
+we need to multiply the determinant of Jacobi matrix when doing variables
+substitution for multi-variable integral.&lt;/p&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.sjsu.edu/faculty/watkins/difforms0.htm&quot;&gt;The Nature of Differential Forms&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;books-to-check-out&quot;&gt;Books to check out&lt;/h2&gt;
+
+&lt;h3 id=&quot;from-reference&quot;&gt;From reference&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;M. Schreiber, Differential Forms: A Heuristic Introduction, Springer-Verlag, 1977.&lt;/li&gt;
+  &lt;li&gt;Richard E. Williamson, Richard H. Crowell and Hale F. Trotter, Calculus of Vector Functions, Prentice-Hall, 1968.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;from-stored-books&quot;&gt;From stored books&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Differential forms_ a complement to vector calculus-Academic Press (1997)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;from-amazon&quot;&gt;From Amazon&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/Calculus-Vector-Functions-Richard-Williamson/dp/013112367X/ref=sr_1_1?ie=UTF8&amp;amp;qid=1489484473&amp;amp;sr=8-1&amp;amp;keywords=Calculus+of+Vector+Functions&quot;&gt;Calculus of Vector Functions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/Vector-Calculus-Jerrold-E-Marsden/dp/1429215089/ref=pd_sbs_14_6?_encoding=UTF8&amp;amp;pd_rd_i=1429215089&amp;amp;pd_rd_r=YRGM5SAK2HV3REFAHS15&amp;amp;pd_rd_w=8kuQu&amp;amp;pd_rd_wg=P0BDX&amp;amp;psc=1&amp;amp;refRID=YRGM5SAK2HV3REFAHS15&quot;&gt;Vector Calculus&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/Vector-Calculus-Miroslav-Lovric/dp/0471725692/ref=sr_1_6?ie=UTF8&amp;amp;qid=1489484473&amp;amp;sr=8-6&amp;amp;keywords=Calculus+of+Vector+Functions&quot;&gt;Vector Calculus&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Tue, 14 Mar 2017 17:58:28 +0800</pubDate>
+        <link>http://shawnLeeZX.github.io/blog/2017/03/14/determinant/</link>
+        <guid isPermaLink="true">http://shawnLeeZX.github.io/blog/2017/03/14/determinant/</guid>
+        
+        
+        <category>Math</category>
+        
+        <category>Note</category>
+        
+      </item>
+    
+      <item>
         <title>龙的牙医——这就是活着啊</title>
-        <description>
+        <description>&lt;!-- more --&gt;
+
+&lt;p&gt;&lt;img class=&quot;center&quot; src=&quot;/images/dragons_dentists/1.png&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;
+&lt;img class=&quot;center&quot; src=&quot;/images/dragons_dentists/2.png&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;
+&lt;img class=&quot;center&quot; src=&quot;/images/dragons_dentists/3.png&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;
+&lt;img class=&quot;center&quot; src=&quot;/images/dragons_dentists/4.png&quot; width=&quot;100%&quot; height=&quot;100%&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 14 Mar 2017 15:19:41 +0800</pubDate>
         <link>http://shawnLeeZX.github.io/blog/2017/03/14/zhe-jiu-shi-huo-zhe-a/</link>
         <guid isPermaLink="true">http://shawnLeeZX.github.io/blog/2017/03/14/zhe-jiu-shi-huo-zhe-a/</guid>
         
+        
+        <category>Life</category>
+        
+        <category>Note</category>
         
       </item>
     
@@ -618,63 +721,6 @@ the surly bonds of earth” to “touch the face of God.”&lt;/p&gt;
         <category>Repost</category>
         
         <category>Life</category>
-        
-      </item>
-    
-      <item>
-        <title>Note On Representation of Operator</title>
-        <description>&lt;p&gt;A note to remind me of some intuition ruminated. Do not have the time to write
-down detailed proof.&lt;/p&gt;
-
-&lt;p&gt;It is about spectral theorem of matrix, adjoint operator, SVD and tensor.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;h2 id=&quot;spectral-theorem&quot;&gt;Spectral Theorem&lt;/h2&gt;
-
-&lt;p&gt;The representation theory of linear functional is essentially one dimension
-version of group representation theory. The $w$ in the inner product $\langle
-x, w \rangle$ representation of functional $f(x)$ is essentially the normal of
-the hyperplane, which is the functional’s representation in the dual space. The
-process of applying $f$ on $x$ is a process of projection.&lt;/p&gt;
-
-&lt;p&gt;For a general operator $T: X \rightarrow Y$, whose representation is denoted
-$A$, if the bases of the $X, Y$ are orthogonal, the adjoint operator $T^{*}$ of
-$T$’s representation is $A^{T}$(on the condition that bases of $X, Y$ is chosen
-to be orthogonal). The process of applying $T$ on $x$ is a process of first
-doing multiple projection, then sum those projection together. The fact that
-adjoint operator has the spectral theorem is just because in certain bases,
-when we are applying the multiple projection, we are not projecting at all, but
-just scale along the hyperplane. The process of changing bases, applying
-scaling, then changing bases back written in form of matrix multiplication is
-$M^{-1}\Lambda M$, which is the spectral decomposition of representation of $T$.&lt;/p&gt;
-
-&lt;h2 id=&quot;adjoint-operator-is-just-the-transpose&quot;&gt;Adjoint Operator is Just the Transpose&lt;/h2&gt;
-
-&lt;p&gt;The projection perspective also explains why $T^{*} = A^{T}$.&lt;/p&gt;
-
-&lt;p&gt;Let $Ax = y$. Each $x_i$ contributes to $y_i$ linearly. So just like a linear
-equation has a unique solution as long as $A$ is of full rank, there must be a
-one-to-one relationship between $T$ and $T^{*}$, which is formalized using
-representation theory of functional again.&lt;/p&gt;
-
-&lt;h2 id=&quot;svd&quot;&gt;SVD&lt;/h2&gt;
-
-&lt;p&gt;SVD just factorizes the multi-projection into a rotation matrix and a scaling
-matrix.&lt;/p&gt;
-
-&lt;h2 id=&quot;tensor&quot;&gt;Tensor&lt;/h2&gt;
-
-&lt;p&gt;Tensor is a generalized operator that handles multi-linearity.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 01 May 2016 17:02:00 +0800</pubDate>
-        <link>http://shawnLeeZX.github.io/blog/2016/05/01/note-on-representation-of-operator/</link>
-        <guid isPermaLink="true">http://shawnLeeZX.github.io/blog/2016/05/01/note-on-representation-of-operator/</guid>
-        
-        
-        <category>Math</category>
-        
-        <category>Note</category>
         
       </item>
     
