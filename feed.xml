@@ -5,9 +5,20 @@
     <description>&lt;h1&gt;World Hacker's Notebook&lt;/h1&gt;</description>
     <link>http://shawnLeeZX.github.io/</link>
     <atom:link href="http://shawnLeeZX.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 11 Feb 2017 22:22:17 +0800</pubDate>
-    <lastBuildDate>Sat, 11 Feb 2017 22:22:17 +0800</lastBuildDate>
+    <pubDate>Tue, 14 Mar 2017 15:20:49 +0800</pubDate>
+    <lastBuildDate>Tue, 14 Mar 2017 15:20:49 +0800</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>龙的牙医——这就是活着啊</title>
+        <description>
+</description>
+        <pubDate>Tue, 14 Mar 2017 15:19:41 +0800</pubDate>
+        <link>http://shawnLeeZX.github.io/blog/2017/03/14/zhe-jiu-shi-huo-zhe-a/</link>
+        <guid isPermaLink="true">http://shawnLeeZX.github.io/blog/2017/03/14/zhe-jiu-shi-huo-zhe-a/</guid>
+        
+        
+      </item>
     
       <item>
         <title>Calculating Receptive Field of CNN</title>
@@ -664,149 +675,6 @@ matrix.&lt;/p&gt;
         <category>Math</category>
         
         <category>Note</category>
-        
-      </item>
-    
-      <item>
-        <title>A Quick Survey on Distributed Log Processing: Unison and Logstash</title>
-        <description>&lt;p&gt;Having multiple machines to train neural networks, I was trying to think how
-could I automatically gather all the training logs, so I could analyze them in
-one place.&lt;/p&gt;
-
-&lt;p&gt;I did a survey on technologies available. The ones that I found are: &lt;code class=&quot;highlighter-rouge&quot;&gt;Logstash&lt;/code&gt;
-and &lt;code class=&quot;highlighter-rouge&quot;&gt;unison&lt;/code&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;Logstash&lt;/code&gt; seems to be the optimal solution, though may be a little
-an overkill. However, I settled to use &lt;code class=&quot;highlighter-rouge&quot;&gt;unison&lt;/code&gt; in the end. The rationale
-behind this is I have to get around many VPNs. The VPNs I used, or maybe most
-VPNs setups, won’t let the machines in LAN of the VPN network ping back to the
-machine that uses VPN to connect. It may just not come from a security reason,
-though it could be; it may just because it is not necessary to set up the route
-table to the IP addresses allocated to the connecting machine. So in this case,
-the log cannot be sent back to the connecting machine, as the way &lt;code class=&quot;highlighter-rouge&quot;&gt;Logstash&lt;/code&gt;
-does. A solution is needed to initialize the centralization from the connect
-machine site. So &lt;code class=&quot;highlighter-rouge&quot;&gt;Logstash&lt;/code&gt; is ruled out, and I settled with &lt;code class=&quot;highlighter-rouge&quot;&gt;unison&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;The following is a quick note on &lt;code class=&quot;highlighter-rouge&quot;&gt;unison&lt;/code&gt; works, which took me a while to
-figure out. For an practical introduction to &lt;code class=&quot;highlighter-rouge&quot;&gt;Logstash&lt;/code&gt;, see the
-&lt;a href=&quot;http://www.slashroot.in/logstash-tutorial-linux-central-logging-server&quot;&gt;tutorial&lt;/a&gt;
-here.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;h2 id=&quot;introductory-note&quot;&gt;Introductory Note&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html#basics&quot;&gt;Unison&lt;/a&gt;
-is a file-synchronization tool for Unix and Windows. It allows two replicas of
-a collection of files and directories to be stored on different hosts (or
-different disks on the same host), modified separately, and then brought up to
-date by propagating the changes in each replica to the other.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Unison&lt;/code&gt; supports transmission via &lt;code class=&quot;highlighter-rouge&quot;&gt;ssh&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;socket&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;file&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;rsh&lt;/code&gt;. Each of
-those protocols has its own setups, except for the &lt;code class=&quot;highlighter-rouge&quot;&gt;file&lt;/code&gt; protocol — it
-synchronizes files within the single machine. For instance, to use ssh, the two
-machines to be able to ssh to each other.&lt;/p&gt;
-
-&lt;p&gt;The way &lt;code class=&quot;highlighter-rouge&quot;&gt;unison&lt;/code&gt; is used is similar with &lt;code class=&quot;highlighter-rouge&quot;&gt;scp&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;cp&lt;/code&gt; in the sense that they
-are all a command line source destination style. An example would be&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;unison -testserver /tmp/ ssh://192.168.72.1//tmp
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;The format of a source or destination is
-&lt;code class=&quot;highlighter-rouge&quot;&gt;[protocol:]//[user@][host][:port][/path]&lt;/code&gt;. The one with no host name is
-supposed to your local machine. The &lt;code class=&quot;highlighter-rouge&quot;&gt;-testserver&lt;/code&gt; option above is used to test
-whether the network between the local machine and the remote machine is
-reachable.&lt;/p&gt;
-
-&lt;p&gt;To avoid typing the addresses each time, since &lt;code class=&quot;highlighter-rouge&quot;&gt;unison&lt;/code&gt; is about syncing, not
-copying, &lt;code class=&quot;highlighter-rouge&quot;&gt;unison&lt;/code&gt; offers a thing called profile. The command above, without the
-&lt;code class=&quot;highlighter-rouge&quot;&gt;-testserver&lt;/code&gt; option, converts to a profile is&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root = /home/use1/work/sync/
-root = ssh://192.168.72.1//home/user1/work/sync
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;For more sophisticated profiles, see the office
-&lt;a href=&quot;http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html#profile&quot;&gt;doc&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;The question following is where do we store profiles?&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;unison&lt;/code&gt; will store all its logistics files under the folder pointed by
-environment variable &lt;code class=&quot;highlighter-rouge&quot;&gt;UNISON&lt;/code&gt;, which if not specified, is &lt;code class=&quot;highlighter-rouge&quot;&gt;.unison&lt;/code&gt; under the
-&lt;code class=&quot;highlighter-rouge&quot;&gt;$HOME&lt;/code&gt; folder. A profile file us named in the format of &lt;code class=&quot;highlighter-rouge&quot;&gt;*.prf&lt;/code&gt;. Suppose the
-above profile is saved as &lt;code class=&quot;highlighter-rouge&quot;&gt;test.prf&lt;/code&gt;. To use that profile, type&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;unison &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;The last thing I spent some time to figure out is how it actually sync between
-machines, so it won’t mess up my data. Roughly, it adds another layer of logic
-above &lt;code class=&quot;highlighter-rouge&quot;&gt;rsync&lt;/code&gt;, which is suggested from the document&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Transfers are optimised using a version of the rsync protocol, making it ideal
-for slower links. Unison has a clear and precise specification, and is
-resilient to failure due to its careful handling of the replicas and its
-private structures.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;The logic is added I think is the way to get some fingerprints of the files, so
-it knows which files is updated when syncing, and only sync those are really updated.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Touching a file without changing its contents should never affect whether or
-not Unison does an update. (When running with the fastcheck preference set to
-true—the default on Unix systems—Unison uses file modtimes for a quick first
-pass to tell which files have definitely not changed; then, for each file that
-might have changed, it computes a fingerprint of the file's contents and
-compares it against the last-synchronized contents. Also, the -times option
-allows you to synchronize file times, but it does not cause identical files to
-be changed; Unison will only modify the file times.)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;So calling unison at either end will sync the files right.&lt;/p&gt;
-
-&lt;h2 id=&quot;sync-between-more-than-machines&quot;&gt;Sync Between More than Machines&lt;/h2&gt;
-
-&lt;p&gt;The built-in doc of &lt;code class=&quot;highlighter-rouge&quot;&gt;unison&lt;/code&gt;, which is available via &lt;code class=&quot;highlighter-rouge&quot;&gt;unison -doc tutorial&lt;/code&gt;,
-has a section discussing how &lt;code class=&quot;highlighter-rouge&quot;&gt;unison&lt;/code&gt; could be used to sync between more than
-machines.&lt;/p&gt;
-
-&lt;p&gt;Using Unison to Synchronize More Than Two Machines&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Unison is designed for synchronizing pairs of replicas. However, it is
-possible to use it to keep larger groups of machines in sync by
-performing multiple pairwise synchronizations.
-
-If you need to do this, the most reliable way to set things up is to
-organize the machines into a “star topology,” with one machine
-designated as the “hub” and the rest as “spokes,” and with each spoke
-machine synchronizing only with the hub. The big advantage of the star
-topology is that it eliminates the possibility of confusing “spurious
-conflicts” arising from the fact that a separate archive is maintained
-by Unison for every pair of hosts that it synchronizes.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;I did not get what does it mean in the first reading. After that, I guess the
-method it suggests is to establish a pair-wise sync among machines with certain
-topology, which is to say: one needs to set up multiple profiles; each profile
-sync between two machines; those machines form a topology so there is a hub
-that will have a centralized sync state among all machines if you sync in the
-right order.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 15 Mar 2016 10:53:00 +0800</pubDate>
-        <link>http://shawnLeeZX.github.io/blog/2016/03/15/a-quick-survey-on-log-processing/</link>
-        <guid isPermaLink="true">http://shawnLeeZX.github.io/blog/2016/03/15/a-quick-survey-on-log-processing/</guid>
-        
-        
-        <category>CS</category>
-        
-        <category>Note</category>
-        
-        <category>Linux</category>
         
       </item>
     

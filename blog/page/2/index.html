@@ -135,6 +135,55 @@
       
       <div class="excerpt-box">
         <div class="excerpt-title">
+          <a class="excerpt-title" href="/blog/2016/03/15/a-quick-survey-on-log-processing/" > A Quick Survey on Distributed Log Processing: Unison and Logstash</a>
+        </div>
+        <div class="excerpt-content">
+          <p>Having multiple machines to train neural networks, I was trying to think how
+could I automatically gather all the training logs, so I could analyze them in
+one place.</p>
+
+<p>I did a survey on technologies available. The ones that I found are: <code class="highlighter-rouge">Logstash</code>
+and <code class="highlighter-rouge">unison</code>. <code class="highlighter-rouge">Logstash</code> seems to be the optimal solution, though may be a little
+an overkill. However, I settled to use <code class="highlighter-rouge">unison</code> in the end. The rationale
+behind this is I have to get around many VPNs. The VPNs I used, or maybe most
+VPNs setups, won’t let the machines in LAN of the VPN network ping back to the
+machine that uses VPN to connect. It may just not come from a security reason,
+though it could be; it may just because it is not necessary to set up the route
+table to the IP addresses allocated to the connecting machine. So in this case,
+the log cannot be sent back to the connecting machine, as the way <code class="highlighter-rouge">Logstash</code>
+does. A solution is needed to initialize the centralization from the connect
+machine site. So <code class="highlighter-rouge">Logstash</code> is ruled out, and I settled with <code class="highlighter-rouge">unison</code>.</p>
+
+<p>The following is a quick note on <code class="highlighter-rouge">unison</code> works, which took me a while to
+figure out. For an practical introduction to <code class="highlighter-rouge">Logstash</code>, see the
+<a href="http://www.slashroot.in/logstash-tutorial-linux-central-logging-server">tutorial</a>
+here.</p>
+
+
+        </div>
+        <div class="posted">
+          posted on
+          <span class="posted-on">
+
+            Tuesday, March 15, 2016
+          </span>
+          <span class="in">
+            in
+          </span>
+          <span class="categories-on">
+            
+            CS &nbsp;,
+            
+            Note &nbsp;,
+            
+            Linux &nbsp;
+            
+          </span>
+        </div>
+      </div>
+      
+      <div class="excerpt-box">
+        <div class="excerpt-title">
           <a class="excerpt-title" href="/blog/2016/03/08/note-on-installing-ubuntu-on-newer-machines/" > Note on Installing Ubuntu on Newer Machines</a>
         </div>
         <div class="excerpt-content">
@@ -440,39 +489,6 @@ to approximate the nonlinear transform locally.</p>
             in
           </span>
           <span class="categories-on">
-            
-            Math &nbsp;,
-            
-            Note &nbsp;
-            
-          </span>
-        </div>
-      </div>
-      
-      <div class="excerpt-box">
-        <div class="excerpt-title">
-          <a class="excerpt-title" href="/blog/2015/11/28/cone-dual-cone-and-generalized-inequalities/" > Cone, Dual Cone and Generalized Inequalities</a>
-        </div>
-        <div class="excerpt-content">
-          <p>Yet another note on Math.</p>
-
-<p>I did not internalized the idea that a pointed cone identifies a generalized
-equality until now, and would like to note it down.</p>
-
-
-        </div>
-        <div class="posted">
-          posted on
-          <span class="posted-on">
-
-            Saturday, November 28, 2015
-          </span>
-          <span class="in">
-            in
-          </span>
-          <span class="categories-on">
-            
-            Optimization &nbsp;,
             
             Math &nbsp;,
             
