@@ -5,9 +5,88 @@
     <description>&lt;h1&gt;World Hacker's Notebook&lt;/h1&gt;</description>
     <link>http://shawnLeeZX.github.io/</link>
     <atom:link href="http://shawnLeeZX.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 14 Mar 2017 18:56:31 +0800</pubDate>
-    <lastBuildDate>Tue, 14 Mar 2017 18:56:31 +0800</lastBuildDate>
+    <pubDate>Thu, 16 Mar 2017 18:37:10 +0800</pubDate>
+    <lastBuildDate>Thu, 16 Mar 2017 18:37:10 +0800</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>A Little More Details About RNN Gradient Calculation</title>
+        <description>&lt;p&gt;This post is about how to use chain rule to calculate back propagation through
+time.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;When I was deriving the gradient of hidden-to-hidden matrix in Recurrent Neural
+Network, I found product rule and chain rule are essentially the same thing,
+and note the interesting discovery down here (it just shows I do not know enough
+about vector calculus … ).&lt;/p&gt;
+
+&lt;p&gt;Hidden layer of a vanilla RNN can be expressed as&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;h_t = \sigma (W_{xh}x + W_{hh}h_{t-1} + b_h)&lt;/script&gt;
+
+&lt;h3 id=&quot;gradient&quot;&gt;Gradient&lt;/h3&gt;
+
+&lt;p&gt;If we want to calculate $\nabla_{W_{hh}}h_{t}$, we need to do back propagation
+through time. To compute $\frac{\partial h_t}{\partial W_{hh}}$, notice that
+$W_{hh}$ and $h_{t-1}$ both contain $W_{hh}$, so it involves chain rule.&lt;/p&gt;
+
+&lt;p&gt;Use chain rule, we will have&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\nabla_{W_{hh}}h_{t} = \sum\limits_{1\leq k \leq t}(\frac{\partial
+h_{t}}{\partial h_{k}}\frac{\partial^{+}h_{k}}{\partial W_{hh}})&lt;/script&gt;
+
+&lt;p&gt;where $\partial^+$ means immediate partial derivative of $h_k$ respect to $W_{hh}$.&lt;/p&gt;
+
+&lt;p&gt;When I unroll stuff, and it seems we are using product rule $W_{hh}h_{t-1}$
+instead of chain rule. So it turns out product rule is a special form of chain
+rule. Let’s see how.&lt;/p&gt;
+
+&lt;h3 id=&quot;chain-rule&quot;&gt;Chain rule&lt;/h3&gt;
+
+&lt;p&gt;First define chain rule. If $R^{n} \xrightarrow{f} R^{m}$ is
+differentiable at $x_0$ and $R^{m} \xrightarrow{g} R^{p}$ is differentiable at
+$f(x_0)$, then $g \circ f$ is differentiable at $x_0$, and&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(g \circ f)'(x_0) = g'(f(x_0))f'(x_0)&lt;/script&gt;
+
+&lt;h3 id=&quot;an-example-of-chain-rule&quot;&gt;An example of chain rule&lt;/h3&gt;
+
+&lt;p&gt;Suppose &lt;script type=&quot;math/tex&quot;&gt;w = g(u, v),  = f(t)=
+ \begin{bmatrix} f_1(t)\\ f_2(t) \end{bmatrix}&lt;/script&gt;,
+ then&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\frac{dw}{dw} = \frac{d g \circ f}{dt} = \begin{bmatrix} \frac{\partial
+w}{\partial u} &amp; \frac{\partial w}{\partial v} \end{bmatrix} \begin{bmatrix} \frac{\partial f_1(t)}{\partial t}\\ \frac{\partial f_2{t}}{\partial t} \end{bmatrix}
+= \frac{\partial w}{\partial u}\frac{\partial f_1(t)}{\partial t} + \frac{\partial w}{\partial v}\frac{\partial f_2(t)}{\partial t} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;If $g(u, v) = uv$, then we get product rule. If $g(u, v) = u/v$, we get
+division rule.&lt;/p&gt;
+
+&lt;h3 id=&quot;application-of-chain-rule&quot;&gt;Application of chain rule&lt;/h3&gt;
+
+&lt;p&gt;With chain rule, we have $h_t = h_t(I(W_{hh}, h_{t-1}(W_{hh})))$, which is
+exactly the above example. Unroll $\frac{\partial h_t}{\partial W_{hh}}$ with
+the rule, we get the gradient at the beginning.&lt;/p&gt;
+
+&lt;h3 id=&quot;more-info&quot;&gt;More info&lt;/h3&gt;
+
+&lt;p&gt;Refer to &lt;a href=&quot;http://www.wildml.com/2015/10/recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/&quot;&gt;here&lt;/a&gt;
+and &lt;em&gt;Razvan et al. On the difficulty of training recurrent neural networks&lt;/em&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 16 Mar 2017 17:35:48 +0800</pubDate>
+        <link>http://shawnLeeZX.github.io/blog/2017/03/16/rnn-gradient-calculation-with-a-little-more-details/</link>
+        <guid isPermaLink="true">http://shawnLeeZX.github.io/blog/2017/03/16/rnn-gradient-calculation-with-a-little-more-details/</guid>
+        
+        
+        <category>RNN</category>
+        
+        <category>Math</category>
+        
+        <category>Note</category>
+        
+      </item>
     
       <item>
         <title>Determinant, Differential Form, and Wedge Product</title>
@@ -610,117 +689,6 @@ of Ubuntu.&lt;/p&gt;
         <link>http://shawnLeeZX.github.io/blog/2016/08/27/a-idea-to-gather-peoples-stories/</link>
         <guid isPermaLink="true">http://shawnLeeZX.github.io/blog/2016/08/27/a-idea-to-gather-peoples-stories/</guid>
         
-        
-      </item>
-    
-      <item>
-        <title>[Repost] Explosion of the Space Shuttle Challenger Address to the Nation</title>
-        <description>&lt;p&gt;Accidentially heared the &lt;a href=&quot;https://youtu.be/SBOVkptjJhE?t=3959&quot;&gt;speech&lt;/a&gt; given by
-Reagan to the nation after Challenger crashed.&lt;/p&gt;
-
-&lt;p&gt;Below is an excerpt. Full transcript is after that. The
-&lt;a href=&quot;http://history.nasa.gov/reagan12886.html&quot;&gt;transcript&lt;/a&gt; is from NASA website.&lt;/p&gt;
-
-&lt;h2 id=&quot;excerpts&quot;&gt;Excerpts&lt;/h2&gt;
-
-&lt;p&gt;We’ve grown used to wonders in this century. It’s hard to dazzle us. But for 25
-years the United States space program has been doing just that. We’ve grown
-used to the idea of space, and perhaps we forget that we’ve only just
-begun. We’re still pioneers. They, the members of the Challenger crew, were
-pioneers.&lt;/p&gt;
-
-&lt;p&gt;I know it is hard to understand, but sometimes painful things like this
-happen. It’s all part of the process of exploration and discovery. It’s all
-part of taking a chance and expanding man’s horizons. &lt;strong&gt;The future doesn’t belong
-to the fainthearted; it belongs to the brave&lt;/strong&gt;. The Challenger crew was pulling
-us into the future, and we’ll continue to follow them.&lt;/p&gt;
-
-&lt;p&gt;There’s a coincidence today. On this day 390 years ago, the great explorer Sir
-Francis Drake died aboard ship off the coast of Panama. &lt;strong&gt;In his lifetime the
-great frontiers were the oceans, and an historian later said, “He lived by the
-sea, died on it, and was buried in it.”&lt;/strong&gt; Well, today we can say of the
-Challenger crew: Their dedication was, like Drake’s, complete.&lt;/p&gt;
-
-&lt;p&gt;The crew of the space shuttle Challenger honored us by the manner in which they
-lived their lives. &lt;strong&gt;We will never forget them, nor the last time we saw them,
-this morning, as they prepared for their journey and waved goodbye and “slipped
-the surly bonds of earth” to “touch the face of God.”&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;full-speech&quot;&gt;Full Speech&lt;/h2&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;Ladies and gentlemen, I’d planned to speak to you tonight to report on the
-state of the Union, but the events of earlier today have led me to change those
-plans. Today is a day for mourning and remembering.&lt;/p&gt;
-
-&lt;p&gt;Nancy and I are pained to the core by the tragedy of the shuttle Challenger. We
-know we share this pain with all of the people of our country. This is truly a
-national loss.&lt;/p&gt;
-
-&lt;p&gt;Nineteen years ago, almost to the day, we lost three astronauts in a terrible
-accident on the ground. But we’ve never lost an astronaut in flight; we’ve
-never had a tragedy like this. And perhaps we’ve forgotten the courage it took
-for the crew of the shuttle; but they, the Challenger Seven, were aware of the
-dangers, but overcame them and did their jobs brilliantly. We mourn seven
-heroes: Michael Smith, Dick Scobee, Judith Resnik, Ronald McNair, Ellison
-Onizuka, Gregory Jarvis, and Christa McAuliffe. We mourn their loss as a nation
-together.&lt;/p&gt;
-
-&lt;p&gt;For the families of the seven, we cannot bear, as you do, the full impact of
-this tragedy. But we feel the loss, and we’re thinking about you so very
-much. Your loved ones were daring and brave, and they had that special grace,
-that special spirit that says, “Give me a challenge and I’ll meet it with joy.”
-They had a hunger to explore the universe and discover its truths. They wished
-to serve, and they did. They served all of us.&lt;/p&gt;
-
-&lt;p&gt;We’ve grown used to wonders in this century. It’s hard to dazzle us. But for 25
-years the United States space program has been doing just that. We’ve grown
-used to the idea of space, and perhaps we forget that we’ve only just
-begun. We’re still pioneers. They, the members of the Challenger crew, were
-pioneers.&lt;/p&gt;
-
-&lt;p&gt;And I want to say something to the schoolchildren of America who were watching
-the live coverage of the shuttle’s takeoff. I know it is hard to understand,
-but sometimes painful things like this happen. It’s all part of the process of
-exploration and discovery. It’s all part of taking a chance and expanding man’s
-horizons. The future doesn’t belong to the fainthearted; it belongs to the
-brave. The Challenger crew was pulling us into the future, and we’ll continue
-to follow them.&lt;/p&gt;
-
-&lt;p&gt;I’ve always had great faith in and respect for our space program, and what
-happened today does nothing to diminish it. We don’t hide our space program. We
-don’t keep secrets and cover things up. We do it all up front and in
-public. That’s the way freedom is, and we wouldn’t change it for a minute.&lt;/p&gt;
-
-&lt;p&gt;We’ll continue our quest in space. There will be more shuttle flights and more
-shuttle crews and, yes, more volunteers, more civilians, more teachers in
-space. Nothing ends here; our hopes and our journeys continue.&lt;/p&gt;
-
-&lt;p&gt;I want to add that I wish I could talk to every man and woman who works for
-NASA or who worked on this mission and tell them: “Your dedication and
-professionalism have moved and impressed us for decades. And we know of your
-anguish. We share it.”&lt;/p&gt;
-
-&lt;p&gt;There’s a coincidence today. On this day 390 years ago, the great explorer Sir
-Francis Drake died aboard ship off the coast of Panama. In his lifetime the
-great frontiers were the oceans, and an historian later said, “He lived by the
-sea, died on it, and was buried in it.” Well, today we can say of the
-Challenger crew: Their dedication was, like Drake’s, complete.&lt;/p&gt;
-
-&lt;p&gt;The crew of the space shuttle Challenger honored us by the manner in which they
-lived their lives. We will never forget them, nor the last time we saw them,
-this morning, as they prepared for their journey and waved goodbye and “slipped
-the surly bonds of earth” to “touch the face of God.”&lt;/p&gt;
-</description>
-        <pubDate>Sat, 30 Jul 2016 08:42:00 +0800</pubDate>
-        <link>http://shawnLeeZX.github.io/blog/2016/07/30/repost-explosion-of-the-space-shuttle-challenger-address-to-the-nation/</link>
-        <guid isPermaLink="true">http://shawnLeeZX.github.io/blog/2016/07/30/repost-explosion-of-the-space-shuttle-challenger-address-to-the-nation/</guid>
-        
-        
-        <category>Repost</category>
-        
-        <category>Life</category>
         
       </item>
     

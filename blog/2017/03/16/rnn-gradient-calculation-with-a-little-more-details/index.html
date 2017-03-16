@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Shawn" property="og:site_name">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <meta content="A Little More Details About RNN Gradient Calculation" property="og:title">
+  
+
+  
+  <meta content="article" property="og:type">
+  
+
+  
+  <meta content="<h1>World Hacker's Notebook</h1>" property="og:description">
+  
+
+  
+  <meta content="http://shawnLeeZX.github.io/blog/2017/03/16/rnn-gradient-calculation-with-a-little-more-details/" property="og:url">
+  
+
+  
+  <meta content="2017-03-16T17:35:48+08:00" property="article:published_time">
+  <meta content="http://shawnLeeZX.github.io/about/" property="article:author">
+  
+
+  <meta property="og:image" content="">
+
+  
+  
+  <meta content="RNN" property="article:section">
+  
+  
+
+  
+  
+  
+
+  <title>A Little More Details About RNN Gradient Calculation - Shawn</title>
+  <meta name="description" content="This post is about how to use chain rule to calculate back propagation throughtime.">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!-- Typesetting math using MathJax -->
+  <!-- mathjax config similar to math.stackexchange -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'] ],
+       displayMath: [ ['$$', '$$']],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     },
+     messageStyle: "none",
+     "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+   });
+  </script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2017/03/16/rnn-gradient-calculation-with-a-little-more-details/">
+  <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
+</head>
+
+  <body>
+    <section>
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Shawn</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/blog/archives">Archive</a></li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</section>
+
+    <section>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="page-title" itemprop="name headline">A Little More Details About RNN Gradient Calculation</h1>
+      <p class="post-meta"><time datetime="2017-03-16T17:35:48+08:00" itemprop="datePublished">Mar 16, 2017</time></p>
+    </div>
+
+</div>
+
+
+  <div class="post-content container" itemprop="articleBody">
+    <p>This post is about how to use chain rule to calculate back propagation through
+time.</p>
+
+<!-- more -->
+
+<p>When I was deriving the gradient of hidden-to-hidden matrix in Recurrent Neural
+Network, I found product rule and chain rule are essentially the same thing,
+and note the interesting discovery down here (it just shows I do not know enough
+about vector calculus … ).</p>
+
+<p>Hidden layer of a vanilla RNN can be expressed as</p>
+
+<script type="math/tex; mode=display">h_t = \sigma (W_{xh}x + W_{hh}h_{t-1} + b_h)</script>
+
+<h3 id="gradient">Gradient</h3>
+
+<p>If we want to calculate $\nabla_{W_{hh}}h_{t}$, we need to do back propagation
+through time. To compute $\frac{\partial h_t}{\partial W_{hh}}$, notice that
+$W_{hh}$ and $h_{t-1}$ both contain $W_{hh}$, so it involves chain rule.</p>
+
+<p>Use chain rule, we will have</p>
+
+<script type="math/tex; mode=display">\nabla_{W_{hh}}h_{t} = \sum\limits_{1\leq k \leq t}(\frac{\partial
+h_{t}}{\partial h_{k}}\frac{\partial^{+}h_{k}}{\partial W_{hh}})</script>
+
+<p>where $\partial^+$ means immediate partial derivative of $h_k$ respect to $W_{hh}$.</p>
+
+<p>When I unroll stuff, and it seems we are using product rule $W_{hh}h_{t-1}$
+instead of chain rule. So it turns out product rule is a special form of chain
+rule. Let’s see how.</p>
+
+<h3 id="chain-rule">Chain rule</h3>
+
+<p>First define chain rule. If $R^{n} \xrightarrow{f} R^{m}$ is
+differentiable at $x_0$ and $R^{m} \xrightarrow{g} R^{p}$ is differentiable at
+$f(x_0)$, then $g \circ f$ is differentiable at $x_0$, and</p>
+
+<script type="math/tex; mode=display">(g \circ f)'(x_0) = g'(f(x_0))f'(x_0)</script>
+
+<h3 id="an-example-of-chain-rule">An example of chain rule</h3>
+
+<p>Suppose <script type="math/tex">w = g(u, v),  = f(t)=
+ \begin{bmatrix} f_1(t)\\ f_2(t) \end{bmatrix}</script>,
+ then</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\frac{dw}{dw} = \frac{d g \circ f}{dt} = \begin{bmatrix} \frac{\partial
+w}{\partial u} & \frac{\partial w}{\partial v} \end{bmatrix} \begin{bmatrix} \frac{\partial f_1(t)}{\partial t}\\ \frac{\partial f_2{t}}{\partial t} \end{bmatrix}
+= \frac{\partial w}{\partial u}\frac{\partial f_1(t)}{\partial t} + \frac{\partial w}{\partial v}\frac{\partial f_2(t)}{\partial t} %]]></script>
+
+<p>If $g(u, v) = uv$, then we get product rule. If $g(u, v) = u/v$, we get
+division rule.</p>
+
+<h3 id="application-of-chain-rule">Application of chain rule</h3>
+
+<p>With chain rule, we have $h_t = h_t(I(W_{hh}, h_{t-1}(W_{hh})))$, which is
+exactly the above example. Unroll $\frac{\partial h_t}{\partial W_{hh}}$ with
+the rule, we get the gradient at the beginning.</p>
+
+<h3 id="more-info">More info</h3>
+
+<p>Refer to <a href="http://www.wildml.com/2015/10/recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/">here</a>
+and <em>Razvan et al. On the difficulty of training recurrent neural networks</em>.</p>
+
+  </div>
+
+</article>
+
+    </section>
+
+    
+    <div class="container">
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2017/03/16/rnn-gradient-calculation-with-a-little-more-details/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2017/03/16/rnn-gradient-calculation-with-a-little-more-details/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+      </section>
+    </div>
+    
+
+    <!-- <nav class="navbar navbar-default navbar-fixed-bottom"> -->
+<!-- <div class="container footer-content"> -->
+    <!-- Nothing is there. -->
+<!-- </div> -->
+<!-- </nav> -->
+  </body>
+
+</html>
