@@ -5,8 +5,8 @@
     <description>&lt;h1&gt;World Hacker's Notebook&lt;/h1&gt;</description>
     <link>http://shawnLeeZX.github.io/</link>
     <atom:link href="http://shawnLeeZX.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 16 Mar 2017 18:37:10 +0800</pubDate>
-    <lastBuildDate>Thu, 16 Mar 2017 18:37:10 +0800</lastBuildDate>
+    <pubDate>Sat, 18 Mar 2017 17:08:27 +0800</pubDate>
+    <lastBuildDate>Sat, 18 Mar 2017 17:08:27 +0800</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -66,7 +66,7 @@ division rule.&lt;/p&gt;
 
 &lt;h3 id=&quot;application-of-chain-rule&quot;&gt;Application of chain rule&lt;/h3&gt;
 
-&lt;p&gt;With chain rule, we have $h_t = h_t(I(W_{hh}, h_{t-1}(W_{hh})))$, which is
+&lt;p&gt;With chain rule, we have $h_t = h_t(I(W_{hh}), h_{t-1}(W_{hh}))$, which is
 exactly the above example. Unroll $\frac{\partial h_t}{\partial W_{hh}}$ with
 the rule, we get the gradient at the beginning.&lt;/p&gt;
 
