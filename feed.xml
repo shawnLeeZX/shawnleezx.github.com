@@ -5,9 +5,67 @@
     <description>&lt;h1&gt;World Hacker's Notebook&lt;/h1&gt;</description>
     <link>http://shawnLeeZX.github.io/</link>
     <atom:link href="http://shawnLeeZX.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 22 Apr 2017 13:18:12 +0800</pubDate>
-    <lastBuildDate>Sat, 22 Apr 2017 13:18:12 +0800</lastBuildDate>
+    <pubDate>Sat, 20 May 2017 17:55:52 +0800</pubDate>
+    <lastBuildDate>Sat, 20 May 2017 17:55:52 +0800</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>Notes on I-theory</title>
+        <description>&lt;!-- more --&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It is a Hebbian style unsupervised learning algorithm that computes invariant
+yet selective signature of a particular image.&lt;/li&gt;
+  &lt;li&gt;Originally, the semantics meaning of the signature is the cumulative
+distribution function (CDF) of a proxy distribution of the distribution of
+the orbit ${ gI : g \in G }$ of $I$, where $I$ is the canonical image
+template, and $G$ is transformation that may apply on $I$.&lt;/li&gt;
+  &lt;li&gt;The proxy probability distribution is a one dimension probability
+distribution induced by projecting each $gI$ to $R$ using a (possibly random)
+template $t$ (taking inner product between $I$ and $t$).&lt;/li&gt;
+  &lt;li&gt;The CDF is computed by using a Heaviside step function $H$.&lt;/li&gt;
+  &lt;li&gt;During computation of the CDF, uniform (haar) measure is used for $G$:
+different $gI$ may be projected to the same value in $R$, thus the CDF at $x
+\in R$ is a integral (summation) weighted by measure on group.&lt;/li&gt;
+  &lt;li&gt;In practice, histogram is used and each neuron may be responsible to
+represent a particular bin of the histogram (see Unsupervised learning of
+invariant representations).&lt;/li&gt;
+  &lt;li&gt;Given the presence of the integral, the signature can also be computed using
+moments, where the $H$ can be replaced with $f(x) = x^r$, since moments can
+characterize distributions in certain extent.&lt;/li&gt;
+  &lt;li&gt;Since the selectivity theorem requires the infinite number of templates,
+i-theory defines Kolmogorov-Smirnov (KS) metric on the proxy distributions
+(other metrics are possible), and uses it to prove a error bound when only a
+finite number of templates are available.&lt;/li&gt;
+  &lt;li&gt;Without using all the orbits (partially observable group), covariant
+(equivariant) can be characterized in i-theory.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Critiques.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Essentially this is a memory based system, where $gI$ is assigned uniform
+measure, and the representation learned is generic (not tying with any target
+function). All transforms have to be physical transform, since it needs to be
+trained with training data in the form ``movies’’.&lt;/li&gt;
+  &lt;li&gt;Focus is on the properties of the signature, instead of the the space the
+signature lives in, which could have rich structure. Topological structure,
+metric structure of the group is not used. Probability inference does not
+play a role here. Structure of the probability distribution is not used.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sat, 20 May 2017 17:09:01 +0800</pubDate>
+        <link>http://shawnLeeZX.github.io/blog/2017/05/20/note-on-i-theory/</link>
+        <guid isPermaLink="true">http://shawnLeeZX.github.io/blog/2017/05/20/note-on-i-theory/</guid>
+        
+        
+        <category>NN</category>
+        
+        <category>Math</category>
+        
+        <category>Research</category>
+        
+      </item>
     
       <item>
         <title>A Little More Details About RNN Gradient Calculation</title>
@@ -669,26 +727,6 @@ next contraction $ρW_{j+1}$ reduces distances along fibres indexed by $(g, h)
         
         
         <category>CNN</category>
-        
-      </item>
-    
-      <item>
-        <title>An idea to gather people's stories</title>
-        <description>&lt;p&gt;In post-religion world, the God has stepped down, even humanism. People start to
-look for icons that is personal yet inspirational, who could set an example for
-their life. The idea of this project is to collect the people who may a
-tech-utopian, aka the people who believe by making progress in technology, and
-ease the dissemination of knowledge and information, eventually, the power could
-be brought to the people.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Mark_Shuttleworth&quot;&gt;Mark_Shuttleworth&lt;/a&gt;, the funder
-of Ubuntu.&lt;/p&gt;
-
-</description>
-        <pubDate>Sat, 27 Aug 2016 09:35:00 +0800</pubDate>
-        <link>http://shawnLeeZX.github.io/blog/2016/08/27/a-idea-to-gather-peoples-stories/</link>
-        <guid isPermaLink="true">http://shawnLeeZX.github.io/blog/2016/08/27/a-idea-to-gather-peoples-stories/</guid>
-        
         
       </item>
     
