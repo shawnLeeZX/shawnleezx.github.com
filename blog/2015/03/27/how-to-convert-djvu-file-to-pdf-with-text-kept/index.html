@@ -288,12 +288,28 @@ intermediate files. It exceeded 10G before I killed it in my case.</p>
 and merge all the pdf pages in the end. The script could be found on
 <a href="https://github.com/shawnLeeZX/daily_tools/blob/master/djvu_2_pdf.sh">here</a>.</p>
 
+<h2 id="ruby-header">ruby header</h2>
+
+<p>You may also need to install <code class="highlighter-rouge">ruby-dev</code> to install the header file for ruby to
+install gems.</p>
+
 <h2 id="remark-on-other-solution">Remark on Other Solution</h2>
 
 <p>Before I dived in all those complicated tools, I tried to some easier
 solutions, including online converter and <code class="highlighter-rouge">gscan2pdf</code>. They both does not
 work. <code class="highlighter-rouge">gscan2pdf</code> is capable of converting djvu to pdf with text. But it may
 have trouble handling hundreds of pages ones given the error report I got.</p>
+
+<hr />
+
+<h2 id="update-on-ubuntu-1604">Update on Ubuntu 16.04</h2>
+
+<p>Due to the fact that from ruby 2.3, <code class="highlighter-rouge">iconv</code> is not in the standard package, so
+you need to install it manually.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo gem install iconv
+</code></pre>
+</div>
 
   </div>
 
