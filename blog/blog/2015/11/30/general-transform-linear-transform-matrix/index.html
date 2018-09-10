@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Shawn" property="og:site_name">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <meta content="General Transform, Linear Transform, Matrix" property="og:title">
+  
+
+  
+  <meta content="article" property="og:type">
+  
+
+  
+  <meta content="<h1>World Hacker's Notebook</h1>" property="og:description">
+  
+
+  
+  <meta content="http://shawnLeeZX.github.io/blog/2015/11/30/general-transform-linear-transform-matrix/" property="og:url">
+  
+
+  
+  <meta content="2015-11-30T10:30:00+08:00" property="article:published_time">
+  <meta content="http://shawnLeeZX.github.io/about/" property="article:author">
+  
+
+  <meta property="og:image" content="">
+
+  
+  
+  <meta content="Math" property="article:section">
+  
+  
+
+  
+  
+  
+
+  <title>General Transform, Linear Transform, Matrix - Shawn</title>
+  <meta name="description" content="Yet another note on Math.Previously, the origin of Matrix for me comes from linear transform, andnothing more. Most of the intuitive comes from linear space ...">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!-- Typesetting math using MathJax -->
+  <!-- mathjax config similar to math.stackexchange -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'] ],
+       displayMath: [ ['$$', '$$']],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     },
+     messageStyle: "none",
+     "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+   });
+  </script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2015/11/30/general-transform-linear-transform-matrix/">
+  <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
+</head>
+
+  <body>
+    <section>
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Shawn</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/blog/archives">Archive</a></li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</section>
+
+    <section>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="page-title" itemprop="name headline">General Transform, Linear Transform, Matrix</h1>
+      <p class="post-meta"><time datetime="2015-11-30T10:30:00+08:00" itemprop="datePublished">Nov 30, 2015</time></p>
+    </div>
+
+</div>
+
+
+  <div class="post-content container" itemprop="articleBody">
+    <p>Yet another note on Math.</p>
+
+<p>Previously, the origin of Matrix for me comes from linear transform, and
+nothing more. Most of the intuitive comes from linear space transform, as in
+the example of orthogonal Fourier transform or wavelet transform. As I learn
+more and more optimization, and how it computes dual, matrix as a limit case of
+non-linear transform comes to me. The linear transform characteristics is just
+to approximate the nonlinear transform locally.</p>
+
+<!-- more -->
+
+<h2 id="how-matrix-originally-arises">How Matrix Originally Arises</h2>
+
+<p>Originally, matrix origins from linear transform, and is called linear
+operator.</p>
+
+<p>The deviation comes from how a basis of space $X$ gets mapped to another space
+$Y$. For details, please refer to <em>Linear Algebra Done Right</em>, <em>Introductory
+Functional Analysis with Application</em>, <em>A Friendly Introduction to Wavelet</em>, or
+any other books that talks about linear algebra.</p>
+
+<p>The underlying idea is pure linear, and does not touch nonlinear at all.</p>
+
+<h2 id="matrix-as-limit-case-of-nonlinear-transform">Matrix As Limit Case of Nonlinear Transform</h2>
+
+<p>The study of constrained nonlinear optimization made me thinking, when seeing
+it in the most general form</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+  \text{minimize  } & f(x) \\
+  \text{subject to } & g_i(x) \leq 0
+\end{align*} %]]></script>
+
+<p>First I simplify the problem to linear programming.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+  \text{minimize  } & f(x) \\
+  \text{subject to } & Ax - b \leq 0
+\end{align*} %]]></script>
+
+<p>Solving system of linear equations is a central theme in Math, and it confused
+me when I had no idea relating the matrix $A$ in the system of equations to the
+space transform intuition of matrix.</p>
+
+<p>If I try to explain it by normal space transform, $Ax$ becomes</p>
+
+<script type="math/tex; mode=display">\sum\limits_{i}\vec{a_{i}}x_{i}</script>
+
+<p>where $\vec{a_{i}}$ is columns of $A$.</p>
+
+<p>It is explained as whether $b$ is in range of $A$, and range of $A$ is
+picturized as a space, which have nothing to do with $A$. The connection is
+broken.</p>
+
+<p>But if we change a perspective, write $Ax$ as</p>
+
+<script type="math/tex; mode=display">\vec{a_{i}}^{T}x</script>
+
+<p>where here $\vec{a_{i}}^{T}$ is the row of $A$.</p>
+
+<p>Denote the space $x$ belongs to as $X$, the one $Ax$ belongs to as $Y$, dual of
+$X$ as $X^{*}$.</p>
+
+<p>Assuming the bases of $X$ is orthonormal, which is normally in practice,
+<script type="math/tex">\vec{a_{i}}</script> is a basis of $Y^{*}$ gets mapped to <script type="math/tex">X^*</script>.</p>
+
+<p>Dual space $X^{*}$ consists of linear functional defined on $X$. The intuitive
+of linear functional $g(x)$ is the effect of change on $x$ will influence
+$g(x)$ linearly. Think it as cost or price would clarify.</p>
+
+<p>Write <script type="math/tex">\vec{a_{i}}^{T}x = g_{i}(x)</script>, the procedure how matrix transform $x$
+becomes clearer. The idea is a linear weighted combination of different
+elements of $x$. <script type="math/tex">\vec{a_{i}}^{T}x = g_{i}(x) \leq b_{i}</script> means in the direction of
+$\vec{a_{i}}$, the projection of $x$ on it could not exceed a certain value,
+which is also could be understood as some physical meaning, such as price,
+or threshold.</p>
+
+<p>So matrix is a stack of linear functionals and overall they together make up
+some linear transform. If all the linear functionals are linear independent,
+the system is invertable, so the matrix has an inverse. If all the linear
+functionals are orthogonal, then the weighted sum does not influence each
+other.</p>
+
+<p>Now, the rank of matrix makes a lot of sense, and matrices that are not
+unitary could be of more use.</p>
+
+<p>Back to the most general form of nonlinear optimization. When the system
+approaches its optimal solution, everything becomes more and more linear. The
+problem actually boiled down to again, a linear problem. Everything matters are
+just <script type="math/tex">g_{i}'</script>, which is just as linear as linear programming, and as
+matrix. This is the base of Lagrange multiplier methods.</p>
+
+<h2 id="optimality-condition-of-equality-constrained-optimization-an-example">Optimality Condition of Equality Constrained Optimization: An Example</h2>
+
+<p>An example would make the idea that matrix’s nature on linear transform
+clearer. I learned this example ten days after I wrote this note.</p>
+
+<p>Given the following equality constrained problem</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+  \text{minimize  } & f(x) \\
+  \text{subject to } & H(x) = \theta
+\end{align*} %]]></script>
+
+<p>Note we are using vector notation now. Denote the Jacobian of $H(x)$ as
+$H’(x)$; $x \in X$, $H(x) \in Z$, where $X$ is a linear vector space, while $Z$
+is a normed space. Suppose this problem reaches its constrained minimum
+<script type="math/tex">x^{*}</script>. We assume <script type="math/tex">x^*</script> is a regular point, which means <script type="math/tex">H'(x^*)</script> maps
+$X$ onto $Z$. If $Z$ is of finite dimension, it just means <script type="math/tex">H'(x^*)</script> is of
+full rank.</p>
+
+<p>To digress a little, if the mapping <script type="math/tex">H'(^*x)</script> is not onto, it means there is
+linear dependence in the gradients of <script type="math/tex">H(^*x)</script> at <script type="math/tex">x^*</script>. When equality
+constrains have linear dependence, the feasible region is empty. A picture
+would be two parallel hyperplane, who do not intersect each other. For more
+complex examples, refer to chapters of <em>Nonlinear Programming, Bertsekas</em>, or
+<em>Nonlinear Programming, Theory and Algorithms</em> on optimality conditions.</p>
+
+<p>The above clarification of terminology is to make the argument satisfies for
+both infinite dimension and finite dimension space.</p>
+
+<p>Since <script type="math/tex">x^*</script> is minimum(for now we use $x$ instead of <script type="math/tex">x^*</script> for convenience
+sake), $\nabla f(x)$ has to be orthogonal to the direction $h$, where $H’(x)h =
+\theta$. It means $\nabla f(x)$ is orthogonal to $N(H’(x))$, null space of
+$H’(x)$. Now we could see clearly a linear transform, aka matrix is the limit
+case of a general non-linear transform, or in another word, the local
+approximation of general non-linear transform $H(x)$, in form of $H’(x)$.</p>
+
+<p>To recap the last section, from a linear algebra point of view, we internalize
+$Ax$ by how a component of $x$ is represented by coordinates in the new
+space. But from a transform point of view, we internalize matrix as applying
+each row of $A$, a linear functional to $x$ repeatedly. So whether a matrix is
+of full, or be orthogonal does not matter that much. We just create a transform
+by stacking some functional row by row.</p>
+
+<p>The latter point of view is the intrinsic nature of transform. But the reason
+much efforts have been made in linear algebra is because often ultimately a
+problem would be attacked from linear point of view, which is the case of this
+example. With the machinery from linear algebra, a much rich structure could be
+used instead of just general transform.</p>
+
+<p>Remember in a <a href="/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>
+on Linear programming, the intuition of $Ax$ is to map a point from a space $X$
+of points to another space of points $Z$, then its dual map or adjoin map
+$A^{T}$ is to map dual space <script type="math/tex">Z^{*}</script> to <script type="math/tex">X^{*}</script>.</p>
+
+<p>If $\nabla f(x) \perp N(H’(x))$, it means <script type="math/tex">f(x) \in R(H'(x)^*)</script>. So there
+exists a <script type="math/tex">z^{*} \in Z^{*}</script> satisfying <script type="math/tex">f(x) = z^{*}H'(x)^{*}</script>, which could
+be written as</p>
+
+<script type="math/tex; mode=display">\nabla f(x) + \langle z^{*}, H'(x) \rangle</script>
+
+<p>which is the optimality condition of optimization problems with equality
+constraints.</p>
+
+  </div>
+
+</article>
+
+    </section>
+
+    
+    <div class="container">
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2015/11/30/general-transform-linear-transform-matrix/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2015/11/30/general-transform-linear-transform-matrix/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+      </section>
+    </div>
+    
+
+    <!-- <nav class="navbar navbar-default navbar-fixed-bottom"> -->
+<!-- <div class="container footer-content"> -->
+    <!-- Nothing is there. -->
+<!-- </div> -->
+<!-- </nav> -->
+  </body>
+
+</html>

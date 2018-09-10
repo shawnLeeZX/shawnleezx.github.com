@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Shawn" property="og:site_name">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <meta content="A Preliminary Summary On What CNN Is Doing Mathematically" property="og:title">
+  
+
+  
+  <meta content="article" property="og:type">
+  
+
+  
+  <meta content="<h1>World Hacker's Notebook</h1>" property="og:description">
+  
+
+  
+  <meta content="http://shawnLeeZX.github.io/blog/2015/04/07/a-preliminary-summary-on-what-cnn-is-doing-mathematically/" property="og:url">
+  
+
+  
+  <meta content="2015-04-07T19:05:00+08:00" property="article:published_time">
+  <meta content="http://shawnLeeZX.github.io/about/" property="article:author">
+  
+
+  <meta property="og:image" content="">
+
+  
+  
+  <meta content="CNN" property="article:section">
+  
+  
+
+  
+  
+  
+
+  <title>A Preliminary Summary On What CNN Is Doing Mathematically - Shawn</title>
+  <meta name="description" content="There is too much to stuff all those notes into one weekly summary, so I decideto decouple it into this post. It is about a description of the process whatCo...">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!-- Typesetting math using MathJax -->
+  <!-- mathjax config similar to math.stackexchange -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'] ],
+       displayMath: [ ['$$', '$$']],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     },
+     messageStyle: "none",
+     "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+   });
+  </script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2015/04/07/a-preliminary-summary-on-what-cnn-is-doing-mathematically/">
+  <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
+</head>
+
+  <body>
+    <section>
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Shawn</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/blog/archives">Archive</a></li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</section>
+
+    <section>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="page-title" itemprop="name headline">A Preliminary Summary On What CNN Is Doing Mathematically</h1>
+      <p class="post-meta"><time datetime="2015-04-07T19:05:00+08:00" itemprop="datePublished">Apr 7, 2015</time></p>
+    </div>
+
+</div>
+
+
+  <div class="post-content container" itemprop="articleBody">
+    <p>There is too much to stuff all those notes into one weekly summary, so I decide
+to decouple it into this post. It is about a description of the process what
+Convolutional Neural Network(CNN) is doing mathematically.</p>
+
+<!-- more -->
+
+<p>Last week I have written an informal one. The informality was resulted from an
+unclear understanding of space, mapping and the way CNN works. Things get much
+clearer now.</p>
+
+<p>The task CNN is trying to achieve is the same with all the other machine
+learning algorithms – finding a mapping that will transform the preliminary
+input to one kind of output that makes the task easier to solve or directly
+solve the task. The formed one is called feature learning and the latter is
+called classification or anything else that is the target.</p>
+
+<p>The problem is how exactly such mapping is found? Or more specifically, why CNN
+is more powerful than other algorithms?</p>
+
+<h2 id="how-mapping-is-found-mathematically">How Mapping Is Found Mathematically</h2>
+
+<p>First we address the first problem, though those two are actually the same.</p>
+
+<p>Instead of trying to find a mapping to our problem directly, which are methods
+called shallow model today, CNN tries to find a sequence of mappings to
+decouple information from its most primitive form. If we rephrase the word
+mapping to operation, it may sound more like plain English. Then judging from
+the information extracted, it answers whatever relevant questions we are
+interested, such as classification of images of different animals.</p>
+
+<p>More mathematically, CNN tries to find the mapping by finding a representation
+of the mapping on relevant bases which are found by compositing preliminary
+bases. Then in the space represented by the relevant bases, divide the new
+space using previous shallow model.</p>
+
+<p>The latter part has not been investigated fully yet. I guess support vector
+machine may be the key to this problem.</p>
+
+<p>Further zooming in the process, in each layer, every kernel of CNN will
+convolute with the input. In the first layer, the input is the raw signal. In
+the following layer, the input is the output of last layer. A kernel here is a
+basis. Convoluting with input is actually taking inner product with input.</p>
+
+<p>In the first layer, by computing the inner product of a basis function with a
+signal, we get a value. This value is one way to look at the signal, or the
+information extracted which may be comprehended by human, like the existence of
+a certain of kind edge. By taking inner product of all bases, we get the
+signal’s representation in form of coordinates of the set of bases.</p>
+
+<p>From now on, the task is to find combinations of the first layer’s bases that
+are more informative. By using more layers, we hope to find relevant
+combinations in exponential number of possible ones.</p>
+
+<p>The most preliminary bases actually have mathematical terminology: in the
+continuous case, it is called Schauder basis; in the discrete case, it is
+called Hamel basis. In this case, the coordinates of the signal is the same
+with its ground truth value.</p>
+
+<p>Feature mappings from previous layer to current layer are the key to find a
+more complex bases. It brings the search in the space of preliminary bases to a
+more advanced space of more advanced bases. A best example is an input in form
+of a three channel image will have three feature mappings, one corresponding to
+one color. If we just concatenate three pixels of different color, we have no
+idea it corresponds to different frequencies of light. But if we take it from
+three channels, we are using the high-level information of colors. Another
+example is provided in the next section.</p>
+
+<p>Now the process up to the first part of the process is done. The second part
+will not be described given that I have not understood it fully yet.</p>
+
+<p>The followings are some notes on properties of such process:</p>
+
+<ol>
+  <li>The key of depth is reusing information hierarchically and preventing
+exploration on meaningless part of function space. This is the main reason
+why deep model works and will be elaborated with an example in the next
+section.</li>
+  <li>Coordinates are coordinates. There is only one ground truth of
+nature. Coordinates are the way we see the ground truth. Different spaces
+are actually different with different levels of abstraction. Different
+levels of abstraction are achieved using different sets of bases.</li>
+  <li>Taking inner product is the process to map point in one space to another
+space. This is also the intuition behind Riesz Theorem that any linear
+functional could be represented using inner product.</li>
+  <li>The intuition of taking inner product is also computing correlation between
+the basis and the signal. The more they are similar, the bigger the
+coordinate(in CNN terminology system, the bigger the response).</li>
+  <li>Bases are connected with hidden factors referred by Bengio.</li>
+  <li>Spatial information is kept by the intuition of cascading local receptive
+fields.</li>
+</ol>
+
+<hr />
+
+<h2 id="analytically-why-more-depth-is-more-powerful">Analytically Why More Depth Is More Powerful</h2>
+
+<p>Imagine a square whose components are two horizontal edges and two vertical
+edges. To detect such shape, we could imagine a three layer convolutional
+neural network. In the first layer of filters, we have two kernels – one
+for horizontal edges and one for vertical edges. Write them in matrix form,
+they are like this:</p>
+
+<p>Horizontal Edge Kernel</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{bmatrix}
+0 & 0 & 0 \\
+1 & 1 & 1 \\
+0 & 0 & 0
+\end{bmatrix} %]]></script>
+
+<p>and Vertical Edge Kernel</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{bmatrix}
+0 & 1 & 0 \\
+0 & 1 & 0 \\
+0 & 1 & 0
+\end{bmatrix} %]]></script>
+
+<p>The square we are going to detect is like this:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{bmatrix}
+1   & 1 & 1 & 1 &  1 \\
+1   & 0 & 0 & 0 &  1 \\
+1   & 0 & 0 & 0 &  1 \\
+1   & 0 & 0 & 0 &  1 \\
+1   & 1 & 1 & 1 &  1 
+\end{bmatrix} %]]></script>
+
+<p>As we moving the two kernels, we get response similar like this:</p>
+
+<p>feature map for horizontal edge detection kernel:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{bmatrix}
+x & 1 & x \\
+0 & 0 & 0 \\
+x & 1 & x
+\end{bmatrix} %]]></script>
+
+<p>and feature map for vertical edge detection kernel:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{bmatrix}
+x & 0 & x \\
+1 & 0 & 1 \\
+x & 0 & x
+\end{bmatrix} %]]></script>
+
+<p>$x$ is the response of angle, which may not be black and white. And since they
+are not very influential to our discussion, it is denoted $x$.</p>
+
+<p>In the next convolution layer, the input are two feature maps, then the kernel
+for detecting square will be like:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{bmatrix}
+x & 1 & x \\
+0 & 0 & 0 \\
+x & 1 & x
+\end{bmatrix}
+and
+\begin{bmatrix}
+ x & 0 & x \\
+ 1 & 0 & 1 \\
+ x & 0 & x
+\end{bmatrix} %]]></script>
+
+<p>The final inner product will be normalized to one. In this case, we are only
+using four kernels.</p>
+
+<p>If we switch to one layer CNN, The kernel for detecting square will be like:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{bmatrix}
+x   & 1 & 1 & 1 & x \\
+1   & 0 & 0 & 0 & 1 \\
+1   & 0 & 0 & 0 & 1 \\
+1   & 0 & 0 & 0 & 1 \\
+x   & 1 & 1 & 1 & x
+\end{bmatrix} %]]></script>
+
+<p>The zero and one is expanded because each edges consist of more than one
+pixels. Three here is used for illustration.</p>
+
+<p>It seems that we can detect shape only using one kernel. But wait… we are not
+only trying to detect only square. We should also try to detect circle,
+rectangles etc… So we will have more than more kernels. In this case, the
+space of possible number of kernels will exponentially explode given the
+possible changes we may swap the zero and one in the pixels of kernels.</p>
+
+<p>But in previous three layer cases, the space of possible changes are shrunk
+dramatically. The key here is explained in previous section, we are reusing the
+information that only consecutive edges are sensible combination of pixels and
+the number of possibilities of changing locations of edges is much smaller than
+changing values of pixels.</p>
+
+
+  </div>
+
+</article>
+
+    </section>
+
+    
+    <div class="container">
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2015/04/07/a-preliminary-summary-on-what-cnn-is-doing-mathematically/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2015/04/07/a-preliminary-summary-on-what-cnn-is-doing-mathematically/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+      </section>
+    </div>
+    
+
+    <!-- <nav class="navbar navbar-default navbar-fixed-bottom"> -->
+<!-- <div class="container footer-content"> -->
+    <!-- Nothing is there. -->
+<!-- </div> -->
+<!-- </nav> -->
+  </body>
+
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Shawn" property="og:site_name">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <meta content="Writing Markdown With Auto-complete and Math Equation in Emacs" property="og:title">
+  
+
+  
+  <meta content="article" property="og:type">
+  
+
+  
+  <meta content="<h1>World Hacker's Notebook</h1>" property="og:description">
+  
+
+  
+  <meta content="http://shawnLeeZX.github.io/blog/2014/09/24/writing-markdown-with-autocomplete-and-math-equation-in-emacs/" property="og:url">
+  
+
+  
+  <meta content="2014-09-24T16:52:00+08:00" property="article:published_time">
+  <meta content="http://shawnLeeZX.github.io/about/" property="article:author">
+  
+
+  <meta property="og:image" content="">
+
+  
+  
+  <meta content="Markdown" property="article:section">
+  
+  
+
+  
+  
+  
+
+  <title>Writing Markdown With Auto-complete and Math Equation in Emacs - Shawn</title>
+  <meta name="description" content="This post talks about writing markdown under Emacs. Besides the normal,it mainly talks about how to use auto-complete, ispell-complete-wordafter enabling fly...">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!-- Typesetting math using MathJax -->
+  <!-- mathjax config similar to math.stackexchange -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'] ],
+       displayMath: [ ['$$', '$$']],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     },
+     messageStyle: "none",
+     "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+   });
+  </script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2014/09/24/writing-markdown-with-autocomplete-and-math-equation-in-emacs/">
+  <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
+</head>
+
+  <body>
+    <section>
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Shawn</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/blog/archives">Archive</a></li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</section>
+
+    <section>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="page-title" itemprop="name headline">Writing Markdown With Auto-complete and Math Equation in Emacs</h1>
+      <p class="post-meta"><time datetime="2014-09-24T16:52:00+08:00" itemprop="datePublished">Sep 24, 2014</time></p>
+    </div>
+
+</div>
+
+
+  <div class="post-content container" itemprop="articleBody">
+    <p>This post talks about writing markdown under Emacs. Besides the normal,
+it mainly talks about how to use auto-complete, <code class="highlighter-rouge">ispell-complete-word</code>
+after enabling <code class="highlighter-rouge">flyspell-mode</code>, and integrate <code class="highlighter-rouge">LaTeX-mode</code> with
+<code class="highlighter-rouge">markdown-mode</code> to ease the writing of math equations.</p>
+
+<!-- more -->
+
+<p>I guess nobody who is using Emacs won’t blogging.  People has spent a
+lot of time implementing a major mode for markdown in emacs, as for as
+I can see on its
+<a href="http://jblevins.org/projects/markdown-mode/">homepage</a>.</p>
+
+<p>Installation of <code class="highlighter-rouge">markdown-mode</code> is omitted.</p>
+
+<p>However, auto-complete malfunctions from time to time where tab in the
+major mode auto-complete works with does something. In my case, each
+time I press tab in markdown mode, the cursor goes back to the start
+of the line and it is really annoying. This time I spent time to fix
+this once and for all.</p>
+
+<p>The mechanism that how tab works in Emacs is a bit complex. I will not
+describe it here since it would be too long and I have not figure it
+out completely yet. By analyzing the Emacs configuration forked from
+Purcell, I found an utility function written by him(I have refactored
+his code a lot so do not expect to find exact matches in exact places).</p>
+
+<div class="language-cl highlighter-rouge"><pre class="highlight"><code><span class="c1">;; Turn off indentation binded with tab.</span>
+<span class="c1">;; ===============</span>
+<span class="c1">;; Function to indent the current line.  This function will be called</span>
+<span class="c1">;; with no arguments.  If it is called somewhere where</span>
+<span class="c1">;; auto-indentation cannot be done (e.g. inside a string), the</span>
+<span class="c1">;; function should simply return `noindent'.  Setting this function is</span>
+<span class="c1">;; all you need to make TAB indent appropriately.  Don't rebind TAB</span>
+<span class="c1">;; unless you really need to.</span>
+<span class="c1">;;</span>
+<span class="c1">;; The function defined here use anomynous function to return the</span>
+<span class="c1">;; 'noindent to disable the indentation functionality of tab.</span>
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">sanityinc/never-indent</span> <span class="p">()</span>
+  <span class="p">(</span><span class="nb">set</span> <span class="p">(</span><span class="nv">make-local-variable</span> <span class="ss">'indent-line-function</span><span class="p">)</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">()</span> <span class="ss">'noindent</span><span class="p">)))</span>
+</code></pre>
+</div>
+
+<p>The indentation function of tab is determined by the function
+<code class="highlighter-rouge">indent-line-function</code> on the fly. By returning <code class="highlighter-rouge">'noindent</code>, we tell
+Emacs does not indent when tab being pressed. See the following:</p>
+
+<div class="language-cl highlighter-rouge"><pre class="highlight"><code><span class="c1">;; Fix tab for autocompletion.</span>
+<span class="p">(</span><span class="nv">add-hook</span> <span class="ss">'markdown-mode-hook</span> <span class="ss">'sanityinc/never-indent</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h3 id="use-ispells-word-completion-instead-of-flyspells">Use ispell’s word completion instead of flyspell’s</h3>
+<p>I use flyspell to check the spelling of my markdown files on the fly,
+however, when using flyspell, the word correction mapping <code class="highlighter-rouge">C-M-i</code> of
+<code class="highlighter-rouge">ispell</code> minor mode is overshadowed by with the
+<code class="highlighter-rouge">flyspell-correct-word</code> command. In my preference, it is less powerful
+than the original command <code class="highlighter-rouge">ispell-complete-word</code>, thus I want it
+back.</p>
+
+<p>To fix this, a bit of hacking should be used, since the minor mode
+keymap(Google for what keymap means in Emacs) is the inner most keymap
+used by Emacs, which means it will be applied first. The way to
+override minor mode keymap is to add overriding function to the hook
+of this minor mode.</p>
+
+<p>One more problem is that there is not way that we could query the
+keymap’s name of the current minor mode. This is where the hacking
+coming out. We guess its name. Fortunately, flyspell mode’s keymap name
+follows the convention of kepmap naming – it is just called
+flyspell-mode-map. See the following:</p>
+
+<div class="language-cl highlighter-rouge"><pre class="highlight"><code><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">'flyspell-mode-hook</span>
+          <span class="p">(</span><span class="k">lambda</span> <span class="p">()</span>
+            <span class="s">"Use ispell to corrent the word instead of flyspell's."</span>
+            <span class="p">(</span><span class="nv">define-key</span> <span class="nv">flyspell-mode-map</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">"C-M-i"</span><span class="p">)</span> <span class="ss">'ispell-complete-word</span><span class="p">)</span>
+          <span class="p">)</span>
+<span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Now, we have ispell’s binding back.</p>
+
+<h3 id="tips-about-writing-math">Tips about writing math</h3>
+
+<p>I currently use manual switch between <code class="highlighter-rouge">LaTeX-mode</code>(from <code class="highlighter-rouge">auxtex</code>
+package) and <code class="highlighter-rouge">markdown-mode</code> to input math symbol. Did not figure out
+how to combine those two modes yet. I would be grateful if you let me
+know.</p>
+
+  </div>
+
+</article>
+
+    </section>
+
+    
+    <div class="container">
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2014/09/24/writing-markdown-with-autocomplete-and-math-equation-in-emacs/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2014/09/24/writing-markdown-with-autocomplete-and-math-equation-in-emacs/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+      </section>
+    </div>
+    
+
+    <!-- <nav class="navbar navbar-default navbar-fixed-bottom"> -->
+<!-- <div class="container footer-content"> -->
+    <!-- Nothing is there. -->
+<!-- </div> -->
+<!-- </nav> -->
+  </body>
+
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Shawn" property="og:site_name">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <meta content="Open File Using External App in Emacs" property="og:title">
+  
+
+  
+  <meta content="article" property="og:type">
+  
+
+  
+  <meta content="<h1>World Hacker's Notebook</h1>" property="og:description">
+  
+
+  
+  <meta content="http://shawnLeeZX.github.io/blog/2014/12/08/open-file-using-external-app-in-emacs/" property="og:url">
+  
+
+  
+  <meta content="2014-12-08T14:29:00+08:00" property="article:published_time">
+  <meta content="http://shawnLeeZX.github.io/about/" property="article:author">
+  
+
+  <meta property="og:image" content="">
+
+  
+  
+  <meta content="CS" property="article:section">
+  
+  
+
+  
+  
+  
+
+  <title>Open File Using External App in Emacs - Shawn</title>
+  <meta name="description" content="It would be of great convenience to be able to open files indired-mode in Emacs using external apps. Here is how to achieve it.">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!-- Typesetting math using MathJax -->
+  <!-- mathjax config similar to math.stackexchange -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'] ],
+       displayMath: [ ['$$', '$$']],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     },
+     messageStyle: "none",
+     "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+   });
+  </script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2014/12/08/open-file-using-external-app-in-emacs/">
+  <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
+</head>
+
+  <body>
+    <section>
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Shawn</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/blog/archives">Archive</a></li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</section>
+
+    <section>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="page-title" itemprop="name headline">Open File Using External App in Emacs</h1>
+      <p class="post-meta"><time datetime="2014-12-08T14:29:00+08:00" itemprop="datePublished">Dec 8, 2014</time></p>
+    </div>
+
+</div>
+
+
+  <div class="post-content container" itemprop="articleBody">
+    <p>It would be of great convenience to be able to open files in
+<code class="highlighter-rouge">dired-mode</code> in Emacs using external apps. Here is how to achieve it.</p>
+
+<!-- more -->
+
+<div class="language-cl highlighter-rouge"><pre class="highlight"><code><span class="c1">;;; Add command to open file using system programs.</span>
+<span class="c1">;; ===================================================================</span>
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">open-in-external-app</span> <span class="p">(</span><span class="k">&amp;optional</span> <span class="nv">file</span><span class="p">)</span>
+  <span class="s">"Open the current file or dired marked files in external app. The app
+is chosen from your OS's preference."</span>
+  <span class="p">(</span><span class="nv">interactive</span><span class="p">)</span>
+
+  <span class="p">(</span><span class="k">let</span> <span class="p">(</span> <span class="nv">confirm</span>
+         <span class="p">(</span><span class="nv">file-list</span>
+          <span class="p">(</span><span class="nb">cond</span>
+           <span class="p">((</span><span class="nb">string-equal</span> <span class="nv">major-mode</span> <span class="s">"dired-mode"</span><span class="p">)</span> <span class="p">(</span><span class="nv">dired-get-marked-files</span><span class="p">))</span>
+           <span class="p">((</span><span class="nb">not</span> <span class="nv">file</span><span class="p">)</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nv">buffer-file-name</span><span class="p">)))</span>
+           <span class="p">(</span><span class="nv">file</span> <span class="p">(</span><span class="nb">list</span> <span class="nv">file</span><span class="p">))</span>
+           <span class="p">)</span>
+          <span class="p">)</span>
+         <span class="p">)</span>
+    
+    <span class="p">(</span><span class="k">setq</span> <span class="nv">confirm</span> <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&lt;=</span> <span class="p">(</span><span class="nb">length</span> <span class="nv">file-list</span><span class="p">)</span> <span class="mi">5</span><span class="p">)</span>
+                   <span class="no">t</span>
+                 <span class="p">(</span><span class="nb">y-or-n-p</span> <span class="s">"Open more than 5 files? "</span><span class="p">)</span>
+                 <span class="p">)</span>
+          <span class="p">)</span>
+    
+    <span class="p">(</span><span class="nb">when</span> <span class="nv">confirm</span>
+      <span class="p">(</span><span class="nb">cond</span>
+       <span class="p">((</span><span class="nb">string-equal</span> <span class="nv">system-type</span> <span class="s">"windows-nt"</span><span class="p">)</span>
+        <span class="p">(</span><span class="nb">mapc</span>
+         <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">file-path</span><span class="p">)</span>
+           <span class="p">(</span><span class="nv">w32-shell-execute</span> <span class="s">"open"</span>
+                              <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"/"</span> <span class="s">"\\"</span> <span class="nv">file-path</span> <span class="no">t</span> <span class="no">t</span><span class="p">)</span>
+                              <span class="p">)</span>
+           <span class="p">)</span>
+         <span class="nv">file-list</span><span class="p">)</span>
+        <span class="p">)</span>
+       <span class="p">((</span><span class="nb">string-equal</span> <span class="nv">system-type</span> <span class="s">"darwin"</span><span class="p">)</span>
+        <span class="p">(</span><span class="nb">mapc</span>
+         <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">file-path</span><span class="p">)</span>
+           <span class="p">(</span><span class="nv">shell-command</span> <span class="p">(</span><span class="nb">format</span> <span class="s">"open \"%s\""</span> <span class="nv">file-path</span><span class="p">))</span>
+           <span class="p">)</span>
+         <span class="nv">file-list</span><span class="p">)</span>
+        <span class="p">)</span>
+       <span class="p">((</span><span class="nb">string-equal</span> <span class="nv">system-type</span> <span class="s">"gnu/linux"</span><span class="p">)</span>
+        <span class="p">(</span><span class="nb">mapc</span>
+         <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">file-path</span><span class="p">)</span>
+           <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">process-connection-type</span> <span class="no">nil</span><span class="p">))</span>
+             <span class="p">(</span><span class="nv">start-process</span> <span class="s">""</span> <span class="no">nil</span> <span class="s">"xdg-open"</span> <span class="nv">file-path</span><span class="p">)</span>
+             <span class="p">)</span>
+           <span class="p">)</span>
+         <span class="nv">file-list</span><span class="p">)</span>
+        <span class="p">)</span>
+       <span class="p">)</span>
+      <span class="p">)</span>
+    <span class="p">)</span>
+  <span class="p">)</span>
+</code></pre>
+</div>
+
+<p>I learned this from
+<a href="http://ergoemacs.org/emacs/emacs_dired_open_file_in_ext_apps.html">here</a>. However,
+the code here is more readable and conformed to the programming
+convention of Elisp.</p>
+
+  </div>
+
+</article>
+
+    </section>
+
+    
+    <div class="container">
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2014/12/08/open-file-using-external-app-in-emacs/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2014/12/08/open-file-using-external-app-in-emacs/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+      </section>
+    </div>
+    
+
+    <!-- <nav class="navbar navbar-default navbar-fixed-bottom"> -->
+<!-- <div class="container footer-content"> -->
+    <!-- Nothing is there. -->
+<!-- </div> -->
+<!-- </nav> -->
+  </body>
+
+</html>

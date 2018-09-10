@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Shawn" property="og:site_name">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <meta content="On Duality in Optimization" property="og:title">
+  
+
+  
+  <meta content="article" property="og:type">
+  
+
+  
+  <meta content="<h1>World Hacker's Notebook</h1>" property="og:description">
+  
+
+  
+  <meta content="http://shawnLeeZX.github.io/blog/2015/12/14/on-duality-in-optimization/" property="og:url">
+  
+
+  
+  <meta content="2015-12-14T21:09:00+08:00" property="article:published_time">
+  <meta content="http://shawnLeeZX.github.io/about/" property="article:author">
+  
+
+  <meta property="og:image" content="">
+
+  
+  
+  <meta content="Optimization" property="article:section">
+  
+  
+
+  
+  
+  
+
+  <title>On Duality in Optimization - Shawn</title>
+  <meta name="description" content="Yet another note on Math.A more general picture of duality in optimization emerges itself. Some time isstill needed to unify all duality in optimization, but...">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!-- Typesetting math using MathJax -->
+  <!-- mathjax config similar to math.stackexchange -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'] ],
+       displayMath: [ ['$$', '$$']],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     },
+     messageStyle: "none",
+     "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+   });
+  </script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2015/12/14/on-duality-in-optimization/">
+  <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
+</head>
+
+  <body>
+    <section>
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Shawn</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/blog/archives">Archive</a></li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</section>
+
+    <section>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="page-title" itemprop="name headline">On Duality in Optimization</h1>
+      <p class="post-meta"><time datetime="2015-12-14T21:09:00+08:00" itemprop="datePublished">Dec 14, 2015</time></p>
+    </div>
+
+</div>
+
+
+  <div class="post-content container" itemprop="articleBody">
+    <p>Yet another note on Math.</p>
+
+<p>A more general picture of duality in optimization emerges itself. Some time is
+still needed to unify all duality in optimization, but for now I summarize a
+draft version of it here using duality of linear programming as an example.</p>
+
+<!-- more -->
+
+<h2 id="intuition-of-lagrange-multiplier-from-functional-analysis">Intuition of Lagrange Multiplier From Functional Analysis</h2>
+
+<p>In its most general form, optimization problem is</p>
+
+<script type="math/tex; mode=display">\max\ f(x)\\
+G(x) \geq 0\\
+H(x) = 0</script>
+
+<p>where $G(x)$ is the group of inequality constrains <script type="math/tex">g_i(x)</script>; $H(x)$ is the
+group of equality constrains <script type="math/tex">h_i(x)</script>; $x \in X = R^{n}$ or $x \in X = R^{m
+\times n}$, where $x$ is taken as matrix variables.</p>
+
+<p>The domain of the problem is implicitly defined by $G(x)$ and
+$H(x)$. Geometrically, $H(x) = 0$ describes some surface in $X$. $G(x)$
+describes some ``half space’’.</p>
+
+<p>The question to ask is: what objects should we take those constrains as? so we
+could internalize and reason with them.</p>
+
+<p>In abstract sense, if we take $f(x), G(x), H(x)$ as variables, or in a more
+intuitive word, as objects, in our perception the problem seems not to be that
+abstract and convoluted. Their dependency on $x$ seems to gone. This is the
+idea from functional analysis. We are just doing space transform on the
+original space $X$. After the transform, we try to find the extreme value of a
+specific coordinate of the new space, which is $f(x)$, in a sub-area of the new
+space, which describes by constrains.</p>
+
+<p>Despite of the non-linearity, every natural phenomena in nature, thus in Math,
+comes from certain metamorphism of linear phenomena. To say it in another way,
+though we could create very bizarre phenomena with math trick, the real world
+should be analyzed starting from the linearity, not for simplicity or
+computation’s sake.</p>
+
+<p>But how could we come up with linearity?</p>
+
+<p>This brings to think why constrains exists. It exists because in real world,
+certain things has to be satisfied, it could be a fixed location, or limited
+amount of resources and so on. The real world constrain is somehow connected to
+the objective function, otherwise it won’t exist at all. So how could we model
+such connection?</p>
+
+<p>This is the key to the entry of duality.</p>
+
+<p>We have to find the connection of variables $G(x), H(x)$ to another variable
+$f(x)$. As having been discussed, every natural phenomena somehow comes from
+metamorphism of linear phenomena. An example is the invention of calculus,
+which is the how non-linear phenomena behaves locally. The way we connect those
+variables is through their linear combination. This in the language of
+functional analysis is to say we analyze the primal space from its dual space.</p>
+
+<p>Now back to Lagrange duality. Lagrange multiplier is elements in dual space of
+the space made up by $f(x), G(x), H(x)$.</p>
+
+<p>This intuition unscramble constrains.</p>
+
+<h2 id="an-example-linear-programming">An Example: Linear Programming</h2>
+
+<p>Linear programming is the case where all things are linear. So nothing
+metamorphized. When we only deal with gradients in a specific point in
+non-linear programming, such as the case of KKT condition, Fritz-John
+condition, it is actually exactly the optimality condition of linear
+programming.</p>
+
+<p>Previously I have noted an possible motivation of Linear programming. Now I
+could see the previous note(about two months ago) is just a special case of
+previous idea.</p>
+
+<p>For a LP problem, as the following</p>
+
+<script type="math/tex; mode=display">\max\ c^{T}\\
+Ax = b\\
+x \geq 0</script>
+
+<p>I tried to see it from adjoin operator point of view, which is to find
+something from $A^{T}$. For details, please refer to previous
+<a href="/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>.</p>
+
+<p>Now we write the Lagrange of LP, the dual function is</p>
+
+<script type="math/tex; mode=display">\inf\limits_{x} c^{T}x + y^{T}(Ax - b) - s^{T}x</script>
+
+<p>note we have $s \geq 0$.</p>
+
+<p>Now we see how could we deduce it from previous argument of last
+<a href="/blog/2015/10/18/linear-programming-from-dual-mapping-point-of-view/">note</a>.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+                &  \langle 1, c^{T}x \rangle + \langle y, Ax -b \rangle - \langle s, x \rangle\\
+\Leftrightarrow &  \langle c, x \rangle + \langle y, Ax -b \rangle - \langle s, x \rangle\\
+\Leftrightarrow &  \langle c - s, x \rangle + \langle y, Ax \rangle - \langle y, b \rangle\\
+\Leftrightarrow & - \langle y, b \rangle +  \langle c - s, x \rangle + \langle y, Ax \rangle \\
+\Leftrightarrow & - \langle y, b \rangle +  \langle c - s, x \rangle + \langle A^{T}y, x \rangle \\
+\Leftrightarrow & - \langle y, b \rangle +  \langle c - s + A^{T}y, x \rangle \\
+\Leftrightarrow &  \langle y, b \rangle +  \langle c - s - A^{T}y, x \rangle \\
+\end{align*} %]]></script>
+
+<p>We find some connection between dual space and primal space now. To make the
+part of dual space be a lower bound, we ask $s \geq 0$. This is just the
+zooming idea previously.</p>
+
+<p>The more geometrically picture is the geometrical intuition from Lagrange
+duality.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+ & \inf\limits_{x} \langle c, x \rangle + \langle y, Ax -b \rangle - \langle s, x \rangle\\
+\Leftrightarrow & \inf\limits_{x} \langle c - s, x \rangle + \langle y, Ax \rangle - \langle y, b \rangle\\
+\Leftrightarrow & - \langle y, b \rangle + \inf\limits_{x} \langle c - s, x \rangle + \langle y, Ax \rangle \\
+\Leftrightarrow & - \langle y, b \rangle + \inf\limits_{x} \langle c - s, x \rangle + \langle A^{T}y, x \rangle \\
+\Leftrightarrow & - \langle y, b \rangle + \inf\limits_{x} \langle c - s + A^{T}y, x \rangle \\
+\Leftrightarrow &  \langle y, b \rangle + \inf\limits_{x} \langle c - s - A^{T}y, x \rangle \\
+\end{align*} %]]></script>
+
+<p>The $\inf$ could move the dual variable down. So we have a constrained problem
+again.(Details are omitted, and could be found at <em>Nonlinear Optimization
+Andrzej Ruszczynski</em> or some other books talk about Lagrange duality).</p>
+
+  </div>
+
+</article>
+
+    </section>
+
+    
+    <div class="container">
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2015/12/14/on-duality-in-optimization/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2015/12/14/on-duality-in-optimization/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+      </section>
+    </div>
+    
+
+    <!-- <nav class="navbar navbar-default navbar-fixed-bottom"> -->
+<!-- <div class="container footer-content"> -->
+    <!-- Nothing is there. -->
+<!-- </div> -->
+<!-- </nav> -->
+  </body>
+
+</html>

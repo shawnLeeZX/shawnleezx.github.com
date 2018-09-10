@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Shawn" property="og:site_name">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <meta content="On KKT Condition and Optimality Condition of Conic Linear Programming" property="og:title">
+  
+
+  
+  <meta content="article" property="og:type">
+  
+
+  
+  <meta content="<h1>World Hacker's Notebook</h1>" property="og:description">
+  
+
+  
+  <meta content="http://shawnLeeZX.github.io/blog/2015/12/15/on-kkt-condition-and-optimality-condition-of-conic-linear-programming/" property="og:url">
+  
+
+  
+  <meta content="2015-12-15T20:18:00+08:00" property="article:published_time">
+  <meta content="http://shawnLeeZX.github.io/about/" property="article:author">
+  
+
+  <meta property="og:image" content="">
+
+  
+  
+  <meta content="Optimization" property="article:section">
+  
+  
+
+  
+  
+  
+
+  <title>On KKT Condition and Optimality Condition of Conic Linear Programming - Shawn</title>
+  <meta name="description" content="Yet another note on Math.In LP and SDP, the complementary slackness are written asWhile KKT condition’s complementary slackness isIt is hard to connect them ...">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!-- Typesetting math using MathJax -->
+  <!-- mathjax config similar to math.stackexchange -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'] ],
+       displayMath: [ ['$$', '$$']],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     },
+     messageStyle: "none",
+     "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+   });
+  </script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2015/12/15/on-kkt-condition-and-optimality-condition-of-conic-linear-programming/">
+  <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
+</head>
+
+  <body>
+    <section>
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Shawn</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/blog/archives">Archive</a></li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</section>
+
+    <section>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="page-title" itemprop="name headline">On KKT Condition and Optimality Condition of Conic Linear Programming</h1>
+      <p class="post-meta"><time datetime="2015-12-15T20:18:00+08:00" itemprop="datePublished">Dec 15, 2015</time></p>
+    </div>
+
+</div>
+
+
+  <div class="post-content container" itemprop="articleBody">
+    <p>Yet another note on Math.</p>
+
+<p>In LP and SDP, the complementary slackness are written as</p>
+
+<script type="math/tex; mode=display">(c - A^{T}y)^{T}x = 0\\
+(C -\sum\limits_{i}y_{i}A_{i}) \bullet X = 0</script>
+
+<p>While KKT condition’s complementary slackness is</p>
+
+<script type="math/tex; mode=display">v^{T}g(x) = 0</script>
+
+<p>It is hard to connect them at first glance, since dual variable $v$ is dual to
+the space of $g(x)$, which is not necessarily in the same space with $x$.
+Especially when $x$ is the big matrix $X$ in SDP, $g(X)$ lies in vector space
+instead of matrix space.</p>
+
+<p>This is the note for the how they are connected.</p>
+
+<!-- more -->
+
+<h2 id="linear-programming">Linear Programming</h2>
+
+<p>For linear programming, we write down its Lagrange</p>
+
+<script type="math/tex; mode=display">c^{T}x + y^{T}(b - Ax) - s^{T}x</script>
+
+<p>its gradient is $c - A^{T}y - s$</p>
+
+<p>so its KKT condition is</p>
+
+<script type="math/tex; mode=display">c - A^{T}y - s = 0 \text{ Stationary point}\\
+x \geq 0, Ax = b \text{ Primal feasibility}\\
+s^{T}x = 0, s \geq 0 \text{ Complementary slackness}</script>
+
+<p>Now we see $(c - A^{T}y)^{T}x = 0$ is the combination of stationary point
+condition and complementary slackness condition. The special structure occurs
+here because</p>
+
+<ol>
+  <li>In linear problem, analytic solution of equation is possible.</li>
+  <li>$g(x)$ is just $x$, so their spaces are the same.</li>
+</ol>
+
+<p>Note when LP reaches its optimal value, we always have $c^{T}x = b^{T}y =
+(A^{T}y)^{T}x$, but there is a difference $s$ between $c$ and $A^{T}y$. Here we
+see the specialty of LP. When one dimension of $s$ is not zero, we have
+correspond dimension of $x$ to be zero. Due to the linearity of $c^{T}x$, the
+zero directly reflects on the objective value, which makes correspond
+dimension’s contribution to zero. Now it is clearer why duality gap is always
+zero.</p>
+
+<h2 id="semi-definite-programming">Semi-Definite Programming</h2>
+
+<p>For SDP, if we want to draw analog with LP, the Lagrange may look like</p>
+
+<script type="math/tex; mode=display">C \bullet X + \sum\limits_{i}y_i(b_i - A_i \bullet X) - S \bullet X</script>
+
+<p>its gradient is <script type="math/tex">C - \sum\limits_{i}y_i A_i - S</script>.</p>
+
+<p>So its KKT condition is</p>
+
+<script type="math/tex; mode=display">C - \sum\limits_{i}y_i A_i - S = 0\\
+x \succeq 0, A_i x = b_i\\
+S \bullet X = 0</script>
+
+<p>which is almost the same in format with that of LP.</p>
+
+<p>But note</p>
+
+<ol>
+  <li>KKT does not work wit matrix inequality yet, so $S \bullet X$ cannot be
+moved up to the Lagrange function. Though it does suggest some form of
+KKT condition that could deal with matrix inequality may exist.</li>
+  <li>The relationship is not linear anymore, both in $X \succeq 0$ and $C \bullet
+X$ because the symmetric constrain enforced on $X$, which makes $X$ not just
+a matrix form vector.</li>
+  <li>$g(X) \succeq 0$ maps matrix to matrix space, so actually complementary
+slackness also should be in the space of matrix, and in form of matrix inner
+product.</li>
+</ol>
+
+<p>So there should be a duality gap normally.</p>
+
+<h2 id="last-note-on-dual-variables">Last Note on Dual Variables</h2>
+
+<p>From above, we see the reason we have matrix inner product style complementary
+slackness is due to we are using dual variable in matrix space. It is
+interesting to see how general dual variable or linear hyperplane is on solving
+problem on any space, though I have not learned any proof of Lagrange on spaces
+other than Euclidean space yet.</p>
+
+<h2 id="last-note-on-linearity">Last Note on Linearity</h2>
+
+<p>In conic linear programming,</p>
+
+<ol>
+  <li>when putting constrains in Lagrange function, it directly interacts with
+objective function, meaning variable $x$ could be separated out.</li>
+  <li>The specialty of $x \geq 0$ makes its dual variable the slack variable.</li>
+  <li>Linearity makes dual function $\inf \ldots$ analytic solvable, so we only
+see $\max$ in the dual problem.</li>
+</ol>
+
+  </div>
+
+</article>
+
+    </section>
+
+    
+    <div class="container">
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2015/12/15/on-kkt-condition-and-optimality-condition-of-conic-linear-programming/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2015/12/15/on-kkt-condition-and-optimality-condition-of-conic-linear-programming/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+      </section>
+    </div>
+    
+
+    <!-- <nav class="navbar navbar-default navbar-fixed-bottom"> -->
+<!-- <div class="container footer-content"> -->
+    <!-- Nothing is there. -->
+<!-- </div> -->
+<!-- </nav> -->
+  </body>
+
+</html>

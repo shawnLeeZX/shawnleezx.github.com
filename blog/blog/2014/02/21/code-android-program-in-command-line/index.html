@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Shawn" property="og:site_name">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <meta content="Code Android Program in Command Line" property="og:title">
+  
+
+  
+  <meta content="article" property="og:type">
+  
+
+  
+  <meta content="<h1>World Hacker's Notebook</h1>" property="og:description">
+  
+
+  
+  <meta content="http://shawnLeeZX.github.io/blog/2014/02/21/code-android-program-in-command-line/" property="og:url">
+  
+
+  
+  <meta content="2014-02-21T00:24:00+08:00" property="article:published_time">
+  <meta content="http://shawnLeeZX.github.io/about/" property="article:author">
+  
+
+  <meta property="og:image" content="">
+
+  
+  
+  <meta content="CS" property="article:section">
+  
+  
+
+  
+  
+  
+
+  <title>Code Android Program in Command Line - Shawn</title>
+  <meta name="description" content="I do not like GUI when coding…This post will talk about how to write android program using pure command line.">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!-- Typesetting math using MathJax -->
+  <!-- mathjax config similar to math.stackexchange -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'] ],
+       displayMath: [ ['$$', '$$']],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     },
+     messageStyle: "none",
+     "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+   });
+  </script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2014/02/21/code-android-program-in-command-line/">
+  <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
+</head>
+
+  <body>
+    <section>
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Shawn</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/blog/archives">Archive</a></li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</section>
+
+    <section>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="page-title" itemprop="name headline">Code Android Program in Command Line</h1>
+      <p class="post-meta"><time datetime="2014-02-21T00:24:00+08:00" itemprop="datePublished">Feb 21, 2014</time></p>
+    </div>
+
+</div>
+
+
+  <div class="post-content container" itemprop="articleBody">
+    <p>I do not like GUI when coding…</p>
+
+<p>This post will talk about how to write android program using pure command line.</p>
+
+<!-- more -->
+
+<p>I will skip the installation part…since I installed it a long time ago…</p>
+
+<h2 id="create-and-compile-project">Create and compile project</h2>
+
+<p>First add binaries into bash <code class="highlighter-rouge">PATH</code>:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/mine/software/android-sdk-linux/platform-tools/:</span><span class="nv">$PATH</span><span class="s2">"</span>
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/mine/software/android-sdk-linux/tools/:</span><span class="nv">$PATH</span><span class="s2">"</span>
+</code></pre>
+</div>
+
+<p>To create a project:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>android create project --target 1 --name MyFirstApp --path ./MyFirstApp --activity MainActivity --package com.example.myfirstapp
+</code></pre>
+</div>
+
+<p>To compile the project, <code class="highlighter-rouge">cd</code> to the root of the project, then type:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ant debug
+</code></pre>
+</div>
+
+<h2 id="preparation-for-using-physical-android-device">Preparation for using physical android device</h2>
+
+<p>You can use a emulator provided by from sdk, however, my laptop is too slow to
+use a emulator, thus I have to use a physical device to do this.</p>
+
+<p>In linux, one thing a user should and will understand eventually is privilege.
+To make adb have access to your device, some work should be done beforehand.</p>
+
+<p>On the official android developer site, detailed <a href="http://developer.android.com/tools/device.html#setting-up">solution</a> has been provided.</p>
+
+<p>Here, I will briefly talk about what should and why it should be done.</p>
+
+<p>From linux kernels 2.6 and beyond, a user space solution has been provided for
+a dynamic <code class="highlighter-rouge">/dev</code> directory, which is udev.</p>
+
+<p>The following two paragraphs comes from the man page of udev.</p>
+
+<p>udev supplies the system software with device events, manages
+permissions of device nodes and may create additional symlinks in
+the /dev directory, or renames network interfaces. The kernel
+usually just assigns unpredictable device names based on the
+order of discovery. Meaningful symlinks or network device names
+provide a way to reliably identify devices based on their
+properties or current configuration.</p>
+
+<p>The udev daemon, udevd(8), receives device uevents directly from
+the kernel whenever a device is added or removed from the system,
+or it changes its state. When udev receives a device event, it
+matches its configured set of rules against various device
+attributes to identify the device. Rules that match may provide
+additional device information to be stored in the udev database
+or to be used to create meaningful symlink names.</p>
+
+<p>The user created rules to be matched by udev is located at
+<code class="highlighter-rouge">/etc/udev/rules.d/</code>.</p>
+
+<p>To make your android devices can be recognized without have root privilege,
+create a file named <code class="highlighter-rouge">51-android.rules</code> with the following contents:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">"usb"</span>, ATTR<span class="o">{</span>idVendor<span class="o">}==</span><span class="s2">"0bb4"</span>, <span class="nv">MODE</span><span class="o">=</span><span class="s2">"0666"</span>, <span class="nv">GROUP</span><span class="o">=</span><span class="s2">"plugdev"</span> 
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">idVendor</code> should be the id of the vendor of your device, which can be gotten
+using <code class="highlighter-rouge">lsusb</code> command.</p>
+
+<p>After changing the rules, restart udev service:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo service udev restart
+</code></pre>
+</div>
+
+<p>And if you are not in the <code class="highlighter-rouge">plugdev</code> group, add you in:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo adduser USER_NAME plugdev
+</code></pre>
+</div>
+
+<p>Note that you have to logout and login to make the <code class="highlighter-rouge">/etc/group</code> file to be
+reloaded.</p>
+
+<p>If all work well, you can check your device using:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>adb devices
+</code></pre>
+</div>
+
+<p>Sometimes, a reboot is needed to get adb detect your device. I do not know why.</p>
+
+<p>Again, note that some devices may not have a serial number, like my huawei
+smartphone, thus adb will only show a sequence of question mark. This is fine.</p>
+
+<p>As long as you can log on your device Using <code class="highlighter-rouge">adb shell</code>, you will be able to
+install apk package onto your smartphone.</p>
+
+<h2 id="install-your-android-program">Install your android program</h2>
+
+<p>Now, you can install your android program:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>adb install bin/PROGRAM_NAME.apk
+</code></pre>
+</div>
+
+<p>WALA! your program is on the physical phone already!</p>
+
+<h2 id="run-program-in-emulator">Run program in emulator</h2>
+<p>It would be better if you just have an emulator to test some minor change while
+only testing big change on physical device.</p>
+
+<p>The procedure is friendly as well. Android SDK provides a GUI for this. Type:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>android avd
+</code></pre>
+</div>
+
+<p>This will bring up the GUI. Go with your intuition or search for the tutorial
+given by android.</p>
+
+<p>The reason I wrote this down is to note down this: when you have multiple
+device connected, both emulators and physical devices. <code class="highlighter-rouge">-e</code> option means the
+command is meant for emulators while <code class="highlighter-rouge">-d</code> for physical devices.</p>
+
+<p>For example, this will install apk package on emulator:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>adb -e install NAME.apk
+</code></pre>
+</div>
+
+<p>while this will install apk package on physical device:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>adb -d install NAME.apk
+</code></pre>
+</div>
+
+<p>If there are multiple emulators or physical devices, try <code class="highlighter-rouge">-s</code> flag.</p>
+
+  </div>
+
+</article>
+
+    </section>
+
+    
+    <div class="container">
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2014/02/21/code-android-program-in-command-line/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2014/02/21/code-android-program-in-command-line/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+      </section>
+    </div>
+    
+
+    <!-- <nav class="navbar navbar-default navbar-fixed-bottom"> -->
+<!-- <div class="container footer-content"> -->
+    <!-- Nothing is there. -->
+<!-- </div> -->
+<!-- </nav> -->
+  </body>
+
+</html>
