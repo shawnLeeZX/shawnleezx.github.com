@@ -15,4 +15,5 @@ group :jekyll_plugins do
     gem 'octopress-gist'
     gem 'octopress-hooks'
     gem 'octopress-paginate'
+    gem 'jekyll-redirect-from'
 end
