@@ -102,6 +102,7 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
+        <li><a href="/research_catalog">Research</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/blog">Blog</a></li>
         <li><a href="/blog/archives">Archive</a></li>
@@ -121,7 +122,66 @@
 </div>
 
 <div class="container">
-  
+  <p>I envision artificial intelligence (AI) will be a core component that starts a
+new era, not in term of the Age of Reason vs the Age of Romantics, but in term
+of the Renaissance vs the Middle Age. For the reasoning, read the sections
+<em>Artificial intelligence and humanities</em> and <em>The roadmap to future research</em>
+in the <a href="https://arxiv.org/abs/1811.12783">manuscript</a>. In that, I am
+initializing the research in the full frontier of AI (Deep Neural Networks):
+theory, algorithm, and practice. I am in for decades, if not for life. Help is
+wanted, refer to <em>Call for help</em> section in the
+<a href="https://arxiv.org/abs/1811.12783">manuscript</a>.</p>
+
+<h2 id="theory">Theory</h2>
+
+<p><strong>Measure, Manifold, Learning, and Optimization: A Theory Of Neural
+Networks</strong>: In the past six years (2012-2018), I worked out a theory of Deep
+Neural Networks, The theory gives S-System, <strong>a measure-theoretical definition
+of NNs</strong>; endows a stochastic manifold structure on the intermediate feature
+space of NNs through information geometry; proposes a learning framework that
+unifies both supervised learning and unsupervised learning in the same
+objective function; and proves <strong>under practical conditions</strong>, for <strong>large size
+nonlinear deep NNs</strong> with a class of losses, including the hinge loss, <strong>all
+local minima are global minima</strong> with zero loss errors. It also completes the
+analogy between NNs and Renormalization
+Group. <a href="https://arxiv.org/abs/1811.12783">Preprint</a>.</p>
+
+<h2 id="algorithms">Algorithms</h2>
+
+<p><strong>Orthogonal Neural Networks:</strong> I am also involved with designing
+algorithms to improve neural networks (NNs). The new algorithm
+constrains the weight matrices of NNs to be orthogonal. It is
+theoretically inspired by <strong>a novel generalization error bound</strong>
+that goes beyond Lipschitz constant based bounds through a new
+covering scheme. It characterizes the error induced by erroneous
+expansion of intra-class variations, and erroneous contraction of
+inter-class difference. The analysis relies on the proof that NNs
+are local $\delta$-isometry by breaking the instance space down by
+their hyperplane arrangement, and bounds the singular values
+according to Cauchy interlacing law. State-of-the-art results were
+achieved by the proposed methods. <a href="/images/OrthDNNs.pdf">Preprint</a>.</p>
+
+<h2 id="practice">Practice</h2>
+
+<p><strong>Akid, A Library for Neural Network Research and Production From A
+Dataism Approach</strong>: akid is a python neural network package that
+uses dataism abstraction on backends (Tensorflow, or PyTorch are
+supported) for research in NNs. It supports Acyclic Directed
+Computational Graph, Multi-GPU Computing, Visualization (computation
+graph, weight filters, feature maps, and training dynamics
+statistics), Meta-Syntax to generate network structure and more. An
+upgrade of its Python version is under development (but not
+described in the report below). It aims to combine the
+expressiveness of Lisp and the efficiency of C++/CUDA. It is
+designed to work by compiling Lisp and C++ into the intermediate
+representation (IR) of LLVM, and GPU computation is accessed through
+wrappers provided by C++ variables/classes. The IR of LLVM enables
+the two languages to share the same symbol tables, thus code written
+in Lisp and C++ can interact with each other without foreign
+function interfaces. It is similar with the Lua bind that exposes
+C++ functions to Lua. <a href="https://akid.readthedocs.io/en/latest/">Documentation</a>,
+and <a href="https://arxiv.org/abs/1701.00609">Report</a></p>
+
 
 </div>
 
