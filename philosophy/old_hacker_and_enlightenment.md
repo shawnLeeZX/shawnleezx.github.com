@@ -4,6 +4,7 @@ been changed dramatically. The essay below seems rather naive, and many crucial
 pieces are missing. But I think it may serve as an introduction, since the
 spirits is there. I hope I can renovate it some day.
 
+
 ----------------------------------------------------------------------------
 
 I would like to work on problems that contributes to the development of the
