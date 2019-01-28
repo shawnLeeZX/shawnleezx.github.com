@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Shawn" property="og:site_name">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <meta content="Neural Network Package <tt>akid</tt>" property="og:title">
+  
+
+  
+  <meta content="article" property="og:type">
+  
+
+  
+  <meta content="<h1>Children of The Sun</h1> " property="og:description">
+  
+
+  
+  <meta content="http://shawnLeeZX.github.io/akid" property="og:url">
+  
+
+  
+
+  <meta property="og:image" content="">
+
+  
+
+  
+
+  <title>Neural Network Package &lt;tt&gt;akid&lt;/tt&gt; - Shawn</title>
+  <meta name="description" content="<h1>Children of The Sun</h1> ">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Typesetting math using MathJax -->
+  <!-- mathjax config similar to math.stackexchange -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'] ],
+       displayMath: [ ['$$', '$$']],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     },
+     messageStyle: "none",
+     "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+   });
+  </script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href="/css/fonts/orbitron.css" rel="stylesheet" type="text/css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/akid">
+  <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
+</head>
+
+  <body>
+    <section>
+  <nav class="navbar navbar-default navbar-expand-lg fixed-top">
+    <div class="container">
+
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <a class="navbar-brand" href="/">Shawn</a>
+      <button type="button" class="navbar-toggle btn" data-toggle="collapse" data-target="#navBar" aria-expanded="false">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navBar">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="/research_catalog">Research</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#philosophy">Philosophy</a></li>
+          <li class="nav-item"><a class="nav-link" href="/employment">Updates</a></li>
+          <li class="nav-item"><a class="nav-link" href="/blog">Notes</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+
+    </div>
+  </nav>
+</section>
+
+    <section>
+      <div class="jumbotron">
+  <div class="container">
+    <h1 class="page-title" itemprop="name headline">Neural Network Package <tt>akid</tt></h1>
+    
+  </div>
+</div>
+
+<div class="container content">
+  <p><code class="highlighter-rouge">akid</code> is a python package written for doing research in Neural Network (NN). It
+also aims to be production ready by taking care of concurrency and
+communication in distributed computing (which depends on the utilities provided
+by <a href="http://pytorch.org">PyTorch</a> and <a href="http://tensorflow.org">Tensorflow</a>). It
+could be seen as a user friendly front-end to torch, or tensorflow, like
+<a href="https://keras.io/">Keras</a>. It grows out of the motivation to reuse my old
+code, and in the long run, to explore alternative framework for building NN. It
+supports two backends, i.e., Tensorflow and Pytorch. If combining with
+<a href="https://www.gluster.org/">GlusterFS</a>, <a href="https://www.docker.com/">Docker</a> and
+<a href="kubernetes.io">Kubernetes</a>, it is able to provide dynamic and elastic
+scheduling, auto fault recovery and scalability (which is not to brag
+the capability of <code class="highlighter-rouge">akid</code>, since the features are not features of <code class="highlighter-rouge">akid</code> but
+features thanks to open source (and libre software), but to mention the
+possibilities that they can be combined.).</p>
+
+<p>See <a href="http://akid.readthedocs.io/en/latest/index.html">http://akid.readthedocs.io/en/latest/index.html</a> for documentation. The
+document is dated, and has not been updated to include new changes e.g., the
+PyTorch backend. But the backbone design is the same, and main features are
+there. A <a href="https://arxiv.org/abs/1701.00609">report</a> is available.</p>
+
+</div>
+
+    </section>
+
+    
+
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+<div class="container footer-content">
+    <!-- Nothing is there. -->
+</div>
+</nav>
+  </body>
+
+</html>

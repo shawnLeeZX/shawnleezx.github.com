@@ -9,7 +9,7 @@
   <link href="/favicon.png" rel="icon">
 
   
-  <meta content="NN Theory Introduction" property="og:title">
+  <meta content="Deep Neural Network Theory Introduction" property="og:title">
   
 
   
@@ -32,10 +32,10 @@
 
   
 
-  <title>NN Theory Introduction - Shawn</title>
+  <title>Deep Neural Network Theory Introduction - Shawn</title>
   <meta name="description" content="<h1>Children of The Sun</h1> ">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/css/main.css">
@@ -56,73 +56,66 @@
    });
   </script>
   <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
-  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
 
-  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href="/css/fonts/orbitron.css" rel="stylesheet" type="text/css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="canonical" href="http://shawnLeeZX.github.io/theory_intro">
   <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
 </head>
 
   <body>
     <section>
-<nav class="navbar navbar-default navbar-fixed-top">
+  <nav class="navbar navbar-default navbar-expand-lg fixed-top">
+    <div class="container">
 
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+      <!-- Brand and toggle get grouped for better mobile display -->
       <a class="navbar-brand" href="/">Shawn</a>
+      <button type="button" class="navbar-toggle btn" data-toggle="collapse" data-target="#navBar" aria-expanded="false">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navBar">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="/research_catalog">Research</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#philosophy">Philosophy</a></li>
+          <li class="nav-item"><a class="nav-link" href="/employment">Updates</a></li>
+          <li class="nav-item"><a class="nav-link" href="/blog">Notes</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+
     </div>
-
-
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/research_catalog">Research</a></li>
-        <li><a href="/images/cv.pdf">Resume</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/blog/archives">Archive</a></li>
-      </ul>
-
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+  </nav>
 </section>
 
     <section>
       <div class="jumbotron">
   <div class="container">
-    <h1 class="page-title" itemprop="name headline">NN Theory Introduction</h1>
+    <h1 class="page-title" itemprop="name headline">Deep Neural Network Theory Introduction</h1>
     
   </div>
 </div>
 
 <div class="container content">
   <ul id="markdown-toc">
-  <li><a href="#theory-of-dnns" id="markdown-toc-theory-of-dnns">Theory of DNNs</a>    <ul>
-      <li><a href="#the-optimization-power-of-neural-networks" id="markdown-toc-the-optimization-power-of-neural-networks">The Optimization Power of Neural Networks</a></li>
-    </ul>
-  </li>
+  <li><a href="#overview-of-theory-of-dnns" id="markdown-toc-overview-of-theory-of-dnns">Overview of Theory of DNNs</a></li>
+  <li><a href="#the-optimization-power-of-neural-networks" id="markdown-toc-the-optimization-power-of-neural-networks">The Optimization Power of Neural Networks</a></li>
 </ul>
 
-<h2 id="theory-of-dnns">Theory of DNNs</h2>
+<h2 id="overview-of-theory-of-dnns">Overview of Theory of DNNs</h2>
 
-<p>In the past six years, I have worked out a theory of NNs. A short introduction
-to theory is present in this section — it is rather technical.  The theory is
-divided into the following <em>four</em> parts:</p>
+<p>A short introduction to the theory is present in this section — it is rather
+technical.  The theory is divided into the following <em>four</em> parts:</p>
 
 <ul>
   <li>
@@ -169,7 +162,7 @@ i.i.d. assumption). However, how can we assign probabilities to the events that
 are not as simple as coin flipping, and is not the average of ensemble, like
 the one of weather prediction?</p>
 
-<div id="cloud">fLyMd-mAkEr
+<div id="cloud">
 <figure>
     <img src="/images/cirrus6_small.jpg" height="200" alt="Cirrus" />
     <img src="/images/cumulonimbus3_small.jpg" height="200" alt="Cumulonimbus" />
@@ -213,11 +206,19 @@ framework through optimization. They overall make up a theory of NNs
 of/to outcomes of events to estimate the plausibility of events, e.g.,
 the occurrence of rain or not.</p>
 
-<p>Keep reading at <a href="https://arxiv.org/abs/1811.12783">here</a>.</p>
+<p>Keep reading at <a href="https://arxiv.org/abs/1811.12783">here</a> if the following
+embedded pdf does not work. If one finds the manuscript rather hard to read, an
+option is to skip to the <a href="#the-optimization-power-of-neural-networks">next
+section</a> in this page. It
+introduces the optimization part of it, which I have written with relevant
+introductions. I planned to write introductions to the rest of the theory,
+however, the progress is measured in months. Very likely, I need to wait for
+the publication of the optimization part, before I have the time to work on the
+rest.</p>
 
-<embed src="/images/optnn.pdf" type="application/pdf" width="100%" height="600px" />
+<embed src="/images/nntheory.pdf" type="application/pdf" width="100%" height="600px" />
 
-<h3 id="the-optimization-power-of-neural-networks">The Optimization Power of Neural Networks</h3>
+<h2 id="the-optimization-power-of-neural-networks">The Optimization Power of Neural Networks</h2>
 
 <p>The hierarchical organization of NNs to recognize and represent the
 hierarchical physical world has made itself a complex system. Contrary to
@@ -231,39 +232,42 @@ from the alignment of spin magnetic moment of many elementary particles. A
 misalignment/disorder in a fraction of the particles that does not exceed a
 critical points to cause phase transition won’t destroy the magnetic field of
 the magnet, only weakening it. More examples and more thorough and in depth
-discussion about emergence could be found in Simon (1962) Nicolis and Nicolis
-(2012) Kadanoff (2000). Contrary to the high constrained interaction in the
+discussion about emergence could be found in Simon (1962), Nicolis and Nicolis
+(2012) and Kadanoff (2000). Contrary to the high constrained interaction in the
 spinning particles, the neuron population in a NN is highly flexible and
-adaptable. A large collection of cooperative yet autonomous neurons, formalized
-as assumptions 6.1 6.2, gives NNs the ability to partition events into
-arbitrary groups and infer the plausibility of any groups of events (proved in
-theorem 6.1), which is the emergent behavior emerging from the disorder in the
-NN complex system. More technically, formulated as an optimization problem to
-minimize the error between the empirical probability distribution and its
-parametric representation, though being non-convex, NNs can reach zero error as
-long as NNs maintain its diversity while increasing its neuron population.</p>
+adaptable. A large collection of cooperative yet autonomous neurons gives NNs
+the ability to partition events into arbitrary groups and infer the
+plausibility of any groups of events, which is the emergent behavior emerging
+from the disorder in the NN complex system. More technically, formulated as an
+optimization problem to minimize the error between the empirical probability
+distribution and its parametric representation, though being non-convex, NNs
+can reach zero error as long as NNs maintain its diversity while increasing its
+neuron population.</p>
 
-<p>The interaction among neurons are formalized as a set of boundedness and
-diversity assumptions, explained in the illustrations below.</p>
+<p>The cooperative interaction among neurons are formalized as a set of
+boundedness and diversity assumptions, explained in the illustrations below.</p>
 
-<embed src="/images/hessian.pdf" type="application/pdf" width="100%" height="600px" />
-
-<div class="white-bg floated">
-<figure class="illustration">
-    <img src="/images/Hessian_illustration.svg" height="600" alt="Cumulonimbus" />
-     <figcaption>On the left is Cirrus, the type of cloud that normally
-wouldn't rain; on the right is the Cumulonimbus, the type of cloud that
-normally would lead to thunderstorms.</figcaption>
+<figure style="float: right;
+         color: white;
+         background-color:  rgba(30, 255, 3, 0.50);
+         border: #1eff03 solid;" class="illustration white-bg">
+  <img src="/images/Hessian_illustration.svg" alt="Cumulonimbus" />
+    <figcaption style="text-align: left;">Illustration of the conditions
+      characterized by assumptions in the manuscript in the NN
+      context. Informally, it characterizes the strength of the activation path
+      drawn in colors that connects layer p − 1 and layer q, and the
+      correlation between different paths. For each path, in a 10-layer NN with
+      100 neurons in each layer, it can correlate with $10^4$ other paths among
+      all $10^8$ paths in the NN. The activation paths are the entries of the
+      Hessian of a NN.</figcaption>
 </figure>
-</div>
 
-<p>Each activation path
-probably codes certain hierarchical pattern, e.g, a pattern of a person. It is
-reasonable to suggest that the capacity is quite significant. It is interesting
-to formulate testable quantities to see how much correlation exists in real
-world NNs. It also excitingly connects to the sparsity of neuron activation,
-and the long held hypothesis that information is coded in the neuron connection
-patterns in biological NNs.</p>
+<p>Each activation path probably codes certain hierarchical pattern, e.g, a
+pattern of a person. It is reasonable to suggest that the capacity is quite
+significant. It is interesting to formulate testable quantities to see how much
+correlation exists in real world NNs. It also excitingly connects to the
+sparsity of neuron activation, and the long held hypothesis that information is
+coded in the neuron connection patterns in biological NNs.</p>
 
 <p>Back to a larger context, NN is a fabulous mechanism that can indefinitely
 increase the number of parameters, thus its learning capacity, in a meaningful
@@ -273,10 +277,16 @@ algorithms. Taking linear NNs for example, though with the potential to
 infinitely increase its parameters, matrices that multiply together still have
 a high correlation structure within, thus cannot create a population of
 diverse neurons that are of low correlation with a majority of the other
-neurons. {\bf Accompanying \cref{thm:landscape}, which states $R_m(T)$ can be
-optimized to zero, we can see that assumptions \ref{a:boundedness}
-\ref{a:diversity} actually characterizes sufficient preconditions to the
-optimization power of NNs.}</p>
+neurons. <strong>Accompanying the theorem proved in the manuscript, which states
+empirical risk $R_m(T)$ can be optimized to zero, we can see that the
+ assumptions actually characterize sufficient preconditions to the optimization
+ power of NNs.</strong></p>
+
+<p>To learn more, keep reading the manuscript embedded below. If the browser does
+not support embedded pdf, one can read it <a href="/images/optnn.pdf">here</a>.</p>
+
+<embed src="/images/optnn.pdf" type="application/pdf" width="100%" height="600px" />
+
 
 </div>
 

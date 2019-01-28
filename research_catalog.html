@@ -35,7 +35,7 @@
   <title>Research Catalog - Shawn</title>
   <meta name="description" content="<h1>Children of The Sun</h1> ">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/css/main.css">
@@ -56,50 +56,46 @@
    });
   </script>
   <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
-  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
 
-  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Fira+Mono' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Gentium+Basic:400,700' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Alegreya:400,400italic,700' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,500,700' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href="/css/fonts/orbitron.css" rel="stylesheet" type="text/css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="canonical" href="http://shawnLeeZX.github.io/research_catalog">
   <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
 </head>
 
   <body>
     <section>
-<nav class="navbar navbar-default navbar-fixed-top">
+  <nav class="navbar navbar-default navbar-expand-lg fixed-top">
+    <div class="container">
 
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+      <!-- Brand and toggle get grouped for better mobile display -->
       <a class="navbar-brand" href="/">Shawn</a>
+      <button type="button" class="navbar-toggle btn" data-toggle="collapse" data-target="#navBar" aria-expanded="false">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navBar">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="/research_catalog">Research</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#philosophy">Philosophy</a></li>
+          <li class="nav-item"><a class="nav-link" href="/employment">Updates</a></li>
+          <li class="nav-item"><a class="nav-link" href="/blog">Notes</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+
     </div>
-
-
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/research_catalog">Research</a></li>
-        <li><a href="/images/cv.pdf">Resume</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/blog/archives">Archive</a></li>
-      </ul>
-
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+  </nav>
 </section>
 
     <section>
@@ -111,38 +107,66 @@
 </div>
 
 <div class="container content">
-  <p>I envision artificial intelligence (AI) will be a core component that starts a
+  <ul id="markdown-toc">
+  <li><a href="#theory" id="markdown-toc-theory">Theory</a></li>
+  <li><a href="#hacking" id="markdown-toc-hacking">Hacking</a></li>
+  <li><a href="#miscellaneous" id="markdown-toc-miscellaneous">Miscellaneous</a></li>
+</ul>
+
+<p><br />
+I envision artificial intelligence (AI) will be a core component that starts a
 new era, not in term of the Age of Reason vs the Age of Romantics, but in term
-of the Renaissance vs the Middle Age. For the reasoning, read the sections
-<em>Artificial intelligence and humanities</em> and <em>The roadmap to future research</em>
-in the <a href="https://arxiv.org/abs/1811.12783">manuscript</a>. In that, I am
-initializing the research in the full frontier of AI (Deep Neural Networks):
-theory, algorithm, and practice. I am in for decades, if not for life. Help is
-wanted, refer to <em>Call for help</em> section in the
-<a href="https://arxiv.org/abs/1811.12783">manuscript</a>.</p>
+of the Renaissance vs the Middle Age. For the reasoning, read the essays in the
+<em>philosophy panel</em> in the <a href="/">landing page</a>. Help is wanted, refer to <em>Call for
+help</em> section in the <a href="https://arxiv.org/abs/1811.12783">manuscript</a>.</p>
+
+<p>In current roadmap, the primary focus is to develop the theory of neural
+networks — an introduction is present specifically for it
+<a href="/theory_intro">here</a>. I also do some works out of hacking interests, and works
+that support myself financially. The works are cataloged in this page.</p>
 
 <h2 id="theory">Theory</h2>
 
-<p><strong>Measure, Manifold, Learning, and Optimization: A Theory Of Neural
-Networks</strong>: In the past six years (2012-2018), I worked out a theory of Deep
-Neural Networks, The theory gives S-System, <strong>a measure-theoretical definition
-of NNs</strong>; endows a stochastic manifold structure on the intermediate feature
-space of NNs through information geometry; proposes a learning framework that
-unifies both supervised learning and unsupervised learning in the same
-objective function; and proves <strong>under practical conditions</strong>, for <strong>large size
-nonlinear deep NNs</strong> with a class of losses, including the hinge loss, <strong>all
-local minima are global minima</strong> with zero loss errors. It also completes the
-analogy between NNs and Renormalization
-Group. <a href="https://arxiv.org/abs/1811.12783">Preprint</a>.</p>
+<p><strong>Measure, Manifold, Learning, and Optimization: A Theory Of Neural Networks</strong>:
+The theory gives S-System, <strong>a measure-theoretical definition of NNs</strong>; endows
+a stochastic manifold structure on the intermediate feature space of NNs
+through information geometry; proposes a learning framework that unifies both
+supervised learning and unsupervised learning in the same objective function;
+and proves <strong>under practical conditions</strong>, for <strong>large size nonlinear deep
+NNs</strong> with a class of losses, including the hinge loss, <strong>all local minima are
+global minima</strong> with zero loss errors. It also completes the analogy between
+NNs and Renormalization Group. <a href="https://arxiv.org/abs/1811.12783">Preprint</a>.</p>
 
 <p>The manuscript is taken as hard-to-understand for its first readers. I am in
 the process of writing introductions to the work. I have finished an
-easier-to-read manuscript on its optimization part; you can find it
-<a href="/images/optnn.pdf">here</a>.</p>
+easier-to-read manuscript on its optimization part:</p>
+
+<p><strong>The Benign Loss Landscape of Large-Size Deep Nonlinear Neural Networks</strong>. We
+study the optimization problem of deep neural networks (NNs) and push forward
+its theoretical understanding. More specifically, we study the loss landscape
+of NNs, and prove that under a set of practical boundedness and diversity
+conditions, for large-size nonlinear deep NNs with a class of losses, including
+the hinge loss, all local minima are global minima with zero loss errors. We
+emphasize that the assumptions made are sufficient practice-guiding
+preconditions. Intuitively, the conditions ask the neurons in a NN to be
+cooperative yet stay autonomous to the majority of the neuron population. The
+conditions are directly related to the centering (Glorot &amp; Bengio, 2010), and
+normalization (Ioffe, Sergey and Szegedy, 2015) techniques widely used in
+practice to make NNs optimizable. <a href="/images/optnn.pdf">Preprint</a>.</p>
 
 <p><a href="/theory_intro">Essays Written to Introduce the Theory</a></p>
 
-<h2 id="algorithms">Algorithms</h2>
+<h2 id="hacking">Hacking</h2>
+
+<p><strong>Akid, A Library for Neural Network Research and Production From A Dataism
+Approach</strong>: akid is a python neural network package that uses dataism
+abstraction on backends (Tensorflow, or PyTorch are supported) for research in
+NNs. It supports Acyclic Directed Computational Graph, Multi-GPU Computing,
+Visualization (computation graph, weight filters, feature maps, and training
+dynamics statistics), Meta-Syntax to generate network structure and more.  To
+learn more, see <a href="/akid">here</a>.</p>
+
+<h2 id="miscellaneous">Miscellaneous</h2>
 
 <p><strong>Orthogonal Neural Networks:</strong> I am also involved with designing
 algorithms to improve neural networks (NNs). The new algorithm
@@ -154,30 +178,23 @@ expansion of intra-class variations, and erroneous contraction of
 inter-class difference. The analysis relies on the proof that NNs
 are local $\delta$-isometry by breaking the instance space down by
 their hyperplane arrangement, and bounds the singular values
-according to Cauchy interlacing law. State-of-the-art results were
+according to Cauchy interlacing law. Competitive results were
 achieved by the proposed methods. <a href="/images/OrthDNNs.pdf">Preprint</a>.</p>
 
-<h2 id="practice">Practice</h2>
-
-<p><strong>Akid, A Library for Neural Network Research and Production From A
-Dataism Approach</strong>: akid is a python neural network package that
-uses dataism abstraction on backends (Tensorflow, or PyTorch are
-supported) for research in NNs. It supports Acyclic Directed
-Computational Graph, Multi-GPU Computing, Visualization (computation
-graph, weight filters, feature maps, and training dynamics
-statistics), Meta-Syntax to generate network structure and more. An
-upgrade of its Python version is under development (but not
-described in the report below). It aims to combine the
-expressiveness of Lisp and the efficiency of C++/CUDA. It is
-designed to work by compiling Lisp and C++ into the intermediate
-representation (IR) of LLVM, and GPU computation is accessed through
-wrappers provided by C++ variables/classes. The IR of LLVM enables
-the two languages to share the same symbol tables, thus code written
-in Lisp and C++ can interact with each other without foreign
-function interfaces. It is similar with the Lua bind that exposes
-C++ functions to Lua. <a href="https://akid.readthedocs.io/en/latest/">Documentation</a>,
-and <a href="https://arxiv.org/abs/1701.00609">Report</a></p>
-
+<p><strong>Sample-wise Adversarial Robustness Regularizes Neural Networks</strong>: The problem
+of adversarial samples has shown that modern Neural Network (NN) models could
+be rather fragile. Among the most promising techniques to solve the problem,
+one is to require the model to be  <em>$\epsilon$-adversarially robust</em>; that
+is, to require the model not to change predicted labels when any given input
+samples are perturbed within a certain range. However, it is widely observed
+that such methods would lead to standard performance degradation. We study
+why the degradation occurs from the statistical perspective. More
+specifically, with a mix of theory and experiments, we show that adversarial
+robustness is a form of drastic <em>regularization</em> that hurts the capacity
+of NNs and results in performance degradation, when adversarial noises are
+prevented from being amplified too much through spectral normalization. We
+believe the result is a first step to understand and alleviate the
+degradation. <a href="/images/ar.pdf">Preprint</a></p>
 
 </div>
 
