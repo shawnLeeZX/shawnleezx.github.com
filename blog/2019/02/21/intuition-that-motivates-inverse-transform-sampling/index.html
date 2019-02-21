@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Shawn" property="og:site_name">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <meta content="Intuition That Motivates Inverse Transform Sampling" property="og:title">
+  
+
+  
+  <meta content="article" property="og:type">
+  
+
+  
+  <meta content="<h1>Children of The Sun</h1> " property="og:description">
+  
+
+  
+  <meta content="http://shawnLeeZX.github.io/blog/2019/02/21/intuition-that-motivates-inverse-transform-sampling/" property="og:url">
+  
+
+  
+  <meta content="2019-02-21T20:37:39+08:00" property="article:published_time">
+  <meta content="http://shawnLeeZX.github.io/about/" property="article:author">
+  
+
+  <meta property="og:image" content="">
+
+  
+  
+  <meta content="Math" property="article:section">
+  
+  
+
+  
+  
+  
+
+  <title>Intuition That Motivates Inverse Transform Sampling - Shawn</title>
+  <meta name="description" content="This post notes down the observation that motives inverse transform sampling(ITS) to sample from any probability distributions.">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Typesetting math using MathJax -->
+  <!-- mathjax config similar to math.stackexchange -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'] ],
+       displayMath: [ ['$$', '$$']],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     },
+     messageStyle: "none",
+     "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+   });
+  </script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href="/css/fonts/orbitron.css" rel="stylesheet" type="text/css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2019/02/21/intuition-that-motivates-inverse-transform-sampling/">
+  <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
+</head>
+
+  <body>
+    <section>
+  <nav class="navbar navbar-default navbar-expand-lg fixed-top">
+    <div class="container">
+
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <a class="navbar-brand" href="/">Shawn</a>
+      <button type="button" class="navbar-toggle btn" data-toggle="collapse" data-target="#navBar" aria-expanded="false">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navBar">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="/research_catalog">Research</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#philosophy">Philosophy</a></li>
+          <li class="nav-item"><a class="nav-link" href="/employment">Updates</a></li>
+          <li class="nav-item"><a class="nav-link" href="/blog">Notes</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+
+    </div>
+  </nav>
+</section>
+
+    <section>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="page-title" itemprop="name headline">Intuition That Motivates Inverse Transform Sampling</h1>
+      <p class="post-meta"><time datetime="2019-02-21T20:37:39+08:00" itemprop="datePublished">Feb 21, 2019</time></p>
+    </div>
+
+</div>
+
+
+  <div class="content post-content container" itemprop="articleBody">
+    <p>This post notes down the observation that motives inverse transform sampling
+(ITS) to sample from any probability distributions.</p>
+
+<!-- more -->
+
+<p>Given a random variable (r.v.) $X$, and a pseudo-random number generator that
+can emit uniform random numbers, how to derive a method to sample from any
+distribution? The answer has been rather mystic for me at the first time that I
+learned about the inverse transform sampling in a distance time ago. I
+revisited the issue today, and decide to outline the intuition behind it.</p>
+
+<p>It is not easy to characterize randomness in a computer that is built on
+deterministic Turing model. So the randomness comes from pseudonumber
+generator. I did not know the machinery to generate pseudo-random numbers, but
+I guess obtaining uniform number are hand-crafted procedure that are manually
+designed. So it is probably hard to devise one sampler for uniform
+distribution. The difficulty may be similar imagined in the physical world,
+where sampling are performed physically relying on the principle of symmetry,
+e.g., throwing a coin; we cannot do sampling if we do not have the physical
+process that has such type of randomness.</p>
+
+<p>Thus, how can be convert the manpower involved in the pseudo-random generator
+to generate other probability distributions?</p>
+
+<p>To motivate ITS, we need to go back to the measure-theoretical definition of
+probability, which I will skip. With necessary background in advanced
+probability theory, we can have the following derivation.</p>
+
+<p>Suppose we have a transform $T$, such that $\nu(T(X)) = \mu (T^{-1}(X))$. Given
+a set $E \in \mathcal{E}$, where $\mathcal{E}$ is the measurable space of $X$,
+we have the measure of a set $F \in \mathcal{F}$ as</p>
+
+<script type="math/tex; mode=display">\nu(T(E)) = \mu (T^{-1}(F))</script>
+
+<p>This is the intuition underlying the seeming magic underlying ITS, which is
+normally not discussed, as in the Wikipedia
+<a href="https://en.wikipedia.org/wiki/Inverse_transform_sampling">entry</a>. That is, we
+are manipulating the probability measure to a form that we can compute.
+Then, if we can obtain a sample $y$ according to $\nu$, $T^{-1}(y)$ is the
+sample we would get if we obtain a sample according to $\mu$.</p>
+
+<p>However, if the above statement were true, $T$ should be monotonous, so measure
+of different values does not overlap. Otherwise, the probability to sample $y$
+is the probability of all elements of $X$ that are mapped to $y$,
+i.e., $\forall x, T(x) = y$. In the one-dimensional case, monotony can
+concentrate the measure of an interval, e.g., $[a, b] \subset \mathbb{R}$, to
+an interval $[c, d] \subset \mathbb{R}$; that is</p>
+
+<script type="math/tex; mode=display">\nu ([c, d]) = \int_{a}^{b} \mu(x) dx, c = T(a), d = T(b)</script>
+
+<p>Lastly, we need to manipulate $F$ so that $T(F)$ is computable, where comes the
+Cumulative Distribution Function (CDF). Let $\mu$ be the CDF of $\mu$. Observe
+that the meaning of $\nu[0, c]$ are literally, <em>the probability $T(x)$ lies in
+$[0, c]$ is $c$</em>; that is the definition of uniform distribution.</p>
+
+<p>That is the derivation of Inverse Transform Sampling.</p>
+
+  </div>
+
+</article>
+
+    </section>
+
+    
+    <div class="container">
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2019/02/21/intuition-that-motivates-inverse-transform-sampling/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2019/02/21/intuition-that-motivates-inverse-transform-sampling/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+      </section>
+    </div>
+    
+
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+<div class="container footer-content">
+    <!-- Nothing is there. -->
+</div>
+</nav>
+  </body>
+
+</html>

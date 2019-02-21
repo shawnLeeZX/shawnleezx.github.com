@@ -5,9 +5,79 @@
     <description>&lt;h1&gt;Children of The Sun&lt;/h1&gt; </description>
     <link>http://shawnLeeZX.github.io/</link>
     <atom:link href="http://shawnLeeZX.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 20 Feb 2019 11:40:15 +0800</pubDate>
-    <lastBuildDate>Wed, 20 Feb 2019 11:40:15 +0800</lastBuildDate>
+    <pubDate>Thu, 21 Feb 2019 21:37:05 +0800</pubDate>
+    <lastBuildDate>Thu, 21 Feb 2019 21:37:05 +0800</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>Intuition That Motivates Inverse Transform Sampling</title>
+        <description>&lt;p&gt;This post notes down the observation that motives inverse transform sampling
+(ITS) to sample from any probability distributions.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;Given a random variable (r.v.) $X$, and a pseudo-random number generator that
+can emit uniform random numbers, how to derive a method to sample from any
+distribution? The answer has been rather mystic for me at the first time that I
+learned about the inverse transform sampling in a distance time ago. I
+revisited the issue today, and decide to outline the intuition behind it.&lt;/p&gt;
+
+&lt;p&gt;It is not easy to characterize randomness in a computer that is built on
+deterministic Turing model. So the randomness comes from pseudonumber
+generator. I did not know the machinery to generate pseudo-random numbers, but
+I guess obtaining uniform number are hand-crafted procedure that are manually
+designed. So it is probably hard to devise one sampler for uniform
+distribution. The difficulty may be similar imagined in the physical world,
+where sampling are performed physically relying on the principle of symmetry,
+e.g., throwing a coin; we cannot do sampling if we do not have the physical
+process that has such type of randomness.&lt;/p&gt;
+
+&lt;p&gt;Thus, how can be convert the manpower involved in the pseudo-random generator
+to generate other probability distributions?&lt;/p&gt;
+
+&lt;p&gt;To motivate ITS, we need to go back to the measure-theoretical definition of
+probability, which I will skip. With necessary background in advanced
+probability theory, we can have the following derivation.&lt;/p&gt;
+
+&lt;p&gt;Suppose we have a transform $T$, such that $\nu(T(X)) = \mu (T^{-1}(X))$. Given
+a set $E \in \mathcal{E}$, where $\mathcal{E}$ is the measurable space of $X$,
+we have the measure of a set $F \in \mathcal{F}$ as&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\nu(T(E)) = \mu (T^{-1}(F))&lt;/script&gt;
+
+&lt;p&gt;This is the intuition underlying the seeming magic underlying ITS, which is
+normally not discussed, as in the Wikipedia
+&lt;a href=&quot;https://en.wikipedia.org/wiki/Inverse_transform_sampling&quot;&gt;entry&lt;/a&gt;. That is, we
+are manipulating the probability measure to a form that we can compute.
+Then, if we can obtain a sample $y$ according to $\nu$, $T^{-1}(y)$ is the
+sample we would get if we obtain a sample according to $\mu$.&lt;/p&gt;
+
+&lt;p&gt;However, if the above statement were true, $T$ should be monotonous, so measure
+of different values does not overlap. Otherwise, the probability to sample $y$
+is the probability of all elements of $X$ that are mapped to $y$,
+i.e., $\forall x, T(x) = y$. In the one-dimensional case, monotony can
+concentrate the measure of an interval, e.g., $[a, b] \subset \mathbb{R}$, to
+an interval $[c, d] \subset \mathbb{R}$; that is&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\nu ([c, d]) = \int_{a}^{b} \mu(x) dx, c = T(a), d = T(b)&lt;/script&gt;
+
+&lt;p&gt;Lastly, we need to manipulate $F$ so that $T(F)$ is computable, where comes the
+Cumulative Distribution Function (CDF). Let $\mu$ be the CDF of $\mu$. Observe
+that the meaning of $\nu[0, c]$ are literally, &lt;em&gt;the probability $T(x)$ lies in
+$[0, c]$ is $c$&lt;/em&gt;; that is the definition of uniform distribution.&lt;/p&gt;
+
+&lt;p&gt;That is the derivation of Inverse Transform Sampling.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 21 Feb 2019 20:37:39 +0800</pubDate>
+        <link>http://shawnLeeZX.github.io/blog/2019/02/21/intuition-that-motivates-inverse-transform-sampling/</link>
+        <guid isPermaLink="true">http://shawnLeeZX.github.io/blog/2019/02/21/intuition-that-motivates-inverse-transform-sampling/</guid>
+        
+        
+        <category>Math</category>
+        
+        <category>Statistics</category>
+        
+      </item>
     
       <item>
         <title>Scientific Humanism</title>
@@ -550,19 +620,6 @@ to the foreground and play again.&lt;/p&gt;
         <pubDate>Sun, 01 Jan 2017 11:48:59 +0800</pubDate>
         <link>http://shawnLeeZX.github.io/blog/2017/01/01/puti/</link>
         <guid isPermaLink="true">http://shawnLeeZX.github.io/blog/2017/01/01/puti/</guid>
-        
-        
-        <category>Life</category>
-        
-      </item>
-    
-      <item>
-        <title>The Brave World</title>
-        <description>&lt;p&gt;我想，从今而始，新世界到来了。&lt;/p&gt;
-</description>
-        <pubDate>Sat, 05 Nov 2016 10:11:56 +0800</pubDate>
-        <link>http://shawnLeeZX.github.io/blog/2016/11/05/the-brave-world/</link>
-        <guid isPermaLink="true">http://shawnLeeZX.github.io/blog/2016/11/05/the-brave-world/</guid>
         
         
         <category>Life</category>
