@@ -89,7 +89,7 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item"><a class="nav-link" href="/research_catalog">Research</a></li>
           <li class="nav-item"><a class="nav-link" href="/#philosophy">Philosophy</a></li>
-          <li class="nav-item"><a class="nav-link" href="/employment">Updates</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#updates">Updates</a></li>
           <li class="nav-item"><a class="nav-link" href="/blog">Notes</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
@@ -107,13 +107,7 @@
 </div>
 
 <div class="container content">
-  <ul id="markdown-toc">
-  <li><a href="#theory" id="markdown-toc-theory">Theory</a></li>
-  <li><a href="#hacking" id="markdown-toc-hacking">Hacking</a></li>
-  <li><a href="#miscellaneous" id="markdown-toc-miscellaneous">Miscellaneous</a></li>
-</ul>
-
-<p><br />
+  <p><br />
 I envision artificial intelligence (AI) will be a core component that starts a
 new era, not in term of the Age of Reason vs the Age of Romantics, but in term
 of the Renaissance vs the Middle Age. For the reasoning, read the essays in the
@@ -124,6 +118,15 @@ help</em> section in the <a href="https://arxiv.org/abs/1811.12783">manuscript</
 networks — an introduction is present specifically for it
 <a href="/theory_intro">here</a>. I also do some works out of hacking interests, and works
 that support myself financially. The works are cataloged in this page.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#table-of-contents" id="markdown-toc-table-of-contents">Table of Contents</a></li>
+  <li><a href="#theory" id="markdown-toc-theory">Theory</a></li>
+  <li><a href="#hacking" id="markdown-toc-hacking">Hacking</a></li>
+  <li><a href="#miscellaneous" id="markdown-toc-miscellaneous">Miscellaneous</a></li>
+</ul>
 
 <h2 id="theory">Theory</h2>
 
@@ -140,24 +143,22 @@ NNs</strong> with a class of losses, including the hinge loss, <strong>all local
 global minima</strong> with zero loss errors. It also completes the analogy between
 NNs and Renormalization Group. <a href="https://arxiv.org/abs/1811.12783">Preprint</a>.</p>
 
-<p>The manuscript is taken as hard-to-understand for its first readers. I am in
+<p><em>The manuscript is taken as hard-to-understand for its first readers. I am in
 the process of writing introductions to the work. I have finished an
-easier-to-read manuscript on its optimization part:</p>
+easier-to-read manuscript on its optimization part</em>:</p>
 
-<p><strong>The Benign Loss Landscape of Large-Size Deep Nonlinear Neural Networks</strong>. We
-study the optimization problem of deep neural networks (NNs) and push forward
-its theoretical understanding. More specifically, we study the loss landscape
-of NNs, and prove that under a set of practical boundedness and diversity
-conditions, for large-size nonlinear deep NNs with a class of losses, including
-the hinge loss, all local minima are global minima with zero loss errors. We
-emphasize that the assumptions made are sufficient practice-guiding
-preconditions. Intuitively, the conditions ask the neurons in a NN to be
-cooperative yet stay autonomous to the majority of the neuron population. The
-conditions are directly related to the centering (Glorot &amp; Bengio, 2010), and
-normalization (Ioffe, Sergey and Szegedy, 2015) techniques widely used in
-practice to make NNs optimizable. <a href="/images/optnn.pdf">Preprint</a>.</p>
+<p><strong>The Benign Loss Landscape of Neural Networks</strong>. We study the loss landscape
+of NNs, and prove under a set of conditions, for <em>large-size nonlinear
+deep</em> NNs with a class of loss functions $\mathcal{L}_0$, including the
+hinge loss, <em>all local minima are global minima with zero loss errors.</em> For
+the class $\mathcal{L}_0$ of loss functions, the proof enables a complete
+characterization of the stationary points of the NNs’ loss landscape:
+eigenvalues of the Hessian of the NNs are distributed {\it symmetrically
+w.r.t. zero}, and concentrate increasingly towards zero as the risk decreases.
+We also show the loss landscape of a practical NN throughout training conforms
+to the one characterized. <a href="/images/optnn.pdf">Preprint</a>.</p>
 
-<p><a href="/theory_intro">Essays Written to Introduce the Theory</a></p>
+<p><em>Essays written to introduce the theory can be found</em> <a href="/theory_intro">here</a>.</p>
 
 <h2 id="hacking">Hacking</h2>
 
@@ -182,22 +183,26 @@ inter-class difference. The analysis relies on the proof that NNs
 are local $\delta$-isometry by breaking the instance space down by
 their hyperplane arrangement, and bounds the singular values
 according to Cauchy interlacing law. Competitive results were
-achieved by the proposed methods. <a href="/images/OrthDNNs.pdf">Preprint</a>.</p>
+achieved by the proposed methods. <a href="https://arxiv.org/abs/1905.05929/">Preprint</a>.</p>
 
-<p><strong>Sample-wise Adversarial Robustness Regularizes Neural Networks</strong>: The problem
-of adversarial samples has shown that modern Neural Network (NN) models could
-be rather fragile. Among the most promising techniques to solve the problem,
-one is to require the model to be  <em>$\epsilon$-adversarially robust</em>; that
-is, to require the model not to change predicted labels when any given input
-samples are perturbed within a certain range. However, it is widely observed
-that such methods would lead to standard performance degradation. We study
-why the degradation occurs from the statistical perspective. More
-specifically, with a mix of theory and experiments, we show that adversarial
-robustness is a form of drastic <em>regularization</em> that hurts the capacity
-of NNs and results in performance degradation, when adversarial noises are
-prevented from being amplified too much through spectral normalization. We
-believe the result is a first step to understand and alleviate the
-degradation. <a href="/images/ar.pdf">Preprint</a></p>
+<p><strong>Regularization by Adversarial Robustness Makes Diffident Neural Networks</strong>:
+The problem of adversarial examples has shown that modern Neural Network (NN)
+models could be rather fragile. Among the most promising techniques to solve
+the problem, one is to require the model to be <em>$\epsilon$-adversarially robust</em>
+(AR); that is, to require the model not to change predicted labels when any
+given input examples are perturbed within a certain range. However, it is
+widely observed that such methods would lead to standard performance
+degradation, i.e., the degradation on natural examples.  In this work, we study
+the degradation through the regularization of AR on NNs. We
+find that AR is achieved by regularizing/biasing NNs
+towards less confident solutions by making the changes in the feature space
+(induced by changes in the instance space) of most layers smoother uniformly in
+all directions; so to a certain extent, it prevents sudden change in prediction
+w.r.t.  perturbations. However, the end result of such smoothing concentrates
+samples around decision boundaries and leads to worse standard performance.
+ The results suggest we might consider ways that build AR into NNs a gentler
+way to avoid the problematic regularization.
+<a href="/images/ar.pdf">Preprint</a></p>
 
 </div>
 

@@ -89,7 +89,7 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item"><a class="nav-link" href="/research_catalog">Research</a></li>
           <li class="nav-item"><a class="nav-link" href="/#philosophy">Philosophy</a></li>
-          <li class="nav-item"><a class="nav-link" href="/employment">Updates</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#updates">Updates</a></li>
           <li class="nav-item"><a class="nav-link" href="/blog">Notes</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
@@ -107,7 +107,15 @@
 </div>
 
 <div class="container content">
-  <ul id="markdown-toc">
+  <p>Significant efforts are made to make the optimization results in the theory
+introduced blow readable. If the following introduction is found abstruse, an
+entry might be found by directly reading the optimization part of it, which can
+be found in this <a href="/images/optnn.pdf">manuscript</a>.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#table-of-contents" id="markdown-toc-table-of-contents">Table of Contents</a></li>
   <li><a href="#overview-of-theory-of-dnns" id="markdown-toc-overview-of-theory-of-dnns">Overview of Theory of DNNs</a></li>
   <li><a href="#the-optimization-power-of-neural-networks" id="markdown-toc-the-optimization-power-of-neural-networks">The Optimization Power of Neural Networks</a></li>
 </ul>
@@ -259,8 +267,8 @@ boundedness and diversity assumptions, explained in the illustrations below.</p>
       context. Informally, it characterizes the strength of the activation path
       drawn in colors that connects layer p − 1 and layer q, and the
       correlation between different paths. For each path, in a 10-layer NN with
-      100 neurons in each layer, it can correlate with $10^4$ other paths among
-      all $10^8$ paths in the NN. The activation paths are the entries of the
+      100 neurons in each layer, it can correlate with $10^5$ other paths among
+      all $10^10$ paths in the NN. The activation paths are the entries of the
       Hessian of a NN.</figcaption>
 </figure>
 

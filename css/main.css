@@ -21,6 +21,9 @@ pre {
   padding: 1.5em !important;
   color: white !important; }
 
+em {
+  color: #79ff69; }
+
 hr {
   background-color: white; }
 
