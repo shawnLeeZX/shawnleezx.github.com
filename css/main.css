@@ -113,6 +113,9 @@ body h2, body h3, body h4 {
 .content {
   max-width: 800px; }
 
+.double-col {
+  max-width: 100% !important; }
+
 /* Post */
 /*///////////////////////////////////////////////////////////////////////*/
 .excerpt-list {
