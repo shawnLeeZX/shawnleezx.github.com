@@ -1,0 +1,901 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+                <script type="text/javascript">
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-44220731-1']);
+                _gaq.push(['_trackPageview']);
+
+                (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+                </script>
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+                <style>
+                  h1, h2, h3, h4, p, ul {
+                    background-color: rgba(0, 0, 0, 0.5);
+                    text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.8), 8px 8px 20px rgba(0, 0, 0, 0.9);
+                    padding: 0em 0.5em 0em 0.5em;
+                  }
+                  h3, h4, p, figcaption {
+                    text-align: justify;
+                  }
+                  .small-font {
+                  font-size: 90%;
+                    text-align: left;
+                  }
+                  .footnote {
+                    opacity: 1;
+                    transition: opacity 800ms ease-in-out;
+                    position: fixed;
+                    height: 2vh;
+                    z-index: 20;
+                    width: 100%;
+                    font-size: 2vh;
+                    letter-spacing: 0em;
+                    <!-- padding-top: 0.5vh; -->
+                    <!-- padding-bottom: 0.5vh; -->
+                  }
+                    .my-container{
+                        display: flex;
+                    }
+                    .col{
+                        flex: 1;
+                    }
+                    .row {
+                    flex-direction: row;
+                    flex: 1;
+                    }
+                    .banner {
+                    position: absolute;
+                    bottom: 50%;
+                    }
+                    em {
+                    color: green;
+                    }
+                    strong {
+                    color: red;
+                    }
+                    i {
+                    font-style: italic;
+                    }
+                </style>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+<section data-background-image="./imgs/whole-earth.png"
+        data-background-size=contain
+        >
+  <h1>世界的现状和缔造它的曾经的青年</h1>
+  <h2>State of the World and the Youth Who Made It</h2>
+
+  <aside class="notes">
+    <p>
+      以零八年金融危机为分水岭，对中国来讲，改革开放以来和平与发展的世界局面正
+      逐渐被打破；而对西方世界来说，自文艺复兴以来，推动其文明进程的自由主义和
+      个人主义也走到了瓶颈，在环境问题和知识经济的挤压下捉襟见肘地应对又一批民
+      粹反移民浪潮。如今世界局面造成有自清朝以来的儒学的认知论困境、自由主义在
+      完成对天主神学夺权之后的凝聚力丧失等根本原因，但其最直接的哲学思想和技术
+      推动却在极大程度上来自青年建造乌托邦的反抗运动。从某种意义上讲，他们如其
+      所望地改变了世界，却不是按他们原来的构想。本作梳理自尼采以来至今的青年运
+      动，从而阐释当今失衡世界和青年运动的因果。
+    </p>
+  </aside>
+</section>
+
+<section>
+  <p>目标：梳理青年运动和世界现状的关系
+  </p>
+</section>
+
+<section>
+  <p>声明：虽然对世界现状和青年运动历史的梳理多是西方现状和历史，但中国自改革开
+  放之后却加速地参与进了这一历史路径，从而面临着有本地特征的同样问题。
+  </p>
+</section>
+
+<section>
+    <section>
+    <h1>政治领域</h1>
+    <h2>（Political Sphere）</h2>
+    </section>
+
+    <section id="current-state" data-background-image="./imgs/general_strike_in_France.jpg">
+    <h2>French general strike for pension reform (Dec 05)</h2>
+
+    <p>The public poll shows 70 percent popular support [NYT20191205]</p>
+
+    </section>
+
+    <section data-background-image="./imgs/uk_brexit_eu_match.jpg">
+    <h2>U.K. strike for action for EU membership (Oct 19)</h2>
+
+    <p>
+    March organisers hail ‘one of the greatest protest marches in British history. [GUD1019]</p>
+
+    </section>
+
+    <section data-background-image="./imgs/us_trump_wall.jpg">
+    <h2>The election of Trump (2015)</h2>
+    <p>
+        We are going to build a WALL over Mexico, and THEY are going to pay for it! [NYT1024]
+    </p>
+
+    <aside class="notes">
+      The two conflicted demands. The well-off wants a globally connected
+      world, where culture, intellectual communication, market productivity
+      prosper. The worse-off does not want global competition and competition
+      from immigrants, and want the welfare society kept despite the
+      inefficiency --- like the state own firms in China.
+    </aside>
+    </section>
+
+    <section data-background-image="./imgs/hong_kong_strike.jpg">
+    <h2>Hong Kong strike for anti-extradition law (Jun 09)</h2>
+
+    <p>Over one million marched in Hong Kong [CNN20190609]</p>
+    </section>
+
+</section>
+
+<section>
+  <h2>What is really happening?</h2>
+  <p class="fragment">
+    The informational knowledge economy is replacing the manufracturing economy, and making the old jobs gradually irrelevant.
+  </p>
+  <p class="fragment">
+    The new jobs value more individual productivity than long term contractal cooperation.
+  </p>
+  <p class="fragment">
+    It creates dislocation, alienation, uncertainty within a swift time.
+  </p>
+</section>
+
+<section>
+
+    <section>
+    <h1>经济领域</h1>
+    <h2>（Economic Sphere）</h2>
+    </section>
+
+    <section data-background-image="./imgs/outsourcing_contract.jpg">
+    <h4>Information technology enabled global supply chain destroyed the local manifucture sector.</h4>
+    </section>
+
+    <section data-background-image="./imgs/automation.jpg">
+    <h4>Automation makes physical labor obsolete.</h4>
+    </section>
+
+    <section data-background-image="./imgs/working_class_people.jpeg">
+    <h4>The working class is not a member of the middle class anymore.</h4>
+    </section>
+
+    <section>
+    <figure style="height: 40%;">
+        <img src="./imgs/wage_stagnant.jpg"
+        style="width: 45%;"
+        alt="wage">
+
+        <img src="./imgs/increasing_cost.jpg"
+        style="width: 41%;"
+        alt="wage">
+        <figcaption>Income stagnantion for the lower percentiles [SA20170901], and the
+        increasing living costs [BB20120823]. (Data not verified.)</figcaption>
+    </figure>
+    </section>
+
+    <section>
+      <h2>Tension exploded after 08 finanicial crisis.
+      </h2>
+    </section>
+
+</section>
+
+<section>
+  <h2>What is really, really happening?</h2>
+  <p class="fragment">
+    Liberalism is a political philosophy that needs an external threat, and
+    without it, it falls apart on its own.
+  </p>
+  <p class="fragment">
+    The fundamental philosophical problems "what is human" is being redebated,
+    as a result of the development of evolutionary biological and artificial
+    intelligence. The elites are confused.
+  </p>
+  <p class="fragment">
+    But that are two another talks
+        <a href="#/dragon">.</a>
+  </p>
+</section>
+
+<section>
+  <h2>Our topic is how the youth made this world.</h2>
+</section>
+
+<section>
+  <section>
+    <h2>Prologue（序曲）</h2>
+  </section>
+
+    <section data-background-image="./imgs/god_is_dead.jpg" data-background-size="contain">
+    <h2 class="fragment">The Victoria Disease</h4>
+    <p class="fragment">A. N. Wilson calls doubt “the Victorian disease” and Jennifer Michael Hecht, in
+    her history of doubt, says the period 1800–1900 was “easily the best-documented
+    moment of widespread doubt in human history.”
+    </p>
+
+    <aside class="notes">
+      The collapse of the Christianity as the organizing force of the society
+      fell apart at the time of Nietzsche. That's why Nietzsche says "God is
+      Dead". But a new philosophy with a organizing force does not come
+      automatically.
+    </aside>
+    </section>
+
+
+    <section data-background-image="./imgs/ancestry_temple.jpg">
+    <h2 class="fragment">儒家已死</h4>
+    <p class="fragment">旧有结构破碎，而新的秩序未立。</p>
+    </section>
+
+    <section data-background-image="./imgs/icarus.jpg">
+        <p class="small-font fragment">年青一代不接受年长一代经受时间洗礼的妥协，意欲开拓新世界。</p>
+    <div class="fragment">
+        <h2>Icarus (伊卡洛斯)</h2>
+    <p >伊卡洛斯（希腊文：Ίκαρος英文名称：Icarus）是希腊神话中代达罗斯的儿子，与代
+    达罗斯使用蜡和羽毛造的翼逃离克里特岛时，他因飞得太高，双翼上的蜡遭太阳融化跌落
+    水中丧生。其为挣脱命运，九死不悔追求理想的化身。</p>
+    </div>
+    </section>
+</section>
+
+  <section>
+    <h2>青年运动的历史</h2>
+    <h2>History of the Youth Movement</h2>
+  </section>
+
+<section>
+      <h2>1920-1950s</h2>
+
+    <section>
+    <div class="my-container fragment">
+        <div class="col">
+        <figure style="height: 80%;">
+            <img src="./imgs/swiss_counter_culture.jpg"
+                style="width: 100%;"
+                alt="wage">
+        </figure>
+        </div>
+        <div class="col">
+        <p class="small-font">Feminists, pacifists, literary
+    figures, anarchists, modern dancers and Surrealists came together to
+    consolidate their radical ideas and initiate certain “life-experiments.”（生活实验） in the small Swiss
+    village of Ascona. [Peter2014, Chp 1]</p>
+        </div>
+    </div>
+
+    <aside class="notes">
+    More than one critic has remarked on the general mood, in the wake of
+    Nietzsche, as being in some ways not unlike that among the “counterculture” of
+    the 1960s and ’70s (see chapter 22). Martin Green, in his book on the Nietzsche
+    generation, concentrates on one noteworthy home, located in the small Swiss
+    village of Ascona. There, a remarkable number of feminists, pacifists, literary
+    figures, anarchists, modern dancers and Surrealists came together to
+    consolidate their radical ideas and initiate certain “life-experiments.” Green
+    says Ascona was part-Tolstoyan and part-anarchist, with a decidedly
+    naturalist—at times occult—orientation. Among the better-known luminaries who
+    passed through were D. H. Lawrence, Franz Kafka, Carl Gustav Jung and Hermann
+    Hesse.
+    </aside>
+    </section>
+
+    <section>
+    <p>
+    However, the most important—and best-established—elements of the Asconan
+    idea were its withdrawal from city life （社畜生活） in an effort to establish a “new
+    human type,”（生活的新可能性） a post-Christian secular type who expressed a full humanity（充实的人生）,
+    and “vagabondage” and dance. [Peter2014, Chp 1]
+    </p>
+    </section>
+
+    <section>
+      <h2>German youth movement</h2>
+    <p>
+    It turned out to be a fateful development—later on, Nietzsche would be
+    blamed for two world wars. [Peter2014, Chp 1]
+    </p>
+    </section>
+
+    <section data-background-image="./imgs/guernica.jpg" data-background-size="contain">
+    <p>
+    The World Wars destroyed the intellectual sphere of Europe, and the intellectual
+    center moved from Europe to U.S.A.
+    </p>
+    </section>
+
+    <section>
+        <h2>They are called the Nietzsche Generation</h2>
+    </section>
+
+    <section>
+        <h2>The decline of the Bohemia</h2>
+    </section>
+
+    <section data-background-image="./imgs/greenwich_village.jpg">
+      <p>
+        Founded in 1872, the Bohemian Club
+        was associated with numerous West Coast writers and poets, in-
+        cluding Ambrose Bierce, Jack London, and Mark Twain. [Russell1987]
+      </p>
+
+      <p class="fragment">
+        That's why New York is perceived as a culture center now.
+      </p>
+    </section>
+
+
+    <section data-background-image="./imgs/greenwich_village.jpg">
+    <p> Greenwich Village played an unexpected
+    role; its own devotion to pleasure and self-expression tallied with
+    the consuming ethos. Bohemia proved to be the vanguard of the
+    market. "Living for the moment," once a radical idea, promoted
+    buying for pleasure; price and utility ceased to restrain. [Russell1987]
+    </p>
+    </section>
+
+    <section data-background-image="./imgs/rockefeller_center.png" data-background-size=contain>
+      <p>
+        When the ideas have no place to live [David1989].
+      </p>
+    </section>
+</section>
+
+<section>
+  <h2>1960s</h2>
+
+  <section data-background-image="./imgs/free_speech_movement.jpg">
+    <h1 class="fragment">Free Speech Movement</h2>
+  </section>
+
+  <section data-background-image="./imgs/free_speech_movement.jpg">
+    <p>
+      The university, he shouted, was an “autocracy.” Its Board of Regents was a
+      “Board of Directors,” and its president, Clark Kerr, was a “manager.” Extending
+      the corporate analogy, he argued that the faculty were little more than
+      “employees” and the students, “raw material.” But, shouted Savio, <em>
+      “we’re a bunch of raw material that don’t mean (我们是一堆原材料不想要) . . . to be made into any
+      product(被做成产品), don’t mean to end up being bought by some clients of the
+      university (不想要最终被大学的客户收购). . . . We’re human beings(我们是人).”</em> [Fred2006]
+    </p>
+  </section>
+
+  <section data-background-image="./imgs/whole_earth_catalog.jpeg">
+    <p class="fragment">
+      We are as gods and might as well get good at it. So far, remotely done power
+      and glory — as via government, big business, formal education, church — has
+      succeeded to the point where gross defects obscure actual gains. In response to
+      this dilemma and to these gains a realm of intimate, personal power is
+      developing — power of the individual to conduct his
+      own education, find his own inspiration, shape his own environment, and share
+      his adventure with whoever is interested. Tools that aid this process are
+      sought and promoted --- by the WHOLE EARTH CATALOG
+    </p>
+  </section>
+
+  <section>
+
+    <div class="my-container fragment">
+      <div class="col">
+          <figure style="display: block; height: 90%;">
+            <img src="./imgs/whole_earth_catalog_cover.gif">
+          </figure>
+      </div>
+      <div class="col fragment" style="width=40%;  right: 0px; text-align: center;">
+          <figure style="display: block; height: 40%;">
+            <img src="./imgs/SteveJobs_StanfordUniv.jpg"
+                 alt="wage">
+            <figcaption style="font-size: 70%; text-align: center;">
+              This is the Bible of my generation.
+            </figcaption>
+          </figure>
+
+          <br>
+
+          <p class="fragment" style="font-size: 70%;">
+            These hopeful pioneers became the computing innovators who have, in
+            fact, more or less reinvented civilization by creating the personal
+            computer and the software tools that comprise today’s Internet. [Worden2012]
+          </p>
+      </div>
+  </section>
+
+  <section data-background-image="./imgs/whole_earth_catalog_cover.gif"
+           data-background-size="contain">
+    <p>
+    In 1968 Brand founded the Whole Earth Catalog in order to help those
+    heading back to the land find the tools they would need to build their new
+    communities. These items included the fringed deerskin jackets and geodesic
+    domes favored by the communards, but they also included the cybernetic musings
+    of Norbert Wiener and the latest calculators from Hewlett-Packard.
+    </p>
+  </section>
+
+  <section>
+    <div class="my-container">
+      <div class="col">
+          <figure style="display: block; height: 90%;">
+            <img src="./imgs/dome.jpg">
+          </figure>
+      </div>
+      <div class="col">
+          <p style="font-size: 70%">
+            In the mid-1960s, a group of college-aged artists purchased a six-acre plot
+            outside of Trinidad and built livable domes out of railroad ties and discarded
+            lumber. They, along with other artists, would live off sales of their work and
+            share a bank account to buy food and supplies—a new and exciting concept at the
+            time.
+          </p>
+      </div>
+  </section>
+  <section data-background-image="./imgs/dome.jpg">
+    <p>
+      “Principles of tolerance and inclusion, fair resource allocation, distributed responsibility, management by example and
+      influence, a flat organizational hierarchy, cooperative policy formulation and
+      acceptance of a libertarian-bordering-on-anarchic. [Fred2006]
+    </p>
+  </section>
+</section>
+
+<section>
+  <h2>1970s</h2>
+
+  <section>
+    <p align="left">
+      The rebels did not find a powerful alternative philosophy, did not build an
+      economical structure to replace the commercial mainstream society, and
+      did not found new institutions to revise the power structure. Ultimately,
+      they have to return to the society when the money and youth energy were ran
+      out.
+    </p>
+  </section>
+
+  <section>
+    <p>When the Catalog went out of business for the first time in 1971, Brand
+    threw a Demise Party at the Exploratorium in San Francisco, at which the
+    audience (as a whole) received a surprise gift of $20,000 in cash and was
+    left to decide what to do with it.
+    </p>
+  </section>
+
+  <section data-background-image="./imgs/bob_lash_homebrew_computer.gif"
+           data-background-size=contain>
+    <p>After much discussion most of the money ended up entrusted to a man
+    named Fred Moore, to work out how to spend it later. Fred Moore went on to
+    become a founder of the Homebrew Computer Club.
+    </p>
+
+    <p style="font-size:50%">
+      More agents are involved, i.e., People's Computer Company and Resource
+      One, and are not discussed.
+  </section>
+
+  <section>
+
+    <div class="my-container">
+      <div class="col">
+          <figure style="display: block; height: 90%;">
+            <img src="./imgs/Steve_Jobs_Steve_Wozniak.jpg">
+          </figure>
+      </div>
+      <div class="col">
+          <p>
+            At the Homebrew Computer Club, Steve Wozniak and Steve Jobs built
+            the first Apple computer.
+          </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <iframe width="1280" height="720" src="https://www.youtube.com/embed/2zfqw8nhUwA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </section>
+
+</section>
+
+<section>
+  <h2>1980s</h2>
+
+  <section data-background-image="./imgs/the_matrix.jpg"
+           data-background-size=contain>
+    <p>
+      By 1980s, the members of informational counter-culture started to be
+      widely known as hackers, as a result of the book <i>Hackers, The Heros of the Computers Revolution</i>.
+  </section>
+
+  <section>
+    <figure style="height: 30%;">
+      <img src="./imgs/Steve_Wozniak_and_Andy_Hertzfeld_1985.jpg"
+           style="width: 30%;"
+           alt="wage">
+
+      <img src="./imgs/the-young-richard-stallman.jpg"
+           style="width: 30%;"
+           alt="wage">
+
+      <img src="./imgs/maxresdefault.jpg"
+           style="width: 30%;"
+           alt="wage">
+    </figure>
+
+    <h2>The First Hackers' Conference (1985)</h2>
+  </section>
+
+  <section style="font-size:90%;" data-background-image="./imgs/the_matrix.jpg">
+    <h2>Spirits of Hacking</h2>
+    <ul type="disc">
+      <li>
+        Access to computers—and anything which might teach you something
+        about the way the world works—should be unlimited and total.
+      </li>
+      <li>
+        Always yield to the Hands-On Imperative! . . .
+      </li>
+      <li>
+        All information should be free. . . .
+      </li>
+      <li>
+        Mistrust Authority—Promote Decentralization. . . .
+      </li>
+      <li>
+        Hackers should be judged by their hacking, not bogus criteria such as
+        degrees, age, race, or position. . . .
+      </li>
+      <li>
+        You can create art and beauty on a computer. . . .
+      </li>
+      <li>
+        Computers can change your life for the better.
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <p>
+      No other group that I know of has set out to liberate a technology and
+      succeeded. They not only did so against the active disinterest of corporate
+      America, their success forced corporate America to adopt their style in the
+      end ...
+      The quietest of the ’60s sub-subcultures has emerged as the most innovative
+      and most powerful—and most suspicious of power. --- Stewart Brand
+    </p>
+  </section>
+
+  <section data-background-image="./imgs/thewell.png">
+    <p class="fragment">
+        The cyber-counter-culture leads to a lifestyle outside the corporation
+        beauracracy that is sustainable.
+    </p>
+
+    <p class="fragment">
+      its contributors included a substantial number of professionals from
+      other industries that had long depended on networks, including academe,
+      journalism, and consulting. For these users, the WELL offered an
+      electronic forum in which they could meet, exchange information, build
+      reputations, and collaborate. [Fred2006]
+    </p>
+  </section>
+
+  <section data-background-image="./imgs/thewell.png">
+    <p>
+      people need to look at themselves as self-employed, as vendors
+      who come to the company to sell their skills. in at&t, we have to promote
+      the concept of the whole work force being contingent, though most of our
+      contingent workers are inside our walls. jobs are being replaced by projects
+      and fields of work, giving rise to a society that is increasingly ‘jobless but not
+      workless [Fred2006]
+    </p>
+  </section>
+
+  <section data-background-image="./imgs/thewell.png">
+    <p>
+      In a 1988 speech at Moscow State University, President Ronald Reagan became one
+      of the first to make the case. “In the new economy,” he explained, “human
+      invention increasingly makes physical resources obsolete.  We’re breaking
+      through the material conditions of existence to a world where man creates his
+      own destiny.”
+    </p>
+  </section>
+
+  <section data-background-image="./imgs/biosphere2-aerial.jpg">
+    <h2>Global Business Network</h2>
+
+    <p class="fragment">
+      The cyberculture started to merge with the establishment.
+    </p>
+
+    <p class="fragment" style="font-size:80%;">
+      Throughout the 1990s, until it was sold in 2001 to the Monitor Group, a
+      strategic consulting firm (where it continues today), GBN’s work reversed the
+      countercultural antipathy toward industry and the military. In its consulting,
+      the same corporate and military institutions that the New Communalists and the
+      New Left had condemned became homes to the transformed states of mind and
+      leveled bureaucracies that the counterculturalists had worked so hard to
+      create. [Fred2006]
+    </p>
+  </section>
+</section>
+
+<section>
+  <h2>1990s</h2>
+
+  <section data-background-image="./imgs/Internet_map_1024.jpg">
+      <ul class="fragment">
+        The mass adoption of Internet enabled by:
+        <li>The WWW protocol.
+        </li>
+        <li>The Mosaic Broswer.
+        </li>
+        <li>Privatization of the Internet backbone.
+        </li>
+        <li>The mass adoption of small-sized computers.
+        </li>
+      </ul>
+    <h2 class="banner fragment">The Internet Revolution</h2>
+  </section>
+
+  <section data-background-image="./imgs/wired_whole_earth.jpg"
+           data-background-size=contain>
+    <p>
+      “Older and wiser now, they’re on the road again, without the bus and the
+      acid, but dispensing many similar-sounding bromides: Turn on, jack in,
+      get connected.” --- Quittner et al., Wired Magazine
+    </p>
+  </section>
+
+  <section data-background-image="./imgs/wired_whole_earth.jpg"
+           data-background-size=contain>
+    <p>
+      “The Net, the very network itself, is merely a means to an end. The end is
+      to reverse-engineer government, to hack Politics down to its component
+      parts and fix it.” --- Quittner et al., Wired Magazine
+    </p>
+  </section>
+
+  <section data-background-image="./imgs/air_force_two.jpg">
+    <p class="fragment">
+        When Kapor introduced Barlow, Esther Dyson shouted, “Tell them how you travel,
+        John!” Barlow replied, “Well . . . sometimes I travel by bicycle, sometimes by
+        computer, and sometimes—like the day before yesterday—I travel by Air Force
+        Two.” [Fred2006]
+    </p>
+    <p class="fragment">
+      Lastly, the counter culture youths started to become a class of new
+      informational network-empowered elites.
+    </p>
+  </section>
+
+  <section>
+    <p>
+      Led by Newt Gingrich, the House of Representatives in the mid-1990s pushed
+      for the downsizing of government and widespread deregulation [Fred2006]
+    </p>
+
+    <p>
+      Gingrich argued that America was about to enter a new era, one in which
+      technology would do away with the need for bureaucratic oversight of both
+      markets and politics. [Fred2006]
+    </p>
+  </section>
+
+</section>
+
+<section>
+  <h2>00s -- 10s</h2>
+
+  <section>
+    <h2>The world became informational/networked</h2>
+  </section>
+
+  <section data-background-image="./imgs/iphone_supply_chain.jpg"
+           data-background-size=contain>
+
+    <p class="fragment">
+      That is, the world has been changed by the youth movement, eventually.
+    </p>
+  </section>
+
+  <section>
+    <p>
+      The trends keep going. The routine physical world started to be
+      transformed.
+    </p>
+  </section>
+
+  <section data-background-image="./imgs/mobike.jpg">
+    <h2>Internet of Things</h2>
+  </section>
+
+  <section data-background-image="./imgs/wearable_device">
+    <h2>Wearable Devices</h2>
+  </section>
+
+  <section data-background-image="./imgs/holelens.jpeg">
+    <h2>Augmented Reality</h2>
+  </section>
+
+  <section data-background-image="./imgs/ai.jpg">
+    <h2>It now brings the next technology revolution, i.e., AI.</h2>
+  </section>
+
+  <section>
+    <h2>And, the world dives in a unfathomable future.</h2>
+  </section>
+
+  <section data-background-image="./imgs/Dragon-Slayer.jpg">
+    <p>
+      BUT, by the time the hero slays the dragon, <strong>the hero becomes the dragon</strong>.
+    </p>
+  </section>
+
+  <section data-background-image="./imgs/Dragon-Slayer.jpg">
+    <h2>The Dragon</h2>
+    <p class="fragment">
+      For the un-networked, the project based employment destroyed the safe net
+      and the welfare society.
+    </p>
+    <p class="fragment">
+      And, they are like industrial farmers left out in the information revolution, except they cannot age out of it.
+    </p>
+  </section>
+
+  <section id="dragon" data-background-image="./imgs/financial_crisis.jpeg">
+    <p>
+      The 2008 finacial crisis became the catalyzer that woke up the
+      <a href="#/current-state">dragon</a>.
+    </p>
+  </section>
+
+</section>
+
+<section>
+  <h2>Future?</h2>
+
+  <section>
+    <figure style="height: 80%;">
+        <img src="./imgs/DiEM25.jpg"
+            style="width: 30%;"
+            alt="wage">
+        <img src="./imgs/digital_happiness.jpg"
+            style="width: 25%;"
+            alt="wage">
+        <img src="./imgs/disco_manifesto_v.1_cover.png"
+            style="width: 25%;"
+            alt="wage">
+        <img src="./imgs/common_transition.png"
+            style="width: 25%;"
+            alt="wage">
+        <img src="./imgs/socialism_with_chinese_characteristics.jpg"
+            style="width: 40%;"
+            alt="wage">
+    </figure>
+  </section>
+
+  <section data-background-image="./imgs/solar_punk.jpg">
+    <h2>Solar Punk</h2>
+  </section>
+
+</section>
+
+
+
+<section>
+  <h2>Bibliographies</h2>
+
+    <section>
+    <h4>Image sources (political sphere).</h4>
+    <div class="footnote">
+        <ul type="disc">
+        <li>
+            [NYT20191205]: https://www.nytimes.com/2019/12/05/world/europe/france-strike-macron.html
+        </li>
+        <li>
+        [CNN20190609]: https://www.cnn.com/videos/world/2019/06/09/china-hong-kong-extradition-bill-protest-march-organizers-stout-vpx.cnn
+        </li>
+        <li>
+        [GUD20191019]: https://www.theguardian.com/uk-news/2019/oct/19/peoples-vote-march-hailed-as-one-of-greatest-protest-marches-in-british-history
+        </li>
+        <li>
+            [NYT20191024]: https://www.nytimes.com/2019/10/24/us/trump-wall-colorado.html
+        </li>
+        </ul>
+    </div>
+
+    </section>
+
+    <section>
+    <h4>Image sources (Economical sphere).</h4>
+    <div class="footnote">
+        <ul type="disc">
+        <li>
+            [AMF20161019]: https://americanmanufacturing.org/blog/entry/china-is-shopping-local-for-its-manufacturing-supplies
+        </li>
+        <li>
+            [SA20170901]: https://seekingalpha.com/article/4103610-why-doomed-stagnant-wages
+        </li>
+        <li>
+            [BB20120823]: https://www.bloomberg.com/news/articles/2012-08-23/college-tuitions-1-120-percent-increase
+        </li>
+        </ul>
+    </div>
+    </section>
+
+    <section>
+      <h4>Books and papers</h4>
+        <div class="footnote">
+            <ul type="disc">
+            <li>
+                [Peter2014]: Peter Watson, The Age of Atheists, 2014
+            </li>
+            <li>
+                [Russell1987]: Russell Jacob, The Last Intellectuals, 1987
+            </li>
+            <li>
+                [David1989]: David Havey, The Condition of Postermodernity, 1989
+            </li>
+            <li>
+                [Fred2006]: Fred Turner, From Counter culture to Cyberulture, 2006
+            </li>
+            <li>
+                [Worden2012]: Counterculture, Cyberculture, and the Third Culture: Reinventing Civilization, Then and Now, 2012
+            </li>
+            </ul>
+        </div>
+    </section>
+</section>
+
+
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>

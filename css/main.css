@@ -82,7 +82,14 @@ nav {
   font-family: "Orbitron Medium"; }
 
 .col p {
-  font-family: "Ubuntu", sans-serif; }
+  font-family: "Ubuntu Mono"; }
+
+.frame {
+  border-style: solid;
+  border-width: 5px;
+  border-color: white;
+  margin: 20px;
+  padding: 20px; }
 
 .row h2 {
   text-align: center; }
@@ -97,7 +104,7 @@ nav {
 /*///////////////////////////////////////////////////////////////////////*/
 body {
   background-color: #000000 !important;
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Ubuntu Mono";
   color: #1eff03 !important; }
 
 h1, h2, h3, h4 {
@@ -164,6 +171,10 @@ body h2, body h3, body h4 {
     .pagination a[href*=archive]:before, .pagination a[href*=archive]:after {
       content: '\2014';
       padding: 0 .3em; }
+
+.paper-title {
+  font-size: 150%;
+  font-family: "Orbitron Light"; }
 
 #archive-title {
   color: #ffffff; }
