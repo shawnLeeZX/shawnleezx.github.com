@@ -56,7 +56,17 @@
    });
   </script>
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
 
   <link href="/css/fonts/orbitron.css" rel="stylesheet" type="text/css">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -123,21 +133,33 @@
   </p>
   </div>
 
-<p>
-Overall, the works in the paper identify key principles underlying NNs. They
-are the initial skeleton of a fully-fledged theory of NNs. The main efforts in
-the years to come are to fill in the flesh and blood of the skeleton.
-</p>
+<p> The works in the paper identify mathematical principles underlying
+NNs. They are the initial skeleton of a theory of NNs.
+The theory gives
+  <ul>
+    <li>
+      S-System, a measure-theoretical definition of NNs;
+    </li>
+    <li>
+      endows a stochastic manifold structure on the intermediate feature space
+of NNs through information geometry;
+    </li>
+    <li>
+      proposes a learning framework that unifies both supervised learning and
+      unsupervised learning in the same objective function;
+    </li>
+    <li>
+      and proves under practical conditions for large size nonlinear deep NNs
+      with a class of losses, including the hinge loss, all local minima are global
+      minima with zero loss errors.
+    </li>
+    <li>
+      It also completes, or more precisely, clarify the analogy between NNs and
+      Renormalization Group.
+    </li>
+  </ul>
 
-<p>
-The theory gives S-System, **a measure-theoretical definition of NNs**; endows
-a stochastic manifold structure on the intermediate feature space of NNs
-through information geometry; proposes a learning framework that unifies both
-supervised learning and unsupervised learning in the same objective function;
-and proves **under practical conditions**, for **large size nonlinear deep
-NNs** with a class of losses, including the hinge loss, **all local minima are
-global minima** with zero loss errors. It also completes, or more precisely,
-clarify the analogy between NNs and Renormalization Group.
+  
 </p>
 
 <!-- <ul> -->
