@@ -5,9 +5,88 @@
     <description>&lt;h1&gt;Children of The Sun&lt;/h1&gt; </description>
     <link>http://shawnLeeZX.github.io/</link>
     <atom:link href="http://shawnLeeZX.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 06 Jul 2020 12:35:02 +0800</pubDate>
-    <lastBuildDate>Mon, 06 Jul 2020 12:35:02 +0800</lastBuildDate>
+    <pubDate>Tue, 07 Jul 2020 11:11:44 +0800</pubDate>
+    <lastBuildDate>Tue, 07 Jul 2020 11:11:44 +0800</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>Open Internet in Restricted Regions: Shadowsocks, OpenVPN and BIND</title>
+        <description>&lt;p&gt;I would stay in areas of China where the widely used commercial VPNs do not
+work very well for some time. Thus, I have to build a customized solution to
+access to the restricted Internet. This is the note on how pieces are fit
+together to build virtual private network (VPN) so that the Internet access of
+software won’t be blocked.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&quot;the-recipe&quot;&gt;The Recipe&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A virtual private server (VPS) that is that blocked.&lt;/li&gt;
+  &lt;li&gt;Shadowsocks (SS), a proxy software that encrypts the traffic between sockets on
+end servers and clients.&lt;/li&gt;
+  &lt;li&gt;OpenVPN, a VPN software that builds virtual private networks through tunnels etc.&lt;/li&gt;
+  &lt;li&gt;BIND, a software that provides DNS service.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;execute-summary&quot;&gt;Execute summary&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Set up SS server side on the VPS, cf. the installation guides on
+the &lt;a href=&quot;https://github.com/shadowsocks/shadowsocks/wiki&quot;&gt;project page&lt;/a&gt; of
+Shadowsocks.&lt;/li&gt;
+  &lt;li&gt;Set up SS client side on the devices that plan to use the proxy,
+also according to the guide referred to previously.&lt;/li&gt;
+  &lt;li&gt;Set up OpenVPN on the server. A guide could be found on the &lt;a href=&quot;https://wiki.archlinux.org/index.php/OpenVPN#Create_a_Public_Key_Infrastructure_(PKI)_from_scratch&quot;&gt;OpenVPN
+page&lt;/a&gt;
+on the ArchWiki. The process is broken down briefly at &lt;a href=&quot;#a-quick-explanation-on-the-authentication-setup-of-openvpn&quot;&gt;A quick explanation on the authentication setup of OpenVPN&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;OpenVPN is setup over SS. Technically, OpenVPN can circumvent
+Internet blocking on its own, however, it might be rather signatory. Packing
+the traffic through SS would prevent the traffic being easily detected. The
+guide to this setup is given in the
+&lt;a href=&quot;https://github.com/shadowsocks/shadowsocks/wiki/Connect-to-OpenVPN-over-Shadowsocks&quot;&gt;Wiki&lt;/a&gt;
+of SS, and is copied in &lt;a href=&quot;#connect-to-openvpn-over-shadowsocks&quot;&gt;Connect to OpenVPN over
+Shadowsocks&lt;/a&gt;, since it is rather short.&lt;/li&gt;
+  &lt;li&gt;Enable package forward as guided in
+&lt;a href=&quot;https://wiki.archlinux.org/index.php/Internet_sharing#Enable_packet_forwarding&quot;&gt;here&lt;/a&gt;,
+and allow VPN traffic through the &lt;code class=&quot;highlighter-rouge&quot;&gt;iptables&lt;/code&gt; firewall as guided
+&lt;a href=&quot;https://wiki.archlinux.org/index.php/OpenVPN#Routing_client_traffic_through_the_server&quot;&gt;here&lt;/a&gt;
+(further explanation could be found &lt;a href=&quot;https://openvpn.net/community-resources/how-to/#redirect&quot;&gt;here&lt;/a&gt;).&lt;/li&gt;
+  &lt;li&gt;Set up a DNS server on the VPN using &lt;code class=&quot;highlighter-rouge&quot;&gt;bind9&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;a-quick-explanation-on-the-authentication-setup-of-openvpn&quot;&gt;A quick explanation on the authentication setup of OpenVPN&lt;/h2&gt;
+
+&lt;p&gt;Certificates and private keys should be created on the VPS, your device using
+easyrsa, following the guide
+&lt;a href=&quot;https://wiki.archlinux.org/index.php/Easy-RSA&quot;&gt;here&lt;/a&gt;. The guide given does the
+following. Three pairs of certificates and keys are to be created when setting
+up OpenVPN. The first is a pair for a Certificate Authority (CA). The CA
+maintains all the trusted ends that operate in the VPN. The Arch Wiki suggests
+that the machine that serves as the CA should be separate from the OpenVPN
+server. Ideally, this should be so, but it could be the same with the OpenVPN
+server. Then, two pairs are created by for the server and the client. The CA
+need to sign the certificates of the server and the client. There are some
+configuration files to take care of. The process would set up the trust
+relationship between nodes in the VPN, and make OpenVPN going.&lt;/p&gt;
+
+&lt;h2 id=&quot;connect-to-openvpn-over-shadowsocks&quot;&gt;Connect to OpenVPN over Shadowsocks&lt;/h2&gt;
+
+&lt;p&gt;Add these lines to the client side conf file of OpenVPN&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    socks-proxy 127.0.0.1 1080
+    route SHADOWSOCKS_SERVER_IP 255.255.255.255 net_gateway
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Tue, 07 Jul 2020 10:26:11 +0800</pubDate>
+        <link>http://shawnLeeZX.github.io/blog/2020/07/07/open-internet-in-restricted-regions-shadowsocks-openvpn-and-bind/</link>
+        <guid isPermaLink="true">http://shawnLeeZX.github.io/blog/2020/07/07/open-internet-in-restricted-regions-shadowsocks-openvpn-and-bind/</guid>
+        
+        
+        <category>Linux</category>
+        
+      </item>
     
       <item>
         <title>过去几个月的读书随笔(时代的过渡——知识、社区和自治)</title>
@@ -719,85 +798,6 @@ play a role here. Structure of the probability distribution is not used.&lt;/li&
         <category>Math</category>
         
         <category>Research</category>
-        
-      </item>
-    
-      <item>
-        <title>A Little More Details About RNN Gradient Calculation</title>
-        <description>&lt;p&gt;This post is about how to use chain rule to calculate back propagation through
-time.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;When I was deriving the gradient of hidden-to-hidden matrix in Recurrent Neural
-Network, I found product rule and chain rule are essentially the same thing,
-and note the interesting discovery down here (it just shows I do not know enough
-about vector calculus … ).&lt;/p&gt;
-
-&lt;p&gt;Hidden layer of a vanilla RNN can be expressed as&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;h_t = \sigma (W_{xh}x + W_{hh}h_{t-1} + b_h)&lt;/script&gt;
-
-&lt;h3 id=&quot;gradient&quot;&gt;Gradient&lt;/h3&gt;
-
-&lt;p&gt;If we want to calculate $\nabla_{W_{hh}}h_{t}$, we need to do back propagation
-through time. To compute $\frac{\partial h_t}{\partial W_{hh}}$, notice that
-$W_{hh}$ and $h_{t-1}$ both contain $W_{hh}$, so it involves chain rule.&lt;/p&gt;
-
-&lt;p&gt;Use chain rule, we will have&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\nabla_{W_{hh}}h_{t} = \sum\limits_{1\leq k \leq t}(\frac{\partial
-h_{t}}{\partial h_{k}}\frac{\partial^{+}h_{k}}{\partial W_{hh}})&lt;/script&gt;
-
-&lt;p&gt;where $\partial^+$ means immediate partial derivative of $h_k$ respect to $W_{hh}$.&lt;/p&gt;
-
-&lt;p&gt;When I unroll stuff, and it seems we are using product rule $W_{hh}h_{t-1}$
-instead of chain rule. So it turns out product rule is a special form of chain
-rule. Let’s see how.&lt;/p&gt;
-
-&lt;h3 id=&quot;chain-rule&quot;&gt;Chain rule&lt;/h3&gt;
-
-&lt;p&gt;First define chain rule. If $R^{n} \xrightarrow{f} R^{m}$ is
-differentiable at $x_0$ and $R^{m} \xrightarrow{g} R^{p}$ is differentiable at
-$f(x_0)$, then $g \circ f$ is differentiable at $x_0$, and&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;(g \circ f)'(x_0) = g'(f(x_0))f'(x_0)&lt;/script&gt;
-
-&lt;h3 id=&quot;an-example-of-chain-rule&quot;&gt;An example of chain rule&lt;/h3&gt;
-
-&lt;p&gt;Suppose &lt;script type=&quot;math/tex&quot;&gt;w = g(u, v),  = f(t)=
- \begin{bmatrix} f_1(t)\\ f_2(t) \end{bmatrix}&lt;/script&gt;,
- then&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\frac{dw}{dw} = \frac{d g \circ f}{dt} = \begin{bmatrix} \frac{\partial
-w}{\partial u} &amp; \frac{\partial w}{\partial v} \end{bmatrix} \begin{bmatrix} \frac{\partial f_1(t)}{\partial t}\\ \frac{\partial f_2{t}}{\partial t} \end{bmatrix}
-= \frac{\partial w}{\partial u}\frac{\partial f_1(t)}{\partial t} + \frac{\partial w}{\partial v}\frac{\partial f_2(t)}{\partial t} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;If $g(u, v) = uv$, then we get product rule. If $g(u, v) = u/v$, we get
-division rule.&lt;/p&gt;
-
-&lt;h3 id=&quot;application-of-chain-rule&quot;&gt;Application of chain rule&lt;/h3&gt;
-
-&lt;p&gt;With chain rule, we have $h_t = h_t(I(W_{hh}), h_{t-1}(W_{hh}))$, which is
-exactly the above example. Unroll $\frac{\partial h_t}{\partial W_{hh}}$ with
-the rule, we get the gradient at the beginning.&lt;/p&gt;
-
-&lt;h3 id=&quot;more-info&quot;&gt;More info&lt;/h3&gt;
-
-&lt;p&gt;Refer to &lt;a href=&quot;http://www.wildml.com/2015/10/recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/&quot;&gt;here&lt;/a&gt;
-and &lt;em&gt;Razvan et al. On the difficulty of training recurrent neural networks&lt;/em&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Thu, 16 Mar 2017 17:35:48 +0800</pubDate>
-        <link>http://shawnLeeZX.github.io/blog/2017/03/16/rnn-gradient-calculation-with-a-little-more-details/</link>
-        <guid isPermaLink="true">http://shawnLeeZX.github.io/blog/2017/03/16/rnn-gradient-calculation-with-a-little-more-details/</guid>
-        
-        
-        <category>RNN</category>
-        
-        <category>Math</category>
-        
-        <category>Note</category>
         
       </item>
     

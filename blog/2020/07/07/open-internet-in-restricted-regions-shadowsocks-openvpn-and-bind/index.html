@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="Shawn" property="og:site_name">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <meta content="Open Internet in Restricted Regions: Shadowsocks, OpenVPN and BIND" property="og:title">
+  
+
+  
+  <meta content="article" property="og:type">
+  
+
+  
+  <meta content="<h1>Children of The Sun</h1> " property="og:description">
+  
+
+  
+  <meta content="http://shawnLeeZX.github.io/blog/2020/07/07/open-internet-in-restricted-regions-shadowsocks-openvpn-and-bind/" property="og:url">
+  
+
+  
+  <meta content="2020-07-07T10:26:11+08:00" property="article:published_time">
+  <meta content="http://shawnLeeZX.github.io/about/" property="article:author">
+  
+
+  <meta property="og:image" content="">
+
+  
+  
+  <meta content="Linux" property="article:section">
+  
+  
+
+  
+  
+  
+
+  <title>Open Internet in Restricted Regions: Shadowsocks, OpenVPN and BIND - Shawn</title>
+  <meta name="description" content="I would stay in areas of China where the widely used commercial VPNs do notwork very well for some time. Thus, I have to build a customized solution toaccess...">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Typesetting math using MathJax -->
+  <!-- mathjax config similar to math.stackexchange -->
+  <script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$', '$'] ],
+       displayMath: [ ['$$', '$$']],
+       processEscapes: true,
+       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+     },
+     messageStyle: "none",
+     "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+   });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-44220731-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href="/css/fonts/orbitron.css" rel="stylesheet" type="text/css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="canonical" href="http://shawnLeeZX.github.io/blog/2020/07/07/open-internet-in-restricted-regions-shadowsocks-openvpn-and-bind/">
+  <link rel="alternate" type="application/rss+xml" title="Shawn" href="http://shawnLeeZX.github.io/feed.xml">
+</head>
+
+  <body>
+    <section>
+  <nav class="navbar navbar-default navbar-expand-lg fixed-top">
+    <div class="container">
+
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <a class="navbar-brand" href="/">Shawn</a>
+      <button type="button" class="navbar-toggle btn" data-toggle="collapse" data-target="#navBar" aria-expanded="false">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navBar">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="/theory">NN Theory</a></li>
+          <li class="nav-item"><a class="nav-link" href="/engineering">Engineering</a></li>
+          <li class="nav-item"><a class="nav-link" href="/talks">Talks</a></li>
+          <li class="nav-item"><a class="nav-link" href="/misc">Misc Research</a></li>
+          <!-- <li class="nav-item"><a class="nav-link" href="/philosophy">Philosophy</a></li> -->
+          <li class="nav-item"><a class="nav-link" href="/blog">Notes</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+
+    </div>
+  </nav>
+</section>
+
+    <section>
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="page-title" itemprop="name headline">Open Internet in Restricted Regions: Shadowsocks, OpenVPN and BIND</h1>
+      <p class="post-meta"><time datetime="2020-07-07T10:26:11+08:00" itemprop="datePublished">Jul 7, 2020</time></p>
+    </div>
+
+</div>
+
+
+  <div class="content post-content container" itemprop="articleBody">
+    <p>I would stay in areas of China where the widely used commercial VPNs do not
+work very well for some time. Thus, I have to build a customized solution to
+access to the restricted Internet. This is the note on how pieces are fit
+together to build virtual private network (VPN) so that the Internet access of
+software won’t be blocked.</p>
+
+<!-- more -->
+
+<h2 id="the-recipe">The Recipe</h2>
+
+<ul>
+  <li>A virtual private server (VPS) that is that blocked.</li>
+  <li>Shadowsocks (SS), a proxy software that encrypts the traffic between sockets on
+end servers and clients.</li>
+  <li>OpenVPN, a VPN software that builds virtual private networks through tunnels etc.</li>
+  <li>BIND, a software that provides DNS service.</li>
+</ul>
+
+<h2 id="execute-summary">Execute summary</h2>
+
+<ol>
+  <li>Set up SS server side on the VPS, cf. the installation guides on
+the <a href="https://github.com/shadowsocks/shadowsocks/wiki">project page</a> of
+Shadowsocks.</li>
+  <li>Set up SS client side on the devices that plan to use the proxy,
+also according to the guide referred to previously.</li>
+  <li>Set up OpenVPN on the server. A guide could be found on the <a href="https://wiki.archlinux.org/index.php/OpenVPN#Create_a_Public_Key_Infrastructure_(PKI)_from_scratch">OpenVPN
+page</a>
+on the ArchWiki. The process is broken down briefly at <a href="#a-quick-explanation-on-the-authentication-setup-of-openvpn">A quick explanation on the authentication setup of OpenVPN</a>.</li>
+  <li>OpenVPN is setup over SS. Technically, OpenVPN can circumvent
+Internet blocking on its own, however, it might be rather signatory. Packing
+the traffic through SS would prevent the traffic being easily detected. The
+guide to this setup is given in the
+<a href="https://github.com/shadowsocks/shadowsocks/wiki/Connect-to-OpenVPN-over-Shadowsocks">Wiki</a>
+of SS, and is copied in <a href="#connect-to-openvpn-over-shadowsocks">Connect to OpenVPN over
+Shadowsocks</a>, since it is rather short.</li>
+  <li>Enable package forward as guided in
+<a href="https://wiki.archlinux.org/index.php/Internet_sharing#Enable_packet_forwarding">here</a>,
+or
+<a href="https://openvpn.net/faq/what-is-and-how-do-i-enable-ip-forwarding-on-linux/">here</a>,
+and allow VPN traffic through the <code class="highlighter-rouge">iptables</code> firewall as guided
+<a href="https://wiki.archlinux.org/index.php/OpenVPN#Routing_client_traffic_through_the_server">here</a>
+(further explanation could be found
+<a href="https://openvpn.net/community-resources/how-to/#redirect">here</a>). The
+command are collected at <a href="#packet-forwarding-and-the-firewall-configuration">Packet forwarding and the firewall configuration</a>.</li>
+  <li>Set up a DNS server on the VPN using <code class="highlighter-rouge">bind9</code>. A guide could be found
+<a href="https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-18-04">here</a>. Since
+we do not maintain any internal domains, we only need to forward the DNS
+request to the DNS of the server. However, to allow recursive DNS request,
+some setup are required, and is collected at <a href="#bind-configuration">BIND Configuration</a>.</li>
+</ol>
+
+<h2 id="a-quick-explanation-on-the-authentication-setup-of-openvpn">A quick explanation on the authentication setup of OpenVPN</h2>
+
+<p>Certificates and private keys should be created on the VPS, your device using
+easyrsa, following the guide
+<a href="https://wiki.archlinux.org/index.php/Easy-RSA">here</a>. The guide given does the
+following. Three pairs of certificates and keys are to be created when setting
+up OpenVPN. The first is a pair for a Certificate Authority (CA). The CA
+maintains all the trusted ends that operate in the VPN. The Arch Wiki suggests
+that the machine that serves as the CA should be separate from the OpenVPN
+server. Ideally, this should be so, but it could be the same with the OpenVPN
+server. Then, two pairs are created by for the server and the client. The CA
+need to sign the certificates of the server and the client. There are some
+configuration files to take care of. The process would set up the trust
+relationship between nodes in the VPN, and make OpenVPN going.</p>
+
+<h2 id="connect-to-openvpn-over-shadowsocks">Connect to OpenVPN over Shadowsocks</h2>
+
+<p>Add these lines to the client side conf file, normally
+<code class="highlighter-rouge">/etc/openvpn/client/client.conf</code>, of OpenVPN</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>    socks-proxy 127.0.0.1 1080
+    route SHADOWSOCKS_SERVER_IP 255.255.255.255 net_gateway
+</code></pre>
+</div>
+
+<h2 id="packet-forwarding-and-the-firewall-configuration">Packet forwarding and the firewall configuration</h2>
+
+<p>The packets forwards from OpenVPN needs to be forwarded, and can be configured as</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sysctl net.ipv4.ip_forward<span class="o">=</span>1
+</code></pre>
+</div>
+
+<p>The change can be made persistent by putting the following to  <code class="highlighter-rouge">/etc/sysctl.d/30-ipforward.conf</code>.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>net.ipv4.ip_forward<span class="o">=</span>1
+net.ipv6.conf.default.forwarding<span class="o">=</span>1
+net.ipv6.conf.all.forwarding<span class="o">=</span>1
+</code></pre>
+</div>
+
+<p>The firewall needs to be configured to allow VPN traffic, by</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+</code></pre>
+</div>
+
+<h2 id="bind-configuration">BIND Configuration</h2>
+
+<p>The <code class="highlighter-rouge">/etc/bind/named.conf.options</code> contains options to configure BIND. The
+following are the configurations are needed to add to the file after installing
+<code class="highlighter-rouge">bind9</code>. The <code class="highlighter-rouge">acl</code> block adds the trusted ips that are allowed to do DNS
+requests. The configs in the <code class="highlighter-rouge">options</code> block enables recursive DNS requests for
+trusted ips, and detailed explanations are in the comments. Note that the ips
+are hardcoded here, and need to be changed to the actual ips.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>acl <span class="s2">"trusted"</span> <span class="o">{</span>
+        10.8.0.1;    <span class="c"># ns1 - can be set to localhost</span>
+        10.8.0.6;    <span class="c"># ns1 - can be set to localhost</span>
+<span class="o">}</span>;
+
+options <span class="o">{</span>
+        ...
+
+        recursion yes;                 <span class="c"># enables resursive queries</span>
+        allow-recursion <span class="o">{</span> trusted; <span class="o">}</span>;  <span class="c"># allows recursive queries from "trusted" clients</span>
+        listen-on <span class="o">{</span> 10.8.0.1; <span class="o">}</span>;   <span class="c"># ns1 private IP address - listen on private network only</span>
+        allow-transfer <span class="o">{</span> none; <span class="o">}</span>;
+
+        <span class="c"># Forward all unknown domain name requests to the ip listed.</span>
+        forwarders <span class="o">{</span>
+                127.0.0.53;
+        <span class="o">}</span>;
+
+        ...
+<span class="o">}</span>;
+</code></pre>
+</div>
+
+  </div>
+
+</article>
+
+    </section>
+
+    
+    <div class="container">
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><script type="text/javascript">
+      var disqus_shortname = 'nautilus-shell-of-hhiker';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shawnLeeZX.github.io/blog/2020/07/07/open-internet-in-restricted-regions-shadowsocks-openvpn-and-bind/';
+        var disqus_url = 'http://shawnLeeZX.github.io/blog/2020/07/07/open-internet-in-restricted-regions-shadowsocks-openvpn-and-bind/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+      </section>
+    </div>
+    
+
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+<div class="container footer-content">
+    <!-- Nothing is there. -->
+</div>
+</nav>
+  </body>
+
+</html>
