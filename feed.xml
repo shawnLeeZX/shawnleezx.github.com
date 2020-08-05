@@ -5,8 +5,8 @@
     <description>&lt;h1&gt;Children of The Sun&lt;/h1&gt; </description>
     <link>http://shawnLeeZX.github.io/</link>
     <atom:link href="http://shawnLeeZX.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 07 Jul 2020 11:11:44 +0800</pubDate>
-    <lastBuildDate>Tue, 07 Jul 2020 11:11:44 +0800</lastBuildDate>
+    <pubDate>Wed, 05 Aug 2020 11:03:08 +0800</pubDate>
+    <lastBuildDate>Wed, 05 Aug 2020 11:03:08 +0800</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -49,10 +49,18 @@ of SS, and is copied in &lt;a href=&quot;#connect-to-openvpn-over-shadowsocks&qu
 Shadowsocks&lt;/a&gt;, since it is rather short.&lt;/li&gt;
   &lt;li&gt;Enable package forward as guided in
 &lt;a href=&quot;https://wiki.archlinux.org/index.php/Internet_sharing#Enable_packet_forwarding&quot;&gt;here&lt;/a&gt;,
+or
+&lt;a href=&quot;https://openvpn.net/faq/what-is-and-how-do-i-enable-ip-forwarding-on-linux/&quot;&gt;here&lt;/a&gt;,
 and allow VPN traffic through the &lt;code class=&quot;highlighter-rouge&quot;&gt;iptables&lt;/code&gt; firewall as guided
 &lt;a href=&quot;https://wiki.archlinux.org/index.php/OpenVPN#Routing_client_traffic_through_the_server&quot;&gt;here&lt;/a&gt;
-(further explanation could be found &lt;a href=&quot;https://openvpn.net/community-resources/how-to/#redirect&quot;&gt;here&lt;/a&gt;).&lt;/li&gt;
-  &lt;li&gt;Set up a DNS server on the VPN using &lt;code class=&quot;highlighter-rouge&quot;&gt;bind9&lt;/code&gt;.&lt;/li&gt;
+(further explanation could be found
+&lt;a href=&quot;https://openvpn.net/community-resources/how-to/#redirect&quot;&gt;here&lt;/a&gt;). The
+command are collected at &lt;a href=&quot;#packet-forwarding-and-the-firewall-configuration&quot;&gt;Packet forwarding and the firewall configuration&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Set up a DNS server on the VPN using &lt;code class=&quot;highlighter-rouge&quot;&gt;bind9&lt;/code&gt;. A guide could be found
+&lt;a href=&quot;https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-18-04&quot;&gt;here&lt;/a&gt;. Since
+we do not maintain any internal domains, we only need to forward the DNS
+request to the DNS of the server. However, to allow recursive DNS request,
+some setup are required, and is collected at &lt;a href=&quot;#bind-configuration&quot;&gt;BIND Configuration&lt;/a&gt;.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&quot;a-quick-explanation-on-the-authentication-setup-of-openvpn&quot;&gt;A quick explanation on the authentication setup of OpenVPN&lt;/h2&gt;
@@ -72,10 +80,65 @@ relationship between nodes in the VPN, and make OpenVPN going.&lt;/p&gt;
 
 &lt;h2 id=&quot;connect-to-openvpn-over-shadowsocks&quot;&gt;Connect to OpenVPN over Shadowsocks&lt;/h2&gt;
 
-&lt;p&gt;Add these lines to the client side conf file of OpenVPN&lt;/p&gt;
+&lt;p&gt;Add these lines to the client side conf file, normally
+&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/openvpn/client/client.conf&lt;/code&gt;, of OpenVPN&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    socks-proxy 127.0.0.1 1080
     route SHADOWSOCKS_SERVER_IP 255.255.255.255 net_gateway
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;packet-forwarding-and-the-firewall-configuration&quot;&gt;Packet forwarding and the firewall configuration&lt;/h2&gt;
+
+&lt;p&gt;The packets forwards from OpenVPN needs to be forwarded, and can be configured as&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sysctl net.ipv4.ip_forward&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The change can be made persistent by putting the following to  &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/sysctl.d/30-ipforward.conf&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;net.ipv4.ip_forward&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
+net.ipv6.conf.default.forwarding&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
+net.ipv6.conf.all.forwarding&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The firewall needs to be configured to allow VPN traffic, by&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;bind-configuration&quot;&gt;BIND Configuration&lt;/h2&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/bind/named.conf.options&lt;/code&gt; contains options to configure BIND. The
+following are the configurations are needed to add to the file after installing
+&lt;code class=&quot;highlighter-rouge&quot;&gt;bind9&lt;/code&gt;. The &lt;code class=&quot;highlighter-rouge&quot;&gt;acl&lt;/code&gt; block adds the trusted ips that are allowed to do DNS
+requests. The configs in the &lt;code class=&quot;highlighter-rouge&quot;&gt;options&lt;/code&gt; block enables recursive DNS requests for
+trusted ips, and detailed explanations are in the comments. Note that the ips
+are hardcoded here, and need to be changed to the actual ips.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;acl &lt;span class=&quot;s2&quot;&gt;&quot;trusted&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        10.8.0.1;    &lt;span class=&quot;c&quot;&gt;# ns1 - can be set to localhost&lt;/span&gt;
+        10.8.0.6;    &lt;span class=&quot;c&quot;&gt;# ns1 - can be set to localhost&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;;
+
+options &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        ...
+
+        recursion yes;                 &lt;span class=&quot;c&quot;&gt;# enables resursive queries&lt;/span&gt;
+        allow-recursion &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; trusted; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;;  &lt;span class=&quot;c&quot;&gt;# allows recursive queries from &quot;trusted&quot; clients&lt;/span&gt;
+        listen-on &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; 10.8.0.1; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;;   &lt;span class=&quot;c&quot;&gt;# ns1 private IP address - listen on private network only&lt;/span&gt;
+        allow-transfer &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; none; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;;
+
+        &lt;span class=&quot;c&quot;&gt;# Forward all unknown domain name requests to the ip listed.&lt;/span&gt;
+        forwarders &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                127.0.0.53;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;;
+
+        ...
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </description>
